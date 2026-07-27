@@ -1,0 +1,40 @@
+{
+  "city_scale_multiplier": 1.0,
+  "services": {
+    "eMBB": {
+      "label": "Mobile broadband users",
+      "base_devices_per_cell": 42000,
+      "active_ratio": 0.18,
+      "device_type": "handset_ar_vr_video",
+      "mobility_bias": 0.45
+    },
+    "mMTC": {
+      "label": "Massive IoT sensors",
+      "base_devices_per_cell": 320000,
+      "active_ratio": 0.035,
+      "device_type": "iot_sensor_meter",
+      "mobility_bias": 0.08
+    },
+    "URLLC": {
+      "label": "Critical low-latency devices",
+      "base_devices_per_cell": 8500,
+      "active_ratio": 0.42,
+      "device_type": "robotics_industrial_control",
+      "mobility_bias": 0.25
+    },
+    "FWA": {
+      "label": "Fixed wireless subscribers",
+      "base_devices_per_cell": 28000,
+      "active_ratio": 0.31,
+      "device_type": "home_enterprise_router",
+      "mobility_bias": 0.02
+    },
+    "V2X": {
+      "label": "Connected vehicles",
+      "base_devices_per_cell": 14000,
+      "active_ratio": 0.55,
+      "device_type": "vehicle_roadside_unit",
+      "mobility_bias": 0.9
+    }
+  }
+}

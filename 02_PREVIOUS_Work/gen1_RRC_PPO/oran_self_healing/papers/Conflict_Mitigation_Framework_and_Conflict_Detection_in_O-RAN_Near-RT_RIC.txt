@@ -1,0 +1,717 @@
+ACCEPTED FROM OPEN CALL
+
+Conflict Mitigation Framework and Conflict
+Detection in O-RAN Near-RT RIC
+Cezary Adamczyk and Adrian Kliks
+
+Abstract
+
+The steady evolution of the Open RAN concept sheds light on xApps and their potential use
+cases in O-RAN-compliant deployments. There
+are several areas where xApps can be used that
+are being widely investigated, but the issue of mitigating conflicts between xApp decisions requires
+further in-depth investigation. This article defines a
+conflict mitigation framework (CMF) built into the
+existing O-RAN architecture; it enables the Conflict Mitigation component in O-RAN’s Near-Real-Time RAN Intelligent Controller (Near-RT RIC)
+to detect and resolve all conflict types defined
+in the O-RAN Alliance’s technical specifications.
+Methods for detecting each type of conflict are
+defined, including message flows between NearRT RIC components. The suitability of the proposed CMF is proven with a simulation of an
+O-RAN network. Results of the simulation show
+that enabling the CMF allows balancing the network control capabilities of conflicting xApps to
+significantly improve network performance, with
+a small negative impact on its reliability. It is concluded that defining a unified CMF in Near-RT
+RIC is the first step toward providing a standardized method of conflict detection and resolution
+in O-RAN environments.
+
+Introduction
+
+The concept of open radio access networks
+(O-RAN) has been widely investigated in recent
+years by large organizations comprising mobile
+network operators (MNOs), telecommunications
+companies, and research facilities. One of such
+organizations is the O-RAN Alliance, which formulates technical specifications to guide the industry
+toward O-RAN. Its efforts enable researchers and
+companies to build upon the laid foundations,
+with each new series of technical specifications
+providing details of the ideas that drive the whole
+O-RAN concept [1].
+The openness of O-RAN enables novel
+approaches to operating RAN and fulfilling new
+deployment scenarios. First of all, the interfaces between logical components of O-RAN are
+standardized and open. This enables interchangeability of O-RAN components manufactured by
+various vendors without limitation of network
+functionality. This is a significant change compared to traditional “proprietary” RANs, where
+RAN hardware and software are usually provided by a single vendor. Freeing MNOs from this
+
+dependency largely expands the possibilities of
+network evolution.
+The next unique aspect of O-RAN is the introduction of new components that can influence
+the RAN operation. These include Non-Real-Time
+(Non-RT) and Near-Real-Time (Near-RT) RAN Intelligent Controllers (RICs), the former of which is a
+part of the Service Management and Orchestration
+(SMO) framework. These logical functions react to
+current and forecasted future network states and
+adapt its parameters to optimize performance.
+Last, but not least, the accessibility of O-RAN
+is accelerated with the concept of applications in
+RICs. These applications run in the Non-RT RIC
+(called rApps) and in the Near-RT RIC (called
+xApps). Both rApps and xApps can be developed
+by independent parties and then deployed on all
+O-RAN-compliant platforms, regardless of their
+hardware and software vendor. The aim of rApps
+and xApps is to influence the network operation
+from the RICs. For example, an rApp can realize
+a use case to adjust radio resource allocation policies to reduce latency and improve performance
+in dynamic handover for V2X scenarios [2]; the
+Non-RT RIC then interfaces with the Near-RT RIC
+to provide policy updates provided by rApps. An
+example of an xApp is an application that manages radio resources in such a way as to maximize
+Quality of Service (QoS) for a group of users [2]
+using a dedicated interface to send control messages to RAN nodes.
+Prioritization within all areas of the O-RAN
+space is decided upon in the Minimum Viable
+Plan (MVP) toward the commercialization of
+the concept [3]. It comprises key end-to-end use
+cases that are applicable in commercial RAN, priorities of which are chosen by MNO members of
+O-RAN Alliance. In June 2021, the priority was
+set on use cases such as traffic steering, QoS optimization, or Massive Multiple-Input Multiple-Output (mMIMO) optimization. Since then, multiple
+new use cases for O-RAN have been defined,
+with energy saving being one of the most important new focuses for network operators [2]. All
+of these use cases are to be fulfilled using various xApps and rApps working concurrently in the
+RICs. As multiple applications can be deployed
+and activated in the network at the same time,
+their influences on the network operation may
+conflict with each other. Such conflicts need to
+be detected and mitigated in both Non-RT and
+Near-RT domains.
+
+The authors define a conflict
+mitigation framework built into
+the existing O-RAN architecture;
+it enables the Conflict Mitigation
+component in O-RAN’s Near-RealTime RAN Intelligent Controller
+to detect and resolve all conflict
+types defined in the O-RAN Alliance’s technical specifications.
+
+Cezary Adamczyk and Adrian Kliks were with Poznan University of Technology, Poland.
+
+IEEE Communications Magazine • December 2023
+
+0163-6804/23/$25.00 © 2023 IEEE
+
+Authorized licensed use limited to: Amrita School of Engineering. Downloaded on July 08,2026 at 09:02:35 UTC from IEEE Xplore. Restrictions apply.
+
+Digital Object Identifier:
+10.1109/MCOM.018.2200752
+
+199
+
+FIGURE 1. Areas of potential control conflict in O-RAN architecture.
+This article proposes a novel conflict mitigation
+framework (CMF) to efficiently detect and resolve
+conflicts between network control decisions made
+by xApps in Near-RT RICs. The key contributions
+of this work are as follows: first, we present a comprehensive framework for conflict mitigation in
+O-RAN, which monitors network events to detect
+and resolve all conflict types between xApps,
+and which we propose to make standardized.
+Secondly, based on that framework, we propose
+procedures to mitigate the conflicts, along with
+detailed templates of exchanged messages. Finally,
+we propose a pragmatic way of resolving conflicts
+between same-importance (i.e., of the same level in
+the hierarchy) RAN control decisions based on prioritization and provide simulation results that show
+how this approach influences the network. Lastly,
+we outline the expected next steps in research of
+conflict mitigation in O-RAN.
+
+conflIcts between rAn control decIsIons
+
+Although O-RAN’s flexibility and novel intelligent
+RAN components allow for robust RAN optimization, these features also create unique challenges in controlling the network. Control conflicts
+are possible as multiple agents can decide on
+RAN operation parameters. These conflicts can
+potentially nullify or lessen the decisions’ influence on the network performance, so they should
+be avoided where possible with proper network
+setup [4]. However, the complex dependencies
+between RAN control activities and potential
+expansion of network control measures make
+complete mitigation of conflicts with static configuration not viable. Thus, any RAN control conflicts
+that appear during O-RAN network operation
+need to be detected and resolved. For that purpose, Conflict Mitigation (CM) components are
+envisioned in the Near-RT RIC and in the NonRT RIC [5, 6]. Although the O-RAN architecture
+sections out the CM logic only in the RICs and it
+is the main focus of this article, some CM capabilities could be realized on the SMO level (and
+outside of the Non-RT RIC).
+Control decision conflicts can happen at many
+levels in the O-RAN architecture. Within RICs,
+these conflicts can happen between xApps in a
+Near-RT RIC and between rApps in the Non-RT
+RIC when control activities of applications contradict each other. Other than that, Near-RT RICs
+
+200
+
+may also conflict each other, specifically if they
+control RAN nodes located in close proximity.
+These conflicts between equivalent components
+can be referred to as horizontal conflicts. Control conflicts can also happen between components on different levels of the architecture, that
+is, between the Non-RT RIC and Near-RT RICs.
+An example of such a type of conflict is when an
+xApp either acts against a policy, or contradicts
+a control decision provided by the Non-RT RIC.
+These conflicts can be named vertical conﬂicts. All
+the considered areas of potential conflict within
+the O-RAN architecture are shown in Fig. 1.
+The decision conflicts within O-RAN are considered in this article in the context of horizontal
+conflicts between xApps in a Near-RT RIC (intraNear-RT RIC) and between Near-RT RICs (interNear-RT RIC). Similar considerations can be
+applicable for horizontal conflicts between rApps
+(intra-Non-RT RIC), as they provide policy and
+non-real-time control decisions similarly to how
+xApps provide near-real-time control decisions. As
+for the vertical conflicts between the Non-RT RIC
+and Near-RT RICs, the Near-RT RIC’s policy-conflicting control decisions may either be rejected or
+allowed by the Non-RT RIC. The specific conflict
+resolution action should be decided by the Non-RT
+RIC based on the affected use case and how the
+policies are enforced. The specific logic of how the
+Non-RT RIC should resolve conflicts and enforce
+its policies is not considered in this article.
+
+tYPes of conflIcts between XAPP decIsIons
+
+O-RAN technical specifications distinguish three
+types of conflicts that can happen between xApps
+[5], namely direct, indirect, and implicit. The first
+of these are direct conflicts, which concern contradicting decisions that happen one after the
+other and affect the same set of configuration
+parameters. An example of such type of conflict
+may be when xApp #1 decides to assign a user
+to a cell and right after that xApp #2 decides to
+assign the same user to another cell. In this particular scenario, the result of the conflicting actions
+will be that only the decision of xApp #2 will have
+an effect. Undetected direct conflicts may lead
+xApp #1 to draw wrong conclusions about the
+effect of its decision.
+Another type of conflict in the Near-RT RIC is
+the indirect conflict. It refers to a situation where
+decisions contradict each other when modifying
+parameters that influence the same areas of the
+RAN operation. For example, indirect conflicts can
+happen between xApps modifying parameters
+that influence handover boundaries, such as when
+xApp #1 controls an antenna’s electrical tilt and
+xApp #2 changes the Cell Individual Offset (CIO).
+This may lead to situations where the effective handover boundary fluctuates heavily due to xApps
+reacting to each other’s contradicting decisions.
+The implicit conflict considers situations in
+which conflicting influences of network control
+decisions are difficult to observe and determine.
+Implicit conflicts are expected when many xApps
+simultaneously optimize the RAN operation with
+separate goals, controlling different network
+parameters. They can appear in a situation where
+xApp #1 aims to maximize QoS for a group of
+users while xApp #2 attempts to minimize the
+number of handovers between neighboring cells;
+
+IEEE Communications Magazine • December 2023
+
+Authorized licensed use limited to: Amrita School of Engineering. Downloaded on July 08,2026 at 09:02:35 UTC from IEEE Xplore. Restrictions apply.
+
+decisions made by these two xApps may interfere
+in a non-obvious manner, disrupting each other’s
+effect on the network.
+Conflicts may also happen between Near-RT
+RICs that control RAN nodes in close proximity (i.e., the inter-Near-RT RIC conflicts). In such
+cases, the conflicting Near-RT RICs provide contradicting RAN control decisions, for example,
+triggering a “ping-pong” handover of a user
+between cells managed by both Near-RT RICs.
+Such network behavior leads to inefficient radio
+resource utilization.
+
+Dealing with Conflicts and Related Works
+
+To achieve predictable performance and behavior
+of O-RAN, it is necessary to minimize any negative impact of conflicts between xApp decisions.
+As prevention is preferred, the design of NearRT RIC implementations should aim to avoid any
+conflicts between xApps. Unfortunately, some
+conflicts will inevitably happen with various third
+parties providing xApps. Therefore, the Near-RT
+RIC must be able to resolve any conflicts between
+xApp decisions. To do so, the conflict firstly needs
+to be detected. Currently, no methods of detecting or resolving conflicts are defined in O-RAN’s
+technical specifications as they are considered for
+future study [5].
+The topic of conflict mitigation in O-RAN has
+not yet been significantly covered in research
+papers. One of the relevant papers on a related
+topic has been published by Zhang et al. [7], who
+proposed a team learning algorithm based on
+Deep Q-learning that requires two xApps working
+in cooperation in an O-RAN environment. While
+the referenced work does not describe a universal
+solution to the issue of conflicts in O-RAN, it proposes a viable way to mitigate the conflicts using
+a cooperative machine learning scheme. Results
+of the team learning algorithm showed that when
+xApps take into consideration each other’s decisions, the learning process is much more efficient
+in comparison to xApps working independently,
+leading to overall higher system throughput and
+lower packet drop rate. Although promising, this
+approach is hard to scale to a larger number of
+xApps because the decision logic of all participating xApps needs to adapt to the number of
+cooperating xApps and be able to properly interpret their decisions. Therefore, the team learning approach can be utilized only if xApps are
+designed with team learning in mind.
+Significant work has been done in the area of
+conflict mitigation in the context of Self-Organized
+Networks (SON). The concept of SON has been
+introduced as part of Long Term Evolution (LTE)
+networks to reduce operating costs related to
+multi-vendor RAN. SON allows for the deployment
+of SON functions, which, as xApps and rApps in
+O-RAN, are able to modify network behavior,
+albeit only locally. Two SON functions widely
+considered in research are Mobility Robustness
+Optimization (MRO) and Mobility Load Balancing (MLB). Relevant work on conflict mitigation in
+the context of SON includes a scheme to resolve
+conflicts between MRO and MLB, which limits the
+range of changes to CIO values done by MLB [8].
+This approach has been improved in later research
+to find optimal values of CIO instead of limiting
+the range [9]. To address the problem of decision
+
+conflicts in a more general way, a soft classification of conflicts in SON has been proposed [10].
+A general framework for self-coordination in SON
+has been defined to universally deal with conflicts,
+regardless of conflicting SON function types [11];
+it describes the concept of SON Coordinator that
+adapts network control to current conditions, mitigating any conflicts and providing safeguards from
+network performance degradation. Another generalized solution in SON utilizes machine learning
+to learn from past experience and predict network
+performance to better solve the conflicts [12].
+Although RAN control problems in SON and
+O-RAN share many similarities (i.e., SON functions and xApps/rApps as conflicting agents, common use cases), the solutions for SON cannot be
+directly applied to O-RAN. This is mainly due to a
+significant difference in how RAN control is realized in SON and O-RAN. SON functions perform
+RAN control locally (i.e., each RAN node optimizes its parameters based on what it can observe),
+while RAN control in O-RAN is executed with
+RICs, which can observe the entire managed network and optimize it centrally. Nevertheless, the
+relevant work on SON can provide insight into
+how the problem of conflict mitigation can be
+approached and what measures may prove effective in solving the control conflict problems.
+Finally, it is worth mentioning multi-agent
+reinforcement learning (MARL) methods that
+consider multi-agent systems (MAS), where
+autonomous agents with various goals perform
+actions in a shared environment [13]. In an MAS,
+agents’ actions influence each other and need
+to be coordinated to reach an optimal state of
+the environment. This case can be considered
+analogous to the O-RAN scenario, where xApps
+and rApps provide RAN control decisions to fulfill
+various use cases. According to the O-RAN architecture descriptions provided by O-RAN Alliance,
+the default RAN control setting in O-RAN is centralized and features the RICs as coordinators of
+RAN control activities. Hence, cooperative and
+coordinated MARL approaches could be applied.
+Although this is a viable solution, it requires xApps
+and rApps to be implemented with MARL in
+mind. We consider this a potential evolution path
+for the conflict mitigation methods in O-RAN.
+However, this article focuses on solutions that can
+be applied to all applications, regardless of their
+implementation.
+
+The implicit conflict considers situations in which
+conflicting influences of
+network control decisions are
+difficult to observe and determine. Implicit conflicts are
+expected when many xApps
+simultaneously optimize the
+RAN operation with separate
+goals, controlling different
+network parameters.
+
+Conflict Mitigation Framework
+
+In this article, we propose a framework for conflict mitigation (referred to in the article as CMF)
+in O-RAN-compliant environments. The proposed
+framework is envisioned as part of the CM component of Near-RT RIC. CMF aims to provide a
+robust, standardized method for conflict detection in O-RAN, covering the detection of all three
+types of conflict defined in O-RAN specifications.
+The proposed framework embedded within the
+architecture of Near-RT RIC is shown in Fig. 2.
+
+Structure of CMF and Infrastructure Prerequisites
+
+CMF envisions deploying the Conflict Detection
+(CD) Agent and the Conflict Resolution (CR)
+Agent components in the Near-RT RIC’s CM entity as agents that detect conflicts between xApps
+and resolve them. The main research challenge
+
+IEEE Communications Magazine • December 2023
+
+Authorized licensed use limited to: Amrita School of Engineering. Downloaded on July 08,2026 at 09:02:35 UTC from IEEE Xplore. Restrictions apply.
+
+201
+
+es that are currently in effect, via the Non-RT RIC.
+This information shall be a part of the enrichment
+information interface between the Non-RT RIC and
+Near-RT RICs. Once the Near-RT RICs are aware
+of all control decisions for users, cells, and bearers
+managed by other Near-RT RICs, these decisions
+can be considered as part of the conflict mitigation
+procedures for shared control targets.
+
+dIrect conflIct detectIon
+
+FIGURE 2. CMF components embedded within the Near-RT RIC architecture.
+for the CD Agent is to enable reliable detection
+of all types of conflicts, and for the CR Agent to
+enable the resolution of all conflicts to reach an
+optimal network state. There are three logical
+parts distinguished within the CD Agent that are
+dedicated to detection methods for each type of
+conflict between xApp decisions. These components are described in the following subsections.
+As for the CR Agent, it is assumed that it can
+resolve any conflicts detected by the CD Agent.
+The operation of CMF relies on the configuration of the O-RAN infrastructure. Data stored by
+CMF is kept in the Near-RT RIC’s Database, which
+is accessible via the Shared Data Layer (SDL). The
+Message Infrastructure in the Near-RT RIC needs
+to be configured to redirect all control messages
+from xApps into the CM component, so that all
+RAN control messages can be evaluated by CMF.
+Depending on the results of CMF’s evaluation of
+the specific control messages, these messages can
+either be allowed to modify the network configuration (with or without modifications, depending
+on the logic implemented in the CR Agent) or be
+entirely blocked from influencing the network. It
+should be acknowledged that adding an additional
+step in the RAN control message processing pipeline increases the delay between an xApp providing
+a RAN control message and the message influencing the network. As Near-RT RIC aims to control
+the network operation in near-real-time scale, any
+processing done in the CM component, that is,
+in the CD Agent and the CR Agent, needs to be
+relatively quick. Another dependency on the NearRT RIC architecture is that the CD Agent needs to
+be subscribed to performance management (PM)
+data provided by RAN nodes managed by the
+Near-RT RIC. This is required for the detection of
+implicit conflicts, which is described in details in a
+subsequent section.
+To mitigate the inter-Near-RT RIC conflicts,
+CMF envisions the exchange of information
+between Near-RT RICs about RAN control messag-
+
+202
+
+Ideally, direct conflicts should be detected as part
+of pre-deployment xApp assessment, which is
+done by the MNO deploying the xApps. Nevertheless, a method for detection of direct conflicts
+is required as a fail-safe mechanism, for example,
+in case of human error leading to deployment of
+directly conflicting xApps.
+Direct conflicts can be detected by the Direct
+Conflict Detection (DCD) component within the
+CD Agent. DCD can detect the conflicts pre-action (i.e., before a control decision is effective), as
+it detects changes of recently changed parameters related to a user, a cell, or a bearer. All RAN
+control messages are tracked by the CD Agent in
+the Database (“Recently changed parameters” in
+Fig. 2) along with a timestamp, the source xApp,
+the control target, the parameters modified by the
+message, and the control time span of the message
+(i.e., the control duration expected by the xApp).
+The conflict detection logic of DCD is as follows: each new control message in the Near-RT
+RIC is saved into the Database, then it is compared to all currently effective xApp control decisions; if any decisions share the control target
+and at least one of the modified parameters, data
+about the conflicting decisions is provided to the
+CR Agent. The DCD procedure is illustrated in
+Fig. 3, which shows the message exchange flow
+between the CMF components.
+
+IndIrect conflIct detectIon
+
+Indirect conflicts cannot be directly observed by
+the Indirect Conflict Detection (ICD) component
+within the CD Agent, but it can anticipate them
+pre-action by having the knowledge of groups
+of parameters that influence the same area of
+RAN operation. These groups of parameters
+can be configured manually by the MNO, predefined in the standards, or learned dynamically during network operation using Performance
+Monitoring (described in the next section). The
+groups are stored in the Database as Parameter
+Groups (PGs) (“Parameter Group definitions” in
+Fig. 2). Additionally, the Database stores information about RAN control messages that modify any parameters from these groups (“Recently
+changed Parameter Groups” in Fig. 2), with the
+same scope of data as “Recently changed parameters” related to DCD.
+Detection of indirect conflicts is a slight modification of DCD: it also analyzes each new control
+message but first maps the target parameter onto
+predefined PGs. After the message is noted against
+at least one of the known PGs, ICD checks the
+entries in “Recently changed Parameter Groups” to
+find any conflicting decisions. If a match is found,
+information about the conflicting xApp decisions is
+provided to the CR Agent. The conflict detection
+logic and related message flow for ICD are shown
+in Fig. 3, alongside the DCD procedure.
+
+IEEE Communications Magazine • December 2023
+
+Authorized licensed use limited to: Amrita School of Engineering. Downloaded on July 08,2026 at 09:02:35 UTC from IEEE Xplore. Restrictions apply.
+
+IMPlIcIt conflIct detectIon
+Implicit conflicts cannot be observed directly, and
+the mutual influence between conflicting decisions
+is not easily deduced. Therefore, a similar approach,
+as described for DCD and ICD, is not suitable for
+Implicit Conflict Detection (ImCD), which can only
+work reactively. An additional component within
+ImCD is required to analyze PM data reported by
+RAN nodes and detect any occurrences of network
+performance degradation; this role is fulfilled by
+the Performance Monitoring (PMon) component
+within CMF. Detection of network performance
+anomalies can be achieved with either traditional
+statistical-based solutions or AI/ML-based approaches [14]. The aim of the PMon component is to
+detect any significant RAN Key Performance Indicator (KPI) degradation. ImCD utilizes Near-RT RIC’s
+Database accessed via the SDL to store data about
+RAN KPI degradation occurrences and KPI degradation-correlated xApp decisions.
+The operation of ImCD is not triggered by any
+RAN control message but by PMon signaling a
+detection of RAN KPI degradation. Once the trigger
+is provided, ImCD analyzes which parameters and/or
+Parameter Groups have been recently modified by
+many control messages. ImCD utilizes the data captured in the Database by DCD and ICD, so it does
+not need to monitor any control messages by itself.
+If a correlation is found between any recent RAN
+control decisions and the observed RAN KPI degradation, ImCD notes it and increments its internal
+counters relevant to these control decisions. When
+any tracked counter breaches a predefined threshold, the CD Agent provides data about conflicting
+xApps’ control decisions to the CR Agent. At this
+point in the procedure, the CD Agent may remove
+data about RAN KPI degradation occurrences related to the reported conflict from the Database. A
+significant difference between DCD/ICD and ImCD
+is that the latter works post-action and, therefore,
+cannot entirely prevent conflicting RAN control messages from influencing the network. Similar to the
+DCD and ICD procedures described earlier, the message exchange flow and conflict detection logic for
+the ImCD procedure are depicted in Fig. 4.
+
+eVAluAtIon of the solutIon
+sIMulAtIon scenArIo
+
+To evaluate the efficiency of CMF, we simulated a
+19-base-station O-RAN network with the base stations (BSs) evenly distributed in an urban environment on a hexagonal grid, 600 meters apart. The
+simulation area is limited to approximately outline
+the area covered by the network. There are 380
+users spread across the area, each with one of three
+user profiles (i.e., low, medium, and high bitrate),
+chosen randomly with various probabilities (60 % for
+low, 30 % for medium, and 10 % for high bitrates).
+Users move randomly around the considered area,
+either as pedestrians or in a vehicle, generating traffic in the network. Connections can be handed over
+between BSs as propagation conditions change.
+The simulated network includes a nRT-RIC,
+which monitors performance parameters for
+all BSs. Within the Near-RT RIC, two xApps are
+installed: MRO and MLB. MRO monitors handover statistics of each BS and modifies handover hysteresis and time-to-trigger parameters to
+
+FIGURE 3. Direct and Indirect Conflict Detection message flow.1
+minimize the number of radio link failures (RLFs)
+and ping-pong handovers. MLB balances the load
+of the BSs in the network, choosing CIO values
+according to the load of the BSs.
+To simulate CMF’s operation, CD and CR Agents
+are deployed within the Near-RT RIC. The CD Agent
+implements DCD and ICD, that is, it monitors configuration modifications made by xApps and detects
+direct and indirect conflicts (ImCD is not applicable
+in the considered scenario). If no conflicts are detected, any decisions provided by xApps take effect in
+the order they are provided. Otherwise, conflicts are
+reported into the CR Agent, which decides if and
+when specific decisions take effect. In the considered scenario, CMF can prioritize one of the conflicting xApps. If a given xApp is prioritized, each of its
+decisions takes effect on the network regardless of
+conflicts. To showcase how CMF is able to mitigate
+conflicts between xApps in the considered scenario,
+
+1 Examples of the messages
+exchanged by the O-RAN components during CMF operation
+are available online for readers’
+reference (free access) [15].
+The filenames of the messages
+in the repository align with the
+labels of the message flows
+shown in Figs. 3 and 4.
+
+IEEE Communications Magazine • December 2023
+
+Authorized licensed use limited to: Amrita School of Engineering. Downloaded on July 08,2026 at 09:02:35 UTC from IEEE Xplore. Restrictions apply.
+
+203
+
+Enabling conflict resolution with prioritization of
+the MRO xApp has a mostly positive effect on network performance. Although the mean load of all
+BSs increases slightly, the total number of handover
+events decreases by over 7 percent. This positive
+impact is due to MRO being able to steer handover parameters without constraints, while changes
+in network configuration done by MLB are significantly limited. On the other hand, in case of conflict
+with MRO, the MLB xApp is unable to increase the
+CIO of heavily loaded BSs, which would otherwise
+relieve their load and free up their radio resources
+for incoming calls. This limitation leads to an increase
+in the number of CBs because users trying to connect to heavily loaded BSs may not receive proper
+service due to the lack of available radio resources.
+The influence of CMF on network operation
+differs when the MLB xApp is prioritized. Mean
+user satisfaction increases by 0.7 percent, and the
+number of CBs decreases by over 7 percent, along
+with just a 0.1 percent increase in mean BS load.
+However, all other tracked network performance
+indicators deteriorate to varying degrees. CMF limits the RAN control capabilities of the MRO xApp,
+preventing it from optimizing handover parameters
+in case of conflict with MLB. This leads to more
+occurrences of all handovers, including too late
+and too early handovers, which cause RLFs.
+In conclusion, the “prioritize MRO” mode of
+CMF has a more positive impact on the network
+compared to the “prioritize MLB” mode, as it causes lesser deterioration of some KPIs in exchange
+for its performance improvements. CMF’s influence on KPIs in both modes is shown in Fig. 6.
+
+suMMArY
+
+FIGURE 4. Implicit Conflict Detection message flow.1
+a description of ICD operation event sequence is
+shown in Fig. 5. Readers interested in the details of
+the simulation scenario and the raw result data can
+access them online (free access) [15].
+
+eVAluAtIon results
+
+The simulation is conducted with MRO and MLB
+xApps activated and one of three modes of CMF
+operation: disabled, prioritize MRO, prioritize MLB.
+The first 150 seconds out of 1,000 simulated seconds are ignored in the statistics for the sake of
+disregarding the initial instability of the simulated network. Tracked network performance indicators are:
+• Mean BS load
+• Mean user satisfaction
+• Number of call blockages (CBs)
+• Number of RLFs
+• Number of handovers
+• Number of ping-pong handovers.
+The performance indicators observed for the network with no conflict mitigation in place show a significant number of CBs, RLFs, and handovers, including
+ping-pong handovers. The excessive number of handovers causes wasteful utilization of radio resources,
+which, in turn, decreases the QoS for the users handled by heavily loaded BSs. In extreme cases, the BSs
+drop incoming traffic, therefore causing call blockages. RLFs, on the other hand, are caused by either too
+early or too late handovers, which result from suboptimal configuration of handover parameters.
+
+204
+
+In this article, we defined a framework for conflict
+mitigation in O-RAN’s Near-RT RIC. By design, it
+is capable of mitigating all three types of conflicts
+described in the technical specifications published
+by O-RAN Alliance: direct, indirect, and implicit conflicts. The proposed framework works by
+tracking all RAN control messages sent by xApps
+deployed within the Near-RT RICs and monitoring
+PM data reported by RAN nodes. The concept
+of a conflict mitigation framework is easily scalable and does not impose any restrictions on how
+conflict resolution is realized. We provided a complete set of example JSON messages exchanged
+as part of the procedures related to the detection
+of all types of conflicts between xApps.
+The efficiency of the CMF concept was proven
+with a simulation of an O-RAN network with and
+without mitigation of xApp conflicts. The simulation results show that enabling CMF, even with
+a basic scheme of conflict resolution, can reduce
+the negative effects of xApp conflicts.
+Defining the CMF is envisioned as the first step
+in providing a standardized conflict mitigation
+method in the Near-RT RIC. We expect future
+work in this field to include:
+• The development of the PMon component,
+potentially with use of AI/ML-based tools for
+detection of performance degradation
+• The development of the CR Agent entity,
+compatible with CMF, and with optimal conflict resolution logic for each type of conflict
+in the Near-RT RIC
+• Open source implementations of CMF for
+utilization in O-RAN networks.
+
+IEEE Communications Magazine • December 2023
+
+Authorized licensed use limited to: Amrita School of Engineering. Downloaded on July 08,2026 at 09:02:35 UTC from IEEE Xplore. Restrictions apply.
+
+references
+
+[1] O-RAN Working Group 1, O-RAN Architecture Description,
+O-RAN Alliance, Oct. 2022, v07.00.
+[2] O-RAN Working Group 1, O-RAN Use Cases Analysis
+Report, O-RAN Alliance, October 2022, v09.00.
+[3] O-RAN Minimum Viable Plan and Acceleration Towards
+Commercialization, O-RAN Alliance, June 2021.
+[4] M. Polese et al., “Understanding O-RAN: Architecture,
+Interfaces, Algorithms, Security, and Research Challenges,”
+2022; available: https://arxiv.org/abs/2202.01032.
+[5] O-RAN Working Group 3, Near-Real-time RAN Intelligent
+Controller Architecture, O-RAN Alliance, Oct. 2022, v03.00.
+[6] O-RAN Working Group 2, Non-Real-time RAN Intelligent
+Controller Functional Architecture, O-RAN Alliance, June
+2021, v01.01.
+[7] H. Zhang, H. Zhou, and M. Erol-Kantarci, “Team Learning-Based Resource Allocation for Open Radio Access
+Network (O-RAN),” CoRR, vol. abs/2201.07385, 2022;
+available: https://arxiv.org/abs/2201.07385.
+[8] Z. Liu et al., “Conflict Avoidance between Mobility Robustness Optimization and Mobility Load Balancing,” Proc. 2010
+IEEE Global Telecommunications Conf., 2010.
+[9] M. Huang and J. Chen, “A Conflict Avoidance Scheme
+between Mobility Load Balancing and Mobility Robustness
+Optimization in Self-Organizing Networks,” Wirel. Netw.,
+vol. 24, no. 1, Jan. 2018, p. 271–81; available: https://doi.
+org/10.1007/s11276-016-1331-y
+[10] H. Y. Lateef, A. Imran, and A. Abu-dayya, “A Framework
+for Classification of Self-Organising Network Conflicts and
+Coordination Algorithms,” Proc. 2013 IEEE 24th Annual Int’l.
+Symposium Personal, Indoor, and Mobile Radio Commun.,
+2013, pp. 2898–2903.
+[11] L. C. Schmelz et al., “A Coordination Framework for
+Self-Organisation in LTE Networks,” Proc. 12th IFIP/IEEE
+International Symposium on Integrated Network Management and Workshops, 2011, pp. 193–200.
+[12] J. Moysen et al., “Conflict Resolution in Mobile Networks:
+A Selfcoordination Framework Based on Non-Dominated
+Solutions and Machine Learning for Data Analytics [Application Notes],” IEEE Computational Intelligence Mag., vol. 13,
+no. 2, 2018, pp. 52–64.
+[13] A. Nowé, P. Vrancx, and Y.-M. De Hauwere, Game Theory
+and Multi-agent Reinforcement Learning, Berlin, Heidelberg:
+Springer Berlin Heidelberg, 2012, pp. 441–70; available:
+https://doi.org/10.1007/ 978-3-642-27645-3 14.
+[14] P. Casas et al., “Machine-Learning Based Approaches for
+Anomaly Detection and Classification in Cellular Networks,”
+04, 2016.
+[15] C. Adamczyk, “Conflict Mitigation Framework — Supplementary Information — IEEE ComMag 2023,” 2023,
+accessed 23 Jan. 2023; available: https://github.com/czezy/
+O-RAN CMF CM2023.
+
+FIGURE 5. ICD event sequence in the considered scenario.
+
+bIogrAPhIes
+
+C EZARY A DAMCZYK is a PhD student at Poznan University of
+Technology, conducting research in the field of AI/ML utilization in open radio access network radio resource optimization. He works as an OSS Solutions Architect in international
+telecommunication projects. His prior work related to O-RAN
+includes a paper proposing a novel Reinforcement Learning
+algorithm for optimizing radio resources utilization.
+A DRIAN K LIKS received his postdoctoral degree in technical
+computer science and telecommunications in February 2019.
+He works as an associate professor at Poznan University of
+Technology and has taken part in numerous industrial and commissioned projects. He leads OPUS projects on V2X communication and RISes. An IEEE Senior Member since 2013. In the
+years 2014-2016 he was the IEEE Membership Development/
+Web Visibility Chair for the EMEA area. Since 2019 — the editorin-chief of the J. Telecommunications and Information Technology of the Institute of Communications. A vice chair of the IEEE
+VTS Polish Chapter.
+
+FIGURE 6. Simulation results showing performance influence of CMF.
+
+IEEE Communications Magazine • December 2023
+
+Authorized licensed use limited to: Amrita School of Engineering. Downloaded on July 08,2026 at 09:02:35 UTC from IEEE Xplore. Restrictions apply.
+
+205
+
+

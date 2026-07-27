@@ -1,0 +1,11 @@
+netem applied for scenario=holdover
+tcpdump: listening on splanem, link-type EN10MB (Ethernet), snapshot length 262144 bytes
+capturing for 90s -> results/tier2/netem/holdover.pcap
+done. slave servo tail:
+ptp4l[7589.880]: selected local clock 9afaad.fffe.86c168 as best master
+ptp4l[7595.896]: selected local clock 9afaad.fffe.86c168 as best master
+ptp4l[7602.752]: selected local clock 9afaad.fffe.86c168 as best master
+pcap: results/tier2/netem/holdover.pcap
+23 packets captured
+23 packets received by filter
+0 packets dropped by kernel

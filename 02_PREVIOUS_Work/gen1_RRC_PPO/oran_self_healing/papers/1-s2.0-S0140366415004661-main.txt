@@ -1,0 +1,2116 @@
+Computer Communications 79 (2016) 92–102
+
+Contents lists available at ScienceDirect
+
+Computer Communications
+journal homepage: www.elsevier.com/locate/comcom
+
+A measurement study of short-time cell outages in mobile cellular
+networks
+Josip Lorincz a, Luca Chiaraviglio b,∗, Francesca Cuomo b
+a
+b
+
+FESB, University of Split, Split, Croatia
+DIET Department, University of Rome Sapienza, Rome, Italy
+
+a r t i c l e
+
+i n f o
+
+Article history:
+Received 2 July 2015
+Revised 21 December 2015
+Accepted 26 December 2015
+Available online 31 December 2015
+Keywords:
+Cellular networks
+Cellular outage measurements
+Cellular outage analysis
+
+a b s t r a c t
+We study the Short-Time Cell Outages (STCO) phenomena affecting Base Stations (BSs) in a mobile cellular operator network. The STCO is deﬁned as a short-time outage of all or some BS cells (sectors) that
+lasts up to 30 min in a day, thus still guaranteeing more than 98% of operation. It is type of outage
+which cannot be detected directly through an operator network monitoring system. Although a complete
+characterization of STCOs has never been reported in the literature, such events are affecting the cellular
+network of every mobile operator. In particular, a statistical analysis of STCOs based on BSs measurements
+of a complete operator mobile network is performed. Our results show that: (i) STCOs impact everyday
+life of an operator network, (ii) high load of cells corresponds to an increase in the number of STCOs and
+their duration, (iii) the impact of STCOs to single sectors and whole BSs is not negligible, (iv) most of
+STCOs are recorded in urban areas compared to rural ones, (v) the impact of STCOs on users is higher in
+rural areas compared to urban ones, and (vi) the STCOs are correlated with the transferred traﬃc rather
+than the outside air temperature.
+© 2016 Elsevier B.V. All rights reserved.
+
+1. Introduction
+Equipment outages in cellular access networks result in degradation or complete service interruption. Such occurrences cause
+operator revenue losses and users dissatisfaction [1]. After price
+and network coverage, outages are now considered the third most
+signiﬁcant factor inﬂuencing subscribers churn [2], what additionally contributes to the revenue losses. Mostly, mobile operator
+technical staff detects outages in real time, through reception of
+automated failure logs sent to the Operations and Maintenance
+Center (OMC) [3].
+In this paper, characteristics of special types of outage named
+Short-Time Cell Outages (STCOs) are analyzed. They can be perceived by the operator as hidden outages, since most of them
+cannot be directly detected through failure logs received by the
+OMC. Instead, awareness of those outages can be gained indirectly,
+through subscriber complaints, service traﬃc decrease or by extracting data from an operator Performance Monitoring (PM) system such as Ericsson Network IQ (ENIQ) solution [4].
+
+∗
+Corresponding author. Tel.: +39 3475032520,+39 644585467;
+fax: +39 64744481.
+E-mail addresses: jlerinc@fesb.hr (J. Lorincz), luca.chiaraviglio@uniroma1.it,
+luca.chiaraviglio@gmail.com (L. Chiaraviglio), francesca.cuomo@uniroma1.it
+(F. Cuomo).
+
+http://dx.doi.org/10.1016/j.comcom.2015.12.006
+0140-3664/© 2016 Elsevier B.V. All rights reserved.
+
+In order to be classiﬁed as STCO, allocated Transmit Channel(s)
+(TCHs) of all or some Base Station (BS) cells (sectors) must be in an
+outage state for up to 30 min in a single day. In the coverage area
+of a cell, users experience a lack of service during outage period(s).
+Such 30 min downtime takes into account single outage lasting up
+to 30 min, or a sequence of shorter outages (more than one) with
+total duration equal or less than 30 min in a day.
+Although cell outages lasting more than 30 min in a day (classiﬁed in the paper as Long-Time Cell Outages - LTCOs) also exist in
+cellular networks, there are several important reasons which motivate the analysis of STCOs. Firstly, some previous research works
+have already reported characterization of failures and outages in
+cellular networks [5] and Internet protocol (IP) backbone networks
+[6]. However, that characterization was dedicated to all outage
+types lacking conclusions related to the frequently occurred STCOs.
+Secondly, although most of the mobile operators are aware of the
+STCOs, up to 30 min outage in a day still ensures fully BS cell
+operation for minimally 98% time of a day. Hence, the BSs having STCO(s) are fully operational between 98% and 99.999% of a
+day, that is from the operator’s perspective acceptable daily operation time. Thirdly, operators treat elimination of LTCOs with
+stronger attention, with the goal of as fast as possible outage
+elimination. However, analyses of failure and recovery rates in
+[5,7] report that high percentage of failures in cellular access networks are self or auto recovered. Hence, many STCOs are caused
+
+J. Lorincz et al. / Computer Communications 79 (2016) 92–102
+
+by self/auto-recoverable failures lacking any manual intervention
+for the outage recovery. This fact additionally alienates operator
+attention from such type of outages. Fourthly, the importance of
+cell outages has been recognized by the 3rd Generation Partnership Project (3GPP). The 3GPP ongoing work in developing Technical Speciﬁcation (TS) 32.541 (Release 12), addresses mitigation
+of cell outages through automated self-healing process which is
+part of the next generation Self-Organizing Network (SON) concept
+[6,8]. Hence, the analysis presented in this paper can be useful for
+future development of cell outage detection and compensation algorithms which are currently topic of great interest [9–11].
+All these facts, combined with limited access to the cell outages data obtained from real cellular networks, are the rationale of
+statistical analyses of the BSs STCOs like the one proposed in this
+paper. Causes of such outages are similar to those of LTCOs. They
+are related with BSs software/hardware failures, congestion (load),
+temperature variations, power supply outages, environment causes
+(e.g. storm and/or lighting), etc. Such outages are inherent for operators BSs of the second (2G), third (3G) and forth (4G) generation. Also, analyses show that most of operators see space for improvement in understanding the causes of their outages [2]. Hence,
+in depth understanding of STCOs characteristics can help operator
+technical staff, researchers and equipment manufacturers to minimize or even eliminate the outages causes during network planning and operation phase.
+According to our knowledge, this is the ﬁrst paper which analyses the STCOs behavior in real cellular networks. The main contributions of this paper are: (i) explanation of weekly temporal variations of the STCO pattern in terms of number and duration of the
+STCOs per BS and cell, (ii) deep analysis of spatial variations of the
+STCOs based on Cumulative Distributing Function (CDF) of number and duration of the STCOs per BS and cell, (iii) estimation of
+not transferred traﬃc caused by STCOs on the level of complete
+operator network, (iv) indication of interdependence among Mean
+Time Between Outages (MTBO) and duration of STCOs, (v) presentation of differences among STCO statistics for BSs and cells covering urban and rural areas, and (vi) investigation of possible causes
+of STCOs.
+The rest of the paper is organized as follows. Section 2
+overviews the related work. Section 3 details how to detect and
+extract the STCOs from real measurements of a cellular network.
+Results from a measurement campaign of a national operator network are reported in Section 4. Section 5 discusses how mobile
+networks could be improved in order to limit the impact of STCOs.
+Finally, Section 6 concludes the paper.
+2. Related work
+Equipment outages impact the performance of telecommunication networks. Authors of [6] have performed a detailed characterization of outages in an operator backbone network, by leveraging on the Intermediate System to Intermediate System (IS–IS)
+routing updates to detect the failure events. The Authors perform
+also a preliminary investigation of possible causes of failures in
+the network, showing that maintenance operations, router-related
+and optical-related problems are the main causes of failure events.
+Moreover, the spatial and temporal variations of traﬃc are considered (e.g., showing that the outages follow a Weibull distribution). Differently to them, in this work we have considered a different scope, i.e., a cellular network rather than a transport backbone
+network. Similarly to them, however, temporal and spatial behaviors emerge also in our case, suggesting that common characteristics can be inferred (e.g., the mean time between STCOs follow a
+Weibull distribution like in [6]).
+In [5] the Authors investigate the impact of failures and changes
+in the network (e.g., deploying new BSs, or changing the old ones).
+
+93
+
+Table 1
+Data set features.
+Feature
+
+Value
+
+Total number of subscribers
+BS location
+Total number of BSs
+Total number of sectors
+Overall measurement time
+Time granularity
+Total number of outage events
+Maximum daily STCO duration
+
+≈0.5 millions
+nation-wide
+≈800
+≈2400
+7 days
+15 min
+3560
+30 min
+
+However, the impact of STCOs is not considered, e.g. only classical
+outages are analyzed. Differently from them, our work is tailored
+to the investigation of STCOs, showing that their impact is far to
+be negligible. Additionally, we consider the impact of traﬃc and
+the role of the sectorization on the intensity of such failures.
+Additionally, in [7] the Authors provide estimates of the mean
+time between failures and the mean time to repair in a cellular
+scenario, showing that both of them follow a Weibull distribution
+(and not an exponential one). Moreover, they claim that most of
+software failures are auto-recovered in practice. Our work, even
+if tailored to STCOs and not to classical failures like [7], conﬁrms
+these ﬁndings. Although the ﬁtted distributions are the same of
+[7], their parameters are quite different, due to the fact that STCOs
+have been not considered in that previous work.
+Finally, in [12] the Authors analyze the number of calls, SMS,
+and data transfers considering both spatial and temporal variations
+for different cities. The analysis reveals that there is a strong day
+night-trend in the analyzed features. Additionally, spatial differences emerge from the proposed data (especially when business
+or residential districts are analyzed). Our work also considers the
+temporal variations of the cellular features. However, differently
+from [12] we focus our attention on the analysis of STCO failure
+events vs. time, which should be an additional metric that should
+be taken into account by an operator.
+
+3. How to detect and extract the STCOs
+The main characteristics of the STCOs phenomena affecting BSs
+of an operator mobile access networks is that STCOs are hard to
+detect and to follow in real time, due to the frequent STCO appearance, its short duration and auto-recovery behavior. Actually, STCOs
+are recovered faster than mobile operator becomes aware about
+details of each STCO occurrence. For example, short BS power supply variation, preventive BS activity state transition due to excessive temperature increase or decrease inside BS rack, autorecovery software or hardware failures and temporal cell interference or
+congestion are some of the main causes of STCOs. For that reason,
+STCOs are not detected directly through reception of automated
+failure logs sent to the OMC of an operator. Instead, outages are
+detected indirectly from operator performance monitoring system.
+Analyses of the STCOs have been performed on data measured
+in the whole access network of a national operator, having approximately 800 BS sites equipped with 2G and 3G technologies.
+Those BS sites offer overall cellular coverage on the national level.
+In the analyses, only 2G BSs are taken into account. Reasons can
+be found in the cellular network conﬁguration, which is set up
+in a way that the 2G technology dominantly accepts voice, while
+the 3G one dominantly accepts data traﬃc. Since the voice traﬃc
+is intolerant to any kind of cell outages, it is assumed that analyzing STCOs of the 2G technology can offer highest contribution
+in terms of obtained results. Table 1 summarizes the main features of the considered data set. In order to guarantee operator
+
+94
+
+J. Lorincz et al. / Computer Communications 79 (2016) 92–102
+
+conﬁdentiality, additional details concerning BS cells and their locations are omitted in the rest of the paper.
+STCOs are collected for each sector of each BSs in a centralized database of the operator OMC. In the ﬁrst step, performance
+monitoring database is ﬁlled with information obtained from performance monitoring system (such as ENIQ platform). Then, as
+a second step, STCOs are extracted oﬄine from the parameters
+saved in the database. Each outage event (STCO) is a function of
+multiple parameters. In particular, an outage event is extracted
+from the multiple performance parameters collected in the performance monitoring database (a more formal description of the
+procedure is reported in Section 3.1). The most important parameters used for detection of STCOs from the performance monitoring
+data are: the duration of Traﬃc Channel (TCH)/ Standalone Dedicated Control Channel (SDCCH) availability, the amount of transferred data over TCH/SDCCH, the level of TCH/SDCCH time congestion rate, the TCH/SDCCH drops, etc. After STCO detection, logs
+for only those BSs experiencing STCOs are analyzed for Observation InTervals (OIT) lasting a ﬁxed amount of time. For example, if
+the level of TCH channel availability is below 100% during one OIT,
+this gives a direct conﬁrmation that traﬃc channel was unavailable for end users in this period. In this way, STCO is singled out
+from a time without offered traﬃc. In addition, the same time slot
+may take into account series of STCOs occurred during the same
+OIT, and they are cumulatively included in summarized reports for
+each OIT. In our scenario, the OIT is set to 15 min. This is the minimum value used to create entries in the database, in order to limit
+the number of records. However, as we will show in the following,
+it is possible to detect outages lasting less than the OIT duration.
+Fig. 1 reports the timing, the type of events and the most signiﬁcant ﬁelds that are logged. In particular, the ﬁrst outage event
+lasts for 30% of the OIT, therefore the log entry for the sector
+records a TCH channel availability percentage equal to 0.7 (i.e., 70%
+of the total OIT). Moreover, the traﬃc observed during the measurement window is also reported (which is equal to 0.03 Erlangs).
+During the following time slot (22:45–23:00), the sector (cell) did
+not experience any STCO in this OIT. Then, two outage events are
+recorded from the same sector during OIT (23:00–23:15). Since
+they last in total for 50% of the OIT, the log entry records a TCH
+channel availability percentage equal to 0.5. In the following, an
+outage lasting for the whole OIT is recorded during OIT (23:30–
+23:45), and therefore the TCH channel availability percentage is
+equal to 0. Finally, a STCO starting during OIT (0 0:0 0–0 0:15) and
+ending during OIT (0 0:15–0 0:30) is recorded. More in depth, the
+log entry for the sector records a TCH channel availability percentage in the penultimate OIT equal to 0.8, and in the last OIT equal
+to 0.9.
+From the information collected in the performance monitoring
+database, oﬄine retrieving of the STCOs is performed. In particular,
+STCOs are extracted in the last week of June.1 It is reasonable to
+believe that such seven days extracting period represent fair time
+period for generalized explanation of STCOs behavior. Table 2 reports the main notation of used parameters and variables. More
+formally, we assume that the total period of time under investigation T [s] is divided in slots with duration δ [s]. D is the total
+number of time slots in T. We assume that the set of sectors in
+the network under consideration is denoted by S, with cardinality
+N = |S|. Moreover, we assume that one BS cell covers with radio
+signal one sector and hence one cell corresponds to one sector. For
+
+1
+The choice of the considered time period is motivated by the fact that we want
+to cover working and not working days (e.g. Sunday). Therefore, we have considered
+an entire week. Regarding the month, we have selected a period of time without
+holidays and also when most of the people are working (in order to obtain significant data from urban BSs). We leave the extensions of the results over multiple
+data sets as future work.
+
+Table 2
+Main notation.
+Symbol
+
+Measurement unit
+
+Description
+
+T
+
+γ ij
+
+[s]
+[s]
+[units]
+[units]
+[units]
+[Erlangs]
+[units]
+
+ωij
+ij
+
+[units]
+[units]
+
+ci j
+
+[units]
+
+ij
+
+[s]
+
+ij
+
+[Erlangs]
+
+Total period of time under investigation
+Time slot duration
+Cardinality of T
+Set of sectors
+Cardinality of S
+Traﬃc served during time slot i for sector j
+Working percentage (between 0 an 1) of sector
+j during time slot j
+Binary variable: 1 if γ ij < 1, 0 otherwise
+Binary variable: 1 if sector j experienced an
+outage during time slot i, zero otherwise
+Binary variable: 1 sector j experienced an
+outage during time slot i with γi j == 0, zero
+otherwise
+STCO Duration of an outage starting at time i
+on sector j
+Traﬃc not transferred during time slot i for
+sector j
+
+δ
+
+D
+S
+N
+dij
+
+each sector j in the network and each time slot i we denote with
+γ ij ∈ [0, 1] the working probability, i.e., how much the sector has
+been fully operational during slot i with duration δ . If γ ij < 1, then
+the jth sector has experienced an outage during time slot i. Additionally, we introduce the binary variable ωij which is set to 1 if
+γ ij < 1, 0 otherwise. ωij is used to count the events during which
+the sectors have not been fully operational. Finally, let dij be the total traﬃc (in Erlangs) that has been served by sector j during time
+slot i experiencing STCOs.
+Given the previous deﬁnitions, we then introduce the variables
+related to STCO. We introduce the binary variable ij which takes
+value equal to 1 if the jth sector has experienced a STCO during
+time slot i, zero otherwise. Moreover, we denote with ij the total
+duration of STCO for sector j starting at time i.
+
+3.1. STCO extraction algorithm
+In the following, we detail the procedure to extract the STCO
+events ij and ij from the working probability γ ij . Algorithm 1
+reports the pseudocode description. The procedure takes as inputs
+the working percentage γ ij and the served traﬃc dij for each sector
+and each time slot, and it produces the STCO events ij and duration ij . The algorithm ﬁrst iterates over the set of sectors (line
+1). Then, for each sector, the single time slots are considered (line
+3). An outage is triggered when γ ij < 1 (line 6). In this case, the
+starting time of outage is saved (line 8), a ﬂag is set (line 9) and
+the outage duration ij is initialized (line 11). Moreover, the binary variable ij is set to 1 (line 13). Additionally, the total traﬃc
+not transferred ij is computed (line 14), by estimating the traﬃc
+d
+
+requested during the OIT, i.e., γi j 2 , and then computing the traﬃc
+not transferred
+
+di j (1−γi j )
+
+γi j
+
+ij
+
+.
+
+Focusing then on the following time slots, if γ ij is again lower
+than 1, we assume that the outage is still continuing, i.e., two consecutive periods without fully working activity are considered belonging to the same outage event (see e.g. i = 7 and i = 8 in Fig. 1).
+In particular, if γ ij ≤ 1 the outage duration is updated (line 22) and
+the not transferred traﬃc is computed (line 23), otherwise the ﬂag
+is unset (line 19). In the last step, all the outages lasting for more
+than 30 min in a day are removed (line 28), since we assume that
+these outages are classiﬁed as LTCOs. Note that the total duration
+
+2
+We assume that the amount of traﬃc does not consistently vary inside the observation interval.
+
+J. Lorincz et al. / Computer Communications 79 (2016) 92–102
+
+95
+
+Fig. 1. Outage events recording in the OMC database.
+
+Algorithm 1 Pseudo-code description of the procedure to extract
+the STCOs.
+Input: working percentage γi j , traﬃc served di j ∀i, j
+Output: STCO duration i j , and event i j ∀i, j
+1: for j = 1; j ≤ N; j + + do
+outage=false;
+2:
+3:
+for i = 1;i ≤ D; i + + do
+if outage == false then
+4:
+5:
+//check working percentage
+if γi j < 1 then
+6:
+7:
+//record starting time for outage
+k = i;
+8:
+outage=true;
+9:
+//initialize the total outage time
+10:
+k j =γi j × δ ;
+11:
+//record the outage event
+12:
+i j =1;
+13:
+14:
+15:
+16:
+17:
+18:
+19:
+20:
+21:
+22:
+23:
+
+i j =
+
+di j (1−γi j )
+
+γi j
+
+;
+
+end if
+else
+if γi j == 1 then
+//outage has ﬁnished
+outage=false;
+else
+//outage continues for the previous time slot
+k j =k j + γi j × δ ;
+d (1−γi j )
+
+i j = i j γ
+
+ij
+
+;
+
+end if
+25:
+end if
+end for
+26:
+27:
+//remove LTCOs (outages lasting for more than 30 minutes in
+a day)
+28:
+[,,]=remove_LTCOs( j,,,);
+29: end for
+24:
+
+of each STCO event may be higher or lower than the slot duration
+δ (e.g. see for example the STCO recorded at i = 1 in Fig. 1).
+In the next step, we introduce the variable ci j , which takes the
+value 1 if the outage at time i for sector j has experienced an STCO
+and γi j = 0. When ci j = 1, the sector has been completely not operational during the OIT. This type of STCO is referred as hard STCO
+since it involves an outage causing then a potential severe service
+disruption. Table 3 details the main parameters and variables values considering the example reported in Fig. 1.3
+
+3
+The duration for outage event recorded during time slot i = 8 is used to compute the STCO duration during time slot i = 7 (see also line 22 of the algorithm).
+
+Table 3
+Main parameters and variables values for the example of Fig. 1.
+Time slot
+
+dij [Erlangs]
+
+γ ij
+
+ωij
+
+ij
+
+ci j
+
+ij [s]
+
+i=1
+i=2
+i=3
+i=4
+i=5
+i=6
+i=7
+i=8
+
+0.03
+N/A
+0.01
+N/A
+0
+N/A
+0.0028
+0.035
+
+0.7
+1
+0.5
+1
+0
+1
+0.8
+0.9
+
+1
+0
+1
+0
+1
+0
+1
+1
+
+1
+0
+1
+0
+1
+0
+1
+0
+
+0
+0
+0
+0
+1
+0
+0
+0
+
+270
+0
+450
+0
+900
+0
+270
+0
+
+4. Analyses of STCOs
+4.1. STCOs temporal variation
+We ﬁrst investigate the STCO variation in the network. Fig. 2
+details the STCOs ij and hard STCOs ci j considering the variation of time on the x-axis and the sector identiﬁcation number
+on the y-axis. While national cellular operator has approximately
+2400 different sectors (cells), the total number of different sectors reporting STCOs during the considered seven days period is
+around 1300. The red points highlight the hard STCOs, i.e., a STCO
+which has experienced at least one ωicj during its duration. Such
+events are particularly negative for users, since all the user trafﬁc is not transferred during the OIT period. Interestingly, we can
+see that the STCO events are quite distributed in the network,
+with a limited number of sectors reporting STCOs during night
+and during weekend. The different sectors behaviors in terms of
+STCO(s) occurrences are due to the following reasons: (i) different
+traﬃc patterns, (ii) different locations, and (iii) potentially different HW characteristics. In the following, we will mainly investigate the impact of traﬃc and location.4 We expect that the impact of HW characteristics is rather limited in this case, due to two
+main reasons: (i) the network under consideration is composed by
+BSs with the same technology, and therefore similar equipments
+are used, (ii) the technology adopted is already mature, and we
+expect that the BSs have comparable ages (and therefore similar HW features/characteristics). We leave the investigation of HW
+equipments for future work, in which we will consider different
+technologies (2G/3G/4G) and different components installed in the
+network.
+We then analyze the temporal variation of the absolute num c
+ber of STCOs and hard STCOs, i.e.  j ij and
+j i j , as reported in
+4
+The ﬁgure reports also sectors apparently always experiencing outages over the
+whole considered time period (black horizontal lines in the ﬁgure). By further investigating this issue with the operator, we have found that these sectors are not
+reporting correctly the outages and therefore they are discarded in the rest of our
+analysis.
+
+96
+
+J. Lorincz et al. / Computer Communications 79 (2016) 92–102
+
+1200
+
+Sector ID
+
+1000
+
+800
+
+600
+
+400
+
+200
+
+25/06
+Tue
+
+26/06
+27/06
+28/06
+29/06
+30/06
+01/07
+Sat
+Wed
+Thu
+Sun
+Fri
+Mon
+
+Time
+Fig. 2. STCOs ij (black dots) and Hard STCOs ci j (red dot) vs. sector ID.
+
+10
+
+Ωij (All STCO)
+
+Average STCO Duration [minutes]
+
+1000
+
+Number of STCOs
+
+Ωijc (Hard STCO)
+100
+
+10
+
+1
+
+6
+5
+4
+3
+2
+1
+0
+:0
+12
+6
+/0
+30
+0
+on
+:0
+M
+12
+6
+/0
+29
+0
+n
+:0
+Su
+12
+06
+8/
+0
+t2
+:0
+Sa
+12
+06
+7/
+0
+:0
+i2
+Fr
+12
+6
+/0
+0
+26
+:0
+u
+12
+Th
+6
+/0
+25
+0
+ed
+:0
+W
+12
+06
+4/
+e2
+Tu
+
+0
+:0
+12
+6
+/0
+30
+0
+:0
+on
+12
+M
+6
+/0
+29
+0
+n
+:0
+Su
+12
+06
+8/
+0
+t2
+:0
+Sa
+12
+06
+0
+7/
+:0
+i2
+12
+Fr
+6
+/0
+0
+26
+:0
+u
+12
+Th
+6
+/0
+25
+0
+:0
+ed
+12
+W
+06
+4/
+e2
+Tu
+
+¯ i ).
+Fig. 4. Average STCO duration (
+
+Fig. 3. In particular, the total number of events is higher during the
+day w.r.t. the night. Moreover, the number is lower during weekend days (i.e. 28th and 29th June), suggesting that when the network is more utilized the number of events increases. Additionally,
+most of hard STCO events are localized during the week days, with
+less events during weekend and during nights. Finally, we can note
+an increase in the events on 25th June, suggesting that the network has suffered a large number of STCO events during this day.
+This behavior is a consequence of severe weather conditions during that day followed with lighting and vast rains, which caused
+STCOs increase in the network.
+To give more insight, we compute the average duration of outage events as the ratio between the total duration of outages and
+the total number of outages for each time slot i:
+
+i j
+j i j
+
+7
+
+Time
+
+Fig. 3. Number of STCOs vs. time.
+
+
+
+8
+
+0
+
+Time
+
+¯ i = j
+
+
+9
+
+(1)
+
+Fig. 4 reports the average duration of outage events vs. time.
+The average duration is clearly lower during the night and during weekends, i.e., when traﬃc is low. On the contrary, the average outage duration tends to increase during peak traﬃc hours and
+when the network has experienced the storm event.
+More in depth, Fig. 5 reports the estimated total traﬃc transferred  j dij and not transferred traﬃc during each OIT, which
+is the one that has been dropped due to STCOs, i.e.,  j ij . We
+compute the total amount of not transferred traﬃc considering
+the whole network of the operator. By knowing the amount of
+not-transferred traﬃc, operator can directly perform Erlang to
+monetary conversion and obtain precise information about revenue losses caused by STCOs. Fig. 5 clearly shows that the not
+transferred traﬃc is higher during the day and lower during the
+night and weekend. This is mainly consequence of higher outage probability caused by higher load, power supply outages and
+
+J. Lorincz et al. / Computer Communications 79 (2016) 92–102
+
+10000
+
+dij (Transferred)
+Θij (Not Transferred)
+
+Traffic [Erlangs]
+
+1000
+
+97
+
+Ω12 = 0
+
+Ω12 = 0
+
+100
+
+Ω11 = 0
+
+10
+
+Ω11 = 1
+Ω13 = 0
+
+1
+
+Ω13 = 0
+
+0.1
+
+(a) Υ11 = 0
+
+0.01
+
+(b) Υ11 = 1
+
+0.001
+0
+:0
+12
+6
+/0
+30
+0
+:0
+on
+12
+M
+6
+/0
+29
+0
+n
+:0
+Su
+12
+06
+8/
+0
+t2
+:0
+Sa
+12
+06
+0
+7/
+:0
+i2
+12
+Fr
+6
+/0
+0
+26
+:0
+u
+12
+Th
+6
+/0
+25
+0
+:0
+ed
+12
+W
+06
+4/
+e2
+Tu
+
+Ω12 = 0
+
+Ω12 = 1
+
+Ω11 = 1
+
+Ω11 = 1
+Ω13 = 1
+
+Time
+
+Ω13 = 1
+
+Fig. 5. Transferred traﬃc ( j dij ) and not transferred traﬃc ( j ij ).
+
+(c) Υ11 = 2
+
+(d) Υ11 = 3
+
+Fig. 7. Example of BS STCOs for BS 1 at time slot 1. The shadowed hexagons represent sectors experiencing STCOs.
+
+200
+
+100
+
+150
+100
+50
+0
+0
+
+200
+
+400
+
+600
+
+800
+
+1000
+
+1200
+
+1400
+
+Number of BS STCOs
+
+Total Duration of STCOs [minutes]
+
+250
+
+Υij=1 (one sector)
+Υij=2 (two sectors)
+Υij=3 (three sectors)
+
+10
+
+Number of STCOs
+Fig. 6. Total duration of STCOs ( j ij ) vs. number of STCOs ( j ij ) in the network.
+
+4.2. BS and sector STCOs
+In the following, we investigate how much STCOs affect each
+BS. In particular, let us denote with B the set of BS, with cardinality E = |B|. A BS STCO is triggered by its sector STCO(s). We
+then introduce the integer variable Yiz , which counts the number
+
+of STCOs for its sectors, i.e., ϒiz = j∈z i j . Fig. 7 reports an example of BS STCOs for a single cell. In particular, Yiz is at most equal
+to three since the BS coverage is in practice generally composed
+by three sectors. Fig. 8 reports the number of BS STCOs vs. time in
+
+0
+:0
+12
+6
+/0
+30
+0
+:0
+on
+M
+12
+6
+/0
+29
+0
+n
+:0
+Su
+12
+06
+8/
+0
+t2
+:0
+Sa
+12
+06
+7/
+0
+:0
+i2
+12
+Fr
+6
+/0
+0
+26
+:0
+u
+12
+Th
+6
+/0
+25
+0
+:0
+ed
+W
+12
+06
+4/
+e2
+Tu
+
+equipment temperature variations which occur more often during
+the day. Moreover, by comparing Fig. 5 and Fig. 3, we can notice
+that the higher amount of traﬃc not transferred in some time periods is a direct consequence of the STCOs occurrence in these periods, with outages occurring more often at higher loads.
+Fig. 6 reports the total duration ( j ij ) of STCOs vs. the instantaneous number of outages ( j ij ) for each time slot. In particular, we can clearly see that the more STCOs occur in the network,
+the higher will be also the total duration of all STCOs. However,
+most of points are located in the bottom left side of the ﬁgure,
+suggesting that, when the network experiences a limited number
+of STCOs (e.g., during night and during weekends), their total duration is also quite low.
+
+1
+
+Time
+Fig. 8. BS STCOs vs. time.
+
+terms of involved sectors. Most of BS STCOs are due to one sector
+STCO. However, STCOs involving three sectors are very frequent in
+the network, especially during the week days. We then introduce
+
+the integer variable ϒizc , deﬁned as ϒizc = j∈z ci j . ϒizc is larger
+than zero when a severe STCO is experienced, referred as hard BS
+STCO in the rest of the paper. Fig. 9 reports the number of hard
+BS STCOs. Interestingly, most of these events are due to 3-sector
+outages, suggesting that, when the sector is not serving traﬃc for
+at least one OIT, this STCO involves all the BS sectors. From both
+Figs. 8 and 9, we can infer possible causes of STCOs. In particular,
+the big storm event occurred during one day of the week has impacted the number of STCO events involving all the three sectors of
+a BS. This is reﬂected in both ﬁgures, where a larger number of 3sector events is recorded during the considered day. Under normal
+conditions, i.e., when an outage is due to load or software failures,
+it is quickly recovered and it normally involves only one sector.
+
+98
+
+J. Lorincz et al. / Computer Communications 79 (2016) 92–102
+
+1
+
+Υcij=1 (one sector)
+c
+Υ ij=2 (two sectors)
+c
+Υ ij=3 (three sectors)
+
+0.8
+CDF
+
+Number of BS STCOs
+
+100
+
+10
+
+0.6
+
+φj (Average Sector)
+Φ (Average BS)
+
+0.4
+
+z
+max
+(Max Sector)
+j
+max
+Φz (Max BS)
+
+φ
+
+0.2
+0
+0
+1
+
+10
+15
+20
+STCO Duration [minutes]
+
+25
+
+30
+
+0
+:0
+12
+6
+/0
+30
+0
+:0
+on
+M
+12
+6
+/0
+29
+0
+n
+:0
+Su
+12
+06
+8/
+t2
+00
+2:
+Sa
+1
+06
+7/
+0
+:0
+i2
+12
+Fr
+6
+/0
+0
+26
+:0
+u
+12
+Th
+6
+/0
+25
+0
+:0
+ed
+W
+12
+06
+4/
+e2
+Tu
+
+Fig. 11. CDFs for STCOs duration: average for each sector (φ j ) and for each BS (
+).
+) and for each BS ( max
+maximum for each sector (φ max
+z
+j
+
+Mean Time Between STCOs [minutes]
+2000
+4000
+6000
+8000
+
+z ),
+
+10000
+
+1
+
+Time
+Fig. 9. Hard BS STCOs vs. time.
+
+0.8
+
+1
+
+0.6
+
+CDF
+
+0.8
+CDF
+
+5
+
+0.4
+
+0.6
+
+0.2
+0.4
+Sector
+BS
+
+0.2
+0 0
+10
+
+1
+
+2
+
+10
+10
+Number of STCOs
+
+MTBSTCO
+STCO Duration
+
+0
+0
+
+5
+
+10
+15
+20
+STCO Duration [minutes]
+
+25
+
+30
+
+3
+
+10
+
+Fig. 12. CDFs for STCO duration and MTBSTCO duration in the whole network under
+consideration.
+
+Fig. 10. CDFs for number of STCOs for each sector ( i ij ) and each BS ( i Yiz ).
+
+duration φ j as:
+
+
+
+i j
+i j
+
+The correlation of STCOs with traﬃc is also highlighted especially
+in the case of sectors. More in depth, more congested sectors in
+terms of users activity will be more prone to the STCOs due to the
+larger load in these sectors. However, in the case of a high users
+activity on each of the three sectors of the BS, there is the possibility to observe a 3-sector event. This is also highlighted in Figs. 8
+and 9, which show an increase of 3-sector events during working
+days and day hours.
+
+φ j = i
+
+4.3. STCO cumulative distribution function
+
+φ max
+= max i j
+j
+
+i
+
+(2)
+
+Additionally, we compute the CDFs for the duration of BS STCOs,
+denoted as z , in the following way:
+
+
+
+i, j∈z
+
+z = 
+
+i, j∈z
+
+i j
+i j
+
+Moreover, we compute the maximum STCO duration for each
+sector:
+i
+
+During this step, we compute the empirical Cumulative Distribution Function (CDF) of the number of STCOs (i.e.,  i ij and
+ i Yiz ) over the whole week under consideration. Fig. 10 reports
+the STCO CDFs for single sectors and entire BSs, respectively. In
+particular, the number of BS STCOs is higher than the number of
+sector STCOs since the BS STCO is triggered by one, two, or three
+of its sectors STCOs (e.g., as reported in Fig. 7). Hence, outage of at
+least one BS sector is also accounted as BS outage. Results show
+that the average number of STCOs in the seven days period is
+around 8 for the sector and 24 for the BS, meaning that STCOs
+happen on network average 1.14 times per day per sector and 3
+times per day and per BS, respectively. Moreover, the number of
+BS STCOs is at most three times the number of sector STCOs. This
+is an expected result, since coverage of each BS is composed on
+average by three sectors.
+To give more insight, we compute the CDFs for the average
+STCOs duration for each sector. We compute the average STCO
+
+(3)
+
+(4)
+
+and the maximum STCO duration for each BS:
+max
+= max
+z
+i, j∈z
+
+i j
+
+(5)
+
+Fig. 11 reports the CDFs for the average sector STCO duration
+
+φ j , the average BS STCO duration z , the maximum sector STCO
+duration φ max
+, the maximum BS STCO duration max
+, respectively.
+z
+j
+Interestingly, 50% of BSs and sectors have STCOs lasting more than
+3 min on average. Moreover, the maximum duration of an STCO
+event is longer than 10 min for 40% of BSs and sectors. Thus, we
+can see that the impact of STCOs in the network is not negligible.
+To extend our analysis, Fig. 12 reports the CDFs of the Mean
+Time Between STCO (MTBSTCO) and the STCO duration observed
+in the whole network, respectively. The CDF of STCO duration has
+been computed from all observed values of ij . Moreover, the
+MTBSTCO is computed as the observed mean time between outages for all time slots in which i j == 1, i.e., when an outage
+
+J. Lorincz et al. / Computer Communications 79 (2016) 92–102
+
+1000
+
+Urban
+Rural
+Number of STCOs
+
+Number of STCOs
+
+1000
+
+100
+
+10
+
+1
+
+Urban
+Rural
+
+100
+
+10
+
+1
+0
+:0
+12
+6
+/0
+30
+0
+:0
+on
+12
+M
+6
+/0
+29
+0
+n
+:0
+Su
+12
+06
+8/
+0
+t2
+:0
+Sa
+12
+06
+0
+7/
+:0
+i2
+12
+Fr
+6
+/0
+0
+26
+:0
+u
+12
+Th
+6
+/0
+25
+0
+:0
+ed
+12
+W
+06
+4/
+e2
+Tu
+
+0
+:0
+12
+6
+/0
+30
+0
+:0
+on
+12
+M
+6
+/0
+29
+0
+n
+:0
+Su
+12
+06
+8/
+0
+t2
+:0
+Sa
+12
+06
+0
+7/
+:0
+i2
+12
+Fr
+6
+/0
+0
+26
+:0
+u
+12
+Th
+6
+/0
+25
+0
+:0
+ed
+12
+W
+06
+4/
+e2
+Tu
+
+Time
+
+Time
+
+(a) STCOs vs. time (X = 16000)
+Urban
+Rural
+
+0.0001
+
+1e-05
+
+1e-06
+
+(b) STCOs vs. time (X = 20000)
+0.001
+STCO Density [outage/inhabitants]
+
+0.001
+STCO Density [outage/inhabitants]
+
+99
+
+Urban
+Rural
+
+0.0001
+
+1e-05
+
+1e-06
+0
+:0
+12
+6
+/0
+30
+0
+:0
+on
+12
+M
+6
+/0
+0
+29
+:0
+n
+12
+Su
+06
+8/
+0
+t2
+:0
+Sa
+12
+06
+7/
+00
+2:
+i2
+1
+Fr
+6
+/0
+0
+26
+:0
+u
+12
+Th
+6
+/0
+25
+0
+:0
+ed
+12
+W
+06
+4/
+e2
+Tu
+
+0
+:0
+12
+6
+/0
+30
+0
+:0
+on
+12
+M
+6
+/0
+0
+29
+:0
+n
+12
+Su
+06
+8/
+0
+t2
+:0
+Sa
+12
+06
+7/
+00
+2:
+i2
+1
+Fr
+6
+/0
+0
+26
+:0
+u
+12
+Th
+6
+/0
+25
+0
+:0
+ed
+12
+W
+06
+4/
+e2
+Tu
+
+Time
+
+Time
+
+(c) STCOs Density vs. time (X = 16000)
+
+(d) STCOs Density vs. time (X = 20000)
+
+Fig. 13. Number of STCOs and STCO density in urban and rural areas for X = 16, 0 0 0 and X = 20, 0 0 0.
+
+Table 4
+Mean, variance and parameters for the estimated weibull distributions.
+
+Mean
+Variance
+Scale parameter
+Shape parameter
+
+STCO duration
+
+MTBSTCO
+
+1.42 [min]
+7.76 [min2 ]
+0.87 [min]
+0.55
+
+1236.58 [min]
+8745747.42 [min2 ]
+564.49 [min]
+0.477
+
+is experienced. Interestingly, 80% of STCO events have a duration
+less than 2 min and a MTBSTCO less than 20 0 0 min, which corresponds to 33 h. Both the curves have then been ﬁtted with different well know distributions (i.e., Weibull, Poisson, Exponential),
+adopting the maximum likelihood method to estimate the distribution parameters. Table 4 reports the results obtained for the
+best ﬁtting, which is a Weibull distribution.5 In particular, the average estimated STCO duration is equal to 1.42 min, while the
+average estimated MTBSTCO is around 1237 min. Although the
+5
+This is an expected result, since the Weibull distribution is reported to be the
+best ﬁtting also by previous works on outages like [7].
+
+selected distributions are in line with previous work mainly focused on LTCOs, the estimated Weibull parameters are different
+from previous work, since the STCOs occur more frequently in the
+network than LTCOs.
+4.4. Impact of STCO location
+In the following part of our work, we consider the STCOs occurrence in rural and urban areas. Urban areas are characterized by a
+high number of BSs, due to the fact that there are many users accessing the network, and therefore the BS planning is driven by the
+number of potential users and traﬃc capacity. On the contrary, in
+rural areas, coverage is the main objective and therefore BSs positions tend to be more sparse compared to urban ones. In particular,
+the STCO events reported from sectors in towns having more than
+X inhabitants are considered as urban, while these are rural in the
+opposite case. Fig. 13(a)–(b) report the variation of STCO events vs.
+time, considering X = 16, 0 0 0 and X = 20, 0 0 0, respectively. Interestingly, most of STCO events are recorded in urban areas rather
+than rural ones, suggesting that urban areas are more susceptible
+to the STCO event. This is an expected result, since more dense deployment of BSs in urban areas increases probability of STCOs. To
+
+J. Lorincz et al. / Computer Communications 79 (2016) 92–102
+
+45
+40
+35
+30
+25
+20
+15
+10
+5
+0
+
+Number of STCOs
+Outside Air Temperature
+
+35
+30
+25
+20
+
+Temperature [Celsius]
+
+Number of STCOs [units]
+
+100
+
+15
+
+0
+:0
+12
+6
+/0
+30
+00
+on
+2:
+1
+M
+6
+/0
+29
+0
+n
+:0
+Su
+12
+06
+8/
+0
+t2
+:0
+Sa
+12
+06
+0
+7/
+:0
+i2
+12
+Fr
+6
+/0
+26
+00
+u
+2:
+1
+Th
+6
+/0
+25
+0
+:0
+ed
+12
+W
+06
+4/
+e2
+Tu
+Time
+
+14
+12
+10
+8
+6
+4
+2
+0
+
+Number of STCOs
+Outside Air Temperature
+
+Scope
+City 1
+City 2
+City 3
+City 4
+City 5
+City 6
+All country
+
+30
+25
+20
+15
+
+0
+:0
+12
+6
+/0
+30
+00
+on
+2:
+1
+M
+6
+/0
+29
+0
+n
+:0
+Su
+12
+06
+8/
+0
+t2
+:0
+Sa
+12
+06
+0
+7/
+:0
+i2
+12
+Fr
+6
+/0
+26
+00
+u
+2:
+1
+Th
+6
+/0
+25
+0
+:0
+ed
+12
+W
+06
+4/
+e2
+Tu
+Time
+(b) City 2
+Fig. 14. Number of STCOs and outside air temperature vs. time for two cities.
+
+give more insight, we then compute also the STCO density by dividing the number of STCOs with the total number of inhabitants
+of the area (either rural or urban), which is an indicator of the
+average impact of STCOs on users. Fig. 13(c)–(d) report the STCO
+density variation vs. time for X = 16, 0 0 0 and X = 20, 0 0 0, respectively. Interestingly, the STCO density is clearly higher in rural areas
+rather than in urban ones, due to the fact that in the most cases
+a single BS in a rural area covers less inhabitants compared with a
+BS located in an urban one. This result suggests that the negative
+impact of STCOs is higher for users living in rural zones compared
+to those living in urban ones.
+4.5. Investigating possible STCOs causes
+In the last part of our work, we investigate the possible STCOs
+causes. Initially, we consider how much the outside air temperature affects the STCOs. The intuition is quite simple: since the
+measurements of STCOs are extracted from a summer period, the
+temperatures will be higher during the day compared to the night.
+The cellular equipment then needs to be cooled during the day, i.e.,
+by means of air conditioning. The usage of air conditioning may
+lead to an increase in the STCOs, as a consequence of more frequent power outages or air conditioning failures. To verify this assumption, we consider the variation of temperature and the number of STCOs for the main cities in the country.
+Fig. 14 reports the trends of STCOs and temperature vs. time
+obtained from two large cities. In this case, both STCOs and temperatures are higher during the day, and lower during the night,
+suggesting that there may be a correlation between STCOs and
+the period of time under consideration (i.e., a summer period). In
+the following part, we then extend the analysis to the other major
+
+Correlation
+0.59
+0.40
+0.09
+−0.02
+0.16
+−0.02
+0.27
+
+P-Value
+−5
+
+< 10
+< 10−5
+0.22
+0.79
+0.03
+0.02
+4 × 10−4
+
+Outcome
+S
+S
+NS
+NS
+S
+NS
+S
+
+Table 6
+Relationship between STCOs and total transferred trafﬁc (signiﬁcance level 0.05).
+Scope
+
+35
+Temperature [Celsius]
+
+Number of STCOs [units]
+
+(a) City 1
+
+Table 5
+Relationship between STCOs and outside air temperature (signiﬁcance level 0.05).
+
+City 1
+City 2
+City 3
+City 4
+City 5
+City 6
+All country
+
+Correlation
+0.73
+0.69
+0.67
+0.66
+0.82
+0.82
+0.81
+
+P-Value
+−5
+
+< 10
+< 10−5
+< 10−5
+< 10−5
+< 10−5
+< 10−5
+< 10−5
+
+Outcome
+S
+S
+S
+S
+S
+S
+S
+
+cities, and to the whole country as well. More in depth, we compute the correlation between the number of STCOs and temperature vs. time for each major city and in the whole country. The correlation is computed with the classical Pearson product-moment
+correlation coeﬃcient [13], which takes values between +1 and
+−1.6 From the correlation coeﬃcient and the number of samples,
+we have then computed the p-value, by assuming a ﬁxed signiﬁcance level of 0.05. Given this information, we are able to check if
+the results on correlation are signiﬁcant or not. Table 5 reports the
+correlation coeﬃcients, the corresponding p-values, and the outcome of the p-value test (NS stands for “not signiﬁcant”, while S
+denotes “signiﬁcant”). Focusing on the correlation coeﬃcients, we
+can see that the number of STCOs is lightly correlated with the
+outside air temperature. Looking then at the p-values and at the
+outcome of the p-value test, we can see that the results are significant for City 1, City 2, City 5, and the whole country. However, the
+cities experiencing the highest correlation are also the ones which
+were affected by the lighting/storms (which likely caused power
+outages). Therefore, the light correlation may be mainly due to adverse weather conditions. However, we believe that this hypothesis
+should be veriﬁed over multiple data-set (e.g., considering different
+periods of time). We leave this aspect as future work.
+To give more insight, we have then repeated our analysis by
+considering the number of STCOs vs. the amount of transferred
+traﬃc. Table 6 reports the main results. Interestingly, there is a
+strong correlation between the number of STCOs and the estimated
+transferred traﬃc for all the cities and even in all the country.
+Moreover, the results are always signiﬁcant. Thus, the increase of
+traﬃc (and consequently of the cell load) strongly impacts the increase in the number of STCOs, suggesting that the traﬃc has to be
+carefully managed, e.g., by carefully exploiting load balancing and
+off-loading techniques [14] to decrease the load on BSs.
+5. Discussion
+In this section, we discuss the main issues and lessons learned
+that emerge from our work.
+
+6
+Recall that a value of 1 is obtained in the case of maximum positive correlation,
+0 with no correlation, and −1 with maximum negative correlation.
+
+J. Lorincz et al. / Computer Communications 79 (2016) 92–102
+
+5.1. Importance of STCOs detection
+Presented results show non negligible impact of the STCOs on
+overall cellular network performance and operators revenue. For
+that reason, we argue that the impact of the STCOs must be integrated in the network planning and management process. This
+can be done through inclusion of the STCO information and statistical data into cellular network simulators, which are used for
+planning of completely new cellular networks or for extension of
+existing ones. The STCO information can be included into simulator
+through normalization of presented data obtained for national cellular network having 800 2G BS sites, and adjusting it to the size
+and the complexity of existing or new networks.
+In addition, continuous off-line monitoring and analyses of the
+STCOs phenomena in real cellular networks can offer to the mobile operators deeper and more precise insight on the network behavior and functionality. With such a view, operators can deduce
+about main causes of the STCOs and they can made appropriate
+and on time decisions which can reduce operational expenditures,
+revenue losses and users dissatisfaction caused by STCOs. Some of
+possible operators’ decisions can be related with timely investment
+in the newer BS hardware and software or appropriate reallocation or replacement of hardware which is less prone to the STCOs.
+For example, improvement of BSs power supply systems or better storm protection of BSs sites in terms of water penetration and
+lighting isolation may reduce the number of STCOs. In addition,
+improvements in BS site cooling systems based on natural air cooling (known as ”free cooling”) may decrease the number of STCOs
+related with air conditioning failures. Finally, usage of renewable
+energies as redundant sources for powering BS sites may improve
+the reliability of power supply systems and reducing the number
+of STCOs related with short term power outages.
+5.2. Scope of the proposed methodology
+In this work, we are more interested in analyzing the impact of
+STCOs rather than deploying an on line solution working at the
+level of single BSs. This is due to the fact that normally STCOs
+are auto-recovered, without the need of a manual reparation (and
+consequently an on line monitoring system deployed on the single BSs). This fact, coupled also by the short duration of STCOs,
+motivated us to design an off line methodology to analyze the results. This motivation is further conﬁrmed by the operator interest in this type of network outage occurrences, which can not be
+directly detected in real time by any monitoring tool owned by
+the operator. Actually, the proposed off line methodology is reasonable, since tracking STCOs in real time might lead to wrong
+conclusions due to the self/auto recovery nature of the STCOs. On
+the other hand, operators want to obtain statistical reports of the
+impact of STCOs on the level of complete network per time periods, sectors, locations, technology, etc. to properly understand
+how to reduce their occurrence. Thus, an oﬄine analysis offers
+more reliable and accurate conclusions than an online one. We
+leave the investigation of possible on line approaches as future
+work.
+In our scenario, the outages are ﬁrst recorded in a database, and
+then the STCOs are extracted from the stored data as a second step.
+Our solution has been applied to an operator database by taking
+into account real BSs. The proposed algorithm is polynomial with
+the number of sectors N and the number of time slots D, resulting
+in a time complexity O (D × N ). The resulting complexity has not
+been an issue with the current number of sectors (around 1300
+sectors reporting STCOs), and the current number of time slots (every 15 min for one week). Clearly, larger amount of data than the
+one analyzed in this paper will require to split the sectors in different clusters (both in space and time) that can be processed in
+
+101
+
+parallel to retrieve the STCOs and to limit the increase in the computation time.
+
+5.3. Impact of STCOs in future networks
+Current trends in cellular networks predict a notably increase
+in the user traﬃc [15]. To cope with this issue, operators and researchers are investigating dense cellular networks [16], with the
+possibility of deploying small cells in hot-spot locations. In this
+scenario, we expect that STCOs may occur, due to the possible high
+load experienced by the cells. We therefore point out the importance of load balancing and off-loading techniques [14], being low
+loaded BSs less prone to STCOs.
+Additionally, power consumption of cellular networks is far to
+be negligible [17]. In the literature, different works have investigated the possibility of reducing the number of powered on BSs
+to save energy (see e.g. [18–23]). This approach can be applied e.g.
+in urban areas, where the BS deployment is more constrained by
+capacity rather than coverage. Thus, there is a trade off between
+the minimization of power (which would concentrate the load on
+possible few BSs powered on) and the limitation of STCOs (which
+would instead require to spread the load across the BSs). We plan
+to investigate this issue as future work.
+Finally, the STCOs trigger switching off and on of one or more
+cells (sectors) or complete BSs. Since currently installed cellular
+equipment is not envisioned to be frequently activated and deactivated [24,25], the BS lifetime might be impacted with frequent STCOs. For that reason, analyses concerning impact of the
+STCOs on BSs lifetime will be performed in our future research
+activities.
+
+6. Conclusions and future work
+We have presented a realistic study driven by operator measurements on the impact of STCOs on a cellular network. This
+study has been motivated by the need of having a deeper insight in these hidden events that may affect the operators revenue and network maintenance. Our results shown that STCOs
+are affecting the everyday behavior of the network, and their
+impact tends to be higher during peak traﬃc hours and in the
+presence of adverse weather conditions. In general, we have inferred the possible causes of outages, being STCOs triggered either by severe weather impacting all the three sectors of a BS,
+or the user load on a single sector. Moreover, we have estimated
+that the duration of STCOs is less than 2 min on average, thus
+imposing challenges on how to properly detect STCOs in real
+time. Additionally, STCOs occurrence is different in different morphologic areas, where urban areas experience larger number of
+the STCOs, while STCOs in rural areas have stronger impact on
+users. Finally, we have shown that STCOs are strongly correlated
+with the amount of transferred traﬃc rather than the outside air
+temperature.
+As next steps, we will consider the impact of heterogeneous BSs
+on STCOs. In particular, we will study a scenario composed of different technologies (i.e., 2G/3G/4G) in which BSs differ in terms of
+BSs hardware and software components. Additionally, we will extend our analysis over multiple data sets.
+
+Acknowledgment
+The research leading to these results has been supported by the
+Sapienza Awards LIFETEL (increasing the LIFEtime of TELecommunication Networks). The authors would like to thank the anonymous reviewers for their valuable comments.
+
+102
+
+J. Lorincz et al. / Computer Communications 79 (2016) 92–102
+
+References
+[1] S. Rao, Operational fault detection in cellular wireless base-stations, IEEE Trans.
+Netw. Serv. Manag. 3 (2) (2006) 1–11.
+[2] “Mobile Network Outages and Service Degradations: A Heavy Reading Survey
+Analysis”, 11, Heavy Reading, 2013.
+[3] S.A. Kyriazakos, G.T. Karetsos, Practical Radio Resource Management in Wireless Systems, Artech House, 2004.
+[4] Ericsson network iq solution, http://www.ericsson.com/ourportfolio/products/
+network- iq- events.
+[5] E. Folstad, B.E. Helvik, Failures and changes in cellular access networks; a study
+of ﬁeld data, in: Proceedings of the 8th International Workshop on the Design
+of Reliable Communication Networks (DRCN), Krakow, Poland, 2011, pp. 132–
+139.
+[6] A. Markopoulou, G. Iannaccone, S. Bhattacharyya, C.-N. Chuah, Y. Ganjali,
+C. Diot, Characterization of failures in an operational IP backbone network,
+IEEE/ACM Trans. Netw. (TON) 16 (4) (2008) 749–762.
+[7] S.M. Matz, L.G. Votta, M. Malkawi, Analysis of failure and recovery rates in a
+wireless telecommunications system, in: Proceedings of the International Conference on Dependable Systems and Networks„ Washington D.C., USA, 2002,
+pp. 687–693.
+[8] 3GPP TS 32.541 (Release 12), Technical Speciﬁcation Group Services and
+System Aspects; Telecommunication management; Self-Organizing Networks
+(SON); Self-healing concepts and requirements, 3GPP, 2014.
+[9] F.-Q. Li, X.-S. Qiu, L.-M. Meng, H. Zhang, W. Gu, Achieving cell outage compensation in radio access network with automatic network management, in: IEEE
+GLOBECOM Workshops, Houston, USA, 2011, pp. 673–677.
+[10] M. Amirijoo, L. Jorguseski, R. Litjens, L.-C. Schmelz, Cell outage compensation
+in LTE networks: algorithms and performance assessment, in: Proceedings of
+the 73rd Vehicular Technology Conference (VTC Spring), Budapest, Hungary.
+IEEE, 2011, pp. 1–5.
+[11] W. Wang, Q. Liao, Q. Zhang, COD: a cooperative cell outage detection architecture for self-organizing femtocell networks, IEEE Trans. Wirel. Commun. 13
+(11) (2014) 6007–6014.
+[12] S. Grauwin, S. Sobolevsky, S. Moritz, I. Gódor, C. Ratti, Towards a comparative science of cities: using mobile traﬃc records in new york, london, and
+hong kong, Computational approaches for urban environments, Springer, 2015,
+pp. 363–387.
+[13] K. Pearson, Note on regression and inheritance in the case of two parents ,
+Proc. R. Soc. Lond. 58 (1895) 240–242.
+
+[14] D. Calin, H. Claussen, H. Uzunalioglu, On femto deployment architectures and
+macrocell oﬄoading beneﬁts in joint macro-femto deployments, Commun.
+Mag., IEEE 48 (1) (2010) 26–32.
+[15] J.G. Andrews, S. Buzzi, W. Choi, S.V. Hanly, A. Lozano, A.C. Soong, J.C. Zhang,
+What will 5g be? IEEE J. Select. Areas Commun. 32 (6) (2014) 1065–1082.
+[16] A. Ghosh, N. Mangalvedhe, R. Ratasuk, B. Mondal, M. Cudak, E. Visotsky,
+T. Thomas, J.G. Andrews, P. Xia, H.S. Jo, et al., Heterogeneous cellular networks:
+from theory to practice, Commun. Mag., IEEE 50 (6) (2012) 54–64.
+[17] L. Budzisz, F. Ganji, G. Rizzo, M.A. Marsan, M. Meo, Y. Zhang, G. Koutitas, L. Tassiulas, S. Lambert, B. Lannoo, et al., Dynamic resource provisioning for energy eﬃciency in wireless access networks: a survey and an outlook, Commun.
+Surv. Tutor., IEEE 16 (4) (2014) 2259–2285.
+[18] J. Lorincz, M. Bogarelli, A. Capone, D. Begušić, Heuristic approach for optimized
+energy savings in wireless access networks, in: Proceedings of the International Conference on Software, Telecommunications and Computer Networks
+(SoftCOM), 2010 IEEE, 2010, pp. 60–65.
+[19] Z. Niu, Tango: traﬃc-aware network planning and green operation, Wirel.
+Commun., IEEE 18 (5) (2011) 25–29.
+[20] E. Oh, B. Krishnamachari, X. Liu, Z. Niu, Toward dynamic energy-eﬃcient operation of cellular network infrastructure, Commun. Mag., IEEE 49 (6) (2011)
+56–61.
+[21] J. Lorincz, A. Capone, D. Begušić, Heuristic algorithms for optimization of energy consumption in wireless access networks, KSII Trans. Internet Inf. Syst.
+(TIIS) 5 (4) (2011) 626–648.
+[22] E. Oh, K. Son, B. Krishnamachari, Dynamic base station switching-on/off strategies for green cellular networks, IEEE Trans. Wirel. Commun. 12 (5) (2013)
+2126–2136.
+[23] M.A. Marsan, L. Chiaraviglio, D. Ciullo, M. Meo, On the effectiveness of single
+and multiple base station sleep modes in cellular networks, Comput. Netw. 57
+(17) (2013) 3276–3290.
+[24] L. Chiaraviglio, A. Cianfrani, A. Coiro, M. Listanti, J. Lorincz, M. Polverini, Increasing device lifetime in backbone networks with sleep modes, in: Proceedings of the 21st International Conference on Software, Telecommunications
+and Computer Networks (SoftCOM), Split, Croatia, 2013, pp. 1–6.
+[25] L. Chiaraviglio, P. Wiatr, P. Monti, J. Chen, J. Lorincz, F. Idzikowski, M. Listanti,
+L. Wosinska, Is green networking beneﬁcial in terms of device lifetime? IEEE
+Commun. Mag. 53 (5) (2015) 232–240.
+
+

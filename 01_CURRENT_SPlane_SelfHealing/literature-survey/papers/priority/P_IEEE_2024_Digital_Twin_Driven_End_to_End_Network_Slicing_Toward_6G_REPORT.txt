@@ -1,0 +1,34 @@
+Paper: Digital-Twin-Driven End-to-End Network Slicing Toward 6G
+Publication/source: IEEE Internet Computing, 2024
+Pages visually reviewed: 9
+Visual assets: _visual_review/P_IEEE_2024_Digital_Twin_Driven_End_to_End_Network_Slicing_Toward_6G/ALL_PAGES_CONTACT_SHEET.png
+
+Core idea:
+This paper proposes a digital twin framework for end-to-end network slicing in 6G. It is highly relevant to monetizable SLA assurance.
+
+Page-wise visual review:
+- Page 1: Title, abstract, and slicing/twin motivation.
+- Page 2: Ecosystem figure for interconnected digital twins.
+- Pages 3-4: Core proposed DT framework for E2E network slicing using AI.
+- Pages 5-6: What-if simulation and slice planning discussion.
+- Page 7: Training loss and latency prediction/regression plots.
+- Page 8: Discussion and future directions.
+- Page 9: References/closing page.
+
+Important visuals:
+- Intelligent interconnected ecosystem of digital twins.
+- Proposed DT framework enabling E2E slicing.
+- Training loss plot.
+- True vs predicted latency regression plot.
+
+Relation to our project:
+This supports a slice/SLA twin that maps RAN, transport, core, and service failures to customer/business impact. It is important for monetizable telecom NOC dashboards.
+
+Project mapping:
+- Layer: Cross-domain slices across RAN/transport/core/services.
+- Twin object: Slice/SLA twin.
+- AI function: Latency prediction and what-if simulation.
+- Self-healing relevance: Predict SLA breach, reroute/reallocate/scale before violation.
+
+Limitations:
+Not O-RAN-specific; pair with O-RAN standards and RIC/xApp papers.

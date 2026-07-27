@@ -1,0 +1,23 @@
+# O-RAN Self-Healing Governor - service configuration
+governor:
+  backend: offline          # offline | claude
+  model: claude-sonnet-5
+  aml_high: 0.6
+gate:
+  seq_len: 10
+  threshold_percentile: 97
+guard:
+  contamination_pct: 97
+verifier:
+  margin: 0.5
+runtime:
+  safe_default_action: 5    # keep_connected
+  artifacts_dir: artifacts  # where fitted components are persisted
+data:
+  train_csv: data/rrc_dataset_adversarial.csv   # produced by main_governed.py
+security:
+  require_api_key: false        # set true in production
+  api_key: change-me
+observability:
+  audit_log: logs/decisions.jsonl
+  baseline_anomaly_rate: 0.15

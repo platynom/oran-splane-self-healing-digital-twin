@@ -1,0 +1,520 @@
+RANGAN: GAN-empowered Anomaly Detection in 5G Cloud RAN
+Douglas Liao1 , Jiping Luo1 , Jens Vevstad2 , Nikolaos Pappas1
+1
+
+arXiv:2508.20985v1 [cs.NI] 28 Aug 2025
+
+Department of Computer and Information Science, Linköping University, Campus Valla, Sweden
+2
+Ericsson AB, Linköping, Sweden
+E-mail: douli502@student.liu.se, jiping.luo@liu.se, jens.vevstad@ericsson.com, nikolaos.pappas@liu.se
+
+Abstract—Radio Access Network (RAN) systems are inherently
+complex, requiring continuous monitoring to prevent performance degradation and ensure optimal user experience. The
+RAN leverages numerous key performance indicators (KPIs)
+to evaluate system performance, generating vast amounts of
+data each second. This immense data volume can make troubleshooting and accurate diagnosis of performance anomalies
+more difficult. Furthermore, the highly dynamic nature of RAN
+performance demands adaptive methodologies capable of capturing temporal dependencies to detect anomalies reliably. In
+response to these challenges, we introduce RANGAN, an anomaly
+detection framework that integrates a Generative Adversarial
+Network (GAN) with a transformer architecture. To enhance
+the capability of capturing temporal dependencies within the
+data, RANGAN employs a sliding window approach during
+data preprocessing. We rigorously evaluated RANGAN using the
+publicly available RAN performance dataset from the Spotlight
+project [1]. Experimental results demonstrate that RANGAN
+achieves promising detection accuracy, notably attaining an F1score of up to 83% in identifying network contention issues.
+Index Terms—Anomaly Detection, Cloud Radio Access Network, Generative Adversarial Network, Transformer.
+
+I. I NTRODUCTION
+Radio Access Network (RANs) is a key component of modern telecommunications infrastructure, enabling ubiquitous
+connectivity for mobile users across voice communications,
+mobile applications, and a wide range of online services [2].
+With the rapid growth in global mobile data consumption and
+the continual evolution of mobile network technologies, RANs
+have become increasingly complex, integrating a multitude of
+advanced technologies to meet rising user expectations for
+high-speed, reliable, and seamless connectivity.
+To keep pace with these demands, communication service
+providers are under constant pressure to deliver enhanced network performance and user experience, while simultaneously
+managing energy efficiency and promoting sustainability [3],
+[4]. However, the increasing sophistication and scale of RAN
+systems have introduced significant challenges in network
+monitoring, particularly in the timely detection of anomalies
+that may cause performance degradation or imminent failures.
+Addressing these challenges is critical for maintaining network reliability, service quality, and delivering substantial
+economic value. Effective anomaly detection and mitigation
+contribute to reducing operational disruptions, improving customer satisfaction, and reinforcing the competitive position of
+This work was supported in part by the Graduate School in Computer
+Science (CUGS) and by the ROBUST-6G Grant Agreement No. 101139068.
+
+network operators in an increasingly dynamic and demanding
+market landscape.
+In the context of telecommunications, delivering higher
+throughput, lower latency, and more reliable service remains a
+central objective [5]. However, diagnosing and troubleshooting issues in large-scale systems such as RAN introduces a
+range of intricate challenges, including: Scarcity of Labeled
+Data: One of the primary obstacles in anomaly detection is
+the limited availability of labeled datasets for training and
+validation. In many real-world RAN scenarios, such labels are
+either unavailable or prohibitively costly to obtain [6]. Model
+Adaptability: Maintaining the effectiveness of anomaly detection models over time is nontrivial, particularly in environments where traffic patterns and software configurations
+are subject to continuous change, as is common in RAN
+deployments [7], [8]. Domain-Specific Model Performance:
+Techniques that are successful in one domain often fail to generalize effectively to another. Anomaly detection models tend
+to be highly data-specific, and no single method consistently
+performs best across diverse RAN contexts [9]. Data Quality:
+Telecommunication data frequently contains noise and missing
+values, introducing uncertainty into the system. These issues
+complicate the task of distinguishing between normal behavior
+and true anomalies [10].
+Traditionally, engineers have relied on rule-based systems
+and statistical techniques to detect anomalies in software systems [11]–[14]. While these approaches offer simplicity and
+interpretability, they depend heavily on predefined thresholds
+and heuristics. As a result, their effectiveness significantly
+diminishes in dynamic environments, such as modern RANs,
+where traffic patterns, system behaviors, and anomalies evolve
+continuously across multiple dimensions. A key advancement
+in this domain has been the integration of temporal and
+generative modeling techniques. Lin et al. [15] proposed
+a hybrid architecture combining a Variational Autoencoder
+(VAE) with a Long Short-Term Memory (LSTM) network,
+embedding the LSTM within the latent space of the VAE.
+This design leverages the VAE’s capacity for learning compact
+representations and the LSTM’s ability to model long-range
+temporal dependencies, yielding superior anomaly detection
+performance compared to standalone models. To address the
+scalability and real-time processing demands of 5G networks,
+Maimó et al. [8] developed a two-stage detection pipeline:
+a Deep Belief Network for rapid initial processing followed
+by an LSTM for temporal refinement. Similarly, Su et al. [1]
+proposed a lightweight edge-cloud architecture for anomaly
+
+detection in Open RAN environments. Their system incorporates a VAE for reducing data dimensionality at the edge,
+followed by a time-series imputation model and CausalNex for
+interpretable causal analysis in the cloud. In parallel, Ashima
+et al. [16] applied a sparse autoencoder and SHAP to detect
+and interpret anomalies in multivariate trace data from 4G LTE
+networks. Addressing spatial correlations in RAN data, Hasan
+et al. [17] introduced Simba, a framework that combines Graph
+Convolutional Networks (GCNs) with Transformer architectures to capture spatial-temporal dependencies for interference
+detection in mobile networks.
+In this paper, we propose RANGAN, an unsupervised
+anomaly detection framework designed to identify network
+contention in RAN. RANGAN integrates a Generative Adversarial Network (GAN) with a transformer-based architecture to
+effectively capture complex temporal dependencies inherent in
+time-series performance data. Additionally, we investigate the
+impact of varying sliding window sizes on detection performance, highlighting the trade-offs between temporal resolution
+and model effectiveness. The presented results demonstrate
+that our method achieves a promising detection accuracy, and
+attaining an F1-score of up to 83% in identifying network
+contention issues.
+II. M ETHODOLOGY
+A. Dataset and Preprocessing
+We utilize the SpotLight dataset [1], which simulates network traffic generated by five user equipments (UEs), each
+operating under distinct scenarios based on the traffic profiles
+summarized in Table I. The system’s key performance indicators (KPIs) are defined in accordance with the 3GPP standard,
+ensuring alignment with industry norms. These KPIs span a
+broad range of categories, as detailed in Table II.
+TABLE I: Different profiles of generated traffic.
+Traffic types
+
+Description
+
+iperf3 TCP DL
+iperf3 TCP UL
+iperf3 UDP DL
+iperf3 UDP UL
+file download
+file upload
+video stream
+web traffic
+random ping
+
+TCP traffic from base station to UE
+TCP traffic from UE to base station
+UDP traffic at 10 Mbps from base station to UE
+UDP traffic at 10 Mbps from UE to base station
+UE downloads a file from the Internet
+UE uploads a file using scp
+UE streams a video
+UE accesses random websites continuously
+UE sends ping requests at varying rates and counts
+
+Notes: scp = Secure Copy Protocol; DL = Downlink; UL = Uplink
+
+TABLE II: Summary of KPIs.
+KPI Category
+
+Description
+
+Fronthaul Traffic
+Thread Scheduling
+PTP Logs
+
+UL/DL link usage (Gbps)
+CPU runtime on/off
+Frequency, RMS, delay, max offset
+
+Fig. 1: Sliding window technique.
+
+technique was employed to partition the time series into overlapping fixed-length segments, as illustrated in Figure 1. This
+approach enhances the model’s ability to learn and capture
+temporal patterns effectively.
+B. Proposed Model
+The anomaly detection architecture employed in this work
+is based on a GAN, augmented with transformer components.
+This design choice leverages the GAN’s proven capability to
+learn complex data distributions in an unsupervised setting.
+In combination with the sliding window technique, the model
+is particularly effective at identifying contextual anomalies in
+time-series data.
+Figure 2 illustrates the architectures of the generator and
+discriminator. The generator receives a latent input vector
+(noise) and produces outputs that match the dimensionality of
+the training samples. The discriminator, in turn, is trained to
+distinguish between real and synthetically generated samples,
+thereby guiding the generator to produce increasingly realistic
+outputs over time.
+To enhance the model’s capability to capture temporal
+dependencies and complex structural patterns in the data,
+transformer blocks were integrated into both the generator and
+the discriminator. At the core of each transformer block lies
+the attention mechanism, which enables the model to represent
+contextual relationships more effectively.
+The attention mechanism operates by assigning dynamic
+weights to each time step based on its relevance to others
+in the sequence. This allows the model to selectively focus on
+the most informative segments of the input when generating or
+discriminating time-series data, thereby improving its overall
+performance in anomaly detection tasks.
+C. Evaluation Metrics
+We evaluate RANGAN using common metrics for anomaly
+detection.
+
+Notes: PTP = Precision Time Protocol; RMS = Root Mean Square.
+
+TP
+TP + FP
+
+(1)
+
+TP
+TP + FN
+
+(2)
+
+Precision =
+The dataset was preprocessed by first selecting informative
+KPIs and then applying min-max normalization to scale the
+values within the range [0, 1]. Subsequently, a sliding window
+
+Recall =
+
+TABLE III: Performance comparison of different methods.
+
+Fig. 2: The architecture of the proposed network.
+
+Method
+
+F1
+
+Prec.
+
+Network
+Rec.
+ROC AUC
+
+FP
+
+RANGAN
+Autoencoder
+IF
+LOF
+OCSVM
+HDBSCAN
+DBSCAN
+ZScore
+
+0.83
+0.73
+0.53
+0.20
+0.04
+0.04
+0.04
+0.04
+
+0.75
+0.66
+0.75
+0.66
+0.02
+0.02
+0.02
+0.02
+
+0.93
+0.83
+0.41
+0.12
+1.00
+1.00
+1.00
+0.85
+
+1585
+2080
+691
+310
+9092
+9092
+9092
+6800
+
+0.78
+0.71
+0.66
+0.56
+0.50
+NaN
+NaN
+NaN
+
+TABLE IV: The impact of the size of the sliding window.
+Network
+
+Precision × Recall
+(3)
+Precision + Recall
+where T P denotes true positives, F P false positives, and
+F N false negatives. The F1-score is particularly relevant in
+anomaly detection as it balances precision and recall, effectively capturing the trade-off between false alarms and missed
+anomalies. We also use the Area Under the Receiver Operating
+Characteristic Curve (ROC AUC) to assess the model’s ability
+to distinguish between normal and anomalous instances across
+various thresholds, limited to models producing continuous or
+probabilistic anomaly scores.
+F1 -score = 2 ×
+
+III. P ERFORMANCE EVALUATION
+In this section, we assess the performance of RANGAN
+with different sliding window sizes on the dataset introduced
+in the Methodology. We then proceed to compare RANGAN’s
+results to several well-known anomaly detection methods: Autoencoder, Isolation Forest (IF), Local Outlier Factor (LOF),
+One-Class Support Vector Machine (OCSVM), Hierarchical
+Density-Based Spatial Clustering of Applications with Noise
+(HDBSCAN), Density-Based Spatial Clustering of Applications with Noise (DBSCAN), and ZScore.
+As observed from Table III, among these methods, RANGAN achieved the best overall performance. The proposed
+model yielded a relatively high F1-score of 0.83, a balanced
+precision of 0.75, and a strong recall of 0.93. In addition,
+RANGAN also demonstrated a solid ROC AUC value of 0.78,
+suggesting that the model has a good ability to distinguish
+between normal and anomaly data, apart from the 1585 FP.
+Furthermore, it can be observed that the autoencoder approach showed a competitive result, achieving an F1 score of
+0.73, a precision of 0.66, and a recall of 0.83. Likewise, as
+RANGAN, the autoencoder received a good ROC AUC value
+of 0.71, indicating good discrimination capability. However, it
+yielded a much higher FP compared to RANGAN.
+In contrast, most traditional methods, such as IF and LOF
+performed poorly in terms of the F1-score, 0.24 and 0.20
+respectively. The remaining methods OCSVM, HDBSCAN,
+DBSCAN, and Z-score showed limited effectiveness, with a
+very low F1-score of 0.04 each.
+
+Method
+
+F1
+
+Prec.
+
+Rec.
+
+ROC AUC
+
+FP
+
+RANGAN/60
+
+0.83
+
+0.75
+
+0.93
+
+0.78
+
+1585
+
+RANGAN/50
+
+0.83
+
+0.74
+
+0.94
+
+0.78
+
+1631
+
+RANGAN/40
+
+0.76
+
+0.64
+
+0.94
+
+0.74
+
+2253
+
+RANGAN/30
+
+0.63
+
+0.48
+
+0.93
+
+0.69
+
+3296
+
+RANGAN/20
+
+0.47
+
+0.31
+
+0.91
+
+0.65
+
+4311
+
+The results presented in Table IV illustrate the impact
+of varying sliding window sizes on the performance of the
+proposed model. The evaluated window sizes range from 20
+to 60, and a clear trend emerges: larger window sizes generally
+lead to improved performance. Notably, window sizes of 50
+and 60 achieved the best results, both yielding an F1 score
+of 0.83 and high recall values of 0.93 and 0.94, respectively.
+These configurations also exhibited similar precision and ROC
+AUC scores. The most noticeable difference between them lies
+in the number of FPs, with the window size of 60 producing
+slightly fewer FPs than the size 50 counterpart.
+Although recall remains consistently high across all window
+sizes, a gradual decline in overall performance is observed
+as the window size decreases—particularly in terms of precision and the corresponding increase in false positives. This
+highlights the importance of sufficient temporal context in
+effectively distinguishing anomalous from normal behavior.
+Furthermore, Figure 3 provides a visual comparison of the
+model’s anomaly scores across different sliding window sizes.
+These scores reflect the model’s confidence in the presence of
+an anomaly within each windowed segment, with higher values
+indicating stronger anomaly likelihood. As shown, larger
+window sizes yield a more distinct separation between normal
+and anomalous segments, which helps explain the improved
+ROC AUC scores reported in Table IV. It is important to note
+that the number of detected anomalies in each plot varies with
+the window size, since a window is labeled anomalous if it
+contains any anomalous data point within its range.
+IV. C ONCLUSIONS AND F UTURE DIRECTIONS
+Our results demonstrate that deep learning models can
+achieve strong performance in detecting network contention
+within RAN. The proposed model, RANGAN, attained the
+
+(a) Window size = 50
+
+(b) Window size = 40
+
+(c) Window size = 30
+
+(d) Window size = 20
+
+Fig. 3: Anomaly score of different window sizes.
+
+highest F1 score of 83%, while maintaining a moderate
+number of FP, many of which were observed to occur shortly
+after true anomalies. Although deep learning models exhibited
+slightly higher FP rates compared to traditional methods,
+this was offset by substantially higher recall and the ability
+to detect contextual anomalies that simpler techniques often
+failed to identify. Complementary techniques such as feature
+engineering and the application of sliding windows were
+shown to enhance detection performance, particularly for timedependent datasets. Experimental results indicated that smaller
+window sizes introduced greater noise and uncertainty in
+detecting network contention. This trend was evident in both
+the anomaly score visualizations and the degradation in ROC
+AUC performance.
+Despite the strong results achieved by RANGAN, several
+
+areas remain open for further research and refinement. A
+key limitation is the model’s current inability to generalize
+anomaly detection across different components of the system,
+such as PDCP thread contention, radio interference, and MAC
+thread contention. Future work should therefore consider expanding the detection scope, either through a unified model
+capable of handling all anomaly types or through specialized
+models trained for specific anomaly categories.
+In practical deployments, anomaly detection represents only
+the initial step toward robust and reliable network operations.
+Once an anomaly is identified, it is crucial to determine
+its root cause in order to provide actionable insights before implementing corrective measures. Telecommunication
+stakeholders often prioritize causal understanding over mere
+anomaly detection. Consequently, future work should also
+explore the integration of explainability techniques as part of
+a comprehensive anomaly detection framework.
+R EFERENCES
+[1] C. Sun, U. Pawar, M. Khoja, X. Foukas, M. K. Marina, and
+B. Radunovic, “Spotlight: Accurate, explainable and efficient anomaly
+detection for open ran,” in Proc. ACM 30th Annu. Int. Conf. Mobile
+Comput. Netw., 2024.
+[2] Ericsson, “5g ran: Radio access networks,” 2025, online:
+https://www.ericsson.com/en/ran.
+[3] Ericsson, “Building sustainable networks – mobility report,” 2025,
+online:
+https://www.ericsson.com/en/reports-and-papers/mobilityreport/articles/building-sustainable-networks.
+[4] Ericsson, “Sustainable networks: The intelligent operations guide,”
+2025, online: https://www.ericsson.com/en/reports-and-papers/furtherinsights/sustainable-networks-the-intelligent-operations-guide.
+[5] T. Lajous, S. Madner, C. Palermo, and R. van den Broek. (2023, oct)
+Tech talent in transition: Seven technology trends reshaping telcos.
+[6] H. N. Qureshi, U. Masood, M. Manalastas, S. M. A. Zaidi, H. Farooq,
+J. Forgeat, M. Bouton, S. Bothe, P. Karlsson, A. Rizwan et al., “Toward
+addressing training data scarcity challenge in emerging radio access
+networks: A survey and framework,” IEEE Commun. Surv. Tutor.,
+vol. 25, no. 3, 2023.
+[7] Z. Chen, J. Liu, W. Gu, Y. Su, and M. R. Lyu, “Experience report:
+Deep learning-based system log analysis for anomaly detection,” arXiv
+preprint arXiv:2107.05908, 2021.
+[8] L. F. Maimó, Á. L. P. Gómez, F. J. G. Clemente, M. G. Pérez, and
+G. M. Pérez, “A self-adaptive deep learning-based system for anomaly
+detection in 5g networks,” IEEE Access, vol. 6, 2018.
+[9] E. R. Isaac and J. H. Isaac, “Active rule mining for multivariate anomaly
+detection in radio access networks,” in Proc. 17th Int. Conf. Commun.
+Syst. Netw. (COMSNETS), 2025.
+[10] C. Kim, V. B. Mendiratta, and M. Thottan, “Unsupervised anomaly
+detection and root cause analysis in mobile networks,” in Proc. Int.
+Conf. Commun. Syst. Netw., 2020, pp. 176–183.
+[11] D. E. Denning, “An intrusion-detection model,” IEEE Trans. Softw. Eng.,
+no. 2, 1987.
+[12] T. F. Lunt, “A survey of intrusion detection techniques,” Computers &
+Security, vol. 12, no. 4, 1993.
+[13] J. P. Rouillard, “Real-time log file analysis using the simple event
+correlator (sec).” in LISA, vol. 4, 2004, pp. 133–150.
+[14] W.-K. Wong, A. Moore, G. Cooper, and M. Wagner, “Rule-based
+anomaly pattern detection for detecting disease outbreaks,” in Proc.
+AAAI/IAAI, 2002.
+[15] S. Lin, R. Clark, R. Birke, S. Schönborn, N. Trigoni, and S. Roberts,
+“Anomaly detection for time series using vae-lstm hybrid model,” in
+Proc. IEEE Int. Conf. Acoust., Speech Signal Process., 2020.
+[16] A. Chawla, P. Jacob, S. Feghhi, D. Rughwani, S. van der Meer, and
+S. Fallon, “Interpretable unsupervised anomaly detection for ran cell
+trace analysis,” in Proc. 16th Int. Conf. Netw. Serv. Manag., 2020.
+[17] A. Hasan, C. Boeira, K. Papry, Y. Ju, Z. Zhu, and I. Haque, “Root
+cause analysis of anomalies in 5g ran using graph neural network and
+transformer,” arXiv preprint arXiv:2406.15638, 2024.
+
+

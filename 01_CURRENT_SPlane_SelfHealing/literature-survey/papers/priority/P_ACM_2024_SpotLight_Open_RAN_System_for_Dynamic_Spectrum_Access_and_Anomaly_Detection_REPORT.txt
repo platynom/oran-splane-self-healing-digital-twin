@@ -1,0 +1,29 @@
+Paper: SpotLight: An Open RAN System for Dynamic Spectrum Access and Anomaly Detection
+Publication/source: ACM MobiCom / Open RAN system paper, 2024
+Pages visually reviewed: 4
+Visual assets: _visual_review/P_ACM_2024_SpotLight_Open_RAN_System_for_Dynamic_Spectrum_Access_and_Anomaly_Detection/ALL_PAGES_CONTACT_SHEET.png
+
+Core idea:
+SpotLight is a compact Open RAN anomaly detection system focused on dynamic spectrum access and abnormal spectrum/resource behavior. It is useful as a concrete anomaly-detection subsystem reference rather than a full O-RAN architecture survey.
+
+Page-wise visual review:
+- Page 1: Repository/front matter and metadata. No technical architecture content.
+- Page 2: Abstract, introduction, and motivation. Frames Open RAN disaggregation as a source of new anomaly/security risks.
+- Page 3: Main technical page. Shows SpotLight system architecture and anomaly detection behavior against a baseline.
+- Page 4: References.
+
+Important visuals:
+- System architecture figure.
+- Anomaly detection behavior figure comparing SpotLight with TranAD.
+
+Relation to our project:
+Use this for the radio/RAN anomaly-detection module in the Digital Twin. It supports a monitored spectrum/resource state twin that detects abnormal RAN behavior before a guarded healing controller acts.
+
+Project mapping:
+- Layer: Radio/RAN monitoring, O-DU/O-CU adjacent anomaly detection.
+- Twin object: Spectrum/resource state twin.
+- AI function: Anomaly detection.
+- Self-healing relevance: Detection trigger before traffic steering, resource reallocation, or RIC policy action.
+
+Limitations:
+Short paper; does not cover national-scale architecture, 5G Core, SMO, transport, or full O-RAN hierarchy.

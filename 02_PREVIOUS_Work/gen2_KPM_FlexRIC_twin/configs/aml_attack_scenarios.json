@@ -1,0 +1,31 @@
+{
+  "attacks": [
+    {
+      "attack_id": "A001",
+      "attack_type": "telemetry_poisoning",
+      "cell_id": "CELL_C",
+      "start_t": 58,
+      "end_t": 70,
+      "severity": 0.85,
+      "description": "Manipulated telemetry creates inconsistent KPI relationships for the AI pipeline."
+    },
+    {
+      "attack_id": "A002",
+      "attack_type": "model_evasion_attack",
+      "cell_id": "CELL_A",
+      "start_t": 45,
+      "end_t": 55,
+      "severity": 0.45,
+      "description": "Fault telemetry is softened to hide congestion from detection and RCA."
+    },
+    {
+      "attack_id": "A003",
+      "attack_type": "unsafe_xapp_action",
+      "cell_id": "CELL_D",
+      "start_t": 102,
+      "end_t": 112,
+      "severity": 0.7,
+      "description": "A suspicious low-risk control context tests whether automation is guarded."
+    }
+  ]
+}

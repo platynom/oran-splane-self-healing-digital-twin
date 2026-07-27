@@ -1,0 +1,49 @@
+{
+  "sources": [
+    {
+      "id": "open_ran_commercial_traffic_twinning",
+      "status": "metadata_download_safe",
+      "source_repository": "https://github.com/wineslab/open-ran-commercial-traffic-twinning-dataset",
+      "data_landing_page": "https://repository.library.northeastern.edu/collections/neu:h989sz017",
+      "paper": "https://arxiv.org/abs/2409.16217",
+      "license": "CC-BY-SA-4.0",
+      "expected_contents": [
+        "base-station PHY/MAC KPM CSV files",
+        "UE PHY/MAC KPM CSV files",
+        "MGEN application-layer CSV files",
+        "MGEN traffic scripts",
+        "base-station and UE protocol stack logs"
+      ],
+      "usefulness": [
+        "slice-aware KPI modeling",
+        "per-UE representation",
+        "RCA benchmarking",
+        "self-healing policy validation",
+        "Open RAN KPM realism"
+      ],
+      "download_note": "Large data archives should be fetched selectively. Metadata can be downloaded safely."
+    },
+    {
+      "id": "colosseum_open_ran_digital_twin",
+      "status": "reference_only_until_download_link_is_selected",
+      "paper": "https://arxiv.org/abs/2404.17317",
+      "usefulness": [
+        "O-RAN digital twin methodology",
+        "realistic RF/channel emulation",
+        "AI/ML validation environment"
+      ],
+      "download_note": "Use for methodology and future Colosseum experiments; do not download large archives blindly."
+    },
+    {
+      "id": "ofdma_spectrum_anomaly_benchmark",
+      "status": "reference_only_pending_public_artifact_link",
+      "paper": "https://arxiv.org/abs/2606.02102",
+      "usefulness": [
+        "spectrum anomaly detection",
+        "jammer/interference classes",
+        "DSA guard benchmarking"
+      ],
+      "download_note": "Useful when the public artifact link is identified; keep separate from RAN KPI datasets."
+    }
+  ]
+}

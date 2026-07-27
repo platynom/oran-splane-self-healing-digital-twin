@@ -1,0 +1,33 @@
+Paper: Adversarial Machine Learning Threat Analysis and Remediation in Open Radio Access Network (O-RAN)
+Publication/source: Journal of Network and Computer Applications, Elsevier, 2024
+Pages visually reviewed: 24
+Visual assets: _visual_review/P_Elsevier_2024_Adversarial_Machine_Learning_Threat_Analysis_and_Remediation_in_ORAN/ALL_PAGES_CONTACT_SHEET.png
+
+Core idea:
+This is a security survey on adversarial machine learning in O-RAN. It studies attacks against ML pipelines, xApps/rApps, telemetry, and AI-assisted control, then maps remediation approaches.
+
+Page-wise visual review:
+- Pages 1-2: Abstract, introduction, O-RAN motivation, and the security problem created by openness and intelligence.
+- Pages 3-5: Core visual pages: O-RAN reference architecture, general ML pipeline, ML deployment scenarios, and taxonomy tables.
+- Pages 6-9: Threat categories and attack mapping across training, inference, model, and control stages.
+- Pages 10-14: Defense/remediation discussion with dense comparison matrices.
+- Pages 15-21: Large tables mapping attacks, effects, defenses, and O-RAN components.
+- Pages 22-24: References.
+
+Important visuals:
+- O-RAN reference architecture.
+- General ML pipeline in O-RAN.
+- O-RAN ML deployment scenarios.
+- Adversarial threat/remediation taxonomy tables.
+
+Relation to our project:
+This should drive the security twin and AI governance design. A self-healing O-RAN network can become dangerous if telemetry, training data, models, or xApp actions are poisoned or manipulated.
+
+Project mapping:
+- Layer: Near-RT RIC, Non-RT RIC, SMO, AI/ML pipeline.
+- Twin object: Security twin and ML pipeline twin.
+- AI function: Poisoning/evasion/backdoor detection, model robustness monitoring.
+- Self-healing relevance: Quarantine model, roll back xApp, reject suspicious telemetry, require human approval for high-risk automated changes.
+
+Limitations:
+Survey-heavy; needs pairing with concrete architecture/control papers like COMIX, xApp distillation, and the xApp/E2 anomaly paper.

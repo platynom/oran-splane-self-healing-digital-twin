@@ -1,0 +1,6 @@
+# full runtime: real LSTM-AE gate + trained PPO agent
+-r requirements.txt
+torch
+stable-baselines3
+gymnasium
+anthropic          # only needed for governor backend=claude

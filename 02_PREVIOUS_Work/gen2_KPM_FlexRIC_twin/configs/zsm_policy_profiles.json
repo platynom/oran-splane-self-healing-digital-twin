@@ -1,0 +1,61 @@
+{
+  "operators": {
+    "eMBB": {
+      "operator_id": "operator_enterprise_broadband",
+      "tenant_id": "tenant_enterprise_broadband",
+      "trust_zone": "standard_managed",
+      "federation_policy": "single_operator",
+      "sla_penalty_weight": 0.65
+    },
+    "mMTC": {
+      "operator_id": "operator_iot_platform",
+      "tenant_id": "tenant_massive_iot",
+      "trust_zone": "standard_managed",
+      "federation_policy": "single_operator",
+      "sla_penalty_weight": 0.35
+    },
+    "URLLC": {
+      "operator_id": "operator_industrial_private",
+      "tenant_id": "tenant_industrial_critical",
+      "trust_zone": "critical_managed",
+      "federation_policy": "multi_operator_guarded",
+      "sla_penalty_weight": 0.95
+    },
+    "FWA": {
+      "operator_id": "operator_fixed_wireless",
+      "tenant_id": "tenant_fwa_premium",
+      "trust_zone": "standard_managed",
+      "federation_policy": "single_operator",
+      "sla_penalty_weight": 0.75
+    },
+    "V2X": {
+      "operator_id": "operator_mobility_safety",
+      "tenant_id": "tenant_v2x_safety",
+      "trust_zone": "critical_managed",
+      "federation_policy": "multi_operator_guarded",
+      "sla_penalty_weight": 0.9
+    }
+  },
+  "automation_slas": {
+    "policy_allow": {
+      "target_mttd_seconds": 5,
+      "target_mttm_seconds": 30
+    },
+    "policy_blocked": {
+      "target_mttd_seconds": 3,
+      "target_mttm_seconds": 120
+    },
+    "policy_quarantine": {
+      "target_mttd_seconds": 2,
+      "target_mttm_seconds": 300
+    },
+    "policy_model_lifecycle_hold": {
+      "target_mttd_seconds": 10,
+      "target_mttm_seconds": 600
+    },
+    "policy_security_incident": {
+      "target_mttd_seconds": 1,
+      "target_mttm_seconds": 180
+    }
+  }
+}

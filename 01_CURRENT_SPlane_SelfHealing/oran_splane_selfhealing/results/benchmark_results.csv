@@ -1,0 +1,5 @@
+method,recovery_success_rate,wrong_action_rate,mean_mttr_s,peak_time_error_ns,within_2s_rate
+always_failover,0.6,0.0,0.618,176.36888263825338,1.0
+always_holdover,0.6,0.4,1.18,176.36888263825338,1.0
+detection_only_no_response,0.0,0.0,2.0,223.82666647016055,0.0
+governed_loop,0.95,0.05,0.547,86.32070997977753,1.0

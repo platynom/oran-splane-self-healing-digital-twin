@@ -1,0 +1,37 @@
+{
+  "capabilities": {
+    "prediction": {
+      "weight": 0.16,
+      "description": "Predictive risk, SLA breach and timing-state estimation"
+    },
+    "anomaly_detection": {
+      "weight": 0.16,
+      "description": "KPI anomaly, E2-style signatures and spectrum anomaly detection"
+    },
+    "optimization": {
+      "weight": 0.14,
+      "description": "Healing, xApp distillation and RIC control recommendation"
+    },
+    "security_assurance": {
+      "weight": 0.16,
+      "description": "AML guard, timing STRIDE tests and policy quarantine"
+    },
+    "slice_assurance": {
+      "weight": 0.14,
+      "description": "E2E slice SLA breach prediction and what-if remediation"
+    },
+    "model_lifecycle": {
+      "weight": 0.12,
+      "description": "Drift handling and model lifecycle governance"
+    },
+    "closed_loop_governance": {
+      "weight": 0.12,
+      "description": "ZSM/SMO workflow, audit and approval control"
+    }
+  },
+  "readiness_thresholds": {
+    "autonomous_ready": 0.82,
+    "guarded_operation": 0.62,
+    "degraded_twin": 0.42
+  }
+}

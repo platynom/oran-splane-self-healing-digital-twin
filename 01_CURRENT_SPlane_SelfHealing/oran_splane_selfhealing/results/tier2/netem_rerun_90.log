@@ -1,0 +1,46 @@
+netem applied for scenario=baseline
+tcpdump: listening on splanem, link-type EN10MB (Ethernet), snapshot length 262144 bytes
+capturing for 90s -> results/tier2/netem/netem_baseline.pcap
+done. slave servo tail:
+ptp4l[3066.422]: rms 2731 max 4079 freq +39934935 +/-   0 delay  2300 +/- 122
+ptp4l[3067.423]: rms 2674 max 5777 freq +39934935 +/-   0 delay  2680 +/- 472
+ptp4l[3068.423]: rms 1371 max 2193 freq +39934935 +/-   0 delay  3238 +/-  46
+pcap: results/tier2/netem/netem_baseline.pcap
+2614 packets captured
+2616 packets received by filter
+0 packets dropped by kernel
+netem applied for scenario=pdv
+tcpdump: listening on splanem, link-type EN10MB (Ethernet), snapshot length 262144 bytes
+capturing for 90s -> results/tier2/netem/netem_pdv.pcap
+done. slave servo tail:
+ptp4l[3158.428]: rms 2656 max 5427 freq +28621323 +/-   0 delay  2274 +/- 249
+ptp4l[3159.429]: rms 1227 max 1976 freq +28621323 +/-   0 delay  2502 +/-  70
+ptp4l[3160.429]: rms  976 max 1381 freq +28621323 +/-   0 delay  2266 +/-  67
+pcap: results/tier2/netem/netem_pdv.pcap
+2600 packets captured
+2600 packets received by filter
+0 packets dropped by kernel
+netem applied for scenario=loss
+tcpdump: listening on splanem, link-type EN10MB (Ethernet), snapshot length 262144 bytes
+capturing for 90s -> results/tier2/netem/netem_loss.pcap
+done. slave servo tail:
+ptp4l[3231.216]: selected local clock 9afaad.fffe.86c168 as best master
+ptp4l[3238.164]: selected local clock 9afaad.fffe.86c168 as best master
+ptp4l[3244.916]: selected local clock 9afaad.fffe.86c168 as best master
+pcap: results/tier2/netem/netem_loss.pcap
+335 packets captured
+335 packets received by filter
+0 packets dropped by kernel
+netem applied for scenario=holdover
+tcpdump: listening on splanem, link-type EN10MB (Ethernet), snapshot length 262144 bytes
+capturing for 90s -> results/tier2/netem/netem_holdover.pcap
+done. slave servo tail:
+ptp4l[3323.296]: selected local clock 9afaad.fffe.86c168 as best master
+ptp4l[3330.184]: selected local clock 9afaad.fffe.86c168 as best master
+ptp4l[3337.516]: selected local clock 9afaad.fffe.86c168 as best master
+pcap: results/tier2/netem/netem_holdover.pcap
+35 packets captured
+35 packets received by filter
+0 packets dropped by kernel
+netem scenarios ok: ['baseline', 'pdv', 'loss']; failed: ['holdover(ingest_failed)']
+captured 1303 real-trace windows -> results/tier2/netem/netem_telemetry.csv

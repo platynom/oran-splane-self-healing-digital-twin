@@ -1,0 +1,25 @@
+{
+  "active_model": "phy_odu_virtual_ran_self_learning_model",
+  "candidate_models": {
+    "oru_low_phy": "oru_low_phy_virtual_ran_self_learning_model",
+    "ocu": "ocu_virtual_ran_self_learning_model"
+  },
+  "rollback_targets": {
+    "phy_odu_virtual_ran_self_learning_model": "generalized_virtual_ran_self_learning_model",
+    "oru_low_phy_virtual_ran_self_learning_model": "phy_odu_virtual_ran_self_learning_model",
+    "ocu_virtual_ran_self_learning_model": "phy_odu_virtual_ran_self_learning_model"
+  },
+  "governance_thresholds": {
+    "high_risk": 0.72,
+    "critical_risk": 0.86,
+    "low_trust": 0.58,
+    "high_sla_breach": 0.75
+  },
+  "approval_gates": {
+    "normal": "auto_record",
+    "guarded": "smo_policy_review",
+    "critical": "human_change_advisory_board",
+    "security": "soc_noc_joint_approval",
+    "model": "mlops_model_review"
+  }
+}

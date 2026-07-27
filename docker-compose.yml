@@ -1,0 +1,10 @@
+services:
+  oran-twin:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./outputs:/app/outputs
+      - ./data:/app/data
+    environment:
+      - PYTHONUNBUFFERED=1

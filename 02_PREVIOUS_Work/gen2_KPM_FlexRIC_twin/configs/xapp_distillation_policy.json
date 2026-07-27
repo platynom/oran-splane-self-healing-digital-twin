@@ -1,0 +1,46 @@
+{
+  "teacher_weights": {
+    "self_healing_xapp": 1.0,
+    "traffic_steering_xapp": 0.94,
+    "resource_allocation_xapp": 0.9,
+    "handover_optimization_xapp": 0.92,
+    "spectrum_monitor_xapp": 0.96,
+    "qos_assurance_xapp": 0.93,
+    "core_transport_assurance_xapp": 0.91,
+    "core_control_assurance_xapp": 0.9,
+    "energy_saving_xapp": 0.58
+  },
+  "objective_weights": {
+    "restore_sla": 1.0,
+    "restore_radio_quality": 0.98,
+    "reduce_cell_load": 0.88,
+    "increase_throughput": 0.82,
+    "reduce_handover_failures": 0.84,
+    "protect_qos_sessions": 0.9,
+    "protect_core_user_plane": 0.88,
+    "protect_core_sessions": 0.86,
+    "reduce_energy_cost": 0.42
+  },
+  "conflict_penalties": {
+    "direct_control_conflict": 0.18,
+    "indirect_objective_conflict": 0.12,
+    "multi_xapp_coordination_risk": 0.08,
+    "cooldown_violation_risk": 0.16,
+    "control_loop_latency_risk": 0.1
+  },
+  "control_parameters": {
+    "cell_user_distribution": {"cooldown_steps": 4, "max_latency_ms": 850},
+    "radio_resource_blocks": {"cooldown_steps": 3, "max_latency_ms": 700},
+    "handover_thresholds": {"cooldown_steps": 5, "max_latency_ms": 900},
+    "spectrum_radio_resources": {"cooldown_steps": 6, "max_latency_ms": 1000},
+    "timing_source": {"cooldown_steps": 8, "max_latency_ms": 1300},
+    "edge_workload_placement": {"cooldown_steps": 4, "max_latency_ms": 1200},
+    "transport_path": {"cooldown_steps": 4, "max_latency_ms": 1200},
+    "upf_user_plane": {"cooldown_steps": 5, "max_latency_ms": 1400},
+    "core_control_plane": {"cooldown_steps": 6, "max_latency_ms": 1500},
+    "qos_flow_mapping": {"cooldown_steps": 3, "max_latency_ms": 650},
+    "rrc_mobility_policy": {"cooldown_steps": 5, "max_latency_ms": 750},
+    "guarded_manual_review": {"cooldown_steps": 1, "max_latency_ms": 1500},
+    "none": {"cooldown_steps": 0, "max_latency_ms": 0}
+  }
+}

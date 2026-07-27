@@ -1,0 +1,10 @@
+.git
+.venv
+.project-python
+__pycache__
+*.pyc
+outputs/runs/*
+outputs/*.jsonl
+outputs/*.sqlite
+literature-survey/papers.zip
+literature-survey/papers/**/_visual_review

@@ -1,0 +1,35 @@
+Paper: Anomaly Detection for Mitigating xApp and E2 Interface Threats in O-RAN Near-RT RIC
+Publication/source: IEEE, 2025
+Pages visually reviewed: 13
+Visual assets: _visual_review/P_IEEE_2025_Anomaly_Detection_for_xApp_and_E2_Interface_Threats_in_ORAN_Near_RT_RIC/ALL_PAGES_CONTACT_SHEET.png
+
+Core idea:
+This paper detects threats involving xApps and the E2 interface in the Near-RT RIC. It is one of the most directly relevant papers for securing AI control in O-RAN.
+
+Page-wise visual review:
+- Pages 1-2: Abstract, introduction, and O-RAN/Near-RT RIC background.
+- Page 3: O-RAN architecture with anomaly traffic detector framework.
+- Pages 4-5: Threat model, E2 communication process, and WG11 attack mapping table.
+- Pages 6-7: Detector framework and detection logic/tree.
+- Pages 8-9: Methodology and experimental design.
+- Pages 10-11: Evaluation anomaly plots.
+- Pages 12-13: Discussion, conclusion, references, author bios.
+
+Important visuals:
+- O-RAN architecture with anomaly detector.
+- E2 communication process between xApp and E2 node.
+- Attack mapping table.
+- Detection structure/tree.
+- Experimental anomaly plots.
+
+Relation to our project:
+This should guide the RIC security monitoring subsystem. The twin should model E2 associations, xApp commands, telemetry trust, and abnormal control behavior.
+
+Project mapping:
+- Layer: Near-RT RIC, E2 interface, O-CU/O-DU E2 nodes.
+- Twin object: E2 control-plane twin and xApp behavior twin.
+- AI function: xApp/E2 anomaly detection.
+- Self-healing relevance: Quarantine malicious xApp, block E2 control, rollback policy, raise NOC incident.
+
+Limitations:
+Focused on RIC/E2, not full transport/core. Needs integration with adversarial ML and policy governance.

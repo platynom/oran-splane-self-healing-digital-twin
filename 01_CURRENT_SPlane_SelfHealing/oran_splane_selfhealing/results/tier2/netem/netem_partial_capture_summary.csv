@@ -1,0 +1,4 @@
+pcap,status,samples,offset_abs_max_ns,path_delay_mean_ns,error
+netem_baseline.pcap,ok,393,58486.5,-3030.6132315521627,
+netem_pdv.pcap,ok,396,55907.5,-3193.652777777778,
+netem_loss.pcap,failed_ingest,0,,,no PTP offset samples recovered from pcap (need Sync + Follow_Up/one-step and at least one Delay_Req/Delay_Resp exchange)

@@ -1,0 +1,34 @@
+Paper: CERBERUS: Towards Secure and Automated Multi-Operator Management in B5G Through a Dynamic Policy-Based ZSM Framework
+Publication/source: Journal of Network and Systems Management, Springer, 2025
+Pages visually reviewed: 34
+Visual assets: _visual_review/P_Springer_2025_CERBERUS_Secure_Automated_Multi_Operator_Management_in_B5G_ZSM/ALL_PAGES_CONTACT_SHEET.png
+
+Core idea:
+CERBERUS is a secure automated multi-operator management framework based on dynamic policy and ZSM concepts. It is valuable for secure closed-loop management and national-scale NOC governance.
+
+Page-wise visual review:
+- Pages 1-5: Abstract, introduction, and secure automated management context.
+- Page 6: CERBERUS framework architecture overview.
+- Pages 7-19: Policy logic, orchestration, and security-management framework.
+- Page 20: Step-by-step orchestration workflow in a multi-operator environment.
+- Pages 21-22: Use case and KPI table.
+- Pages 23-30: Evaluation figures for deployment time and detection time.
+- Pages 31-34: Conclusion, references, author information.
+
+Important visuals:
+- CERBERUS architecture.
+- Multi-operator orchestration workflow.
+- KPI table.
+- MTTD/deployment timing graphs.
+
+Relation to our project:
+Use this for the SMO/NOC/ZSM governance layer. It supports policy-based, auditable, secure automation rather than uncontrolled AI action.
+
+Project mapping:
+- Layer: SMO, OSS/NOC, ZSM orchestration.
+- Twin object: Policy twin, security twin, multi-domain operations twin.
+- AI function: Security event detection and policy-triggered response.
+- Self-healing relevance: Dynamic policy-based mitigation at management/orchestration layer.
+
+Limitations:
+Less O-RAN-specific; adapt concepts to A1/E2/O1/O2 and telecom operator workflows.

@@ -1,0 +1,1281 @@
+VOICE NOTE SCRIPT FOR EXPLAINING THE PROJECT FROM ZERO TO ADVANCED LEVEL
+
+Project title:
+AI-Native Self-Healing Open Radio Access Network, or O-RAN, using a Digital Twin.
+
+Use this script as a voice-note prompt. It is written so that ChatGPT voice mode can explain the full project from beginner level to advanced level without assuming prior telecom knowledge.
+
+Start by saying this:
+
+I want you to explain this project from zero to advanced level in simple language. First explain what a normal mobile network is, then explain what O-RAN is, then explain where this project sits inside the O-RAN architecture, then explain every block, its input, output, and purpose, and finally explain exactly what was built, what evidence was produced, what AI/ML was used, and what claims are safe.
+
+Important final project status:
+
+The current final presentation is:
+outputs/presentations/O-RAN_AI_Native_Self_Healing_Final_Expert_Review.pptx
+
+The project index is:
+PROJECT_INDEX.md
+
+The final evidence report is:
+docs/FINAL_EVIDENCE_REPORT.md
+
+The expert-facing CSV evidence pack is:
+outputs/expert_csv/00_EXPERT_CSV_INDEX.csv
+
+The paper and standards integration map is:
+docs/PAPER_CITATION_INTEGRATION_MAP.md
+
+The controlled fault-injection evidence is:
+outputs/evidence/controlled_fault_evaluation.md
+
+The clean 30-minute decision CSV is:
+outputs/evidence/flexric_kpm_30min_decisions.csv
+
+The final 30-minute FlexRIC report is:
+outputs/expert_csv/flexric_30min_report_summary.csv
+
+The current benchmark source used by the presentation is:
+outputs/expert_csv/flexric_30min_balanced_benchmark_model_metrics.csv
+
+Do not use files from _local_quarantine for presentation. They are historical drafts, old runs, stale outputs, duplicate reports, or earlier versions.
+
+One-line explanation of the project:
+
+This project is an AI-native self-healing O-RAN digital twin that ingests FlexRIC and Open RAN KPM telemetry, detects anomalies, performs root-cause analysis, recommends safe healing actions, checks safety guards, and exports auditable xApp-style decisions.
+
+Best practical product framing:
+
+This is a RAN Assurance Copilot and xApp Safety Sandbox. It helps a telecom lab, private 5G team, student team, or vendor test AI-based self-healing policies before trusting them in a real RIC or SMO workflow.
+
+Safe claim:
+
+We built a prototype-level, evidence-backed, laptop-runnable O-RAN digital twin with AI/ML-based anomaly detection, online self-learning, RCA, guarded healing, FlexRIC KPM ingestion, controlled fault injection, CSV/JSON/SQLite audit evidence, and a final expert presentation.
+
+Do not overclaim:
+
+This is not a production operator RAN deployment.
+This does not yet perform real E2 actuation on a live operator network.
+This does not use deep neural networks in the active decision path.
+This does not implement real physical beamforming control or antenna weight generation.
+The controlled fault-injection results are lab/replay validation, not independent operator fault truth.
+
+
+SECTION 1: EXPLAIN MOBILE NETWORKS FROM ABSOLUTE BASICS
+
+A mobile network is the system that lets a phone connect to the internet or make calls wirelessly.
+
+At the most basic level:
+
+1. The phone is called the UE, or User Equipment.
+2. The radio tower talks to the phone using radio waves.
+3. The radio tower connects into the operator network.
+4. The operator network connects to the internet, voice services, and other users.
+
+In 5G, the radio tower is not just one box. It is split into multiple logical parts:
+
+1. O-RU, or Open Radio Unit.
+2. O-DU, or Open Distributed Unit.
+3. O-CU, or Open Centralized Unit.
+4. 5G Core.
+5. RIC, or RAN Intelligent Controller.
+6. SMO, or Service Management and Orchestration.
+
+The reason 5G and O-RAN split the network is flexibility. Instead of buying one closed black-box base station from one vendor, O-RAN allows different components, vendors, software apps, AI models, and control systems to work together through open interfaces.
+
+
+SECTION 2: WHAT IS O-RAN IN SIMPLE TERMS?
+
+O-RAN means Open Radio Access Network.
+
+RAN means the radio access network. It is the part between the user device and the core network.
+
+Open means the interfaces and architecture are designed to be more modular, interoperable, and programmable.
+
+The big idea of O-RAN:
+
+Instead of a closed network where the base station makes all decisions internally, O-RAN exposes telemetry and control points so software applications can monitor the network, detect problems, and optimize behavior.
+
+This is why O-RAN is important for AI:
+
+1. It exposes network measurements.
+2. It has controllers where AI applications can run.
+3. It supports xApps and rApps.
+4. It allows policy-driven and data-driven control.
+5. It enables self-healing, self-optimization, and automation.
+
+
+SECTION 3: THE MAIN O-RAN ARCHITECTURE BLOCKS
+
+Explain the O-RAN architecture like a city traffic system.
+
+The UE is like a car.
+The O-RU is like the road entrance where cars physically enter.
+The O-DU is like a local traffic controller deciding lane usage and immediate scheduling.
+The O-CU is like a city-level controller managing sessions and mobility.
+The 5G Core is like the central highway and internet gateway.
+The Near-RT RIC is like a fast traffic control room that reacts within milliseconds to seconds.
+The Non-RT RIC and SMO are like the long-term city planning office that sets policies, training, and optimization goals.
+
+
+SECTION 4: O-RU, OR OPEN RADIO UNIT
+
+What it is:
+
+The O-RU is the physical radio unit. It is closest to the antenna. It handles the radio-frequency side of the network.
+
+Physical meaning:
+
+This is where signals become radio waves and radio waves become signals. It connects to antennas, power amplifiers, radio front-end hardware, and low-level radio processing.
+
+Technical role:
+
+The O-RU handles Low-PHY functions, RF transmission and reception, frequency-specific behavior, timing, and antenna-side indicators.
+
+Inputs:
+
+1. Downlink IQ samples or low-PHY signals from the O-DU.
+2. Timing and synchronization information.
+3. Management/configuration data through OAM or M-plane.
+4. Radio control parameters such as frequency, power, and beam-related settings in real systems.
+
+Outputs:
+
+1. Uplink radio samples or processed low-level radio measurements toward the O-DU.
+2. RF health metrics.
+3. Radio signal quality indicators.
+4. Alarms or measurements related to RF, antenna, interference, temperature, or timing.
+
+Important KPIs:
+
+RSRP: Reference Signal Received Power. It indicates signal strength.
+RSRQ: Reference Signal Received Quality. It indicates signal quality.
+RSSI: Received Signal Strength Indicator. It measures total received power.
+SINR: Signal-to-Interference-plus-Noise Ratio. It indicates how clean the signal is.
+EVM: Error Vector Magnitude. It measures modulation quality.
+Noise floor: background radio noise.
+Interference power: unwanted radio energy.
+Antenna VSWR: antenna or cable mismatch indicator.
+RF temperature: hardware temperature.
+Beam misalignment: whether the radio beam is pointing poorly or blocked.
+
+Where this project touches O-RU:
+
+This project does not control real O-RU hardware. It does not generate real physical antenna weights. It does not perform real beamforming actuation.
+
+What it does do:
+
+It models O-RU/Low-PHY-style symptoms inside the digital twin. It monitors RF-like and beam-quality indicators such as RSRP, RSRQ, SINR, BLER, EVM, interference power, beam misalignment, VSWR, and RF temperature.
+
+In the project:
+
+oran_twin/spectrum_monitor.py detects spectrum, interference, and beam-misalignment-style symptoms.
+oran_twin/engine.py includes O-RU and radio-link signatures.
+oran_twin/rca.py maps radio and RF symptoms to root causes.
+oran_twin/healing.py recommends safe actions such as dynamic spectrum reassignment.
+outputs/expert_csv/supporting_benchmark_inventory.csv includes the O-RU/Low-PHY benchmark summary.
+
+Layman example:
+
+If the phone signal becomes weak or noisy, the system does not physically turn the antenna beam. Instead, it notices symptoms like low SINR and high BLER and recommends a safer recovery action such as moving traffic to a cleaner radio resource.
+
+
+SECTION 5: O-DU, OR OPEN DISTRIBUTED UNIT
+
+What it is:
+
+The O-DU is the distributed unit. It sits between the O-RU and O-CU. It handles fast radio scheduling and medium-access decisions.
+
+Physical meaning:
+
+The O-DU is usually deployed near the cell site or edge location because it must react quickly.
+
+Technical role:
+
+The O-DU handles RLC, MAC, and High-PHY functions.
+
+RLC means Radio Link Control. It handles buffering, segmentation, retransmission support, and reliable transfer.
+MAC means Medium Access Control. It decides who gets radio resources and when.
+High-PHY includes higher physical-layer processing such as coding, modulation support, and radio-quality adaptation.
+
+Inputs:
+
+1. Uplink data and measurements from the O-RU.
+2. Downlink packets or instructions from the O-CU.
+3. Scheduling requirements.
+4. Service targets such as latency, throughput, and reliability.
+5. Radio quality information like CQI, HARQ retransmission, PRB utilization, BLER, and SINR.
+
+Outputs:
+
+1. Scheduling decisions.
+2. Resource allocation.
+3. Data streams to O-RU or O-CU.
+4. KPI measurements for monitoring.
+
+Important KPIs:
+
+PRB utilization: how much radio resource is used.
+CQI: Channel Quality Indicator.
+HARQ retransmission rate: how often packets must be retransmitted.
+RLC buffer size: how much data is waiting.
+MAC scheduler delay: delay caused by scheduling pressure.
+BLER: Block Error Rate.
+SINR: radio signal quality.
+
+Where this project touches O-DU:
+
+This project models O-DU/High-PHY and MAC symptoms through KPI features and signatures.
+
+In the project:
+
+oran_twin/engine.py detects cell congestion, high-PHY retransmission, scheduler pressure, and timing pressure.
+oran_twin/rca.py maps those symptoms to root causes such as cell_congestion, radio_link_degradation, or timing_drift.
+oran_twin/healing.py recommends actions such as load_balance_neighbor_cell, dynamic_spectrum_reassignment, or monitoring escalation.
+outputs/expert_csv/supporting_benchmark_inventory.csv includes the O-DU/High-PHY benchmark summary.
+
+Layman example:
+
+If too many users are using the same cell, PRB utilization goes high, latency increases, and throughput drops. The project detects that as cell congestion and recommends load balancing or safer radio-resource handling.
+
+
+SECTION 6: O-CU, OR OPEN CENTRALIZED UNIT
+
+What it is:
+
+The O-CU is the centralized unit. It handles higher-layer RAN functions and is split into control-plane and user-plane roles.
+
+O-CU-CP:
+
+CP means Control Plane. It manages signaling, mobility, RRC, handovers, and connection control.
+
+O-CU-UP:
+
+UP means User Plane. It handles user data forwarding, PDCP, SDAP, and QoS flow behavior.
+
+Inputs:
+
+1. Control messages from UEs through O-DU.
+2. User-plane packets.
+3. Mobility state.
+4. QoS and slice requirements.
+5. Session and bearer information.
+
+Outputs:
+
+1. RRC control decisions.
+2. Handover behavior.
+3. QoS flow handling.
+4. User-plane forwarding toward the 5G Core.
+5. KPI telemetry for mobility and session quality.
+
+Important KPIs:
+
+RRC setup failure percentage.
+RRC re-establishment rate.
+Mobility ping-pong percentage.
+PDCP discard rate.
+PDCP reordering delay.
+SDAP QoS flow drop percentage.
+QFI violation percentage.
+Session drop rate.
+
+Where this project touches O-CU:
+
+This project models O-CU mobility-control and user-plane/session symptoms.
+
+In the project:
+
+oran_twin/engine.py includes O-CU mobility and QoS/session signatures.
+oran_twin/rca.py maps them to handover_instability or qos_session_degradation.
+outputs/expert_csv/supporting_benchmark_inventory.csv includes the O-CU intelligence benchmark summary.
+
+Layman example:
+
+If a user keeps bouncing between two cells, that is called handover ping-pong. The project can detect that kind of mobility instability and recommend RRC mobility policy tuning instead of blindly changing radio resources.
+
+
+SECTION 7: 5G CORE
+
+What it is:
+
+The 5G Core is the central network behind the RAN. It handles authentication, session management, routing, internet connectivity, policy, and user-plane forwarding.
+
+Important 5G Core functions:
+
+AMF: Access and Mobility Management Function. It handles registration, mobility, and access control.
+SMF: Session Management Function. It manages PDU sessions.
+UPF: User Plane Function. It forwards actual user data between the RAN and the internet or private network.
+
+Interfaces:
+
+NG-C is control-plane connectivity between O-CU-CP and the 5G Core.
+NG-U is user-plane connectivity between O-CU-UP and UPF.
+N3 is the user-plane tunnel between RAN and UPF.
+N6 is the interface from UPF to the external data network or internet.
+
+Inputs:
+
+1. Registration requests.
+2. PDU session setup requests.
+3. User data packets.
+4. Policy and slice information.
+5. Mobility/session state.
+
+Outputs:
+
+1. Session acceptance or rejection.
+2. User-plane forwarding.
+3. Core KPIs.
+4. Control-plane delay or failure indicators.
+
+Important KPIs:
+
+AMF registration failure percentage.
+AMF paging delay.
+PDU session setup time.
+PDU session failure percentage.
+UPF CPU utilization.
+UPF packet drop percentage.
+GTP tunnel loss.
+N3 RTT.
+N6 internet RTT.
+Transport jitter.
+
+Where this project touches the 5G Core:
+
+This project models core/transport impact and separates RAN-side faults from core-side faults.
+
+In the project:
+
+oran_twin/core_transport.py assesses core and transport risk.
+oran_twin/rca.py maps AMF, PDU, UPF, N3, and N6 problems to root causes.
+outputs/expert_csv/supporting_benchmark_inventory.csv includes the core/transport benchmark summary.
+
+Layman example:
+
+If latency is high, it may not be because the radio is bad. It may be because the backhaul, UPF, or internet path is degraded. This project tries to identify that difference.
+
+
+SECTION 8: NEAR-RT RIC
+
+What it is:
+
+Near-RT RIC means Near-Real-Time RAN Intelligent Controller.
+
+Near-real-time usually means control decisions in the range of about 10 milliseconds to 1 second, depending on the use case.
+
+The Near-RT RIC is where xApps run.
+
+xApps:
+
+xApps are small applications that monitor and optimize RAN behavior. Examples include traffic steering, anomaly detection, interference management, load balancing, handover optimization, and resource optimization.
+
+Inputs:
+
+1. E2 telemetry from O-CU and O-DU.
+2. KPM measurements.
+3. Network state.
+4. Policy hints from Non-RT RIC or SMO.
+
+Outputs:
+
+1. xApp decisions.
+2. Suggested control actions.
+3. E2-style control messages in production systems.
+4. A1 policy or monitoring decisions.
+
+Interfaces:
+
+E2 connects Near-RT RIC to O-CU and O-DU.
+A1 connects Non-RT RIC to Near-RT RIC for policy guidance.
+
+Where this project fits:
+
+This project mainly behaves like an xApp-style self-healing decision engine plus a digital-twin validation layer.
+
+In the project:
+
+xapp_runner.py creates xApp-style output.
+oran_twin/engine.py is the main decision engine.
+tools/stream_live_oai_to_engine.py streams live or replay telemetry into the engine.
+outputs/flexric_xapp_longrun_decisions.jsonl stores xApp-style decisions.
+outputs/evidence/flexric_kpm_30min_decisions.csv is the clean CSV export.
+
+Layman example:
+
+The Near-RT RIC is like a fast operations room. Our project is like an intelligent assistant inside or beside that room. It watches the KPIs, detects problems, identifies the likely cause, and recommends a controlled healing action.
+
+
+SECTION 9: NON-RT RIC AND SMO
+
+What they are:
+
+Non-RT RIC means Non-Real-Time RAN Intelligent Controller.
+SMO means Service Management and Orchestration.
+
+They handle slower, policy-level, lifecycle-level, and training-level decisions.
+
+Non-RT RIC runs rApps.
+
+rApps:
+
+rApps are applications for longer-term optimization, model training, policy generation, configuration planning, and analytics.
+
+Inputs:
+
+1. Historical telemetry.
+2. Long-term performance trends.
+3. SLA targets.
+4. Policy goals.
+5. Model training data.
+
+Outputs:
+
+1. A1 policies for Near-RT RIC.
+2. Model updates.
+3. Configuration recommendations.
+4. Long-term optimization decisions.
+
+Where this project touches Non-RT RIC and SMO:
+
+This project does not implement a production SMO. It models SMO/Non-RT governance behavior and policy checks.
+
+In the project:
+
+oran_twin/smo_governance.py models SMO-style approval, rollback, and governance logic.
+oran_twin/policy_orchestrator.py models policy-level safety.
+oran_twin/dtn_orchestrator.py models digital twin network readiness.
+outputs/expert_csv/supporting_benchmark_inventory.csv includes the SMO governance benchmark summary.
+
+Layman example:
+
+The Near-RT RIC may say, "I want to fix this now." The SMO/Non-RT layer asks, "Is this allowed, safe, policy-compliant, and reversible?"
+
+
+SECTION 10: IMPORTANT O-RAN INTERFACES
+
+E2 interface:
+
+Connects Near-RT RIC to O-CU and O-DU.
+Used for telemetry and control.
+In this project, FlexRIC KPM is used as evidence for the E2/KPM path.
+
+A1 interface:
+
+Connects Non-RT RIC to Near-RT RIC.
+Used for policies, enrichment, and guidance.
+In this project, anomaly decisions can produce a1_policy-style output.
+
+O1 interface:
+
+Connects SMO to managed O-RAN network functions.
+Used for operations, administration, and management.
+In this project, O1 is represented conceptually through configuration, governance, policy, and audit outputs.
+
+Open Fronthaul:
+
+Connects O-DU to O-RU.
+Includes user-plane, control-plane, synchronization-plane, and management-plane ideas.
+In this project, fronthaul delay and timing symptoms are represented through KPI fields such as timing_offset_us and fronthaul_delay_ms.
+
+NG-C:
+
+Control-plane connection from O-CU-CP to the 5G Core.
+
+NG-U:
+
+User-plane connection from O-CU-UP to the 5G Core, usually toward UPF.
+
+N3:
+
+User-plane tunnel between RAN and UPF.
+
+N6:
+
+UPF to external internet or data network.
+
+
+SECTION 11: WHAT THIS PROJECT ACTUALLY DOES IN THE O-RAN ARCHITECTURE
+
+The project is not a replacement for the whole O-RAN network.
+
+It is an AI-native self-healing layer that sits logically around:
+
+1. Near-RT RIC / xApp layer.
+2. Digital twin validation layer.
+3. Non-RT RIC / SMO-style policy and safety layer.
+4. Telemetry ingestion pipeline from O-RAN KPM/FlexRIC-like measurements.
+5. Evidence and audit export layer.
+
+The project monitors symptoms across:
+
+1. O-RU/Low-PHY: RF quality, interference, beam-misalignment symptoms.
+2. O-DU/High-PHY/MAC/RLC: PRB usage, scheduler pressure, HARQ, CQI, BLER.
+3. O-CU-CP: RRC setup, re-establishment, mobility ping-pong, handover instability.
+4. O-CU-UP: PDCP discard, SDAP QoS flow drops, session drops.
+5. 5G Core/Transport: AMF, PDU session setup, UPF, GTP, N3, N6, backhaul delay.
+6. RIC/xApp layer: decision output, conflict detection, safety gating.
+7. SMO/Non-RT layer: policy, governance, automation safety, rollback thinking.
+
+
+SECTION 12: PROJECT DATA FLOW
+
+The project data flow is:
+
+Step 1: Collect or create telemetry.
+
+Telemetry can come from:
+1. FlexRIC KPM monitor output.
+2. OAI-style logs.
+3. Open RAN KPM-style dataset rows.
+4. Local digital-twin simulation.
+5. Controlled fault-injection evaluation.
+
+Step 2: Normalize telemetry.
+
+Different sources have different formats. The project converts them into a common KPI schema.
+
+Tools:
+tools/normalize_telemetry.py
+tools/oai_metric_bridge.py
+oran_twin/telemetry_adapters.py
+
+Step 3: Feed normalized KPIs into the decision engine.
+
+Main engine:
+oran_twin/engine.py
+
+Step 4: Digital twin assesses service impact.
+
+The digital twin checks whether service targets are being violated.
+
+Main module:
+oran_twin/digital_twin.py
+
+Step 5: Anomaly detection runs.
+
+The system checks whether KPI values look abnormal.
+
+Modules:
+oran_twin/detector.py
+oran_twin/self_learning.py
+oran_twin/drift_monitor.py
+oran_twin/spectrum_monitor.py
+oran_twin/core_transport.py
+
+Step 6: Root-cause analysis runs.
+
+RCA means the system asks:
+What is most likely causing this problem?
+
+Module:
+oran_twin/rca.py
+
+Possible root causes include:
+cell_congestion
+backhaul_degradation
+radio_link_degradation
+packet_loss_degradation
+handover_instability
+spectrum_interference
+radio_quality_degradation
+timing_drift
+edge_overload
+qos_session_degradation
+core_control_plane_degradation
+upf_user_plane_congestion
+transport_path_degradation
+
+Step 7: Healing recommendation is created.
+
+Module:
+oran_twin/healing.py
+
+Possible healing actions include:
+reroute_transport_path
+load_balance_neighbor_cell
+dynamic_spectrum_reassignment
+rrc_mobility_policy_tuning
+increase_monitoring
+
+Step 8: Safety gates check whether automation is allowed.
+
+Modules:
+oran_twin/automation_safety.py
+oran_twin/security_guard.py
+oran_twin/conflict_manager.py
+oran_twin/policy_orchestrator.py
+oran_twin/smo_governance.py
+oran_twin/dtn_orchestrator.py
+
+These guards check:
+AML attack risk.
+Model drift.
+xApp conflicts.
+SLA risk.
+Timing risk.
+Spectrum risk.
+Policy constraints.
+Digital twin readiness.
+Automation safety score.
+
+Step 9: Decision is exported.
+
+Outputs:
+JSONL decision stream.
+CSV decision export.
+SQLite audit database.
+Markdown/JSON reports.
+Presentation artifacts.
+
+
+SECTION 13: WHAT IS A DIGITAL TWIN HERE?
+
+A digital twin is a software mirror of the network.
+
+It is not the real network. It is a model that tracks the network state and tests decisions before trusting them.
+
+In this project, the digital twin uses KPI values and service profiles to estimate:
+
+1. Is the service healthy?
+2. Is latency too high?
+3. Is throughput too low?
+4. Is packet loss too high?
+5. Is jitter too high?
+6. Is the action likely to reduce risk?
+7. Should automation be allowed, blocked, or only monitored?
+
+Why this matters:
+
+In telecom, bad automation can break service. A digital twin gives a safer place to reason before taking action.
+
+
+SECTION 14: WHAT AI/ML IS USED?
+
+The project uses AI/ML at prototype level.
+
+AI/ML used:
+
+1. Online self-learning statistical model.
+File: oran_twin/self_learning.py
+Purpose: Learns normal KPI baselines and detects deviations.
+
+2. Isolation Forest benchmark.
+File: scripts/benchmark_ml_models.py
+Purpose: Unsupervised anomaly detection benchmark.
+
+3. Random Forest benchmark.
+File: scripts/benchmark_ml_models.py
+Purpose: Supervised baseline comparison.
+
+4. Gradient Boosting benchmark.
+File: scripts/benchmark_ml_models.py
+Purpose: Supervised baseline comparison.
+
+5. Drift monitoring.
+File: oran_twin/drift_monitor.py
+Purpose: Detects whether live data is moving away from the learned baseline.
+
+6. Rule-plus-AI style physical KPI signatures.
+File: oran_twin/engine.py
+Purpose: Adds telecom-aware reasoning for faults like congestion, radio-link degradation, backhaul degradation, timing pressure, and interference.
+
+7. Safety scoring.
+File: oran_twin/automation_safety.py
+Purpose: Combines risk signals into an automation safety score.
+
+Important explanation:
+
+The project does not use deep learning neural networks in the active decision path. That is not a weakness if explained correctly. The current prototype uses classical ML, online learning, statistical anomaly detection, drift detection, and telecom-domain signatures because they are explainable and suitable for a safety-critical demo.
+
+Why some ML models perform poorly:
+
+In the balanced benchmark, the test fault is radio_link_degradation. That fault is held out from supervised training. So Random Forest and Gradient Boosting perform poorly because they never saw that fault family during training. Isolation Forest and online self-learning perform better because they detect deviation from normal behavior rather than memorizing fault classes. The guarded engine performs well because it uses physical KPI signatures such as low SINR and high BLER.
+
+Correct benchmark row to remember:
+
+Guarded engine sample:
+Precision 1
+Recall 1
+F1 1
+False-positive rate 0
+
+
+SECTION 15: WHAT WAS MONITORED?
+
+The project monitors these categories:
+
+Radio quality:
+SINR, BLER, RSRP, RSRQ, RSSI, noise floor, EVM, interference power.
+
+Cell load:
+PRB utilization, throughput, latency.
+
+Packet and transport:
+Packet loss, jitter, backhaul delay, transport jitter.
+
+O-DU and High-PHY:
+CQI, HARQ retransmissions, RLC buffer, MAC scheduler delay, timing offset, fronthaul delay.
+
+O-RU and Low-PHY:
+Beam quality score, beam misalignment, antenna VSWR, RF temperature.
+
+O-CU:
+RRC setup failure, RRC re-establishment, PDCP discard, PDCP reordering delay, SDAP QoS flow drop, QFI violation, session drop, mobility ping-pong.
+
+Core and transport:
+AMF registration failure, AMF paging delay, PDU session setup time, PDU session failure, UPF CPU, UPF packet drop, GTP tunnel loss, N3 RTT, N6 RTT.
+
+Security and safety:
+AML attack indicators, drift state, xApp conflicts, timing risk, spectrum risk, policy approval, automation safety score.
+
+
+SECTION 16: ROOT CAUSES AND HEALING ACTIONS
+
+Root cause:
+The reason the system thinks the fault is happening.
+
+Healing action:
+The recommended action to reduce or recover from the fault.
+
+Examples:
+
+If PRB utilization is high and latency is high:
+Root cause: cell_congestion
+Healing action: load_balance_neighbor_cell
+
+If backhaul delay is high:
+Root cause: backhaul_degradation
+Healing action: reroute_transport_path
+
+If SINR is low and BLER is high:
+Root cause: radio_link_degradation
+Healing action: dynamic_spectrum_reassignment
+
+If packet loss and jitter are high but backhaul is not the main cause:
+Root cause: packet_loss_degradation
+Healing action: reroute_transport_path
+
+If handover failures or ping-pong mobility are high:
+Root cause: handover_instability
+Healing action: rrc_mobility_policy_tuning
+
+If RF interference indicators are high:
+Root cause: spectrum_interference
+Healing action: dynamic_spectrum_reassignment
+
+
+SECTION 17: CONTROLLED FAULT INJECTION
+
+Controlled fault injection means we deliberately create known faults in a repeatable way, record their start and end times, and check if the system detects the right issue.
+
+It is not random.
+It is like creating an answer key before an exam.
+
+Project schedule:
+
+300s to 600s:
+backhaul_degradation
+Expected healing: reroute_transport_path
+
+780s to 1080s:
+packet_loss_degradation
+Expected healing: reroute_transport_path
+
+1260s to 1560s:
+cell_congestion
+Expected healing: load_balance_neighbor_cell
+
+1740s to 2040s:
+radio_link_degradation
+Expected healing: dynamic_spectrum_reassignment
+
+2160s to 2340s:
+handover_instability
+Expected healing: rrc_mobility_policy_tuning
+
+Current controlled fault-injection result:
+
+Records: 2400
+True positives: 1380
+True negatives: 1020
+False positives: 0
+False negatives: 0
+Precision: 1
+Recall: 1
+F1-score: 1
+False-positive rate: 0
+RCA accuracy when detected: 0.8761
+Healing accuracy when detected: 0.8761
+
+How to explain the 0.8761:
+
+Detection is perfect in this controlled replay test, but root-cause and healing accuracy are slightly lower because some symptoms overlap. For example, backhaul, transport, spectrum, and radio symptoms can sometimes look similar in KPI-only replay data. The project discloses this instead of hiding it, which makes the evidence more credible.
+
+
+SECTION 18: FINAL FLEXRIC 30-MINUTE EVIDENCE
+
+The strongest run is:
+flexric_kpm_30min
+
+Evidence:
+
+JSONL decision records: 71900
+SQLite decision records: 71900
+SQLite feature rows: 87927
+Data quality events: 0
+Normal decisions: 71532
+Anomaly decisions: 368
+Main root cause: backhaul_degradation
+Main healing action: reroute_transport_path
+Automation decision for anomalies: allow_with_monitoring
+RIC control output for anomalies: a1_policy
+
+Training data:
+
+Base live/lab KPM rows: 73692
+Augmented training rows: 442152
+Scenarios per base row: 6
+Fault scenario types:
+cell_congestion
+backhaul_degradation
+radio_link_degradation
+packet_loss_degradation
+handover_instability
+
+How to explain this:
+
+The project collected a sustained 30-minute FlexRIC KPM run, normalized the metrics, processed them through the decision engine, stored decisions, created training data, trained a self-learning model, and benchmarked the result.
+
+
+SECTION 19: WHERE EXACTLY IS THIS DEPLOYED IN THE O-RAN DIAGRAM?
+
+If someone asks, "Which block is your project inside?", answer like this:
+
+The project is not inside only one block. It is a software control and assurance layer that logically sits around the Near-RT RIC/xApp and Non-RT RIC/SMO workflow, while monitoring KPIs from O-RU, O-DU, O-CU, and core/transport layers.
+
+More precise answer:
+
+Primary deployment target:
+Near-RT RIC xApp-style self-healing application.
+
+Secondary deployment target:
+Non-RT RIC/SMO-style policy, safety, and model-governance support.
+
+Telemetry source:
+O-CU/O-DU KPM data through the E2/FlexRIC path, plus normalized OAI/Open RAN dataset telemetry.
+
+Digital twin role:
+External validation and what-if testing layer before automation is trusted.
+
+Audit role:
+Stores decisions in JSONL, CSV, SQLite, and reports for expert review.
+
+O-RAN blocks touched:
+
+O-RU:
+Radio quality, RF symptoms, interference, beam-misalignment indicators.
+
+O-DU:
+MAC/RLC/High-PHY scheduling, PRB, HARQ, CQI, BLER, timing/fronthaul pressure.
+
+O-CU:
+RRC mobility, PDCP, SDAP, QoS flow, session drop symptoms.
+
+Near-RT RIC:
+xApp-style anomaly/RCA/healing decision engine.
+
+Non-RT RIC/SMO:
+Policy, governance, safety, drift, automation approval, model lifecycle.
+
+5G Core:
+AMF, PDU session, UPF, N3/N6 transport impact monitoring.
+
+
+SECTION 20: INPUT AND OUTPUT OF EVERY PROJECT BLOCK
+
+Block: Telemetry input
+Input: FlexRIC KPM logs, OAI-style logs, CSV replay, Open RAN KPM-style rows, simulated KPI rows.
+Output: Raw telemetry files.
+Purpose: Bring network measurements into the project.
+
+Block: Normalizer
+Input: Raw telemetry in different formats.
+Output: Common KPI schema.
+Purpose: Make all data sources usable by the same engine.
+
+Block: Service profile loader
+Input: configs/service_profiles.json.
+Output: service targets for eMBB, URLLC, mMTC, FWA, V2X.
+Purpose: Make the system service-aware.
+
+Block: Digital twin
+Input: normalized KPIs and service target.
+Output: service health, SLA violation status, risk hints.
+Purpose: Mirror the network state and test whether service is degraded.
+
+Block: Anomaly detector
+Input: normalized KPIs.
+Output: anomaly score and reasons.
+Purpose: Detect if the network is behaving abnormally.
+
+Block: Online self-learning model
+Input: normal KPI history and current KPI vector.
+Output: anomaly score, learned reasons, possible RCA match.
+Purpose: Learn normal behavior and detect deviations without needing every fault label.
+
+Block: Spectrum monitor
+Input: radio KPIs such as SINR, BLER, RSRP, RSRQ, EVM, interference, beam misalignment.
+Output: spectrum state, DSA policy, interference source.
+Purpose: Detect radio/spectrum-side degradation.
+
+Block: Core/transport twin
+Input: AMF, PDU, UPF, GTP, N3, N6, transport KPIs.
+Output: core/transport risk state and likely cause.
+Purpose: Separate radio-side problems from core or transport problems.
+
+Block: Drift monitor
+Input: KPI stream over time.
+Output: drift status.
+Purpose: Detect whether the data distribution has changed.
+
+Block: Root-cause analyzer
+Input: anomaly reasons, KPI values, digital-twin reasons.
+Output: root cause and explanation.
+Purpose: Explain why the problem is happening.
+
+Block: Healing recommender
+Input: root cause and service profile.
+Output: healing action and reason.
+Purpose: Recommend what to do next.
+
+Block: Security guard
+Input: anomaly state and AML/security features.
+Output: security decision.
+Purpose: Prevent unsafe automation during possible attack or spoofing.
+
+Block: xApp conflict manager
+Input: proposed action and other xApp-like control intents.
+Output: conflict decision.
+Purpose: Prevent two xApps from fighting each other.
+
+Block: Policy orchestrator
+Input: action, root cause, SLA state, policy profiles.
+Output: policy approval or hold.
+Purpose: Make sure action follows governance rules.
+
+Block: SMO governance
+Input: action and safety context.
+Output: approval, rollback, or governance status.
+Purpose: Model operator-style lifecycle control.
+
+Block: Automation safety scorer
+Input: AML, drift, xApp conflict, SLA, timing, spectrum, policy, DTN state.
+Output: automation safety score and final decision.
+Purpose: Decide whether to allow, block, or monitor an action.
+
+Block: xApp-style output
+Input: final decision object.
+Output: JSONL decision rows, CSV exports, SQLite records.
+Purpose: Make the output auditable and close to RIC/xApp workflow.
+
+Block: Report and presentation generator
+Input: JSON/CSV evidence.
+Output: Markdown report and PowerPoint presentation.
+Purpose: Make the project explainable to experts.
+
+
+SECTION 21: HOW TO EXPLAIN THE PRESENTATION SLIDE ABOUT ML BENCHMARKS
+
+Say this:
+
+The benchmark slide compares different model styles on a balanced test set. The test set includes normal rows and a held-out fault family called radio_link_degradation.
+
+Online self-learning performs well because it learns the normal KPI baseline and detects deviations.
+
+The guarded engine performs well because it combines anomaly scoring with telecom physical signatures such as low SINR and high BLER.
+
+Isolation Forest also performs well because it is unsupervised anomaly detection; it does not need to know every fault class in advance.
+
+Random Forest and Gradient Boosting perform poorly because they are supervised classifiers and the radio_link_degradation class is not present in training. So they do not generalize well to that unseen fault family.
+
+This is not a contradiction. It is actually an important lesson:
+
+For self-healing O-RAN, relying only on supervised fault labels is risky because future faults may not exactly match training data. A safer architecture combines normal-baseline anomaly detection, telecom-domain signatures, digital twin validation, and safety gates.
+
+
+SECTION 22: HOW TO EXPLAIN BEAMFORMING BOUNDARY
+
+If someone asks about beamforming, say this:
+
+The project includes AI-assisted beam/radio-link degradation detection, not real physical beamforming control.
+
+It monitors beam-misalignment indicators, signal quality, interference, SINR, BLER, RSRP, RSRQ, and related RF symptoms.
+
+But it does not generate real antenna array weights or control a real O-RU antenna beam. That would require RF hardware, channel state information, antenna array modeling, and PHY-layer control hooks.
+
+The honest claim is:
+
+Digital twin based beam/radio quality monitoring and healing recommendation.
+
+Do not claim:
+
+Real physical O-RU beamforming actuation.
+
+
+SECTION 23: HOW TO EXPLAIN WHY THIS PROJECT IS AI-NATIVE
+
+AI-native does not mean every line is a neural network.
+
+In this project, AI-native means the network management loop is designed around data, models, prediction, safety, and feedback.
+
+The loop is:
+
+Sense:
+Collect KPIs from RAN/core/transport.
+
+Understand:
+Normalize KPIs, detect anomalies, infer root cause.
+
+Predict or assess:
+Use digital twin and self-learning to estimate risk.
+
+Decide:
+Recommend a healing action.
+
+Guard:
+Check AML, drift, xApp conflict, policy, timing, spectrum, and automation safety.
+
+Act or monitor:
+Allow with monitoring, block, or recommend controlled action.
+
+Learn:
+Store evidence, create training CSVs, update self-learning models, benchmark models.
+
+This is the AI-native closed loop.
+
+
+SECTION 24: HOW TO EXPLAIN THE PHYSICAL CONNECTIVITY
+
+Physical/technical flow:
+
+Phone connects wirelessly to the O-RU antenna.
+O-RU sends radio data through Open Fronthaul to O-DU.
+O-DU handles fast scheduling and radio resource control at MAC/RLC/High-PHY level.
+O-DU connects to O-CU through F1.
+O-CU handles RRC, PDCP, SDAP, mobility, and user-plane/control-plane split.
+O-CU connects to the 5G Core through NG-C and NG-U.
+UPF connects to the internet through N6.
+Near-RT RIC connects to O-CU/O-DU through E2.
+Non-RT RIC/SMO connects through A1/O1 policy and management paths.
+
+Project overlay:
+
+The project takes KPM telemetry from the RIC/FlexRIC/OAI-style path, normalizes it, runs AI/digital-twin logic, and outputs xApp-style decisions.
+
+
+SECTION 25: HOW TO EXPLAIN THE FINAL STATE OF THE FOLDER
+
+The main folder is organized as:
+
+oran_twin:
+Core project logic.
+
+tools:
+Data conversion, ingestion, report generation, controlled fault-injection tools.
+
+scripts:
+Repeatable workflows such as validation, benchmark, training, FlexRIC/OAI pipeline, and final presentation build.
+
+configs:
+Service profiles, policies, fault scenarios, topology, model registry.
+
+docs:
+Only final expert-facing docs remain visible.
+
+data:
+Current final training data and current raw telemetry evidence remain visible.
+
+outputs:
+Current final evidence, benchmark, model, report, presentation, and audit database remain visible.
+
+_local_quarantine:
+Historical runs, stale decks, older reports, duplicate artifacts, old outputs, and earlier drafts.
+
+
+SECTION 26: HOW TO EXPLAIN THE CURRENT FINAL EVIDENCE SET
+
+Open first:
+PROJECT_INDEX.md
+
+Presentation:
+outputs/presentations/O-RAN_AI_Native_Self_Healing_Final_Expert_Review.pptx
+
+Final technical proof:
+docs/FINAL_EVIDENCE_REPORT.md
+
+Citation and integration proof:
+docs/PAPER_CITATION_INTEGRATION_MAP.md
+
+30-minute report:
+outputs/expert_csv/flexric_30min_report_summary.csv
+
+Benchmark:
+outputs/expert_csv/flexric_30min_balanced_benchmark_model_metrics.csv
+
+Controlled fault injection:
+outputs/expert_csv/controlled_fault_summary.csv
+outputs/expert_csv/controlled_fault_window_results.csv
+outputs/evidence/controlled_fault_decisions.csv
+
+Final training CSV:
+data/training/flexric_kpm_30min_augmented_training.csv
+
+Final model:
+outputs/expert_csv/model_inventory.csv
+
+Clean decision CSV:
+outputs/evidence/flexric_kpm_30min_decisions.csv
+
+
+SECTION 27: EXACT WORDING TO USE IN FRONT OF EXPERTS
+
+Use this:
+
+My project is an AI-native self-healing O-RAN digital twin. It ingests FlexRIC KPM telemetry, converts it into a common KPI schema, runs AI/ML-assisted anomaly detection, performs root-cause analysis, recommends guarded healing actions, and exports xApp-style decisions with CSV, JSON, and SQLite audit evidence.
+
+It is mainly positioned around the Near-RT RIC xApp layer and Non-RT RIC/SMO safety-policy layer. It monitors symptoms from O-RU, O-DU, O-CU, and core/transport layers, but it does not claim production-grade live E2 actuation yet.
+
+The project proves a closed-loop prototype: telemetry comes in, digital twin and AI models assess it, RCA identifies likely causes, healing recommendations are generated, safety gates validate whether automation is allowed, and all decisions are logged for audit.
+
+
+SECTION 28: IF ASKED WHAT IS NEW OR VALUABLE
+
+Answer:
+
+The value is not just anomaly detection. The value is the full closed-loop workflow:
+
+1. O-RAN-aware telemetry ingestion.
+2. Digital twin validation.
+3. AI/ML anomaly detection.
+4. Root-cause analysis.
+5. Healing recommendation.
+6. Safety gates before action.
+7. xApp-style decision export.
+8. Controlled fault-injection validation.
+9. Evidence-backed presentation and audit files.
+
+This makes it useful as a RAN Assurance Copilot or xApp Safety Sandbox.
+
+
+SECTION 29: ADVANCED TECHNICAL EXPLANATION
+
+At advanced level, explain it like this:
+
+The system implements a closed-loop RAN assurance pipeline. The data plane starts with raw KPM or OAI-style measurements. These are normalized into a common feature vector that includes RAN radio KPIs, PHY/MAC/RLC indicators, O-CU session/mobility metrics, and core/transport metrics.
+
+The decision engine combines multiple reasoning layers:
+
+1. Service-profile target comparison.
+2. Baseline anomaly scoring.
+3. Online self-learning deviation scoring.
+4. Physical KPI fault signatures.
+5. Spectrum/resource anomaly assessment.
+6. Core/transport risk assessment.
+7. Drift monitoring.
+8. Root-cause inference.
+9. Healing recommendation.
+10. Automation safety scoring.
+
+This is important because a single model is not enough for safe RAN automation. A supervised classifier may fail on unseen fault families. A purely rule-based system may be too rigid. A fully autonomous action engine may be unsafe. The project combines model-based, rules-based, and policy-based reasoning to make the loop explainable and safer.
+
+
+SECTION 30: ADVANCED BLOCK-BY-BLOCK MAPPING TO FILES
+
+O-RAN service profiles:
+configs/service_profiles.json
+oran_twin/profiles.py
+
+Topology:
+configs/topology.json
+
+Simulation:
+oran_twin/simulator.py
+
+Telemetry normalization:
+tools/normalize_telemetry.py
+oran_twin/telemetry_adapters.py
+
+FlexRIC/OAI bridge:
+tools/oai_metric_bridge.py
+tools/stream_live_oai_to_engine.py
+scripts/run_kpm_evidence_pipeline.ps1
+
+Main decision engine:
+oran_twin/engine.py
+
+Digital twin:
+oran_twin/digital_twin.py
+
+Anomaly detection:
+oran_twin/detector.py
+oran_twin/self_learning.py
+
+Drift:
+oran_twin/drift_monitor.py
+
+Spectrum and radio:
+oran_twin/spectrum_monitor.py
+
+Core and transport:
+oran_twin/core_transport.py
+
+O-CU impact:
+oran_twin/slice_impact.py
+
+RCA:
+oran_twin/rca.py
+
+Healing:
+oran_twin/healing.py
+
+Security and AML:
+oran_twin/security_guard.py
+
+xApp conflict:
+oran_twin/conflict_manager.py
+
+SMO and policy:
+oran_twin/smo_governance.py
+oran_twin/policy_orchestrator.py
+
+Automation safety:
+oran_twin/automation_safety.py
+
+Persistence:
+oran_twin/persistence.py
+
+Controlled fault injection:
+tools/controlled_fault_injection_evaluation.py
+
+Benchmarking:
+scripts/benchmark_ml_models.py
+scripts/benchmark_phy_odu_generalization.py
+scripts/benchmark_oru_low_phy_generalization.py
+scripts/benchmark_ocu_generalization.py
+scripts/benchmark_xapp_arbitration.py
+scripts/benchmark_smo_governance.py
+scripts/benchmark_core_transport.py
+
+Presentation:
+scripts/build_expert_final_presentation.mjs
+
+
+SECTION 31: HOW TO END THE EXPLANATION
+
+End with:
+
+So, in simple words, this project watches an O-RAN-like network, understands when something is going wrong, explains why it is going wrong, suggests how to heal it, checks whether the action is safe, and records everything for audit. It is not claiming to be a production operator system yet. It is a strong prototype and evidence-backed sandbox for AI-native self-healing O-RAN operations.
+
+In the O-RAN architecture, the project mainly sits at the RIC/xApp and SMO/policy intelligence layers, while monitoring KPI symptoms from O-RU, O-DU, O-CU, and core/transport. That is why it is best described as a RAN Assurance Copilot and xApp Safety Sandbox using a digital twin.

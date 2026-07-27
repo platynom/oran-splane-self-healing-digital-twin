@@ -1,0 +1,58 @@
+{
+  "scenarios": [
+    {
+      "fault_id": "F001",
+      "fault_type": "cell_congestion",
+      "cell_id": "CELL_A",
+      "start_t": 35,
+      "end_t": 75,
+      "severity": 0.85,
+      "description": "Roadside load surge raises PRB utilization and latency."
+    },
+    {
+      "fault_id": "F002",
+      "fault_type": "backhaul_degradation",
+      "cell_id": "CELL_B",
+      "start_t": 80,
+      "end_t": 115,
+      "severity": 0.75,
+      "description": "Transport degradation raises latency, jitter and packet loss."
+    },
+    {
+      "fault_id": "F003",
+      "fault_type": "edge_overload",
+      "edge_node": "MEC_2",
+      "start_t": 120,
+      "end_t": 155,
+      "severity": 0.8,
+      "description": "MEC overload impacts URLLC/V2X compute-dependent services."
+    },
+    {
+      "fault_id": "F004",
+      "fault_type": "handover_instability",
+      "cell_id": "CELL_D",
+      "start_t": 160,
+      "end_t": 195,
+      "severity": 0.7,
+      "description": "Mobility corridor instability increases handover failures."
+    },
+    {
+      "fault_id": "F005",
+      "fault_type": "timing_drift",
+      "cell_id": "CELL_C",
+      "start_t": 205,
+      "end_t": 235,
+      "severity": 0.65,
+      "description": "PTP/Sync drift affects jitter-sensitive services."
+    },
+    {
+      "fault_id": "F006",
+      "fault_type": "spectrum_interference",
+      "cell_id": "CELL_B",
+      "start_t": 18,
+      "end_t": 32,
+      "severity": 0.7,
+      "description": "Radio interference lowers SINR, raises BLER and reduces usable spectrum capacity."
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+Paper: Time-Sensitive Networking Digital Twin for STRIDE-Based Security Testing
+Publication/source: EURASIP Journal on Information Security, Springer, 2025
+Pages visually reviewed: 17
+Visual assets: _visual_review/P_Springer_2025_Time_Sensitive_Networking_Digital_Twin_for_STRIDE_Based_Security_Testing/ALL_PAGES_CONTACT_SHEET.png
+
+Core idea:
+This paper builds a TSN digital twin for security testing using STRIDE. It is useful for O-RAN fronthaul/midhaul timing, deterministic transport, PTP, and security simulation.
+
+Page-wise visual review:
+- Pages 1-2: Abstract/introduction and TSN twin motivation.
+- Pages 3-4: TSN protocol classification and STRIDE threat mapping tables.
+- Pages 5-7: Digital twin architecture, PTP clock hierarchy, and transport timing visuals.
+- Pages 8-10: Implementation and attack/experiment setup.
+- Pages 11-12: Test workflow diagrams.
+- Pages 13-14: Measurement graphs and STRIDE testing results.
+- Pages 15-17: Discussion, limitations, references.
+
+Important visuals:
+- TSN protocol classification table.
+- STRIDE threat mapping table.
+- TSN Digital Twin architecture.
+- PTP Grandmaster/Boundary/Slave clock figure.
+- Experiment graphs.
+
+Relation to our project:
+O-RAN fronthaul and transport depend on strict latency, jitter, and timing. This paper supports a timing/security twin that can test PTP/TSN attacks and misconfigurations before they damage RAN behavior.
+
+Project mapping:
+- Layer: Open fronthaul, midhaul, transport, timing/synchronization.
+- Twin object: TSN/PTP/timing twin.
+- AI function: Timing anomaly detection and threat simulation.
+- Self-healing relevance: Switch timing source, isolate faulty timing domain, trigger PTP/SyncE remediation.
+
+Limitations:
+Not O-RAN-specific, but highly transferable to fronthaul/transport timing security.

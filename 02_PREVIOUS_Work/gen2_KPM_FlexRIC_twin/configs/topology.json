@@ -1,0 +1,52 @@
+{
+  "cells": [
+    {
+      "cell_id": "CELL_A",
+      "site": "Metro-Road-North",
+      "lat": 12.9716,
+      "lon": 77.5946,
+      "capacity_prb": 100,
+      "edge_node": "MEC_1",
+      "neighbors": ["CELL_B", "CELL_C"]
+    },
+    {
+      "cell_id": "CELL_B",
+      "site": "Metro-Road-East",
+      "lat": 12.9762,
+      "lon": 77.6033,
+      "capacity_prb": 100,
+      "edge_node": "MEC_1",
+      "neighbors": ["CELL_A", "CELL_D"]
+    },
+    {
+      "cell_id": "CELL_C",
+      "site": "Industrial-Zone",
+      "lat": 12.9659,
+      "lon": 77.5871,
+      "capacity_prb": 110,
+      "edge_node": "MEC_2",
+      "neighbors": ["CELL_A", "CELL_D"]
+    },
+    {
+      "cell_id": "CELL_D",
+      "site": "Highway-Exit",
+      "lat": 12.9821,
+      "lon": 77.5918,
+      "capacity_prb": 90,
+      "edge_node": "MEC_2",
+      "neighbors": ["CELL_B", "CELL_C"]
+    }
+  ],
+  "edge_nodes": [
+    {
+      "edge_node": "MEC_1",
+      "latency_budget_ms": 3,
+      "compute_capacity": 100
+    },
+    {
+      "edge_node": "MEC_2",
+      "latency_budget_ms": 4,
+      "compute_capacity": 85
+    }
+  ]
+}

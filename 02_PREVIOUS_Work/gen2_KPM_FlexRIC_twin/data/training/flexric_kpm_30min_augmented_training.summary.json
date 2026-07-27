@@ -1,0 +1,16 @@
+{
+  "input": "outputs\\flexric_xapp_longrun_normalized.csv",
+  "output": "data\\training\\flexric_kpm_30min_augmented_training.csv",
+  "base_live_lab_rows": 73692,
+  "training_rows": 442152,
+  "scenarios_per_base_row": 6,
+  "fault_types": [
+    "backhaul_degradation",
+    "cell_congestion",
+    "handover_instability",
+    "normal",
+    "packet_loss_degradation",
+    "radio_link_degradation"
+  ],
+  "honest_note": "Normal rows come from FlexRIC lab KPM capture. Fault rows are controlled synthetic augmentations used for local model stress-testing; they are not production fault truth."
+}

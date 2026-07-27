@@ -1,0 +1,838 @@
+FIRST SUBMITTED TO “IEEE NETWORK” IN OCTOBER, 2022
+
+1
+
+This is the author’s version of an article that has been accepted for publication in IEEE Network. Changes were made to this version by
+the publisher prior to publication. The final published article is available at https://doi.org/10.1109/MNET.131.2200528
+
+Failure Management in 5G RAN:
+Challenges and Open Research Lines
+Antonio Tarrı́as, Sergio Fortes, and Raquel Barco
+Abstract— Failure management is one of the key aspects
+in cellular networks. 5G technology is introducing several novel
+features that will cause the occurrence of new problems in the
+network. The objective of the present work is to identify which
+features may lead to potential network failures. In this way,
+failure management has been addressed by identifying a subset
+of problems in the RAN domain and classifying them under
+the categories of coverage, mobility, and interference. They were
+analyzed in order to know how they are in line with 3GPP
+specifications. Based on this, the present work proposes a novel
+failure management approach, applying it for failure simulation
+and impact analysis over the network performance.
+Index Terms—5G, Failure, RAN, mmWave, Beamforming.
+
+I NTRODUCTION
+Global mobile network data traffic has grown in the last
+years, resulting in an increment in the number of connections
+as well as high data rate applications. Therefore, cellular
+networks have increasingly experienced a huge amount of
+enhancements and novel features in each new generation.
+Similarly, 5G aims to serve all the new use cases (UCs).
+5G UCs have been categorized into: eMBB (enhanced Mobile
+Broadband), that provides high capacity and data rates in zones
+where there are no mobility requirements; URLLC (Ultra-High
+Reliability and Low Latency), covering services that are especially sensitive to latency and reliability; and mMTC (Massive
+Machine-Type Communications), where low individual data
+rates are provided to a huge number of devices. Nevertheless,
+the number of UCs is not limited to the aforementioned three.
+There exist lots of them which do not completely fit in any
+of the UCs identified above, for instance, services that need
+reliability but are not sensible to latency constraints. This
+becomes even more challenging for the 5G network to provide
+availability to each service. Thus, the network definitely has to
+be really flexible. This has been one of the design principles,
+along with forward compatibility and ultra-lean design. Not
+only the variety of services but also the wide range of carrier
+frequencies call for network flexibility and adaptability.
+However, 5G related problems have not been assessed in
+depth yet. The heterogeneity of 5G scenarios, where different
+UCs cooperate, will cause the occurrence of different types
+of network failures. In the same way, the novel features
+which have been introduced in 5G such as millimeter wave
+(mmWave) spectrum, beamforming or Time Division Duplex
+(TDD) will bring better capacities to the network but also
+will require to be properly managed to mitigate their negative counterparts, for instance, high path losses inherent to
+mmWave signals.
+The authors are with the Telecommunication Research Institute (TELMA),
+University of Malaga, Spain
+
+Considering this complexity, Machine Learning (ML)
+techniques, also a remarkably growing area, have to be applied for failure management [1] in order to learn from data
+instead of being based on pre-programmed instructions. In
+this way, they can provide automation to failure management
+mechanisms by reducing the human action. Large quantity
+of network data can be exploited using Deep Learning (DL)
+approaches [2] and benefit from unsupervised techniques to
+process unlabeled data. This is, together with the integration
+of Artificial Intelligence (AI) for network management, one of
+the main topics which is also being addressed with regards to
+6G [3]. The scope Self-Organizing Networks (SON) paradigm
+is achieving ML techniques to aid the root cause analysis,
+which has been the hardest part of the failure management
+process [4], leading many works to only address a common
+problem: the cell outage detection, without further analysis.
+Similarly, 5G will allow to the localization of users
+as well as other context information coming from different
+sources, where the Big Data analysis comes into play. This
+information will need to be retrieved either in real time
+or from historic databases and adapted to a unified format.
+Conventionally, failure modeling has been studied from a
+self-healing perspective, where the network is able to detect
+a failure, determine its cause, and take actions in order to
+compensate it until it is fully recovered [5]. Nevertheless,
+the network has mostly been the only source of information,
+being, for example, the localization of users, an inaccurate
+estimation. Conversely, some approaches aim to predict Radio
+Link Failures (RLF) based on radio measurements (RSRP,
+RSRQ, RSSI...), but they do not consider lower layers aspects
+(e.g., beamforming) or mmWave spectrum [6].
+The contribution of the present work is to identify potential problems in 5G networks by assessing which of the
+novel features will be relevant from a failure management
+perspective. Hence, this paper illustrates how users’ locations
+play an important role in either of the identified failures. In
+addition, this work analyses how the proposed failures fit into
+the standards, considering which information is reported by
+UEs to the network as well as which parameters are configurable. Then, a failure identification framework is proposed
+and used for modeling the impact of a subset of these failures
+on a complete network simulation.
+
+5G C HALLENGES
+This work focuses on the Radio Access Network (RAN),
+known as New Radio (5G-NR). Given the mobile nature of
+users and the changing environment, wireless communications
+become more susceptible to failures, especially in 5G, where
+novel technologies are included.
+
+©Copyright 2022 IEEE. Personal use of this material is permitted. Permission from IEEE must be obtained for all other uses, in any
+current or future media, including reprinting/republishing this material for advertising or promotional purposes, creating new collective
+works, for resale or redistribution to servers or lists, or reuse of any copyrighted component of this work in other works.
+
+FIRST SUBMITTED TO “IEEE NETWORK” IN OCTOBER, 2022
+
+36.300
+
+LTE+5G
+
+2
+
+Interference Mngmt
+I
+Remote
+Cross-Link
+Interference Interference
+H Management
+Management
+
+38.300
+
+Self-optimization
+Load balancing
+Load reporting
+Handover adaptation/
+Reselection configuration
+
+eIMTA
+
+38.331 (RRC)
+Beam measurements Events
+Performance
+Network
+Mngmt
+Mngmt
+
+28.552
+28.540
+Rates Counters
+MRO Intra- Inter-system UDR RIM
+SSB Index
+28.541
+system
+F Unnecessary Beam info BWP 28.554
+Ping-pong G SSB Periodicity KPIs
+
+A
+
+OSS (Operations Support System)
+Self-Optimization
+
+BC
+DE
+
+Self-Healing
+
+23.288
+Monitoring NWDAF
+
+ML
+Techniques
+
+Compensation
+and Recovery
+Actions
+
+Cell level
+KPIs UE Locations Context Info
+metrics
+UE
+Beamforming Interference
+Reports Info
+Management Info
+
+Scenario
+Information
+
+Fig. 1. 5G heterogeneous scenario with presence of failures. The left part of the figure represents where different failures may occur within a complex
+scenario. The right part details the process of collecting information and metrics from the scenario and passing them to the OSS. The top right boxes relate
+the OSS functions with the 3GPP specifications. Moreover, the red boxes refer to LTE topics, green boxes to 5G topics and blue boxes to LTE/5G common
+topics. 3GPP specification numbering is included for each topic. In addition, letters locate the problems described in Section 5G Challenges and Table I on
+the scenario.
+
+The following general definition established by [7] has
+been assumed. A problem is a situation of service degradation,
+for instance, congestion. A problem is caused by the fault
+cause (failure), for example, bad parameter configuration.
+There are novel features who have been introduced in
+5G as enablers for better network performance, that may entail
+some disadvantages. Regarding mmWaves, they provide higher
+data rates, lower latencies as well as more capacity, since
+channels are larger at those bands. However, it is important
+to overcome their high path losses and their susceptibility to
+obstacles or outdoor to indoor propagation. For this purpose,
+beamforming techniques aim to minimize those effects by
+steering the signals onto predefined directions to improve the
+signal strength. However, beamforming schemes require the
+exchange of signaling between the gNBs and UEs in order
+to properly estimate the channel quality and maintain the
+link even when the users are moving. In this sense, TDD
+operation enables information transmission continuously in
+both directions using the same channel, so reciprocity can
+be assumed between downlink (DL) and uplink (UL) , and
+signaling overload is reduced. Although it may seem an ideal
+solution, the use of TDD causes interference between close
+gNBs if their patterns (i.e., time slots used for DL and UL) are
+not synchronized. Therefore, getting such higher capabilities
+is not always simple and some drawbacks must be addressed.
+For the sake of clarity, all identified problems within
+this paper have been classified into three main categories:
+coverage, mobility, and interference. They are highly related
+to user positions and scenarios density and heterogeneity. On
+the one hand, Table I contains the most relevant identified
+problems related to 5G, together with a potential cause. On
+the other hand, Fig. 1 represents a complete 5G scenario,
+where key failures are depicted. In order to identify them in
+
+the figure, each of them are labeled with a diferent letter (AG). Here, it is illustrated how an urban micro cell operating
+at mmWave frequency is being blocked by a building, so
+the beam becomes unsuitable at that location for the user.
+Here, beam switching procedures should be triggered when
+detecting the situation (See B, Fig. 1). In addition, two gNBs
+are providing coverage to close areas. Interference could likely
+occur as a result of the use of TDD, so it would be necessary
+to align their TDD patterns (See I, Fig. 1). These categorized
+failures will be extended in the following subsections.
+TABLE I
+I DENTIFIED P ROBLEMS BY C ATEGORIES
+Category
+Coverage
+
+Problem
+
+(A) Long time initial access
+(B) Reduction in cell power
+(C) Coverage hole
+Mobility
+(D) Too late/early beam switching
+(E) Too late/early beam failure detect.
+(F) Inter-system unnecessary HO
+(G) Inter-system ping-pong
+Interference (H) Remote interference
+(I) Cross-link interference (CLI)
+
+Potential Cause
+Beamset config.
+HW/Config. problem
+Beam blockage
+Beam reporting config.
+L1 thresholds config.
+HO thresholds config.
+HO thresholds config.
+Out of sync TDD
+Out of sync TDD
+
+Coverage
+Operators carefully plan each cell location to maximize
+the coverage with an optimal number of sites. Nevertheless,
+cells may fail or be improperly configured, so coverage
+problems will take place.
+Here, the first identified failure is (A) Long time Initial
+Access (IA), and it is related to beamforming configuration.
+Thus, Synchronization Signals Bursts (SSB) are transmitted in
+
+FIRST SUBMITTED TO “IEEE NETWORK” IN OCTOBER, 2022
+
+a sweeping procedure, by changing beam direction for each
+SSB transmission with a periodicity (𝑇𝑆𝑆 ). For very small 𝑇𝑆𝑆 ,
+the impact of the SSB is considerable, with up to 43 percent of
+the resources allocated. In contrast, it enables a larger number
+of opportunities in which a UE can receive synchronization
+signals. This improves reactivity related to the tracking and the
+transmission of Channel State Information Reference Signals
+(CSI-RSs). If the number of directions to be swept is reduced,
+the beam sweeping procedure is completed in a single burst
+and 𝑇𝑆𝑆 does not impact the time required to perform initial
+access (𝑇𝐼 𝐴) [8].
+Then, (B) Reduction in cell power is a problem that arised
+in previous generations. It usually depends on a hardware
+or wiring problem, but it could also occur due to a wrong
+parameter configuration. Regarding the latter, the beamforming configuration can be a possible cause in 5G. Failures
+can appear not only due to the larger number of antenna
+elements forming the antenna arrays, but also the beamforming
+scheme. Here, being 𝐾 𝐵𝐹 the number of Radio Frequency
+(RF) chains and 𝑀 the number of antenna elements, there
+are three possible schemes: analog (𝐾 𝐵𝐹 = 1), allowing only
+one direction at a given time; digital (𝐾 𝐵𝐹 = 𝑀), enabling
+the transceiver to direct beams at many directions; or hybrid
+(𝐾 𝐵𝐹 < 𝑀), where the transceiver can simultaneously use
+𝐾 𝐵𝐹 directions. The latter two means that the transmission
+power must be reduced by the number of directions/beams,
+because the total power constraint applies to the beams on
+balance.
+Similarly, (C) Coverage holes cannot be considered a
+novelty with respect to previous generation, but their probability of occurrence noticeably increases because of mmWaves
+propagation constraints. Their difficulty to surpass obstacles or
+their sensibility to external conditions will lead to this problem.
+Thus, it will be necessary to increase the capacity of coverage
+hole detection, even to detect beam-level coverage holes. The
+concept of occasional obstacle arises, so it cannot be assumed
+that holes are permanent on the scenario.
+Mobility
+The mobility is an inherent characteristic of users in
+cellular networks, and it can lead to many problems as well.
+Although the occurrence of mobility problems in previous generations has been mainly caused by handover (HO) problems,
+the use of beamforming may lead to problems in concentrated
+areas such as beam failures, which will need to be seamlessly
+fixed [9].
+Although (D) beam switching is designed to be triggered automatically during operation, NR also supports UE
+triggered mechanisms to recover from beam failure. This
+occurs when the quality of beam pair link(s) of an associated
+control channel falls low enough (e.g., comparison with a
+threshold, time-out of an associated timer). (E) Too early/late
+beam failure can be considered particular cases of radio link
+failure (RLF). When a UE declares RLF being the cause a
+beam failure recovery problem, it is indicated to the network,
+therefore network notes it for future parameter optimization.
+Regarding too early beam failure determination, it leads to
+
+3
+
+a latency increase, whose severity is determined by the use
+cases. In contrast, too late beam failure determination causes
+a connection outage, so recovery mechanisms take longer time.
+(F) Inter-System Unnecessary HO arises with 5G-LTE
+networks coexistence. Handovers to LTE are performed, especially in cases of low link quality or lack of coverage.
+Triggering inter-system HO unnecessarily causes a decrease
+on system performance. Nevertheless, regarding Release 18,
+3GPP System Aspects Working Groups (WGs) are promoting
+the concept of inter-Radio Access Technologies (RATs) HOs
+since inter-system and intra-system HOs only consider the core
+network changes and they are not as useful as RAT changes
+from a management perspective [10].
+In a similar way, (G) Inter-System Ping-pong HO is also
+impactful, mainly in borders of coverage zones, where RATs
+recurrently change their availability (e.g., outside of a city). It
+is accounted when an UE is handed over back to the source
+cell within a predefined limited time.
+Interference
+Interference has been an issue in every generation, but
+it has been traditionally addressed by acting on cells’ transmission powers and tilt angles. However, two interference
+problems derive from the use of TDD, which is key for 5G
+networks operation as previously mentioned.
+On the one hand, (H) Remote Interference (RI) refers
+to the case where distant cells interfere each other. This is
+typically caused by atmospheric phenomena which affects to
+signals by allowing them to reach distances farther than normal
+when they are trapped in the atmospheric duct [11]. DL and
+UL transmissions are usually separated by a guard interval to
+avoid interference, but in case of long distances, propagation
+delay may exceed the guard interval, causing interference to
+cells which are sited far away.
+On the other hand, (I) Cross-Link Interference (CLI) is
+a problem appearing between close sites. There are two types
+of CLI: gNB-gNB (or DL-to-UL), which means that an UE
+is transmitting data in UL to a gNB, but another gNB is
+transmitting data in DL, so its higher power may affect the
+UE transmission; and UE-UE (or UL-to-DL) interference, that
+happen when a UE is receiving DL data, but another close UE
+is transmitting in UL. They come out where TDD patterns
+are different from each other, and synchronization may not
+be the solution because of the different network services and
+requirements.
+A PPLICABLE S TANDARDS
+This section describes how the aforementioned network
+problems are considered and addressed in the network management approach defined by the 5G standards. 3GPP defines
+the standards for 5G. Nevertheless, there are some aspects
+missing which are particularly handled by networks operators
+(e.g., HO algorithms). Similarly, network failures are not
+usually described by 3GPP but the operators and literature
+spot them and work on their mitigation. Regarding 3GPP,
+specification numbering is used to divide subjects. Firstly,
+
+FIRST SUBMITTED TO “IEEE NETWORK” IN OCTOBER, 2022
+
+LTE subjects are contained in 36 series and NR aspects are
+introduced in 38 series, called Radio technology beyond LTE.
+Here, an overall description of each technology is provided
+in TS 36.300 [12] and TS 38.300 [11]. In Fig. 1, blue boxes
+refer to aspects that are shared between LTE and NR, while
+red and green boxes refer to specific aspects for LTE and NR,
+respectively. In the figure, numbers refers to specific 3GPP
+specifications where each issue is described. There are several
+differences between them as LTE is more evolved than NR, but
+the experience allows to become aware of some key aspects.
+An heterogeneous scenario is presented in the figure, including
+the three main UCs (eMBB, URLLC, mMTC) stated above.
+Then, information coming from the scenario is collected and
+used as input for OSS (Operations Support System) operation,
+where different actions could be taken for self-optimization
+and self-healing purposes.
+In terms of mobility, it also introduces indications related
+to beamforming. The measurement model defined by a two
+layer scheme for beam measurement: layer 1 filtering, where
+the UE measures a configurable number of beams to derive
+their quality; and layer 3 (RRC, Radio Resource Control)
+filtering, where cell quality is derived from multiple beams.
+But, Mobility Robustness Optimization (MRO), which is a
+3GPP-defined feature, will need further development in order to efficiently support beam management, including beam
+reporting, beam switching, beam failure detection, and beam
+failure recovery procedures.
+Regarding Radio Link Failure (RLF), UEs perform Radio
+Link Monitoring (RLM) basing on reference signals and signal
+quality thresholds configured by the network. UEs are in
+charge of declaring RLF when meeting one of the multiple
+criteria (e.g., expiry of a timer started after indication of radio
+problems from the physical layer). RLF cause determination
+functionality is able to distinguish causes and report them,
+even informing about if they are related to an unsuccessful
+beam failure recovery.
+Furthermore, it is key to retrieve information about the
+system performance. For this aim, 3GPP defines performance
+measurements, including performance indicators, which contain data aggregated over a group of NFs, or measurement
+families, which relate to a given functionality. This way, it
+is possible to obtain valuable data from the network perspective (e.g., radio resource utilization, number of RRC
+connections, counters about mobility management, etc). The
+latter includes the number of requested HO, distinguishing
+between successful and failed, as well as intra/inter-system,
+too early/late, unnecessary, and ping-pong HOs. In contrast,
+limited measurements are defined in terms of beamforming,
+except for the number of UE related to the SSB beam index,
+which can enable awareness about user physical distribution,
+which helps, for example, to detect people clustering.
+Network Management Overview
+The concept of SON (Self-Organizing Networks) was
+introduced by 3GPP in Release 8, and it encompasses SelfConfiguration, Self-Optimization, and Self-Healing. Firstly,
+Self-Optimization aims to provide a high quality user ex-
+
+4
+
+perience while improving the system capacity, as well as
+to minimize human intervention to achieve it. Here, both
+specifications about LTE and 5G [11, 12] contain information
+about load balancing and MRO, where inter-RAT HO has
+changed its name to inter-system HO. However, application
+layer solutions, which means that high level applications
+indicate their real-time requirements, are feasible for choosing
+the RAT from UE side, for example, not enabling the mmWave
+range if a chat application is not going to need it, but doing
+so when a video streaming application is running. Although
+they are not initially considered from network management,
+application layer inputs are likely to be used as context
+information in a near future.
+Interference, both remote and cross-link, are present in
+[11] and not in [12], which shows that they were not considered in LTE as TDD was only implemented in particular
+countries due to spectrum limitations.
+Furthermore, the RRC protocol defines the events which
+are reported to the network: A2, serving cell becomes worse
+than threshold; A3, Neighbor becomes offset better than
+special cell; A4, neighbor becomes better than threshold; and
+so on. These events are commonly used for HO algorithms
+configuration. Operators configure the thresholds and select
+the events to trigger (e.g., events A2 and A4 must be met).
+Although most events were defined for LTE, it is appreciable
+the event I1 (Interference becomes higher than threshold),
+which is appearing for the first time in specifications.
+Moreover, 3GPP Release 15 introduced a new architecture element: NWDAF (Network Data Analytics Function),
+in charge of data collection based on subscription to events
+provided by the AMF (Access and Mobility Management
+Function); SMF (Session Management Function); PCF (Policy
+Control Function); UDM (Unified Data Management); AF
+(Application Function); and OAM (Operations, Administration, and Maintenance), responsible for retrieval of information
+from data repositories and network functions (NF), as well as
+provision of analytics to NF and AF. This function is expected
+to pave the way towards the potential of ML techniques to
+enable network automation [13], becoming an element to
+be taken into account from the self-healing perspective. 5G
+establishes a Unified Data Repository (UDR), where Network
+Functions (NF) can store and retrieve data, becoming an
+important source of information for network management
+procedures. Classes and attributes are defined to have an
+overview about configuration possibilities (e.g., Bandwidth
+parts, Synchronization Signal Burst (SSB) periodicity, perbeam information, etc). Beam-related information extends to
+beam azimuth, beam tilt, and vertical and horizontal beam
+widths. Besides, some key parameters and timers for optimization and healing purposes are : qOffsetRangeList, in charge of
+specifying the metric (RSRP, RSRQ, or SINR) and the signal
+(SSB or CSI-RS) to be applied when evaluating candidates
+for cell reselection or triggering conditions for measurement
+reporting; threshXHighP/threshXLowP, a threshold used by
+UE when reselecting towards a higher/lower priority RAT or
+frequency band; or tReselectionNr, a cell reselection timer that
+can be multiplied with a factor if the UE is in high mobility
+
+FIRST SUBMITTED TO “IEEE NETWORK” IN OCTOBER, 2022
+
+5
+
+Fig. 2. Failure Modeling approach.
+
+state.
+F RAMEWORK A ND R ESULTS
+The lack of 5G Standalone deployments is the major
+drawback for research. This leads to a difficult collection
+of information, including datasets, and promotes the use of
+simulators for this purpose. As for this study, ns-3 simulator
+tool [14] can be used to emulate some of the previous failure
+situations while retrieving metrics at physical layer. Regarding
+simulation tools, many of them are introducing propagation
+models that work at higher frequencies, as well as other
+changes at lower layers, for example, numerologies, since
+that they were previously defined in Release 15. But these
+simulation tools generally missing some of the key functionalities: HO, beamforming management aspects or system level
+perspective.
+Problem identification requires data monitoring. The gaps
+between UCs will complicate the problem identification due
+to the fact that a network configuration may be beneficial for
+some UCs while degrading the performance of others. Besides
+that, a failure can happen in a limited area, for example,
+one beam is being blocked by an obstacle. It is important
+to point out that this example will have more probability of
+occurrence owing to the less robust propagation characteristics
+in comparison with LTE. This limited blocking problem,
+which can be considered as a coverage hole, will affect only
+few users. Thus, the network will be often unable to detect
+them since general metrics (e.g., cell-level metrics) may not
+be affected. To detect this kind of failures, trace collection
+will need to be precise, which results in higher resource
+consumption. Similarly, if problems occur in a short period of
+time, they will also require to increase temporal granularity of
+network data collection. All this becomes even more complex
+with the number of variables to monitor.
+In this respect, ML techniques will play a key role. They
+have traditionally been divided into three types: classification,
+clustering, and regression. Classification is referred to supervised mechanisms that requires labeled data to train the model,
+so it will be less applicable to these problems at first due to
+
+the lack of already classified datasets. In contrast, clustering
+means unsupervised mechanisms where raw data can be used
+as input. This may be extremely important to differentiate
+the UCs, as mentioned before, really different among them.
+However, regression techniques will help us to predict how
+network will react in the presence of given characteristics, so
+the operators will be aware of the quality of experience they
+will be able to offer.
+Here, the approach illustrated in Fig. 2 is proposed for the
+failure modeling of 5G networks. It consists of configuration
+sets, where the first is considered normal and the rest have
+intentionally misconfigured parameters. This is not affordable
+in commercial networks because it involves service degradations and outages, but in simulations or pilot networks it
+could provide insights on how the novel features may cause
+problems. The proposed framework aims to exploit metrics
+from network, users and context, being the latter not fully
+exploited thus far and whose acquisition is usually complex.
+This means that data from different sources will be different
+in terms of nature and format; therefore, they have to be
+integrated and unified. Then, the interpretation of the data
+could be done both via human experts, and statistical and MLbased algorithms, with the objective of detecting problems and
+identifying their causes. Thus, it is possible to compare all the
+reported information in both situations (normal and degraded)
+and check which metrics are affected the most in each case.
+In this sense, simulation offers the possibility to easily access
+them, for instance, the exact location of each user. Finally,
+this offline phase based on simulation will benefit failure
+management by extrapolating the algorithms to real network
+deployments, where some parts are immediate (e.g., data
+formatting and integration) and others (e.g., problem detection
+thresholds) may need adjustment to the real environment.
+mmWave Outage
+Firstly, Fig. 3 depicts the SINR degradation caused by
+a temporal cell outage under the scenario remarked with a
+dotted red square in Fig. 2. It is important to highlight that
+three cells are sited in the same place with different azimuth
+
+FIRST SUBMITTED TO “IEEE NETWORK” IN OCTOBER, 2022
+
+6
+
+30
+25
+20
+SINR (dB)
+
+angles, and the user is moving at constant speed following the
+path represented in violet color. The path shows that the best
+cell quality according to user’s position is given by cell A,
+but then the user moves to the coverage area of cell B. This is
+appreciable in the SINR graph, where the user starts reporting
+the orange cell as the best after the outage occurrence. Due
+to the fact that the simulation is working at 28 GHz carrier
+frequency, it is noticeable that the other cells SINR levels are
+mostly not suitable for the user. Similarly, marked peaks might
+be considered an obstacle, so the action to be taken should be
+different from the previous case as well as UC-dependent.
+
+15
+10
+5
+
+8 beams
+16 beams
+0 Beamforming Periodicity
+100 ms
+5
+200 ms
+3 m/s
+
+8 beams
+
+UE Speed
+
+40
+
+16 beams
+
+10 m/s
+
+Fig. 4. SINR degradation due to beamforming periodicity increase.
+
+SINR(dB)
+
+20
+
+0
+
+20
+A
+B
+C
+
+40
+
+92
+
+94
+
+96
+
+98
+Time
+
+100
+
+102
+
+interference” (Low Intfc.) means that cells in the scenario are
+configured with different TDD patterns in order to minimize
+the interference. Moreover, “high interference” (High Intfc.)
+corresponds to the case where all cells were configured with
+the same TDD pattern, so the interference would be maximum.
+For the latter, it can be seen that interference leads to the
+appearance of up to three peaks on the SINR PDF, while the
+former pattern smooths those peaks, which means that SINR
+values are condensed in a smaller range.
+
+Fig. 3. Perceived SINR by a user during an outage at mmWave carrier
+frequency.
+
+Beamforming Configuration
+
+Cross-Link Interference
+Finally, the CLI problem, depicted in the dotted green
+square of Fig. 2 is addressed. It is important to consider that
+TDD interference affects edge and center users differently.
+Global impact on mean SINR, computed from all users,
+is negligible, although it is considerable for certain users.
+This means that CLI will be difficult to detect from the
+network side since network metrics may not be affected. Fig. 5
+represents the Probability Density Function (PDF) of the SINR
+measured by the UEs located at the cell center and edge under
+two different TDD pattern configurations In the figure, “low
+
+0.03
+PDF
+
+On the other side, the periodicity with which UEs change
+the beam they are connected to is relevant, especially when
+they are moving perpendicularly to the beams directions, as
+shown in the dotted blue square of Fig. 2. The impact of
+changing the periodicity of computing the beamforming vector
+was simulated as it can be observed in Fig. 4. Thus, the left
+part of the figure represents the case where UE speed is 3
+m/s while the right part corresponds to 10 m/s UE speed. In
+the figure, the SINR median, percentile, and extreme values
+are represented at different gNB beamforming configurations,
+8 and 16 beams, respectively. It is significant the relation
+between the UE speed, especially its angular velocity, and
+the SINR degradation experienced when the periodicity of
+beamforming selection was increased. The beamforming configuration with 16 beams is generally better, but it requires
+more antenna elements and signaling.
+
+Case
+Edge Low Intfc.
+Edge High Intfc.
+Center Low Intfc.
+Center High Intfc.
+
+0.04
+
+0.02
+0.01
+0.00
+
+5
+
+0
+
+5
+
+10
+15
+SINR (dB)
+
+20
+
+25
+
+30
+
+Fig. 5. PDF of SINR degradation caused by Cross-Link Interference at both
+cell edge and center.
+
+Hence, in the context of 5G networks, there will be two
+points that will make the difference regarding the preceding
+generation. On the one hand, the localization and the context
+will provide the network management algorithms a large
+amount of information collected from several sources, whether
+about events, weather or traffic [15]. This will open up new
+ways of processing such context information together with
+high accurate user locations. Thus, 3GPP System Aspects
+WGs, especially WG5 that is in charge of Management,
+Orchestration and Charging, discuss location topics in Release
+18, such as the possibility of providing UE speed and orientation information to NWDAF through Minimization of Drive
+Test (MDT) data collection mechanism [10]. The modular 5G
+architecture is also in place for future integration of techniques
+that exploit these data.
+
+FIRST SUBMITTED TO “IEEE NETWORK” IN OCTOBER, 2022
+
+C ONCLUSIONS
+The aim of this work has been to assess the current
+status of 5G development in order to identify which novel
+features may potentially lead to problem situation. Classic
+network OAM procedures have been reviewed from a failure
+management perspective, as well as the 3GPP updates with
+respect to the previous version of specifications.
+Three problems have been validated under simulation,
+demonstrating the relevance of location and speed awareness
+for the management of such failures.
+In addition, the current lack of real data for future
+development has been pointed out, where context information
+is deemed indispensable for OAM. Hence, this work aimed at
+setting the ground to research on 5G failure modeling from
+the network management perspective.
+ACKNOWLEDGMENTS
+This work was supported by the European Union’s Horizon 2020 research and innovation program under Grant no.
+871249, project LOCUS; Spanish Ministry of economic affairs
+and Digital Transformation and European Union - NextGenerationEU within the framework “Recuperación, Transformación
+y Resiliencia y el Mecanismo de Recuperación y Resiliencia”
+under the project MAORI. This work has been also funded
+by: Spanish Ministry of Universities through the program
+“Ayudas para la formación de profesorado universitario” (Ref.
+FPU20/02863).
+R EFERENCES
+[1] D. Mulvey, C. H. Foh, M. A. Imran, and R. Tafazolli, “Cell Fault
+Management Using Machine Learning Techniques,” IEEE Access, vol. 7,
+pp. 124 514–124 539, 2019.
+[2] M. Z. Asghar, M. Abbas, K. Zeeshan, P. Kotilainen, and T. Hämäläinen,
+“Assessment of Deep Learning Methodology for Self-Organizing 5G
+Networks,” Applied Sciences, vol. 9, no. 15, p. 2975, jul 2019.
+[3] Z. Zhang, Y. Xiao, Z. Ma, M. Xiao, Z. Ding, X. Lei, G. K. Karagiannidis,
+and P. Fan, “6G Wireless Networks: Vision, Requirements, Architecture,
+and Key Technologies,” IEEE Vehicular Technology Magazine, vol. 14,
+no. 3, pp. 28–41, 2019.
+[4] M. Solé, V. Muntés-Mulero, A. I. Rana, and G. Estrada, “Survey on
+Models and Techniques for Root-Cause Analysis,” 2017.
+[5] J. Ramiro and K. Hamied, Self-organizing networks: self-planning, selfoptimization and self-healing for GSM, UMTS and LTE. John Wiley
+& Sons, 2011.
+[6] K. Boutiba, M. Bagaa, and A. Ksentini, “Radio Link Failure Prediction
+in 5G Networks,” in 2021 IEEE Global Communications Conference
+(GLOBECOM), 2021, pp. 1–6.
+[7] R. Barco, P. Lazaro, and P. Munoz, “A unified framework for selfhealing in wireless networks,” IEEE Communications Magazine, vol. 50,
+no. 12, pp. 134–142, 2012.
+[8] M. Giordani, M. Polese, A. Roy, D. Castor, and M. Zorzi, “A Tutorial
+on Beam Management for 3GPP NR at mmWave Frequencies,” IEEE
+Communications Surveys Tutorials, vol. 21, no. 1, pp. 173–196, 2019.
+[9] S. Hailu, K. Pedersen, A. Karimidehkordi, F. Abinader, C. Rom, and
+N. Kolehmainen, “Performance analysis of MAC-based beam tracking
+and failure detection and recovery,” in 2021 IEEE 93rd Vehicular
+Technology Conference (VTC2021-Spring), 2021, pp. 1–5.
+[10] Meeting #146, 3GPP TSG SA WG5, Nov. 2022. [Online]. Available:
+https://www.3gpp.org/ftp/TSG SA/WG5 TM/TSGS5 146/
+[11] 3GPP, “NR; NR and NG-RAN Overall description; Stage-2,” Technical
+Specification (TS) 38.300, 10 2020, version 16.3.0. [Online]. Available:
+http://www.3gpp.org/DynaReport/38300.htm [Accessed: 2020-12-20]
+[12] ——, “Evolved Universal Terrestrial Radio Access (E-UTRA) and
+Evolved Universal Terrestrial Radio Access Network (E-UTRAN);
+Overall description; Stage 2,” Technical Specification (TS) 36.300,
+
+7
+
+10 2020, version 16.3.0. [Online]. Available: http://www.3gpp.org/
+DynaReport/36300.htm [Accessed: 2020-12-20]
+[13] A. Ghosh, A. Maeder, M. Baker, and D. Chandramouli, “5G Evolution:
+A View on 5G Cellular Technology Beyond 3GPP Release 15,” IEEE
+Access, vol. 7, pp. 127 639–127 651, 2019.
+[14] M. Mezzavilla, M. Zhang, M. Polese, R. Ford, S. Dutta, S. Rangan,
+and M. Zorzi, “End-to-End Simulation of 5G mmWave Networks,”
+IEEE Communications Surveys Tutorials, vol. 20, no. 3, pp. 2237–2263,
+thirdquarter 2018.
+[15] S. Fortes, D. Palacios, I. Serrano, and R. Barco, “Applying Social Event
+Data for the Management of Cellular Networks,” IEEE Communications
+Magazine, vol. 56, no. 11, pp. 36–43, 2018.
+
+B IOGRAPHIES
+
+A NTONIO TARR ÍAS (atm@ic.uma.es) received a
+M.S. in Telematics and Telecommunication Networks in 2020 from the University of Malaga, Spain.
+In 2019, he started to work as research assistant and
+assistant professor with the Department of Communications Engineering. Currently, he is pursuing the
+Ph.D. degree in the field of cellular communications.
+
+S ERGIO F ORTES (sfr@ic.uma.es) holds a M.S. and
+a Ph.D. in Telecommunication Engineering from the
+University of Malaga. He began his career being
+part of main european space agencies (DLR, CNES,
+ESA) and Avanti Communications plc, where he participated in various research and consultant activities
+on broadband and aeronautical satellite communications. In 2012, he joined the University of Malaga,
+where his research is focused on Self-Organizing
+Networks for cellular communications.
+
+R AQUEL BARCO (rbm@ic.uma.es) is M.S. and
+Ph.D. in telecommunications from the University of
+Málaga, where she is currently Full Professor. She
+has worked at Telefónica, Spain, and at the European
+Space Agency, and she participated in a Mobile
+Communication Systems Competence Center, jointly
+created by Nokia and the UMA. She has published
+more than 120 scientific papers, filed several patents,
+and has lead projects with major companies.
+
+

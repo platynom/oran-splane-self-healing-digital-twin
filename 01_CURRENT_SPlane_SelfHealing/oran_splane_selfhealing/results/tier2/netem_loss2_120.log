@@ -1,0 +1,11 @@
+netem applied for scenario=loss
+tcpdump: listening on splanem, link-type EN10MB (Ethernet), snapshot length 262144 bytes
+capturing for 120s -> results/tier2/netem/loss2.pcap
+done. slave servo tail:
+ptp4l[6313.600]: rms  988 max 1410 freq +43379696 +/-  60 delay  2097 +/- 144
+ptp4l[6320.784]: port 1: SLAVE to LISTENING on ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES
+ptp4l[6320.784]: selected local clock 9afaad.fffe.86c168 as best master
+pcap: results/tier2/netem/loss2.pcap
+442 packets captured
+442 packets received by filter
+0 packets dropped by kernel

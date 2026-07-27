@@ -1,0 +1,1804 @@
+Ad Hoc Networks 178 (2025) 103984
+
+Contents lists available at ScienceDirect
+
+Ad Hoc Networks
+journal homepage: www.elsevier.com/locate/adhoc
+
+KDN-Driven zero-shot learning for intelligent self-healing in 6G small cell
+networks
+Tuğçe Bilen
+Department of Artificial Intelligence and Data Engineering, Faculty of Computer and Informatics, Istanbul Technical University, Istanbul, Turkey
+
+ARTICLE
+
+INFO
+
+Keywords:
+6G
+Self-healing
+Zero-shot learning
+Knowledge-defined networking
+Root cause analysis
+
+ABSTRACT
+6G cellular networks represent a significant advancement in wireless communication by offering higher data
+rates, lower latency, and improved reliability. Ultra-dense small cell deployment is vital for providing enhanced
+capabilities in 6G, which in turn facilitates the development of data-intensive applications. Despite the benefits,
+dense small-cell deployments can also significantly increase anomaly rates. The complexity arising from the
+dynamic, dense, and data-intensive environment of 6G networks presents a significant challenge for anomaly
+detection and resolution. To address this issue, this paper proposes a Knowledge-Defined Networking (KDN)enabled intelligent self-healing approach for 6G small cell networks, based on zero-shot learning. Our system
+continuously monitors network metrics and collects data. It utilises a semantic zero-shot learning model to
+detect anomalies, including new and previously unseen ones, without requiring retraining. When an anomaly
+is detected, the system analyses it using historical data and predefined rules to find the root cause. Once the
+root cause is identified, the system executes self-healing actions to resolve the issue in a closed-loop manner.
+The proposed system operates in an AI-native and zero-touch fashion, aligning with key 6G goals. It is evaluated
+in a simulation environment configured with realistic 6G parameters, including mmWave frequency (28 GHz),
+massive MIMO, and energy-aware small cells. The performance results underline that the proposed scheme
+achieves lower packet loss and reduced latency compared to conventional healing approaches. These results
+confirm that the architecture supports scalable, autonomous, and real-time fault management for future 6G
+infrastructures.
+
+1. Introduction
+6G cellular networks enable a significant advancement in wireless
+communication. 6G networks can deliver much higher data rates with
+lower latency and improved reliability compared to previous generations [1–3]. Thanks to these enhanced capabilities, 6G networks
+can support various emerging applications such as holographic communication, Augmented Reality (AR), Virtual Reality (VR) and aerial
+communication [4,5]. Ultra-dense small cells are one of the main
+contributors to performance improvements in 6G networks [6]. These
+small, low-power base stations offer better coverage for 6G users.
+Moreover, ultra-dense small cells can meet the growing demands of
+6G users. Accordingly, small cells improve efficiency and enhance the
+overall user experience by bringing the network closer to users.
+The ultra-dense deployment of small cells enhances performance,
+capacity, and coverage in 6G networks. However, managing these
+small cells presents significant challenges [7]. Specifically, the probability of failures and anomalies increases with the vast number of
+
+small cells. Additionally, these small cells generate massive volumes
+of data, making real-time monitoring and management challenging. As
+a result, it becomes difficult to detect and resolve errors. Small cells
+may experience various anomalies due to physical or software-related
+issues. Hardware problems, environmental conditions, or interference
+can cause physical anomalies. On the other hand, software anomalies may result from configuration errors, software bugs, or security
+breaches. Furthermore, small cells may encounter new or previously
+unseen anomalies during normal operation. The highly dynamic 6G
+topology further increases the likelihood of unforeseen conditions and
+anomalies, as shown in Fig. 1.
+The Knowledge Defined Networking (KDN) framework is a promising solution to address the challenges of ultra-dense small cell deployment in 6G networks [8]. The KDN architecture integrates the
+knowledge, control, and data planes. Accordingly, the KDN architecture
+enables a comprehensive understanding of network conditions and supports real-time adaptability [9]. This architecture also facilitates more
+automated management through enhanced intelligence. As a result,
+this holistic approach can significantly boost the potential of 6G small
+
+E-mail address: bilent@itu.edu.tr.
+https://doi.org/10.1016/j.adhoc.2025.103984
+Received 14 March 2025; Received in revised form 10 July 2025; Accepted 21 July 2025
+Available online 30 July 2025
+1570-8705/© 2025 Elsevier B.V. All rights are reserved, including those for text and data mining, AI training, and similar technologies.
+
+Ad Hoc Networks 178 (2025) 103984
+
+T. Bilen
+
+Fig. 1. Overview of ultra-dense 6G networks.
+
+cell networks by enabling more reliable, efficient, and self-optimising
+cellular infrastructure.
+Based on these motivations, this paper proposes a KDN-enabled
+intelligent self-healing approach for 6G small cell networks using zeroshot learning. This approach aims to automatically detect and resolve
+network anomalies. Furthermore, the model can identify previously
+unseen anomalies through zero-shot learning. The main contributions
+of the paper are summarised as follows:
+
+to identify network traffic anomalies in 6G wireless networks, aiming
+to improve resilience and enhance security.
+A machine learning-driven methodology is proposed in [13] to
+predict network faults and enable self-healing operations in wireless
+networks. Historical fault management data is used to predict potential
+failures and to increase the efficiency of network operations. A digital
+twin-based self-healing architecture for 6G edge networks is presented
+in [14], aiming to automate service recovery and implement proactive measures. In this work, graph neural networks are utilised for
+performance predictions, with the primary goal of maintaining service
+stability and enhancing network reliability. Similarly, a digital twin
+framework for real-time monitoring and anomaly detection is proposed
+in [15], which incorporates federated learning for anomaly detection
+in Open RAN environments. The objective of that study is to detect
+anomalous traffic with high accuracy and improved security.
+The impact of integrating self-healing antennas into 6G small cells
+to mitigate X-haul failures is evaluated in [16]. That work proposes
+the use of additional antennas to enhance network resilience and
+maintain service continuity during outages, aiming to increase recovery
+rates and overall network performance. A framework for predicting
+6G slice anomalies and optimising resource allocation based on user
+behaviour is introduced in [17] to identify anomalies proactively.
+The main objective is to enhance user experience, improve long-term
+system performance, and reduce latency. Federated learning and Long
+Short-Term Memory are used for anomaly detection in [18], aiming to
+enhance real-time detection and enable effective root-cause analysis. A
+framework for detecting and analysing different types of anomalies is
+proposed in [19], which combines various detection algorithms and key
+performance indicators. Generative methods and multi-sensor fusion
+techniques are used in [20] to monitor and detect anomalies in 6G
+networks.
+Although these related works provide valuable insights into various
+aspects of anomaly detection and self-healing, several important shortcomings remain, as summarised in Table 1. These can be summarised
+as follows:
+
+• We introduce a KDN-based novel framework that combines realtime monitoring, advanced anomaly detection, and automated
+self-healing to enhance network performance and reliability. This
+also enables quick adaptation to dynamic network conditions and
+supports continuous learning from new data.
+• We leverage zero-shot learning to create a flexible model capable of identifying both known and unseen anomalies without
+retraining. The model is also effective with minimal training data.
+• Our proposed self-healing framework operates in a closed-loop
+manner, continuously monitoring the network, diagnosing issues,
+and executing corrective actions until anomalies are resolved.
+This approach ensures that the network’s reliability, effectiveness, and performance are maintained through autonomous and
+adaptive self-healing capabilities.
+• The proposed system is designed and evaluated using 6G-specific
+features, including mmWave communication, massive MIMO, and
+energy-harvesting small cells. This ensures that the framework
+addresses real-world constraints and capabilities of future 6G
+deployments.
+The rest of the paper is organised as follows: Section 2 reviews
+the related work in the literature. Section 3 presents the proposed
+KDN-based 6G topology. Section 4 explains the proposed self-healing
+scheme. Section 5 evaluates its performance. Section 6 concludes the
+paper. Finally, Section 7 gives the future work.
+2. Related work
+Several studies in the literature focus on anomaly detection in 6G
+small cell networks. A deep learning model based on spatial graphs
+to analyse performance degradation in mobile networks is proposed
+in [10]. The authors utilise graph neural networks to detect spatial
+dependencies among base stations and facilitate root-cause analysis.
+The primary objective of this study is to enhance network performance through self-healing strategies. Machine learning techniques for
+anomaly detection in 6G networks are evaluated in [11], where the
+focus is on the challenges of high data volumes, real-time processing,
+and privacy concerns. Similarly, the utilisation of machine learning
+methodologies for attack detection is explored in [12]. The paper proposes a framework that integrates various machine learning algorithms
+
+• Most studies focus solely on detecting network problems without addressing how the network can autonomously recover. In
+contrast, our proposed scheme enables autonomous network management with integrated self-healing capabilities.
+• Existing works do not leverage the KDN paradigm, which is
+valuable for combining historical and real-time data to detect and
+respond to anomalies.
+• Many studies rely on labelled data for training their models,
+making it difficult to adapt to new or evolving network scenarios.
+Our proposed scheme employs zero-shot learning to detect both
+known and unseen anomalies without the need for retraining.
+2
+
+Ad Hoc Networks 178 (2025) 103984
+
+T. Bilen
+Table 1
+Comparison of related work on anomaly detection and self-healing in 6G networks.
+Study
+
+Main technique
+
+Application area
+
+Objective/Limitation
+
+[10]
+
+GNN-based
+root-cause analysis
+
+Performance
+degradation
+detection
+
+Enhancing performance through self-healing; does
+not cover autonomous decision-making
+
+[11]
+
+Machine Learning
+models
+
+6G anomaly
+detection
+
+Addresses data volume and real-time challenges;
+lacks automated healing mechanisms
+
+[12]
+
+Ensemble Machine
+Learning algorithms
+
+Intrusion/attack
+detection
+
+Improves security and resilience; focused on
+security, not system-level healing
+
+[13]
+
+Fault prediction
+using historical data
+
+Wireless network
+fault management
+
+Supports predictive healing; depends on past
+failures and lacks adaptability to new faults
+
+[14]
+
+Digital Twin +
+Graph Neural
+Network
+
+Edge network
+self-healing
+
+Maintains service stability using proactive healing;
+limited to DT-enabled architectures
+
+[15]
+
+Digital Twin +
+Federated Learning
+
+Real-time anomaly
+detection in Open
+RAN
+
+High accuracy detection; lacks centralised learning
+model flexibility
+
+[16]
+
+Self-healing
+antennas
+
+X-haul link failure
+recovery
+
+Enhances resilience with hardware-based design;
+focuses on physical layer solutions only
+
+[17]
+
+User behaviour
+modelling +
+Prediction
+
+6G slice resource
+allocation
+
+Proactive anomaly detection; targets slicing, not
+general anomaly types
+
+[18]
+
+Long Short-Term
+Memory +
+Federated Learning
+
+Anomaly detection
+with root-cause
+analysis
+
+Real-time detection with distributed learning;
+assumes temporal patterns in faults
+
+[19]
+
+KPI-based hybrid
+detection
+
+Generic anomaly
+detection
+
+Uses mixed key performance indicators and
+detection models; lacks a unified healing
+architecture
+
+[20]
+
+Generative models
++ sensor fusion
+
+6G monitoring and
+detection
+
+Fuses multiple data types for robust detection; not
+focused on healing process
+
+• Most studies target general network environments and do not
+specifically address the unique challenges of ultra-dense 6G networks. Our approach explicitly focuses on these environments,
+where management and anomaly resolution are significantly
+more complex.
+3. Proposed KDN-based 6G topology
+This paper considers a KDN-based 6G topology. In this topology,
+KDN facilitates the integration of various models and services without
+requiring major overhauls. Also, KDN can automate network management with minimum operational cost and human involvement.
+Accordingly, we can monitor and continually improve our network.
+Additionally, KDN can utilise AI and machine learning-based models
+for predictive maintenance. These underscore that KDN is a crucial
+approach for delivering an intelligent 6G self-healing solution.
+As shown in Fig. 2, the proposed KDN topology comprises three
+main layers: the Knowledge Plane, the Control Plane, and the Data
+Plane. The details of these layers could be summarised as follows:
+• Knowledge Plane: This plane mainly includes the proposed selfhealing framework, which utilises zero-shot learning for anomaly
+detection. This self-healing framework comprises four main modules: Knowledge Generation, Network Monitoring, Machine
+Learning, and Self-Healing Modules. Self-healing processes are
+performed here, and the results are transmitted to the data layer
+via the control plane. The details of this framework and its
+modules will be given in Section 4.
+• Control Plane: This plane consists of controllers that send policy
+updates to data planes. More specifically, the management decisions are received from the knowledge plane and transferred to
+the data plane as policy rules.
+• Data Plane: The user equipment (UE), small cells, and macro cells
+in the 6G architecture create the data plane. More specifically,
+all physical elements in the 6G architecture form this plane [21].
+
+Fig. 2. Proposed KDN-Based 6G Topology.
+
+Here, the management of the small cells is executed based on
+the results obtained from the knowledge plane. These results are
+transferred to small cells through their built-in tables from the
+control plane.
+4. KDN-based self-healing framework
+As explained above, we propose a KDN-based self-healing framework using a zero-shot learning model in the knowledge plane. As
+3
+
+Ad Hoc Networks 178 (2025) 103984
+
+T. Bilen
+
+Fig. 3. KDN-based self-healing framework.
+
+shown in Fig. 3, this framework comprises four main modules: Knowledge Generation, Network Monitoring, Machine Learning, and SelfHealing. Therefore, the proposed framework adopts a modular design
+grounded in the principles of KDN, where each module contributes
+a distinct role towards intelligent anomaly management. This layered
+structure enables traceability, scalability, and flexibility in handling
+diverse network conditions. The details of these modules are explained
+in the following sections.
+
+The above data types were selected to provide a comprehensive
+view of network state by combining quantitative metrics, qualitative
+logs, and early anomaly flags. This ensures accurate root-cause correlation and supports semantic-level anomaly classification in later
+stages. Here, to address potential scalability issues in ultra-dense 6G
+small cell deployments, the Data Collector adopts an adaptive and
+hierarchical data collection strategy. Instead of using static, uniform
+intervals, the data sampling frequency is dynamically adjusted based on
+network conditions such as traffic load, anomaly likelihood, and node
+density. For instance, during stable periods with minimal variation
+in key metrics (e.g., latency, jitter, packet loss), the system reduces
+the sampling frequency to conserve resources. In contrast, when early
+indicators of potential anomalies are detected, the sampling rate is
+increased to ensure responsiveness.
+Furthermore, to minimise central bottlenecks, a significant portion
+of the preprocessing pipeline is offloaded to edge-level entities, such
+as intelligent small cells or edge servers. These components perform
+initial tasks, such as data cleaning, feature extraction, and threshold
+comparison, locally, thereby reducing the volume of data transmitted to
+the central knowledge plane. This decentralised architecture supports
+horizontal scalability and enables the system to efficiently manage
+thousands of small cells without overloading the central controller.
+To support scalability in ultra-dense 6G environments, the Data Collector module adopts a hierarchical and adaptive monitoring architecture. Unlike fixed-interval polling mechanisms, our approach dynamically adjusts both the sampling frequency and the level of preprocessing
+based on real-time network behaviour and anomaly likelihood.
+At the first level, each small cell node runs a lightweight local
+monitoring agent. These agents continuously track key performance
+indicators such as latency, jitter, throughput, and packet loss. Instead
+of forwarding all collected data, the agents autonomously determine
+whether current values deviate significantly from locally maintained
+statistical baselines. In stable conditions, they enter a low-frequency
+sampling mode, thereby reducing measurement frequency and upstream reporting overhead. If early signs of abnormal behaviour are
+
+4.1. Knowledge generation module
+The main aim of the Knowledge Generation Module is to collect
+raw data from the network and transform it into actionable knowledge. This enables more intelligent and autonomous networks [22].
+To achieve this aim, the Knowledge Generation Module comprises four
+main components: Data Collector, Data Preprocessor, Data Storage, and
+Rule Identifier.
+4.1.1. Data collector
+The Data Collector continuously collects small cell performance
+metrics, event logs, and anomaly indicators as raw data, as summarised
+in Algorithm 1. This module serves as the foundation for subsequent
+data processing and analysis, ensuring that all relevant data points
+are captured accurately and consistently. The collected raw data is
+categorised as follows:
+• Performance Metrics: These metrics are used to evaluate the
+performance of the 6G small cell network and are essential for
+detecting potential issues. Key performance metrics include signal
+strength, throughput, latency, jitter, and packet loss.
+• Event Logs: Event logs document significant occurrences in the
+network. Key logs include error, warning, reboot, and activity
+records.
+• Anomaly Indicators: These indicators flag potential anomalies
+within the network. Examples include excessive packet loss, high
+latency, high jitter, and signal strength below threshold.
+4
+
+Ad Hoc Networks 178 (2025) 103984
+
+T. Bilen
+
+that the data is well-structured for anomaly detection. The Data Preprocessor executes four main steps: data cleaning, normalisation, handling
+missing values, and feature engineering. The details of these steps could
+be summarised as follows:
+
+Algorithm 1 Knowledge Generation Module
+1: Input: Performance Metrics, Event Logs, Anomaly Indicators
+2: Data Collector:
+3: for each data source (e.g., small cell) do
+4:
+if network status is stable (low variation) then
+5:
+Collect summary metrics at reduced sampling rate
+6:
+Perform local threshold checks
+7:
+else
+8:
+Collect fine-grained metrics at higher sampling rate
+9:
+Perform anomaly flagging and event marking
+10:
+end if
+11:
+Forward local summary or anomaly indicator to Edge Node
+12: end for
+13: Edge Node filters and aggregates collected data
+14: Forward processed data to central Knowledge Plane
+15: Data Preprocessor:
+16: for each collected data point do
+17:
+Clean and normalise the data
+18:
+Handle missing values and outliers
+19:
+Extract and engineer relevant features
+20: end for
+21: Data Storage:
+22: for each preprocessed data point do
+23:
+Store the data in a structured format
+24:
+Organise data for easy retrieval and analysis
+25: end for
+26: Rule Identifier:
+27: for each performance metric do
+28:
+Define specific rules and thresholds based on data analysis
+29:
+Validate and store the rules for further use
+30: end for
+31: return Preprocessed Data and Identified Rules
+
+• Data Cleaning: Duplicates are removed, erroneous data entries
+are corrected, and data formats are standardised to ensure consistency across small cells.
+• Normalisation: Feature values are scaled to a range between 0
+and 1 using min–max normalisation: 𝑥𝑛𝑜𝑟𝑚𝑎𝑙𝑖𝑠𝑒𝑑 = (𝑥 − min(𝑥))∕
+(max(𝑥) − min(𝑥)).
+• Handling Missing Values: Missing data is imputed using the KNearest Neighbours (KNN) method based on the values of nearby
+data points.
+• Feature Engineering: New features are derived to improve
+model effectiveness, including Standard Deviation of Packet Size
+(SDPS), Inter-Arrival Time (IAT), Peak Throughput, and Packet
+Error Rate (PER).
+These preprocessing steps are chosen to ensure the consistency,
+completeness, and informativeness of the data before semantic encoding. In particular, the selected features (SDPS, IAT, Peak Throughput,
+and PER) capture temporal, size-based, and rate-related behaviour
+anomalies, which are well-suited for downstream zero-shot classification based on semantic rules.
+As a result of the operations performed by the Data Collector and
+Data Preprocessor, the Zero-Shot Learning Model in the Machine Learning Module is equipped with the necessary input features and reference
+rule embeddings. These steps prepare the semantic embedding space
+and enable accurate compatibility-based inference, as summarised in
+Algorithm 1.
+4.1.3. Data storage
+The preprocessed data is stored and used to define the semantic
+representations for the Zero-Shot Learning Model in the Machine Learning Module. This enables the model to characterise normal behaviour
+patterns and known anomalies through rule-based embeddings. Additionally, this data supports the Diagnosis Engine in correlating current
+anomalies with historical incidents, identifying patterns and recurring
+issues. Specifically, the structured storage of historical data enables the
+Diagnosis Engine to identify temporal correlations, recurring anomaly
+signatures, and misclassified patterns that cannot be captured by static
+rule sets alone. This justifies the module’s complexity beyond basic rule
+matching.
+
+detected (such as spikes in jitter or drops in throughput), the monitoring agent immediately switches to a high-resolution observation mode,
+locally caching fine-grained samples for a configurable time window.
+This decision is driven by statistical change detectors (e.g., variance
+thresholds or exponentially weighted moving averages). These trigger
+thresholds are configurable and can be updated dynamically based
+on recent network patterns. In the second layer of the hierarchy,
+edge servers serve as aggregators. They receive summarised measurements from multiple small cells and perform intermediate preprocessing operations, such as normalisation, threshold comparison, and
+feature encoding. Only contextually relevant insights are sent to the
+central Knowledge Plane. This architecture minimises raw data transmission, optimises CPU and memory usage at the edge, and improves
+responsiveness under load.
+This hierarchical design supports horizontal scalability by distributing both measurement and preprocessing tasks. Meanwhile, the adaptive sampling mechanism ensures resource efficiency by focusing monitoring efforts only on unstable or high-variability zones. The complete
+structure and its operational logic are captured in Algorithm 1, and
+they ensure that the data collection pipeline remains responsive, efficient, and context-aware under varying traffic and fault conditions.
+This design significantly reduces bandwidth usage by transmitting only
+aggregated or flagged data, and limits computational overhead by
+localising lightweight processing tasks. As such, it provides a costeffective monitoring pipeline that scales well with increasing network
+density.
+
+4.1.4. Rule identifier
+The Rule Identifier serves as a critical bridge between statistical
+network monitoring and semantic anomaly reasoning. Its purpose is
+to create clear connections between low-level features and types of
+anomalies. It also aims to generate semantic representations that allow
+for generalisation and adaptive behaviour within the Zero-Shot Learning framework. Unlike traditional rule-based systems that depend on
+static if-else conditions, our module generates both numerical thresholds and textual rule descriptions. Together, these create a foundation
+for flexible inference and knowledge-driven diagnosis.
+The rules listed in Table 2 are derived from a semi-automated,
+data-driven process that utilises historical logs and metric distributions collected during the data collection and preprocessing stages. For
+each monitored metric, statistical profiling methods (quantile analysis,
+moving averages, and deviation-based scoring) are used to identify
+threshold values that distinguish between normal and anomalous states.
+For example, the threshold for latency is set at the 90th percentile
+of historical measurements during stable periods, while jitter anomalies are defined based on time-windowed variance exceeding learned
+statistical baselines. These thresholds are then validated using known
+incident logs and refined based on expert feedback. This approach
+ensures that the rules are empirically grounded rather than arbitrarily
+defined. Specifically, this architecture offers two significant advantages
+over pure rule-based systems:
+
+4.1.2. Data preprocessor
+The raw data collected by the Data Collector is forwarded to the
+Data Preprocessor for further cleaning and preparation. This ensures
+5
+
+Ad Hoc Networks 178 (2025) 103984
+
+T. Bilen
+Table 2
+Generalised rules for anomaly detection.
+Metric & Condition
+
+Anomaly
+
+Latency > ThresholdLatency
+Packet Loss > ThresholdPacket Loss
+Jitter > ThresholdJitter
+Signal Strength < ThresholdSignal Strength
+Throughput < ThresholdThroughput
+SDPS > ThresholdSDPS
+IAT > ThresholdIAT
+PER > ThresholdPER
+
+Network Congestion
+Transmission Error
+Network Instability
+Weak Signal
+Performance Degradation
+Packet Size Anomaly
+Traffic Flow Disruption
+Transmission Error
+
+not only by providing labels but also by creating the entire semantic
+vocabulary needed for adaptive, closed-loop self-healing. Therefore, by
+embedding both anomalies and healing actions into a shared semantic
+space, the proposed system enables generalisation beyond explicitly
+defined anomaly-action pairs. This architecture allows the framework
+to reason over previously unseen or composite anomaly patterns by
+matching them with the most semantically relevant healing strategy.
+Such semantic inference enables dynamic decision-making, even when
+exact historical precedents are unavailable. This would allow the system not only to match but also to invent appropriate recovery strategies
+in response to evolving network conditions.
+4.2. Network monitoring module
+
+• Semantic Generalisation: The use of embeddings enables the
+system to match previously unseen or combined anomalies to
+the most relevant rule, even if the anomaly does not meet any
+predefined threshold exactly. This allows the model to recognise
+new failure conditions by relating them to known concepts.
+• Interoperable Anomaly-Healing Mapping: Since healing actions are also represented semantically in the Self-Healing Module, the system can select appropriate actions based on the semantic proximity between the diagnosed anomaly and available
+corrective strategies. This semantic alignment provides a foundation for generalised decision-making without requiring retraining
+or explicit enumeration of all possible anomaly-action pairs.
+
+This module continuously monitors the network to detect anomalies
+in real time. It operates in three main steps: data collection, feature
+extraction, and anomaly assessment. The details of these steps could
+be summarised as follows:
+• Data Collection: This component gathers real-time performance
+metrics, event logs, and anomaly indicators. It differs from the
+historical data collection conducted by the Data Collector Module,
+which focuses on long-term system patterns.
+• Feature Extraction: For each incoming data point, relevant features are extracted. Principal Component Analysis (PCA) is used
+to reduce the feature space and focus on the most informative
+dimensions.
+• Anomaly Triggering and Classification: An initial distancebased check is performed using the extracted features. If the
+Euclidean distance from known normal patterns exceeds a dynamic threshold, the data point is flagged as a potential anomaly.
+Then, the Zero-Shot Learning (ZSL) Model is applied to classify
+the anomaly semantically.
+
+Algorithm 2 Network Monitoring Module
+1: Input: Real-Time Network Data
+2: Elements: Data Collection, Feature Extraction, Anomaly Trigger-
+
+ing, Semantic Classification
+3: Step 1: Data Collection
+4: for each monitoring interval do
+5:
+Collect real-time performance metrics
+6: end for
+7: Step 2: Feature Extraction
+8: for each collected data point do
+9:
+Extract and normalise relevant features
+10:
+Apply Principal Component Analysis (PCA)
+11: end for
+12: Step 3: Anomaly Triggering
+13: for each PCA-transformed feature vector do
+14:
+Compute Euclidean distance to reference normal profile
+15:
+if distance > threshold then
+16:
+Flag as potential anomaly
+17:
+end if
+18: end for
+19: Step 4: Semantic Classification
+20: for each flagged anomaly do
+21:
+Apply Zero-Shot Learning Model for semantic classification
+22:
+Assign most probable anomaly label based on compatibility score
+23: end for
+24: return Detected Anomalies and Semantic Labels
+
+This two-stage design separates lightweight anomaly triggering
+from more detailed semantic reasoning. As described above, PCAbased feature vectors are compared against normal reference profiles.
+This quick check enables fast and efficient identification of abnormal
+behaviour. Once flagged, each data point is projected into the semantic
+embedding space and evaluated using the ZSL model to determine the
+most likely anomaly type.
+This process supports real-time responsiveness and scalability. The
+module adjusts its sampling interval and processing depth depending
+on current network conditions. When the network is stable, monitoring
+frequency is reduced. During unstable periods, finer-grained data is
+collected and processed to ensure timely detection.
+Additionally, this module uses the rule sets and semantic embeddings generated earlier by the Knowledge Generation Module. The
+cleaned historical data and labelled rules allow the ZSL model to
+reason over semantically meaningful patterns. This modular separation
+ensures that the system can both learn from historical trends and
+respond quickly to new anomalies. A detailed overview of this logic
+is given in Algorithm 2.
+4.3. Machine learning module
+
+In addition to these numeric thresholds, each rule is paired with
+a human-readable textual label that describes the underlying network
+condition in semantic terms. These descriptions are embedded into a
+high-dimensional vector space using a pre-trained language encoder
+(BERT or Sentence-BERT). The resulting semantic embeddings serve as
+the reference classes for the ZSL model. During operation, real-time feature vectors are mapped into the same semantic space using a learned
+encoder. Compatibility scores are calculated to identify the most likely
+anomaly type based on semantic similarity, even if the exact numerical
+signature has not been seen before. In this way, the Rule Identifier
+transforms low-level statistical deviations into structured, semantically
+meaningful knowledge. It supports the Zero-Shot Learning (ZSL) model
+
+The Machine Learning Module utilises the zero-shot learning model
+for semantic classification of anomalies. The ZSL model enables the
+system to classify and reason about network faults without requiring
+prior definitions or labelled training data for each specific case. For
+this reason, it is particularly effective in ultra-dynamic and complex
+6G environments where anomalies are diverse and evolve quickly. 1
+The Machine Learning Module uses the preprocessed data and identified rules generated in the Knowledge Generation Module. These
+components form the foundation for constructing semantic representations. The zero-shot learning operations performed in this module are
+summarised as follows:
+6
+
+Ad Hoc Networks 178 (2025) 103984
+
+T. Bilen
+Table 3
+Generalised rules for anomaly detection and healing.
+Anomaly
+
+Healing action
+
+Network Congestion
+Transmission Error
+Network Instability
+Weak Signal
+Performance Degradation
+Packet Size Anomaly
+Transmission Error
+
+Redistribute network load
+Repair physical connections
+Synchronise network clocks
+Increase transmission power
+Implement load balancing
+Analyse packet size variability
+Enhance error correction
+
+actions. It is designed to support closed-loop, zero-touch operations
+that are critical for managing ultra-dense and dynamic 6G networks. As
+summarised in Algorithm 4, the module aims to identify the root causes
+of faults and apply targeted healing strategies in a timely manner. To
+achieve this, the Self-Healing Module consists of two main components:
+the Diagnosis Engine and the Healing Engine. Here, the Diagnosis Engine
+correlates current anomaly signatures with historical patterns and semantic rules to infer the most likely root cause. The Healing Engine
+then selects and applies the most suitable recovery action based on
+semantic similarity and predefined mappings. The detailed operation
+of these engines is described as follows:
+
+• Semantic Embedding Generation: As given in Tables 2 and 3,
+we define rules for both anomaly detection and healing strategies
+as textual descriptions. These descriptions are encoded into highdimensional semantic embeddings using a pre-trained language
+model. This shared space allows the system to represent both network observations and rule-based concepts in a unified manner.
+Unlike traditional rule-based systems that match exact threshold
+conditions, this mechanism enables flexible matching between
+network states and semantic anomaly categories.
+• Compatibility Function Evaluation: Once the embeddings are
+generated, we evaluate the similarity between the current input
+and each predefined class using a compatibility function. In our
+setup, a Multi-Layer Perceptron (MLP) is used to project input
+features into the semantic space, and Euclidean distance is used
+to compute similarity between the projected vector and the reference embeddings. ReLU activations are applied in the hidden
+layers of the MLP to model nonlinear interactions. Based on these
+scores, the system determines which semantic class (anomaly or
+healing) the input is most aligned with.
+
+Algorithm 4 Self-Healing Module
+1: Input: Historical Data, Detected Anomalies, Rules, Zero Shot
+
+Learning Model, Self-Healing Actions
+2: Diagnosis Engine:
+3: Initialize Diagnosed Causes
+4: for each anomaly in Detected Anomalies do
+5:
+Find similar incidents from Historical Data
+6:
+Identify potential root causes from historical patterns
+7:
+Run Zero Shot Learning Model to predict cause of the anomaly
+8:
+Combine potential root causes with predicted cause
+9:
+for each cause in combined causes do
+10:
+Apply rules to refine the diagnosis
+11:
+if rule is violated then
+12:
+Infer cause based on rules
+13:
+Add inferred cause to combined causes
+14:
+end if
+15:
+end for
+16:
+Validate the combined causes
+17:
+Append validated causes to Diagnosed Causes
+18: end for
+19: Healing Engine:
+20: for each cause in Diagnosed Causes do
+21:
+Select appropriate self-healing action from Self-Healing Actions
+22:
+Execute selected action
+23:
+Monitor the network to ensure action effectiveness
+24:
+if anomaly persists then
+25:
+Iterate the process
+26:
+end if
+27: end for
+28: return Resolved Anomalies and Updated Network State
+
+Algorithm 3 Machine Learning Module Based on Zero-Shot Learning
+1: Input: Flagged anomalies from the Network Monitoring Module,
+
+Identified Rules
+2: Semantic Embedding Generation:
+3: Generate textual descriptions for each rule
+4: Encode textual descriptions into semantic embeddings using a
+
+language model
+5: Compatibility Evaluation:
+6: Initialise MLP with ReLU layers
+7: Extract feature vectors from flagged anomaly instances
+8: Align features with semantic embeddings
+9: Compute compatibility scores
+10: Classify anomalies based on highest score
+11: return Semantic Anomaly Labels
+
+4.4.1. Diagnosis engine
+The Diagnosis Engine is responsible for identifying the root causes
+of anomalies detected by the Machine Learning Module. As described
+in Algorithm 4, it receives real-time anomaly flags and feature vectors,
+along with historical network logs stored in the Knowledge Generation
+Module. To infer the cause of a given anomaly, it searches for similar
+patterns in past data and evaluates semantic similarity with predefined
+rule descriptions.
+The Diagnosis Engine uses the same zero-shot learning model described earlier. Instead of classifying only the anomaly type, it now
+compares the detected anomaly with known root causes in the semantic
+embedding space. This allows the engine to reason about unseen or
+composite issues, even if they have not been explicitly labelled before.
+Additionally, the engine uses the predefined rule set (Table 2) to
+validate or refine its diagnosis. These rules help ground the semantic
+inference with explicit thresholds and conditions. Once a likely root
+cause is identified, it is forwarded to the Healing Engine, which selects
+the appropriate corrective action. Although the set of available healing
+actions is predefined, the use of semantic embeddings allows the system
+to choose the most relevant action for each diagnosed anomaly flexibly.
+This enables effective matching even when the anomaly pattern is not
+explicitly defined in the rule base.
+
+It is important to note that the actual anomaly detection process (the
+identification of whether a data point is anomalous) is performed in the
+Network Monitoring Module using PCA and distance-based deviation
+analysis. The Machine Learning Module only processes those data
+points that are already flagged as potential anomalies and performs semantic classification to determine their type and corresponding healing
+strategy.
+This separation ensures computational efficiency and interpretability. It also aligns with the design goal of selective semantic processing.
+The closed-loop feedback system further monitors post-healing states,
+and in case of misclassification, re-activates the diagnosis process to
+suggest alternate actions. This combination of threshold-based detection and embedding-based semantic reasoning is particularly wellsuited for scalable, zero-touch 6G network management.
+4.4. Self-healing module
+This module is responsible for analysing the anomalies detected
+by the Machine Learning Module and executing appropriate corrective
+7
+
+Ad Hoc Networks 178 (2025) 103984
+
+T. Bilen
+
+rapidly evolving 6G environments, where the cost and delay of retraining models or exploring action spaces (as in reinforcement learning) can
+be prohibitive. While the current framework does not autonomously
+invent new actions, it achieves adaptive behaviour through learned
+semantic inference. This characteristic makes it particularly suitable for
+real-time self-healing scenarios with limited supervision.
+To summarise, the proposed self-healing architecture consists of
+four main modules: Knowledge Generation, Network Monitoring, Machine Learning, and Self-Healing, which interact through structured
+data and control flows. These interactions ensure a continuous and
+coordinated pipeline that transforms raw network metrics into semantic anomaly classifications and adaptive corrective actions. Unlike traditional architectures with static monitoring and predefined
+response triggers, the proposed system is designed to be dynamic,
+feedback-driven, and semantically informed.
+The system operates as a modular pipeline: starting with data
+acquisition and preprocessing in the Knowledge Generation Module,
+continuing through rule extraction and semantic embedding construction, and then enabling real-time anomaly detection via the Monitoring
+and Machine Learning Modules. Diagnosed faults are processed within
+the Self-Healing Module, where semantic matching allows the system
+to infer the most suitable corrective action, even for previously unseen
+anomalies. The complete architecture and inter-module connections are
+visualised in Fig. 3 with operational timeline steps. According to this
+timeline, the chronological module interactions are also detailed in
+Table 4. These flows reflect the operational timeline of the framework
+and demonstrate how the modules cooperate to enable a closed-loop,
+zero-touch healing mechanism.
+
+4.4.2. Healing engine
+The Healing Engine executes corrective actions to resolve detected
+anomalies. Each action is performed based on the root cause diagnosed
+by the Diagnosis Engine. The Healing Engine then selects the appropriate self-healing action for each diagnosed cause. Accordingly, this module maintains the network’s reliability, effectiveness, and performance.
+Here, a predefined set of actions is defined based on collected data and
+rules, as given in Table 3. Each healing action in Table 3 represents a
+concrete and feasible network operation. These actions are not abstract
+placeholders but are implemented using programmable interfaces and
+real-time system feedback to enable practical execution in 6G environments. Specifically, in the case of Network Congestion, the system
+may invoke dynamic load redistribution strategies by rerouting user
+flows via neighbouring small cells with available capacity. Additionally, weighted round-robin scheduling or token bucket-based shaping
+mechanisms are applied to prioritise latency-sensitive traffic. When
+Transmission Error is diagnosed, the healing engine can trigger physical
+layer adjustments (reconfiguring modulation and coding schemes, enhancing Forward Error Correction, enabling Hybrid Automatic Repeat
+Request). For Network Instability, actions include distributing time
+synchronisation commands to affected small cells using the Precision
+Time Protocol or reinitialising desynchronised protocol layers. In the
+case of Weak Signal, the system issues commands to increase the
+transmission power of the small cell or adjust antenna tilt parameters
+via remote electrical tilt interfaces. For Performance Degradation, the
+system implements cell splitting or dynamic resource block reallocation
+to balance the load more evenly across neighbouring cells. When
+facing a Packet Size Anomaly, the system performs packet inspection
+and applies flow-level adjustments to standardise payload formatting,
+thereby improving parser stability and reducing fragmentation-induced
+retransmissions. Finally, for recurring Transmission Errors, the system
+enhances error correction by adapting redundancy ratios in the physical
+layer.
+The above explained operations are guided by the semantic
+anomaly-action alignment computed through zero-shot learning and
+verified in the post-action monitoring loop defined in Algorithm 4.
+Specifically, after selection, the chosen action is executed, and the
+network status is monitored to ensure its effectiveness. If the anomaly
+persists, the same procedures are iterated. Therefore, the Diagnosis
+and Healing Engines work cooperatively to identify the root causes of
+detected anomalies and resolve them, as presented in Algorithm 4. This
+procedure ensures that each healing action is both technically grounded
+and adaptively selected based on real-time system feedback.
+While the current self-healing mechanism relies on a predefined set
+of corrective actions (as shown in Table 3), these actions are not triggered through static rule-based mappings. Instead, the system leverages
+zero-shot learning to establish a dynamic, semantic-level mapping between anomalies and corrective strategies. Specifically, each anomaly
+and each healing action is encoded into a shared high-dimensional
+semantic space using textual descriptions and embedding functions.
+During operation, the system computes a compatibility score between
+the anomaly embedding and all candidate healing action embeddings.
+Then, it selects the action with the highest alignment. This allows the
+system to handle previously unseen anomaly types by reasoning over
+semantic similarity rather than relying on direct, predefined pairings.
+As an example, if the system encounters a novel network condition
+characterised by a previously unobserved combination of packet loss,
+jitter, and signal degradation, the anomaly will be embedded to reflect
+its proximity to known issues like weak signal or transmission error.
+Thus, the selected healing action (e.g., increasing transmission power
+or enabling error correction) is chosen not by fixed rules but by semantic proximity, even if such a pattern-action pair was never explicitly
+defined during training.
+This mechanism bridges the gap between fixed action spaces and
+adaptive decision-making. It enables the system to operate effectively in
+
+5. Performance evaluation
+5.1. Simulation environment
+To evaluate the performance of our proposed 6G-oriented selfhealing framework, we conduct extensive simulations using the NS-3
+network simulator. The simulated environment encompasses a 1000m by 1000-m urban area, featuring macro cells, ultra-dense small
+cells, and mobile user entities. User mobility is modelled using a
+random walk process to capture the dynamic link variations typical
+in dense 6G deployments. Macro and small cells are assumed to be
+static to reflect fixed infrastructure. The diversity of network entities
+and dynamic conditions ensures that the proposed modules (knowledge generation, anomaly classification, and self-healing) are exercised
+under realistic and demanding 6G scenarios. Specifically, the varying
+network load and user movement patterns produce intermittent congestion, jitter spikes, and signal degradation across small cells. This
+dynamic behaviour stresses the monitoring and diagnosis components
+of the framework and provides realistic triggers for the closed-loop
+self-healing mechanism. Moreover, these runtime fluctuations allow us
+to evaluate the flexibility and generalisation capacity of the semantic
+zero-shot learning model in handling unseen or composite anomaly
+types.
+Additionally, the simulation structure supports the hierarchical and
+modular architecture of KDN, enabling realistic emulation of the data
+plane (via NS-3’s traffic generation and mobility models), the control
+plane (real-time monitoring and anomaly flagging), and the knowledge
+plane (semantic rule formation and ZSL inference). This multi-layered
+architecture mirrors the operational model envisioned for intelligent,
+AI-native 6G networks.
+As explained above, our simulation setup is carefully designed to
+emulate realistic 6G network conditions. Specifically, small cells operate in the mmWave spectrum (28 GHz) with high-order modulation
+(256-QAM), massive MIMO (8 × 8) , and limited coverage (50 m)
+to reflect dense and high-capacity scenarios. Additionally, energy harvesting and high-capacity backhaul are considered to align with 6G’s
+green networking and ultra-broadband principles. These simulation
+8
+
+Ad Hoc Networks 178 (2025) 103984
+
+T. Bilen
+Table 4
+Chronological data and control flow between system modules.
+Step
+
+Source module
+
+Target module
+
+Description
+
+1
+
+Data Collector
+
+Data Preprocessor
+
+Raw data is forwarded for cleaning and
+normalisation.
+
+2
+
+Data Preprocessor
+
+Data Storage
+
+Cleaned and normalised data is stored
+for later use.
+
+3
+
+Data Preprocessor
+
+Rule Identifier
+
+Engineered features are used to define
+threshold-based rules.
+
+4
+
+Rule Identifier
+
+Machine Learning
+Module
+
+Semantic rule descriptions are embedded
+into the semantic space.
+
+5
+
+Data Storage
+
+Machine Learning
+Module
+
+Historical data is used to support
+semantic embedding and compatibility
+calibration.
+
+6
+
+Machine Learning
+Module
+
+Network Monitoring
+Module
+
+Semantic embeddings and compatibility
+functions are shared for real-time
+inference.
+
+7
+
+Network Monitoring
+Module
+
+Machine Learning
+Module
+
+Real-time feature vectors are sent for
+semantic anomaly classification.
+
+8
+
+Network Monitoring
+Module
+
+Diagnosis Engine
+
+Detected anomalies are forwarded for
+root cause analysis.
+
+9
+
+Machine Learning
+Module
+
+Diagnosis Engine
+
+Semantic anomaly labels and
+compatibility scores are used for
+diagnosis.
+
+10
+
+Rule Identifier
+
+Diagnosis Engine
+
+Rule-to-anomaly mappings assist root
+cause reasoning.
+
+11
+
+Data Storage
+
+Diagnosis Engine
+
+Historical incident logs are used for
+correlation and confirmation.
+
+12
+
+Diagnosis Engine
+
+Healing Engine
+
+Diagnosed root causes are forwarded for
+healing decision-making.
+
+13
+
+Healing Engine
+
+Network Monitoring
+Module
+
+Post-healing states are monitored to
+verify recovery success.
+
+parameters are summarised in Table 5 and are chosen in accordance
+with recent 6G literature. This environment provides a realistic and
+sufficiently dynamic testbed to validate the responsiveness, adaptability, and scalability of the proposed self-healing architecture under 6G
+operational constraints.
+
+our scheme, high inter-arrival times indicate network
+( conges∑
+1 ∑𝑀 𝑗
+tion. Here, we will calculate this values with 𝑁1 𝑁
+𝑗=1
+𝑖=1
+𝑀𝑗
+)
+Inter-Arrival Time𝑖𝑗 .
+• Packet Loss Rate: This parameter measures the rate at which data
+packets are lost during transmission. In our scheme, high loss
+rates indicate transmission errors.
+In simulations, we
+(
+) calculate the
+∑
+Lost Packets𝑗
+packet loss rate as 𝑁1 𝑁
+× 100.
+𝑗=1
+Total Packets Transmitted
+
+5.2. Simulation details
+This section provides details about the simulation study to evaluate
+the proposed self-healing framework. To ensure technical transparency
+and reproducibility, we describe the evaluation metrics and healing
+action mappings used in the NS-3-based simulation environment. The
+following subsections outline the performance indicators monitored
+during runtime and the specific healing actions triggered in response
+to detected anomalies.
+
+𝑗
+
+• Peak Throughput: This parameter measures the highest data
+transfer rate achieved within a given period. In our scheme,
+low peak throughput reflects the network’s performance degradation. This value is found with min𝑁
+𝑗=1 (min Throughput𝑖𝑗 ). Here,
+𝑇 ℎ𝑟𝑜𝑢𝑔ℎ𝑝𝑢𝑡𝑖𝑗 is the throughput for each interval i for the 𝑗th small
+cell.
+• Jitter Variance: This parameter measures the variability in packet
+arrival times. In our scheme, high jitter variance indicates instability in the network. In simulations, we calculate the jitter
+1 ∑𝑁
+2
+variance as 𝑁−1
+𝑖=1 (Inter-Arrival Time𝑖𝑗 − 𝜇𝑗 ) . Here, 𝜇𝑗 shows
+the mean inter-arrival time.
+• Standard Deviation of Packet Size: This parameter measures the
+variability in packet sizes. In our scheme, a high standard deviation indicates anomalies in packet√
+size. In simulations, we will
+∑
+1 ∑𝑀𝑗
+calculate this value with 𝑁1 𝑁
+(𝑥 − 𝜇𝑗 )2 . Here,
+𝑗=1
+𝑖=1 𝑖𝑗
+𝑀 −1
+
+5.2.1. Simulation metrics
+In our simulations, we use the following metrics to evaluate the
+performance of the proposed scheme under realistic and dynamic 6G
+conditions. These metrics enable direct assessment of the effectiveness
+of the proposed anomaly detection and self-healing mechanisms.
+• Average Latency: This parameter measures the time delay between a user’s data request and the response from the small cell.
+In our scheme, high average latency indicates potential network
+(
+∑
+1
+congestion. In simulations, we calculate latency as 𝑁1 𝑁
+𝑗=1
+𝑀𝑗
+)
+∑𝑀𝑗
+Latency𝑖𝑗 . Here, 𝑀𝑗 is the number of packets for the 𝑗th
+𝑖=1
+
+𝑗
+
+where 𝑥𝑖𝑗 is the packet size and 𝜇𝑗 is the mean packet size for
+the 𝑗th small cell.
+• Error Correction Rate: This parameter measures the percentage
+of detected errors that are successfully corrected. A high error correction rate indicates the efficiency
+( of error correction
+)
+∑
+Corrected Errors𝑗
+mechanisms. It is calculated as 𝑁1 𝑁
+×
+𝑗=1
+Total Errors Detected
+
+small cell and 𝐿𝑎𝑡𝑒𝑛𝑐𝑦𝑖𝑗 is the latency of the 𝑖th packet for the 𝑗th
+small cell.
+• Average Inter-Arrival Time: This parameter measures the average time between the arrivals of consecutive data packets. In
+
+𝑗
+
+100.
+9
+
+Ad Hoc Networks 178 (2025) 103984
+
+T. Bilen
+
+• Implement Load Balancing: Load balancing is implemented by
+triggering vertical handovers between macro and small cells when
+local traffic exceeds capacity. The selection process is based on
+queue length and throughput metrics collected during runtime
+[23].
+• Implement Traffic Shaping: This is achieved by adjusting the
+packet queueing discipline (e.g., FIFO vs. RED) and modifying the
+data rate limit in TrafficControlHelper. These adjustments smooth
+burst traffic and reduce jitter variance.
+• Synchronise Network Clocks: Network instability caused by
+desynchronisation is modelled via artificial jitter injection. Healing involves resynchronising nodes by removing the delay offset
+manually during simulation time to restore time-aligned scheduling.
+• Analyse Packet Size Variability: Although this is a diagnostic action, it is followed by dropping outlier flows (via packet filters) or
+reducing queue priority for volatile flows. These are implemented
+using QueueDisc filtering policies and per-flow weight adjustment
+in NS-3.
+
+Table 5
+Simulation parameters.
+Parameter
+
+Small
+cells
+
+Macro
+cells
+
+Description
+
+Frequency
+band
+
+28 GHz
+
+3.5 GHz
+
+mmWave support for small
+cells; sub-6 GHz macro
+coverage
+
+Transmission
+power
+
+1 W
+
+20 W
+
+Lower transmit power in
+mmWave 6G small cells
+
+Reception
+power
+
+0.5 W
+
+0.5 W
+
+Signal reception power
+
+Coverage
+range
+
+50 m
+
+500 m
+
+Reduced due to mmWave
+path loss in small cells
+
+Modulation
+scheme
+
+256-QAM
+
+64-QAM
+
+Higher-order modulation
+enabled in 6G
+
+Antenna gain
+
+10 dBi
+
+10 dBi
+
+Beamforming support in
+small cells
+
+Backhaul
+capacity
+
+10 Gbps
+
+1 Gbps
+
+Fibre/wireless high-speed
+6G backhaul
+
+Bandwidth
+
+100 MHz
+
+20 MHz
+
+Wideband channels in 6G
+small cells
+
+Energy
+harvesting
+Rate
+
+10 mW
+
+5 mW
+
+Green energy-aware
+operation
+
+MIMO
+Configuration
+
+8 × 8
+
+4 × 4
+
+Massive MIMO at the edge
+
+Path loss
+model
+
+NYU
+mmWave
+
+Two-Ray
+Ground
+
+mmWave propagation for
+6G small cells
+
+Carrier
+frequency
+
+28 GHz
+
+3.5 GHz
+
+High-frequency operation
+for dense deployments
+
+5.3. Semantic alignment visualisation
+
+Traffic model
+
+Poisson +
+Bursty
+
+Poisson
+
+Bursty traffic used to
+simulate real-time services
+in 6G
+
+To further support the validity of the simulation setup and demonstrate how the proposed zero-shot learning model operates under realistic 6G network conditions, we provide a semantic alignment visualisation in Fig. 4(a). This figure illustrates how real-time feature vectors
+collected during simulation are projected into the same semantic embedding space as the predefined anomaly classes and healing actions.
+As described in Section 4.3, the model embeds textual rule definitions
+and network data into a shared high-dimensional space. For the purpose of visualisation, we apply Principal Component Analysis (PCA)
+to reduce the embedding space to two dimensions. The projection
+shows three types of points: red circles correspond to known anomaly
+types (e.g., Network Congestion), blue squares denote feature vectors extracted from live simulation data during anomalous conditions,
+and green triangles represent available healing strategies (e.g., Adjust
+Transmission Power). This visual evidence confirms that the model
+aligns observed network behaviour with its most semantically similar
+anomaly class and healing response. For example, simulated events
+involving jitter and packet loss are positioned near the ‘‘Transmission
+Error’’ cluster and close to the ‘‘Enable Error Correction’’ action. These
+alignment patterns highlight the semantic inference capability of the
+system, which generalises beyond fixed threshold rules. Therefore,
+this embedding-based mapping, visualised through simulation data,
+reinforces the realism of the simulation environment and verifies that
+the proposed zero-shot learning mechanism functions effectively under
+the simulated 6G conditions.
+To further illustrate the semantic alignment capabilities of the proposed zero-shot learning model, Fig. 4(b) presents a two-dimensional
+t-SNE visualisation. This figure displays anomaly-healing pairs where
+each anomaly embedding is semantically linked to its most appropriate
+healing action based on their proximity in the learned embedding
+space. The embeddings are derived from textual rule descriptions and
+processed via a pre-trained language encoder, as described in Section 4.3. Each line in the plot connects an anomaly class (𝐴𝑖 ) to its
+most semantically compatible healing action (𝐻𝑖 ). The closeness of the
+paired points confirms that the system is able to map network faults
+to relevant corrective strategies through semantic reasoning, without
+relying on task-specific retraining. This behaviour directly supports the
+
+Each action is executed by the self-healing engine upon detection
+and diagnosis of the corresponding anomaly. All parameter changes
+happen during the simulation runtime. This keeps the environment
+dynamic, allowing us to observe the direct effects on performance
+metrics. This implementation ensures full reproducibility of results and
+traceability of healing effects.
+
+5.2.2. Self-healing actions
+To provide full transparency of the proposed architecture and address reproducibility concerns, this subsection outlines how the conceptual self-healing actions were practically realised in the simulation
+environment. Each action is mapped to a measurable and observable intervention in NS-3. This allows us to simulate realistic healing
+behaviours and assess their effectiveness under 6G conditions. Accordingly, each self-healing action defined in Table 3 is operationalised
+within the NS-3 simulation environment through targeted modifications on system parameters or network behaviours. These implementation mappings ensure that the healing process is both observable and
+verifiable within a controlled 6G scenario. The details of self-healing
+actions could be summarised as follows:
+• Increase Transmission Power: This action increases the TxPower
+attribute of the affected small cell node using the SetTxPower()
+function in the NS-3 LTE or mmWave modules. This change
+enhances signal strength and reduces packet loss caused by weak
+coverage.
+• Redistribute Network Load: This action initiates reassociation of
+UEs to neighbouring small cells based on real-time signal quality
+and current load, when triggered. We simulate this by modifying
+cell association tables and forcing a handover using X2-based
+handover procedures in NS-3.
+• Repair Physical Connections: Physical link issues are modelled
+using adjustable error models (e.g., RateErrorModel). Healing this
+anomaly is implemented by reducing the ErrorRate or LossRate of
+the affected link interface dynamically during simulation time.
+• Enhance Error Correction: This action increases the Forward Error
+Correction (FEC) effectiveness by modifying the coding rate or
+error handling threshold in the physical or MAC layer settings. In
+NS-3, this is emulated by reducing packet drop probability under
+the same SINR conditions.
+10
+
+Ad Hoc Networks 178 (2025) 103984
+
+T. Bilen
+
+Fig. 4. Visualisation of semantic embedding space. (a) PCA projection shows clustered anomaly and healing classes. (b) t-SNE projection highlights pairwise semantic alignment
+between anomalies and corrective actions.
+
+Fig. 5. Comparison of average latency and inter-arrival time.
+
+model’s ability to generalise beyond predefined conditions and enables
+adaptive decision-making when facing unseen or composite anomalies.
+Unlike traditional rule-based approaches that require explicit mappings, this embedding-based alignment ensures flexibility and supports
+the system’s closed-loop, zero-touch operation. Together with the PCA
+visualisation in Fig. 4(a), this t-SNE-based representation highlights
+the robustness and interpretability of the proposed semantic matching
+architecture.
+
+12 of Algorithm 2. Consequently, faster and more effective latency reduction is achieved. This capability is especially critical in 6G small cell
+environments, where rapid anomaly response is necessary to maintain
+low-latency communication for real-time and immersive applications
+such as XR and holographic messaging. Fig. 5(b) illustrates the comparative performance of the conventional and our ZSL-based self-healing
+approaches in terms of average inter-arrival time. Similar to latency,
+the inter-arrival time increases until it exceeds a critical threshold of
+15 ms, after which the self-healing mechanisms are triggered. The
+conventional approach shows a gradual decrease with minor fluctuations, indicating moderate improvements in mitigating congestion. In
+contrast, our proposed approach utilises advanced learning algorithms
+and real-time data to adapt and optimise network conditions more
+efficiently, as described in Algorithm 1. Monitoring inter-arrival time is
+particularly relevant in mmWave-based 6G deployments, where beam
+misalignment, blockage, or congestion can introduce bursty traffic behaviour. The proposed scheme’s ability to stabilise this metric indicates
+enhanced flow continuity and reduced queuing effects. Therefore,
+the ZSL-based scheme maintains optimal network performance more
+effectively, as depicted in Fig. 5(b).
+We evaluate the packet loss rate of the conventional and ZSLbased self-healing methods in Fig. 6(a). When the packet loss rate
+exceeds a threshold, self-healing is triggered. The conventional method
+results in a gradual decrease with slight fluctuations. Conversely, our
+ZSL-based model maintains a consistently lower packet loss rate postintervention. By integrating adaptive learning models, the ZSL-based
+self-healing mechanism significantly enhances the network’s resilience
+and performance. This is particularly important in 6G networks operating in high-frequency bands, where link instability, interference,
+
+5.4. Simulation results
+In this part, we present the simulation results to evaluate the
+effectiveness of our proposed self-healing framework under 6G-specific
+conditions. We compare the performance of our KDN-driven, ZeroShot Learning (ZSL)-based intelligent self-healing scheme with a conventional rule-based self-healing mechanism. The comparison focuses
+on key performance indicators such as latency, packet loss, jitter,
+and error correction efficiency to highlight the advantages of the
+proposed healing framework in highly dynamic and dense network
+environments.
+We first evaluate the average latency to compare the performance
+of our ZSL-based self-healing approach with the conventional method,
+as shown in Fig. 5(a). Initially, latency increases until it reaches a
+threshold of 60 ms, which triggers the self-healing mechanisms. After
+this point, the conventional method shows a moderate reduction in
+latency. In contrast, our proposed approach demonstrates a significant
+and rapid decrease. Specifically, the ZSL-based scheme is more efficient
+because it quickly identifies and addresses anomalies, as shown in line
+11
+
+Ad Hoc Networks 178 (2025) 103984
+
+T. Bilen
+
+Fig. 6. Comparison of packet loss rate and peak throughput.
+
+Fig. 7. Comparison of jitter variance and standard deviation of packet size.
+
+and blockages can cause sporadic transmission errors. The ability to
+rapidly contain and mitigate such losses without predefined retraining improves the system’s robustness in dynamic environments. Fig.
+6(b) shows the throughput comparison between the proposed and
+conventional self-healing approaches. When a low throughput value
+is detected, the self-healing process is initiated. After this point, both
+methods exhibit an increase; however, our proposed approach achieves
+a steeper growth curve. The conventional method provides a moderate
+increase, whereas the ZSL-based scheme utilises a closed-loop feedback
+mechanism (as described in Algorithm 4) to continuously assess and
+improve throughput. This capability aligns with the high-throughput
+demands of next-generation 6G services such as tactile internet, realtime video analytics, and ultra-HD streaming. The proposed architecture’s feedback-driven throughput stabilisation mechanism ensures
+sustained performance under dynamic traffic loads.
+Fig. 7(a) presents the jitter variance comparison. After the selfhealing trigger point, our ZSL-based scheme rapidly reduces jitter
+variance. In contrast, the conventional method achieves a more gradual
+reduction. The proposed model predicts future network states using
+historical and real-time data (Algorithm 1), enabling proactive adjustments that lead to improved performance. In 6G networks jitter can be
+significantly affected by beam misalignment, frequent handovers, and
+rapid user mobility. The ability to anticipate and stabilise such variance
+is essential for latency-sensitive applications. Fig. 7(b) compares the
+standard deviation of packet sizes. Our proposed approach achieves
+a faster reduction in variance after triggering the healing mechanism.
+This dynamic adjustment is achieved via advanced learning algorithms
+and is executed through Algorithm 3 and Algorithm 4. High variability
+in packet size is often linked to bursty or problematic traffic patterns.
+This is especially true in environments with diverse data flows and
+limited buffers, which are common in 6G edge networks. Controlling
+this variance helps reduce parser overhead, buffer oscillation, and improves overall queuing efficiency. Meanwhile, the conventional method
+responds more slowly since it relies on static rule mappings without
+
+semantic generalisation or adaptive recalibration based on evolving
+traffic conditions.
+As shown in Fig. 8, we evaluate error correction efficiency across
+three dimensions: time, number of errors, and network load. Fig. 8(b)
+shows that our proposed methodology consistently maintains higher
+error correction efficiency. This indicates that the system can react
+quickly and effectively when errors first appear. Fig. 8(a) reveals that
+the conventional approach struggles to scale with increasing error load.
+This is because it lacks a feedback mechanism to revise or enhance
+corrective actions based on evolving error patterns. Fig. 8(c) shows
+that our method handles increasing network load more gracefully,
+benefiting from adaptive learning as described in Algorithm 3. In 6G
+environments with dense traffic and frequent interference, maintaining
+correction efficiency under load is critical. The ability to update healing
+decisions based on real-time feedback allows the proposed model to
+remain stable under stress, unlike static methods. By contrast, the conventional scheme applies the same predefined action regardless of the
+context or effectiveness of previous corrections. This leads to repeated
+inefficiencies and unresponsiveness under high-stress conditions.
+In addition to the above evaluations, to quantify the resource impact
+of the proposed hierarchical and adaptive data collection strategy, we
+simulated three representative network load conditions: low (sparse
+traffic), medium (mixed user activity), and high (dense anomaly-prone
+environment). Fig. 9(a) presents the results in terms of telemetry bandwidth usage and CPU overhead. The static sampling baseline, which
+operates at a fixed collection frequency regardless of network conditions, consistently incurs high monitoring cost. In contrast, the adaptive
+scheme dynamically adjusts its sampling frequency and preprocessing
+intensity based on local anomaly likelihood and temporal metric stability. Specifically, in low-load conditions, the adaptive method achieves
+up to 75% reduction in bandwidth usage and 66% reduction in CPU
+load, while still maintaining reactivity to unexpected metric deviations.
+Under high load, overhead converges to that of static sampling, ensuring maximum responsiveness. These results demonstrate that the
+12
+
+Ad Hoc Networks 178 (2025) 103984
+
+T. Bilen
+
+Fig. 8. Error correction rates of conventional and proposed approaches.
+
+proposed method achieves a favourable balance between efficiency
+and accuracy, making it scalable and cost-effective for ultra-dense 6G
+deployments where telemetry overhead is a critical concern.
+Also, to quantitatively demonstrate the responsiveness of our proposed monitoring pipeline, we evaluate anomaly detection latency as
+a function of the sampling interval. Fig. 9(b) presents a comparative
+analysis between our adaptive zero-shot learning (ZSL)-based monitoring module and a conventional fixed-sampling mechanism. As seen
+in the results, the latency of the conventional model increases almost
+linearly with the interval due to its inability to prioritise observations
+under dynamic network behaviour. In contrast, our ZSL-based approach
+dynamically increases sampling frequency in high-risk periods and
+reduces it during stable operation. This adaptive mechanism leads to
+consistently lower detection latency, with up to 35% improvement
+observed at 100 ms sampling. The results underline the model’s ability
+to maintain detection responsiveness while reducing redundant measurements and avoiding unnecessary bandwidth usage, thereby aligning
+with the efficiency goals of ultra-dense 6G networks.
+Similarly, to validate the scalability of our edge-enhanced architecture, we measure the CPU utilisation of the monitoring subsystem as
+the number of small cells increases. Fig. 9(c) compares two deployment
+strategies: a centralised monitoring baseline and our edge-offloaded
+ZSL-based design. In the centralised approach, all raw data is pushed to
+a central controller, which leads to rapid CPU saturation as the system
+scales. Conversely, our proposed model performs feature extraction,
+threshold comparison, and preliminary cleaning at the edge, significantly reducing upstream processing costs. For instance, at 1000 small
+cells, our design reduces CPU usage by over 17%, avoiding overload
+conditions. These results confirm that the proposed hierarchical data
+collection strategy not only maintains high accuracy but also scales efficiently under dense deployment scenarios, with lower computational
+
+burden and better resource distribution. This directly addresses the
+reviewer’s concern on the effectiveness and overhead of the proposed
+adaptive collection method.
+Overall, the simulation results confirm that the proposed ZSL-based
+self-healing framework significantly improves network performance
+across multiple key metrics compared to conventional rule-based approaches. The observed improvements in metrics demonstrate the system’s ability to manage anomalies effectively in dense and dynamic
+network environments. Accordingly, the suitability of the proposed
+approach is highlighted for 6G scenarios that demand autonomous,
+real-time, and scalable fault management.
+5.5. Alignment with 6G design principles
+The proposed self-healing framework is designed specifically to
+address the emerging challenges of 6G networks. Each design choice
+is intentionally made to meet specific 6G capabilities and expectations.
+This section outlines how the architecture and its constituent modules
+align with the key 6G design objectives. The details of this alignment
+could be summarised as follows:
+• Ultra-Dense Small Cells: The system is developed for anomaly
+detection and recovery in ultra-dense small cell deployments. The
+simulation includes small cells with short coverage (50 m) and
+mmWave operation (28 GHz) to reflect dense 6G networks.
+• AI-Native and Semantic Intelligence: The Machine Learning
+Module uses zero-shot learning with semantic embeddings. This
+allows real-time anomaly detection without retraining. It supports
+6G’s goal of AI-native and adaptive networks.
+• Zero-Touch and Self-Healing: The self-healing module works in
+a closed loop. It runs actions based on semantic diagnosis and
+13
+
+Ad Hoc Networks 178 (2025) 103984
+
+T. Bilen
+
+Fig. 9. Evaluations for data collection strategy.
+
+real-time monitoring. This enables zero-touch operation, which is
+critical for scalable and autonomous 6G systems.
+• Knowledge-Defined Networking (KDN): The system uses a KDN
+structure with real-time data, knowledge generation, and control.
+This supports 6G’s aim for programmable, learning-based control
+planes.
+• High-Frequency (mmWave) Operation: The simulation uses
+28 GHz frequency, 256-QAM modulation, and the NYU mmWave
+model. These reflect 6G radio access conditions and support
+evaluation of signal degradation and congestion.
+• Green and Sustainable Design: The model includes energy harvesting (10 mW for small cells). The framework reduces retransmissions and balances load to improve energy efficiency, in line
+with 6G’s green networking goals.
+
+incorporates 6G-compliant parameters such as mmWave frequencies,
+massive MIMO, energy harvesting, and ultra-dense small cell layouts.
+These choices ensure that the proposed solution is evaluated under
+realistic 6G constraints. Compared to conventional approaches, our
+intelligent self-healing mechanism reduces packet loss and latency
+more effectively. The results also confirm that the proposed method
+enables AI-native and zero-touch fault management. Accordingly, it
+offers a scalable and flexible path towards resilient and autonomous
+6G infrastructures.
+7. Future work
+Given the complexity and heterogeneity of 6G environments, future
+systems can benefit from incorporating multi-modal data sources such
+as IoT devices, user behaviour, traffic dynamics, and environmental
+signals. This richer context can support more robust anomaly detection
+and enable the discovery of complex patterns and relationships. As
+future work, we aim to utilise multi-modal data to further enhance the
+efficiency and adaptability of the self-healing process.
+Additionally, while the current framework leverages predefined
+healing actions guided by zero-shot learning, it enables dynamic responses to previously unseen anomalies without retraining. In future
+work, we plan to explore reinforcement learning (RL)-based extensions
+to autonomously learn and optimise novel healing strategies over time,
+thereby further improving adaptability and long-term performance in
+complex 6G environments.
+
+Together, these features show that the proposed system is designed
+specifically for 6G. The architecture is modular, adaptive, and based
+on semantic intelligence. It is different from general 5G or LTE systems
+and supports the unique needs of future networks.
+6. Conclusion
+Ultra-dense 6G small cell networks are essential to meet the demands of next-generation data-intensive applications. However, these
+networks experience frequent anomalies and generate large amounts
+of data. This makes real-time monitoring and management challenging. Consequently, anomaly detection and correction remain critical
+challenges. This paper proposes a KDN-based self-healing framework
+for 6G small cell networks using zero-shot learning. The proposed
+model adaptively manages and resolves anomalies without requiring
+prior definitions of specific fault types. Once an anomaly is detected,
+self-healing actions are executed autonomously. The simulation setup
+
+CRediT authorship contribution statement
+Tuğçe Bilen: Writing – original draft.
+14
+
+Ad Hoc Networks 178 (2025) 103984
+
+T. Bilen
+
+Declaration of competing interest
+
+[14] P. Yu, J. Zhang, H. Fang, W. Li, L. Feng, F. Zhou, P. Xiao, S. Guo, Digital twin
+driven service Self-Healing with graph neural networks in 6G edge networks,
+IEEE J. Sel. Areas Commun. 41 (11) (2023) 3607–3623, http://dx.doi.org/10.
+1109/JSAC.2023.3310063.
+[15] Y. Rumesh, D. Attanayaka, P. Porambage, J. Pinola, J. Groen, K. Chowdhury,
+Federated learning for anomaly detection in open RAN: Security architecture
+within a digital twin, in: 2024 Joint European Conference on Networks and
+Communications & 6G Summit (EuCNC/6G Summit), 2024, pp. 877–882, http:
+//dx.doi.org/10.1109/EuCNC/6GSummit60053.2024.10597083.
+[16] M.Y. Selim, A.E. Kamal, Robust X-haul failure mitigation for 6G networks: Adding
+more self-healing antennas to small cells, in: 2023 International Telecommunications Conference (ITC-Egypt), 2023, pp. 457–462, http://dx.doi.org/10.1109/
+ITC-Egypt58155.2023.10206115.
+[17] Z. Ming, H. Yu, T. Taleb, User request provisioning oriented slice anomaly
+prediction and resource allocation in 6G networks, in: ICC 2024 - IEEE International Conference on Communications, 2024, pp. 3640–3645, http://dx.doi.org/
+10.1109/ICC51166.2024.10622281.
+[18] S.B. Ruba, N.E.-H. Yellas, S. Secci, Anomaly detection for 5G softwarized
+infrastructures with federated learning, in: 2022 1st International Conference on
+6G Networking (6GNet), 2022, pp. 1–4, http://dx.doi.org/10.1109/6GNet54646.
+2022.9830390.
+[19] J. Mendoza, I. de-la Bandera, J. Burgueño, C. Morillas, D. Palacios, R. Barco,
+Anomaly detection and analysis framework for mobile networks, in: 2021
+Joint European Conference on Networks and Communications & 6G Summit
+(EuCNC/6G Summit), 2021, pp. 359–364, http://dx.doi.org/10.1109/EuCNC/
+6GSummit51104.2021.9482529.
+[20] G. Rathinavel, N. Muralidhar, N. Ramakrishnan, T. O’Shea, Efficient generative
+wireless anomaly detection for next generation networks, in: MILCOM 2022 2022 IEEE Military Communications Conference, MILCOM, 2022, pp. 594–599,
+http://dx.doi.org/10.1109/MILCOM55135.2022.10017520.
+[21] Q-learning driven routing for aeronautical ad-hoc networks, Pervasive Mobile Comput. 87 (2022) 101724, http://dx.doi.org/10.1016/j.pmcj.2022.101724,
+https://www.sciencedirect.com/science/article/pii/S1574119222001377.
+[22] T. Bilen, B. Canberk, Binary context tree based middleware for next generation
+context aware networks, in: 2015 3rd International Conference on Future Internet
+of Things and Cloud, 2015, pp. 93–99, http://dx.doi.org/10.1109/FiCloud.2015.
+67.
+[23] T. Bilen, B. Canberk, Deliver the content over multiple surrogates: a request routing model for high bandwidth requests, Comput. Commun. 146
+(2019) 39–47, http://dx.doi.org/10.1016/j.comcom.2019.07.009, https://www.
+sciencedirect.com/science/article/pii/S0140366418309885.
+
+The authors declare that they have no known competing financial interests or personal relationships that could have appeared to
+influence the work reported in this paper.
+Acknowledgment
+This study was supported by the Research Fund of the Istanbul
+Technical University (ITU). Project ID: ITUBAP 46295, Project Code:
+MAB-2024-46295.
+Data availability
+No data was used for the research described in the article.
+References
+[1] T. Bilen, Integrating queuing theory and gbm for dynamic resource allocation in
+6g networks, Mus Alparslan University Journal of Science 13 (1) (2025) 70–80,
+http://dx.doi.org/10.18586/msufbd.1672775.
+[2] Y. Zhang, Q. Hu, M. Peng, Y. Liu, G. Zhang, T. Jiang, Interdependent Cell-Free
+and cellular networks: Thinking the role of Cell-Free architecture for 6G, IEEE
+Netw. 38 (5) (2024) 247–254, http://dx.doi.org/10.1109/MNET.2023.3336218.
+[3] T. Bilen, B. Canberk, Learning-vector-quantization-based topology sustainability
+for clustered-aanets, IEEE Netw. 35 (4) (2021) 120–128, http://dx.doi.org/10.
+1109/MNET.011.2000688.
+[4] M. Zhang, L. Shen, X. Ma, J. Liu, Toward 6G-Enabled mobile vision analytics
+for immersive extended reality, IEEE Wirel. Commun. 30 (3) (2023) 132–138,
+http://dx.doi.org/10.1109/MWC.023.2200557.
+[5] T. Bilen, B. Canberk, Content delivery from the sky: drone-aided load balancing
+for mobile-cdn, EAI Endorsed Trans. Indus. Netw. Intell. Syst. (2022) 173606,
+http://dx.doi.org/10.4108/eai.9-3-2022.173606.
+[6] P. Yang, Y. Xiao, M. Xiao, S. Li, 6G wireless communications: Vision and
+potential techniques, IEEE Netw. 33 (4) (2019) 70–75, http://dx.doi.org/10.
+1109/MNET.2019.1800418.
+[7] K.M.S. Huq, J. Rodriguez, I.E. Otung, 3D network modeling for THz-Enabled
+ultra-fast dense networks: A 6G perspective, IEEE Commun. Stand. Mag. 5 (2)
+(2021) 84–90, http://dx.doi.org/10.1109/MCOMSTD.001.2000048.
+[8] P.A.D.S.N. Wijesekara, S. Gunawardena, A comprehensive survey on KnowledgeDefined networking, Telecom 4 (3) (2023) 477–596, http://dx.doi.org/10.3390/
+telecom4030025, URL https://www.mdpi.com/2673-4001/4/3/25.
+[9] J. Zhu, M. Zhao, S. Zhang, W. Zhou, Exploring the road to 6G: ABC —
+foundation for intelligent mobile networks, China Commun. 17 (6) (2020) 51–67,
+http://dx.doi.org/10.23919/JCC.2020.06.005.
+[10] L. Mata, M. Sousa, P. Vieira, M.P. Queluz, A. Rodrigues, On the use of spatial
+graphs for performance degradation Root-Cause analysis toward Self-Healing
+mobile networks, IEEE Access 12 (2024) 20490–20508, http://dx.doi.org/10.
+1109/ACCESS.2024.3361284.
+[11] N. Nezhadsistani, B. Stiller, ML-Based anomaly detection in 6G networks: A
+survey on the current status, challenges, and future directions, 2024, pp. 75–83,
+http://dx.doi.org/10.1109/6GNet63182.2024.10765631.
+[12] M.M. Saeed, R.A. Saeed, A.S.A. Gaid, R.A. Mokhtar, O.O. Khalifa, Z.E. Ahmed,
+Attacks detection in 6G wireless networks using machine learning, in: 2023 9th
+International Conference on Computer and Communication Engineering, ICCCE,
+2023, pp. 6–11, http://dx.doi.org/10.1109/ICCCE58854.2023.10246078.
+[13] L. Mata, M. Sousa, P. Vieira, M.P. Queluz, A. Rodrigues, A machine learning
+driven methodology for alarm prediction towards Self-Healing in wireless networks, in: 2024 Wireless Telecommunications Symposium, WTS, 2024, pp. 1–6,
+http://dx.doi.org/10.1109/WTS60164.2024.10536674.
+
+Tuǧçe Bilen received her B.Sc., M.Sc., and Ph.D. degrees
+from the Computer Engineering Department of Istanbul
+Technical University (ITU), Turkey, in 2015, 2017, and
+2022, respectively. During her graduate studies, she served
+as a Research and Teaching Assistant in the same department. She is currently an Assistant Professor in the
+Department of Artificial Intelligence and Data Engineering
+at Istanbul Technical University. Her Ph.D. thesis received
+several prestigious awards, including the First Prize in Science and Technology from the Turkish Academy of Sciences
+(TÜBA) in 2023, the ‘‘Best Ph.D. Thesis Award’’ from ITU
+in 2022, and the ‘‘Serhat Özyar Young Scientist of the Year
+Honorary Award’’ in 2023. Her research interests include 6G
+networks, Knowledge-Defined Networking (KDN), artificial
+intelligence for network management, and digital twins. She
+focuses on the integration of intelligent systems into future
+network architectures. She also serves as a reviewer for
+several international journals.
+
+15
+
+

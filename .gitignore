@@ -1,0 +1,73 @@
+.venv/
+.venv-*/
+.vscode/
+**/.venv/
+**/.venv-*/
+**/venv/
+**/env/
+_TO_DELETE_recommended/
+oran_self_healing (1)/
+RECYCLE_MANIFEST.md
+.project-python/
+__pycache__/
+*.pyc
+.pytest_cache/
+**/__pycache__/
+**/.pytest_cache/
+_local_quarantine/
+
+# Large local archives and downloaded bundles.
+*.tar
+*.tar.gz
+*.tar.xz
+*.zip
+literature-survey/papers.zip
+*.pcap
+*.pcapng
+**/data/external/
+**/data/timesafe/
+**/external_datasets/
+**/external-datasets/
+**/results/tier2/_seedcache/
+**/_seedcache/
+**/results/tier2/*.pcap
+**/results/tier2_pytest*/
+**/results/tier2_pytest_tmp/
+**/results/tmp*/
+**/results/full_review_deck_qa/
+*.inspect.ndjson
+**/dataset/*.csv
+**/dataset/*.parquet
+**/results/tier2/timesafe_external_telemetry.csv
+**/results/tier2/timesafe_external_windows.csv
+**/results/tier2/timesafe_tree.json
+**/results/tier2/real_validation_sim_reference/
+**/results/tier2_diagnosis_tmp/
+
+# Local runtime state and generated databases.
+*.sqlite
+*.sqlite3
+outputs/*.sqlite
+outputs/*.db
+
+# Raw telemetry, replay logs, and bulky generated decision streams.
+**/data/telemetry/raw/*.log
+outputs/*.jsonl
+outputs/live_backend*.log
+outputs/live_backend*.err
+
+# Generated experiment outputs. Keep selected small summaries/reports by force-adding
+# only when they are intentionally part of evidence documentation.
+outputs/runs/
+outputs/presentations/
+data/training/*_augmented_training.csv
+
+# Generated visual review assets can be regenerated from PDFs.
+**/literature-survey/papers/**/_visual_review/
+
+# Downloaded research corpora and superseded generated evidence stay local.
+01_CURRENT_SPlane_SelfHealing/literature-survey/papers/**/*.pdf
+02_PREVIOUS_Work/**/papers/*.pdf
+02_PREVIOUS_Work/**/data/**/*.csv
+02_PREVIOUS_Work/**/outputs/
+02_PREVIOUS_Work/gen2_KPM_FlexRIC_twin/*.pptx

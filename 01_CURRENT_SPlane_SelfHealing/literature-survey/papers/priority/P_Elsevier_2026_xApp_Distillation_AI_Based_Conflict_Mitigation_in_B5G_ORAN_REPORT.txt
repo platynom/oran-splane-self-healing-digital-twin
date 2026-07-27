@@ -1,0 +1,32 @@
+Paper: xApp Distillation: AI-Based Conflict Mitigation in B5G O-RAN
+Publication/source: Computer Networks, Elsevier, 2026
+Pages visually reviewed: 12
+Visual assets: _visual_review/P_Elsevier_2026_xApp_Distillation_AI_Based_Conflict_Mitigation_in_B5G_ORAN/ALL_PAGES_CONTACT_SHEET.png
+
+Core idea:
+This paper proposes xApp distillation to mitigate conflicts among independently developed xApps. This is directly relevant to safe self-healing because multiple AI controllers can optimize incompatible objectives.
+
+Page-wise visual review:
+- Pages 1-2: Abstract/introduction and motivation for multi-vendor xApp conflict.
+- Pages 3-5: O-RAN architecture with xApp deployment, conflict-management background, and multi-headed DQN structure.
+- Pages 6-8: Distillation methodology and algorithmic flow.
+- Pages 9-10: Evaluation plots.
+- Pages 11-12: Conclusion, references, author information.
+
+Important visuals:
+- O-RAN architecture with xApp deployment.
+- Multi-headed DQN architecture.
+- xApp distillation methodology.
+- Algorithm blocks and evaluation graphs.
+
+Relation to our project:
+This paper should inform the action arbitration layer before automated healing is applied. The Digital Twin can simulate an action, while a distillation/conflict mitigation layer merges or suppresses unsafe policies.
+
+Project mapping:
+- Layer: Near-RT RIC/xApp orchestration.
+- Twin object: Policy/action twin.
+- AI function: Conflict mitigation and safe action selection.
+- Self-healing relevance: Avoid AI-induced outages caused by conflicting healing actions.
+
+Limitations:
+Focused on xApp conflict only. Needs integration with SMO policy, ZSM governance, drift detection, and security monitoring.

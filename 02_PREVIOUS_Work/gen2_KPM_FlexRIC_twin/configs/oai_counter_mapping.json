@@ -1,0 +1,41 @@
+{
+  "purpose": "Mapping contract for replacing synthetic profile telemetry with OpenAirInterface, srsRAN, or O-RAN E2 KPM counters.",
+  "current_backend_schema": {
+    "latency": "End-to-end or RAN user-plane latency in ms",
+    "jitter": "Latency variation in ms",
+    "throughput": "PDCP/RLC/application throughput in Mbps",
+    "loss": "Packet loss percentage",
+    "prb": "Physical Resource Block utilization percentage",
+    "handover": "Handover failure percentage",
+    "edgeDelay": "MEC/application processing delay in ms",
+    "backhaul": "Transport/backhaul delay in ms",
+    "sinr": "Signal-to-interference-plus-noise ratio in dB",
+    "bler": "Block error rate percentage"
+  },
+  "oai_or_srsran_counter_candidates": {
+    "latency": ["pdcp_latency_ms", "gtp_u_latency_ms", "iperf_udp_latency_ms", "ping_rtt_ms"],
+    "jitter": ["iperf_udp_jitter_ms", "pdcp_latency_jitter_ms"],
+    "throughput": ["pdcp_dl_throughput_mbps", "pdcp_ul_throughput_mbps", "mac_dl_bitrate_mbps", "mac_ul_bitrate_mbps"],
+    "loss": ["pdcp_packet_loss_pct", "iperf_udp_lost_percent", "rlc_discard_pct"],
+    "prb": ["dl_prb_usage_pct", "ul_prb_usage_pct", "mac_prb_utilization_pct"],
+    "handover": ["handover_attempts", "handover_failures", "rrc_reestablishment_count"],
+    "edgeDelay": ["mec_app_latency_ms", "upf_to_mec_latency_ms"],
+    "backhaul": ["gnb_to_upf_rtt_ms", "gtp_u_delay_ms", "transport_rtt_ms"],
+    "sinr": ["ue_sinr_db", "pusch_sinr_db", "pucch_sinr_db"],
+    "bler": ["dl_bler_pct", "ul_bler_pct"]
+  },
+  "oran_e2_kpm_candidates": {
+    "prb": ["RRU.PrbUsedDl", "RRU.PrbUsedUl"],
+    "throughput": ["DRB.UEThpDl", "DRB.UEThpUl"],
+    "latency": ["DRB.PacketDelayDl", "DRB.PacketDelayUl"],
+    "handover": ["HO.PrepFail", "HO.ExecFail"],
+    "ue_count": ["RRC.ConnMean", "RRC.ConnMax"]
+  },
+  "integration_steps": [
+    "Keep /api/state unchanged for the frontend.",
+    "Add a telemetry adapter that reads OAI/srsRAN logs, Prometheus metrics, or E2 KPM messages.",
+    "Normalize real counters into the current_backend_schema.",
+    "Feed normalized rows into the same Digital Twin, RCA, prediction, and healing logic.",
+    "Keep synthetic profile telemetry as fallback/demo mode."
+  ]
+}

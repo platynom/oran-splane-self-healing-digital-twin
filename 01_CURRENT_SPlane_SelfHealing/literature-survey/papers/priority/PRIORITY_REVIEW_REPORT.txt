@@ -1,0 +1,45 @@
+Priority Literature Visual Review Report
+Date: 2026-06-05
+Folder reviewed: literature-survey/papers/priority
+
+Method used:
+- Every priority PDF was rendered page-wise into images using PyMuPDF.
+- One all-pages contact sheet per PDF was generated under _visual_review/<paper>/ALL_PAGES_CONTACT_SHEET.png.
+- Additional page-group visual sheets and page_text.txt files were generated for deeper checking.
+- Reports were written after visual inspection of the rendered sheets plus page-wise text/caption extraction.
+
+Priority reading order:
+1. P_Elsevier_2025_ORAN_xApps_Survey_and_Research_Challenges.pdf
+2. P_IEEE_2025_Anomaly_Detection_for_xApp_and_E2_Interface_Threats_in_ORAN_Near_RT_RIC.pdf
+3. P_IEEE_2025_COMIX_Generalized_Conflict_Management_in_ORAN_xApps.pdf
+4. P_Elsevier_2026_xApp_Distillation_AI_Based_Conflict_Mitigation_in_B5G_ORAN.pdf
+5. P_Elsevier_2024_Drift_Handling_Framework_for_Open_Radio_Access_Networks.pdf
+6. P_Elsevier_2024_Adversarial_Machine_Learning_Threat_Analysis_and_Remediation_in_ORAN.pdf
+7. P_IEEE_2024_Digital_Twin_Driven_End_to_End_Network_Slicing_Toward_6G.pdf
+8. P_Springer_2025_Time_Sensitive_Networking_Digital_Twin_for_STRIDE_Based_Security_Testing.pdf
+9. P_Springer_2025_CERBERUS_Secure_Automated_Multi_Operator_Management_in_B5G_ZSM.pdf
+10. P_IEEE_2024_AI_Enabled_Digital_Twin_Network_in_6G_Survey.pdf
+11. P_ACM_2024_SpotLight_Open_RAN_System_for_Dynamic_Spectrum_Access_and_Anomaly_Detection.pdf
+
+Cross-paper conclusions:
+- Near-RT RIC/xApps are the most important near-real-time automation point for RAN self-healing.
+- Non-RT RIC/SMO should own slower policy, model lifecycle, training, enrichment, governance, and orchestration.
+- Digital Twin should validate proposed actions before live actuation.
+- AI anomaly detection is not sufficient alone; it needs model drift handling, adversarial ML defense, conflict management, and policy rollback.
+- Monetizable value comes from SLA/slice assurance, predictive maintenance, secure automation, and NOC-grade RCA dashboards.
+
+Recommended project modules:
+1. O-RAN topology and RIC application twin.
+2. E2/xApp anomaly detector.
+3. xApp conflict manager.
+4. xApp policy distillation/arbitration layer.
+5. Model drift monitor and retraining trigger.
+6. Adversarial ML/security twin.
+7. Slice/SLA digital twin.
+8. TSN/PTP/fronthaul timing security twin.
+9. ZSM/SMO policy orchestration layer.
+10. NOC dashboard linking failures to service impact.
+
+Generated artifacts:
+- One *_REPORT.txt file per priority PDF.
+- Visual artifacts under _visual_review.

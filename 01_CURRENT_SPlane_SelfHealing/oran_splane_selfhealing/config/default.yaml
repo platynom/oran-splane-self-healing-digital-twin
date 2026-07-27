@@ -1,0 +1,44 @@
+seed: 1588
+time_error_budget_ns: 100.0
+failure_window_s: 2.0
+sim:
+  dt_s: 0.02
+  duration_s: 8.0
+  noise_ns: 14.0
+  base_delay_ns: 50000.0
+  servo_gain: 0.26
+  synce_gain: 0.08
+  drift_ppb: 6.0
+dataset:
+  scenarios_per_type: 12
+  window_s: 0.4
+  step_s: 0.2
+discriminator:
+  test_size: 0.35
+  random_state: 1588
+healing:
+  anomaly_threshold_ns: 100.0
+  decision_budget_s: 1.0
+  actions:
+    - safe_default
+    - failover_lls_c1
+    - failover_lls_c2
+    - failover_lls_c3
+    - failover_gnss
+    - holdover
+    - isolate_rogue_master
+    - reroute_path
+
+# --- Tier 2: realistic software validation (no hardware required) ---
+data_source:
+  # backend consumed by ingestion-aware tooling: simulator | pcap | ptp4l_log
+  backend: pcap
+  pcap_path: "data/external/timesafe_prod_successful_announce_attack_ptp.pcap"          # e.g. released genesys-neu/s-plane or TIMESAFE capture
+  ptp4l_log_path: ""     # output of: ptp4l -i eth0 -m -q -s -S > ptp4l.log
+
+stats:
+  seeds: [1588, 2026, 7, 42, 101, 900, 31415, 27182]   # multi-seed CI ensemble (add more for tighter CIs)
+  leave_one_attack_out: true
+
+tier2:
+  synthetic_pcap_n: 200   # self-test capture length for the pcap ingester

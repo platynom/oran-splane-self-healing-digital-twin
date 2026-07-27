@@ -1,0 +1,32 @@
+Paper: COMIX: Generalized Conflict Management in O-RAN xApps - Architecture, Workflow, and a Power Control Case
+Publication/source: IEEE Access, 2025
+Pages visually reviewed: 17
+Visual assets: _visual_review/P_IEEE_2025_COMIX_Generalized_Conflict_Management_in_ORAN_xApps/ALL_PAGES_CONTACT_SHEET.png
+
+Core idea:
+COMIX proposes a generalized architecture and workflow for detecting and managing conflicts between O-RAN xApps.
+
+Page-wise visual review:
+- Pages 1-2: Abstract/introduction and conflict category figure.
+- Pages 3-5: General O-RAN architecture and generalized conflict detector.
+- Pages 6-10: Mathematical notation, workflow, and algorithmic details.
+- Pages 11-14: Evaluation and power-control case graphs.
+- Pages 15-17: Discussion, conclusion, references, author bios.
+
+Important visuals:
+- Conflict categories in O-RAN.
+- General O-RAN architecture for COMIX.
+- Generalized direct/indirect conflict detector.
+- Evaluation graphs for conflict scenarios.
+
+Relation to our project:
+This is a core guardrail paper. A self-healing controller must detect contradictory xApp actions before they hit the live network.
+
+Project mapping:
+- Layer: Near-RT RIC/xApp orchestration.
+- Twin object: Control action twin and conflict-risk twin.
+- AI function: Conflict detection/resolution.
+- Self-healing relevance: Prevent unsafe or contradictory automated healing.
+
+Limitations:
+Needs extension to rApps, dApps, SMO policies, transport/core automation, and operator approval workflows.

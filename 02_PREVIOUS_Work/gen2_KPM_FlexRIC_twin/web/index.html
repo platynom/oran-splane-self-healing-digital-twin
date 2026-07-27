@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BLR O-RAN Digital Twin Simulator</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <p class="eyebrow">AI-Native O-RAN Digital Twin</p>
+      <h1>BLR Self-Healing Network Simulator</h1>
+    </div>
+    <div class="status-strip">
+      <span id="overallState" class="status-pill healthy">Healthy</span>
+      <span id="clockLabel">t = 0s</span>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="control-panel">
+      <section>
+        <h2>Scenario Controls</h2>
+        <label>
+          Service class
+          <select id="serviceClass">
+            <option value="eMBB">eMBB</option>
+            <option value="mMTC">mMTC</option>
+            <option value="URLLC">URLLC</option>
+            <option value="FWA">FWA</option>
+            <option value="V2X">V2X</option>
+          </select>
+        </label>
+
+        <label>
+          Target cell
+          <select id="targetCell"></select>
+        </label>
+
+        <label>
+          Fault type
+          <select id="faultType">
+            <option value="normal">No fault</option>
+            <option value="cell_congestion">Cell congestion</option>
+            <option value="backhaul_degradation">Backhaul degradation</option>
+            <option value="edge_overload">Edge/MEC overload</option>
+            <option value="handover_instability">Handover instability</option>
+            <option value="timing_drift">Timing/PTP drift</option>
+            <option value="spectrum_interference">Spectrum interference</option>
+            <option value="telemetry_poisoning">AML telemetry poisoning</option>
+            <option value="model_evasion_attack">AML model evasion</option>
+            <option value="unsafe_xapp_action">AML unsafe xApp action</option>
+            <option value="packet_loss_burst">Packet loss burst</option>
+            <option value="node_failure">Node failure</option>
+          </select>
+        </label>
+
+        <div class="slider-row">
+          <label for="severity">Fault severity</label>
+          <output id="severityValue">65%</output>
+        </div>
+        <input id="severity" type="range" min="0" max="100" value="65" />
+
+        <div class="slider-row">
+          <label for="networkLoad">Network load</label>
+          <output id="networkLoadValue">60%</output>
+        </div>
+        <input id="networkLoad" type="range" min="0" max="100" value="60" />
+
+        <div class="slider-row">
+          <label for="mobility">Mobility pressure</label>
+          <output id="mobilityValue">50%</output>
+        </div>
+        <input id="mobility" type="range" min="0" max="100" value="50" />
+
+        <div class="slider-row">
+          <label for="weather">Weather impact</label>
+          <output id="weatherValue">10%</output>
+        </div>
+        <input id="weather" type="range" min="0" max="100" value="10" />
+
+        <label>
+          Healing mode
+          <select id="healingMode">
+            <option value="twin_validated">Twin-validated</option>
+            <option value="ai_assisted">AI-assisted</option>
+            <option value="rule_based">Rule-based</option>
+          </select>
+        </label>
+
+        <div class="button-row">
+          <button id="applyScenario">Simulate</button>
+          <button id="resetScenario" class="secondary">Reset</button>
+        </div>
+      </section>
+
+      <section>
+        <h2>Telemetry Source</h2>
+        <label>
+          Telemetry mode
+          <select id="telemetryMode">
+            <option value="profile_simulation">Profile simulation</option>
+            <option value="csv_replay">CSV replay</option>
+            <option value="open_ran_kpm_replay">Open RAN KPM replay</option>
+            <option value="oai_log_ingestion">OAI log ingestion</option>
+            <option value="near_rt_ric_kpm">near-RT RIC KPM</option>
+          </select>
+        </label>
+        <label>
+          Source file
+          <input id="telemetrySource" type="text" value="data/telemetry/sample_oai_like_kpis.csv" />
+        </label>
+        <button id="applyTelemetry" class="secondary">Apply telemetry</button>
+        <div id="telemetryStatus" class="telemetry-status"></div>
+      </section>
+
+      <section>
+        <h2>Live OAI Loop</h2>
+        <div id="liveTelemetryStatus" class="telemetry-status"></div>
+        <div id="liveTelemetryMatrix" class="profile-matrix"></div>
+      </section>
+
+      <section>
+        <h2>Virtual Device Population</h2>
+        <div id="populationSummary" class="telemetry-status"></div>
+        <div id="populationMatrix" class="profile-matrix"></div>
+      </section>
+
+      <section>
+        <h2>Model Registry</h2>
+        <div id="modelRegistry" class="telemetry-status"></div>
+      </section>
+
+      <section>
+        <h2>Open RAN KPM Dataset</h2>
+        <div id="kpmDatasetSummary" class="telemetry-status"></div>
+        <div id="kpmDatasetMatrix" class="profile-matrix"></div>
+      </section>
+
+      <section>
+        <h2>Service / Device Profile</h2>
+        <div id="profileDetails" class="profile-details"></div>
+        <div id="profileMatrix" class="profile-matrix"></div>
+      </section>
+    </aside>
+
+    <section class="map-panel">
+      <div id="map"></div>
+      <div class="map-legend">
+        <span><i class="dot healthy"></i> Healthy</span>
+        <span><i class="dot risk"></i> At risk</span>
+        <span><i class="dot fault"></i> Fault</span>
+        <span><i class="dot mec"></i> MEC</span>
+      </div>
+    </section>
+
+    <aside class="insight-panel">
+      <section class="cards">
+        <article class="metric-card">
+          <span>Risk score</span>
+          <strong id="riskScore">0.00</strong>
+        </article>
+        <article class="metric-card">
+          <span>SLA status</span>
+          <strong id="slaStatus">OK</strong>
+        </article>
+        <article class="metric-card">
+          <span>Post-healing risk</span>
+          <strong id="postRisk">0.00</strong>
+        </article>
+        <article class="metric-card safety-card">
+          <span>Automation safety</span>
+          <strong id="automationSafety">1.00</strong>
+        </article>
+        <article class="metric-card">
+          <span>Safety decision</span>
+          <strong id="safetyDecision">monitor_only</strong>
+        </article>
+        <article class="metric-card">
+          <span>Predictive horizon</span>
+          <strong id="predictiveHorizon">stable</strong>
+        </article>
+        <article class="metric-card">
+          <span>AI trust</span>
+          <strong id="aiTrust">1.00</strong>
+        </article>
+        <article class="metric-card">
+          <span>AML threat</span>
+          <strong id="amlThreat">low</strong>
+        </article>
+        <article class="metric-card">
+          <span>Drift status</span>
+          <strong id="driftStatus">warming_up</strong>
+        </article>
+        <article class="metric-card">
+          <span>Drift score</span>
+          <strong id="driftScore">0.00</strong>
+        </article>
+        <article class="metric-card">
+          <span>xApp conflict</span>
+          <strong id="xappConflict">none</strong>
+        </article>
+        <article class="metric-card">
+          <span>Selected xApp</span>
+          <strong id="selectedXapp">self_healing</strong>
+        </article>
+        <article class="metric-card">
+          <span>SLA impact</span>
+          <strong id="slaImpact">none</strong>
+        </article>
+        <article class="metric-card">
+          <span>Timing state</span>
+          <strong id="timingState">stable</strong>
+        </article>
+        <article class="metric-card">
+          <span>Spectrum state</span>
+          <strong id="spectrumState">stable</strong>
+        </article>
+        <article class="metric-card">
+          <span>Spectrum risk</span>
+          <strong id="spectrumRisk">0.00</strong>
+        </article>
+      </section>
+
+      <section>
+        <h2>Live KPI Prediction</h2>
+        <div class="kpi-grid" id="kpiGrid"></div>
+      </section>
+
+      <section>
+        <h2>Open RAN Replay Row</h2>
+        <div id="openRanReplayRow" class="decision-box"></div>
+      </section>
+
+      <section>
+        <h2>Open RAN UE Replay View</h2>
+        <div id="openRanUeChart" class="ue-chart"></div>
+        <div class="table-wrap">
+          <table class="ue-table">
+            <thead>
+              <tr>
+                <th>UE</th>
+                <th>Slice</th>
+                <th>Grant</th>
+                <th>SINR</th>
+                <th>PRB</th>
+                <th>Fault</th>
+              </tr>
+            </thead>
+            <tbody id="openRanUeTable"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>AI / RCA Output</h2>
+        <div class="decision-box">
+          <p><span>Likely root cause</span><strong id="rootCause">normal</strong></p>
+          <p><span>AI confidence</span><strong id="confidence">0%</strong></p>
+          <p><span>Recommended healing</span><strong id="healingAction">no_action</strong></p>
+          <p><span>Baseline loop</span><strong id="baselineAction">hold</strong></p>
+          <p><span>Guarded loop</span><strong id="guardedAction">hold</strong></p>
+          <p><span>Safety improvement</span><strong id="safetyImprovement">monitoring only</strong></p>
+          <p><span>Twin validation</span><strong id="validation">Approved</strong></p>
+          <p><span>AML guard</span><strong id="securityGuard">allow_automation</strong></p>
+          <p><span>Threat type</span><strong id="threatType">none</strong></p>
+          <p><span>Drift type</span><strong id="driftType">none</strong></p>
+          <p><span>Model action</span><strong id="modelAction">collect_more_samples</strong></p>
+          <p><span>Conflict strategy</span><strong id="conflictStrategy">no_conflict</strong></p>
+          <p><span>Policy state</span><strong id="policyState">policy_allow</strong></p>
+          <p><span>Spectrum action</span><strong id="spectrumAction">maintain_current_radio_policy</strong></p>
+          <p><span>Customer impact</span><strong id="customerImpact">no_visible_impact</strong></p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Representative UE Samples</h2>
+        <div id="ueSamples" class="ue-list"></div>
+      </section>
+
+      <section>
+        <h2>Fault Timeline</h2>
+        <ol id="timeline" class="timeline"></ol>
+      </section>
+    </aside>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+t_s,scenario,offset_ns,measured_offset_ns,path_delay_ns,pdv_ns,freq_error_ppb,synce_ql,ptp_seq_id,ptp_msg_type,gnss_available,holdover,attack_flag,fault_flag,run_id,label
+0.004334097,netem_holdover,-4989.0,-4989.0,0.0,0.0,0.0,1,0,Sync,True,True,False,False,0,H0
+0.129355684,netem_holdover,-5757.0,-5757.0,0.0,0.0,0.0,1,1,Sync,True,True,False,False,0,H0
+0.255382739,netem_holdover,-5469.0,-5469.0,0.0,0.0,0.0,1,2,Sync,True,True,False,False,0,H0
+74.096993155,netem_holdover,-7349.0,-7349.0,0.0,0.0,0.0,1,8,Sync,True,True,False,False,0,H0
+74.220495449,netem_holdover,-6873.0,-6873.0,0.0,0.0,0.0,1,9,Sync,True,True,False,False,0,H0
+74.473366728,netem_holdover,-5440.0,-5440.0,0.0,0.0,0.0,1,11,Sync,True,True,False,False,0,H0

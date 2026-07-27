@@ -1,0 +1,45 @@
+{
+  "bands": {
+    "eMBB": {
+      "preferred_band": "n78_3p5ghz",
+      "backup_band": "n41_2p5ghz",
+      "channel_pool": ["n78_ch_01", "n78_ch_02", "n78_ch_03"],
+      "target_spectral_efficiency": 1.5,
+      "max_channel_occupancy": 0.82
+    },
+    "mMTC": {
+      "preferred_band": "n28_700mhz",
+      "backup_band": "n78_3p5ghz",
+      "channel_pool": ["n28_ch_01", "n28_ch_02"],
+      "target_spectral_efficiency": 0.2,
+      "max_channel_occupancy": 0.72
+    },
+    "URLLC": {
+      "preferred_band": "n77_3p7ghz",
+      "backup_band": "n78_3p5ghz",
+      "channel_pool": ["n77_urllc_01", "n77_urllc_02"],
+      "target_spectral_efficiency": 0.5,
+      "max_channel_occupancy": 0.68
+    },
+    "FWA": {
+      "preferred_band": "n258_26ghz",
+      "backup_band": "n78_3p5ghz",
+      "channel_pool": ["n258_fwa_01", "n258_fwa_02", "n78_fwa_backup"],
+      "target_spectral_efficiency": 1.8,
+      "max_channel_occupancy": 0.86
+    },
+    "V2X": {
+      "preferred_band": "n47_5p9ghz",
+      "backup_band": "n77_3p7ghz",
+      "channel_pool": ["n47_v2x_01", "n47_v2x_02"],
+      "target_spectral_efficiency": 0.55,
+      "max_channel_occupancy": 0.65
+    }
+  },
+  "interference_sources": {
+    "low_sinr_high_bler": "co_channel_or_external_interference",
+    "high_prb_low_throughput": "resource_saturation_or_hidden_node",
+    "high_bler_normal_sinr": "link_adaptation_or_harq_instability",
+    "low_sinr_high_prb": "coverage_edge_contention"
+  }
+}

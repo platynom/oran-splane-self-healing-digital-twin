@@ -1,0 +1,21 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+pytest-cache-files*/
+results/pytest_tmp/
+results/test_dataset/
+results/test_healing/
+
+# --- Tier 2: never commit environments, captures, datasets, or caches ---
+.venv/
+.venv-*/
+venv/
+env/
+*.pcap
+*.pcapng
+results/tier2/_seedcache/
+results/tier2/*.pcap
+# large / external datasets pulled for validation (keep code, not data)
+data/timesafe/
+data/external/
+*.zip

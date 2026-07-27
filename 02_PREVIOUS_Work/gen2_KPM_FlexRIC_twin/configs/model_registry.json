@@ -1,0 +1,154 @@
+{
+  "active_models": {
+    "anomaly_detector": "baseline_window_v1",
+    "root_cause_analyzer": "signature_rca_v1",
+    "automation_safety": "safety_score_v1",
+    "self_learning": "phy_odu_virtual_ran_self_learning_model",
+    "xapp_arbitration": "xapp_arbitration_v1_5",
+    "smo_governance": "smo_governance_v1_6",
+    "core_transport_impact": "core_transport_impact_v1_7",
+    "ml_benchmarking": "ml_benchmarking_live_ingestion_v1_8",
+    "live_oai_flexric_loop": "live_oai_flexric_loop_v1_9"
+  },
+  "models": [
+    {
+      "id": "baseline_window_v1",
+      "task": "anomaly_detection",
+      "status": "active",
+      "version": "1.0.0",
+      "training_data": "synthetic_and_replay_kpi_rows",
+      "rollback_to": null,
+      "notes": "Deterministic rolling-baseline detector for laptop MVP."
+    },
+    {
+      "id": "signature_rca_v1",
+      "task": "root_cause_analysis",
+      "status": "active",
+      "version": "1.0.0",
+      "training_data": "fault_signature_rules",
+      "rollback_to": null,
+      "notes": "Rule/signature RCA until trained ML benchmark is added."
+    },
+    {
+      "id": "safety_score_v1",
+      "task": "automation_safety",
+      "status": "active",
+      "version": "1.0.0",
+      "training_data": "policy_weights_and_guard_evidence",
+      "rollback_to": null,
+      "notes": "Unified safety score combining AML, drift, xApp, SLA, timing, spectrum, ZSM, and DTN evidence."
+    },
+    {
+      "id": "online_self_learning_v1",
+      "task": "streaming_anomaly_and_rca_learning",
+      "status": "active_candidate",
+      "version": "1.0.0",
+      "training_data": "synthetic_replay_kpi_rows_then_real_oai_flexric_kpi_rows",
+      "rollback_to": "baseline_window_v1",
+      "notes": "Dependency-free online Gaussian baseline and RCA centroid learner. Saves per-run artifacts as self_learning_model.json and can be replay-trained from CSV telemetry."
+    },
+    {
+      "id": "open_ran_kpm_self_learning_model",
+      "task": "open_ran_kpm_replay_anomaly_and_rca",
+      "status": "validated_for_open_ran_kpm_replay",
+      "version": "1.0.0",
+      "artifact": "outputs/models/open_ran_kpm_self_learning_model.json",
+      "training_data": "data/training/open_ran_kpm_training_dataset.csv",
+      "rollback_to": "online_self_learning_v1",
+      "notes": "Trained on imported Open RAN KPM rows. Strong for Open RAN KPM replay; weak transfer to broader five-service virtual scenarios."
+    },
+    {
+      "id": "generalized_virtual_ran_self_learning_model",
+      "task": "five_service_virtual_ran_generalization",
+      "status": "active_candidate_v1_1",
+      "version": "1.1.0",
+      "artifact": "outputs/models/generalized_virtual_ran_self_learning_model.json",
+      "training_data": "data/training/generalized_virtual_ran_scenarios.csv",
+      "rollback_to": "open_ran_kpm_self_learning_model",
+      "notes": "Trained on generalized virtual city/industry scenarios covering eMBB, mMTC, URLLC, FWA, and V2X with area, weather, event, time-of-day, mobility, density, interference, and edge-pressure factors."
+    },
+    {
+      "id": "phy_odu_virtual_ran_self_learning_model",
+      "task": "odu_high_phy_mac_generalization",
+      "status": "active_candidate_v1_2",
+      "version": "1.2.0",
+      "artifact": "outputs/models/phy_odu_virtual_ran_self_learning_model.json",
+      "training_data": "data/training/generalized_virtual_ran_scenarios.csv",
+      "benchmark": "outputs/benchmarks/phy_odu_generalization_benchmark.json",
+      "rollback_to": "generalized_virtual_ran_self_learning_model",
+      "notes": "Adds O-DU/High-PHY/MAC features: CQI, HARQ retransmission, RLC buffer, MAC scheduler delay, beam quality, timing offset, and fronthaul delay. Improves held-out RCA quality on virtual scenarios, but still requires real OAI/FlexRIC or lab PHY telemetry for production proof."
+    },
+    {
+      "id": "oru_low_phy_virtual_ran_self_learning_model",
+      "task": "oru_low_phy_rf_spectrum_generalization",
+      "status": "shadow_candidate_v1_3",
+      "version": "1.3.0",
+      "artifact": "outputs/models/oru_low_phy_virtual_ran_self_learning_model.json",
+      "training_data": "data/training/generalized_virtual_ran_scenarios.csv",
+      "benchmark": "outputs/benchmarks/oru_low_phy_generalization_benchmark.json",
+      "rollback_to": "phy_odu_virtual_ran_self_learning_model",
+      "notes": "Adds O-RU/Low-PHY RF features: RSRP, RSRQ, RSSI, noise floor, EVM, interference power, beam misalignment, antenna VSWR, and RF temperature. It improves spectrum-interference recall but increases false positives under unseen heavy-rain conditions, so it remains a shadow candidate until calibrated with real RF/lab telemetry."
+    },
+    {
+      "id": "ocu_virtual_ran_self_learning_model",
+      "task": "ocu_rrc_pdcp_sdap_session_generalization",
+      "status": "shadow_candidate_v1_4",
+      "version": "1.4.0",
+      "artifact": "outputs/models/ocu_virtual_ran_self_learning_model.json",
+      "training_data": "data/training/generalized_virtual_ran_scenarios.csv",
+      "benchmark": "outputs/benchmarks/ocu_generalization_benchmark.json",
+      "rollback_to": "phy_odu_virtual_ran_self_learning_model",
+      "notes": "Adds O-CU features: RRC setup failures, RRC re-establishment, PDCP discard/reordering, SDAP QoS-flow drop, QFI violations, session drops, and mobility ping-pong. It improves QoS/session and mobility recall but increases false positives under held-out event conditions, so it remains a shadow candidate."
+    },
+    {
+      "id": "xapp_arbitration_v1_5",
+      "task": "near_rt_ric_xapp_policy_arbitration",
+      "status": "active_component_v1_5",
+      "version": "1.5.0",
+      "artifact": "configs/xapp_distillation_policy.json",
+      "benchmark": "outputs/benchmarks/xapp_arbitration_benchmark.json",
+      "rollback_to": "xapp_distillation_policy_v1",
+      "notes": "Adds Near-RT RIC/xApp arbitration evidence: teacher xApp scoring, direct/multi-xApp conflict detection, control-loop latency estimates, per-control cooldown budgets, QoS xApp weighting, and repeated-control suppression before RIC payload approval."
+    },
+    {
+      "id": "smo_governance_v1_6",
+      "task": "smo_non_rt_ric_policy_model_lifecycle_governance",
+      "status": "active_component_v1_6",
+      "version": "1.6.0",
+      "artifact": "configs/smo_governance_policy.json",
+      "benchmark": "outputs/benchmarks/smo_governance_benchmark.json",
+      "rollback_to": "zsm_policy_orchestrator_v1",
+      "notes": "Adds SMO/Non-RT RIC governance evidence: policy intent, model lifecycle action, active/candidate/rollback model mapping, retraining dataset action, approval gates, governance state, and audit class."
+    },
+    {
+      "id": "core_transport_impact_v1_7",
+      "task": "five_g_core_and_transport_impact_assurance",
+      "status": "active_component_v1_7",
+      "version": "1.7.0",
+      "artifact": "oran_twin/core_transport.py",
+      "benchmark": "outputs/benchmarks/core_transport_benchmark.json",
+      "rollback_to": "smo_governance_v1_6",
+      "notes": "Adds 5G Core and transport impact evidence: AMF registration failures, AMF paging delay, PDU session setup/failure, UPF CPU, UPF packet drop, GTP tunnel loss, N3 RTT, N6 RTT, and transport jitter. It maps core/user-plane symptoms to RCA, healing recommendations, A1 policy payloads, slice impact, xApp arbitration, and SMO/ZSM policy domains."
+    },
+    {
+      "id": "ml_benchmarking_live_ingestion_v1_8",
+      "task": "production_readiness_benchmarking_and_live_telemetry_foundation",
+      "status": "active_component_v1_8",
+      "version": "1.8.0",
+      "artifact": "scripts/benchmark_ml_models.py",
+      "benchmark": "outputs/benchmarks/ml_model_comparison_v2.json",
+      "rollback_to": "core_transport_impact_v1_7",
+      "notes": "Adds strict local ML model comparison, group holdout split reporting, confusion matrices, false-positive/false-negative rates, Isolation Forest, Random Forest, Gradient Boosting, SQLite feature-row persistence, data-quality event storage, and live OAI metric streaming into the decision engine."
+    },
+    {
+      "id": "live_oai_flexric_loop_v1_9",
+      "task": "live_oai_flexric_log_bridge_and_run_reporting",
+      "status": "active_component_v1_9",
+      "version": "1.9.0",
+      "artifact": "tools/oai_metric_bridge.py",
+      "benchmark": "outputs/reports/live_oai_run_report.json",
+      "rollback_to": "ml_benchmarking_live_ingestion_v1_8",
+      "notes": "Adds WSL OAI/FlexRIC log pull, expanded OAI metric parsing, live telemetry API status, dashboard live-loop status panel, and live run report generation from JSONL plus SQLite records."
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+Paper: The Drift Handling Framework for Open Radio Access Networks: An Experimental Evaluation
+Publication/source: Computer Networks, Elsevier, 2024
+Pages visually reviewed: 17
+Visual assets: _visual_review/P_Elsevier_2024_Drift_Handling_Framework_for_Open_Radio_Access_Networks/ALL_PAGES_CONTACT_SHEET.png
+
+Core idea:
+This paper proposes a drift-handling framework for AI/ML-enabled O-RAN control loops. It addresses the fact that traffic, RF, mobility, and service conditions change over time, causing trained models to become stale.
+
+Page-wise visual review:
+- Pages 1-2: Abstract and introduction; establishes O-RAN, RIC loops, and drift problem.
+- Page 3: O-RAN architecture figure and drift-type visual.
+- Pages 4-5: Proposed drift-handling architecture and initialization process.
+- Pages 6-8: Algorithm/workflow sections.
+- Pages 9-14: Evaluation with time-series plots, radar/bar charts, and model adaptation results.
+- Page 15: Summary architecture/conclusion.
+- Pages 16-17: References and author details.
+
+Important visuals:
+- O-RAN architecture with components/interfaces.
+- Drift types based on data distributions.
+- Proposed drift-handling framework.
+- Adaptation plots under drift scenarios.
+
+Relation to our project:
+This is core for model lifecycle management in the Digital Twin. The self-healing system needs model drift detection, retraining triggers, and guardrails that pause unsafe AI actions when model confidence degrades.
+
+Project mapping:
+- Layer: Near-RT RIC, Non-RT RIC, SMO AI/ML workflow.
+- Twin object: Model lifecycle twin and distribution/twin synchronization tracker.
+- AI function: Drift detection, continual learning, retraining trigger.
+- Self-healing relevance: Stop or downgrade AI automation when drift exceeds threshold.
+
+Limitations:
+Drift detection does not solve root cause analysis alone. It must be integrated with topology, alarms, security, and policy layers.

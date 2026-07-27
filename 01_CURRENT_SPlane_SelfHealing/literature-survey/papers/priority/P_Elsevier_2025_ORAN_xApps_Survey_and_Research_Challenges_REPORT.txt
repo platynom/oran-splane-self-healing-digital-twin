@@ -1,0 +1,35 @@
+Paper: O-RAN xApps: Survey and Research Challenges
+Publication/source: Computer Networks, Elsevier, 2025
+Pages visually reviewed: 46
+Visual assets: _visual_review/P_Elsevier_2025_ORAN_xApps_Survey_and_Research_Challenges/ALL_PAGES_CONTACT_SHEET.png
+
+Core idea:
+This is the main xApp survey in the priority set. It explains O-RAN architecture, Near-RT RIC, Non-RT RIC, xApp workflows, APIs, use cases, AI/ML methods, and research challenges.
+
+Page-wise visual review:
+- Pages 1-3: Abstract, introduction, survey structure.
+- Pages 4-10: O-RAN overview, Non-RT RIC architecture, Near-RT RIC architecture, components and interfaces.
+- Pages 11-17: xApp workflow, Near-RT RIC APIs, and xApp structure.
+- Pages 18-24: xApp use cases such as traffic steering, anomaly detection, control, and optimization.
+- Pages 25-36: Research challenges: robust AI/ML, real-time constraints, multi-xApp conflicts, scalability, privacy, explainability, and security.
+- Pages 37-46: References.
+
+Important visuals:
+- Survey structure.
+- O-RAN architecture.
+- Non-RT RIC architecture.
+- Near-RT RIC architecture.
+- Near-RT RIC APIs.
+- xApp structure.
+
+Relation to our project:
+This is the foundation for the RIC/xApp layer of the architecture. It defines where near-real-time self-healing can run, what the timing constraints are, and why xApp governance matters.
+
+Project mapping:
+- Layer: Near-RT RIC/xApps.
+- Twin object: RIC application twin and control-loop twin.
+- AI function: xApp-based anomaly detection, traffic steering, slicing, load balancing, handover optimization.
+- Self-healing relevance: xApps can execute near-real-time actions but need conflict management, validation, and rollback.
+
+Limitations:
+Survey only; pair with COMIX, xApp distillation, xApp/E2 anomaly detection, and drift-handling papers.
