@@ -8,7 +8,7 @@ import pandas as pd
 from fronthaul_sim.simulator import SimConfig, simulate
 
 
-H0_SCENARIOS = ("gnss_loss_holdover", "pdv_congestion", "synce_degrade", "traffic_burst")
+H0_SCENARIOS = ("gnss_loss_holdover", "pdv_congestion", "synce_degrade", "traffic_burst", "planned_gm_failover")
 H1_SCENARIOS = ("ptp_spoof", "ptp_replay", "ptp_dos_flood")
 ALL_SCENARIOS = ("healthy",) + H0_SCENARIOS + H1_SCENARIOS
 
@@ -106,8 +106,23 @@ def run_scenario(config: SimConfig, scenario: str, run_id: int = 0) -> pd.DataFr
             row["msg_rate_hz"] = float(max(0.0, baseline_rate * traffic_burst_factor * rng.normal(1.0, 0.07)))
             row["path_delay_ns"] = float(row["path_delay_ns"]) + rng.normal(18.0, 10.0)
             row["pdv_ns"] = float(row["pdv_ns"]) + rng.normal(18.0, 10.0)
+        elif scenario == "planned_gm_failover":
+            row["grandmaster_identity"] = f"001b19fffe10{run_id:04x}"
+            row["grandmaster_clock_class"] = 7
+            row["grandmaster_clock_accuracy"] = 0x21
+            row["grandmaster_priority1"] = 128
+            row["grandmaster_priority2"] = 129
+            row["steps_removed"] = 2
+            row["time_source"] = 0x20
         elif scenario == "ptp_spoof":
             row["attack_family"] = "spoof"
+            row["grandmaster_identity"] = f"deadbeeffe00{run_id:04x}"
+            row["grandmaster_clock_class"] = 1
+            row["grandmaster_clock_accuracy"] = 0x17
+            row["grandmaster_priority1"] = 1
+            row["grandmaster_priority2"] = 1
+            row["steps_removed"] = 0
+            row["time_source"] = 0x20
             step = rng.normal(48.0 * sev, 30.0) * (1.0 + 0.5 * min(elapsed, 1.5))
             row["offset_ns"] = float(row["offset_ns"]) + step
             row["measured_offset_ns"] = float(row["measured_offset_ns"]) + step

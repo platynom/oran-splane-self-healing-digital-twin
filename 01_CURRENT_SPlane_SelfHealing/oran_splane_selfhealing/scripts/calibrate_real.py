@@ -28,6 +28,16 @@ from dataset.build import build_dataset
 from ingest.pcap_ingest import pcap_to_telemetry
 from telemetry.features import FEATURE_COLUMNS, window_features
 
+BMCA_FEATURE_COLUMNS = [
+    "gm_identity_changes",
+    "gm_identity_churn",
+    "clock_class_changes",
+    "clock_class_improve_jump",
+    "priority1_changes",
+    "steps_removed_changes",
+    "steps_removed_min",
+]
+
 
 def _cfg() -> dict:
     with (ROOT / "config" / "default.yaml").open("r", encoding="utf-8") as handle:
@@ -242,9 +252,19 @@ def calibrate(benign: pd.DataFrame, attack: pd.DataFrame, cfg: dict, out_dir: Pa
     results.append(_metric_row("real_trained_rf_session_holdout", real_prediction, truth, "session_holdout"))
     results.extend(_leave_one_attack_out(real, cfg))
 
+    feature_importance = pd.DataFrame(
+        {
+            "feature": FEATURE_COLUMNS,
+            "importance": real_model.feature_importances_,
+            "is_bmca_feature": [feature in BMCA_FEATURE_COLUMNS for feature in FEATURE_COLUMNS],
+        }
+    ).sort_values("importance", ascending=False, ignore_index=True)
+    feature_importance["overall_rank"] = np.arange(1, len(feature_importance) + 1)
+    feature_importance.to_csv(out_dir / "real_feature_importance.csv", index=False)
+
     summary = pd.DataFrame(results)
     summary.to_csv(out_dir / "real_calibration_summary.csv", index=False)
-    _report(summary, out_dir, train, test, real)
+    _report(summary, out_dir, train, test, real, feature_importance)
     return summary
 
 
@@ -258,6 +278,7 @@ def _report(
     train: pd.DataFrame,
     test: pd.DataFrame,
     real: pd.DataFrame,
+    feature_importance: pd.DataFrame,
 ) -> None:
     table_rows = []
     for row in summary.itertuples():
@@ -270,6 +291,18 @@ def _report(
         )
     train_sessions = ", ".join(sorted(train["capture_id"].astype(str).unique()))
     test_sessions = ", ".join(sorted(test["capture_id"].astype(str).unique()))
+    bmca_rows = []
+    for item in feature_importance[feature_importance["is_bmca_feature"]].itertuples():
+        bmca_rows.append(f"| {item.feature} | {item.importance:.6f} | {item.overall_rank} |")
+    session_row = summary[summary["method"] == "real_trained_rf_session_holdout"].iloc[0]
+    session_note = ""
+    if float(session_row["attack_TP_rate"]) < 0.5:
+        session_note = (
+            "\n\n**Cross-family caution:** this split trains on Announce sessions and tests on Sync-attack "
+            f"sessions; RF attack recall is {float(session_row['attack_TP_rate']):.1%}. The BMCA features "
+            "make Announce observable but can make a closed-set RF specialize in that family. Interpret "
+            "this row alongside leave-one-family-out and open-set protective coverage."
+        )
     report = (
         "# Real-Data Calibration Report\n\n"
         "Evaluation unit: complete capture session. No windows from a test capture "
@@ -285,7 +318,17 @@ def _report(
         + "\n\n"
         "The session-holdout row is the primary transfer estimate. Leave-one-attack-out "
         "rows test family generalization and are omitted when the supplied captures do "
-        "not leave both classes in train and test.\n"
+        "not leave both classes in train and test.\n\n"
+        "## BMCA feature importances\n\n"
+        "Importances come from the capture-isolated session-holdout RF. Raw GM identity is not a model feature.\n\n"
+        "| relative BMCA feature | importance | overall rank |\n"
+        "|---|---:|---:|\n"
+        + "\n".join(bmca_rows)
+        + "\n"
+        + session_note
+        + "\n\n**Benign-transition caveat:** TIMESAFE contains no benign planned-GM-change session. "
+        "Real-data benign false-positive estimates are optimistic for deployments with legitimate "
+        "grandmaster re-parenting; the simulated `planned_gm_failover` confounder is reported separately.\n"
     )
     (out_dir / "REAL_CALIBRATION_REPORT.md").write_text(report, encoding="utf-8")
 

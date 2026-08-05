@@ -20,6 +20,14 @@ TELEMETRY_COLUMNS = [
     "ptp_seq_id",
     "ptp_msg_type",
     "msg_rate_hz",
+    "grandmaster_identity",
+    "grandmaster_priority1",
+    "grandmaster_clock_class",
+    "grandmaster_clock_accuracy",
+    "offset_scaled_log_variance",
+    "grandmaster_priority2",
+    "steps_removed",
+    "time_source",
     "gnss_available",
     "holdover",
     "attack_flag",
@@ -35,6 +43,14 @@ _DEFAULTS = {
     "synce_ql": 1,
     "ptp_msg_type": "Sync",
     "msg_rate_hz": 0.0,
+    "grandmaster_identity": "unknown",
+    "grandmaster_priority1": 128,
+    "grandmaster_clock_class": 248,
+    "grandmaster_clock_accuracy": 0xFE,
+    "offset_scaled_log_variance": 0xFFFF,
+    "grandmaster_priority2": 128,
+    "steps_removed": 0,
+    "time_source": 0xA0,
     "gnss_available": True,
     "holdover": False,
     "attack_flag": False,
@@ -61,6 +77,17 @@ def coerce_telemetry(df: pd.DataFrame) -> pd.DataFrame:
     # types
     out["ptp_seq_id"] = out["ptp_seq_id"].astype(int)
     out["synce_ql"] = out["synce_ql"].astype(int)
+    for col in (
+        "grandmaster_priority1",
+        "grandmaster_clock_class",
+        "grandmaster_clock_accuracy",
+        "offset_scaled_log_variance",
+        "grandmaster_priority2",
+        "steps_removed",
+        "time_source",
+    ):
+        out[col] = out[col].astype(int)
+    out["grandmaster_identity"] = out["grandmaster_identity"].astype(str)
     out["gnss_available"] = out["gnss_available"].astype(bool)
     out["holdover"] = out["holdover"].astype(bool)
     out["attack_flag"] = out["attack_flag"].astype(bool)

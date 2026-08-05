@@ -100,9 +100,11 @@ def test_announce_decoding():
     assert msg.msg_type == w.MT_ANNOUNCE
     assert msg.seq_id == 41
     assert msg.current_utc_offset == 37
+    assert msg.grandmaster_priority1 == 128
     assert msg.grandmaster_clock_class == 7
     assert msg.grandmaster_clock_accuracy == 0x21
     assert msg.offset_scaled_log_variance == 0x4321
+    assert msg.grandmaster_priority2 == 129
     assert msg.grandmaster_identity == bytes.fromhex("001b19fffe123456")
     assert msg.steps_removed == 2
     assert msg.time_source == 0xA0
@@ -134,6 +136,12 @@ def test_pcap_records_real_message_mix_and_announce_status(tmp_path):
     assert not announce_rows.empty
     assert bool(announce_rows["holdover"].all())
     assert not bool(announce_rows["gnss_available"].any())
+    assert set(announce_rows["grandmaster_identity"]) == {"001b19fffe123456"}
+    assert set(announce_rows["grandmaster_priority1"]) == {128}
+    assert set(announce_rows["grandmaster_priority2"]) == {129}
+    assert set(announce_rows["grandmaster_clock_accuracy"]) == {0x21}
+    assert set(announce_rows["offset_scaled_log_variance"]) == {0x4321}
+    assert set(announce_rows["steps_removed"]) == {2}
     feats = window_features(tel, window_s=0.4, step_s=0.2)
     assert (feats["msg_irregularity"] > 0).any()
     assert feats["msg_rate_mean"].nunique() > 1

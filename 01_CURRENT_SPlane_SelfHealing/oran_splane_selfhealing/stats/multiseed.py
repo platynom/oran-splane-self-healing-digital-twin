@@ -23,7 +23,7 @@ from sklearn.metrics import recall_score
 from benchmark.run import run_benchmark
 from dataset.build import build_dataset
 from discriminator.model import train_and_evaluate
-from faults.injectors import H1_SCENARIOS
+from faults.injectors import H0_SCENARIOS, H1_SCENARIOS
 from telemetry.features import FEATURE_COLUMNS
 
 _METRICS = ["accuracy", "f1_macro", "roc_auc_h1", "recovery_success_rate", "wrong_action_rate", "mean_mttr_s"]
@@ -32,7 +32,7 @@ _ATTACK_FAMILY = {"ptp_spoof": "spoof", "ptp_replay": "replay", "ptp_dos_flood":
 
 def _cache_signature() -> str:
     definition = json.dumps(
-        {"features": FEATURE_COLUMNS, "h1_scenarios": H1_SCENARIOS},
+        {"features": FEATURE_COLUMNS, "h0_scenarios": H0_SCENARIOS, "h1_scenarios": H1_SCENARIOS},
         sort_keys=True,
     ).encode("utf-8")
     return hashlib.sha256(definition).hexdigest()[:10]

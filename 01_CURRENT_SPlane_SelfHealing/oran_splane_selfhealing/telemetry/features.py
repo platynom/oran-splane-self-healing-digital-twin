@@ -17,7 +17,24 @@ FEATURE_COLUMNS = [
     "holdover_rate",
     "msg_rate_mean",
     "msg_rate_std",
+    "gm_identity_changes",
+    "gm_identity_churn",
+    "clock_class_changes",
+    "clock_class_improve_jump",
+    "priority1_changes",
+    "steps_removed_changes",
+    "steps_removed_min",
 ]
+
+
+def _transition_count(series: pd.Series) -> int:
+    return int(series.astype(str).ne(series.astype(str).shift()).iloc[1:].sum())
+
+
+def _largest_quality_improvement(clock_class: pd.Series, accuracy: pd.Series) -> float:
+    class_improvement = -clock_class.astype(float).diff()
+    accuracy_improvement = -accuracy.astype(float).diff()
+    return float(max(0.0, class_improvement.max(skipna=True), accuracy_improvement.max(skipna=True)))
 
 
 def window_features(df: pd.DataFrame, window_s: float, step_s: float) -> pd.DataFrame:
@@ -55,6 +72,15 @@ def window_features(df: pd.DataFrame, window_s: float, step_s: float) -> pd.Data
                     "holdover_rate": float(w["holdover"].astype(bool).mean()),
                     "msg_rate_mean": float(w["msg_rate_hz"].mean()),
                     "msg_rate_std": float(w["msg_rate_hz"].std(ddof=0)),
+                    "gm_identity_changes": _transition_count(w["grandmaster_identity"]),
+                    "gm_identity_churn": int(w["grandmaster_identity"].astype(str).nunique()),
+                    "clock_class_changes": _transition_count(w["grandmaster_clock_class"]),
+                    "clock_class_improve_jump": _largest_quality_improvement(
+                        w["grandmaster_clock_class"], w["grandmaster_clock_accuracy"]
+                    ),
+                    "priority1_changes": _transition_count(w["grandmaster_priority1"]),
+                    "steps_removed_changes": _transition_count(w["steps_removed"]),
+                    "steps_removed_min": int(w["steps_removed"].min()),
                 }
             )
             t += step_s

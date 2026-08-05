@@ -18,7 +18,18 @@ discriminator:
   random_state: 1588
 openset:
   enabled: true
+  mode: group
   target_known_flag_rate: 0.02
+  group_budget_weights:
+    timing: 0.1
+    protocol: 0.7
+    rate: 0.1
+    bmca: 0.1
+  persistence:
+    enabled: true
+    n: 2
+    m: 3
+    apply_to_h1: true
 healing:
   anomaly_threshold_ns: 100.0
   decision_budget_s: 1.0

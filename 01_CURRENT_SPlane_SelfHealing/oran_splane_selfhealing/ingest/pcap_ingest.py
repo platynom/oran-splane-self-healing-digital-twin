@@ -47,6 +47,12 @@ def pcap_to_telemetry(path: str | Path, scenario: str = "live", label: str = "un
     rows = []
     announce_clock_class = None
     announce_time_source = None
+    announce_priority1 = None
+    announce_clock_accuracy = None
+    announce_variance = None
+    announce_priority2 = None
+    announce_identity = None
+    announce_steps_removed = None
     recent_message_times: deque[int] = deque()
 
     def emit(seq: int, t_ns: int, msg_type: str):
@@ -74,6 +80,14 @@ def pcap_to_telemetry(path: str | Path, scenario: str = "live", label: str = "un
             "ptp_seq_id": int(seq),
             "ptp_msg_type": msg_type,
             "msg_rate_hz": float(len(recent_message_times)),
+            "grandmaster_identity": announce_identity.hex() if announce_identity is not None else "unknown",
+            "grandmaster_priority1": announce_priority1 if announce_priority1 is not None else 128,
+            "grandmaster_clock_class": announce_clock_class if announce_clock_class is not None else 248,
+            "grandmaster_clock_accuracy": announce_clock_accuracy if announce_clock_accuracy is not None else 0xFE,
+            "offset_scaled_log_variance": announce_variance if announce_variance is not None else 0xFFFF,
+            "grandmaster_priority2": announce_priority2 if announce_priority2 is not None else 128,
+            "steps_removed": announce_steps_removed if announce_steps_removed is not None else 0,
+            "time_source": announce_time_source if announce_time_source is not None else 0xA0,
             "gnss_available": gnss_available,
             "holdover": hold,
         })
@@ -116,8 +130,20 @@ def pcap_to_telemetry(path: str | Path, scenario: str = "live", label: str = "un
                 last_known_pd, last_exchange_ns = mean_path_delay, cap_ns
             emit(msg.seq_id, cap_ns, w.MSG_NAME[msg.msg_type])
         elif msg.msg_type == w.MT_ANNOUNCE:
+            if msg.grandmaster_priority1 is not None:
+                announce_priority1 = msg.grandmaster_priority1
             if msg.grandmaster_clock_class is not None:
                 announce_clock_class = msg.grandmaster_clock_class
+            if msg.grandmaster_clock_accuracy is not None:
+                announce_clock_accuracy = msg.grandmaster_clock_accuracy
+            if msg.offset_scaled_log_variance is not None:
+                announce_variance = msg.offset_scaled_log_variance
+            if msg.grandmaster_priority2 is not None:
+                announce_priority2 = msg.grandmaster_priority2
+            if msg.grandmaster_identity is not None:
+                announce_identity = msg.grandmaster_identity
+            if msg.steps_removed is not None:
+                announce_steps_removed = msg.steps_removed
             if msg.time_source is not None:
                 announce_time_source = msg.time_source
             emit(msg.seq_id, cap_ns, w.MSG_NAME[msg.msg_type])

@@ -30,6 +30,8 @@ def train_and_evaluate(windows: pd.DataFrame, config: dict, out_dir: Path) -> tu
         clf.novelty_detector_ = NoveltyDetector(
             target_known_flag_rate=float(openset.get("target_known_flag_rate", 0.02)),
             random_state=int(config["seed"]),
+            mode=str(openset.get("mode", "group")),
+            group_budget_weights=openset.get("group_budget_weights"),
         ).fit(X_train)
     pred = clf.predict(X_test)
     proba = clf.predict_proba(X_test)[:, list(clf.classes_).index("H1")]
