@@ -17,6 +17,9 @@ class SimConfig:
     servo_gain: float = 0.26
     synce_gain: float = 0.08
     drift_ppb: float = 6.0
+    holdover_nominal_drift_ppb: float = 6.0
+    holdover_tolerance_ppb: float = 2.0
+    disciplined_tolerance_ppb: float = 1.5
     time_error_budget_ns: float = 100.0
 
 
@@ -60,6 +63,9 @@ def simulate(config: SimConfig, scenario: str = "healthy", mutator: TelemetryMut
             "path_delay_ns": float(path_delay_ns),
             "pdv_ns": float(path_delay_ns - config.base_delay_ns),
             "freq_error_ppb": float(freq_error_ppb),
+            "oscillator_holdover_nominal_ppb": config.holdover_nominal_drift_ppb,
+            "oscillator_holdover_tolerance_ppb": config.holdover_tolerance_ppb,
+            "oscillator_disciplined_tolerance_ppb": config.disciplined_tolerance_ppb,
             "synce_ql": ql,
             "ptp_seq_id": seq,
             "ptp_msg_type": "Sync" if i % 2 == 0 else "Announce",

@@ -14,6 +14,13 @@ TIMESOURCE_FEATURE_COLUMNS = [
     "holdover_entry_count",
 ]
 
+CONSISTENCY_FEATURE_COLUMNS = [
+    "drift_vs_declared_state_residual",
+    "holdover_spec_violation_rate",
+    "status_behaviour_disagreement",
+    "offset_step_vs_drift_ratio",
+]
+
 
 FEATURE_COLUMNS = [
     "offset_mean",
@@ -35,6 +42,7 @@ FEATURE_COLUMNS = [
     "steps_removed_changes",
     "steps_removed_min",
     *TIMESOURCE_FEATURE_COLUMNS[2:],
+    *CONSISTENCY_FEATURE_COLUMNS,
 ]
 
 
@@ -56,6 +64,37 @@ def _satellite_drop_max(series: pd.Series) -> float:
     return float(max(0.0, (-valid.diff()).max(skipna=True)))
 
 
+def _consistency_features(window: pd.DataFrame) -> dict[str, float]:
+    """Compare observed clock behavior with the configured oscillator envelope."""
+    freq = window["freq_error_ppb"].astype(float).abs()
+    holdover = window["gnss_sync_status"].eq("HOLDOVER") | window["holdover"].astype(bool)
+    nominal = window["oscillator_holdover_nominal_ppb"].astype(float)
+    hold_tolerance = window["oscillator_holdover_tolerance_ppb"].astype(float).clip(lower=1e-6)
+    disciplined_tolerance = window["oscillator_disciplined_tolerance_ppb"].astype(float).clip(lower=1e-6)
+    expected = nominal.where(holdover, 0.0)
+    tolerance = hold_tolerance.where(holdover, disciplined_tolerance)
+    normalized_residual = (freq - expected).abs() / tolerance
+    envelope_exceeded = holdover & ((freq - nominal).abs() > hold_tolerance)
+    healthy_declared = window["gnss_sync_status"].eq("SYNCHRONIZED") & ~window["holdover"].astype(bool)
+    declared_fault = holdover | window["gnss_sync_status"].isin(
+        ["ACQUIRING-SYNC", "ANTENNA-DISCONNECTED", "ANTENNA-SHORT-CIRCUIT"]
+    )
+    free_run_behavior = freq > disciplined_tolerance
+    disagreement = (healthy_declared & free_run_behavior) | (declared_fault & ~free_run_behavior)
+
+    dt = window["t_s"].astype(float).diff()
+    offset_step = window["offset_ns"].astype(float).diff().abs()
+    expected_wander = freq.shift().fillna(freq.iloc[0]) * dt.fillna(0.0)
+    excess_step = (offset_step - expected_wander).clip(lower=0.0)
+    ratio = excess_step.max(skipna=True) / max(float(expected_wander.abs().median()), 0.1)
+    return {
+        "drift_vs_declared_state_residual": float(normalized_residual.mean()),
+        "holdover_spec_violation_rate": float(envelope_exceeded.mean()),
+        "status_behaviour_disagreement": float(disagreement.mean()),
+        "offset_step_vs_drift_ratio": float(ratio),
+    }
+
+
 def window_features(df: pd.DataFrame, window_s: float, step_s: float) -> pd.DataFrame:
     rows: list[dict[str, float | int | str]] = []
     for (scenario, run_id), g in df.groupby(["scenario", "run_id"]):
@@ -71,8 +110,7 @@ def window_features(df: pd.DataFrame, window_s: float, step_s: float) -> pd.Data
             label = labels.index[0]
             seq_diff = w["ptp_seq_id"].diff().fillna(1)
             msg_regular = w["ptp_msg_type"].isin(["Sync", "Announce"])
-            rows.append(
-                {
+            features = {
                     "scenario": scenario,
                     "run_id": int(run_id),
                     "window_start_s": round(t, 6),
@@ -117,8 +155,9 @@ def window_features(df: pd.DataFrame, window_s: float, step_s: float) -> pd.Data
                             & ~w["gnss_sync_status"].shift(fill_value="BOOTING").eq("HOLDOVER")
                         ).sum()
                     ),
-                }
-            )
+            }
+            features.update(_consistency_features(w))
+            rows.append(features)
             t += step_s
     return pd.DataFrame(rows)
 

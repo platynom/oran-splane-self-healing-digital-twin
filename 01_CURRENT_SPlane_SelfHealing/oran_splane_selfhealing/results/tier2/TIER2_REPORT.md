@@ -1,17 +1,17 @@
 # Tier 2 — Realistic Software Validation Report
 
-Generated: 2026-08-05T16:14:38  |  seeds: [1588, 2026, 7, 42, 101, 900, 31415, 27182]
+Generated: 2026-08-05T17:04:36  |  seeds: [1588, 2026, 7, 42, 101, 900, 31415, 27182]
 
 This report upgrades the single-run prototype numbers to multi-seed confidence intervals, tests generalization to unseen attacks, validates the digital twin, and proves the real-trace ingestion path — all CPU-only, no hardware.
 
 ## 1. Multi-seed metrics (mean ± 95% CI)
 
-- Discriminator accuracy: **0.863 ± 0.017**
-- Discriminator macro-F1: **0.863 ± 0.017**
-- Discriminator ROC-AUC (H1): **0.955 ± 0.006**
-- Governed-loop recovery success: **0.989 ± 0.007**
-- Governed-loop wrong-action rate: **0.007 ± 0.006**
-- Governed-loop mean MTTR (s): **0.943 ± 0.012**
+- Discriminator accuracy: **0.991 ± 0.002**
+- Discriminator macro-F1: **0.991 ± 0.002**
+- Discriminator ROC-AUC (H1): **1.000 ± 0.000**
+- Governed-loop recovery success: **1.000 ± 0.000**
+- Governed-loop wrong-action rate: **0.000 ± 0.000**
+- Governed-loop mean MTTR (s): **0.933 ± 0.008**
 
 See `multiseed_summary.csv`, `multiseed_per_seed.csv`, `multiseed_ci.png`.
 
@@ -19,8 +19,8 @@ See `multiseed_summary.csv`, `multiseed_per_seed.csv`, `multiseed_ci.png`.
 
 Discriminator trained with an entire attack family removed, then tested on it (can it catch an attack type it never saw?):
 
-  - held out **spoof** (`ptp_spoof`) -> recall on unseen family: 0.978 (n=179)
-  - held out **replay** (`ptp_replay`) -> recall on unseen family: 0.480 (n=179)
+  - held out **spoof** (`ptp_spoof`) -> recall on unseen family: 1.000 (n=179)
+  - held out **replay** (`ptp_replay`) -> recall on unseen family: 0.592 (n=179)
   - held out **dos** (`ptp_dos_flood`) -> recall on unseen family: 0.000 (n=179)
   - held out **gnss_spoof** (`gnss_spoof`) -> recall on unseen family: 0.000 (n=179)
   - held out **gnss_jam** (`gnss_jam`) -> recall on unseen family: 0.000 (n=178)

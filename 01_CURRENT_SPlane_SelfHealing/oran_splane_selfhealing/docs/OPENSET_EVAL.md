@@ -7,82 +7,90 @@ Total known-window novelty budget: 2.0%. Group mode splits this budget across ti
 | domain | family | mode | RF recall | novelty rate | combined protection | benign novelty FP |
 |---|---|---|---:|---:|---:|---:|
 | simulated | spoof | pre_bmca | 0.894 | 0.553 | 0.972 | 0.021 |
-| simulated | spoof | bmca_global | 0.978 | 0.128 | 0.989 | 0.017 |
-| simulated | spoof | bmca_group | 0.978 | 0.916 | 0.978 | 0.020 |
+| simulated | spoof | bmca_global | 1.000 | 0.229 | 1.000 | 0.017 |
+| simulated | spoof | bmca_group | 1.000 | 0.866 | 1.000 | 0.027 |
 | simulated | replay | pre_bmca | 0.430 | 0.212 | 0.525 | 0.017 |
-| simulated | replay | bmca_global | 0.480 | 0.000 | 0.480 | 0.023 |
-| simulated | replay | bmca_group | 0.480 | 0.330 | 0.648 | 0.013 |
+| simulated | replay | bmca_global | 0.592 | 0.000 | 0.592 | 0.020 |
+| simulated | replay | bmca_group | 0.592 | 0.659 | 0.855 | 0.037 |
 | simulated | dos | pre_bmca | 0.000 | 0.944 | 0.944 | 0.017 |
-| simulated | dos | bmca_global | 0.000 | 0.000 | 0.000 | 0.023 |
-| simulated | dos | bmca_group | 0.000 | 0.927 | 0.927 | 0.017 |
+| simulated | dos | bmca_global | 0.000 | 0.000 | 0.000 | 0.010 |
+| simulated | dos | bmca_group | 0.000 | 0.944 | 0.944 | 0.034 |
 | simulated | gnss_spoof | pre_bmca | nan | nan | nan | nan |
-| simulated | gnss_spoof | bmca_global | 0.000 | 0.000 | 0.000 | 0.020 |
-| simulated | gnss_spoof | bmca_group | 0.000 | 0.000 | 0.000 | 0.023 |
+| simulated | gnss_spoof | bmca_global | 0.000 | 0.000 | 0.000 | 0.013 |
+| simulated | gnss_spoof | bmca_group | 0.000 | 0.000 | 0.000 | 0.034 |
 | simulated | gnss_jam | pre_bmca | nan | nan | nan | nan |
-| simulated | gnss_jam | bmca_global | 0.000 | 0.084 | 0.084 | 0.017 |
-| simulated | gnss_jam | bmca_group | 0.000 | 0.000 | 0.000 | 0.017 |
+| simulated | gnss_jam | bmca_global | 0.000 | 0.129 | 0.129 | 0.017 |
+| simulated | gnss_jam | bmca_group | 0.000 | 0.978 | 0.978 | 0.030 |
 | timesafe_real | announce | pre_bmca | 0.238 | 0.001 | 0.239 | 0.022 |
-| timesafe_real | announce | bmca_global | 0.047 | 0.321 | 0.365 | 0.037 |
-| timesafe_real | announce | bmca_group | 0.047 | 1.000 | 1.000 | 0.045 |
+| timesafe_real | announce | bmca_global | 0.048 | 0.994 | 0.995 | 0.037 |
+| timesafe_real | announce | bmca_group | 0.048 | 1.000 | 1.000 | 0.045 |
 | timesafe_real | sync_follow_up | pre_bmca | 1.000 | 0.000 | 1.000 | 0.000 |
-| timesafe_real | sync_follow_up | bmca_global | 0.997 | 0.020 | 1.000 | 0.011 |
-| timesafe_real | sync_follow_up | bmca_group | 0.997 | 0.013 | 0.997 | 0.056 |
+| timesafe_real | sync_follow_up | bmca_global | 1.000 | 0.000 | 1.000 | 0.011 |
+| timesafe_real | sync_follow_up | bmca_group | 1.000 | 0.013 | 1.000 | 0.056 |
 | timesafe_real | sync_single_step | pre_bmca | 1.000 | 1.000 | 1.000 | 0.019 |
-| timesafe_real | sync_single_step | bmca_global | 1.000 | 1.000 | 1.000 | 0.026 |
+| timesafe_real | sync_single_step | bmca_global | 1.000 | 1.000 | 1.000 | 0.058 |
 | timesafe_real | sync_single_step | bmca_group | 1.000 | 1.000 | 1.000 | 0.038 |
 
 ## Per-group calibration thresholds
 
 | domain | family | mode | group | score threshold | group budget | calibration windows |
 |---|---|---|---|---:|---:|---:|
-| simulated | spoof | bmca_global | global | > 0.644415 | 0.0200 | 297 |
-| simulated | spoof | bmca_group | timing | > 0.634355 | 0.0018 | 297 |
-| simulated | spoof | bmca_group | protocol | > 0.615495 | 0.0128 | 297 |
-| simulated | spoof | bmca_group | rate | > 0.662644 | 0.0018 | 297 |
-| simulated | spoof | bmca_group | bmca | > 0.812935 | 0.0018 | 297 |
-| simulated | spoof | bmca_group | timesource | > 0.742023 | 0.0018 | 297 |
-| simulated | replay | bmca_global | global | > 0.601422 | 0.0200 | 297 |
-| simulated | replay | bmca_group | timing | > 0.644140 | 0.0018 | 297 |
-| simulated | replay | bmca_group | protocol | > 0.816298 | 0.0128 | 297 |
-| simulated | replay | bmca_group | rate | > 0.676392 | 0.0018 | 297 |
-| simulated | replay | bmca_group | bmca | > 0.752992 | 0.0018 | 297 |
-| simulated | replay | bmca_group | timesource | > 0.731720 | 0.0018 | 297 |
-| simulated | dos | bmca_global | global | > 0.604225 | 0.0200 | 297 |
-| simulated | dos | bmca_group | timing | > 0.623334 | 0.0018 | 297 |
-| simulated | dos | bmca_group | protocol | > 0.611962 | 0.0128 | 297 |
-| simulated | dos | bmca_group | rate | > 0.807236 | 0.0018 | 297 |
-| simulated | dos | bmca_group | bmca | > 0.752992 | 0.0018 | 297 |
-| simulated | dos | bmca_group | timesource | > 0.734222 | 0.0018 | 297 |
-| simulated | gnss_spoof | bmca_global | global | > 0.598425 | 0.0200 | 297 |
-| simulated | gnss_spoof | bmca_group | timing | > 0.612942 | 0.0018 | 297 |
-| simulated | gnss_spoof | bmca_group | protocol | > 0.611130 | 0.0128 | 297 |
-| simulated | gnss_spoof | bmca_group | rate | > 0.656687 | 0.0018 | 297 |
-| simulated | gnss_spoof | bmca_group | bmca | > 0.754800 | 0.0018 | 297 |
-| simulated | gnss_spoof | bmca_group | timesource | > 0.728472 | 0.0018 | 297 |
-| simulated | gnss_jam | bmca_global | global | > 0.609187 | 0.0200 | 297 |
-| simulated | gnss_jam | bmca_group | timing | > 0.619420 | 0.0018 | 297 |
-| simulated | gnss_jam | bmca_group | protocol | > 0.615092 | 0.0128 | 297 |
-| simulated | gnss_jam | bmca_group | rate | > 0.669003 | 0.0018 | 297 |
-| simulated | gnss_jam | bmca_group | bmca | > 0.762532 | 0.0018 | 297 |
-| simulated | gnss_jam | bmca_group | timesource | > 0.781705 | 0.0018 | 297 |
-| timesafe_real | announce | bmca_global | global | > 0.608117 | 0.0200 | 156 |
-| timesafe_real | announce | bmca_group | timing | > 0.651876 | 0.0018 | 156 |
-| timesafe_real | announce | bmca_group | protocol | > 0.689014 | 0.0128 | 156 |
-| timesafe_real | announce | bmca_group | rate | > 0.749710 | 0.0018 | 156 |
-| timesafe_real | announce | bmca_group | bmca | > 0.489045 | 0.0018 | 156 |
-| timesafe_real | announce | bmca_group | timesource | > 0.682256 | 0.0018 | 156 |
-| timesafe_real | sync_follow_up | bmca_global | global | > 0.690623 | 0.0200 | 156 |
-| timesafe_real | sync_follow_up | bmca_group | timing | > 0.746290 | 0.0018 | 156 |
-| timesafe_real | sync_follow_up | bmca_group | protocol | > 0.754560 | 0.0128 | 156 |
-| timesafe_real | sync_follow_up | bmca_group | rate | > 0.814586 | 0.0018 | 156 |
-| timesafe_real | sync_follow_up | bmca_group | bmca | > 0.636600 | 0.0018 | 156 |
-| timesafe_real | sync_follow_up | bmca_group | timesource | > 0.637727 | 0.0018 | 156 |
-| timesafe_real | sync_single_step | bmca_global | global | > 0.671181 | 0.0200 | 132 |
-| timesafe_real | sync_single_step | bmca_group | timing | > 0.586899 | 0.0018 | 132 |
-| timesafe_real | sync_single_step | bmca_group | protocol | > 0.755891 | 0.0128 | 132 |
-| timesafe_real | sync_single_step | bmca_group | rate | > 0.824904 | 0.0018 | 132 |
-| timesafe_real | sync_single_step | bmca_group | bmca | > 0.718412 | 0.0018 | 132 |
-| timesafe_real | sync_single_step | bmca_group | timesource | > 0.775746 | 0.0018 | 132 |
+| simulated | spoof | bmca_global | global | > 0.594963 | 0.0200 | 597 |
+| simulated | spoof | bmca_group | timing | > 0.664221 | 0.0017 | 597 |
+| simulated | spoof | bmca_group | protocol | > 0.602782 | 0.0117 | 597 |
+| simulated | spoof | bmca_group | rate | > 0.667247 | 0.0017 | 597 |
+| simulated | spoof | bmca_group | bmca | > 0.812935 | 0.0017 | 597 |
+| simulated | spoof | bmca_group | timesource | > 0.737855 | 0.0017 | 597 |
+| simulated | spoof | bmca_group | consistency | > 0.645446 | 0.0017 | 597 |
+| simulated | replay | bmca_global | global | > 0.570427 | 0.0200 | 597 |
+| simulated | replay | bmca_group | timing | > 0.649406 | 0.0017 | 597 |
+| simulated | replay | bmca_group | protocol | > 0.718680 | 0.0117 | 597 |
+| simulated | replay | bmca_group | rate | > 0.668519 | 0.0017 | 597 |
+| simulated | replay | bmca_group | bmca | > 0.752992 | 0.0017 | 597 |
+| simulated | replay | bmca_group | timesource | > 0.731472 | 0.0017 | 597 |
+| simulated | replay | bmca_group | consistency | > 0.651021 | 0.0017 | 597 |
+| simulated | dos | bmca_global | global | > 0.570019 | 0.0200 | 597 |
+| simulated | dos | bmca_group | timing | > 0.629781 | 0.0017 | 597 |
+| simulated | dos | bmca_group | protocol | > 0.604671 | 0.0117 | 597 |
+| simulated | dos | bmca_group | rate | > 0.802607 | 0.0017 | 597 |
+| simulated | dos | bmca_group | bmca | > 0.752992 | 0.0017 | 597 |
+| simulated | dos | bmca_group | timesource | > 0.733478 | 0.0017 | 597 |
+| simulated | dos | bmca_group | consistency | > 0.642789 | 0.0017 | 597 |
+| simulated | gnss_spoof | bmca_global | global | > 0.569873 | 0.0200 | 597 |
+| simulated | gnss_spoof | bmca_group | timing | > 0.632739 | 0.0017 | 597 |
+| simulated | gnss_spoof | bmca_group | protocol | > 0.604920 | 0.0117 | 597 |
+| simulated | gnss_spoof | bmca_group | rate | > 0.663277 | 0.0017 | 597 |
+| simulated | gnss_spoof | bmca_group | bmca | > 0.754800 | 0.0017 | 597 |
+| simulated | gnss_spoof | bmca_group | timesource | > 0.726995 | 0.0017 | 597 |
+| simulated | gnss_spoof | bmca_group | consistency | > 0.673198 | 0.0017 | 597 |
+| simulated | gnss_jam | bmca_global | global | > 0.584007 | 0.0200 | 597 |
+| simulated | gnss_jam | bmca_group | timing | > 0.621389 | 0.0017 | 597 |
+| simulated | gnss_jam | bmca_group | protocol | > 0.605815 | 0.0117 | 597 |
+| simulated | gnss_jam | bmca_group | rate | > 0.669003 | 0.0017 | 597 |
+| simulated | gnss_jam | bmca_group | bmca | > 0.762532 | 0.0017 | 597 |
+| simulated | gnss_jam | bmca_group | timesource | > 0.781705 | 0.0017 | 597 |
+| simulated | gnss_jam | bmca_group | consistency | > 0.667789 | 0.0017 | 597 |
+| timesafe_real | announce | bmca_global | global | > 0.599042 | 0.0200 | 156 |
+| timesafe_real | announce | bmca_group | timing | > 0.651876 | 0.0017 | 156 |
+| timesafe_real | announce | bmca_group | protocol | > 0.689014 | 0.0117 | 156 |
+| timesafe_real | announce | bmca_group | rate | > 0.749710 | 0.0017 | 156 |
+| timesafe_real | announce | bmca_group | bmca | > 0.489045 | 0.0017 | 156 |
+| timesafe_real | announce | bmca_group | timesource | > 0.682256 | 0.0017 | 156 |
+| timesafe_real | announce | bmca_group | consistency | > 0.683652 | 0.0017 | 156 |
+| timesafe_real | sync_follow_up | bmca_global | global | > 0.695415 | 0.0200 | 156 |
+| timesafe_real | sync_follow_up | bmca_group | timing | > 0.746290 | 0.0017 | 156 |
+| timesafe_real | sync_follow_up | bmca_group | protocol | > 0.754560 | 0.0117 | 156 |
+| timesafe_real | sync_follow_up | bmca_group | rate | > 0.814586 | 0.0017 | 156 |
+| timesafe_real | sync_follow_up | bmca_group | bmca | > 0.636600 | 0.0017 | 156 |
+| timesafe_real | sync_follow_up | bmca_group | timesource | > 0.637727 | 0.0017 | 156 |
+| timesafe_real | sync_follow_up | bmca_group | consistency | > 0.696502 | 0.0017 | 156 |
+| timesafe_real | sync_single_step | bmca_global | global | > 0.658978 | 0.0200 | 132 |
+| timesafe_real | sync_single_step | bmca_group | timing | > 0.586899 | 0.0017 | 132 |
+| timesafe_real | sync_single_step | bmca_group | protocol | > 0.755891 | 0.0117 | 132 |
+| timesafe_real | sync_single_step | bmca_group | rate | > 0.824904 | 0.0017 | 132 |
+| timesafe_real | sync_single_step | bmca_group | bmca | > 0.718412 | 0.0017 | 132 |
+| timesafe_real | sync_single_step | bmca_group | timesource | > 0.775746 | 0.0017 | 132 |
+| timesafe_real | sync_single_step | bmca_group | consistency | > 0.669474 | 0.0017 | 132 |
 
 ## Planned-GM-failover confounder
 
@@ -92,8 +100,8 @@ Held-run RF H1 false-positive rate: **0.0%**; group novelty false-positive rate:
 
 | feature set | RF recall | novelty rate | combined protection | benign novelty FP |
 |---|---:|---:|---:|---:|
-| full_bmca | 0.047 | 1.000 | 1.000 | 0.045 |
-| without_gm_identity_changes | 0.047 | 1.000 | 1.000 | 0.045 |
+| full_bmca | 0.048 | 1.000 | 1.000 | 0.045 |
+| without_gm_identity_changes | 0.048 | 1.000 | 1.000 | 0.045 |
 
 TIMESAFE contains no benign planned-GM-change session. Its real-data benign false-positive estimate is therefore optimistic for deployments with legitimate re-parenting.
 
@@ -111,35 +119,35 @@ Window step: 0.200 s; failure window: 2.0 s. Persistence is applied independentl
 
 | domain | family | setting | benign FP | window alarms/hour | episode alarms/hour | window protection | episode detection | added latency (s) | mean TTD (s) | within 2 s |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|
-| simulated | dos | 1-of-1 | 18.46% | 3322.1 | 724.8 | 92.74% | 100.00% | 0.000 | 0.050 | 100.00% |
-| simulated | gnss_jam | 1-of-1 | 2.35% | 422.8 | 362.4 | 0.00% | 0.00% | nan | nan | 0.00% |
-| simulated | gnss_spoof | 1-of-1 | 12.75% | 2295.3 | 1026.8 | 0.00% | 0.00% | nan | nan | 0.00% |
-| simulated | replay | 1-of-1 | 18.79% | 3382.6 | 724.8 | 64.80% | 100.00% | 0.000 | 0.217 | 100.00% |
-| simulated | spoof | 1-of-1 | 21.14% | 3805.4 | 604.0 | 97.77% | 100.00% | 0.000 | 0.050 | 100.00% |
+| simulated | dos | 1-of-1 | 3.36% | 604.0 | 483.2 | 94.41% | 100.00% | 0.000 | 0.000 | 100.00% |
+| simulated | gnss_jam | 1-of-1 | 3.02% | 543.6 | 422.8 | 97.75% | 100.00% | 0.000 | 0.050 | 100.00% |
+| simulated | gnss_spoof | 1-of-1 | 3.36% | 604.0 | 483.2 | 0.00% | 0.00% | nan | nan | 0.00% |
+| simulated | replay | 1-of-1 | 3.69% | 664.4 | 543.6 | 85.47% | 100.00% | 0.000 | 0.117 | 100.00% |
+| simulated | spoof | 1-of-1 | 2.68% | 483.2 | 362.4 | 100.00% | 100.00% | 0.000 | 0.000 | 100.00% |
 | timesafe_real | announce | 1-of-1 | 4.48% | 806.0 | 537.3 | 100.00% | 100.00% | 0.000 | 0.000 | 100.00% |
-| timesafe_real | sync_follow_up | 1-of-1 | 5.62% | 1011.2 | 809.0 | 99.66% | 100.00% | 0.000 | 0.000 | 100.00% |
+| timesafe_real | sync_follow_up | 1-of-1 | 5.62% | 1011.2 | 809.0 | 100.00% | 100.00% | 0.000 | 0.000 | 100.00% |
 | timesafe_real | sync_single_step | 1-of-1 | 3.85% | 692.3 | 461.5 | 100.00% | 100.00% | 0.000 | 0.000 | 100.00% |
-| simulated | dos | 2-of-3 | 18.79% | 3382.6 | 362.4 | 87.15% | 100.00% | 0.200 | 0.250 | 100.00% |
-| simulated | gnss_jam | 2-of-3 | 0.67% | 120.8 | 60.4 | 0.00% | 0.00% | nan | nan | 0.00% |
-| simulated | gnss_spoof | 2-of-3 | 10.40% | 1872.5 | 543.6 | 0.00% | 0.00% | nan | nan | 0.00% |
-| simulated | replay | 2-of-3 | 18.79% | 3382.6 | 362.4 | 59.78% | 100.00% | 0.233 | 0.450 | 100.00% |
-| simulated | spoof | 2-of-3 | 19.46% | 3503.4 | 302.0 | 91.62% | 100.00% | 0.200 | 0.250 | 100.00% |
+| simulated | dos | 2-of-3 | 1.34% | 241.6 | 120.8 | 88.27% | 100.00% | 0.217 | 0.217 | 100.00% |
+| simulated | gnss_jam | 2-of-3 | 1.34% | 241.6 | 120.8 | 91.57% | 100.00% | 0.200 | 0.250 | 100.00% |
+| simulated | gnss_spoof | 2-of-3 | 1.34% | 241.6 | 120.8 | 0.00% | 0.00% | nan | nan | 0.00% |
+| simulated | replay | 2-of-3 | 1.34% | 241.6 | 120.8 | 80.45% | 100.00% | 0.250 | 0.367 | 100.00% |
+| simulated | spoof | 2-of-3 | 1.34% | 241.6 | 120.8 | 93.30% | 100.00% | 0.200 | 0.200 | 100.00% |
 | timesafe_real | announce | 2-of-3 | 2.24% | 403.0 | 134.3 | 99.96% | 100.00% | 0.200 | 0.200 | 100.00% |
 | timesafe_real | sync_follow_up | 2-of-3 | 3.37% | 606.7 | 404.5 | 99.66% | 100.00% | 0.200 | 0.200 | 100.00% |
 | timesafe_real | sync_single_step | 2-of-3 | 1.92% | 346.2 | 115.4 | 99.66% | 100.00% | 0.200 | 0.200 | 100.00% |
-| simulated | dos | 3-of-5 | 17.45% | 3140.9 | 241.6 | 79.89% | 100.00% | 0.417 | 0.467 | 100.00% |
-| simulated | gnss_jam | 3-of-5 | 0.00% | 0.0 | 0.0 | 0.00% | 0.00% | nan | nan | 0.00% |
-| simulated | gnss_spoof | 3-of-5 | 8.39% | 1510.1 | 302.0 | 0.00% | 0.00% | nan | nan | 0.00% |
-| simulated | replay | 3-of-5 | 17.45% | 3140.9 | 241.6 | 53.63% | 100.00% | 0.783 | 1.000 | 91.67% |
-| simulated | spoof | 3-of-5 | 17.45% | 3140.9 | 241.6 | 84.92% | 100.00% | 0.400 | 0.450 | 100.00% |
+| simulated | dos | 3-of-5 | 0.00% | 0.0 | 0.0 | 81.56% | 100.00% | 0.417 | 0.417 | 100.00% |
+| simulated | gnss_jam | 3-of-5 | 0.00% | 0.0 | 0.0 | 84.83% | 100.00% | 0.400 | 0.450 | 100.00% |
+| simulated | gnss_spoof | 3-of-5 | 0.00% | 0.0 | 0.0 | 0.00% | 0.00% | nan | nan | 0.00% |
+| simulated | replay | 3-of-5 | 0.00% | 0.0 | 0.0 | 76.54% | 100.00% | 0.550 | 0.667 | 100.00% |
+| simulated | spoof | 3-of-5 | 0.00% | 0.0 | 0.0 | 86.59% | 100.00% | 0.400 | 0.400 | 100.00% |
 | timesafe_real | announce | 3-of-5 | 2.24% | 403.0 | 134.3 | 99.91% | 100.00% | 0.400 | 0.400 | 100.00% |
 | timesafe_real | sync_follow_up | 3-of-5 | 0.00% | 0.0 | 0.0 | 99.33% | 100.00% | 0.400 | 0.400 | 100.00% |
 | timesafe_real | sync_single_step | 3-of-5 | 1.92% | 346.2 | 115.4 | 99.33% | 100.00% | 0.400 | 0.400 | 100.00% |
-| simulated | dos | 4-of-7 | 16.11% | 2899.3 | 241.6 | 73.74% | 100.00% | 0.617 | 0.667 | 100.00% |
-| simulated | gnss_jam | 4-of-7 | 0.00% | 0.0 | 0.0 | 0.00% | 0.00% | nan | nan | 0.00% |
-| simulated | gnss_spoof | 4-of-7 | 6.38% | 1147.7 | 241.6 | 0.00% | 0.00% | nan | nan | 0.00% |
-| simulated | replay | 4-of-7 | 16.11% | 2899.3 | 241.6 | 44.69% | 83.33% | 1.080 | 1.280 | 66.67% |
-| simulated | spoof | 4-of-7 | 16.11% | 2899.3 | 241.6 | 78.21% | 100.00% | 0.600 | 0.650 | 100.00% |
+| simulated | dos | 4-of-7 | 0.00% | 0.0 | 0.0 | 74.86% | 100.00% | 0.633 | 0.633 | 100.00% |
+| simulated | gnss_jam | 4-of-7 | 0.00% | 0.0 | 0.0 | 78.09% | 100.00% | 0.600 | 0.650 | 100.00% |
+| simulated | gnss_spoof | 4-of-7 | 0.00% | 0.0 | 0.0 | 0.00% | 0.00% | nan | nan | 0.00% |
+| simulated | replay | 4-of-7 | 0.00% | 0.0 | 0.0 | 68.72% | 100.00% | 0.817 | 0.933 | 100.00% |
+| simulated | spoof | 4-of-7 | 0.00% | 0.0 | 0.0 | 79.89% | 100.00% | 0.600 | 0.600 | 100.00% |
 | timesafe_real | announce | 4-of-7 | 0.00% | 0.0 | 0.0 | 99.87% | 100.00% | 0.600 | 0.600 | 100.00% |
 | timesafe_real | sync_follow_up | 4-of-7 | 0.00% | 0.0 | 0.0 | 98.99% | 100.00% | 0.600 | 0.600 | 100.00% |
 | timesafe_real | sync_single_step | 4-of-7 | 0.00% | 0.0 | 0.0 | 98.99% | 100.00% | 0.600 | 0.600 | 100.00% |

@@ -33,6 +33,7 @@ _ATTACK_FAMILY = {
     "ptp_dos_flood": "dos",
     "gnss_spoof": "gnss_spoof",
     "gnss_jam": "gnss_jam",
+    "gnss_spoof_stealth": "gnss_spoof_stealth",
 }
 
 

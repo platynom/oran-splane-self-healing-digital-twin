@@ -11,7 +11,12 @@ from telemetry.features import window_features
 
 def build_dataset(config: dict, out_dir: Path) -> pd.DataFrame:
     out_dir.mkdir(parents=True, exist_ok=True)
-    sim_cfg = SimConfig(seed=config["seed"], time_error_budget_ns=config["time_error_budget_ns"], **config["sim"])
+    sim_cfg = SimConfig(
+        seed=config["seed"],
+        time_error_budget_ns=config["time_error_budget_ns"],
+        **config["sim"],
+        **config.get("oscillator", {}),
+    )
     telemetry = generate_telemetry(sim_cfg, int(config["dataset"]["scenarios_per_type"]))
     telemetry.to_csv(out_dir / "splane_telemetry.csv", index=False)
     windows = window_features(telemetry, float(config["dataset"]["window_s"]), float(config["dataset"]["step_s"]))

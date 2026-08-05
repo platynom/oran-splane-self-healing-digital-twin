@@ -23,6 +23,7 @@ _FAMILY = {
     "ptp_dos_flood": "dos",
     "gnss_spoof": "gnss_spoof",
     "gnss_jam": "gnss_jam",
+    "gnss_spoof_stealth": "gnss_spoof_stealth",
 }
 _PRE_BMCA = {
     ("simulated", "spoof"): (0.8938547486033519, 0.553072625698324, 0.9720670391061452, 0.02100840336134454),
@@ -153,6 +154,7 @@ def _sim_windows(config: dict) -> pd.DataFrame:
         seed=int(config["seed"]),
         time_error_budget_ns=float(config["time_error_budget_ns"]),
         **config["sim"],
+        **config.get("oscillator", {}),
     )
     telemetry = generate_telemetry(sim_cfg, int(config["dataset"]["scenarios_per_type"]))
     return window_features(
@@ -171,7 +173,7 @@ def evaluate_simulated(config: dict, windows: pd.DataFrame | None = None) -> pd.
         known = anomalous[~((anomalous["label"] == "H1") & (anomalous["scenario"] == held))]
         attack = anomalous[(anomalous["label"] == "H1") & (anomalous["scenario"] == held)]
         fit_known = known[known["run_id"] % 3 != 2]
-        calibration_known = known[(known["run_id"] % 3 == 1) & (known["label"] == "H0")]
+        calibration_known = fit_known[fit_known["label"] == "H0"]
         benign_test = known[(known["run_id"] % 3 == 2) & (known["label"] == "H0")]
         rf = _fit_rf(known, int(config["seed"]), FEATURE_COLUMNS)
         rows.append(_pre_row("simulated", held, family, len(attack), len(benign_test)))

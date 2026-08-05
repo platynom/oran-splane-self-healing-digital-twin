@@ -9,6 +9,10 @@ sim:
   servo_gain: 0.26
   synce_gain: 0.08
   drift_ppb: 6.0
+oscillator:
+  holdover_nominal_drift_ppb: 6.0
+  holdover_tolerance_ppb: 2.0
+  disciplined_tolerance_ppb: 1.5
 dataset:
   scenarios_per_type: 12
   window_s: 0.4
@@ -26,6 +30,7 @@ openset:
     rate: 0.1
     bmca: 0.1
     timesource: 0.1
+    consistency: 0.1
   persistence:
     enabled: true
     n: 2

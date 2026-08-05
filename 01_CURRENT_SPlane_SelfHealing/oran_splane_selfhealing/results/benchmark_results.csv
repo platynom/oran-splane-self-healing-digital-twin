@@ -1,5 +1,5 @@
 method,recovery_success_rate,wrong_action_rate,mean_mttr_s,peak_time_error_ns,within_2s_rate
-always_failover,0.5,0.0,0.635,91.48917726138822,1.0
-always_holdover,0.5,0.5,1.175,91.48917726138822,1.0
-detection_only_no_response,0.0,0.0,2.0,98.85573078331286,0.0
-governed_loop,0.9916666666666667,0.0,0.9381666666666667,44.010215498374855,1.0
+always_failover,0.5,0.0,0.635,91.487628980864,1.0
+always_holdover,0.5,0.5,1.175,91.487628980864,1.0
+detection_only_no_response,0.0,0.0,2.0,98.85418250278866,0.0
+governed_loop,1.0,0.0,0.9353333333333332,43.531481939754784,1.0

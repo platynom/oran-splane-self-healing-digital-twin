@@ -272,3 +272,24 @@ P7/P8 passed: run_all.py reproduced dataset, training, twin forecasts, benchmark
 
 ## 2026-08-05T16:14:38
 TIER2 passed: multi-seed accuracy 0.863±0.017; twin-vs-sim Pearson 0.998; pcap ingestion MAE 14.7 ns; leave-one-attack-out + linuxptp parser self-tests OK.
+
+## 2026-08-05T16:47:42
+P1 passed: healthy pure-Python S-plane servo converges within the configured time-error budget.
+
+## 2026-08-05T16:48:32
+P2 passed: generated labelled healthy/H0/H1 telemetry windows and datasheet.
+
+## 2026-08-05T16:48:34
+P3 passed: trained H0-vs-H1 discriminator and beat detection-only baseline on held-out windows.
+
+## 2026-08-05T16:48:34
+P4 passed: produced per-action digital-twin forecasts with bounded fidelity score.
+
+## 2026-08-05T16:48:40
+P5/P6 passed: governed loop restored timing in benchmark scenarios and outperformed baselines.
+
+## 2026-08-05T16:48:40
+P7/P8 passed: run_all.py reproduced dataset, training, twin forecasts, benchmark, plots, and SUMMARY.md.
+
+## 2026-08-05T17:04:36
+TIER2 passed: multi-seed accuracy 0.991±0.002; twin-vs-sim Pearson 0.998; pcap ingestion MAE 14.7 ns; leave-one-attack-out + linuxptp parser self-tests OK.

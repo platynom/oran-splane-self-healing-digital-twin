@@ -1,5 +1,7 @@
 feature_set,held_out_attack,attack_windows,persistent_rf_recall,persistent_novelty_rate,combined_protective_rate,attack_episodes,episode_detection_rate,within_2s_episode_rate
-with_timesource,gnss_spoof,179,0.0,0.0,0.0,12,0.0,0.0
-with_timesource,gnss_jam,178,0.0,0.0,0.0,12,0.0,0.0
-without_timesource,gnss_spoof,179,0.3016759776536313,0.0,0.3016759776536313,12,0.9166666666666666,0.9166666666666666
-without_timesource,gnss_jam,178,0.3539325842696629,0.0,0.3539325842696629,12,0.9166666666666666,0.8333333333333334
+a_ptp_only,gnss_spoof,179,0.2737430167597765,0.0,0.2737430167597765,12,0.8333333333333334,0.8333333333333334
+a_ptp_only,gnss_jam,178,0.3707865168539326,0.0,0.3707865168539326,12,1.0,1.0
+b_ptp_timesource,gnss_spoof,179,0.0,0.0,0.0,12,0.0,0.0
+b_ptp_timesource,gnss_jam,178,0.0,0.0,0.0,12,0.0,0.0
+c_ptp_timesource_consistency,gnss_spoof,179,0.0,0.0,0.0,12,0.0,0.0
+c_ptp_timesource_consistency,gnss_jam,178,0.0,0.9157303370786517,0.9157303370786517,12,1.0,1.0

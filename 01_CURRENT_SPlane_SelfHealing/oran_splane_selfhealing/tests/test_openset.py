@@ -27,7 +27,7 @@ def test_novelty_detector_calibrates_known_budget_and_flags_clear_ood():
     assert detector.predict_novel(known).mean() <= 0.02
     assert detector.predict_novel(out_of_distribution).mean() >= 0.95
     assert detector.score(out_of_distribution).mean() > detector.score(known).mean()
-    assert set(detector.thresholds_) == {"timing", "protocol", "rate", "bmca", "timesource"}
+    assert set(detector.thresholds_) == {"timing", "protocol", "rate", "bmca", "timesource", "consistency"}
     assert detector.per_group_target_rate_ < detector.target_known_flag_rate
 
 

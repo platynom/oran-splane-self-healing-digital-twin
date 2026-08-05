@@ -9,7 +9,7 @@ import pandas as pd
 from sklearn.ensemble import IsolationForest
 from sklearn.preprocessing import StandardScaler
 
-from telemetry.features import FEATURE_COLUMNS, TIMESOURCE_FEATURE_COLUMNS
+from telemetry.features import CONSISTENCY_FEATURE_COLUMNS, FEATURE_COLUMNS, TIMESOURCE_FEATURE_COLUMNS
 
 
 def apply_persistence(flags: np.ndarray | list[bool], n: int, m: int) -> np.ndarray:
@@ -90,13 +90,18 @@ class NoveltyDetector:
         rate = [name for name in self.feature_columns if name.startswith("msg_rate_")]
         protocol = [name for name in self.feature_columns if name in {"seq_regressions", "msg_irregularity"}]
         timesource = [name for name in self.feature_columns if name in TIMESOURCE_FEATURE_COLUMNS]
-        timing = [name for name in self.feature_columns if name not in set(bmca + rate + protocol + timesource)]
+        consistency = [name for name in self.feature_columns if name in CONSISTENCY_FEATURE_COLUMNS]
+        timing = [
+            name for name in self.feature_columns
+            if name not in set(bmca + rate + protocol + timesource + consistency)
+        ]
         groups = {
             "timing": timing,
             "protocol": protocol,
             "rate": rate,
             "bmca": bmca,
             "timesource": timesource,
+            "consistency": consistency,
         }
         return {name: columns for name, columns in groups.items() if columns}
 

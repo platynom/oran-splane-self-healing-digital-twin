@@ -28,6 +28,8 @@ def scenario_spec(name: str) -> ScenarioSpec:
         return ScenarioSpec(name, "H0")
     if name in H1_SCENARIOS:
         return ScenarioSpec(name, "H1")
+    if name == "gnss_spoof_stealth":
+        return ScenarioSpec(name, "H1")
     raise ValueError(f"unknown scenario {name}")
 
 
@@ -91,7 +93,9 @@ def run_scenario(config: SimConfig, scenario: str, run_id: int = 0) -> pd.DataFr
             row["satellites_tracked"] = max(0, int(round(12 * max(0.0, 1.0 - elapsed / 0.35))))
             row["grandmaster_clock_class"] = 7
             row["time_source"] = 0xA0
-            oscillator_drift = cfg.drift_ppb * sev
+            oscillator_drift = cfg.holdover_nominal_drift_ppb + (
+                (sev - 1.0) * cfg.holdover_tolerance_ppb * 0.8
+            )
             row["offset_ns"] = float(row["offset_ns"]) + oscillator_drift * cfg.dt_s + rng.normal(0, 0.7)
             row["freq_error_ppb"] = oscillator_drift + rng.normal(0, 0.35)
         elif scenario == "pdv_congestion":
@@ -192,6 +196,21 @@ def run_scenario(config: SimConfig, scenario: str, run_id: int = 0) -> pd.DataFr
             intermittent = rng.normal(0, 2.2) if rng.random() < 0.16 else rng.normal(0, 0.8)
             row["offset_ns"] = float(row["offset_ns"]) + jam_drift * cfg.dt_s + intermittent
             row["freq_error_ppb"] = jam_drift + rng.normal(0, 0.6)
+        elif scenario == "gnss_spoof_stealth":
+            row["attack_family"] = "gnss_spoof_stealth"
+            row["gnss_available"] = True
+            row["holdover"] = False
+            row["gnss_sync_status"] = "SYNCHRONIZED"
+            row["satellites_tracked"] = int(np.clip(round(rng.normal(12, 1.0)), 8, 16))
+            row["grandmaster_clock_class"] = 6
+            row["time_source"] = 0x20
+            # Slow spoof remains within the rated holdover envelope by construction.
+            stealth_drift = cfg.holdover_nominal_drift_ppb + rng.uniform(
+                -0.7 * cfg.holdover_tolerance_ppb,
+                0.7 * cfg.holdover_tolerance_ppb,
+            )
+            row["offset_ns"] = float(row["offset_ns"]) + stealth_drift * cfg.dt_s + rng.normal(0, 0.7)
+            row["freq_error_ppb"] = stealth_drift + rng.normal(0, 0.25)
 
     df = simulate(cfg, scenario=scenario, mutator=mutate)
     df = _add_sensor_noise(df, seed)

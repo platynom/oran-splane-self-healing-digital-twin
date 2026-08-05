@@ -49,7 +49,12 @@ def write_summary(metrics, bench, config: dict) -> None:
 
 def main() -> None:
     config = load_config()
-    sim_cfg = SimConfig(seed=config["seed"], time_error_budget_ns=config["time_error_budget_ns"], **config["sim"])
+    sim_cfg = SimConfig(
+        seed=config["seed"],
+        time_error_budget_ns=config["time_error_budget_ns"],
+        **config["sim"],
+        **config.get("oscillator", {}),
+    )
     healthy = healthy_trace(sim_cfg)
     assert healthy.tail(80)["offset_ns"].abs().mean() < config["time_error_budget_ns"], "healthy servo outside budget"
     append_progress("P1 passed: healthy pure-Python S-plane servo converges within the configured time-error budget.")

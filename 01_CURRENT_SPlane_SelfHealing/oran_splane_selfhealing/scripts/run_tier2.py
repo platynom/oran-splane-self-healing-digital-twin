@@ -76,7 +76,12 @@ def step_rest(cfg: dict, out: Path) -> None:
         out,
         ROOT / "docs",
     )
-    base_sim = SimConfig(seed=cfg["seed"], time_error_budget_ns=cfg["time_error_budget_ns"], **cfg["sim"])
+    base_sim = SimConfig(
+        seed=cfg["seed"],
+        time_error_budget_ns=cfg["time_error_budget_ns"],
+        **cfg["sim"],
+        **cfg.get("oscillator", {}),
+    )
     twin_cons = twin_action_consistency(base_sim, out)
     with tempfile.TemporaryDirectory() as td:
         windows = build_dataset(cfg, Path(td) / "ds")

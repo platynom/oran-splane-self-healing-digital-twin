@@ -1,5 +1,15 @@
 # Changes
 
+## 2026-08-05
+
+- Added the GNSS design lesson that receiver self-reported synchronization status is attacker-influenced and must be corroborated rather than trusted as a standalone detection signal.
+- Added a configuration-backed oscillator holdover envelope and made benign GNSS holdover follow that physical specification explicitly.
+- Added four derived physics-consistency features and an independently budgeted `consistency` open-set group; calibration uses only benign training runs and preserves held-run isolation.
+- Added the unelevated `gnss_spoof_stealth` evaluation variant, which remains inside the oscillator envelope and is excluded from training datasets.
+- Extended GNSS evaluation to fixed three-way PTP/status/consistency ablations, closed-set confusion and recall, persisted unseen-family episode metrics, stealth bounds, and existing-family regression deltas.
+- Recorded the untuned second negative result: consistency recovered unseen jam to 91.57% protection but unseen spoof remained 0%, below the 27.37% PTP-only result.
+- Documented the fundamental single-reference observability limit and the requirement for an independent reference to detect an otherwise in-distribution spoof.
+
 ## 2026-07-27
 
 - Config-only validation change: expanded `stats.seeds` in `config/default.yaml` from 6 seeds to 8 seeds (`31415`, `27182` added) so `scripts/run_tier2.py` regenerates tighter multi-seed confidence intervals.
