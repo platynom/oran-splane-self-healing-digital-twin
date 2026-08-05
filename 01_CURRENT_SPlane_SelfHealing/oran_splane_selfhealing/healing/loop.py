@@ -6,7 +6,7 @@ from time import perf_counter
 import pandas as pd
 
 from discriminator.openset import TemporalPersistence
-from telemetry.features import FEATURE_COLUMNS
+from telemetry.features import configured_feature_columns
 from twin.model import forecast_all
 
 
@@ -68,7 +68,8 @@ def choose_action(
         elapsed = perf_counter() - start
         return Decision("safe_default", "no anomaly above configured threshold", "healthy", elapsed, elapsed < budget, float(window["offset_abs_max"]))
 
-    X = pd.DataFrame([window[FEATURE_COLUMNS].to_dict()])
+    features = list(getattr(clf, "feature_columns_", configured_feature_columns(config)))
+    X = pd.DataFrame([window[features].to_dict()])
     openset = config.get("openset", {})
     if novelty_detector is None:
         novelty_detector = getattr(clf, "novelty_detector_", None)

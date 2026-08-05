@@ -16,6 +16,7 @@ def build_dataset(config: dict, out_dir: Path) -> pd.DataFrame:
         time_error_budget_ns=config["time_error_budget_ns"],
         **config["sim"],
         **config.get("oscillator", {}),
+        **config.get("time_sources", {}),
     )
     telemetry = generate_telemetry(sim_cfg, int(config["dataset"]["scenarios_per_type"]))
     telemetry.to_csv(out_dir / "splane_telemetry.csv", index=False)

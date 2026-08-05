@@ -54,6 +54,7 @@ def main() -> None:
         time_error_budget_ns=config["time_error_budget_ns"],
         **config["sim"],
         **config.get("oscillator", {}),
+        **config.get("time_sources", {}),
     )
     healthy = healthy_trace(sim_cfg)
     assert healthy.tail(80)["offset_ns"].abs().mean() < config["time_error_budget_ns"], "healthy servo outside budget"

@@ -1,5 +1,15 @@
 # Changes
 
+## 2026-08-05 - Multi-source increment (uncommitted)
+
+- Added independently noisy/drifting GNSS, upstream PTP/LLS-C, and peer reference traces with a configured healthy agreement tolerance.
+- Added H1 single-source and coherent all-source GNSS spoof scenarios plus H0 degraded-peer and benign-path-asymmetry disagreement confounders.
+- Added seven relative cross-source consensus/disagreement features and an independently budgeted `cross_source` open-set group; raw reference values do not enter `FEATURE_COLUMNS`.
+- Added leakage-resistant four-way evaluation under 2-of-3 persistence, benign-confounder false-positive measurements, an all-sources-compromised bound, and existing-family regression reporting.
+- Recorded the untuned third negative result: cross-source features add no combined protection over consistency-only for single-source spoofing (93.33% to 93.33%); coherent all-source spoofing has 0% novelty contribution and is protected only by closed-family RF transfer.
+- Disabled cross-source features and research-only scenarios in the shipped configuration-C path; moved reference-noise generation to an independent deterministic RNG so disabled research telemetry cannot perturb legacy scenario results.
+- Verified the gated default exactly restores post-consistency protection and deadlines; added the related-family methodology caveat and coherent all-source relative-agreement bound to the multi-source report.
+
 ## 2026-08-05
 
 - Added the GNSS design lesson that receiver self-reported synchronization status is attacker-influenced and must be corroborated rather than trusted as a standalone detection signal.

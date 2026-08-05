@@ -13,6 +13,17 @@ oscillator:
   holdover_nominal_drift_ppb: 6.0
   holdover_tolerance_ppb: 2.0
   disciplined_tolerance_ppb: 1.5
+time_sources:
+  source_agreement_tolerance_ns: 20.0
+  gnss_reference_noise_ns: 2.5
+  ptp_reference_noise_ns: 6.0
+  peer_reference_noise_ns: 4.0
+  gnss_reference_drift_ppb: 0.05
+  ptp_reference_drift_ppb: 0.12
+  peer_reference_drift_ppb: 0.08
+features:
+  cross_source:
+    enabled: false
 dataset:
   scenarios_per_type: 12
   window_s: 0.4
@@ -31,6 +42,7 @@ openset:
     bmca: 0.1
     timesource: 0.1
     consistency: 0.1
+    cross_source: 0.1
   persistence:
     enabled: true
     n: 2

@@ -1,0 +1,13 @@
+feature_set,held_out_attack,attack_windows,persistent_rf_recall,persistent_novelty_rate,combined_protective_rate,episode_detection_rate,within_2s_episode_rate
+a_ptp_only,gnss_spoof_single_source,180,0.0,0.0,0.0,0.0,0.0
+a_ptp_only,gnss_spoof_all_sources,180,0.0,0.0,0.0,0.0,0.0
+a_ptp_only,gnss_jam,178,0.0,0.0,0.0,0.0,0.0
+b_ptp_timesource,gnss_spoof_single_source,180,0.0,0.0,0.0,0.0,0.0
+b_ptp_timesource,gnss_spoof_all_sources,180,0.0,0.0,0.0,0.0,0.0
+b_ptp_timesource,gnss_jam,178,0.0,0.0,0.0,0.0,0.0
+c_ptp_timesource_consistency,gnss_spoof_single_source,180,0.9277777777777778,0.0,0.9277777777777778,1.0,1.0
+c_ptp_timesource_consistency,gnss_spoof_all_sources,180,0.9277777777777778,0.0,0.9277777777777778,1.0,1.0
+c_ptp_timesource_consistency,gnss_jam,178,0.0,0.8707865168539326,0.8707865168539326,1.0,1.0
+d_cross_source,gnss_spoof_single_source,180,0.1388888888888889,0.32222222222222224,0.45555555555555555,0.9166666666666666,0.9166666666666666
+d_cross_source,gnss_spoof_all_sources,180,0.9222222222222223,0.0,0.9222222222222223,1.0,1.0
+d_cross_source,gnss_jam,178,0.0,0.8707865168539326,0.8707865168539326,1.0,1.0

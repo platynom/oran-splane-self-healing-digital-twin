@@ -21,6 +21,16 @@ CONSISTENCY_FEATURE_COLUMNS = [
     "offset_step_vs_drift_ratio",
 ]
 
+CROSS_SOURCE_FEATURE_COLUMNS = [
+    "max_pairwise_source_disagreement_ns",
+    "disagreement_growth_rate",
+    "n_sources_outside_tolerance",
+    "minority_source_isolation_score",
+    "gnss_consensus_residual_ns",
+    "ptp_consensus_residual_ns",
+    "peer_consensus_residual_ns",
+]
+
 
 FEATURE_COLUMNS = [
     "offset_mean",
@@ -44,6 +54,14 @@ FEATURE_COLUMNS = [
     *TIMESOURCE_FEATURE_COLUMNS[2:],
     *CONSISTENCY_FEATURE_COLUMNS,
 ]
+
+ALL_FEATURE_COLUMNS = [*FEATURE_COLUMNS, *CROSS_SOURCE_FEATURE_COLUMNS]
+
+
+def configured_feature_columns(config: dict | None = None) -> list[str]:
+    """Return shipped features, optionally enabling research-only cross-source signals."""
+    enabled = bool((config or {}).get("features", {}).get("cross_source", {}).get("enabled", False))
+    return list(ALL_FEATURE_COLUMNS if enabled else FEATURE_COLUMNS)
 
 
 def _transition_count(series: pd.Series) -> int:
@@ -92,6 +110,36 @@ def _consistency_features(window: pd.DataFrame) -> dict[str, float]:
         "holdover_spec_violation_rate": float(envelope_exceeded.mean()),
         "status_behaviour_disagreement": float(disagreement.mean()),
         "offset_step_vs_drift_ratio": float(ratio),
+    }
+
+
+def _cross_source_features(window: pd.DataFrame) -> dict[str, float]:
+    sources = window[["gnss_reference_ns", "ptp_reference_ns", "peer_reference_ns"]].astype(float)
+    values = sources.to_numpy()
+    consensus = np.median(values, axis=1)
+    residuals = np.abs(values - consensus[:, None])
+    pairwise = values.max(axis=1) - values.min(axis=1)
+    tolerance = window["source_agreement_tolerance_ns"].astype(float).to_numpy()
+    outside = residuals > tolerance[:, None]
+    residual_sum = residuals.sum(axis=1)
+    isolation = np.divide(
+        residuals.max(axis=1),
+        residual_sum,
+        out=np.zeros_like(residual_sum),
+        where=residual_sum > 1e-9,
+    )
+    if len(window) > 1 and float(window["t_s"].max()) > float(window["t_s"].min()):
+        growth = float(np.polyfit(window["t_s"].astype(float), pairwise, 1)[0])
+    else:
+        growth = 0.0
+    return {
+        "max_pairwise_source_disagreement_ns": float(pairwise.max()),
+        "disagreement_growth_rate": max(0.0, growth),
+        "n_sources_outside_tolerance": float(outside.sum(axis=1).max()),
+        "minority_source_isolation_score": float(isolation.mean()),
+        "gnss_consensus_residual_ns": float(residuals[:, 0].mean()),
+        "ptp_consensus_residual_ns": float(residuals[:, 1].mean()),
+        "peer_consensus_residual_ns": float(residuals[:, 2].mean()),
     }
 
 
@@ -157,6 +205,7 @@ def window_features(df: pd.DataFrame, window_s: float, step_s: float) -> pd.Data
                     ),
             }
             features.update(_consistency_features(w))
+            features.update(_cross_source_features(w))
             rows.append(features)
             t += step_s
     return pd.DataFrame(rows)

@@ -8,8 +8,12 @@ import pandas as pd
 from fronthaul_sim.simulator import SimConfig, simulate
 
 
-H0_SCENARIOS = ("gnss_loss_holdover", "pdv_congestion", "synce_degrade", "traffic_burst", "planned_gm_failover")
+H0_SCENARIOS = (
+    "gnss_loss_holdover", "pdv_congestion", "synce_degrade", "traffic_burst", "planned_gm_failover",
+)
 H1_SCENARIOS = ("ptp_spoof", "ptp_replay", "ptp_dos_flood", "gnss_spoof", "gnss_jam")
+MULTISOURCE_H0_SCENARIOS = ("peer_source_degraded", "path_asymmetry_benign")
+MULTISOURCE_H1_SCENARIOS = ("gnss_spoof_single_source", "gnss_spoof_all_sources")
 ALL_SCENARIOS = ("healthy",) + H0_SCENARIOS + H1_SCENARIOS
 
 
@@ -26,7 +30,11 @@ def scenario_spec(name: str) -> ScenarioSpec:
         return ScenarioSpec(name, "healthy", 99.0, 0.0)
     if name in H0_SCENARIOS:
         return ScenarioSpec(name, "H0")
+    if name in MULTISOURCE_H0_SCENARIOS:
+        return ScenarioSpec(name, "H0")
     if name in H1_SCENARIOS:
+        return ScenarioSpec(name, "H1")
+    if name in MULTISOURCE_H1_SCENARIOS:
         return ScenarioSpec(name, "H1")
     if name == "gnss_spoof_stealth":
         return ScenarioSpec(name, "H1")
@@ -123,6 +131,13 @@ def run_scenario(config: SimConfig, scenario: str, run_id: int = 0) -> pd.DataFr
             row["grandmaster_priority2"] = 129
             row["steps_removed"] = 2
             row["time_source"] = 0x20
+        elif scenario == "peer_source_degraded":
+            row["peer_reference_ns"] = float(row["peer_reference_ns"]) + 34.0 * sev * elapsed
+        elif scenario == "path_asymmetry_benign":
+            asymmetry = 28.0 * sev * (1.0 - np.exp(-2.0 * elapsed))
+            row["ptp_reference_ns"] = float(row["ptp_reference_ns"]) + asymmetry
+            row["path_delay_ns"] = float(row["path_delay_ns"]) + asymmetry
+            row["pdv_ns"] = float(row["pdv_ns"]) + asymmetry
         elif scenario == "ptp_spoof":
             row["attack_family"] = "spoof"
             row["grandmaster_identity"] = f"deadbeeffe00{run_id:04x}"
@@ -196,6 +211,22 @@ def run_scenario(config: SimConfig, scenario: str, run_id: int = 0) -> pd.DataFr
             intermittent = rng.normal(0, 2.2) if rng.random() < 0.16 else rng.normal(0, 0.8)
             row["offset_ns"] = float(row["offset_ns"]) + jam_drift * cfg.dt_s + intermittent
             row["freq_error_ppb"] = jam_drift + rng.normal(0, 0.6)
+        elif scenario in {"gnss_spoof_single_source", "gnss_spoof_all_sources"}:
+            row["attack_family"] = scenario
+            row["gnss_available"] = True
+            row["holdover"] = False
+            row["gnss_sync_status"] = "SYNCHRONIZED"
+            row["satellites_tracked"] = int(np.clip(round(rng.normal(12, 1.0)), 8, 16))
+            row["grandmaster_clock_class"] = 6
+            row["time_source"] = 0x20
+            source_bias = 42.0 * sev * elapsed
+            row["gnss_reference_ns"] = float(row["gnss_reference_ns"]) + source_bias
+            if scenario == "gnss_spoof_all_sources":
+                row["ptp_reference_ns"] = float(row["ptp_reference_ns"]) + source_bias
+                row["peer_reference_ns"] = float(row["peer_reference_ns"]) + source_bias
+            malicious_drift = cfg.drift_ppb * sev * rng.uniform(1.35, 2.1)
+            row["offset_ns"] = float(row["offset_ns"]) + malicious_drift * cfg.dt_s + rng.normal(0, 0.8)
+            row["freq_error_ppb"] = malicious_drift + rng.normal(0, 0.45)
         elif scenario == "gnss_spoof_stealth":
             row["attack_family"] = "gnss_spoof_stealth"
             row["gnss_available"] = True

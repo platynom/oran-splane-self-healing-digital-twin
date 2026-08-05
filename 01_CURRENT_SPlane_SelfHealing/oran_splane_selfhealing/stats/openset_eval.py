@@ -15,7 +15,7 @@ from faults.injectors import H1_SCENARIOS, generate_telemetry
 from fronthaul_sim.simulator import SimConfig
 from ingest.schema import coerce_telemetry
 from stats.persistence_eval import evaluate_persistence
-from telemetry.features import FEATURE_COLUMNS, window_features
+from telemetry.features import FEATURE_COLUMNS, configured_feature_columns, window_features
 
 _FAMILY = {
     "ptp_spoof": "spoof",
@@ -24,6 +24,8 @@ _FAMILY = {
     "gnss_spoof": "gnss_spoof",
     "gnss_jam": "gnss_jam",
     "gnss_spoof_stealth": "gnss_spoof_stealth",
+    "gnss_spoof_single_source": "gnss_spoof_single_source",
+    "gnss_spoof_all_sources": "gnss_spoof_all_sources",
 }
 _PRE_BMCA = {
     ("simulated", "spoof"): (0.8938547486033519, 0.553072625698324, 0.9720670391061452, 0.02100840336134454),
@@ -155,6 +157,7 @@ def _sim_windows(config: dict) -> pd.DataFrame:
         time_error_budget_ns=float(config["time_error_budget_ns"]),
         **config["sim"],
         **config.get("oscillator", {}),
+        **config.get("time_sources", {}),
     )
     telemetry = generate_telemetry(sim_cfg, int(config["dataset"]["scenarios_per_type"]))
     return window_features(
@@ -166,6 +169,7 @@ def _sim_windows(config: dict) -> pd.DataFrame:
 
 def evaluate_simulated(config: dict, windows: pd.DataFrame | None = None) -> pd.DataFrame:
     windows = _sim_windows(config) if windows is None else windows
+    features = configured_feature_columns(config)
     anomalous = windows[windows["label"].isin(["H0", "H1"])].copy()
     rows, thresholds, traces = [], [], []
     for held in H1_SCENARIOS:
@@ -175,16 +179,16 @@ def evaluate_simulated(config: dict, windows: pd.DataFrame | None = None) -> pd.
         fit_known = known[known["run_id"] % 3 != 2]
         calibration_known = fit_known[fit_known["label"] == "H0"]
         benign_test = known[(known["run_id"] % 3 == 2) & (known["label"] == "H0")]
-        rf = _fit_rf(known, int(config["seed"]), FEATURE_COLUMNS)
+        rf = _fit_rf(known, int(config["seed"]), features)
         rows.append(_pre_row("simulated", held, family, len(attack), len(benign_test)))
         for mode in ("global", "group"):
-            detector = _detector(config, mode, fit_known, FEATURE_COLUMNS, calibration_known)
-            rows.append(_metric_row("simulated", f"bmca_{mode}", held, family, attack, benign_test, rf, detector, FEATURE_COLUMNS))
+            detector = _detector(config, mode, fit_known, features, calibration_known)
+            rows.append(_metric_row("simulated", f"bmca_{mode}", held, family, attack, benign_test, rf, detector, features))
             thresholds.extend(_threshold_rows("simulated", family, mode, detector))
             if mode == "group":
                 traces.extend([
-                    _prediction_trace("simulated", family, "attack", attack, rf, detector, FEATURE_COLUMNS, ["scenario", "run_id"]),
-                    _prediction_trace("simulated", family, "benign", benign_test, rf, detector, FEATURE_COLUMNS, ["scenario", "run_id"]),
+                    _prediction_trace("simulated", family, "attack", attack, rf, detector, features, ["scenario", "run_id"]),
+                    _prediction_trace("simulated", family, "benign", benign_test, rf, detector, features, ["scenario", "run_id"]),
                 ])
     result = pd.DataFrame(rows)
     result.attrs["thresholds"] = pd.DataFrame(thresholds)
@@ -216,7 +220,7 @@ def _load_real_sessions(session_dir: Path, config: dict) -> pd.DataFrame:
 
 
 def evaluate_real(config: dict, session_dir: Path, features: list[str] | None = None) -> pd.DataFrame:
-    features = list(features or FEATURE_COLUMNS)
+    features = list(features or configured_feature_columns(config))
     real = _load_real_sessions(session_dir, config)
     if real.empty:
         return pd.DataFrame()
@@ -251,14 +255,15 @@ def evaluate_real(config: dict, session_dir: Path, features: list[str] | None = 
 
 
 def evaluate_planned_failover(config: dict, windows: pd.DataFrame) -> pd.DataFrame:
+    features = configured_feature_columns(config)
     anomalous = windows[windows["label"].isin(["H0", "H1"])]
     train = anomalous[anomalous["run_id"] % 3 != 2]
     calibration = anomalous[(anomalous["run_id"] % 3 == 1) & (anomalous["label"] == "H0")]
     test = anomalous[(anomalous["run_id"] % 3 == 2) & (anomalous["scenario"] == "planned_gm_failover")]
-    rf = _fit_rf(train, int(config["seed"]), FEATURE_COLUMNS)
-    detector = _detector(config, "group", train, FEATURE_COLUMNS, calibration)
-    rf_h1 = rf.predict(test[FEATURE_COLUMNS]) == "H1"
-    novel = detector.predict_novel(test[FEATURE_COLUMNS])
+    rf = _fit_rf(train, int(config["seed"]), features)
+    detector = _detector(config, "group", train, features, calibration)
+    rf_h1 = rf.predict(test[features]) == "H1"
+    novel = detector.predict_novel(test[features])
     return pd.DataFrame([{
         "scenario": "planned_gm_failover",
         "windows": len(test),
@@ -269,6 +274,7 @@ def evaluate_planned_failover(config: dict, windows: pd.DataFrame) -> pd.DataFra
 
 
 def evaluate_identity_ablation(config: dict, session_dir: Path) -> pd.DataFrame:
+    configured = configured_feature_columns(config)
     real = _load_real_sessions(session_dir, config)
     held_sessions = set(real.loc[(real["label"] == "H1") & (real["attack_family"] == "announce"), "capture_id"])
     train = real[~real["capture_id"].isin(held_sessions)]
@@ -279,8 +285,8 @@ def evaluate_identity_ablation(config: dict, session_dir: Path) -> pd.DataFrame:
     calibration_capture = str(benign_counts.index[0])
     novelty_calibration = train[(train["capture_id"] == calibration_capture) & (train["label"] == "H0")]
     for name, features in (
-        ("full_bmca", FEATURE_COLUMNS),
-        ("without_gm_identity_changes", [f for f in FEATURE_COLUMNS if f != "gm_identity_changes"]),
+        ("full_bmca", configured),
+        ("without_gm_identity_changes", [f for f in configured if f != "gm_identity_changes"]),
     ):
         rf = _fit_rf(train, int(config["seed"]), features, real=True)
         detector = _detector(config, "group", train, features, novelty_calibration)

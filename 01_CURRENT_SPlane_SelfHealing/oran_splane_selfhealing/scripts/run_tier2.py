@@ -31,6 +31,7 @@ from ingest.pcap_ingest import pcap_to_telemetry
 from scripts.make_synthetic_pcap import generate_synthetic_pcap
 from stats.multiseed import leave_one_attack_out, run_multiseed
 from stats.gnss_eval import evaluate_gnss_timesource
+from stats.multisource_eval import evaluate_multisource
 from stats.openset_eval import evaluate_openset
 from stats.twin_validation import fidelity_behaviour, twin_action_consistency
 
@@ -76,11 +77,19 @@ def step_rest(cfg: dict, out: Path) -> None:
         out,
         ROOT / "docs",
     )
+    evaluate_multisource(
+        cfg,
+        openset_result.attrs["sim_windows"],
+        openset_result.attrs["persistence"],
+        out,
+        ROOT / "docs",
+    )
     base_sim = SimConfig(
         seed=cfg["seed"],
         time_error_budget_ns=cfg["time_error_budget_ns"],
         **cfg["sim"],
         **cfg.get("oscillator", {}),
+        **cfg.get("time_sources", {}),
     )
     twin_cons = twin_action_consistency(base_sim, out)
     with tempfile.TemporaryDirectory() as td:

@@ -20,6 +20,13 @@ class SimConfig:
     holdover_nominal_drift_ppb: float = 6.0
     holdover_tolerance_ppb: float = 2.0
     disciplined_tolerance_ppb: float = 1.5
+    source_agreement_tolerance_ns: float = 20.0
+    gnss_reference_noise_ns: float = 2.5
+    ptp_reference_noise_ns: float = 6.0
+    peer_reference_noise_ns: float = 4.0
+    gnss_reference_drift_ppb: float = 0.05
+    ptp_reference_drift_ppb: float = 0.12
+    peer_reference_drift_ppb: float = 0.08
     time_error_budget_ns: float = 100.0
 
 
@@ -38,6 +45,7 @@ def apply_action_config(config: SimConfig, action: str) -> SimConfig:
 
 def simulate(config: SimConfig, scenario: str = "healthy", mutator: TelemetryMutator | None = None) -> pd.DataFrame:
     rng = np.random.default_rng(config.seed)
+    source_rng = np.random.default_rng(config.seed + 104_729)
     n = int(config.duration_s / config.dt_s)
     offset_ns = 65.0
     freq_error_ppb = config.drift_ppb
@@ -45,6 +53,9 @@ def simulate(config: SimConfig, scenario: str = "healthy", mutator: TelemetryMut
     seq = 0
     ql = 1
     baseline_msg_rate_hz = 1.0 / config.dt_s
+    gnss_reference_ns = 0.0
+    ptp_reference_ns = 0.0
+    peer_reference_ns = 0.0
 
     for i in range(n):
         t = i * config.dt_s
@@ -54,6 +65,9 @@ def simulate(config: SimConfig, scenario: str = "healthy", mutator: TelemetryMut
         freq_correction = config.synce_gain * freq_error_ppb
         offset_ns = offset_ns + (freq_error_ppb * config.dt_s) - correction
         freq_error_ppb = freq_error_ppb - freq_correction + rng.normal(0, 0.04)
+        gnss_reference_ns += config.gnss_reference_drift_ppb * config.dt_s
+        ptp_reference_ns += config.ptp_reference_drift_ppb * config.dt_s
+        peer_reference_ns += config.peer_reference_drift_ppb * config.dt_s
 
         row: dict[str, float | int | str | bool] = {
             "t_s": round(t, 6),
@@ -66,6 +80,10 @@ def simulate(config: SimConfig, scenario: str = "healthy", mutator: TelemetryMut
             "oscillator_holdover_nominal_ppb": config.holdover_nominal_drift_ppb,
             "oscillator_holdover_tolerance_ppb": config.holdover_tolerance_ppb,
             "oscillator_disciplined_tolerance_ppb": config.disciplined_tolerance_ppb,
+            "gnss_reference_ns": float(gnss_reference_ns + source_rng.normal(0, config.gnss_reference_noise_ns)),
+            "ptp_reference_ns": float(ptp_reference_ns + source_rng.normal(0, config.ptp_reference_noise_ns)),
+            "peer_reference_ns": float(peer_reference_ns + source_rng.normal(0, config.peer_reference_noise_ns)),
+            "source_agreement_tolerance_ns": config.source_agreement_tolerance_ns,
             "synce_ql": ql,
             "ptp_seq_id": seq,
             "ptp_msg_type": "Sync" if i % 2 == 0 else "Announce",

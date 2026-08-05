@@ -24,7 +24,7 @@ from benchmark.run import run_benchmark
 from dataset.build import build_dataset
 from discriminator.model import train_and_evaluate
 from faults.injectors import H0_SCENARIOS, H1_SCENARIOS
-from telemetry.features import FEATURE_COLUMNS
+from telemetry.features import configured_feature_columns
 
 _METRICS = ["accuracy", "f1_macro", "roc_auc_h1", "recovery_success_rate", "wrong_action_rate", "mean_mttr_s"]
 _ATTACK_FAMILY = {
@@ -34,12 +34,15 @@ _ATTACK_FAMILY = {
     "gnss_spoof": "gnss_spoof",
     "gnss_jam": "gnss_jam",
     "gnss_spoof_stealth": "gnss_spoof_stealth",
+    "gnss_spoof_single_source": "gnss_spoof_single_source",
+    "gnss_spoof_all_sources": "gnss_spoof_all_sources",
 }
 
 
-def _cache_signature() -> str:
+def _cache_signature(config: dict) -> str:
+    features = configured_feature_columns(config)
     definition = json.dumps(
-        {"features": FEATURE_COLUMNS, "h0_scenarios": H0_SCENARIOS, "h1_scenarios": H1_SCENARIOS},
+        {"features": features, "h0_scenarios": H0_SCENARIOS, "h1_scenarios": H1_SCENARIOS},
         sort_keys=True,
     ).encode("utf-8")
     return hashlib.sha256(definition).hexdigest()[:10]
@@ -86,12 +89,12 @@ def run_multiseed(base_config: dict, seeds: list[int], out_dir: Path) -> pd.Data
     with tempfile.TemporaryDirectory() as td:
         tmp = Path(td)
         for s in seeds:
-            cf = cache / f"seed_{s}_{_cache_signature()}.json"
+            cf = cache / f"seed_{s}_{_cache_signature(base_config)}.json"
             if cf.exists():
                 continue
             cf.write_text(json.dumps(_one_run(base_config, s, tmp)), encoding="utf-8")
 
-    cache_files = [cache / f"seed_{s}_{_cache_signature()}.json" for s in seeds]
+    cache_files = [cache / f"seed_{s}_{_cache_signature(base_config)}.json" for s in seeds]
     done = [json.loads(path.read_text()) for path in cache_files if path.exists()]
     if len(done) < len(seeds):
         print(f"multiseed progress: {len(done)}/{len(seeds)} seeds cached (re-run to continue)")
@@ -117,6 +120,7 @@ def leave_one_attack_out(base_config: dict, seed: int, out_dir: Path) -> pd.Data
     out_dir.mkdir(parents=True, exist_ok=True)
     cfg = copy.deepcopy(base_config)
     cfg["seed"] = seed
+    features = configured_feature_columns(cfg)
     with tempfile.TemporaryDirectory() as td:
         windows = build_dataset(cfg, Path(td) / "ds")
     rows = []
@@ -127,8 +131,8 @@ def leave_one_attack_out(base_config: dict, seed: int, out_dir: Path) -> pd.Data
         if test_attack.empty:
             continue
         clf = RandomForestClassifier(n_estimators=90, max_depth=6, random_state=seed, class_weight="balanced")
-        clf.fit(train[FEATURE_COLUMNS], train["label"])
-        pred = clf.predict(test_attack[FEATURE_COLUMNS])
+        clf.fit(train[features], train["label"])
+        pred = clf.predict(test_attack[features])
         recall = recall_score((test_attack["label"] == "H1").astype(int),
                               (pd.Series(pred) == "H1").astype(int), zero_division=0)
         rows.append({

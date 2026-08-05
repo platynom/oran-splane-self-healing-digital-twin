@@ -14,6 +14,7 @@ from faults.injectors import run_scenario
 from fronthaul_sim.simulator import SimConfig
 from telemetry.features import (
     CONSISTENCY_FEATURE_COLUMNS,
+    CROSS_SOURCE_FEATURE_COLUMNS,
     FEATURE_COLUMNS,
     TIMESOURCE_FEATURE_COLUMNS,
     window_features,
@@ -28,7 +29,9 @@ FEATURE_SETS = {
         if name not in set(TIMESOURCE_FEATURE_COLUMNS + CONSISTENCY_FEATURE_COLUMNS)
     ],
     "b_ptp_timesource": [name for name in FEATURE_COLUMNS if name not in CONSISTENCY_FEATURE_COLUMNS],
-    "c_ptp_timesource_consistency": FEATURE_COLUMNS,
+    "c_ptp_timesource_consistency": [
+        name for name in FEATURE_COLUMNS if name not in CROSS_SOURCE_FEATURE_COLUMNS
+    ],
 }
 _BASELINE_2OF3 = {
     ("simulated", "spoof"): 0.9162011173184358,
@@ -169,6 +172,7 @@ def evaluate_stealth_spoof(windows: pd.DataFrame, config: dict) -> pd.DataFrame:
         time_error_budget_ns=float(config["time_error_budget_ns"]),
         **config["sim"],
         **config.get("oscillator", {}),
+        **config.get("time_sources", {}),
     )
     telemetry = pd.concat(
         [run_scenario(sim, "gnss_spoof_stealth", run_id) for run_id in range(int(config["dataset"]["scenarios_per_type"]))],

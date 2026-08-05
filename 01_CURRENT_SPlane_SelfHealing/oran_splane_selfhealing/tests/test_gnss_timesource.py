@@ -24,6 +24,7 @@ def _sim_config(config: dict) -> SimConfig:
         time_error_budget_ns=float(config["time_error_budget_ns"]),
         **config["sim"],
         **config.get("oscillator", {}),
+        **config.get("time_sources", {}),
     )
 
 

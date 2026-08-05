@@ -7,13 +7,14 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, confusion_matrix, precision_recall_fscore_support, roc_auc_score
 from sklearn.model_selection import train_test_split
 
-from telemetry.features import FEATURE_COLUMNS
+from telemetry.features import configured_feature_columns
 from discriminator.openset import NoveltyDetector
 
 
 def train_and_evaluate(windows: pd.DataFrame, config: dict, out_dir: Path) -> tuple[RandomForestClassifier, pd.DataFrame]:
     anomalous = windows[windows["label"].isin(["H0", "H1"])].copy()
-    X = anomalous[FEATURE_COLUMNS]
+    features = configured_feature_columns(config)
+    X = anomalous[features]
     y = anomalous["label"]
     strat = anomalous["label"] + "_" + anomalous["scenario"].astype(str)
     X_train, X_test, y_train, y_test = train_test_split(
@@ -25,6 +26,7 @@ def train_and_evaluate(windows: pd.DataFrame, config: dict, out_dir: Path) -> tu
     )
     clf = RandomForestClassifier(n_estimators=90, max_depth=6, random_state=int(config["seed"]), class_weight="balanced")
     clf.fit(X_train, y_train)
+    clf.feature_columns_ = features
     openset = config.get("openset", {})
     if bool(openset.get("enabled", False)):
         clf.novelty_detector_ = NoveltyDetector(
@@ -32,6 +34,7 @@ def train_and_evaluate(windows: pd.DataFrame, config: dict, out_dir: Path) -> tu
             random_state=int(config["seed"]),
             mode=str(openset.get("mode", "group")),
             group_budget_weights=openset.get("group_budget_weights"),
+            feature_columns=features,
         ).fit(X_train)
     pred = clf.predict(X_test)
     proba = clf.predict_proba(X_test)[:, list(clf.classes_).index("H1")]
