@@ -1,90 +1,47 @@
 # Active S-Plane Self-Healing Prototype
 
-This directory contains the runnable implementation of an AI-native,
-self-healing O-RAN Open Fronthaul synchronization-plane prototype.
+Runnable CPU-only implementation of a governed O-RAN Open Fronthaul synchronization-security loop:
 
 ```text
-detect anomaly
-  -> discriminate H0 benign fault vs H1 attack
-  -> forecast candidate actions in a digital twin
-  -> commit the best verified recovery before the 2 s failure window
+detect anomaly -> classify H0/H1 or UNKNOWN -> verify recovery in twin -> act before 2 s
 ```
 
-The contribution is integration, experimental validation, and reproducible
-dataset generation. It is not presented as a new fundamental ML algorithm.
-
-## Quick start
-
-Python 3.10 or newer is required.
+## Run
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate              # Linux/macOS
-# .venv\Scripts\Activate.ps1           # Windows PowerShell
-
 python -m pip install -r requirements.txt
 python scripts/run_all.py
+python scripts/run_tier2.py
 python -m pytest tests -p no:cacheprovider
 ```
 
-`scripts/run_all.py` regenerates the labelled simulator dataset, trains the
-discriminator, validates the twin, runs the governed healing benchmark, and
-writes results. The default path is deterministic and CPU-only.
+The complete suite has **39 passing tests**.
 
-## Tier 2: realistic software validation
+## Shipped model
 
-```bash
-python scripts/run_tier2.py
-```
+- **28 enabled features:** timing, delay/PDV, protocol regularity, message rate, BMCA transitions, time-source state, and oscillator consistency.
+- Group-wise open-set detection with weighted Šidák budget allocation.
+- 2-of-3 persistence for UNKNOWN and H1 decisions.
+- Digital-twin action forecasts, fidelity discounting, and auditable safe-default routing.
+- Deterministic pure-Python simulation by default; pcap, `ptp4l`, `pmc`, `synce4l`, and Linux/netem adapters for Tier 2.
 
-Tier 2 adds:
+The seven `cross_source` research features are retained but disabled by default in `config/default.yaml`. Enabling the flag produces a 35-feature research model; the dedicated evaluator reproduces why it is not shipped.
 
-- multi-seed means and 95% confidence intervals;
-- leave-one-attack-family-out evaluation;
-- self-generated DoS flooding plus a benign traffic-burst confounder;
-- simulated and trailing-one-second real-capture message-rate features;
-- capture-level train/test isolation for real-data calibration;
-- PTP-over-Ethernet pcap ingestion;
-- Announce, Sync, Follow_Up, Delay_Req, and Delay_Resp parsing;
-- `ptp4l`, `pmc`, and `synce4l` text ingestion;
-- a real `tc netem` plus `linuxptp` harness over Linux veth interfaces;
-- digital-twin fidelity and action-ranking validation.
+## Final protection after 2-of-3 persistence
 
-See:
+| Domain | Family | Protection | Within 2 s |
+|---|---|---:|---:|
+| Simulator | Spoof | 93.30% | 100% |
+| Simulator | Replay | 80.45% | 100% |
+| Simulator | DoS | 88.27% | 100% |
+| Simulator | GNSS jam | 91.57% | 100% |
+| Simulator | Strict unseen GNSS spoof | 0.00% | 0% |
+| TIMESAFE | Announce | 99.96% | 100% |
+| TIMESAFE | Follow-Up | 99.66% | 100% |
+| TIMESAFE | Single-Step | 99.66% | 100% |
 
-- [Tier 2 design](docs/TIER2_DESIGN.md)
-- [Real-feature audit](docs/REAL_FEATURES_AUDIT.md)
-- [Real-data validation](docs/REAL_DATA_VALIDATION.md)
-- [Linux/netem instructions](RUN_ON_REAL_LINUX.md)
-- [Tier 2 report](results/tier2/TIER2_REPORT.md)
+## Research conclusion
 
-## Package map
+BMCA features, group-wise novelty, persistence, and oscillator consistency produced measurable gains. Receiver status alone and cross-source feature engineering did not solve strict unseen GNSS spoofing. A healthy-looking spoof is in-distribution from a single reference; further progress requires independently trustworthy Tier-3 evidence such as authenticated GNSS or a physical independent clock.
 
-| Directory | Responsibility |
-|---|---|
-| `fronthaul_sim/` | Deterministic PTP servo, SyncE aid, GNSS and holdover simulation |
-| `faults/` | H0 faults/traffic bursts and H1 spoof/replay/DoS injection |
-| `telemetry/` | Window-level timing and protocol features |
-| `discriminator/` | H0/H1 classifier training and evaluation |
-| `twin/` | Per-action timing forecasts and fidelity scoring |
-| `healing/` | Governed detect/discriminate/verify/commit loop |
-| `ingest/` | Pcap, linuxptp, pmc and synce4l adapters |
-| `harness/` | Privileged Linux/netem capture experiments |
-| `stats/` | Confidence intervals and generalization tests |
-| `benchmark/` | Baseline comparison and recovery metrics |
-| `tests/` | Unit and integration tests |
-
-## Measured status
-
-- Full test suite: 18 passing tests.
-- Real capture features: 11 of 12 non-constant; SyncE QL requires live `synce4l`.
-- Capture-isolated known-family evaluation: approximately 2% benign FP and
-  100% attack TP on the current holdout.
-- Unseen Announce-family recall: approximately 24%, the main open limitation.
-- Simulated held-out-family recall: spoof 89.4%, replay 43.0%, DoS 0%; the
-  zero unseen-DoS result motivates an explicit open-set novelty layer.
-- Hardware validation: not yet performed.
-
-Raw public datasets and pcaps are intentionally excluded from Git. Use the
-documented acquisition and preparation scripts to reproduce external-data
-experiments.
+See `docs/SOFTWARE_FEATURE_WORK_CLOSED.md`, `docs/MULTISOURCE_EVAL.md`, and `docs/GNSS_TIMESOURCE_EVAL.md` for the complete evidence and negative results.

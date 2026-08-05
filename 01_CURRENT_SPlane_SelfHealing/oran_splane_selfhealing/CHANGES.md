@@ -9,6 +9,8 @@
 - Recorded the untuned third negative result: cross-source features add no combined protection over consistency-only for single-source spoofing (93.33% to 93.33%); coherent all-source spoofing has 0% novelty contribution and is protected only by closed-family RF transfer.
 - Disabled cross-source features and research-only scenarios in the shipped configuration-C path; moved reference-noise generation to an independent deterministic RNG so disabled research telemetry cannot perturb legacy scenario results.
 - Verified the gated default exactly restores post-consistency protection and deadlines; added the related-family methodology caveat and coherent all-source relative-agreement bound to the multi-source report.
+- Added `docs/SOFTWARE_FEATURE_WORK_CLOSED.md` to close software feature engineering and direct further work to independently trustworthy Tier-3 timing evidence.
+- Refreshed the root and active READMEs, `PROJECT_STATUS.md`, and plain-language `TEAM_REPORT.md` to the final 28-feature, 39-test configuration-C state and all three negative results.
 
 ## 2026-08-05
 

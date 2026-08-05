@@ -1,129 +1,74 @@
 # Team Report: Self-Healing O-RAN Timing Security
 
-This report explains the project in plain language. No telecom or machine
-learning background is required.
+## The problem
 
-## What problem are we solving?
+A 5G radio network needs its computers and radios to agree on time within roughly 100 nanoseconds. Faulty or malicious timing can disrupt service in about two seconds.
 
-A 5G radio network needs its computers and radio units to agree on time with
-extreme precision, roughly within 100 nanoseconds. The network distributes time
-using PTP, SyncE, and satellite-based GNSS timing. A fault or deliberate timing
-attack can disrupt a base station in about two seconds.
+This project does more than raise an alarm. It estimates whether the event is a normal fault, a known attack, or something unfamiliar; checks recovery choices in a digital twin; and selects a conservative action before the deadline.
 
-Most security systems stop after saying, "something is wrong." This project
-continues the process: it estimates whether the event is an ordinary fault, a
-known attack, or something unfamiliar; tries recovery choices in a digital
-twin; and selects a safe action before the failure window closes.
+## What we built
 
-## What did we build?
+The project runs on a normal laptop and includes:
 
-The software runs on a normal laptop and includes:
+1. A repeatable simulator for PTP, SyncE, GNSS, clock holdover, delay, and oscillator behavior.
+2. Benign faults and attacks with realistic look-alike scenarios.
+3. A **28-feature** detector covering timing, network behavior, PTP grandmaster changes, receiver status, and oscillator consistency.
+4. A novelty layer that sends unfamiliar events to a safe default.
+5. A two-out-of-three voting rule that ignores isolated noisy windows.
+6. A digital twin that compares recovery choices before the system acts.
+7. Real packet-capture readers, public TIMESAFE evaluation, and a Linux PTP/netem test harness.
 
-1. A simulator for clocks, network delay, PTP, SyncE assistance, GNSS loss, and
-   clock holdover.
-2. Benign-fault and attack scenarios, including spoofing, replay, and message
-   flooding, plus benign look-alikes that make the tests harder.
-3. A detector using **19 measurements**, or features. These include clock error,
-   delay variation, message order and rate, and changes in the advertised PTP
-   grandmaster.
-4. An open-set safety layer. If an event does not resemble known faults or
-   attacks, it is labelled UNKNOWN and sent to a conservative response.
-5. A digital twin that forecasts whether each recovery choice can keep timing
-   within budget.
-6. A governed healing loop that records why an action was chosen.
+The automated suite contains **39 passing tests**.
 
-The open-set layer is split into timing, protocol, message-rate, and
-grandmaster/BMCA groups. Each group has its own novelty detector, and a weighted
-Šidák budget limits their intended combined false-alarm rate. Grandmaster
-identity itself is not used as a model input; only changes and plausibility
-signals are used, which reduces the risk of memorizing a capture file.
+## Final measured results
 
-## Why require two votes out of three?
+"Protection" means the attack was recognized or safely treated as unfamiliar.
 
-One unusual 0.2-second window can be noise. The current setting requires at
-least two positive votes among the latest three windows before declaring an
-UNKNOWN event or known attack. This **2-of-3 persistence** roughly halves the
-real benign false-positive rate while adding only 0.2-0.4 seconds of average
-decision delay.
+| Test | Protection | Detected within 2 s |
+|---|---:|---:|
+| Simulated spoof | 93.30% | 100% |
+| Simulated replay | 80.45% | 100% |
+| Simulated message-flood DoS | 88.27% | 100% |
+| Simulated GNSS jamming | 91.57% | 100% |
+| Strict unseen healthy-looking GNSS spoof | 0.00% | 0% |
+| Real TIMESAFE Announce attack | 99.96% | 100% |
+| Real TIMESAFE Follow-Up attack | 99.66% | 100% |
+| Real TIMESAFE Single-Step attack | 99.66% | 100% |
 
-## Current measured results
+Requiring two positive windows out of three reduced real benign false alarms from **4.49% to 2.37%** without costing the two-second deadline.
 
-"Combined protection" means the system either recognizes an attack or admits
-that it is unfamiliar and chooses the safe path.
+## What worked
 
-| Test data | Attack type hidden during training | Combined protection |
-|---|---|---:|
-| Simulator | Spoof | 83.8% |
-| Simulator | Replay | 63.7% |
-| Simulator | Message-flooding DoS | 86.0% |
-| Public TIMESAFE captures | Announce/grandmaster attack | 99.96% |
-| Public TIMESAFE captures | Sync/Follow-Up attack | 99.66% |
-| Public TIMESAFE captures | Single-step Sync attack | 99.66% |
+- Watching how PTP grandmaster attributes change raised real Announce-attack protection from 23.9% to almost 100%.
+- Separate novelty detectors recovered attacks that the ordinary classifier missed, especially message flooding and replay.
+- The two-out-of-three rule reduced noisy alarms.
+- Comparing reported GNSS state with physical oscillator behavior solved most unseen GNSS jamming.
 
-On the real TIMESAFE captures:
+## What did not work
 
-- benign false positives are **2.37%**, down from 4.49% without persistence;
-- every evaluated real attack episode is detected within **0.2 seconds**;
-- the worst result across all real and simulated families is **91.7% of attack
-  episodes acted on within two seconds**.
+- A GNSS receiver saying it is synchronized cannot be trusted by itself. A spoofed receiver can still report healthy status.
+- A spoof that behaves exactly like healthy timing remained invisible when its family was strictly excluded from training.
+- Adding simulated comparisons among GNSS, network PTP, and a peer source did not improve total protection and made some established results worse. Those seven experimental features are kept for research but are switched off by default.
+- If every time source is compromised in the same way, they still agree with one another. Relative agreement adds **0.00 percentage points** in that case.
 
-The 91.7% case is simulated spoofing. One simulated run is already detected too
-late without persistence, so the two-vote rule does not make its two-second rate
-worse.
+The multi-source experiment kept related GNSS attacks in training, so its high configuration-C single-source result does not overturn the strict 0% unseen-spoof result.
 
-## What does "alarms per hour" mean?
+## What this means
 
-There are two useful counts:
+Software can detect protocol manipulation, unfamiliar traffic, timing jams, and many physics inconsistencies. It cannot prove that a single healthy-looking clock is telling the truth when no independent trusted reference is available.
 
-- **Persisted windows/hour** counts every positive 0.2-second window. A long
-  event may therefore be counted many times.
-- **Operator alarm episodes/hour** combines consecutive positive windows into
-  one alarm.
-
-On the short held benign TIMESAFE recordings, 2-of-3 persistence reduces the
-weighted window count from about 807 to 427 per hour. After de-duplication, the
-operator-facing estimate falls from about 570 to 190 alarm episodes per hour.
-These are extrapolations from short recordings, not measurements from a
-day-long live network, so they should be treated as comparative research
-figures rather than expected production alert volumes.
-
-## How realistic is the evidence?
-
-- **Simulator:** synthetic timing physics and labels, repeatable on a laptop.
-- **Linux/netem:** real Linux PTP packets over an emulated impaired network.
-- **TIMESAFE:** previously recorded PTP attacks from a public university
-  testbed, with complete capture sessions kept separate between training and
-  testing.
-- **Hardware:** not tested yet.
-
-The project currently has **28 passing automated tests** and a one-command
-workflow that rebuilds the dataset, models, digital twin, benchmark, and reports.
+Solving that last problem requires something the attacker cannot forge, such as authenticated GNSS signals like Galileo OSNMA, a physically independent clock, or hardware-backed comparison between genuinely independent references.
 
 ## Honest limitations
 
-1. TIMESAFE has no benign session where the legitimate grandmaster changes.
-   False positives during planned network re-parenting may therefore be higher
-   in deployment than this evaluation suggests.
-2. A conventional classifier trained on Announce attacks and tested on Sync
-   attacks has **0% recall**. The UNKNOWN safety path protects many unseen
-   events, but it does not mean the classifier understands every attack family.
-3. SyncE quality cannot be recovered from a normal packet capture. It still
-   needs a live `synce4l` feed or synchronization data from a real radio unit.
-4. The public evaluation has only a few independent attack recordings.
-5. No PTP hardware-timestamping card, physical clock, O-DU, or O-RU has been
-   tested. This is a research prototype, not a certified telecom product.
+- No hardware timestamp card, real clock, authenticated GNSS receiver, O-DU, or O-RU has been tested.
+- Public captures contain only a small number of independent attacks and no benign planned grandmaster change.
+- SyncE quality still needs a live `synce4l` or radio-unit telemetry feed.
+- A model trained on one real attack style can fail completely on another style.
+- These are research measurements, not telecom certification.
 
-## What comes next?
+## Decision and next step
 
-The highest-value next step is a longer live Linux and hardware study: collect
-normal traffic over hours or days, include legitimate grandmaster changes, read
-SyncE quality in real time, and then repeat the attack and recovery evaluation
-with hardware timestamps and representative O-RAN equipment.
+Software feature work is closed because further single-source features now give diminishing returns. The next valuable phase is Tier 3 hardware validation: authenticated GNSS, physical independent clocks, hardware timestamps, longer normal-operation recordings, and controlled authorized attacks.
 
-## Bottom line
-
-The software contribution is complete enough to reproduce and evaluate on a
-laptop. It now handles known attacks, novel attacks, grandmaster manipulation,
-and noisy one-window decisions more safely than the earlier detector-only
-version. The remaining gap is external validity: longer independent captures,
-live SyncE, and real timing hardware.
+This next phase also has the clearest application path: a vendor-neutral timing-security validation product for telecom labs, private 5G operators, and equipment vendors, with reproducible resilience tests and auditable recovery recommendations.
