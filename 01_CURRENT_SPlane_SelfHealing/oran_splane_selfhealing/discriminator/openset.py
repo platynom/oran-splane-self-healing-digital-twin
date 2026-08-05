@@ -9,7 +9,7 @@ import pandas as pd
 from sklearn.ensemble import IsolationForest
 from sklearn.preprocessing import StandardScaler
 
-from telemetry.features import FEATURE_COLUMNS
+from telemetry.features import FEATURE_COLUMNS, TIMESOURCE_FEATURE_COLUMNS
 
 
 def apply_persistence(flags: np.ndarray | list[bool], n: int, m: int) -> np.ndarray:
@@ -89,15 +89,26 @@ class NoveltyDetector:
         bmca = [name for name in self.feature_columns if name.startswith(bmca_prefixes)]
         rate = [name for name in self.feature_columns if name.startswith("msg_rate_")]
         protocol = [name for name in self.feature_columns if name in {"seq_regressions", "msg_irregularity"}]
-        timing = [name for name in self.feature_columns if name not in set(bmca + rate + protocol)]
-        groups = {"timing": timing, "protocol": protocol, "rate": rate, "bmca": bmca}
+        timesource = [name for name in self.feature_columns if name in TIMESOURCE_FEATURE_COLUMNS]
+        timing = [name for name in self.feature_columns if name not in set(bmca + rate + protocol + timesource)]
+        groups = {
+            "timing": timing,
+            "protocol": protocol,
+            "rate": rate,
+            "bmca": bmca,
+            "timesource": timesource,
+        }
         return {name: columns for name, columns in groups.items() if columns}
 
     def fit(self, X_train: pd.DataFrame | np.ndarray) -> "NoveltyDetector":
         frame = self._frame(X_train)
         if len(frame) < 20:
             raise ValueError("at least 20 known windows are required to calibrate novelty")
-        self.group_columns_ = self._groups()
+        self.group_columns_ = {
+            name: columns
+            for name, columns in self._groups().items()
+            if any(frame[column].nunique(dropna=False) > 1 for column in columns)
+        }
         group_count = len(self.group_columns_)
         weights = {name: float(self.group_budget_weights.get(name, 1.0)) for name in self.group_columns_}
         weight_total = sum(weights.values())

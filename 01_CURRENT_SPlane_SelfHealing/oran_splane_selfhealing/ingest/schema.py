@@ -7,6 +7,15 @@ synthetic and real inputs."""
 
 import pandas as pd
 
+GNSS_SYNC_STATUSES = (
+    "SYNCHRONIZED",
+    "ACQUIRING-SYNC",
+    "HOLDOVER",
+    "ANTENNA-DISCONNECTED",
+    "ANTENNA-SHORT-CIRCUIT",
+    "BOOTING",
+)
+
 # Columns telemetry.features.window_features consumes, plus bookkeeping.
 TELEMETRY_COLUMNS = [
     "t_s",
@@ -28,6 +37,8 @@ TELEMETRY_COLUMNS = [
     "grandmaster_priority2",
     "steps_removed",
     "time_source",
+    "gnss_sync_status",
+    "satellites_tracked",
     "gnss_available",
     "holdover",
     "attack_flag",
@@ -51,6 +62,9 @@ _DEFAULTS = {
     "grandmaster_priority2": 128,
     "steps_removed": 0,
     "time_source": 0xA0,
+    # PTP pcaps cannot supply O-RU receiver status; -1 marks count unavailable.
+    "gnss_sync_status": "BOOTING",
+    "satellites_tracked": -1,
     "gnss_available": True,
     "holdover": False,
     "attack_flag": False,
@@ -88,6 +102,12 @@ def coerce_telemetry(df: pd.DataFrame) -> pd.DataFrame:
     ):
         out[col] = out[col].astype(int)
     out["grandmaster_identity"] = out["grandmaster_identity"].astype(str)
+    out["gnss_sync_status"] = out["gnss_sync_status"].astype(str).str.upper()
+    invalid_status = ~out["gnss_sync_status"].isin(GNSS_SYNC_STATUSES)
+    if invalid_status.any():
+        values = sorted(out.loc[invalid_status, "gnss_sync_status"].unique())
+        raise ValueError(f"invalid gnss_sync_status values: {values}")
+    out["satellites_tracked"] = out["satellites_tracked"].astype(int)
     out["gnss_available"] = out["gnss_available"].astype(bool)
     out["holdover"] = out["holdover"].astype(bool)
     out["attack_flag"] = out["attack_flag"].astype(bool)

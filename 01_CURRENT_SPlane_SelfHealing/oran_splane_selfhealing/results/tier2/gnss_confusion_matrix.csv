@@ -1,0 +1,9 @@
+feature_set,true_label,predicted_label,windows
+with_timesource,H0,H0,45
+with_timesource,H0,H1,15
+with_timesource,H1,H0,43
+with_timesource,H1,H1,75
+without_timesource,H0,H0,16
+without_timesource,H0,H1,44
+without_timesource,H1,H0,19
+without_timesource,H1,H1,99

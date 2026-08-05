@@ -27,7 +27,13 @@ from faults.injectors import H0_SCENARIOS, H1_SCENARIOS
 from telemetry.features import FEATURE_COLUMNS
 
 _METRICS = ["accuracy", "f1_macro", "roc_auc_h1", "recovery_success_rate", "wrong_action_rate", "mean_mttr_s"]
-_ATTACK_FAMILY = {"ptp_spoof": "spoof", "ptp_replay": "replay", "ptp_dos_flood": "dos"}
+_ATTACK_FAMILY = {
+    "ptp_spoof": "spoof",
+    "ptp_replay": "replay",
+    "ptp_dos_flood": "dos",
+    "gnss_spoof": "gnss_spoof",
+    "gnss_jam": "gnss_jam",
+}
 
 
 def _cache_signature() -> str:

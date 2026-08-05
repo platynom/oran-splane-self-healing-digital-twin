@@ -72,6 +72,8 @@ def simulate(config: SimConfig, scenario: str = "healthy", mutator: TelemetryMut
             "grandmaster_priority2": 128,
             "steps_removed": 1,
             "time_source": 0x20,
+            "gnss_sync_status": "SYNCHRONIZED",
+            "satellites_tracked": int(np.clip(round(rng.normal(12, 1.2)), 7, 18)),
             "gnss_available": True,
             "holdover": False,
             "attack_flag": False,

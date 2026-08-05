@@ -1,0 +1,5 @@
+feature_set,held_out_attack,attack_windows,persistent_rf_recall,persistent_novelty_rate,combined_protective_rate,attack_episodes,episode_detection_rate,within_2s_episode_rate
+with_timesource,gnss_spoof,179,0.0,0.0,0.0,12,0.0,0.0
+with_timesource,gnss_jam,178,0.0,0.0,0.0,12,0.0,0.0
+without_timesource,gnss_spoof,179,0.3016759776536313,0.0,0.3016759776536313,12,0.9166666666666666,0.9166666666666666
+without_timesource,gnss_jam,178,0.3539325842696629,0.0,0.3539325842696629,12,0.9166666666666666,0.8333333333333334

@@ -1,0 +1,9 @@
+domain,attack_family,baseline_combined_protection,current_combined_protection,delta,episode_detection_rate,within_2s_episode_rate
+simulated,dos,0.8603351955307262,0.8715083798882681,0.011173184357541888,1.0,1.0
+simulated,gnss_jam,,0.0,,0.0,0.0
+simulated,gnss_spoof,,0.0,,0.0,0.0
+simulated,replay,0.6368715083798883,0.5977653631284916,-0.03910614525139666,1.0,1.0
+simulated,spoof,0.8379888268156425,0.9162011173184358,0.07821229050279332,1.0,1.0
+timesafe_real,announce,0.9995689035781004,0.9995689035781004,0.0,1.0,1.0
+timesafe_real,sync_follow_up,0.9966442953020134,0.9966442953020134,0.0,1.0,1.0
+timesafe_real,sync_single_step,0.9966442953020134,0.9966442953020134,0.0,1.0,1.0

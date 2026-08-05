@@ -4,6 +4,17 @@ import numpy as np
 import pandas as pd
 
 
+TIMESOURCE_FEATURE_COLUMNS = [
+    "gnss_loss_rate",
+    "holdover_rate",
+    "gnss_status_changes",
+    "antenna_fault_rate",
+    "satellites_drop_max",
+    "satellites_mean",
+    "holdover_entry_count",
+]
+
+
 FEATURE_COLUMNS = [
     "offset_mean",
     "offset_std",
@@ -13,8 +24,7 @@ FEATURE_COLUMNS = [
     "seq_regressions",
     "msg_irregularity",
     "synce_ql_max",
-    "gnss_loss_rate",
-    "holdover_rate",
+    *TIMESOURCE_FEATURE_COLUMNS[:2],
     "msg_rate_mean",
     "msg_rate_std",
     "gm_identity_changes",
@@ -24,6 +34,7 @@ FEATURE_COLUMNS = [
     "priority1_changes",
     "steps_removed_changes",
     "steps_removed_min",
+    *TIMESOURCE_FEATURE_COLUMNS[2:],
 ]
 
 
@@ -35,6 +46,14 @@ def _largest_quality_improvement(clock_class: pd.Series, accuracy: pd.Series) ->
     class_improvement = -clock_class.astype(float).diff()
     accuracy_improvement = -accuracy.astype(float).diff()
     return float(max(0.0, class_improvement.max(skipna=True), accuracy_improvement.max(skipna=True)))
+
+
+def _satellite_drop_max(series: pd.Series) -> float:
+    valid = series.astype(float)
+    valid = valid[valid >= 0]
+    if len(valid) < 2:
+        return 0.0
+    return float(max(0.0, (-valid.diff()).max(skipna=True)))
 
 
 def window_features(df: pd.DataFrame, window_s: float, step_s: float) -> pd.DataFrame:
@@ -81,6 +100,23 @@ def window_features(df: pd.DataFrame, window_s: float, step_s: float) -> pd.Data
                     "priority1_changes": _transition_count(w["grandmaster_priority1"]),
                     "steps_removed_changes": _transition_count(w["steps_removed"]),
                     "steps_removed_min": int(w["steps_removed"].min()),
+                    "gnss_status_changes": _transition_count(w["gnss_sync_status"]),
+                    "antenna_fault_rate": float(
+                        w["gnss_sync_status"].isin(
+                            ["ANTENNA-DISCONNECTED", "ANTENNA-SHORT-CIRCUIT"]
+                        ).mean()
+                    ),
+                    "satellites_drop_max": _satellite_drop_max(w["satellites_tracked"]),
+                    "satellites_mean": float(
+                        w.loc[w["satellites_tracked"] >= 0, "satellites_tracked"].mean()
+                        if (w["satellites_tracked"] >= 0).any() else -1.0
+                    ),
+                    "holdover_entry_count": int(
+                        (
+                            w["gnss_sync_status"].eq("HOLDOVER")
+                            & ~w["gnss_sync_status"].shift(fill_value="BOOTING").eq("HOLDOVER")
+                        ).sum()
+                    ),
                 }
             )
             t += step_s

@@ -1,0 +1,9 @@
+feature_set,scenario,class_label,windows,recall
+with_timesource,gnss_loss_holdover,H0,60,0.75
+with_timesource,gnss_spoof,H1,59,1.0
+with_timesource,gnss_jam,H1,59,0.2711864406779661
+with_timesource,pooled_H1,H1,118,0.635593220338983
+without_timesource,gnss_loss_holdover,H0,60,0.26666666666666666
+without_timesource,gnss_spoof,H1,59,0.8135593220338984
+without_timesource,gnss_jam,H1,59,0.864406779661017
+without_timesource,pooled_H1,H1,118,0.8389830508474576

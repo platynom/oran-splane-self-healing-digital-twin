@@ -161,4 +161,19 @@ def test_sync_status_parsers():
     assert status.gm_present is True
     assert status.holdover is True
     assert status.gnss_available is False
+    assert status.gnss_sync_status == "HOLDOVER"
+    assert status.satellites_tracked is None
     assert parse_synce4l_ql(["port 1 received QL-SSU-A", "port 1 selected QL-DNU"]) == 4
+
+
+def test_sync_status_parser_reads_oru_yang_gnss_fields():
+    status = parse_pmc_output(
+        """
+        clockClass 6
+        gmPresent true
+        gnss-status: ANTENNA-DISCONNECTED
+        satellites-tracked: 0
+        """
+    )
+    assert status.gnss_sync_status == "ANTENNA-DISCONNECTED"
+    assert status.satellites_tracked == 0

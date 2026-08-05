@@ -30,6 +30,7 @@ from ingest.linuxptp_ingest import parse_linuxptp_lines
 from ingest.pcap_ingest import pcap_to_telemetry
 from scripts.make_synthetic_pcap import generate_synthetic_pcap
 from stats.multiseed import leave_one_attack_out, run_multiseed
+from stats.gnss_eval import evaluate_gnss_timesource
 from stats.openset_eval import evaluate_openset
 from stats.twin_validation import fidelity_behaviour, twin_action_consistency
 
@@ -62,11 +63,18 @@ def step_rest(cfg: dict, out: Path) -> None:
     seeds = eval((out / "_seeds.json").read_text(encoding="utf-8"))
 
     logo = leave_one_attack_out(cfg, seeds[0], out)
-    evaluate_openset(
+    openset_result = evaluate_openset(
         cfg,
         out,
         ROOT / "docs",
         ROOT / "data" / "external" / "timesafe_sessions",
+    )
+    evaluate_gnss_timesource(
+        cfg,
+        openset_result.attrs["sim_windows"],
+        openset_result.attrs["persistence"],
+        out,
+        ROOT / "docs",
     )
     base_sim = SimConfig(seed=cfg["seed"], time_error_budget_ns=cfg["time_error_budget_ns"], **cfg["sim"])
     twin_cons = twin_action_consistency(base_sim, out)

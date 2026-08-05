@@ -25,6 +25,7 @@ openset:
     protocol: 0.7
     rate: 0.1
     bmca: 0.1
+    timesource: 0.1
   persistence:
     enabled: true
     n: 2

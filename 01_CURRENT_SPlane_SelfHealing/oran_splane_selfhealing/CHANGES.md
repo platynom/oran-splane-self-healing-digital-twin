@@ -42,3 +42,7 @@
 - 2026-08-05: Distinguished persisted-window alarm rates from operator-facing alarm episodes by de-duplicating contiguous benign protective runs per capture/run and reporting both rates.
 - 2026-08-05: Added repository ignore rules for regenerable pytest and Codex scratch directories after the pre-commit audit exposed ACL-hidden test outputs; no files were deleted or moved.
 - 2026-08-05: Refreshed the root README, `01_CURRENT_SPlane_SelfHealing/PROJECT_STATUS.md`, and root `TEAM_REPORT.md` to the validated 19-feature, 28-test BMCA/open-set/2-of-3 persistence checkpoint and current limitations.
+- 2026-08-05: Added the O-RAN time-source telemetry channel (`gnss_sync_status`, `satellites_tracked`), fixture-testable pmc/YANG parsing, seven grouped GNSS/holdover features, and explicit pcap-unavailable defaults.
+- 2026-08-05: Added hard GNSS spoof and jam attack families against benign GNSS loss/holdover, plus fixed confusion, leave-one-family-out, timesource ablation, persistence, and existing-family regression evaluations in `GNSS_TIMESOURCE_EVAL.md`.
+- 2026-08-05: Routed cached real-session CSVs through canonical schema coercion so captures ingested before the GNSS columns existed receive explicit unavailable defaults instead of failing feature extraction.
+- 2026-08-05: Recorded the untuned GNSS finding: status features improve closed-set benign-holdover/spoof separation but unseen spoof and jam receive 0% full-system protection; PTP-only protection remains 30.17%/35.39%, so M-plane observability is necessary but insufficient.

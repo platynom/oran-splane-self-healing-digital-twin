@@ -13,10 +13,17 @@ from sklearn.preprocessing import StandardScaler
 from discriminator.openset import NoveltyDetector
 from faults.injectors import H1_SCENARIOS, generate_telemetry
 from fronthaul_sim.simulator import SimConfig
+from ingest.schema import coerce_telemetry
 from stats.persistence_eval import evaluate_persistence
 from telemetry.features import FEATURE_COLUMNS, window_features
 
-_FAMILY = {"ptp_spoof": "spoof", "ptp_replay": "replay", "ptp_dos_flood": "dos"}
+_FAMILY = {
+    "ptp_spoof": "spoof",
+    "ptp_replay": "replay",
+    "ptp_dos_flood": "dos",
+    "gnss_spoof": "gnss_spoof",
+    "gnss_jam": "gnss_jam",
+}
 _PRE_BMCA = {
     ("simulated", "spoof"): (0.8938547486033519, 0.553072625698324, 0.9720670391061452, 0.02100840336134454),
     ("simulated", "replay"): (0.4301675977653631, 0.2122905027932961, 0.5251396648044693, 0.01680672268907563),
@@ -107,7 +114,9 @@ def _prediction_trace(
 
 
 def _pre_row(domain: str, held_out: str, family: str, attack_n: int, benign_n: int) -> dict:
-    rf, novelty, combined, benign_fp = _PRE_BMCA[(domain, family)]
+    rf, novelty, combined, benign_fp = _PRE_BMCA.get(
+        (domain, family), (np.nan, np.nan, np.nan, np.nan)
+    )
     return {
         "domain": domain,
         "mode": "pre_bmca",
@@ -188,7 +197,7 @@ def _load_real_sessions(session_dir: Path, config: dict) -> pd.DataFrame:
             continue
         capture_id, family = path.stem.rsplit("__", 1)
         label = "H0" if family == "benign" else "H1"
-        telemetry = pd.read_csv(path)
+        telemetry = coerce_telemetry(pd.read_csv(path))
         telemetry["scenario"] = capture_id
         telemetry["run_id"] = 0
         telemetry["label"] = label
@@ -321,6 +330,8 @@ def evaluate_openset(config: dict, out_dir: Path, docs_dir: Path, real_session_d
         docs_dir / "OPENSET_EVAL.md",
         config,
     )
+    result.attrs["sim_windows"] = sim_windows
+    result.attrs["persistence"] = persistence
     return result
 
 

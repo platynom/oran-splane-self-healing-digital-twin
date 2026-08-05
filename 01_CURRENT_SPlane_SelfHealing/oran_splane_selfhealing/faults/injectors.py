@@ -9,7 +9,7 @@ from fronthaul_sim.simulator import SimConfig, simulate
 
 
 H0_SCENARIOS = ("gnss_loss_holdover", "pdv_congestion", "synce_degrade", "traffic_burst", "planned_gm_failover")
-H1_SCENARIOS = ("ptp_spoof", "ptp_replay", "ptp_dos_flood")
+H1_SCENARIOS = ("ptp_spoof", "ptp_replay", "ptp_dos_flood", "gnss_spoof", "gnss_jam")
 ALL_SCENARIOS = ("healthy",) + H0_SCENARIOS + H1_SCENARIOS
 
 
@@ -87,8 +87,13 @@ def run_scenario(config: SimConfig, scenario: str, run_id: int = 0) -> pd.DataFr
         if scenario == "gnss_loss_holdover":
             row["gnss_available"] = False
             row["holdover"] = True
-            row["offset_ns"] = float(row["offset_ns"]) + (18.0 * sev) * elapsed + rng.normal(0, 10.0)
-            row["freq_error_ppb"] = float(row["freq_error_ppb"]) + 0.8 * sev
+            row["gnss_sync_status"] = "ACQUIRING-SYNC" if elapsed < 0.35 else "HOLDOVER"
+            row["satellites_tracked"] = max(0, int(round(12 * max(0.0, 1.0 - elapsed / 0.35))))
+            row["grandmaster_clock_class"] = 7
+            row["time_source"] = 0xA0
+            oscillator_drift = cfg.drift_ppb * sev
+            row["offset_ns"] = float(row["offset_ns"]) + oscillator_drift * cfg.dt_s + rng.normal(0, 0.7)
+            row["freq_error_ppb"] = oscillator_drift + rng.normal(0, 0.35)
         elif scenario == "pdv_congestion":
             burst = rng.normal(70.0 * sev, 30.0)
             row["path_delay_ns"] = float(row["path_delay_ns"]) + burst
@@ -162,6 +167,31 @@ def run_scenario(config: SimConfig, scenario: str, run_id: int = 0) -> pd.DataFr
             delay_burst = rng.normal(12.0, 8.0)
             row["path_delay_ns"] = float(row["path_delay_ns"]) + delay_burst
             row["pdv_ns"] = float(row["pdv_ns"]) + delay_burst
+        elif scenario == "gnss_spoof":
+            row["attack_family"] = "gnss_spoof"
+            # Receiver health remains plausible even though delivered time is wrong.
+            row["gnss_available"] = True
+            row["holdover"] = False
+            row["gnss_sync_status"] = "SYNCHRONIZED"
+            row["satellites_tracked"] = int(np.clip(round(rng.normal(12, 1.0)), 8, 16))
+            row["grandmaster_clock_class"] = 6
+            row["time_source"] = 0x20
+            malicious_drift = cfg.drift_ppb * sev * rng.uniform(1.35, 2.1)
+            smooth_bias = 0.09 * sev * np.sin(elapsed * 2.2)
+            row["offset_ns"] = float(row["offset_ns"]) + malicious_drift * cfg.dt_s + smooth_bias + rng.normal(0, 0.8)
+            row["freq_error_ppb"] = malicious_drift + rng.normal(0, 0.45)
+        elif scenario == "gnss_jam":
+            row["attack_family"] = "gnss_jam"
+            row["gnss_available"] = False
+            row["holdover"] = True
+            row["gnss_sync_status"] = "ACQUIRING-SYNC" if elapsed < 0.25 else "HOLDOVER"
+            row["satellites_tracked"] = max(0, int(round(12 * max(0.0, 1.0 - elapsed / 0.25))))
+            row["grandmaster_clock_class"] = 7
+            row["time_source"] = 0xA0
+            jam_drift = cfg.drift_ppb * sev * rng.uniform(1.5, 2.4)
+            intermittent = rng.normal(0, 2.2) if rng.random() < 0.16 else rng.normal(0, 0.8)
+            row["offset_ns"] = float(row["offset_ns"]) + jam_drift * cfg.dt_s + intermittent
+            row["freq_error_ppb"] = jam_drift + rng.normal(0, 0.6)
 
     df = simulate(cfg, scenario=scenario, mutator=mutate)
     df = _add_sensor_noise(df, seed)
