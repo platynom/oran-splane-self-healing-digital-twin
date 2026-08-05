@@ -8,6 +8,7 @@ from sklearn.metrics import accuracy_score, confusion_matrix, precision_recall_f
 from sklearn.model_selection import train_test_split
 
 from telemetry.features import FEATURE_COLUMNS
+from discriminator.openset import NoveltyDetector
 
 
 def train_and_evaluate(windows: pd.DataFrame, config: dict, out_dir: Path) -> tuple[RandomForestClassifier, pd.DataFrame]:
@@ -24,6 +25,12 @@ def train_and_evaluate(windows: pd.DataFrame, config: dict, out_dir: Path) -> tu
     )
     clf = RandomForestClassifier(n_estimators=90, max_depth=6, random_state=int(config["seed"]), class_weight="balanced")
     clf.fit(X_train, y_train)
+    openset = config.get("openset", {})
+    if bool(openset.get("enabled", False)):
+        clf.novelty_detector_ = NoveltyDetector(
+            target_known_flag_rate=float(openset.get("target_known_flag_rate", 0.02)),
+            random_state=int(config["seed"]),
+        ).fit(X_train)
     pred = clf.predict(X_test)
     proba = clf.predict_proba(X_test)[:, list(clf.classes_).index("H1")]
     precision, recall, f1, _ = precision_recall_fscore_support(y_test, pred, labels=["H0", "H1"], average="macro", zero_division=0)

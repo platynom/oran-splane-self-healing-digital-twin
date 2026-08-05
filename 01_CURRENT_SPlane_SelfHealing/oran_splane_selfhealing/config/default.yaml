@@ -16,6 +16,9 @@ dataset:
 discriminator:
   test_size: 0.35
   random_state: 1588
+openset:
+  enabled: true
+  target_known_flag_rate: 0.02
 healing:
   anomaly_threshold_ns: 100.0
   decision_budget_s: 1.0

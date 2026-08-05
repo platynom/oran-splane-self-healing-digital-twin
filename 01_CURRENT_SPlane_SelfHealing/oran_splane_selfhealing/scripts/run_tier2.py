@@ -30,6 +30,7 @@ from ingest.linuxptp_ingest import parse_linuxptp_lines
 from ingest.pcap_ingest import pcap_to_telemetry
 from scripts.make_synthetic_pcap import generate_synthetic_pcap
 from stats.multiseed import leave_one_attack_out, run_multiseed
+from stats.openset_eval import evaluate_openset
 from stats.twin_validation import fidelity_behaviour, twin_action_consistency
 
 _PTP4L_FIXTURE = """\
@@ -61,6 +62,12 @@ def step_rest(cfg: dict, out: Path) -> None:
     seeds = eval((out / "_seeds.json").read_text(encoding="utf-8"))
 
     logo = leave_one_attack_out(cfg, seeds[0], out)
+    evaluate_openset(
+        cfg,
+        out,
+        ROOT / "docs",
+        ROOT / "data" / "external" / "timesafe_sessions",
+    )
     base_sim = SimConfig(seed=cfg["seed"], time_error_budget_ns=cfg["time_error_budget_ns"], **cfg["sim"])
     twin_cons = twin_action_consistency(base_sim, out)
     with tempfile.TemporaryDirectory() as td:

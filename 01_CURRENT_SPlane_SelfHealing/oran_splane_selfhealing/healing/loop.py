@@ -27,7 +27,7 @@ def detect(window: pd.Series, threshold_ns: float) -> bool:
     return bool(float(window["offset_abs_max"]) > threshold_ns or float(window["pdv_std"]) > threshold_ns)
 
 
-def choose_action(window: pd.Series, clf, config: dict) -> Decision:
+def choose_action(window: pd.Series, clf, config: dict, novelty_detector=None) -> Decision:
     start = perf_counter()
     threshold = float(config["healing"]["anomaly_threshold_ns"])
     budget = float(config["healing"]["decision_budget_s"])
@@ -36,6 +36,20 @@ def choose_action(window: pd.Series, clf, config: dict) -> Decision:
         return Decision("safe_default", "no anomaly above configured threshold", "healthy", elapsed, elapsed < budget, float(window["offset_abs_max"]))
 
     X = pd.DataFrame([window[FEATURE_COLUMNS].to_dict()])
+    openset = config.get("openset", {})
+    if novelty_detector is None:
+        novelty_detector = getattr(clf, "novelty_detector_", None)
+    if bool(openset.get("enabled", False)) and novelty_detector is not None:
+        if bool(novelty_detector.predict_novel(X)[0]):
+            elapsed = perf_counter() - start
+            return Decision(
+                "safe_default",
+                "out-of-distribution / novel; conservative safe response",
+                "UNKNOWN",
+                elapsed,
+                elapsed < budget,
+                float(window["offset_abs_max"]),
+            )
     label = str(clf.predict(X)[0])
     candidates = ATTACK_ACTIONS if label == "H1" else FAULT_ACTIONS
     forecasts = forecast_all(window, candidates)
