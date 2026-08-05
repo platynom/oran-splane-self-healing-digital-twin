@@ -1,83 +1,83 @@
 # O-RAN S-Plane Self-Healing Digital Twin
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776AB)](https://www.python.org/)
-[![Tests](https://img.shields.io/badge/tests-18%20passed-2ea44f)](01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/tests)
+[![Tests](https://img.shields.io/badge/tests-28%20passed-2ea44f)](01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/tests)
 [![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
 
-An AI-native, CPU-only research prototype for detecting timing anomalies,
-distinguishing benign synchronization faults from attacks, verifying recovery
-actions in a digital twin, and committing the best response before an O-RAN
-fronthaul timing failure.
+A CPU-only research prototype for detecting O-RAN fronthaul synchronization
+anomalies, distinguishing benign timing faults from attacks, checking recovery
+actions in a digital twin, and selecting a governed response before the
+approximately two-second failure window.
 
-The project focuses on **integration, reproducible experimentation, and honest
-validation**. It does not claim a new fundamental machine-learning algorithm.
+The contribution is **system integration, experimental validation, and a
+released labelled synthetic dataset**. It is not presented as a new fundamental
+machine-learning algorithm.
 
-## Why this matters
+## System
 
-O-RAN Open Fronthaul depends on precise synchronization from PTP (IEEE 1588),
-SyncE, and GNSS. Timing manipulation can disrupt a base station in seconds.
-Detection alone is not enough: an operational system must determine what
-happened, select a recovery action, and verify that the action will keep time
-error inside its budget.
+O-RAN Open Fronthaul timing depends on PTP (IEEE 1588), SyncE, and GNSS. The
+implemented loop is:
 
 ```text
-PTP / SyncE telemetry
-        |
-        v
+PTP / SyncE / GNSS telemetry
+          |
+          v
  anomaly detection
-        |
-        v
- H0 benign fault vs H1 attack
-        |
-        v
- digital-twin action forecasts
-        |
-        v
- governed recovery decision
+          |
+          v
+ known H0 fault / known H1 attack / UNKNOWN novel event
+          |
+          v
+ digital-twin recovery forecasts and fidelity check
+          |
+          v
+ governed action or conservative safe default
 ```
 
-Supported recovery actions include source failover, GNSS failover, holdover,
-rogue-master isolation, path rerouting, and a conservative safe default.
+The action space includes timing-source and GNSS failover, holdover,
+rogue-master isolation, path rerouting, and a safe default.
 
-## Validation snapshot
+## Current validated checkpoint
 
-The current checkpoint contains simulator, Linux/netem, and public TIMESAFE
-validation. Real-data evaluation keeps complete capture sessions isolated
-between training and testing.
+- **19 model features** cover timing error, delay/PDV, protocol sequence and
+  message regularity, message rate, GNSS/holdover/SyncE state, and relative BMCA
+  transitions such as grandmaster churn, clock-class changes, priority changes,
+  and `stepsRemoved` changes. Raw grandmaster identity is never a model feature.
+- A **group-wise open-set ensemble** fits independent Isolation Forests to
+  timing, protocol, rate, and BMCA feature groups. A weighted Šidák allocation
+  keeps their intended combined known-window novelty budget near 2%.
+- **2-of-3 temporal persistence** is applied independently to UNKNOWN and RF-H1
+  decisions. This suppresses isolated votes while adding 0.2-0.4 s mean latency
+  in the recommended setting.
+- Evaluation uses deterministic simulation, real `linuxptp`/netem traffic, and
+  public TIMESAFE captures with complete capture sessions isolated between
+  training and testing.
+- **28 pytest tests pass** on the current checkpoint.
 
-| Evaluation | Benign false-positive rate | Attack true-positive rate |
-|---|---:|---:|
-| Simulator-trained RF on real captures | 100% | 100% |
-| Real-calibrated threshold, session holdout | 2.0% | 100% |
-| Real-trained RF, session holdout | 2.0% | 100% |
-| Unseen Announce attack family | 0% | 23.8% |
-| Unseen Sync/Follow_Up family | 0% | 100% |
-| Unseen one-step Sync family | 1.9% | 100% |
+### Protection after 2-of-3 persistence
 
-Simulator leave-one-attack-family-out results now include the self-generated
-DoS/message-flooding family and its benign traffic-burst confounder:
+Combined protection means a window is either classified H1 or safely routed as
+UNKNOWN.
 
-| Held-out simulated family | Attack recall |
-|---|---:|
-| Spoof | 89.4% |
-| Replay | 43.0% |
-| DoS/message flooding | 0.0% |
+| Domain | Held-out family | Combined protection |
+|---|---|---:|
+| Simulator | Spoof | 83.8% |
+| Simulator | Replay | 63.7% |
+| Simulator | DoS/message flooding | 86.0% |
+| TIMESAFE | Announce/BMCA | 99.96% |
+| TIMESAFE | Sync/Follow-Up | 99.66% |
+| TIMESAFE | Single-step Sync | 99.66% |
 
-When DoS is represented during training, held-run tests achieve 100% DoS recall
-with 0% traffic-burst false positives. A naive 4x-rate rule flags 100% of both,
-showing why message-rate mean and variance must be evaluated with other features.
-The zero unseen-DoS result remains an explicit open-set generalization gap.
+Weighted TIMESAFE benign false positives fall from 4.49% at 1-of-1 to **2.37%**
+at 2-of-3. All evaluated real attack episodes are detected within **0.2 s**.
+The worst fraction detected and acted on inside the 2.0 s window is **91.7%**,
+from simulated spoof; one run is already late under 1-of-1, so persistence does
+not reduce that within-window rate.
 
-The weak unseen-Announce result is intentional to report: it is the main open
-research gap, not a hidden failure. Five independent public captures were used,
-so the real-data results are promising but not production certification.
-
-Detailed evidence:
-
-- [Plain-language project status](01_CURRENT_SPlane_SelfHealing/PROJECT_STATUS.md)
-- [Real-feature audit](01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/docs/REAL_FEATURES_AUDIT.md)
-- [Capture-isolated calibration report](01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/results/tier2/real_calibration/REAL_CALIBRATION_REPORT.md)
-- [Tier 2 statistical report](01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/results/tier2/TIER2_REPORT.md)
+Window alarms/hour counts every persisted positive window. Contiguous positives
+are one operator-facing episode: on the short held TIMESAFE benign captures,
+weighted episode alarms/hour fall from about 570 at 1-of-1 to about 190 at
+2-of-3. These hourly figures are extrapolations, not long-duration field rates.
 
 ## Quick start
 
@@ -93,20 +93,22 @@ source .venv/bin/activate
 
 python -m pip install -r requirements.txt
 python scripts/run_all.py
+python scripts/run_tier2.py
 python -m pytest tests -p no:cacheprovider
 ```
 
-The default Tier 1 workflow is deterministic, CPU-only, and needs no PTP NIC,
-O-RU, GPU, paid API, or network connection after dependency installation.
-
-For realistic software validation:
-
-```bash
-python scripts/run_tier2.py
-```
-
-Linux users can also run the `tc netem`/`linuxptp` harness described in
+Tier 1 needs no PTP NIC, O-RU, GPU, paid API, or network after dependency
+installation. Tier 2 uses local captures by default and can optionally use a
+Linux `tc netem`/`linuxptp` environment described in
 [RUN_ON_REAL_LINUX.md](01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/RUN_ON_REAL_LINUX.md).
+
+## Evidence
+
+- [Current project status](01_CURRENT_SPlane_SelfHealing/PROJECT_STATUS.md)
+- [Open-set, BMCA, persistence, and episode evaluation](01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/docs/OPENSET_EVAL.md)
+- [Real-feature audit](01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/docs/REAL_FEATURES_AUDIT.md)
+- [Capture-isolated calibration report](01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/results/tier2/real_calibration/REAL_CALIBRATION_REPORT.md)
+- [Tier 2 statistical report](01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/results/tier2/TIER2_REPORT.md)
 
 ## Repository layout
 
@@ -114,42 +116,38 @@ Linux users can also run the `tc netem`/`linuxptp` harness described in
 01_CURRENT_SPlane_SelfHealing/
   oran_splane_selfhealing/   active simulator, ingest, ML, twin, healing, tests
   deliverables/              review presentation and project documents
-  literature-survey/         indexes and literature-analysis notes
+  literature-survey/         literature indexes and analysis notes
 
-02_PREVIOUS_Work/
-  gen1_RRC_PPO/              superseded RRC/PPO direction
-  gen2_KPM_FlexRIC_twin/     superseded general KPM/FlexRIC twin direction
+02_PREVIOUS_Work/            superseded directions, retained read-only
 ```
 
 Raw pcaps, external datasets, virtual environments, caches, and large generated
-artifacts are deliberately excluded from Git history. The code can regenerate
-the synthetic dataset and benchmark outputs. Public TIMESAFE data is referenced
-for reproducibility but is not redistributed here.
+artifacts are excluded from Git history. Public TIMESAFE data is referenced for
+reproducibility but is not redistributed.
+
+## Honest limitations
+
+- TIMESAFE contains no benign planned grandmaster-change session. The measured
+  real benign false-positive rate is therefore optimistic for deployments with
+  legitimate re-parenting.
+- Closed-set specialization remains: an RF trained on Announce sessions and
+  tested on Sync sessions has **0% recall**. Open-set safe routing mitigates but
+  does not solve family classification.
+- SyncE quality level cannot be reconstructed from pcaps and still requires a
+  live `synce4l` reader or O-RU M-plane NETCONF/YANG telemetry.
+- There is no hardware validation yet. Tier 3 needs hardware timestamps, a real
+  SyncE source, representative clock/O-DU/O-RU equipment, and controlled
+  authorized attack experiments.
+- The real evaluation has few independent attack sessions. Reported percentages
+  are research evidence, not production certification.
 
 ## Product direction
 
-The prototype can evolve into a vendor-neutral timing-security validation
-service for labs, private 5G operators, and telecom vendors:
+The prototype can evolve into a vendor-neutral timing-security validation tool
+for telecom labs, private 5G operators, and equipment vendors: offline capture
+assessment, resilience regression tests, governed remediation recommendations,
+and auditable live synchronization monitoring.
 
-- offline pcap and telemetry assessment;
-- CI regression tests for timing resilience;
-- governed remediation recommendations with an audit trail;
-- live O-DU/O-RU integration through linuxptp events and O-RU M-plane
-  NETCONF/YANG synchronization telemetry.
-
-Tier 3 still requires a hardware-timestamping NIC, representative O-DU/O-RU or
-clock equipment, a real SyncE source, and controlled authorized attack tests.
-
-## Safety and scope
-
-Attack-related tooling is included only for defensive research and authorized
-test environments. Do not run timing-manipulation experiments against networks
-or equipment you do not own or have explicit permission to test.
-
-See [SECURITY.md](SECURITY.md) for responsible disclosure.
-
-## License
-
-Project-authored code and documentation are released under the [MIT License](LICENSE).
-Third-party datasets, papers, standards, and archived upstream material retain
-their original licenses and are not relicensed by this repository.
+Attack tooling is for defensive research on systems the operator owns or is
+authorized to test. See [SECURITY.md](SECURITY.md). Project-authored code and
+documentation are released under the [MIT License](LICENSE).

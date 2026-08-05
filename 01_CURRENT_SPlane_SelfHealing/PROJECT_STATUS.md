@@ -1,76 +1,93 @@
 # Project Status
 
 **Project:** AI-Native Self-Healing O-RAN Network using a Digital Twin  
-**Current focus:** Open Fronthaul S-plane timing security  
-**Checkpoint:** Tier 2 realistic software validation
+**Scope:** Open Fronthaul S-plane timing security  
+**Checkpoint:** Tier 2 realistic software validation, 28 tests passing
 
 ## Goal
 
-Monitor synchronization telemetry, distinguish a benign fault from an attack,
-verify candidate recovery actions in a digital twin, and select a governed
-response before the approximately two-second failure window.
+Detect synchronization anomalies, distinguish benign faults from known attacks,
+route novel events to a safe response, verify candidate recovery actions in a
+digital twin, and act within the approximately 2.0 s failure window.
 
 ## Validation tiers
 
-| Tier | Status | Meaning |
+| Tier | Status | Evidence |
 |---|---|---|
-| Tier 1 | Complete | Deterministic PTP/SyncE simulator and end-to-end healing loop |
-| Tier 2 | Complete | Multi-seed statistics, real pcap ingestion, Linux/netem traffic, public-data calibration |
-| Tier 3 | Future work | Hardware timestamps, physical clocks, SyncE and O-DU/O-RU validation |
+| Tier 1 | Complete | Deterministic PTP/SyncE/GNSS simulator and end-to-end governed healing loop |
+| Tier 2 | Complete | Multi-seed statistics, pcap ingestion, Linux/netem traffic, TIMESAFE capture-isolated evaluation |
+| Tier 3 | Not started | Hardware timestamps, physical clocks, live SyncE and representative O-DU/O-RU validation |
 
-## Data realism
+## Current architecture
 
-- **Simulator:** synthetic but deterministic timing physics and injected labels.
-- **Linux/netem:** real `ptp4l` packets over an emulated impaired link.
-- **TIMESAFE:** released testbed captures containing real PTP attack traffic.
-- **Hardware:** not yet evaluated.
+The discriminator uses **19 features**. Timing, delay/PDV, protocol regularity,
+message rate, GNSS/holdover/SyncE state, and relative BMCA/grandmaster transition
+features are represented. Raw grandmaster identities and MAC addresses remain
+telemetry-only to prevent capture fingerprinting.
 
-## Leakage-resistant real-data results
+Known H0/H1 classification is supplemented by a **group-wise open-set
+ensemble**. Timing, protocol, rate, and BMCA Isolation Forests are independently
+scaled and fitted; a weighted Šidák budget targets an approximately 2% combined
+known-window novelty rate. Novel events route to the conservative safe default.
 
-Complete capture sessions are assigned to either train or test, never both.
-Confidence intervals and exact counts are available in the calibration report.
+The live decision wrapper applies **2-of-3 temporal persistence** independently
+to UNKNOWN and H1 votes. A 1-of-1 mode reproduces raw model behavior.
 
-| Evaluation | Benign FP | Attack TP |
-|---|---:|---:|
-| Simulator-trained RF on real captures | 100% | 100% |
-| Real-calibrated threshold | 2.0% | 100% |
-| Real-trained RF, session holdout | 2.0% | 100% |
-| Held-out Announce family | 0% | 23.8% |
-| Held-out Sync/Follow_Up family | 0% | 100% |
-| Held-out one-step Sync family | 1.9% | 100% |
+## Current results
 
-## Simulated novel-family results
+### Combined protection after 2-of-3 persistence
 
-| Held-out attack family | RF-only recall |
-|---|---:|
-| Spoof | 89.4% |
-| Replay | 43.0% |
-| DoS/message flooding | 0.0% |
+| Domain | Held-out attack family | Window protection | Attack episodes within 2 s |
+|---|---|---:|---:|
+| Simulator | Spoof | 83.8% | 91.7% |
+| Simulator | Replay | 63.7% | 100% |
+| Simulator | DoS/message flooding | 86.0% | 100% |
+| TIMESAFE | Announce/BMCA | 99.96% | 100% |
+| TIMESAFE | Sync/Follow-Up | 99.66% | 100% |
+| TIMESAFE | Single-step Sync | 99.66% | 100% |
 
-The DoS family is detected at 100% recall on held runs when represented in
-training, with 0% false positives on the overlapping benign `traffic_burst`
-scenario. A naive rate threshold flags both classes, while leave-one-family-out
-DoS recall is 0%; this is now a measured novelty-detection target.
+All real attack episodes are detected within **0.2 s**. Simulated spoof is the
+worst within-window result at **91.7%**; its missed deadline is already present
+at 1-of-1 and is not introduced by persistence.
 
-The simulator-trained model is unusable on real data because it flags
-everything. Real calibration closes that gap for known families. Generalization
-to unseen Announce attacks remains weak and is the primary research limitation.
+Weighted TIMESAFE benign window FP is **2.37%** at 2-of-3, down from 4.49% at
+1-of-1. Persisted-window alarms/hour fall from about 807 to 427. De-duplicating
+contiguous positives into operator-facing episodes gives about 570 to 190
+episodes/hour. Hourly rates are extrapolated from short held captures.
 
-## Feature coverage
+## Evidence quality
 
-Eleven of the twelve model features vary on real captures. SyncE quality remains
-unavailable from pcaps and requires live `synce4l` or O-RU M-plane telemetry.
-Announce parsing now exposes clock class and time source, and packet-level
-message types make protocol-mix features real. Trailing one-second PTP packet
-counts provide real message-rate mean and variance features.
+- Simulator scenarios are synthetic, deterministic, and automatically labelled.
+- Linux/netem produces real `ptp4l` packets over emulated impaired links.
+- TIMESAFE provides public testbed PTP attack captures, evaluated with complete
+  capture sessions isolated between train and test.
+- BMCA parsing includes clock class, priority, accuracy, grandmaster identity,
+  `stepsRemoved`, and time source. Only relative transitions and plausibility
+  values enter the model.
+- The planned-grandmaster-failover confounder has 0% RF-H1 and novelty FP in the
+  held simulated run, but no equivalent benign TIMESAFE session exists.
 
-## Next steps
+## Honest limitations
 
-1. Add open-set novelty detection so unseen attack families route to a safe response.
-2. Add grandmaster-identity, priority, clock-class-transition and
-   steps-removed features to improve unseen Announce detection.
-3. Validate live `pmc` and `synce4l` collection on a persistent Linux setup.
-4. Integrate hardware-timestamping NICs and representative O-RAN equipment.
+- TIMESAFE has no benign GM-change session, so deployment FP under legitimate
+  re-parenting may be higher than measured.
+- Closed-set specialization persists: Announce-trained RF tested on Sync
+  sessions gives **0% recall**.
+- SyncE quality level still requires live `synce4l` or O-RU M-plane telemetry;
+  it cannot be recovered from ordinary PTP pcaps.
+- Real evaluation has few independent attack episodes. Percentages should not
+  be read as production certification.
+- No hardware timestamping NIC, physical timing source, O-DU, or O-RU has been
+  validated yet.
 
-This is a validated research prototype, not a production-certified timing
-security system.
+## Next engineering steps
+
+1. Collect benign planned-GM-change sessions and longer benign captures to
+   measure operator alarm rates without short-trace extrapolation.
+2. Validate live `pmc` event subscription and `synce4l` quality-level ingestion.
+3. Expand capture-isolated testing across independent equipment and topologies.
+4. Execute Tier 3 with hardware timestamps, real SyncE/GNSS sources, and
+   representative O-RAN equipment.
+
+This is a reproducible and validated research prototype, not a
+production-certified timing-security product.

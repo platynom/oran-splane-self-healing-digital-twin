@@ -41,3 +41,4 @@
 - 2026-08-05: Added configurable temporal N-of-M persistence for novelty and RF-H1 decisions, with a stateful governed-loop wrapper and 2-of-3 default. Added 1-of-1/2-of-3/3-of-5/4-of-7 sweeps covering window false alarms, alarms/hour, per-family protection, episode detection, added latency, and decisions within the 2 s failure window.
 - 2026-08-05: Distinguished persisted-window alarm rates from operator-facing alarm episodes by de-duplicating contiguous benign protective runs per capture/run and reporting both rates.
 - 2026-08-05: Added repository ignore rules for regenerable pytest and Codex scratch directories after the pre-commit audit exposed ACL-hidden test outputs; no files were deleted or moved.
+- 2026-08-05: Refreshed the root README, `01_CURRENT_SPlane_SelfHealing/PROJECT_STATUS.md`, and root `TEAM_REPORT.md` to the validated 19-feature, 28-test BMCA/open-set/2-of-3 persistence checkpoint and current limitations.
