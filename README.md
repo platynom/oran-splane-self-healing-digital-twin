@@ -1,7 +1,7 @@
 # O-RAN S-Plane Self-Healing Digital Twin
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776AB)](https://www.python.org/)
-[![Tests](https://img.shields.io/badge/tests-16%20passed-2ea44f)](01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/tests)
+[![Tests](https://img.shields.io/badge/tests-18%20passed-2ea44f)](01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/tests)
 [![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
 
 An AI-native, CPU-only research prototype for detecting timing anomalies,
@@ -53,6 +53,20 @@ between training and testing.
 | Unseen Announce attack family | 0% | 23.8% |
 | Unseen Sync/Follow_Up family | 0% | 100% |
 | Unseen one-step Sync family | 1.9% | 100% |
+
+Simulator leave-one-attack-family-out results now include the self-generated
+DoS/message-flooding family and its benign traffic-burst confounder:
+
+| Held-out simulated family | Attack recall |
+|---|---:|
+| Spoof | 89.4% |
+| Replay | 43.0% |
+| DoS/message flooding | 0.0% |
+
+When DoS is represented during training, held-run tests achieve 100% DoS recall
+with 0% traffic-burst false positives. A naive 4x-rate rule flags 100% of both,
+showing why message-rate mean and variance must be evaluated with other features.
+The zero unseen-DoS result remains an explicit open-set generalization gap.
 
 The weak unseen-Announce result is intentional to report: it is the main open
 research gap, not a hidden failure. Five independent public captures were used,

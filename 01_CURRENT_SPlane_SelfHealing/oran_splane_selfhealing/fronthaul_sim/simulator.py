@@ -41,6 +41,7 @@ def simulate(config: SimConfig, scenario: str = "healthy", mutator: TelemetryMut
     rows: list[dict[str, float | int | str | bool]] = []
     seq = 0
     ql = 1
+    baseline_msg_rate_hz = 1.0 / config.dt_s
 
     for i in range(n):
         t = i * config.dt_s
@@ -62,6 +63,7 @@ def simulate(config: SimConfig, scenario: str = "healthy", mutator: TelemetryMut
             "synce_ql": ql,
             "ptp_seq_id": seq,
             "ptp_msg_type": "Sync" if i % 2 == 0 else "Announce",
+            "msg_rate_hz": float(max(0.0, baseline_msg_rate_hz + rng.normal(0, baseline_msg_rate_hz * 0.03))),
             "gnss_available": True,
             "holdover": False,
             "attack_flag": False,

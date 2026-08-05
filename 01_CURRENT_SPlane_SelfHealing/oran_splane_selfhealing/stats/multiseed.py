@@ -6,6 +6,8 @@ does the discriminator catch an attack family it never trained on?
 """
 
 import copy
+import hashlib
+import json
 import tempfile
 from pathlib import Path
 
@@ -25,6 +27,15 @@ from faults.injectors import H1_SCENARIOS
 from telemetry.features import FEATURE_COLUMNS
 
 _METRICS = ["accuracy", "f1_macro", "roc_auc_h1", "recovery_success_rate", "wrong_action_rate", "mean_mttr_s"]
+_ATTACK_FAMILY = {"ptp_spoof": "spoof", "ptp_replay": "replay", "ptp_dos_flood": "dos"}
+
+
+def _cache_signature() -> str:
+    definition = json.dumps(
+        {"features": FEATURE_COLUMNS, "h1_scenarios": H1_SCENARIOS},
+        sort_keys=True,
+    ).encode("utf-8")
+    return hashlib.sha256(definition).hexdigest()[:10]
 
 
 def _one_run(base_config: dict, seed: int, tmp: Path) -> dict:
@@ -62,19 +73,19 @@ def run_multiseed(base_config: dict, seeds: list[int], out_dir: Path) -> pd.Data
     """Resumable: each seed's result is cached on completion, so this can be
     called repeatedly (e.g. under a wall-clock cap) until all seeds finish. The
     final summary is only written once every seed is cached."""
-    import json
     out_dir.mkdir(parents=True, exist_ok=True)
     cache = out_dir / "_seedcache"
     cache.mkdir(exist_ok=True)
     with tempfile.TemporaryDirectory() as td:
         tmp = Path(td)
         for s in seeds:
-            cf = cache / f"seed_{s}.json"
+            cf = cache / f"seed_{s}_{_cache_signature()}.json"
             if cf.exists():
                 continue
             cf.write_text(json.dumps(_one_run(base_config, s, tmp)), encoding="utf-8")
 
-    done = [json.loads((cache / f"seed_{s}.json").read_text()) for s in seeds if (cache / f"seed_{s}.json").exists()]
+    cache_files = [cache / f"seed_{s}_{_cache_signature()}.json" for s in seeds]
+    done = [json.loads(path.read_text()) for path in cache_files if path.exists()]
     if len(done) < len(seeds):
         print(f"multiseed progress: {len(done)}/{len(seeds)} seeds cached (re-run to continue)")
         return None
@@ -113,7 +124,12 @@ def leave_one_attack_out(base_config: dict, seed: int, out_dir: Path) -> pd.Data
         pred = clf.predict(test_attack[FEATURE_COLUMNS])
         recall = recall_score((test_attack["label"] == "H1").astype(int),
                               (pd.Series(pred) == "H1").astype(int), zero_division=0)
-        rows.append({"held_out_attack": held, "unseen_attack_recall": float(recall), "n_windows": int(len(test_attack))})
+        rows.append({
+            "held_out_attack": held,
+            "attack_family": _ATTACK_FAMILY.get(held, held),
+            "unseen_attack_recall": float(recall),
+            "n_windows": int(len(test_attack)),
+        })
     logo = pd.DataFrame(rows)
     logo.to_csv(out_dir / "leave_one_attack_out.csv", index=False)
     return logo

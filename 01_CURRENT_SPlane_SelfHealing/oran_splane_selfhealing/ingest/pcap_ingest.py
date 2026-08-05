@@ -15,6 +15,7 @@ how linuxptp derives 'master offset', so the same features apply to real traces
 """
 
 from pathlib import Path
+from collections import deque
 
 import pandas as pd
 
@@ -46,6 +47,7 @@ def pcap_to_telemetry(path: str | Path, scenario: str = "live", label: str = "un
     rows = []
     announce_clock_class = None
     announce_time_source = None
+    recent_message_times: deque[int] = deque()
 
     def emit(seq: int, t_ns: int, msg_type: str):
         nonlocal rows
@@ -71,6 +73,7 @@ def pcap_to_telemetry(path: str | Path, scenario: str = "live", label: str = "un
             "path_delay_ns": float(pd_use),
             "ptp_seq_id": int(seq),
             "ptp_msg_type": msg_type,
+            "msg_rate_hz": float(len(recent_message_times)),
             "gnss_available": gnss_available,
             "holdover": hold,
         })
@@ -84,6 +87,10 @@ def pcap_to_telemetry(path: str | Path, scenario: str = "live", label: str = "un
             continue
         if t0 is None:
             t0 = cap_ns
+        recent_message_times.append(cap_ns)
+        cutoff_ns = cap_ns - 1_000_000_000
+        while recent_message_times and recent_message_times[0] < cutoff_ns:
+            recent_message_times.popleft()
 
         if msg.msg_type == w.MT_SYNC:
             syncs_seen += 1

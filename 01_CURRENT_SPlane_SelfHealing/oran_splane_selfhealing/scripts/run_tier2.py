@@ -102,7 +102,8 @@ def _row(summary, m):
 
 def _write_report(out, summary, logo, twin_cons, fid, pcap_mae, pcap_pd, n_pcap, n_lp, seeds):
     logo_txt = "\n".join(
-        f"  - held out **{r.held_out_attack}** -> recall on unseen family: {r.unseen_attack_recall:.3f} (n={r.n_windows})"
+        f"  - held out **{r.attack_family}** (`{r.held_out_attack}`) -> recall on unseen family: "
+        f"{r.unseen_attack_recall:.3f} (n={r.n_windows})"
         for r in logo.itertuples()
     ) or "  - (no attack families available)"
     (out / "TIER2_REPORT.md").write_text(

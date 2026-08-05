@@ -28,6 +28,7 @@ def test_pcap_roundtrip_recovers_offset(tmp_path):
     # recovery error is bounded by path-delay variation, must be well under a ns-budget scale
     assert mae < 40.0, f"pcap offset recovery MAE too high: {mae}"
     assert abs(tel["path_delay_ns"].mean() - 50_000.0) < 200.0
+    assert tel["msg_rate_hz"].max() > tel["msg_rate_hz"].min()
 
 
 def test_pcap_telemetry_flows_into_features(tmp_path):
@@ -135,6 +136,8 @@ def test_pcap_records_real_message_mix_and_announce_status(tmp_path):
     assert not bool(announce_rows["gnss_available"].any())
     feats = window_features(tel, window_s=0.4, step_s=0.2)
     assert (feats["msg_irregularity"] > 0).any()
+    assert feats["msg_rate_mean"].nunique() > 1
+    assert feats["msg_rate_std"].max() > 0
 
 
 def test_sync_status_parsers():

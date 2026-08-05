@@ -8,8 +8,8 @@ import pandas as pd
 from fronthaul_sim.simulator import SimConfig, simulate
 
 
-H0_SCENARIOS = ("gnss_loss_holdover", "pdv_congestion", "synce_degrade")
-H1_SCENARIOS = ("ptp_spoof", "ptp_replay")
+H0_SCENARIOS = ("gnss_loss_holdover", "pdv_congestion", "synce_degrade", "traffic_burst")
+H1_SCENARIOS = ("ptp_spoof", "ptp_replay", "ptp_dos_flood")
 ALL_SCENARIOS = ("healthy",) + H0_SCENARIOS + H1_SCENARIOS
 
 
@@ -69,6 +69,9 @@ def run_scenario(config: SimConfig, scenario: str, run_id: int = 0) -> pd.DataFr
     onset = spec.onset_s + (float(nz.uniform(-0.6, 0.9)) if spec.duration_s > 0 else 0.0)
     mimic = str(nz.choice(["none", "none", "synce", "synce", "gnss"])) if spec.label == "H1" else "none"
     during_cong = bool(nz.random() < 0.55) if spec.label == "H1" else False
+    baseline_rate = 1.0 / cfg.dt_s
+    traffic_burst_factor = float(nz.uniform(5.0, 14.0))
+    dos_flood_factor = float(nz.uniform(10.0, 35.0))
 
     def active(row: dict) -> bool:
         t = float(row["t_s"])
@@ -79,6 +82,7 @@ def run_scenario(config: SimConfig, scenario: str, run_id: int = 0) -> pd.DataFr
             return
         row["fault_flag"] = spec.label == "H0"
         row["attack_flag"] = spec.label == "H1"
+        row["attack_family"] = "none"
         elapsed = float(row["t_s"]) - onset
         if scenario == "gnss_loss_holdover":
             row["gnss_available"] = False
@@ -96,7 +100,14 @@ def run_scenario(config: SimConfig, scenario: str, run_id: int = 0) -> pd.DataFr
             row["synce_ql"] = int(rng.choice([3, 4]))
             row["freq_error_ppb"] = float(row["freq_error_ppb"]) + 1.7 * sev
             row["offset_ns"] = float(row["offset_ns"]) + (11.0 * sev) * elapsed + rng.normal(0, 9.0)
+        elif scenario == "traffic_burst":
+            # Planned control-plane churn/failover can legitimately raise PTP traffic.
+            # Its rate overlaps low-end floods but remains comparatively stable.
+            row["msg_rate_hz"] = float(max(0.0, baseline_rate * traffic_burst_factor * rng.normal(1.0, 0.07)))
+            row["path_delay_ns"] = float(row["path_delay_ns"]) + rng.normal(18.0, 10.0)
+            row["pdv_ns"] = float(row["pdv_ns"]) + rng.normal(18.0, 10.0)
         elif scenario == "ptp_spoof":
+            row["attack_family"] = "spoof"
             step = rng.normal(48.0 * sev, 30.0) * (1.0 + 0.5 * min(elapsed, 1.5))
             row["offset_ns"] = float(row["offset_ns"]) + step
             row["measured_offset_ns"] = float(row["measured_offset_ns"]) + step
@@ -113,6 +124,7 @@ def run_scenario(config: SimConfig, scenario: str, run_id: int = 0) -> pd.DataFr
                 row["path_delay_ns"] = float(row["path_delay_ns"]) + b
                 row["pdv_ns"] = float(row["pdv_ns"]) + b
         elif scenario == "ptp_replay":
+            row["attack_family"] = "replay"
             if rng.random() < 0.35:
                 row["ptp_seq_id"] = int(row["ptp_seq_id"]) - int(rng.integers(1, 4))
             row["offset_ns"] = float(row["offset_ns"]) + rng.normal(42.0 * sev, 26.0)
@@ -123,6 +135,18 @@ def run_scenario(config: SimConfig, scenario: str, run_id: int = 0) -> pd.DataFr
                 b = rng.normal(55.0, 25.0)
                 row["path_delay_ns"] = float(row["path_delay_ns"]) + b
                 row["pdv_ns"] = float(row["pdv_ns"]) + b
+        elif scenario == "ptp_dos_flood":
+            row["attack_family"] = "dos"
+            # Flood intensity is intentionally bursty and overlaps the benign
+            # traffic-burst range; timing itself is only mildly disturbed.
+            rate_factor = dos_flood_factor * max(0.15, rng.normal(1.0, 0.32))
+            if rng.random() < 0.10:
+                rate_factor *= rng.uniform(1.4, 2.0)
+            row["msg_rate_hz"] = float(baseline_rate * rate_factor)
+            row["offset_ns"] = float(row["offset_ns"]) + rng.normal(0.2, 3.0)
+            delay_burst = rng.normal(12.0, 8.0)
+            row["path_delay_ns"] = float(row["path_delay_ns"]) + delay_burst
+            row["pdv_ns"] = float(row["pdv_ns"]) + delay_burst
 
     df = simulate(cfg, scenario=scenario, mutator=mutate)
     df = _add_sensor_noise(df, seed)

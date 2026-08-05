@@ -15,6 +15,8 @@ FEATURE_COLUMNS = [
     "synce_ql_max",
     "gnss_loss_rate",
     "holdover_rate",
+    "msg_rate_mean",
+    "msg_rate_std",
 ]
 
 
@@ -51,6 +53,8 @@ def window_features(df: pd.DataFrame, window_s: float, step_s: float) -> pd.Data
                     "synce_ql_max": int(w["synce_ql"].max()),
                     "gnss_loss_rate": float((~w["gnss_available"].astype(bool)).mean()),
                     "holdover_rate": float(w["holdover"].astype(bool).mean()),
+                    "msg_rate_mean": float(w["msg_rate_hz"].mean()),
+                    "msg_rate_std": float(w["msg_rate_hz"].std(ddof=0)),
                 }
             )
             t += step_s

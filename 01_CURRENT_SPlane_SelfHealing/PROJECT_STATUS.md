@@ -39,23 +39,38 @@ Confidence intervals and exact counts are available in the calibration report.
 | Held-out Sync/Follow_Up family | 0% | 100% |
 | Held-out one-step Sync family | 1.9% | 100% |
 
+## Simulated novel-family results
+
+| Held-out attack family | RF-only recall |
+|---|---:|
+| Spoof | 89.4% |
+| Replay | 43.0% |
+| DoS/message flooding | 0.0% |
+
+The DoS family is detected at 100% recall on held runs when represented in
+training, with 0% false positives on the overlapping benign `traffic_burst`
+scenario. A naive rate threshold flags both classes, while leave-one-family-out
+DoS recall is 0%; this is now a measured novelty-detection target.
+
 The simulator-trained model is unusable on real data because it flags
 everything. Real calibration closes that gap for known families. Generalization
 to unseen Announce attacks remains weak and is the primary research limitation.
 
 ## Feature coverage
 
-Nine of the ten model features vary on real captures. SyncE quality remains
+Eleven of the twelve model features vary on real captures. SyncE quality remains
 unavailable from pcaps and requires live `synce4l` or O-RU M-plane telemetry.
 Announce parsing now exposes clock class and time source, and packet-level
-message types make protocol-mix features real.
+message types make protocol-mix features real. Trailing one-second PTP packet
+counts provide real message-rate mean and variance features.
 
 ## Next steps
 
-1. Add grandmaster-identity, priority, clock-class-transition and
+1. Add open-set novelty detection so unseen attack families route to a safe response.
+2. Add grandmaster-identity, priority, clock-class-transition and
    steps-removed features to improve unseen Announce detection.
-2. Validate live `pmc` and `synce4l` collection on a persistent Linux setup.
-3. Integrate hardware-timestamping NICs and representative O-RAN equipment.
+3. Validate live `pmc` and `synce4l` collection on a persistent Linux setup.
+4. Integrate hardware-timestamping NICs and representative O-RAN equipment.
 
 This is a validated research prototype, not a production-certified timing
 security system.

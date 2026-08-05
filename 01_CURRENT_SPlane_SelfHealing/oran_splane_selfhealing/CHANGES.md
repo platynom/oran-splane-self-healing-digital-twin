@@ -19,3 +19,9 @@
 - Test additions: added Announce field decoding, true PTP message-mix/status propagation, live sync-status parser, capture-isolation, and confidence-interval tests.
 - Documentation addition: added `docs/REAL_FEATURES_AUDIT.md` with measured 6/10 to 9/10 real-feature coverage, leakage-proof calibration, and limitations.
 - No Tier-1 logic was changed. Tier-2 changes are limited to the requested real-data parsing and leakage-resistant evaluation paths.
+- 2026-08-04: Added canonical `msg_rate_hz` telemetry, trailing-one-second decoded PTP message rates for PCAP ingestion, and `msg_rate_mean`/`msg_rate_std` window features while retaining the original ten features.
+- 2026-08-04: Added H1 `ptp_dos_flood` (`attack_family=dos`) and the overlapping H0 `traffic_burst` confounder; extended leave-one-attack-out output/reporting to spoof, replay, and DoS families.
+- 2026-08-04: Added DoS/confounder and real-message-rate regression tests, and marked attack-roadmap family #4 covered. No external data, prior-work tree, or model calibration logic was changed.
+- 2026-08-04: Versioned Tier 2 multi-seed cache entries by the active feature and H1-scenario definitions, preventing stale pre-DoS metrics from being reused while preserving all prior cache files.
+- 2026-08-04: Regenerated the local ignored TIMESAFE session derivatives from their original labelled PCAPs so message rate is capture-derived, then reran capture-isolated calibration; the primary 2.04% benign-FP / 100% attack-TP result was unchanged.
+- 2026-08-05: Refreshed the root README, active README, and `PROJECT_STATUS.md` with the measured DoS/confounder results, 18-test regression count, and 11-of-12 real-feature coverage before the DoS checkpoint commit.

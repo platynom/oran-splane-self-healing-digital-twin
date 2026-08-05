@@ -41,6 +41,8 @@ Tier 2 adds:
 
 - multi-seed means and 95% confidence intervals;
 - leave-one-attack-family-out evaluation;
+- self-generated DoS flooding plus a benign traffic-burst confounder;
+- simulated and trailing-one-second real-capture message-rate features;
 - capture-level train/test isolation for real-data calibration;
 - PTP-over-Ethernet pcap ingestion;
 - Announce, Sync, Follow_Up, Delay_Req, and Delay_Resp parsing;
@@ -61,7 +63,7 @@ See:
 | Directory | Responsibility |
 |---|---|
 | `fronthaul_sim/` | Deterministic PTP servo, SyncE aid, GNSS and holdover simulation |
-| `faults/` | H0 faults and H1 spoof/replay injection |
+| `faults/` | H0 faults/traffic bursts and H1 spoof/replay/DoS injection |
 | `telemetry/` | Window-level timing and protocol features |
 | `discriminator/` | H0/H1 classifier training and evaluation |
 | `twin/` | Per-action timing forecasts and fidelity scoring |
@@ -74,11 +76,13 @@ See:
 
 ## Measured status
 
-- Full test suite: 16 passing tests.
-- Real capture features: 9 of 10 non-constant.
+- Full test suite: 18 passing tests.
+- Real capture features: 11 of 12 non-constant; SyncE QL requires live `synce4l`.
 - Capture-isolated known-family evaluation: approximately 2% benign FP and
   100% attack TP on the current holdout.
 - Unseen Announce-family recall: approximately 24%, the main open limitation.
+- Simulated held-out-family recall: spoof 89.4%, replay 43.0%, DoS 0%; the
+  zero unseen-DoS result motivates an explicit open-set novelty layer.
 - Hardware validation: not yet performed.
 
 Raw public datasets and pcaps are intentionally excluded from Git. Use the
