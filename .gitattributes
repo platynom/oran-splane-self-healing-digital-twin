@@ -1,3 +1,13 @@
-*.pdf binary
+# Normalise line endings in the repository (LF in history, native in working tree).
+# Without this, Windows CRLF churn marks ~74 text files "modified" immediately after
+# every commit, creating permanent phantom dirt that repeatedly wasted agent cycles.
+* text=auto
+
+# Binary: never diff or line-ending-translate these (a text-mode PDF can be corrupted).
+*.pdf  binary
 *.pcap binary
 *.pcapng binary
+*.png  binary
+*.pptx binary
+*.xlsx binary
+*.zip  binary
