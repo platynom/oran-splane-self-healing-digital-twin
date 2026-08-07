@@ -1,5 +1,5 @@
 scenario,status,windows,detail
-baseline,ok,665,
-pdv,ok,664,
-loss,ok,45,
-holdover,ok,10,
+baseline,ok,667,
+pdv,ok,717,
+loss,ok,59,
+holdover,ingest_failed,0,no PTP offset samples recovered from pcap (syncs_seen=0). Need at least paired Sync+Follow_Up (or one-step Sync); with tolerate_incomplete=True a total Sync outage still yields nothing.
