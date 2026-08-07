@@ -3,6 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from time import perf_counter
 
+import numpy as np
 import pandas as pd
 
 from discriminator.openset import TemporalPersistence
@@ -26,6 +27,46 @@ FAULT_ACTIONS = ["failover_lls_c1", "failover_lls_c2", "reroute_path", "holdover
 
 def detect(window: pd.Series, threshold_ns: float) -> bool:
     return bool(float(window["offset_abs_max"]) > threshold_ns or float(window["pdv_std"]) > threshold_ns)
+
+
+VALIDITY_FRACTION_KEYS = ("valid_sample_fraction", "valid_sample_rate")
+REQUIRED_DECISION_FEATURES = ("offset_abs_max", "path_delay_mean", "pdv_std")
+
+
+def telemetry_is_valid(window: pd.Series) -> bool:
+    """Return False for missing, stale, or insufficiently observed timing inputs.
+
+    Fail-CLOSED by construction. A window that does not *prove* it was built from
+    observed telemetry is treated as invalid, because the original live defect was
+    caused by exactly the opposite convention: an absent/zero value being read as
+    "healthy". Provenance must be asserted, never assumed.
+    """
+    # 1. Explicit invalidity always wins.
+    if "telemetry_valid" in window and not bool(window["telemetry_valid"]):
+        return False
+
+    # 2. Validity metadata must be PRESENT. A window carrying no provenance is
+    #    untrusted: absence of evidence is not evidence of health.
+    fraction = None
+    for key in VALIDITY_FRACTION_KEYS:
+        if key in window:
+            fraction = window[key]
+            break
+    if fraction is None:
+        # Tolerated only if the window explicitly asserts telemetry_valid=True.
+        if "telemetry_valid" not in window:
+            return False
+    elif pd.isna(fraction) or float(fraction) < 1.0:
+        return False
+
+    # 3. The features the decision path actually reads must be present and finite.
+    for name in REQUIRED_DECISION_FEATURES:
+        if name not in window:
+            return False
+        value = window[name]
+        if pd.isna(value) or not np.isfinite(float(value)):
+            return False
+    return True
 
 
 class GovernedHealingLoop:
@@ -64,17 +105,39 @@ def choose_action(
     start = perf_counter()
     threshold = float(config["healing"]["anomaly_threshold_ns"])
     budget = float(config["healing"]["decision_budget_s"])
+    openset = config.get("openset", {})
+    persistence_config = openset.get("persistence", {})
+    persistence_enabled = bool(persistence_config.get("enabled", False)) and persistence_state is not None
+    if not telemetry_is_valid(window):
+        # Invalid is deliberately its own persistence channel. It must never be
+        # averaged into a normal feature vector or short-circuited as healthy.
+        persisted_invalid = persistence_state.update(True, "invalid") if persistence_enabled else True
+        elapsed = perf_counter() - start
+        if persistence_enabled and not persisted_invalid:
+            return Decision(
+                "safe_default",
+                "telemetry invalid or missing; protective candidate awaiting temporal persistence",
+                "PENDING",
+                elapsed,
+                elapsed < budget,
+                float(window.get("offset_abs_max", float("nan"))),
+            )
+        return Decision(
+            "safe_default",
+            "telemetry invalid or missing; conservative safe response",
+            "UNKNOWN",
+            elapsed,
+            elapsed < budget,
+            float(window.get("offset_abs_max", float("nan"))),
+        )
     if not detect(window, threshold):
         elapsed = perf_counter() - start
         return Decision("safe_default", "no anomaly above configured threshold", "healthy", elapsed, elapsed < budget, float(window["offset_abs_max"]))
 
     features = list(getattr(clf, "feature_columns_", configured_feature_columns(config)))
     X = pd.DataFrame([window[features].to_dict()])
-    openset = config.get("openset", {})
     if novelty_detector is None:
         novelty_detector = getattr(clf, "novelty_detector_", None)
-    persistence_config = openset.get("persistence", {})
-    persistence_enabled = bool(persistence_config.get("enabled", False)) and persistence_state is not None
     raw_novel = False
     if bool(openset.get("enabled", False)) and novelty_detector is not None:
         raw_novel = bool(novelty_detector.predict_novel(X)[0])

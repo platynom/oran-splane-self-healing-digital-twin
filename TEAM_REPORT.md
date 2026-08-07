@@ -18,7 +18,48 @@ The project runs on a normal laptop and includes:
 6. A digital twin that compares recovery choices before the system acts.
 7. Real packet-capture readers, public TIMESAFE evaluation, and a Linux PTP/netem test harness.
 
-The automated suite contains **39 passing tests**.
+The automated suite contains **53 passing tests** after the live-validation additions.
+
+## What happened live
+
+We ran the software against real PTP programs and Linux network impairments, not only recordings.
+
+- The recommendation loop ran for **10 minutes** across delay variation, packet loss, and a holdover-style impairment. Average decision time was **0.081 seconds** and the slowest was **0.404 seconds**.
+- Live management data made **10 of 28 features** change; packet captures made **14 of 28** change. SyncE quality and physical GNSS status still require real equipment.
+- The longest uninterrupted normal session was **87.60 minutes**. The intended two-hour target was interrupted and is not claimed.
+- Almost every normal software-timestamped window was marked unfamiliar because laptop/WSL timing was measured in microseconds, not the hardware target of about 100 nanoseconds. This formed one sustained operator alarm rather than thousands of separate alarms.
+- A legitimate switch between two PTP masters was never called an attack. However, the session was already unfamiliar before the switch, so this does not prove the false-alarm rate on production timing hardware.
+- Under severe loss, the PTP management tool sometimes reported zero timing values, and the detector treated those as healthy. **This has since been fixed** — see below.
+
+## The one real bug we found, and how it was fixed
+
+Live testing exposed a genuine safety flaw. When the network was badly degraded, the
+timing tool returned nothing, our software substituted a zero, and a zero looks
+exactly like *perfect* synchronisation. So the system reported "healthy" at the
+precise moment it had gone blind — and worse, it skipped the entire "is this
+unfamiliar?" safety layer on the way. An attacker could have triggered this
+deliberately by flooding the link.
+
+The same mistake existed in the digital twin: with no data at all, it reported
+**maximum confidence** in its own predictions, which switched off the safeguard
+that is supposed to force a cautious response when the twin can't be trusted.
+
+The fix treats *missing data as its own state*, never as a number. The software now
+tracks whether each measurement was genuinely observed, and refuses to declare
+anything healthy unless it can prove it actually saw the data. Anything missing,
+incomplete, or unverifiable is routed to the safe response instead.
+
+| Situation | Before | After |
+|---|---|---|
+| No timing data received | "healthy" | "unknown" → safe response |
+| Half the samples missing | "healthy" | "unknown" → safe response |
+| Data with no proof of origin | "healthy" | "unknown" → safe response |
+| Normal healthy traffic | "healthy" | "healthy" (unchanged) |
+| Twin confidence with no data | 100% | 15% (correctly distrusted) |
+
+Ten tests now lock this behaviour in. They were written *before* the fix and
+confirmed to fail against the old code, so they test the actual bug rather than the
+patch. Detection accuracy was unaffected (99.1%), and the suite grew to **53 tests**.
 
 ## Final measured results
 
@@ -62,10 +103,11 @@ Solving that last problem requires something the attacker cannot forge, such as 
 ## Honest limitations
 
 - No hardware timestamp card, real clock, authenticated GNSS receiver, O-DU, or O-RU has been tested.
-- Public captures contain only a small number of independent attacks and no benign planned grandmaster change.
+- Public captures contain only a small number of independent attacks and no benign planned grandmaster change. A software failover was added, but its laptop timing distribution is not representative of production hardware.
 - SyncE quality still needs a live `synce4l` or radio-unit telemetry feed.
 - A model trained on one real attack style can fail completely on another style.
 - These are research measurements, not telecom certification.
+- The continuous baseline reached 87.60 minutes, not the two-hour target.
 
 ## Decision and next step
 

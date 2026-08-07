@@ -69,6 +69,10 @@ def test_unknown_healing_decision_uses_safe_default():
     window = pd.Series({column: 0.0 for column in FEATURE_COLUMNS})
     window["offset_abs_max"] = 180.0
     window["pdv_std"] = 10.0
+    # Provenance: assert this window was built from fully observed telemetry, so
+    # it reaches the novelty path rather than the fail-closed validity gate.
+    window["valid_sample_fraction"] = 1.0
+    window["telemetry_valid"] = True
     config = {
         "openset": {"enabled": True},
         "healing": {"anomaly_threshold_ns": 100.0, "decision_budget_s": 1.0},
@@ -93,6 +97,10 @@ def test_unknown_healing_decision_requires_configured_persistence():
     window = pd.Series({column: 0.0 for column in FEATURE_COLUMNS})
     window["offset_abs_max"] = 180.0
     window["pdv_std"] = 10.0
+    # Provenance: assert this window was built from fully observed telemetry, so
+    # it reaches the novelty path rather than the fail-closed validity gate.
+    window["valid_sample_fraction"] = 1.0
+    window["telemetry_valid"] = True
     config = {
         "openset": {"enabled": True, "persistence": {"enabled": True, "n": 2, "m": 3}},
         "healing": {"anomaly_threshold_ns": 100.0, "decision_budget_s": 1.0},

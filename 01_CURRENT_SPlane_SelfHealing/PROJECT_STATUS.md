@@ -2,8 +2,8 @@
 
 **Project:** AI-Native Self-Healing O-RAN Network using a Digital Twin
 **Scope:** Open Fronthaul S-plane timing security
-**Status:** software feature work closed; Tier 3 hardware validation next
-**Tests:** 39 passing
+**Status:** software feature work closed; live Tier-2 validation complete; missing-telemetry fail-open defect fixed and hardened; Tier 3 hardware next
+**Tests:** 53 passing after the final regression gate
 
 ## Final architecture
 
@@ -49,16 +49,59 @@ Related GNSS families remained in training during the multi-source experiment, s
 | Tier | Status | Evidence |
 |---|---|---|
 | Tier 1 | Complete | Deterministic simulator, labelled scenarios, classifier, twin, governed loop |
-| Tier 2 | Complete | Eight-seed statistics, real pcaps, TIMESAFE sessions, linuxptp/netem, open-set and persistence studies |
+| Tier 2 | Complete with live blockers | Eight-seed statistics, real pcaps, TIMESAFE sessions, linuxptp/netem, live pmc collection and recommendation-only loop |
 | Tier 3 | Not started | Hardware timestamps, physical clocks/receivers, authenticated GNSS, O-DU/O-RU |
+
+## Live validation checkpoint
+
+- Corrected PDV-aware live run: **600.34 s**, 2,167 valid windows across PDV/loss/holdover; mean latency **0.081 s**, maximum **0.404 s**.
+- Live feature coverage: **10/28 nonconstant from pmc** versus **14/28 from pcap**. SyncE QL and physical GNSS/O-RU fields remain unavailable.
+- Continuous benign segment achieved **87.60 min**, not the two-hour target. Persisted window FP was **99.993%**, but it was one sustained operator alarm (**0.690 episodes/hour**), exposing a whole-session simulator-to-software-live domain shift.
+- Baseline mean latency was **0.176 s**; maximum **1.510 s**; **100%** of measured decisions stayed inside 2 seconds.
+- A real two-master planned failover produced **0% H1**. UNKNOWN was already active before the switch, so a hardware-timestamped deployment FP remains unknown.
+- Severe-loss holdover exposed a missing-data weakness: zero-valued pmc timing fields bypassed the anomaly threshold and were reported healthy, skipping the open-set layer entirely. **Fixed and hardened** — see below.
+
+## Fail-closed telemetry handling (defect resolved)
+
+The live defect was a fail-**open** gate: absent `pmc` timing became `0.0`, which
+`detect()` read as "no anomaly", returning `healthy` *before* the novelty detector,
+classifier and persistence ran. It was attacker-inducible (flood the link, silence
+the detector). The identical pattern existed in the digital twin, where
+`fidelity_score` returned **1.0** — maximum trust — from entirely absent inputs,
+disabling the `fidelity < 0.35` conservative fallback.
+
+Missing data is now a first-class state, never a value. Validity flags
+(`offset_valid`, `path_delay_valid`, `telemetry_valid`) are carried from ingest
+through windowing to the decision gate; absent timing stays `NaN` rather than `0.0`,
+so a genuine 0 ns offset stays distinguishable from an unobserved one. The gate
+rejects invalid, NaN, non-finite **and provenance-less** windows, routing them to
+`UNKNOWN` → `safe_default` on a dedicated `"invalid"` persistence channel.
+
+| Input | Before | After |
+|---|---|---|
+| All-zero pmc window | `healthy` | `UNKNOWN` + safe_default |
+| NaN / non-finite feature | undefined | `UNKNOWN` + safe_default |
+| 50% sample loss | `healthy` | `UNKNOWN` + safe_default |
+| Window without provenance | `healthy` | `UNKNOWN` + safe_default |
+| Genuine healthy traffic | `healthy` | `healthy` (unchanged) |
+| Twin fidelity, missing inputs | **1.00** | **0.15** |
+
+Pinned by `tests/test_missing_data_safety.py` (10 tests, written before the fix and
+verified failing against the original code). No regression: multi-seed accuracy
+**0.991 ± 0.002**, recovery **1.000 ± 0.000**, MTTR **0.933 ± 0.008 s**, twin
+Pearson **0.998**. Full design rationale in `docs/FAIL_CLOSED_DESIGN.md`.
+
+Residual: verified in emulation and unit test; the original live trigger still
+warrants one privileged netem re-run (`loss`/`holdover`) to confirm end-to-end.
 
 ## Honest limitations
 
-- TIMESAFE contains no benign planned-GM-change session, making deployment FP optimistic for legitimate re-parenting.
+- TIMESAFE contains no benign planned-GM-change session. A software two-master test now exists, but its whole-session WSL domain shift prevents a clean hardware-deployment FP estimate.
 - Announce-trained closed-set RF tested on Sync sessions has 0% recall.
 - SyncE QL requires live `synce4l` or O-RU M-plane telemetry.
 - Real evaluation has few independent sessions and is not production certification.
 - No hardware timing source, authenticated GNSS receiver, hardware timestamp NIC, O-DU, or O-RU has been tested.
+- The two-hour live target was interrupted at 87.60 minutes and is not claimed as complete.
 
 ## Decision
 

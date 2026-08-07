@@ -1,5 +1,32 @@
 # Changes
 
+## 2026-08-06 - Live-validation capability audit (uncommitted)
+
+- Audited Windows 11 and Ubuntu 22.04 WSL2 resources, installed tool versions, privilege paths, and physical timing-device availability.
+- Exercised network namespaces, a veth pair, `tc netem`, and nanosecond-precision `tcpdump` capture under the actual WSL2 kernel, then confirmed all transient probe interfaces were cleaned up.
+- Installed the previously missing `ethtool` and confirmed every visible interface is software-timestamp-only; the exposed Hyper-V `/dev/ptp0` is not a NIC PHC and no GNSS receiver is present.
+- Recorded the dependency compatibility defect: the pinned requirements install on Python 3.12 but not Ubuntu's Python 3.10 because `numpy==2.4.1` requires Python 3.11 or newer.
+- Added measured Phase 0 artifacts `docs/ENV_CAPABILITY_AUDIT.md` and `results/env_audit.csv`, including feasibility gates and a two-hour disk projection based on existing 90-second capture sizes.
+- Added a pinned Python 3.10 Linux compatibility requirements set without changing the validated Python 3.12 dependency set.
+- Added `scripts/live_collect.py` for namespace-aware polling of the six requested pmc datasets, canonical rolling CSV output, counter-derived message rate, version-3.1 field parsing, Ctrl-C flushing, and explicit SyncE degradation.
+- Added `scripts/live_loop.py` to run live windows through the trained RF, grouped open-set detector, 1-of-1/2-of-3 persistence comparison, digital-twin governed recommendation, and latency/false-alarm artifact generation without applying actions.
+- Added fixture tests for real pmc field recovery, port-counter message rate, unsupported management datasets, and absent synce4l behavior.
+- Fixed the live-management path in `harness/netem_harness.sh` by assigning distinct master and slave UDS addresses; network namespaces do not isolate filesystem Unix sockets, so the previous shared default could make pmc query the wrong daemon. PTP traffic and impairment parameters are unchanged.
+- Batched pmc management requests into one process per poll to preserve the configured subsecond live-window cadence, and stopped treating the normal `UNCALIBRATED` convergence state as holdover when a GM is present.
+- Set the live poll default to 0.1 seconds after a real smoke test proved that 0.2 seconds plus pmc overhead yields only two samples in the unchanged 0.4-second model window (feature extraction requires at least three).
+- Replaced buffer-relative live windows with a fixed 0.2-second grid after the smoke transcript exposed nonmonotonic duplicate window starts; added a scheduling-jitter regression test and one-shot pmc outage/recovery logging for sequential harness scenarios.
+- Removed duplicate model inference from live 1-of-1 reporting: the existing `PENDING` state is the raw protective flag before 2-of-3 persistence, preserving the metric while halving live decision compute.
+- Corrected overlapping fixed-window extraction by translating observed sample timestamps onto the fixed grid while preserving their deltas; real scheduling jitter had otherwise shifted the feature extractor's internal anchor after the first window.
+- Moved pmc sampling to a dedicated producer thread so Isolation Forest/twin inference cannot starve the 0.1-second collector and leave model windows under-sampled.
+- Made every live-loop run stream the exact canonical input rows to a companion telemetry CSV and report attempted, valid, and under-sampled window counts, keeping long-run false-alarm denominators auditable.
+- Fixed live PDV/frequency observability after the first long stream audit: `pdv_ns` is now the measured path-delay residual against a rolling median, and zero-valued linuxptp rate output falls back to the observed offset slope. The original runs remain preserved and are not relabelled.
+- Added `scripts/analyze_live_validation.py` to regenerate exact long-baseline false-alarm/episode rates, corrected mixed-phase metrics, switch-local planned-GM results, latency, and live-pmc-vs-pcap feature coverage from preserved raw artifacts.
+- Completed and documented live validation: a corrected 600.34-second mixed run, 87.60-minute uninterrupted benign telemetry segment (two-hour target explicitly not achieved), real two-master failover, 10/28 live-pmc versus 14/28 pcap feature coverage, measured false alarms, deduplicated operator burden, and latency/deadline results.
+- Updated `PROJECT_STATUS.md` and plain-language `TEAM_REPORT.md` with live evidence and the newly discovered whole-session domain shift, pmc missing-data blind spot, and exact blocked items.
+- Final gates passed in Ubuntu/Python 3.10: 42 tests in 268.13 seconds, Tier 1 end-to-end reproduction, and eight-seed Tier 2 report regeneration. The repeated Windows pytest failures were confirmed as temporary-directory ACL errors rather than test assertion failures.
+- Added `harness/planned_gm_failover.sh`, a reversible three-namespace/two-master software BMCA experiment that stops preferred master A and measures legitimate re-parenting to master B through the same live collector/loop path.
+- Added a thin `harness/live_scenario_sequence.sh` orchestrator for the required live PDV/loss/holdover recommendation-only demonstration, retaining separate real pcaps and UTC phase markers.
+
 ## 2026-08-05 - Multi-source increment (uncommitted)
 
 - Added independently noisy/drifting GNSS, upstream PTP/LLS-C, and peer reference traces with a configured healthy agreement tolerance.
@@ -68,3 +95,43 @@
 - 2026-08-05: Added hard GNSS spoof and jam attack families against benign GNSS loss/holdover, plus fixed confusion, leave-one-family-out, timesource ablation, persistence, and existing-family regression evaluations in `GNSS_TIMESOURCE_EVAL.md`.
 - 2026-08-05: Routed cached real-session CSVs through canonical schema coercion so captures ingested before the GNSS columns existed receive explicit unavailable defaults instead of failing feature extraction.
 - 2026-08-05: Recorded the untuned GNSS finding: status features improve closed-set benign-holdover/spoof separation but unseen spoof and jam receive 0% full-system protection; PTP-only protection remains 30.17%/35.39%, so M-plane observability is necessary but insufficient.
+## 2026-08-07
+
+- Fixed a fail-open live-telemetry safety defect: absent or stale `pmc` timing fields are now represented as invalid (`NaN` plus explicit validity flags), never as a zero-nanosecond sync sample.
+- Added canonical `offset_valid`, `path_delay_valid`, `telemetry_valid`, and `stale_s` fields. Validity is inferred for legacy complete sources while invalid live/log-derived samples remain explicit.
+- Updated live collection to emit invalid canonical rows on failed polls and on `gmPresent false`, retaining outage evidence for persistence instead of dropping it.
+- Made governed healing fail closed: invalid or incomplete windows bypass neither safety checks nor persistence and route to `UNKNOWN`/`safe_default` with an auditable reason.
+- Propagated valid-sample quality through feature windows and made twin fidelity conservative for incomplete inputs. Updated linuxptp log ingestion to preserve a missing path delay as invalid rather than zero.
+- Added and executed missing-data safety regression coverage before source changes; no scenario thresholds or model metrics were tuned.
+- Live WSL holdover validation found a second representation of the same defect: local-master/ClockClass-255 holdover reports zero timing fields. It is now explicitly invalid, with a regression test based on the captured status combination.
+
+## Fail-closed hardening (missing-telemetry safety)
+
+Follow-up to the live-validation finding that zero-valued `pmc` fields were read
+as healthy. See `docs/FAIL_CLOSED_DESIGN.md`.
+
+- `healing/loop.py::telemetry_is_valid` now fails **closed on absent provenance**.
+  Previously a window carrying no `telemetry_valid` / `valid_sample_fraction`
+  defaulted to *valid* (`window.get(..., 1.0)`), i.e. the same permissive-default
+  pattern that caused the original defect. A window that cannot prove it was built
+  from observed telemetry is now rejected. Non-finite (`inf`) features are also
+  rejected. Constants `VALIDITY_FRACTION_KEYS`, `REQUIRED_DECISION_FEATURES` added.
+- `twin/model.py::fidelity_score` given the same treatment: absent provenance now
+  yields `MIN_FIDELITY` (new named constant, 0.15) instead of implicit full trust.
+  Post-guard reads changed from `.get(key, 0.0)` to direct indexing so a future
+  regression fails loudly rather than silently scoring 1.0.
+- `tests/test_missing_data_safety.py`: 10 tests, written before the fix and
+  verified failing against the original code. Adds provenance-absence,
+  non-finite-value and twin-trust cases.
+- `tests/test_openset.py`: two fixtures now assert provenance
+  (`valid_sample_fraction=1.0`, `telemetry_valid=True`) so they exercise the
+  novelty path rather than the validity gate. Behaviour unchanged; only the
+  fixtures predated provenance.
+- Audit sweep across `ingest/`, `scripts/`, `telemetry/`, `healing/`,
+  `discriminator/`, `twin/`, `harness/`: no remaining silent numeric defaults in
+  the decision path. The two broad `except Exception` handlers were reviewed and
+  are fail-safe (`live_loop.py` logs and stops; `run_netem_scenarios.py` records
+  per-scenario status), not fail-open.
+
+No regression: run_all accuracy 0.990 / recovery 1.000; multi-seed 0.991 ± 0.002,
+recovery 1.000 ± 0.000, MTTR 0.933 ± 0.008 s; twin Pearson 0.998; 53 tests passing.

@@ -23,6 +23,10 @@ TELEMETRY_COLUMNS = [
     "offset_ns",
     "measured_offset_ns",
     "path_delay_ns",
+    "offset_valid",
+    "path_delay_valid",
+    "telemetry_valid",
+    "stale_s",
     "pdv_ns",
     "freq_error_ppb",
     "oscillator_holdover_nominal_ppb",
@@ -57,6 +61,12 @@ TELEMETRY_COLUMNS = [
 _DEFAULTS = {
     "scenario": "live",
     "measured_offset_ns": None,   # filled from offset_ns if missing
+    # Legacy simulator/pcap rows with timing fields are considered observed.
+    # Live collection supplies explicit false values when a pmc poll is absent/stale.
+    "offset_valid": None,
+    "path_delay_valid": None,
+    "telemetry_valid": None,
+    "stale_s": 0.0,
     "freq_error_ppb": 0.0,
     "oscillator_holdover_nominal_ppb": 6.0,
     "oscillator_holdover_tolerance_ppb": 2.0,
@@ -101,8 +111,27 @@ def coerce_telemetry(df: pd.DataFrame) -> pd.DataFrame:
     for col, default in _DEFAULTS.items():
         if col not in out:
             out[col] = default
-    if out["measured_offset_ns"].isna().all():
-        out["measured_offset_ns"] = out["offset_ns"]
+    # Missing timing is a first-class condition. Never convert it to zero: zero is
+    # a legitimate observed offset and must remain distinguishable from no sample.
+    if out["offset_valid"].isna().all():
+        out["offset_valid"] = out["offset_ns"].notna()
+    else:
+        out["offset_valid"] = out["offset_valid"].fillna(out["offset_ns"].notna())
+    if out["path_delay_valid"].isna().all():
+        out["path_delay_valid"] = out["path_delay_ns"].notna()
+    else:
+        out["path_delay_valid"] = out["path_delay_valid"].fillna(out["path_delay_ns"].notna())
+    if out["telemetry_valid"].isna().all():
+        out["telemetry_valid"] = out["offset_valid"].astype(bool) & out["path_delay_valid"].astype(bool)
+    else:
+        out["telemetry_valid"] = out["telemetry_valid"].fillna(
+            out["offset_valid"].astype(bool) & out["path_delay_valid"].astype(bool)
+        )
+    out.loc[~out["offset_valid"].astype(bool), ["offset_ns", "measured_offset_ns"]] = float("nan")
+    out.loc[~out["path_delay_valid"].astype(bool), "path_delay_ns"] = float("nan")
+    out["measured_offset_ns"] = out["measured_offset_ns"].where(
+        out["measured_offset_ns"].notna(), out["offset_ns"]
+    )
     # types
     out["ptp_seq_id"] = out["ptp_seq_id"].astype(int)
     out["synce_ql"] = out["synce_ql"].astype(int)
@@ -123,6 +152,10 @@ def coerce_telemetry(df: pd.DataFrame) -> pd.DataFrame:
         values = sorted(out.loc[invalid_status, "gnss_sync_status"].unique())
         raise ValueError(f"invalid gnss_sync_status values: {values}")
     out["satellites_tracked"] = out["satellites_tracked"].astype(int)
+    out["offset_valid"] = out["offset_valid"].astype(bool)
+    out["path_delay_valid"] = out["path_delay_valid"].astype(bool)
+    out["telemetry_valid"] = out["telemetry_valid"].astype(bool)
+    out["stale_s"] = out["stale_s"].astype(float)
     out["gnss_available"] = out["gnss_available"].astype(bool)
     out["holdover"] = out["holdover"].astype(bool)
     out["attack_flag"] = out["attack_flag"].astype(bool)
@@ -138,6 +171,9 @@ def validate_telemetry(df: pd.DataFrame) -> bool:
         return False
     if [c for c in TELEMETRY_COLUMNS if c not in df.columns]:
         return False
-    if df[["t_s", "offset_ns", "path_delay_ns"]].isna().any().any():
+    if df["t_s"].isna().any():
+        return False
+    valid = df["telemetry_valid"].astype(bool)
+    if df.loc[valid, ["offset_ns", "path_delay_ns"]].isna().any().any():
         return False
     return bool((df["t_s"].diff().dropna() >= 0).all())  # monotonic time

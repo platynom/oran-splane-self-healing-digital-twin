@@ -156,6 +156,15 @@ def window_features(df: pd.DataFrame, window_s: float, step_s: float) -> pd.Data
                 continue
             labels = w["label"].value_counts()
             label = labels.index[0]
+            valid = (
+                w["telemetry_valid"].astype(bool)
+                if "telemetry_valid" in w.columns
+                else pd.Series(True, index=w.index)
+            )
+            valid_sample_rate = float(valid.mean())
+            # A partial timing window is not a valid model input. Leave its timing
+            # summaries non-finite and carry the quality marker to the healing loop.
+            timing = w if bool(valid.all()) else w.iloc[0:0]
             seq_diff = w["ptp_seq_id"].diff().fillna(1)
             msg_regular = w["ptp_msg_type"].isin(["Sync", "Announce"])
             features = {
@@ -165,11 +174,14 @@ def window_features(df: pd.DataFrame, window_s: float, step_s: float) -> pd.Data
                     "window_end_s": round(t + window_s, 6),
                     "label": label,
                     "is_anomalous": int(label != "healthy"),
-                    "offset_mean": float(w["offset_ns"].mean()),
-                    "offset_std": float(w["offset_ns"].std(ddof=0)),
-                    "offset_abs_max": float(w["offset_ns"].abs().max()),
-                    "path_delay_mean": float(w["path_delay_ns"].mean()),
-                    "pdv_std": float(w["pdv_ns"].std(ddof=0)),
+                    "telemetry_valid": bool(valid.all() and valid.sum() >= 3),
+                    "valid_sample_rate": valid_sample_rate,
+                    "valid_sample_fraction": valid_sample_rate,
+                    "offset_mean": float(timing["offset_ns"].mean()),
+                    "offset_std": float(timing["offset_ns"].std(ddof=0)),
+                    "offset_abs_max": float(timing["offset_ns"].abs().max()),
+                    "path_delay_mean": float(timing["path_delay_ns"].mean()),
+                    "pdv_std": float(timing["pdv_ns"].std(ddof=0)),
                     "seq_regressions": int((seq_diff < 0).sum()),
                     "msg_irregularity": float(1.0 - msg_regular.mean()),
                     "synce_ql_max": int(w["synce_ql"].max()),

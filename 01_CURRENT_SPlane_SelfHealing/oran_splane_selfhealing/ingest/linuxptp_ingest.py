@@ -49,10 +49,14 @@ def parse_linuxptp_lines(lines, scenario: str = "live", label: str = "unlabeled"
         if t0 is None:
             t0 = t
         delay = m.group("delay")
+        path_delay_valid = delay is not None
         rows.append({
             "t_s": t - t0,
             "offset_ns": float(m.group("offset")),
-            "path_delay_ns": float(delay) if delay is not None else 0.0,
+            "path_delay_ns": float(delay) if path_delay_valid else float("nan"),
+            "offset_valid": True,
+            "path_delay_valid": path_delay_valid,
+            "telemetry_valid": path_delay_valid,
             "freq_error_ppb": float(m.group("freq")),
             "ptp_seq_id": seq,
             "ptp_msg_type": "Sync",
