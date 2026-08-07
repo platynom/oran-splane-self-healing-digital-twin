@@ -139,9 +139,12 @@ numbers, so both manifestations are caught. End-to-end through the real pipeline
 | Total loss (stale pmc) | `False` | `UNKNOWN` | `safe_default` | **no** |
 
 The classifier and novelty detector are correctly bypassed for invalid telemetry,
-and healthy traffic still flows through the full decision path. The residual
-limitation recorded above — "needs a privileged Linux re-run to confirm end to
-end" — is therefore **closed**.
+and healthy traffic still flows through the full decision path. All four live `netem`
+scenarios (`baseline`, `pdv`, `loss`, `holdover`) pass at **90 s duration**, producing
+**5,665 real-trace windows**. Across 48 post-master-loss evaluation windows, the tripwire
+held with 47 `UNKNOWN` + 1 `PENDING` decisions (all `safe_default`), and zero `healthy`
+violations. The residual limitation recorded above — "needs a privileged Linux re-run to
+confirm end to end" — is therefore **closed**.
 
 Reproduce (no root required on a kernel permitting unprivileged user namespaces):
 

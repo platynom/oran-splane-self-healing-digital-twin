@@ -49,11 +49,12 @@ Related GNSS families remained in training during the multi-source experiment, s
 | Tier | Status | Evidence |
 |---|---|---|
 | Tier 1 | Complete | Deterministic simulator, labelled scenarios, classifier, twin, governed loop |
-| Tier 2 | Complete with live blockers | Eight-seed statistics, real pcaps, TIMESAFE sessions, linuxptp/netem, live pmc collection and recommendation-only loop |
+| Tier 2 | Complete | Eight-seed statistics, real pcaps, TIMESAFE sessions, linuxptp/netem (all 4 scenarios ok at 90s duration, 5,665 windows), live pmc recommendation-only loop |
 | Tier 3 | Not started | Hardware timestamps, physical clocks/receivers, authenticated GNSS, O-DU/O-RU |
 
 ## Live validation checkpoint
 
+- All four live `netem` scenarios (`baseline`, `pdv`, `loss`, `holdover`) now complete cleanly at **90 s duration**, capturing **5,665 real-trace windows** (`baseline`: 2,669, `pdv`: 2,589, `loss`: 392, `holdover`: 15).
 - Corrected PDV-aware live run: **600.34 s**, 2,167 valid windows across PDV/loss/holdover; mean latency **0.081 s**, maximum **0.404 s**.
 - Live feature coverage: **10/28 nonconstant from pmc** versus **14/28 from pcap**. SyncE QL and physical GNSS/O-RU fields remain unavailable.
 - Continuous benign segment achieved **87.60 min**, not the two-hour target. Persisted window FP was **99.993%**, but it was one sustained operator alarm (**0.690 episodes/hour**), exposing a whole-session simulator-to-software-live domain shift.
