@@ -1,0 +1,13 @@
+wall_time,scenario,window_start_s,offset_abs_max_ns,pdv_std_ns,label,action,reason,decision_latency_s,end_to_end_latency_s,within_budget,protective_1of1,protective_2of3
+2026-08-06T16:05:20.240773+00:00,baseline,0.08992568900001174,1671.0,0.0,PENDING,safe_default,protective candidate awaiting temporal persistence,0.14809178099997666,0.14817879899999298,True,True,False
+2026-08-06T16:05:20.639572+00:00,baseline,0.28992568900001175,1671.0,0.0,UNKNOWN,safe_default,persistent out-of-distribution / novel; conservative safe response,0.23294308199999136,0.23304026699997848,True,True,True
+2026-08-06T16:05:20.927151+00:00,baseline,0.48992568900001177,2010.0,0.0,UNKNOWN,safe_default,persistent out-of-distribution / novel; conservative safe response,0.2513711990000047,0.2514638560000151,True,True,True
+2026-08-06T16:05:21.601020+00:00,baseline,1.2899256890000117,2316.0,0.0,UNKNOWN,safe_default,persistent out-of-distribution / novel; conservative safe response,0.26019061799999577,0.26029356799998027,True,True,True
+2026-08-06T16:05:21.956751+00:00,baseline,1.4899256890000117,2907.0,0.0,UNKNOWN,safe_default,persistent out-of-distribution / novel; conservative safe response,0.30363404499999547,0.3037305779999997,True,True,True
+2026-08-06T16:05:22.550318+00:00,baseline,2.289925689000012,2617.0,0.0,UNKNOWN,safe_default,persistent out-of-distribution / novel; conservative safe response,0.23992233600000645,0.24002365100000134,True,True,True
+2026-08-06T16:05:22.837568+00:00,baseline,2.489925689000012,1981.0,0.0,UNKNOWN,safe_default,persistent out-of-distribution / novel; conservative safe response,0.21612538700000528,0.21619924299997706,True,True,True
+2026-08-06T16:05:23.062944+00:00,baseline,2.6899256890000123,2255.0,0.0,UNKNOWN,safe_default,persistent out-of-distribution / novel; conservative safe response,0.1932239719999984,0.19334239200000525,True,True,True
+2026-08-06T16:05:23.285432+00:00,baseline,2.8899256890000125,2255.0,0.0,UNKNOWN,safe_default,persistent out-of-distribution / novel; conservative safe response,0.18877667200001724,0.1888443969999969,True,True,True
+2026-08-06T16:05:24.053307+00:00,baseline,3.8899256890000133,1477.0,0.0,UNKNOWN,safe_default,persistent out-of-distribution / novel; conservative safe response,0.1546833010000057,0.1547695440000041,True,True,True
+2026-08-06T16:05:24.271980+00:00,baseline,4.0899256890000135,1704.0,0.0,UNKNOWN,safe_default,persistent out-of-distribution / novel; conservative safe response,0.17430345500000044,0.17438478500000087,True,True,True
+2026-08-06T16:05:24.680473+00:00,baseline,4.489925689000014,2177.0,0.0,UNKNOWN,safe_default,persistent out-of-distribution / novel; conservative safe response,0.15529742499998633,0.15539466699999593,True,True,True

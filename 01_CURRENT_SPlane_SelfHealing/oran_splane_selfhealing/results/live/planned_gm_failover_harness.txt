@@ -1,0 +1,7 @@
+phase=master_a_active seconds=90 utc=2026-08-06T16:18:01Z
+tcpdump: listening on gmsr, link-type EN10MB (Ethernet), snapshot length 262144 bytes
+phase=master_a_stopped_master_b_failover seconds=90 utc=2026-08-06T16:19:31Z
+phase=complete utc=2026-08-06T16:21:01Z pcap=results/live/planned_gm_failover.pcap
+7507 packets captured
+7509 packets received by filter
+0 packets dropped by kernel

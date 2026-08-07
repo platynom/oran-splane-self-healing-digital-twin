@@ -1,0 +1,37 @@
+category,item,status,value,notes
+environment,host_os,MEASURED,Windows 11 Home Single Language 10.0.26200,build 26200
+environment,linux,READY,Ubuntu 22.04.5 LTS,WSL2
+environment,kernel,MEASURED,6.18.33.1-microsoft-standard-WSL2,
+environment,cpu,MEASURED,12 host logical / 6 WSL,
+environment,ram,MEASURED,23.91 GiB host / 15 GiB WSL,5.61 GiB host free and about 14 GiB WSL available at audit
+environment,disk,MEASURED,83.64 GiB C drive free,WSL root reported about 929 GiB available
+environment,python_windows,READY,3.12.13,.venv-codex-priv contains pinned dependencies
+environment,python_wsl,NEEDS-FIX,3.10.12,numpy 2.4.1 pin requires Python 3.11 or newer
+tooling,ptp4l,INSTALLED,3.1.1,software timestamping
+tooling,pmc,INSTALLED,3.1.1,actual output must be checked against parser
+tooling,phc2sys,INSTALLED,3.1.1,
+tooling,synce4l,NEEDS-INSTALL,missing,not in Ubuntu 22.04 apt index; source build required
+tooling,tcpdump,INSTALLED,4.99.1,libpcap 1.10.1
+tooling,iproute2,INSTALLED,5.15.0,ip and tc
+tooling,ethtool,INSTALLED,5.16,installed safely during audit
+tooling,gcc,INSTALLED,11.4.0,
+tooling,make,INSTALLED,4.3,
+privilege,passwordless_sudo,BLOCKED,password required,wsl -u root is available for unattended controlled runs
+kernel,network_namespace,PASS,created and removed caudns,
+kernel,veth,PASS,created and configured caud0/caud1,
+kernel,netem,PASS,1ms delay 200us variation 1pct loss,
+kernel,tcpdump_nano,PASS,9 fractional timestamp digits,captured 20:48:38.155187753
+hardware,lo,SOFTWARE-ONLY,no PHC,software tx/rx/system timestamps
+hardware,eth0,SOFTWARE-ONLY,no PHC,software tx/rx/system timestamps
+hardware,docker0,SOFTWARE-ONLY,no PHC,software rx/system timestamps
+hardware,ptp_device,BLOCKED,/dev/ptp0 hyperv synthetic,not a NIC PHC
+hardware,gnss,BLOCKED,none,no serial GNSS device and no gpsd
+feasibility,live_pmc,READY,linuxptp 3.1.1,v3 parser compatibility to verify
+feasibility,live_synce4l,NEEDS-INSTALL,source build plus SyncE hardware,collector must degrade gracefully
+feasibility,netem_ptp4l,READY,all kernel probes passed,
+feasibility,two_hour_baseline,READY-WITH-CONTROLS,projected about 22 MB core artifacts,use wsl root launch and prevent host sleep
+feasibility,planned_gm_change,READY,two software masters,software timestamps sufficient
+feasibility,tier3_hardware,BLOCKED,no NIC PHC or GNSS receiver,
+post_audit,python310_compatibility,READY,requirements-py310.txt installed,pip check reported no broken requirements
+post_audit,full_regression,PASS,42 tests,Ubuntu Python 3.10.12; 268.13 seconds
+post_audit,two_hour_baseline,BLOCKED,5255.80 seconds achieved,desktop execution interruption prevented the 7200-second target

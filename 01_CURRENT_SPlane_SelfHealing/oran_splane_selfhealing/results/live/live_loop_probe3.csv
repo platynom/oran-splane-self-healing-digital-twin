@@ -1,0 +1,2 @@
+wall_time,scenario,window_start_s,offset_abs_max_ns,pdv_std_ns,label,action,reason,decision_latency_s,end_to_end_latency_s,within_budget,protective_1of1,protective_2of3
+2026-08-06T16:01:57.465149+00:00,baseline,0.057564631999998284,1736.0,0.0,PENDING,safe_default,protective candidate awaiting temporal persistence,0.07436068499999848,0.0743953779999984,True,True,False

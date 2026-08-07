@@ -1,6 +1,6 @@
 # Tier 2 — Realistic Software Validation Report
 
-Generated: 2026-08-05T19:14:39  |  seeds: [1588, 2026, 7, 42, 101, 900, 31415, 27182]
+Generated: 2026-08-07T12:19:45  |  seeds: [1588, 2026, 7, 42, 101, 900, 31415, 27182]
 
 This report upgrades the single-run prototype numbers to multi-seed confidence intervals, tests generalization to unseen attacks, validates the digital twin, and proves the real-trace ingestion path — all CPU-only, no hardware.
 

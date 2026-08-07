@@ -54,6 +54,9 @@ outputs/*.db
 
 # Raw telemetry, replay logs, and bulky generated decision streams.
 **/data/telemetry/raw/*.log
+**/results/live/*transcript*.txt
+**/results/live/*_transcript.txt
+**/results/live/*_decisions_telemetry.csv
 outputs/*.jsonl
 outputs/live_backend*.log
 outputs/live_backend*.err

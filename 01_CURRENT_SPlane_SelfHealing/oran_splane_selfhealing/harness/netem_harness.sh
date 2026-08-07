@@ -75,7 +75,7 @@ TCPDUMP_PID=$!
 sleep 1
 
 # 4) PTP master (root ns) + slave (namespace), L2 + software timestamping
-cat > /tmp/splane_ptp.conf <<'EOF'
+cat > /tmp/splane_ptp_master.conf <<'EOF'
 [global]
 network_transport L2
 time_stamping     software
@@ -83,11 +83,23 @@ delay_mechanism   E2E
 logSyncInterval   -3
 logMinDelayReqInterval -3
 tx_timestamp_timeout 50
+uds_address       /var/run/ptp4l-splane-master
 EOF
 
-ptp4l -f /tmp/splane_ptp.conf -i "$VETH_M" -m -q > /tmp/ptp4l_master.log 2>&1 &
+cat > /tmp/splane_ptp_slave.conf <<'EOF'
+[global]
+network_transport L2
+time_stamping     software
+delay_mechanism   E2E
+logSyncInterval   -3
+logMinDelayReqInterval -3
+tx_timestamp_timeout 50
+uds_address       /var/run/ptp4l-splane-slave
+EOF
+
+ptp4l -f /tmp/splane_ptp_master.conf -i "$VETH_M" -m -q > /tmp/ptp4l_master.log 2>&1 &
 PTP_M_PID=$!
-ip netns exec "$NS" ptp4l -f /tmp/splane_ptp.conf -i "$VETH_S" -s -m -q > /tmp/ptp4l_slave.log 2>&1 &
+ip netns exec "$NS" ptp4l -f /tmp/splane_ptp_slave.conf -i "$VETH_S" -s -m -q > /tmp/ptp4l_slave.log 2>&1 &
 PTP_S_PID=$!
 
 echo "capturing for ${DURATION}s -> $OUT_PCAP"
