@@ -1,7 +1,7 @@
 # O-RAN S-Plane Self-Healing Digital Twin
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776AB)](https://www.python.org/)
-[![Tests](https://img.shields.io/badge/tests-53%20passed-2ea44f)](01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/tests)
+[![Tests](https://img.shields.io/badge/tests-56%20passed-2ea44f)](01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/tests)
 [![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
 
 A CPU-only research prototype that detects O-RAN Open Fronthaul synchronization anomalies, distinguishes benign timing faults from attacks, evaluates recovery actions in a digital twin, and selects an auditable response before the approximately two-second failure window.

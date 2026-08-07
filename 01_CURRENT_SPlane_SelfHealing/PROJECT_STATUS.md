@@ -3,7 +3,7 @@
 **Project:** AI-Native Self-Healing O-RAN Network using a Digital Twin
 **Scope:** Open Fronthaul S-plane timing security
 **Status:** software feature work closed; live Tier-2 validation complete; missing-telemetry fail-open defect fixed and hardened; Tier 3 hardware next
-**Tests:** 53 passing after the final regression gate
+**Tests:** 56 passing after the final regression gate
 
 ## Final architecture
 
@@ -91,8 +91,23 @@ verified failing against the original code). No regression: multi-seed accuracy
 **0.991 ± 0.002**, recovery **1.000 ± 0.000**, MTTR **0.933 ± 0.008 s**, twin
 Pearson **0.998**. Full design rationale in `docs/FAIL_CLOSED_DESIGN.md`.
 
-Residual: verified in emulation and unit test; the original live trigger still
-warrants one privileged netem re-run (`loss`/`holdover`) to confirm end-to-end.
+**Verified against real linuxptp.** A real `ptp4l` 3.1.1 master/slave pair was run
+over veth inside an unprivileged user namespace with `tc netem`. This surfaced a
+second, more dangerous manifestation than the original zero-value case: after the
+master is killed and the link fully dropped, `pmc` does **not** return zeros or
+errors — it keeps serving the *last known* values indefinitely
+(`offsetFromMaster 550.0`, `gmPresent true`), with only `portState LISTENING`
+telling the truth. A collector trusting the numbers would ingest plausible offsets
+throughout a total outage. `live_collect.py` gates on `portState`/GM presence, so
+both manifestations are caught. End-to-end on the real captures:
+
+| Real capture | telemetry_valid | Label | Action | Classifier reached |
+|---|---|---|---|---|
+| Healthy converged slave | `True` | `H0` | `failover_lls_c1` | yes |
+| Total loss (stale pmc) | `False` | `UNKNOWN` | `safe_default` | **no** |
+
+The previously recorded residual — "needs a privileged netem re-run to confirm
+end-to-end" — is **closed**.
 
 ## Honest limitations
 

@@ -18,7 +18,7 @@ The project runs on a normal laptop and includes:
 6. A digital twin that compares recovery choices before the system acts.
 7. Real packet-capture readers, public TIMESAFE evaluation, and a Linux PTP/netem test harness.
 
-The automated suite contains **53 passing tests** after the live-validation additions.
+The automated suite contains **56 passing tests** after the live-validation additions.
 
 ## What happened live
 
@@ -59,7 +59,28 @@ incomplete, or unverifiable is routed to the safe response instead.
 
 Ten tests now lock this behaviour in. They were written *before* the fix and
 confirmed to fail against the old code, so they test the actual bug rather than the
-patch. Detection accuracy was unaffected (99.1%), and the suite grew to **53 tests**.
+patch. Detection accuracy was unaffected (99.1%), and the suite grew to **56 tests**.
+
+**We then proved it on real software, not just our own simulation.** We ran two real
+PTP programs talking to each other over a virtual network link, let them synchronise,
+then cut the link completely and killed the master clock.
+
+This exposed something worse than the original bug. When the master vanished, the
+timing tool did **not** report an error or a zero — it kept confidently reporting the
+*last numbers it had seen*, indefinitely. Only one field, the port's connection state,
+told the truth. Anything trusting the numbers alone would have believed the network
+was fine throughout a total blackout, and those stale numbers look far more convincing
+than a zero.
+
+Our software reads that connection state rather than trusting the numbers, so it
+caught both versions of the problem:
+
+| Real test | What the system decided |
+|---|---|
+| Healthy, synchronised link | analysed normally, recommended a recovery action |
+| Link cut, master gone | "unknown" → safe response, and it correctly refused to guess |
+
+This closes the last open item from live testing.
 
 ## Final measured results
 

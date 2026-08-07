@@ -22,7 +22,7 @@ sys.path.insert(0, str(ROOT))
 
 from healing.loop import GovernedHealingLoop, choose_action
 from ingest.schema import coerce_telemetry
-from telemetry.features import configured_feature_columns
+from telemetry.features import configured_feature_columns, window_features
 from twin.model import fidelity_score
 
 NO_ANOMALY_REASON = "no anomaly above configured threshold"
@@ -170,3 +170,62 @@ def test_twin_fidelity_untrusted_without_provenance():
         }
     )
     assert fidelity_score(trusted) > 0.9
+
+
+# --- h) REAL linuxptp captures: stale-but-plausible pmc during a total outage --
+#
+# Captured from a real ptp4l 3.1.1 master/slave pair over veth with the master
+# killed and `tc netem loss 100%` applied. Crucially `pmc` does NOT return zeros
+# or errors when the master disappears -- it keeps serving the last known values
+# (offsetFromMaster 550.0, gmPresent true) with only portState telling the truth.
+# Trusting the numbers alone would ingest plausible offsets through a blackout.
+
+FIXTURES = Path(__file__).parent / "fixtures"
+
+
+def _pmc_outputs(name):
+    text = (FIXTURES / name).read_text()
+    return {
+        "CURRENT_DATA_SET": text,
+        "TIME_STATUS_NP": text,
+        "PORT_DATA_SET": text,
+        "PORT_SERVICE_STATS_NP": "",
+        "PORT_STATS_NP": "",
+    }
+
+
+def test_real_pmc_healthy_capture_is_valid():
+    from scripts.live_collect import parse_live_pmc
+
+    row, _ = parse_live_pmc(_pmc_outputs("pmc_real_healthy.txt"), None, 0.05)
+    assert bool(row["telemetry_valid"]) is True
+    assert not pd.isna(row["offset_ns"])
+
+
+def test_real_pmc_total_loss_is_rejected_despite_plausible_values():
+    from scripts.live_collect import parse_live_pmc
+
+    text = (FIXTURES / "pmc_real_total_loss.txt").read_text()
+    # The capture really does still contain a plausible-looking offset.
+    assert "offsetFromMaster" in text
+    row, _ = parse_live_pmc(_pmc_outputs("pmc_real_total_loss.txt"), None, 0.05)
+    assert bool(row["telemetry_valid"]) is False
+    assert pd.isna(row["offset_ns"])
+
+
+def test_real_total_loss_end_to_end_yields_unknown():
+    """Full path on the real capture: ingest -> window -> governed decision."""
+    from scripts.live_collect import parse_live_pmc
+
+    outputs = _pmc_outputs("pmc_real_total_loss.txt")
+    rows, prev = [], None
+    for i in range(12):
+        row, prev = parse_live_pmc(outputs, prev, 0.05)
+        row = dict(row)
+        row.update(t_s=i * 0.05, scenario="live", run_id=0, label="unlabeled")
+        rows.append(row)
+    windows = window_features(coerce_telemetry(pd.DataFrame(rows)), 0.4, 0.2)
+    assert not windows.empty
+    decision = choose_action(windows.iloc[0], _DummyClf(), _config())
+    assert decision.label_estimate == "UNKNOWN"
+    assert decision.action == "safe_default"

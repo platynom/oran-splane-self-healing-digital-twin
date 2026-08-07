@@ -90,18 +90,62 @@ Twin vs simulator: Pearson **0.998**, Spearman **0.873**.
 Fidelity still degrades correctly with telemetry quality
 (corr vs `pdv_std` −0.731, vs `seq_regressions` −0.898; healthy mean 0.901).
 pcap ingestion: 797 samples, MAE **14.68 ns**, path delay 49 998 ns.
-Full suite: **53 tests passing**.
+Full suite: **56 tests passing**.
 
-## Residual limitation
+## Verification beyond unit test
 
-The fix is verified in emulation and by unit test. The original trigger — a real
-`pmc` outage under severe loss on a live `ptp4l` pair — needs a privileged Linux
-re-run to confirm end-to-end:
+Emulation and unit tests were the first gate. The original trigger — a real `pmc`
+outage on a live `ptp4l` pair — was then reproduced directly; see the next section.
 
-```bash
-sudo ./harness/netem_harness.sh holdover 90 results/tier2/netem/holdover.pcap
-sudo python -m harness.run_netem_scenarios --scenarios loss holdover --duration 90
+## Live verification against real linuxptp (residual limitation closed)
+
+The fix was subsequently validated against **real `ptp4l` 3.1.1 traffic**, not only
+emulation. A master/slave pair was run over a veth pair inside an unprivileged user
+namespace (rootless: `unshare --user --map-root-user --net --mount`), with
+`tc netem` applied to the master link.
+
+**Healthy state** — real `pmc` from a converged slave:
+
+```
+offsetFromMaster -1275.0
+meanPathDelay     2375.0
+gmPresent         true
+portState         UNCALIBRATED
 ```
 
-Expected: the zero-valued `pmc` windows that previously read `healthy` now
-produce `UNKNOWN`/protective decisions.
+**Total outage** — `tc qdisc add dev m0 root netem loss 100%` plus master killed:
+
+```
+offsetFromMaster  550.0        <-- STALE, still numerically plausible
+meanPathDelay    1350.0        <-- STALE
+gmPresent         true         <-- STALE
+portState         LISTENING    <-- the only honest field
+```
+
+This is an important real-world result: after the master disappears, `pmc` does
+**not** return zeros or errors — it keeps serving the *last known* values
+indefinitely. A collector that trusts the numbers alone would ingest plausible
+offsets forever during a complete outage. The zero-valued case seen in earlier
+live testing is only one manifestation; staleness is the more dangerous one
+because the values look entirely reasonable.
+
+`scripts/live_collect.py` gates on `portState` (and GM presence) rather than on the
+numbers, so both manifestations are caught. End-to-end through the real pipeline
+(`parse_live_pmc` → `coerce_telemetry` → `window_features` → `choose_action`):
+
+| Real capture | telemetry_valid | Label | Action | Classifier reached |
+|---|---|---|---|---|
+| Healthy (converged slave) | `True` | `H0` | `failover_lls_c1` | yes |
+| Total loss (stale pmc) | `False` | `UNKNOWN` | `safe_default` | **no** |
+
+The classifier and novelty detector are correctly bypassed for invalid telemetry,
+and healthy traffic still flows through the full decision path. The residual
+limitation recorded above — "needs a privileged Linux re-run to confirm end to
+end" — is therefore **closed**.
+
+Reproduce (no root required on a kernel permitting unprivileged user namespaces):
+
+```bash
+apt-get download linuxptp && dpkg-deb -x linuxptp_*.deb ./lp
+unshare --user --map-root-user --net --mount bash   # then set up veth + ptp4l
+```

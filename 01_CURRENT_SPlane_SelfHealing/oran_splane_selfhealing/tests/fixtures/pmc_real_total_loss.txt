@@ -1,0 +1,27 @@
+sending: GET CURRENT_DATA_SET
+	b62716.fffe.210c58-0 seq 0 RESPONSE MANAGEMENT CURRENT_DATA_SET 
+		stepsRemoved     1
+		offsetFromMaster 550.0
+		meanPathDelay    1350.0
+sending: GET TIME_STATUS_NP
+	b62716.fffe.210c58-0 seq 0 RESPONSE MANAGEMENT TIME_STATUS_NP 
+		master_offset              550
+		ingress_time               0
+		cumulativeScaledRateOffset +0.000000000
+		scaledLastGmPhaseChange    0
+		gmTimeBaseIndicator        0
+		lastGmPhaseChange          0x0000'0000000000000000.0000
+		gmPresent                  true
+		gmIdentity                 5e0dd9.fffe.3bc957
+sending: GET PORT_DATA_SET
+	b62716.fffe.210c58-1 seq 0 RESPONSE MANAGEMENT PORT_DATA_SET 
+		portIdentity            b62716.fffe.210c58-1
+		portState               LISTENING
+		logMinDelayReqInterval  -3
+		peerMeanPathDelay       0
+		logAnnounceInterval     -2
+		announceReceiptTimeout  3
+		logSyncInterval         -3
+		delayMechanism          1
+		logMinPdelayReqInterval 0
+		versionNumber           2
