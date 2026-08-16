@@ -27,20 +27,9 @@ from telemetry.features import configured_feature_columns, window_features
 
 ROOT = Path(__file__).resolve().parents[1]
 SUPPORTED_REPLAY_FIELDS = frozenset({"sequence_id", "origin_timestamp", "message_type"})
-MESSAGE_CODES = {
-    "Sync": ptp_wire.MT_SYNC,
-    "Follow_Up": ptp_wire.MT_FOLLOW_UP,
-    "Delay_Req": ptp_wire.MT_DELAY_REQ,
-    "Delay_Resp": ptp_wire.MT_DELAY_RESP,
-    "Announce": ptp_wire.MT_ANNOUNCE,
-}
-PACKET_LENGTHS = {
-    "Sync": 58.0,
-    "Follow_Up": 58.0,
-    "Delay_Req": 58.0,
-    "Delay_Resp": 58.0,
-    "Announce": 78.0,
-}
+MASTER_MAC = bytes.fromhex("001b19aabbcc")
+SLAVE_MAC = bytes.fromhex("001b1900ddee")
+PCAP_EPOCH_NS = 1_700_000_000 * 1_000_000_000
 
 
 @dataclass(frozen=True)
@@ -82,7 +71,8 @@ class CandidateResult:
     params: str
     exceeds_budget: bool
     offset_ns: float
-    transformer_flagged: bool
+    transformer_representable: bool
+    transformer_flagged: bool | None
     rf_flagged: bool
     openset_flagged: bool
 
@@ -125,23 +115,6 @@ def _injection_indices(params: ReplayParameters, cfg: SimConfig) -> set[int]:
     return {int(round(float(value) / cfg.dt_s)) for value in times if value <= params.onset_s + params.duration_s}
 
 
-def _validate_wire_encoding(row: dict, params: ReplayParameters) -> None:
-    """Round-trip each forged packet through the existing PTP codec."""
-    name = str(row["ptp_msg_type"])
-    message_type = MESSAGE_CODES[name]
-    origin = int(round((float(row["t_s"]) * 1e9) - float(row["offset_ns"])))
-    payload = ptp_wire.build_ptp_payload(
-        message_type,
-        int(row["ptp_seq_id"]),
-        origin_ts_ns=max(0, origin),
-    )
-    decoded = ptp_wire.decode_ptp_payload(payload)
-    if decoded is None or decoded.msg_type != message_type:
-        raise ValueError("candidate did not round-trip as a legal PTP payload")
-    if "sequence_id" in params.forged_fields and decoded.seq_id != int(row["ptp_seq_id"]) % 65536:
-        raise ValueError("replayed sequence ID did not survive PTP encoding")
-
-
 def generate_replay_telemetry(params: ReplayParameters, config: dict | None = None) -> pd.DataFrame:
     """Regenerate one parameterized replay scenario through the existing simulator."""
     cfg_dict = config or load_config()
@@ -170,7 +143,6 @@ def generate_replay_telemetry(params: ReplayParameters, config: dict | None = No
             row["measured_offset_ns"] = float(row["measured_offset_ns"]) + magnitude
         if "message_type" in params.forged_fields:
             row["ptp_msg_type"] = "Follow_Up"
-        _validate_wire_encoding(row, params)
 
     telemetry = simulate(cfg, scenario="ptp_replay", mutator=mutate)
     telemetry["run_id"] = 0
@@ -178,24 +150,62 @@ def generate_replay_telemetry(params: ReplayParameters, config: dict | None = No
     return coerce_telemetry(telemetry)
 
 
-def telemetry_packet_features(telemetry: pd.DataFrame) -> tuple[np.ndarray, np.ndarray]:
-    """Map simulated legal PTP rows to the Phase-0 packet victim's five inputs."""
-    messages = telemetry["ptp_msg_type"].astype(str)
-    unknown = sorted(set(messages) - set(MESSAGE_CODES))
-    if unknown:
-        raise ValueError(f"unsupported PTP message types: {unknown}")
-    inter_arrival = telemetry["t_s"].astype(float).diff().fillna(0.0).clip(lower=0.0)
-    features = np.column_stack(
-        [
-            np.zeros(len(telemetry), dtype=float),
-            messages.map(PACKET_LENGTHS).to_numpy(dtype=float),
-            telemetry["ptp_seq_id"].to_numpy(dtype=float) % 65536,
-            messages.map(MESSAGE_CODES).to_numpy(dtype=float),
-            inter_arrival.to_numpy(dtype=float),
-        ]
-    ).astype(np.float32)
-    labels = telemetry["attack_flag"].astype(int).to_numpy(dtype=np.int64)
-    return features, labels
+def write_replay_pcap(telemetry: pd.DataFrame, path: Path) -> np.ndarray:
+    """Serialize telemetry as real two-step PTP exchanges and return packet labels."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    packet_labels: list[int] = []
+    with ptp_wire.PcapWriter(str(path)) as writer:
+        for row in telemetry.itertuples(index=False):
+            t1 = PCAP_EPOCH_NS + int(round(float(row.t_s) * 1e9))
+            offset = float(row.offset_ns)
+            path_delay = float(row.path_delay_ns)
+            if not np.isfinite(offset) or not np.isfinite(path_delay):
+                raise ValueError("timing-invalid telemetry cannot be represented as a PTP exchange")
+            t2 = t1 + int(round(path_delay + offset))
+            t3 = t2 + 500_000
+            t4 = t3 + int(round(path_delay - offset))
+            response_capture = t3 + int(round(2.0 * path_delay))
+            seq_id = int(row.ptp_seq_id) % 65536
+            exchanges = (
+                (
+                    t2,
+                    SLAVE_MAC,
+                    MASTER_MAC,
+                    ptp_wire.build_ptp_payload(ptp_wire.MT_SYNC, seq_id, origin_ts_ns=0),
+                ),
+                (
+                    t2 + 1_000,
+                    SLAVE_MAC,
+                    MASTER_MAC,
+                    ptp_wire.build_ptp_payload(ptp_wire.MT_FOLLOW_UP, seq_id, origin_ts_ns=t1),
+                ),
+                (
+                    t3,
+                    MASTER_MAC,
+                    SLAVE_MAC,
+                    ptp_wire.build_ptp_payload(ptp_wire.MT_DELAY_REQ, seq_id, origin_ts_ns=0),
+                ),
+                (
+                    response_capture,
+                    SLAVE_MAC,
+                    MASTER_MAC,
+                    ptp_wire.build_ptp_payload(ptp_wire.MT_DELAY_RESP, seq_id, origin_ts_ns=t4),
+                ),
+            )
+            for capture_ns, destination, source, payload in exchanges:
+                writer.write(
+                    capture_ns,
+                    ptp_wire.build_eth_frame(destination, source, payload),
+                )
+                packet_labels.append(int(bool(row.attack_flag)))
+    return np.asarray(packet_labels, dtype=np.int64)
+
+
+def phase0_packet_features(path: Path) -> np.ndarray:
+    """Use the exact Phase-0 pcap decoder and five-feature extraction path."""
+    from evasion.victim_transformer import _pcap_packet_frame
+
+    return _pcap_packet_frame(path).to_numpy(dtype=np.float32)
 
 
 class RobustnessHarness:
@@ -235,19 +245,57 @@ class RobustnessHarness:
             training_loss=list(checkpoint["training_loss"]),
         )
 
-    def _transformer_flag(self, telemetry: pd.DataFrame) -> bool:
+    def _transformer_predictions(
+        self, packet_features: np.ndarray, packet_labels: np.ndarray
+    ) -> tuple[np.ndarray, np.ndarray]:
         import torch
 
         from evasion.victim_transformer import sliding_windows
 
-        packet_features, packet_labels = telemetry_packet_features(telemetry)
         windows, attack_overlap = sliding_windows(
             self.transformer.transform(packet_features), packet_labels
         )
         with torch.no_grad():
             probabilities = torch.sigmoid(self.transformer.model(torch.from_numpy(windows))).numpy()
-        attack_predictions = probabilities[attack_overlap.astype(bool)] >= 0.5
-        return bool(attack_predictions.any())
+        return probabilities >= 0.5, attack_overlap.astype(bool)
+
+    def phase0_consistency_check(self) -> dict[str, float | int]:
+        """Reproduce the checkpoint's complete held-session result through this adapter."""
+        from evasion.victim_transformer import load_capture_sessions
+
+        sessions = {item.capture_id: item for item in load_capture_sessions(self.root)}
+        predictions: list[np.ndarray] = []
+        targets: list[np.ndarray] = []
+        for capture_id in self.transformer.test_sessions:
+            session = sessions[str(capture_id)]
+            features = phase0_packet_features(session.pcap_path)
+            prediction, target = self._transformer_predictions(features, session.packet_labels)
+            predictions.append(prediction)
+            targets.append(target)
+        prediction_all = np.concatenate(predictions)
+        target_all = np.concatenate(targets)
+        return {
+            "windows": int(len(target_all)),
+            "accuracy": float(np.mean(prediction_all == target_all)),
+            "attack_windows": int(target_all.sum()),
+            "attack_flag_rate": float(prediction_all[target_all].mean()),
+        }
+
+    def _transformer_flag(self, telemetry: pd.DataFrame) -> tuple[bool, bool | None]:
+        candidate_pcap = self.root / "results" / "evasion" / "project_api" / "replay_candidate.pcap"
+        try:
+            packet_labels = write_replay_pcap(telemetry, candidate_pcap)
+            packet_features = phase0_packet_features(candidate_pcap)
+            if len(packet_features) != len(packet_labels):
+                raise ValueError("decoded packet count does not match serialized candidate")
+            predictions, attack_overlap = self._transformer_predictions(
+                packet_features, packet_labels
+            )
+            if not attack_overlap.any():
+                raise ValueError("candidate produced no transformer attack windows")
+        except (OSError, ValueError):
+            return False, None
+        return True, bool(predictions[attack_overlap].any())
 
     def evaluate(self, params: ReplayParameters) -> CandidateResult:
         telemetry = generate_replay_telemetry(params, self.config)
@@ -268,11 +316,13 @@ class RobustnessHarness:
         n, m = int(persistence["n"]), int(persistence["m"])
         rf_flags = apply_persistence(raw_rf, n=n, m=m)
         novelty_flags = apply_persistence(raw_novel, n=n, m=m)
+        transformer_representable, transformer_flagged = self._transformer_flag(telemetry)
         return CandidateResult(
             params=params.to_json(),
             exceeds_budget=bool(offset_ns >= float(self.config["time_error_budget_ns"])),
             offset_ns=offset_ns,
-            transformer_flagged=self._transformer_flag(telemetry),
+            transformer_representable=transformer_representable,
+            transformer_flagged=transformer_flagged,
             rf_flagged=bool(rf_flags.any()),
             openset_flagged=bool(novelty_flags.any()),
         )
@@ -285,6 +335,7 @@ class RobustnessHarness:
                 "params",
                 "exceeds_budget",
                 "offset_ns",
+                "transformer_representable",
                 "transformer_flagged",
                 "rf_flagged",
                 "openset_flagged",
