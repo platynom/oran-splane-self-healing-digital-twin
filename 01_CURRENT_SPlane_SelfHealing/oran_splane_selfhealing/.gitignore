@@ -1,5 +1,9 @@
 __pycache__/
 *.py[cod]
+.pytest_step1*/
+**/results/evasion/pytest_basetemp/
+~$*.xlsx
+evasion/pytest_workspace_tmp.py
 .pytest_cache/
 pytest-cache-files*/
 results/pytest_tmp/

@@ -1,0 +1,3 @@
+victim,data_source,split_strategy,train_sessions,test_sessions,test_samples,accuracy,tn,fp,fn,tp,confusion_matrix,gate_threshold,gate_passed
+timesafe_class_transformer,real_public_pcap_packet_windows,GroupShuffleSplit_complete_capture,announce_session_1;announce_session_2;sync_singlestep_session,announce_session_3;sync_followup_session,7194,0.9936057825966083,1173,0,46,5975,"[[1173,0],[46,5975]]",0.95,True
+project_rf_openset_2of3,real_public_timesafe_telemetry_windows,GroupShuffleSplit_complete_capture,announce_session_1;announce_session_2;sync_singlestep_session,announce_session_3;sync_followup_session,836,0.8648325358851675,108,113,0,615,"[[108,113],[0,615]]",,not_applicable
