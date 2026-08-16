@@ -1,9 +1,19 @@
-# Codex Master Prompt — run this once, then stop at each STOP gate
+# Codex Master Prompt — AUTONOMOUS mode (no human relay)
 
-You are working in the repo `oran-splane-self-healing-digital-twin`. A human is supervising and will
-verify each step with a second reviewer before you continue. **Do exactly one STEP at a time. At each
-"STOP" you must halt, print the requested evidence, and wait — do NOT continue until the human says
-"continue".**
+You are working in the repo `oran-splane-self-healing-digital-twin`. There is **no human in the loop**.
+You coordinate with an automated **Reviewer** ONLY through files in
+`01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/evasion_handoff/`. Read
+`evasion_handoff/PROTOCOL.md` first — it is the contract.
+
+**How each "STOP" below works in autonomous mode:** when a step says STOP, you instead:
+1. Write your evidence to `evasion_handoff/reports/codex_step_<N>.md` (contents per PROTOCOL.md).
+2. Set `evasion_handoff/STATE.json` to `status:"AWAITING_REVIEW"`, `last_updated_by:"codex"`.
+3. **Poll `STATE.json` every few minutes.** When the Reviewer sets:
+   - `APPROVED` -> set `current_step=N+1`, `status:"PENDING_CODEX"`, and do the next step.
+   - `CHANGES_REQUESTED` -> read `evasion_handoff/reviews/review_step_<N>.md`, fix, overwrite your
+     report, set `AWAITING_REVIEW` again.
+   - `BLOCKED_NEEDS_HUMAN` or `DONE` -> halt and wait; do nothing further.
+Do exactly one STEP at a time. Never skip the report/poll cycle.
 
 Two committed design docs are your full specification — read them before Step 1:
 - `01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/docs/EVASION_MODULE_DESIGN.md` (the research design)

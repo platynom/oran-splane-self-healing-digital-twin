@@ -81,3 +81,8 @@ data/training/*_augmented_training.csv
 # Study-only downloaded reference papers (kept locally, not in git — see reference_papers/README.md)
 **/docs/reference_papers/*.pdf
 _report_tocmap.json
+
+# Autonomous handoff: live coordination files (branch-independent working-tree state)
+**/evasion_handoff/STATE.json
+**/evasion_handoff/reports/
+**/evasion_handoff/reviews/
