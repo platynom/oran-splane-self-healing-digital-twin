@@ -77,3 +77,7 @@ data/training/*_augmented_training.csv
 02_PREVIOUS_Work/**/data/**/*.csv
 02_PREVIOUS_Work/**/outputs/
 02_PREVIOUS_Work/gen2_KPM_FlexRIC_twin/*.pptx
+
+# Study-only downloaded reference papers (kept locally, not in git — see reference_papers/README.md)
+**/docs/reference_papers/*.pdf
+_report_tocmap.json
