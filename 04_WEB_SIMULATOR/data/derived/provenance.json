@@ -1,0 +1,148 @@
+{
+  "sources": [
+    {
+      "path": "03_RECOVERY_LOOP_S-PLANE/results/recovery_eval_runs_r13-r17.tgz",
+      "sha256": "f444187e3b7e303382e951089a9a4ba0756f8a15440bf0c344c664f8569b1674",
+      "verified_against": "03_RECOVERY_LOOP_S-PLANE/results/SHA256SUMS.txt"
+    },
+    {
+      "path": "03_RECOVERY_LOOP_S-PLANE/results/EVALUATION_RL.json",
+      "sha256": "46a6d21e7cb488c5d0b4cc2574e5f5a7ef7937fd88ffff0703252da24fb6733d",
+      "verified_against": "03_RECOVERY_LOOP_S-PLANE/results/SHA256SUMS.txt"
+    },
+    {
+      "path": "01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/gap_coverage_2026-09-20/corrected_final/splane_campaign_CORRECTED_2026-09-20.tgz",
+      "sha256": "6149b4fb15940cdac694ba8666d97041b4eb62d5523d2631c1edf96d531e4ed9",
+      "verified_against": "01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/gap_coverage_2026-09-20/corrected_final/splane_campaign_CORRECTED_2026-09-20.tgz.sha256"
+    },
+    {
+      "path": "01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/gap_coverage_2026-09-20/corrected_final/EVALUATION_V4.json",
+      "sha256": "8288ee175387f2cacbdfbf4564f97037aa3814b82fa3217f10edafda09be9bbd",
+      "verified_against": null
+    },
+    {
+      "path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_Fault_Detectability_v2026-10-05.xlsx",
+      "sha256": "169017534c68913443397239cab843ac7ba1f62f6b1438cf83a1b45411b9af9c",
+      "verified_against": null
+    },
+    {
+      "path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_Attack_vs_Benign_Classification_v2026-10-05.xlsx",
+      "sha256": "1c6c38e8f19d22f8374dccf6f12b723adf2bee019314e8bb69be029b89bcf2a4",
+      "verified_against": null
+    },
+    {
+      "path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_Packets_to_Classification_2026-10-05.xlsx",
+      "sha256": "c64552a41ba249ee1aa0595be5fd4d2472039ec9bb0d66970c6e89551f1d53cf",
+      "verified_against": null
+    },
+    {
+      "path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_Parameter_Fault_Matrix_v2026-10-05.xlsx",
+      "sha256": "0709d763207b7440f51542927d0903dc0fbc3bc77ca7864c1fb3a08dd3fceeb5",
+      "verified_against": null
+    }
+  ],
+  "notes": [
+    {
+      "topic": "pcap alignment",
+      "detail": "tcpdump stamps frames with CLOCK_REALTIME; the loop, observer and ptp4l use CLOCK_MONOTONIC. Each run's packet series is aligned with one anchor (BC downstream port's first Announce vs its ptp4l 'to MASTER' line). Validated on 36 independent anchors (rogue / rogue-BC / standby-BC / replacement-BC first Announce vs their own 'to MASTER' log line): median residual 0.1 ms, max |residual| 1.0 ms."
+    },
+    {
+      "topic": "campaign context.json rep field",
+      "detail": "36 campaign runs (C1_removal, C2_malformed, C3_wholesecond) carry rep=901 in context.json while the directory name gives 1..12. evaluate_v4.py takes the replicate from the directory name, so this app does the same. Informational; no number changes."
+    }
+  ],
+  "anchorResiduals_s": [
+    0.0004,
+    0.0007,
+    0.0003,
+    0.0003,
+    -0.0002,
+    -0.0001,
+    -0.0004,
+    -0.0006,
+    0.0001,
+    -0.001,
+    -0.0005,
+    0.0002,
+    0.0002,
+    0.0005,
+    0.0005,
+    0.0001,
+    -0.0007,
+    0.0001,
+    0.0006,
+    -0.0,
+    0.0003,
+    -0.0007,
+    0.0007,
+    -0.0,
+    -0.0004,
+    0.0003,
+    -0.0001,
+    0.0001,
+    -0.0003,
+    0.0007,
+    0.0002,
+    -0.0003,
+    0.0009,
+    0.0006,
+    -0.0004,
+    0.0
+  ],
+  "counts": {
+    "recovery_runs": 140,
+    "campaign_runs": 168,
+    "faults": 22,
+    "look_alikes": 7
+  },
+  "campaign_eval_v4": {
+    "generated": "2026-09-20T21:07:21.988442Z",
+    "n_runs": 168,
+    "v3": {
+      "tp": 95,
+      "fn": 1,
+      "tn": 47,
+      "fp": 12,
+      "n_attack": 96,
+      "n_benign": 60,
+      "n_unknown": 12,
+      "abstain_substantive": 12,
+      "pooled_sensitivity": [
+        0.9896,
+        0.9433,
+        0.9982
+      ],
+      "pooled_specificity": [
+        0.7833,
+        0.6638,
+        0.8688
+      ],
+      "attribution": [
+        0.875,
+        0.7941,
+        0.927
+      ]
+    },
+    "frozen": {
+      "tp": 60,
+      "fn": 36,
+      "tn": 47,
+      "fp": 12,
+      "pooled_sensitivity": [
+        0.625,
+        0.5251,
+        0.7153
+      ],
+      "pooled_specificity": [
+        0.7833,
+        0.6638,
+        0.8688
+      ],
+      "attribution": [
+        0.5521,
+        0.4525,
+        0.6476
+      ]
+    }
+  }
+}

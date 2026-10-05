@@ -1,0 +1,12 @@
+node_modules/
+.next/
+out/
+.env
+.env.local
+test-results/
+playwright-report/
+*.tsbuildinfo
+*.tmp.mjs
+live/__pycache__/
+live/.pytest_cache/
+ingest/__pycache__/
