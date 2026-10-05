@@ -1,0 +1,11 @@
+{
+  "scenario": "A1_rogue_master",
+  "truth_class": "attack",
+  "truth_fault": "A1",
+  "verdict": "ATTACK",
+  "fault_hint": "A1",
+  "reasons": [
+    "Unauthorised clock advertising ITSELF as grandmaster (not in the provisioned allow-list): {'020000fffe0000bf': {'n': 157, 'self_announce_pkts': 157}}"
+  ],
+  "rule": "decision_rule_v3 (frozen v3)"
+}

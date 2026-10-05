@@ -1,0 +1,11 @@
+{
+  "scenario": "A5_dos_flood",
+  "truth_class": "attack",
+  "truth_fault": "A5",
+  "verdict": "ATTACK",
+  "fault_hint": "A5",
+  "reasons": [
+    "Source(s) transmitting Announce far above the rate they themselves declare (G.8275.1 mandates 8/s): {'0000000000000000': {'observed_hz': 631.86, 'declared_hz': 1.0, 'n': 29400}}"
+  ],
+  "rule": "decision_rule_v3 (frozen v3)"
+}

@@ -1,0 +1,7 @@
+run_id=s51 phase=setup event=tcpdump_ready utc=2026-09-11T14:42:16Z monotonic_s=109.80 status=PASS
+run_id=s51 phase=setup event=master_a_ready utc=2026-09-11T14:42:17Z monotonic_s=109.81 status=PASS
+run_id=s51 phase=setup event=master_b_ready utc=2026-09-11T14:42:17Z monotonic_s=109.82 status=PASS
+run_id=s51 phase=setup event=slave_ready utc=2026-09-11T14:42:17Z monotonic_s=109.82 status=PASS
+run_id=s51 phase=authorized_source_change_intervention event=phase_started utc=2026-09-11T14:42:17Z monotonic_s=109.83 status=PASS
+run_id=s51 phase=authorized_source_change_intervention event=preferred_master_stop_confirmed utc=2026-09-11T14:42:47Z monotonic_s=139.84 status=PASS
+run_id=s51 phase=authorized_source_change_intervention event=phase_finished utc=2026-09-11T14:43:17Z monotonic_s=169.85 status=PASS

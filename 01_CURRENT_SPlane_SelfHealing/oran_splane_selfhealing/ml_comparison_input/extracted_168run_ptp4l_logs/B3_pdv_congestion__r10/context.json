@@ -1,0 +1,10 @@
+{ "scenario":"B3_pdv_congestion", "class":"benign", "fault_id":"B3",
+  "rep":10,
+  "gm_allowlist":["020000fffe00000a","020000fffe00000b"],
+  "provisioned_backup_gm":"020000fffe00000b",
+  "expected_bc_identity":"020000fffe000001",
+  "expected_client_identities":["020000fffe00000c","020000fffe00000d","020000fffe00000e"],
+  "expected_steps_removed_at_ru":1,
+  "maintenance_window_open":false,
+  "randomised_params_seed":10,
+  "description":"Congestion on the BC->RU timing path: 1mbit tbf bottleneck with competing non-PTP background traffic (burst-intensity from pdv params 5/2); real queueing delay + PDV, no loss, no protocol anomaly" }

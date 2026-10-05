@@ -1,0 +1,40 @@
+ptp4l[6081.952]: port 1 (v-bc-up): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[6081.992]: port 2 (v-bc-dn): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[6081.992]: port 0 (/var/run/p.bc): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[6081.992]: port 0 (/var/run/pr.bc): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[6082.336]: port 1 (v-bc-up): LISTENING to MASTER on ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES
+ptp4l[6082.336]: selected local clock 020000.fffe.000001 as best master
+ptp4l[6082.336]: port 1 (v-bc-up): assuming the grand master role
+ptp4l[6082.368]: port 1 (v-bc-up): new foreign master 020000.fffe.00000a-1
+ptp4l[6082.401]: port 2 (v-bc-dn): LISTENING to MASTER on ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES
+ptp4l[6082.401]: port 1 (v-bc-up): assuming the grand master role
+ptp4l[6082.401]: port 2 (v-bc-dn): assuming the grand master role
+ptp4l[6082.440]: port 1 (v-bc-up): new foreign master 020000.fffe.00000b-1
+ptp4l[6082.618]: selected best master clock 020000.fffe.00000a
+ptp4l[6082.618]: foreign master not using PTP timescale
+ptp4l[6082.618]: port 1 (v-bc-up): MASTER to UNCALIBRATED on RS_SLAVE
+ptp4l[6082.690]: foreign master not using PTP timescale
+ptp4l[6084.683]: master offset       -416 s0 freq   -1666 path delay      5202
+ptp4l[6086.687]: master offset       3028 s0 freq   +2047 path delay      5856
+ptp4l[6088.687]: master offset       1060 s0 freq    -999 path delay      5824
+ptp4l[6090.690]: master offset       1531 s0 freq    -261 path delay      4831
+ptp4l[6092.692]: master offset       2648 s0 freq    +359 path delay      4432
+ptp4l[6094.694]: master offset      -2795 s0 freq   -2394 path delay      5082
+ptp4l[6096.697]: master offset      -2975 s0 freq   +1379 path delay      8023
+ptp4l[6098.700]: master offset      -4030 s0 freq   -1423 path delay      6227
+ptp4l[6100.703]: master offset      -2337 s0 freq    +847 path delay      6231
+ptp4l[6102.706]: master offset      20799 s0 freq  +10841 path delay      4801
+ptp4l[6104.709]: master offset      -2613 s0 freq  -10871 path delay      6431
+ptp4l[6106.711]: master offset      -2413 s0 freq    -400 path delay      5431
+ptp4l[6108.714]: master offset       3002 s0 freq   +2470 path delay      4962
+ptp4l[6110.376]: port 1 (v-bc-up): UNCALIBRATED to MASTER on ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES
+ptp4l[6110.376]: selected best master clock 020000.fffe.00000b
+ptp4l[6110.376]: foreign master not using PTP timescale
+ptp4l[6110.376]: port 1 (v-bc-up): MASTER to UNCALIBRATED on RS_SLAVE
+ptp4l[6112.416]: master offset       6280 s0 freq    +535 path delay      4859
+ptp4l[6114.418]: master offset       2288 s0 freq   -1070 path delay      6708
+ptp4l[6116.422]: master offset       7036 s0 freq   +1185 path delay      4335
+ptp4l[6118.425]: master offset      -2912 s0 freq   -3243 path delay      7788
+ptp4l[6120.428]: master offset       -117 s0 freq    +604 path delay      6202
+ptp4l[6122.431]: master offset       -274 s0 freq    +376 path delay      7113
+ptp4l[6124.434]: master offset       -983 s0 freq    -715 path delay      6391

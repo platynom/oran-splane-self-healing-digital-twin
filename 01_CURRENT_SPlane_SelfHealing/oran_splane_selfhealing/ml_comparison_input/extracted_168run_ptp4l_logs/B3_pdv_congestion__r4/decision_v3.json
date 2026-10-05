@@ -1,0 +1,11 @@
+{
+  "scenario": "B3_pdv_congestion",
+  "truth_class": "benign",
+  "truth_fault": "B3",
+  "verdict": "UNKNOWN",
+  "fault_hint": "B2?",
+  "reasons": [
+    "Grandmaster changed between provisioned clocks with NO maintenance window open - cannot attribute intent"
+  ],
+  "rule": "decision_rule_v3 (frozen v3)"
+}

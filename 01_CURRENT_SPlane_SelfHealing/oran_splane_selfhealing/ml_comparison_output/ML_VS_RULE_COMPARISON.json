@@ -1,0 +1,3951 @@
+{
+  "experiment": "AI-vs-frozen-rule S-plane timing classification",
+  "measurement_status": "completed",
+  "input_sha256_expected": "bc20005f270e2679d4d0f656600ce07e6c7ff8ed9d8ca98f4c1a07477414b1c7",
+  "input_sha256_actual": "bc20005f270e2679d4d0f656600ce07e6c7ff8ed9d8ca98f4c1a07477414b1c7",
+  "input_sha256_verified": true,
+  "n_runs_found": 168,
+  "required_file_missing_count": 48,
+  "missing_files": [
+    {
+      "run": "B3_pdv_congestion__r1",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "B3_pdv_congestion__r10",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "B3_pdv_congestion__r11",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "B3_pdv_congestion__r12",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "B3_pdv_congestion__r2",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "B3_pdv_congestion__r3",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "B3_pdv_congestion__r4",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "B3_pdv_congestion__r5",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "B3_pdv_congestion__r6",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "B3_pdv_congestion__r7",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "B3_pdv_congestion__r8",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "B3_pdv_congestion__r9",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "C1_removal__r1",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "C1_removal__r10",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "C1_removal__r11",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "C1_removal__r12",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "C1_removal__r2",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "C1_removal__r3",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "C1_removal__r4",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "C1_removal__r5",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "C1_removal__r6",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "C1_removal__r7",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "C1_removal__r8",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "C1_removal__r9",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "C2_malformed__r1",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "C2_malformed__r10",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "C2_malformed__r11",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "C2_malformed__r12",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "C2_malformed__r2",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "C2_malformed__r3",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "C2_malformed__r4",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "C2_malformed__r5",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "C2_malformed__r6",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "C2_malformed__r7",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "C2_malformed__r8",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "C2_malformed__r9",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "C3_wholesecond__r1",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "C3_wholesecond__r10",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "C3_wholesecond__r11",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "C3_wholesecond__r12",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "C3_wholesecond__r2",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "C3_wholesecond__r3",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "C3_wholesecond__r4",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "C3_wholesecond__r5",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "C3_wholesecond__r6",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "C3_wholesecond__r7",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "C3_wholesecond__r8",
+      "file": "pmc.jsonl"
+    },
+    {
+      "run": "C3_wholesecond__r9",
+      "file": "pmc.jsonl"
+    }
+  ],
+  "context_rep_mismatch_count": 36,
+  "context_rep_mismatches": [
+    {
+      "run": "C1_removal__r1",
+      "directory_rep": 1,
+      "context_rep": 901
+    },
+    {
+      "run": "C1_removal__r10",
+      "directory_rep": 10,
+      "context_rep": 901
+    },
+    {
+      "run": "C1_removal__r11",
+      "directory_rep": 11,
+      "context_rep": 901
+    },
+    {
+      "run": "C1_removal__r12",
+      "directory_rep": 12,
+      "context_rep": 901
+    },
+    {
+      "run": "C1_removal__r2",
+      "directory_rep": 2,
+      "context_rep": 901
+    },
+    {
+      "run": "C1_removal__r3",
+      "directory_rep": 3,
+      "context_rep": 901
+    },
+    {
+      "run": "C1_removal__r4",
+      "directory_rep": 4,
+      "context_rep": 901
+    },
+    {
+      "run": "C1_removal__r5",
+      "directory_rep": 5,
+      "context_rep": 901
+    },
+    {
+      "run": "C1_removal__r6",
+      "directory_rep": 6,
+      "context_rep": 901
+    },
+    {
+      "run": "C1_removal__r7",
+      "directory_rep": 7,
+      "context_rep": 901
+    },
+    {
+      "run": "C1_removal__r8",
+      "directory_rep": 8,
+      "context_rep": 901
+    },
+    {
+      "run": "C1_removal__r9",
+      "directory_rep": 9,
+      "context_rep": 901
+    },
+    {
+      "run": "C2_malformed__r1",
+      "directory_rep": 1,
+      "context_rep": 901
+    },
+    {
+      "run": "C2_malformed__r10",
+      "directory_rep": 10,
+      "context_rep": 901
+    },
+    {
+      "run": "C2_malformed__r11",
+      "directory_rep": 11,
+      "context_rep": 901
+    },
+    {
+      "run": "C2_malformed__r12",
+      "directory_rep": 12,
+      "context_rep": 901
+    },
+    {
+      "run": "C2_malformed__r2",
+      "directory_rep": 2,
+      "context_rep": 901
+    },
+    {
+      "run": "C2_malformed__r3",
+      "directory_rep": 3,
+      "context_rep": 901
+    },
+    {
+      "run": "C2_malformed__r4",
+      "directory_rep": 4,
+      "context_rep": 901
+    },
+    {
+      "run": "C2_malformed__r5",
+      "directory_rep": 5,
+      "context_rep": 901
+    },
+    {
+      "run": "C2_malformed__r6",
+      "directory_rep": 6,
+      "context_rep": 901
+    },
+    {
+      "run": "C2_malformed__r7",
+      "directory_rep": 7,
+      "context_rep": 901
+    },
+    {
+      "run": "C2_malformed__r8",
+      "directory_rep": 8,
+      "context_rep": 901
+    },
+    {
+      "run": "C2_malformed__r9",
+      "directory_rep": 9,
+      "context_rep": 901
+    },
+    {
+      "run": "C3_wholesecond__r1",
+      "directory_rep": 1,
+      "context_rep": 901
+    },
+    {
+      "run": "C3_wholesecond__r10",
+      "directory_rep": 10,
+      "context_rep": 901
+    },
+    {
+      "run": "C3_wholesecond__r11",
+      "directory_rep": 11,
+      "context_rep": 901
+    },
+    {
+      "run": "C3_wholesecond__r12",
+      "directory_rep": 12,
+      "context_rep": 901
+    },
+    {
+      "run": "C3_wholesecond__r2",
+      "directory_rep": 2,
+      "context_rep": 901
+    },
+    {
+      "run": "C3_wholesecond__r3",
+      "directory_rep": 3,
+      "context_rep": 901
+    },
+    {
+      "run": "C3_wholesecond__r4",
+      "directory_rep": 4,
+      "context_rep": 901
+    },
+    {
+      "run": "C3_wholesecond__r5",
+      "directory_rep": 5,
+      "context_rep": 901
+    },
+    {
+      "run": "C3_wholesecond__r6",
+      "directory_rep": 6,
+      "context_rep": 901
+    },
+    {
+      "run": "C3_wholesecond__r7",
+      "directory_rep": 7,
+      "context_rep": 901
+    },
+    {
+      "run": "C3_wholesecond__r8",
+      "directory_rep": 8,
+      "context_rep": 901
+    },
+    {
+      "run": "C3_wholesecond__r9",
+      "directory_rep": 9,
+      "context_rep": 901
+    }
+  ],
+  "seeds": {
+    "random_forest": 1588,
+    "isolation_forest_base": 1588
+  },
+  "train_reps": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "test_reps": [
+    9,
+    10,
+    11,
+    12
+  ],
+  "session_overlap": [],
+  "window_s": 0.4,
+  "step_s": 0.2,
+  "model_hyperparameters_fixed_before_comparison": {
+    "n_estimators": 90,
+    "max_depth": 6,
+    "class_weight": "balanced",
+    "random_state": 1588
+  },
+  "parser": {
+    "files_attempted": 1008,
+    "files_parsed": 672,
+    "rows_parsed": 13512,
+    "failures": [
+      {
+        "run": "A1_rogue_master__r1",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A1_rogue_master__r1",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A1_rogue_master__r10",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A1_rogue_master__r10",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A1_rogue_master__r11",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A1_rogue_master__r11",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A1_rogue_master__r12",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A1_rogue_master__r12",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A1_rogue_master__r2",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A1_rogue_master__r2",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A1_rogue_master__r3",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A1_rogue_master__r3",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A1_rogue_master__r4",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A1_rogue_master__r4",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A1_rogue_master__r5",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A1_rogue_master__r5",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A1_rogue_master__r6",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A1_rogue_master__r6",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A1_rogue_master__r7",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A1_rogue_master__r7",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A1_rogue_master__r8",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A1_rogue_master__r8",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A1_rogue_master__r9",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A1_rogue_master__r9",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A2_sync_spoof__r1",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A2_sync_spoof__r1",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A2_sync_spoof__r10",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A2_sync_spoof__r10",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A2_sync_spoof__r11",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A2_sync_spoof__r11",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A2_sync_spoof__r12",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A2_sync_spoof__r12",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A2_sync_spoof__r2",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A2_sync_spoof__r2",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A2_sync_spoof__r3",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A2_sync_spoof__r3",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A2_sync_spoof__r4",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A2_sync_spoof__r4",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A2_sync_spoof__r5",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A2_sync_spoof__r5",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A2_sync_spoof__r6",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A2_sync_spoof__r6",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A2_sync_spoof__r7",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A2_sync_spoof__r7",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A2_sync_spoof__r8",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A2_sync_spoof__r8",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A2_sync_spoof__r9",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A2_sync_spoof__r9",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A3_replay__r1",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A3_replay__r1",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A3_replay__r10",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A3_replay__r10",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A3_replay__r11",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A3_replay__r11",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A3_replay__r12",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A3_replay__r12",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A3_replay__r2",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A3_replay__r2",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A3_replay__r3",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A3_replay__r3",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A3_replay__r4",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A3_replay__r4",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A3_replay__r5",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A3_replay__r5",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A3_replay__r6",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A3_replay__r6",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A3_replay__r7",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A3_replay__r7",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A3_replay__r8",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A3_replay__r8",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A3_replay__r9",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A3_replay__r9",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A5_dos_flood__r1",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A5_dos_flood__r1",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A5_dos_flood__r10",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A5_dos_flood__r10",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A5_dos_flood__r11",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A5_dos_flood__r11",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A5_dos_flood__r12",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A5_dos_flood__r12",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A5_dos_flood__r2",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A5_dos_flood__r2",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A5_dos_flood__r3",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A5_dos_flood__r3",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A5_dos_flood__r4",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A5_dos_flood__r4",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A5_dos_flood__r5",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A5_dos_flood__r5",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A5_dos_flood__r6",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A5_dos_flood__r6",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A5_dos_flood__r7",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A5_dos_flood__r7",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A5_dos_flood__r8",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A5_dos_flood__r8",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A5_dos_flood__r9",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A5_dos_flood__r9",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A8_rogue_bc__r1",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A8_rogue_bc__r1",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A8_rogue_bc__r10",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A8_rogue_bc__r10",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A8_rogue_bc__r11",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A8_rogue_bc__r11",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A8_rogue_bc__r12",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A8_rogue_bc__r12",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A8_rogue_bc__r2",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A8_rogue_bc__r2",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A8_rogue_bc__r3",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A8_rogue_bc__r3",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A8_rogue_bc__r4",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A8_rogue_bc__r4",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A8_rogue_bc__r5",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A8_rogue_bc__r5",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A8_rogue_bc__r6",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A8_rogue_bc__r6",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A8_rogue_bc__r7",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A8_rogue_bc__r7",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A8_rogue_bc__r8",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A8_rogue_bc__r8",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A8_rogue_bc__r9",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "A8_rogue_bc__r9",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B2_gm_failover__r1",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B2_gm_failover__r1",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B2_gm_failover__r10",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B2_gm_failover__r10",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B2_gm_failover__r11",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B2_gm_failover__r11",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B2_gm_failover__r12",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B2_gm_failover__r12",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B2_gm_failover__r2",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B2_gm_failover__r2",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B2_gm_failover__r3",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B2_gm_failover__r3",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B2_gm_failover__r4",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B2_gm_failover__r4",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B2_gm_failover__r5",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B2_gm_failover__r5",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B2_gm_failover__r6",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B2_gm_failover__r6",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B2_gm_failover__r7",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B2_gm_failover__r7",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B2_gm_failover__r8",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B2_gm_failover__r8",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B2_gm_failover__r9",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B2_gm_failover__r9",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B3_pdv_congestion__r1",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B3_pdv_congestion__r1",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B3_pdv_congestion__r10",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B3_pdv_congestion__r10",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B3_pdv_congestion__r11",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B3_pdv_congestion__r11",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B3_pdv_congestion__r12",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B3_pdv_congestion__r12",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B3_pdv_congestion__r2",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B3_pdv_congestion__r2",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B3_pdv_congestion__r3",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B3_pdv_congestion__r3",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B3_pdv_congestion__r4",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B3_pdv_congestion__r4",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B3_pdv_congestion__r5",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B3_pdv_congestion__r5",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B3_pdv_congestion__r6",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B3_pdv_congestion__r6",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B3_pdv_congestion__r7",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B3_pdv_congestion__r7",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B3_pdv_congestion__r8",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B3_pdv_congestion__r8",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B3_pdv_congestion__r9",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B3_pdv_congestion__r9",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B7_topology_change__r1",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B7_topology_change__r1",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B7_topology_change__r10",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B7_topology_change__r10",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B7_topology_change__r11",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B7_topology_change__r11",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B7_topology_change__r12",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B7_topology_change__r12",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B7_topology_change__r2",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B7_topology_change__r2",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B7_topology_change__r3",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B7_topology_change__r3",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B7_topology_change__r4",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B7_topology_change__r4",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B7_topology_change__r5",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B7_topology_change__r5",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B7_topology_change__r6",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B7_topology_change__r6",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B7_topology_change__r7",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B7_topology_change__r7",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B7_topology_change__r8",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B7_topology_change__r8",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B7_topology_change__r9",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B7_topology_change__r9",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_bc_replacement__r1",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_bc_replacement__r1",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_bc_replacement__r10",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_bc_replacement__r10",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_bc_replacement__r11",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_bc_replacement__r11",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_bc_replacement__r12",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_bc_replacement__r12",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_bc_replacement__r2",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_bc_replacement__r2",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_bc_replacement__r3",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_bc_replacement__r3",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_bc_replacement__r4",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_bc_replacement__r4",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_bc_replacement__r5",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_bc_replacement__r5",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_bc_replacement__r6",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_bc_replacement__r6",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_bc_replacement__r7",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_bc_replacement__r7",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_bc_replacement__r8",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_bc_replacement__r8",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_bc_replacement__r9",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_bc_replacement__r9",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_unplanned_failover__r1",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_unplanned_failover__r1",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_unplanned_failover__r10",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_unplanned_failover__r10",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_unplanned_failover__r11",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_unplanned_failover__r11",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_unplanned_failover__r12",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_unplanned_failover__r12",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_unplanned_failover__r2",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_unplanned_failover__r2",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_unplanned_failover__r3",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_unplanned_failover__r3",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_unplanned_failover__r4",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_unplanned_failover__r4",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_unplanned_failover__r5",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_unplanned_failover__r5",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_unplanned_failover__r6",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_unplanned_failover__r6",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_unplanned_failover__r7",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_unplanned_failover__r7",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_unplanned_failover__r8",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_unplanned_failover__r8",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_unplanned_failover__r9",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "B_unplanned_failover__r9",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "baseline__r1",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "baseline__r1",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "baseline__r10",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "baseline__r10",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "baseline__r11",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "baseline__r11",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "baseline__r12",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "baseline__r12",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "baseline__r2",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "baseline__r2",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "baseline__r3",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "baseline__r3",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "baseline__r4",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "baseline__r4",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "baseline__r5",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "baseline__r5",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "baseline__r6",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "baseline__r6",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "baseline__r7",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "baseline__r7",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "baseline__r8",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "baseline__r8",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "baseline__r9",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "baseline__r9",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C1_removal__r1",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C1_removal__r1",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C1_removal__r10",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C1_removal__r10",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C1_removal__r11",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C1_removal__r11",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C1_removal__r12",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C1_removal__r12",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C1_removal__r2",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C1_removal__r2",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C1_removal__r3",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C1_removal__r3",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C1_removal__r4",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C1_removal__r4",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C1_removal__r5",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C1_removal__r5",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C1_removal__r6",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C1_removal__r6",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C1_removal__r7",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C1_removal__r7",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C1_removal__r8",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C1_removal__r8",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C1_removal__r9",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C1_removal__r9",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C2_malformed__r1",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C2_malformed__r1",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C2_malformed__r10",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C2_malformed__r10",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C2_malformed__r11",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C2_malformed__r11",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C2_malformed__r12",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C2_malformed__r12",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C2_malformed__r2",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C2_malformed__r2",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C2_malformed__r3",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C2_malformed__r3",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C2_malformed__r4",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C2_malformed__r4",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C2_malformed__r5",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C2_malformed__r5",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C2_malformed__r6",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C2_malformed__r6",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C2_malformed__r7",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C2_malformed__r7",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C2_malformed__r8",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C2_malformed__r8",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C2_malformed__r9",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C2_malformed__r9",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C3_wholesecond__r1",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C3_wholesecond__r1",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C3_wholesecond__r10",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C3_wholesecond__r10",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C3_wholesecond__r11",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C3_wholesecond__r11",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C3_wholesecond__r12",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C3_wholesecond__r12",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C3_wholesecond__r2",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C3_wholesecond__r2",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C3_wholesecond__r3",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C3_wholesecond__r3",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C3_wholesecond__r4",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C3_wholesecond__r4",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C3_wholesecond__r5",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C3_wholesecond__r5",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C3_wholesecond__r6",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C3_wholesecond__r6",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C3_wholesecond__r7",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C3_wholesecond__r7",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C3_wholesecond__r8",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C3_wholesecond__r8",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C3_wholesecond__r9",
+        "file": "gma.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      },
+      {
+        "run": "C3_wholesecond__r9",
+        "file": "gmb.log",
+        "reason": "no ptp4l/phc2sys servo lines found (expected 'master offset ... freq ...')"
+      }
+    ]
+  },
+  "n_windows": {
+    "all": 6250,
+    "train_known": 3847,
+    "test_all": 2081,
+    "test_known": 1923
+  },
+  "feature_columns_configured": [
+    "offset_mean",
+    "offset_std",
+    "offset_abs_max",
+    "path_delay_mean",
+    "pdv_std",
+    "seq_regressions",
+    "msg_irregularity",
+    "synce_ql_max",
+    "gnss_loss_rate",
+    "holdover_rate",
+    "msg_rate_mean",
+    "msg_rate_std",
+    "gm_identity_changes",
+    "gm_identity_churn",
+    "clock_class_changes",
+    "clock_class_improve_jump",
+    "priority1_changes",
+    "steps_removed_changes",
+    "steps_removed_min",
+    "gnss_status_changes",
+    "antenna_fault_rate",
+    "satellites_drop_max",
+    "satellites_mean",
+    "holdover_entry_count",
+    "drift_vs_declared_state_residual",
+    "holdover_spec_violation_rate",
+    "status_behaviour_disagreement",
+    "offset_step_vs_drift_ratio"
+  ],
+  "feature_columns_populated": [
+    "offset_mean",
+    "offset_std",
+    "offset_abs_max",
+    "path_delay_mean",
+    "pdv_std",
+    "holdover_rate"
+  ],
+  "feature_columns_empty": [
+    "seq_regressions",
+    "msg_irregularity",
+    "synce_ql_max",
+    "gnss_loss_rate",
+    "msg_rate_mean",
+    "msg_rate_std",
+    "gm_identity_changes",
+    "gm_identity_churn",
+    "clock_class_changes",
+    "clock_class_improve_jump",
+    "priority1_changes",
+    "steps_removed_changes",
+    "steps_removed_min",
+    "gnss_status_changes",
+    "antenna_fault_rate",
+    "satellites_drop_max",
+    "satellites_mean",
+    "holdover_entry_count",
+    "drift_vs_declared_state_residual",
+    "holdover_spec_violation_rate",
+    "status_behaviour_disagreement",
+    "offset_step_vs_drift_ratio"
+  ],
+  "feature_availability_basis": "Observed linuxptp servo provenance; schema defaults and synthetic parser fields were invalidated to NaN before model fitting.",
+  "per_window_metrics": {
+    "unit": "overlapping_0.4s_windows_with_0.2s_step",
+    "closed_set_rf_known_scenarios": {
+      "n": 1923,
+      "accuracy": 0.5444617784711389,
+      "precision_macro": 0.5913916859606403,
+      "recall_macro": 0.5822425657547625,
+      "f1_macro": 0.5410000980915739,
+      "roc_auc_h1": 0.6037920544223796,
+      "confusion_matrix_labels_H0_H1": [
+        [
+          607,
+          171
+        ],
+        [
+          705,
+          440
+        ]
+      ]
+    },
+    "final_rf_plus_novelty_all_scenarios": {
+      "n": 2081,
+      "exact_accuracy": 0.474291206150889,
+      "confusion_matrix_labels_BENIGN_ATTACK_UNKNOWN": [
+        [
+          607,
+          171,
+          0
+        ],
+        [
+          705,
+          380,
+          60
+        ],
+        [
+          133,
+          25,
+          0
+        ]
+      ],
+      "novel_window_rate": 0.028832292167227293,
+      "novel_window_rate_by_expected": {
+        "ATTACK": 0.05240174672489083,
+        "BENIGN": 0.0,
+        "UNKNOWN": 0.0
+      }
+    }
+  },
+  "novelty_layer": {
+    "status": "configured_and_run",
+    "mode": "group",
+    "target_known_flag_rate": 0.02,
+    "calibration_size": 3847,
+    "groups": {
+      "timing": [
+        "offset_mean",
+        "offset_std",
+        "offset_abs_max",
+        "path_delay_mean",
+        "pdv_std"
+      ]
+    },
+    "thresholds": {
+      "timing": 0.7272885305579593
+    },
+    "incomplete_test_windows_abstained": 0
+  },
+  "per_run_aggregation_rule": "Strict majority across RF-plus-novelty window verdicts; if no verdict exceeds 50%, return UNKNOWN. Runs with no windows also return UNKNOWN.",
+  "per_scenario": {
+    "A1_rogue_master": {
+      "expected": "ATTACK",
+      "armA_verdicts_by_rep": {
+        "9": "ATTACK",
+        "10": "ATTACK",
+        "11": "ATTACK",
+        "12": "ATTACK"
+      },
+      "armB_verdicts_by_rep": {
+        "9": "BENIGN",
+        "10": "BENIGN",
+        "11": "BENIGN",
+        "12": "BENIGN"
+      },
+      "always_benign_verdicts_by_rep": {
+        "9": "BENIGN",
+        "10": "BENIGN",
+        "11": "BENIGN",
+        "12": "BENIGN"
+      },
+      "armA_correct": 4,
+      "armA_n": 4,
+      "armB_correct": 0,
+      "armB_n": 4,
+      "armA_recall": 1.0,
+      "armB_recall": 0.0,
+      "armA_ci": [
+        0.5101091635454027,
+        1.0
+      ],
+      "armB_ci": [
+        0.0,
+        0.4898908364545973
+      ],
+      "always_benign_correct": 0,
+      "always_benign_n": 4
+    },
+    "A2_sync_spoof": {
+      "expected": "ATTACK",
+      "armA_verdicts_by_rep": {
+        "9": "ATTACK",
+        "10": "ATTACK",
+        "11": "ATTACK",
+        "12": "ATTACK"
+      },
+      "armB_verdicts_by_rep": {
+        "9": "BENIGN",
+        "10": "BENIGN",
+        "11": "BENIGN",
+        "12": "BENIGN"
+      },
+      "always_benign_verdicts_by_rep": {
+        "9": "BENIGN",
+        "10": "BENIGN",
+        "11": "BENIGN",
+        "12": "BENIGN"
+      },
+      "armA_correct": 4,
+      "armA_n": 4,
+      "armB_correct": 0,
+      "armB_n": 4,
+      "armA_recall": 1.0,
+      "armB_recall": 0.0,
+      "armA_ci": [
+        0.5101091635454027,
+        1.0
+      ],
+      "armB_ci": [
+        0.0,
+        0.4898908364545973
+      ],
+      "always_benign_correct": 0,
+      "always_benign_n": 4
+    },
+    "A3_replay": {
+      "expected": "ATTACK",
+      "armA_verdicts_by_rep": {
+        "9": "ATTACK",
+        "10": "ATTACK",
+        "11": "ATTACK",
+        "12": "ATTACK"
+      },
+      "armB_verdicts_by_rep": {
+        "9": "ATTACK",
+        "10": "UNKNOWN",
+        "11": "UNKNOWN",
+        "12": "UNKNOWN"
+      },
+      "always_benign_verdicts_by_rep": {
+        "9": "BENIGN",
+        "10": "BENIGN",
+        "11": "BENIGN",
+        "12": "BENIGN"
+      },
+      "armA_correct": 4,
+      "armA_n": 4,
+      "armB_correct": 1,
+      "armB_n": 4,
+      "armA_recall": 1.0,
+      "armB_recall": 0.25,
+      "armA_ci": [
+        0.5101091635454027,
+        1.0
+      ],
+      "armB_ci": [
+        0.04558726080970055,
+        0.6993581574175981
+      ],
+      "always_benign_correct": 0,
+      "always_benign_n": 4
+    },
+    "A5_dos_flood": {
+      "expected": "ATTACK",
+      "armA_verdicts_by_rep": {
+        "9": "ATTACK",
+        "10": "ATTACK",
+        "11": "ATTACK",
+        "12": "ATTACK"
+      },
+      "armB_verdicts_by_rep": {
+        "9": "BENIGN",
+        "10": "BENIGN",
+        "11": "BENIGN",
+        "12": "ATTACK"
+      },
+      "always_benign_verdicts_by_rep": {
+        "9": "BENIGN",
+        "10": "BENIGN",
+        "11": "BENIGN",
+        "12": "BENIGN"
+      },
+      "armA_correct": 4,
+      "armA_n": 4,
+      "armB_correct": 1,
+      "armB_n": 4,
+      "armA_recall": 1.0,
+      "armB_recall": 0.25,
+      "armA_ci": [
+        0.5101091635454027,
+        1.0
+      ],
+      "armB_ci": [
+        0.04558726080970055,
+        0.6993581574175981
+      ],
+      "always_benign_correct": 0,
+      "always_benign_n": 4
+    },
+    "A8_rogue_bc": {
+      "expected": "ATTACK",
+      "armA_verdicts_by_rep": {
+        "9": "ATTACK",
+        "10": "ATTACK",
+        "11": "ATTACK",
+        "12": "ATTACK"
+      },
+      "armB_verdicts_by_rep": {
+        "9": "BENIGN",
+        "10": "BENIGN",
+        "11": "ATTACK",
+        "12": "BENIGN"
+      },
+      "always_benign_verdicts_by_rep": {
+        "9": "BENIGN",
+        "10": "BENIGN",
+        "11": "BENIGN",
+        "12": "BENIGN"
+      },
+      "armA_correct": 4,
+      "armA_n": 4,
+      "armB_correct": 1,
+      "armB_n": 4,
+      "armA_recall": 1.0,
+      "armB_recall": 0.25,
+      "armA_ci": [
+        0.5101091635454027,
+        1.0
+      ],
+      "armB_ci": [
+        0.04558726080970055,
+        0.6993581574175981
+      ],
+      "always_benign_correct": 0,
+      "always_benign_n": 4
+    },
+    "C1_removal": {
+      "expected": "ATTACK",
+      "armA_verdicts_by_rep": {
+        "9": "ATTACK",
+        "10": "ATTACK",
+        "11": "ATTACK",
+        "12": "BENIGN"
+      },
+      "armB_verdicts_by_rep": {
+        "9": "BENIGN",
+        "10": "BENIGN",
+        "11": "BENIGN",
+        "12": "BENIGN"
+      },
+      "always_benign_verdicts_by_rep": {
+        "9": "BENIGN",
+        "10": "BENIGN",
+        "11": "BENIGN",
+        "12": "BENIGN"
+      },
+      "armA_correct": 3,
+      "armA_n": 4,
+      "armB_correct": 0,
+      "armB_n": 4,
+      "armA_recall": 0.75,
+      "armB_recall": 0.0,
+      "armA_ci": [
+        0.30064184258240184,
+        0.9544127391902995
+      ],
+      "armB_ci": [
+        0.0,
+        0.4898908364545973
+      ],
+      "always_benign_correct": 0,
+      "always_benign_n": 4
+    },
+    "C2_malformed": {
+      "expected": "ATTACK",
+      "armA_verdicts_by_rep": {
+        "9": "ATTACK",
+        "10": "ATTACK",
+        "11": "ATTACK",
+        "12": "ATTACK"
+      },
+      "armB_verdicts_by_rep": {
+        "9": "BENIGN",
+        "10": "ATTACK",
+        "11": "BENIGN",
+        "12": "BENIGN"
+      },
+      "always_benign_verdicts_by_rep": {
+        "9": "BENIGN",
+        "10": "BENIGN",
+        "11": "BENIGN",
+        "12": "BENIGN"
+      },
+      "armA_correct": 4,
+      "armA_n": 4,
+      "armB_correct": 1,
+      "armB_n": 4,
+      "armA_recall": 1.0,
+      "armB_recall": 0.25,
+      "armA_ci": [
+        0.5101091635454027,
+        1.0
+      ],
+      "armB_ci": [
+        0.04558726080970055,
+        0.6993581574175981
+      ],
+      "always_benign_correct": 0,
+      "always_benign_n": 4
+    },
+    "C3_wholesecond": {
+      "expected": "ATTACK",
+      "armA_verdicts_by_rep": {
+        "9": "ATTACK",
+        "10": "ATTACK",
+        "11": "ATTACK",
+        "12": "ATTACK"
+      },
+      "armB_verdicts_by_rep": {
+        "9": "BENIGN",
+        "10": "BENIGN",
+        "11": "BENIGN",
+        "12": "ATTACK"
+      },
+      "always_benign_verdicts_by_rep": {
+        "9": "BENIGN",
+        "10": "BENIGN",
+        "11": "BENIGN",
+        "12": "BENIGN"
+      },
+      "armA_correct": 4,
+      "armA_n": 4,
+      "armB_correct": 1,
+      "armB_n": 4,
+      "armA_recall": 1.0,
+      "armB_recall": 0.25,
+      "armA_ci": [
+        0.5101091635454027,
+        1.0
+      ],
+      "armB_ci": [
+        0.04558726080970055,
+        0.6993581574175981
+      ],
+      "always_benign_correct": 0,
+      "always_benign_n": 4
+    },
+    "baseline": {
+      "expected": "BENIGN",
+      "armA_verdicts_by_rep": {
+        "9": "BENIGN",
+        "10": "BENIGN",
+        "11": "BENIGN",
+        "12": "BENIGN"
+      },
+      "armB_verdicts_by_rep": {
+        "9": "BENIGN",
+        "10": "BENIGN",
+        "11": "BENIGN",
+        "12": "BENIGN"
+      },
+      "always_benign_verdicts_by_rep": {
+        "9": "BENIGN",
+        "10": "BENIGN",
+        "11": "BENIGN",
+        "12": "BENIGN"
+      },
+      "armA_correct": 4,
+      "armA_n": 4,
+      "armB_correct": 4,
+      "armB_n": 4,
+      "armA_recall": 1.0,
+      "armB_recall": 1.0,
+      "armA_ci": [
+        0.5101091635454027,
+        1.0
+      ],
+      "armB_ci": [
+        0.5101091635454027,
+        1.0
+      ],
+      "always_benign_correct": 4,
+      "always_benign_n": 4
+    },
+    "B2_gm_failover": {
+      "expected": "BENIGN",
+      "armA_verdicts_by_rep": {
+        "9": "BENIGN",
+        "10": "BENIGN",
+        "11": "BENIGN",
+        "12": "BENIGN"
+      },
+      "armB_verdicts_by_rep": {
+        "9": "BENIGN",
+        "10": "BENIGN",
+        "11": "BENIGN",
+        "12": "BENIGN"
+      },
+      "always_benign_verdicts_by_rep": {
+        "9": "BENIGN",
+        "10": "BENIGN",
+        "11": "BENIGN",
+        "12": "BENIGN"
+      },
+      "armA_correct": 4,
+      "armA_n": 4,
+      "armB_correct": 4,
+      "armB_n": 4,
+      "armA_recall": 1.0,
+      "armB_recall": 1.0,
+      "armA_ci": [
+        0.5101091635454027,
+        1.0
+      ],
+      "armB_ci": [
+        0.5101091635454027,
+        1.0
+      ],
+      "always_benign_correct": 4,
+      "always_benign_n": 4
+    },
+    "B3_pdv_congestion": {
+      "expected": "BENIGN",
+      "armA_verdicts_by_rep": {
+        "9": "BENIGN",
+        "10": "BENIGN",
+        "11": "BENIGN",
+        "12": "BENIGN"
+      },
+      "armB_verdicts_by_rep": {
+        "9": "BENIGN",
+        "10": "BENIGN",
+        "11": "ATTACK",
+        "12": "BENIGN"
+      },
+      "always_benign_verdicts_by_rep": {
+        "9": "BENIGN",
+        "10": "BENIGN",
+        "11": "BENIGN",
+        "12": "BENIGN"
+      },
+      "armA_correct": 4,
+      "armA_n": 4,
+      "armB_correct": 3,
+      "armB_n": 4,
+      "armA_recall": 1.0,
+      "armB_recall": 0.75,
+      "armA_ci": [
+        0.5101091635454027,
+        1.0
+      ],
+      "armB_ci": [
+        0.30064184258240184,
+        0.9544127391902995
+      ],
+      "always_benign_correct": 4,
+      "always_benign_n": 4
+    },
+    "B7_topology_change": {
+      "expected": "BENIGN",
+      "armA_verdicts_by_rep": {
+        "9": "BENIGN",
+        "10": "BENIGN",
+        "11": "BENIGN",
+        "12": "BENIGN"
+      },
+      "armB_verdicts_by_rep": {
+        "9": "BENIGN",
+        "10": "BENIGN",
+        "11": "BENIGN",
+        "12": "BENIGN"
+      },
+      "always_benign_verdicts_by_rep": {
+        "9": "BENIGN",
+        "10": "BENIGN",
+        "11": "BENIGN",
+        "12": "BENIGN"
+      },
+      "armA_correct": 4,
+      "armA_n": 4,
+      "armB_correct": 4,
+      "armB_n": 4,
+      "armA_recall": 1.0,
+      "armB_recall": 1.0,
+      "armA_ci": [
+        0.5101091635454027,
+        1.0
+      ],
+      "armB_ci": [
+        0.5101091635454027,
+        1.0
+      ],
+      "always_benign_correct": 4,
+      "always_benign_n": 4
+    },
+    "B_bc_replacement": {
+      "expected": "BENIGN",
+      "armA_verdicts_by_rep": {
+        "9": "ATTACK",
+        "10": "ATTACK",
+        "11": "ATTACK",
+        "12": "ATTACK"
+      },
+      "armB_verdicts_by_rep": {
+        "9": "BENIGN",
+        "10": "BENIGN",
+        "11": "BENIGN",
+        "12": "BENIGN"
+      },
+      "always_benign_verdicts_by_rep": {
+        "9": "BENIGN",
+        "10": "BENIGN",
+        "11": "BENIGN",
+        "12": "BENIGN"
+      },
+      "armA_correct": 0,
+      "armA_n": 4,
+      "armB_correct": 4,
+      "armB_n": 4,
+      "armA_recall": 0.0,
+      "armB_recall": 1.0,
+      "armA_ci": [
+        0.0,
+        0.4898908364545973
+      ],
+      "armB_ci": [
+        0.5101091635454027,
+        1.0
+      ],
+      "always_benign_correct": 4,
+      "always_benign_n": 4
+    },
+    "B_unplanned_failover": {
+      "expected": "UNKNOWN",
+      "armA_verdicts_by_rep": {
+        "9": "UNKNOWN",
+        "10": "UNKNOWN",
+        "11": "UNKNOWN",
+        "12": "UNKNOWN"
+      },
+      "armB_verdicts_by_rep": {
+        "9": "BENIGN",
+        "10": "BENIGN",
+        "11": "BENIGN",
+        "12": "BENIGN"
+      },
+      "always_benign_verdicts_by_rep": {
+        "9": "BENIGN",
+        "10": "BENIGN",
+        "11": "BENIGN",
+        "12": "BENIGN"
+      },
+      "armA_correct": 4,
+      "armA_n": 4,
+      "armB_correct": 0,
+      "armB_n": 4,
+      "armA_recall": 1.0,
+      "armB_recall": 0.0,
+      "armA_ci": [
+        0.5101091635454027,
+        1.0
+      ],
+      "armB_ci": [
+        0.0,
+        0.4898908364545973
+      ],
+      "always_benign_correct": 0,
+      "always_benign_n": 4
+    }
+  },
+  "macro_sensitivity": {
+    "armA": {
+      "macro": 0.96875,
+      "pooled_correct": 31,
+      "pooled_n": 32,
+      "pooled_rate_run_count_dependent": 0.96875,
+      "pooled_wilson_95_ci_run_count_dependent": [
+        0.8425573617998744,
+        0.9944621398359969
+      ]
+    },
+    "armB": {
+      "macro": 0.15625,
+      "pooled_correct": 5,
+      "pooled_n": 32,
+      "pooled_rate_run_count_dependent": 0.15625,
+      "pooled_wilson_95_ci_run_count_dependent": [
+        0.0686442028250571,
+        0.3175414959753039
+      ]
+    }
+  },
+  "macro_specificity": {
+    "armA": {
+      "macro": 0.8,
+      "pooled_correct": 16,
+      "pooled_n": 20,
+      "pooled_rate_run_count_dependent": 0.8,
+      "pooled_wilson_95_ci_run_count_dependent": [
+        0.5839825677481064,
+        0.919342337420202
+      ]
+    },
+    "armB": {
+      "macro": 0.95,
+      "pooled_correct": 19,
+      "pooled_n": 20,
+      "pooled_rate_run_count_dependent": 0.95,
+      "pooled_wilson_95_ci_run_count_dependent": [
+        0.763868806553258,
+        0.9911185511992047
+      ]
+    }
+  },
+  "abstention": {
+    "armA": {
+      "macro": 1.0,
+      "pooled_correct": 4,
+      "pooled_n": 4,
+      "pooled_rate_run_count_dependent": 1.0,
+      "pooled_wilson_95_ci_run_count_dependent": [
+        0.5101091635454027,
+        1.0
+      ]
+    },
+    "armB": {
+      "macro": 0.0,
+      "pooled_correct": 0,
+      "pooled_n": 4,
+      "pooled_rate_run_count_dependent": 0.0,
+      "pooled_wilson_95_ci_run_count_dependent": [
+        0.0,
+        0.4898908364545973
+      ]
+    }
+  },
+  "arm_overall": {
+    "armA": {
+      "exact_correct": 51,
+      "n": 56,
+      "exact_accuracy": 0.9107142857142857,
+      "exact_wilson_95_ci": [
+        0.8074399861448884,
+        0.9612578515504131
+      ],
+      "macro_sensitivity": {
+        "macro": 0.96875,
+        "pooled_correct": 31,
+        "pooled_n": 32,
+        "pooled_rate_run_count_dependent": 0.96875,
+        "pooled_wilson_95_ci_run_count_dependent": [
+          0.8425573617998744,
+          0.9944621398359969
+        ]
+      },
+      "macro_specificity": {
+        "macro": 0.8,
+        "pooled_correct": 16,
+        "pooled_n": 20,
+        "pooled_rate_run_count_dependent": 0.8,
+        "pooled_wilson_95_ci_run_count_dependent": [
+          0.5839825677481064,
+          0.919342337420202
+        ]
+      },
+      "abstention_correctness": {
+        "macro": 1.0,
+        "pooled_correct": 4,
+        "pooled_n": 4,
+        "pooled_rate_run_count_dependent": 1.0,
+        "pooled_wilson_95_ci_run_count_dependent": [
+          0.5101091635454027,
+          1.0
+        ]
+      }
+    },
+    "armB": {
+      "exact_correct": 24,
+      "n": 56,
+      "exact_accuracy": 0.42857142857142855,
+      "exact_wilson_95_ci": [
+        0.3076896268393824,
+        0.5586237926918696
+      ],
+      "macro_sensitivity": {
+        "macro": 0.15625,
+        "pooled_correct": 5,
+        "pooled_n": 32,
+        "pooled_rate_run_count_dependent": 0.15625,
+        "pooled_wilson_95_ci_run_count_dependent": [
+          0.0686442028250571,
+          0.3175414959753039
+        ]
+      },
+      "macro_specificity": {
+        "macro": 0.95,
+        "pooled_correct": 19,
+        "pooled_n": 20,
+        "pooled_rate_run_count_dependent": 0.95,
+        "pooled_wilson_95_ci_run_count_dependent": [
+          0.763868806553258,
+          0.9911185511992047
+        ]
+      },
+      "abstention_correctness": {
+        "macro": 0.0,
+        "pooled_correct": 0,
+        "pooled_n": 4,
+        "pooled_rate_run_count_dependent": 0.0,
+        "pooled_wilson_95_ci_run_count_dependent": [
+          0.0,
+          0.4898908364545973
+        ]
+      }
+    }
+  },
+  "trivial_baseline_control": {
+    "exact_correct": 20,
+    "n": 56,
+    "exact_accuracy": 0.35714285714285715,
+    "exact_wilson_95_ci": [
+      0.24456571707649905,
+      0.4880611219860049
+    ],
+    "macro_sensitivity": {
+      "macro": 0.0,
+      "pooled_correct": 0,
+      "pooled_n": 32,
+      "pooled_rate_run_count_dependent": 0.0,
+      "pooled_wilson_95_ci_run_count_dependent": [
+        0.0,
+        0.1071791982550706
+      ]
+    },
+    "macro_specificity": {
+      "macro": 1.0,
+      "pooled_correct": 20,
+      "pooled_n": 20,
+      "pooled_rate_run_count_dependent": 1.0,
+      "pooled_wilson_95_ci_run_count_dependent": [
+        0.8388748419471806,
+        1.0
+      ]
+    },
+    "abstention_correctness": {
+      "macro": 0.0,
+      "pooled_correct": 0,
+      "pooled_n": 4,
+      "pooled_rate_run_count_dependent": 0.0,
+      "pooled_wilson_95_ci_run_count_dependent": [
+        0.0,
+        0.4898908364545973
+      ]
+    },
+    "definition": "constant BENIGN verdict for every held-out run",
+    "expected_breakdown": {
+      "attack_correct": 0,
+      "attack_n": 32,
+      "benign_correct": 20,
+      "benign_n": 20,
+      "abstention_correct": 0,
+      "abstention_n": 4
+    },
+    "paired_comparison_with_armB": {
+      "armB_verdict_counts": {
+        "ATTACK": 6,
+        "BENIGN": 47,
+        "UNKNOWN": 3
+      },
+      "armB_benign_verdict_rate": 0.8392857142857143,
+      "armB_correct_baseline_wrong": 5,
+      "baseline_correct_armB_wrong": 1,
+      "both_same_correctness": 50,
+      "net_additional_correct_runs_armB": 4,
+      "net_accuracy_improvement": 0.0714285714285714,
+      "exact_two_sided_mcnemar_p": 0.21875,
+      "alpha": 0.05,
+      "statistically_distinguishable_at_alpha": false
+    },
+    "B_bc_replacement": {
+      "armB_correct": 4,
+      "always_benign_correct": 4,
+      "n": 4,
+      "conclusion": "ARM B is identical to the constant-BENIGN control on this scenario; no unique capability is established."
+    }
+  },
+  "combination_analysis": {
+    "or_attack_if_either_attacks_else_unknown_if_either_abstains": {
+      "exact_correct": 50,
+      "n": 56,
+      "exact_accuracy": 0.8928571428571429,
+      "exact_wilson_95_ci": [
+        0.7853155482892853,
+        0.9499606442888293
+      ],
+      "macro_sensitivity": {
+        "macro": 0.96875,
+        "pooled_correct": 31,
+        "pooled_n": 32,
+        "pooled_rate_run_count_dependent": 0.96875,
+        "pooled_wilson_95_ci_run_count_dependent": [
+          0.8425573617998744,
+          0.9944621398359969
+        ]
+      },
+      "macro_specificity": {
+        "macro": 0.75,
+        "pooled_correct": 15,
+        "pooled_n": 20,
+        "pooled_rate_run_count_dependent": 0.75,
+        "pooled_wilson_95_ci_run_count_dependent": [
+          0.531299122381256,
+          0.8881382985923343
+        ]
+      },
+      "abstention_correctness": {
+        "macro": 1.0,
+        "pooled_correct": 4,
+        "pooled_n": 4,
+        "pooled_rate_run_count_dependent": 1.0,
+        "pooled_wilson_95_ci_run_count_dependent": [
+          0.5101091635454027,
+          1.0
+        ]
+      }
+    },
+    "rule_first_use_ml_only_when_rule_abstains": {
+      "exact_correct": 47,
+      "n": 56,
+      "exact_accuracy": 0.8392857142857143,
+      "exact_wilson_95_ci": [
+        0.7219379333025048,
+        0.9130733239240486
+      ],
+      "macro_sensitivity": {
+        "macro": 0.96875,
+        "pooled_correct": 31,
+        "pooled_n": 32,
+        "pooled_rate_run_count_dependent": 0.96875,
+        "pooled_wilson_95_ci_run_count_dependent": [
+          0.8425573617998744,
+          0.9944621398359969
+        ]
+      },
+      "macro_specificity": {
+        "macro": 0.8,
+        "pooled_correct": 16,
+        "pooled_n": 20,
+        "pooled_rate_run_count_dependent": 0.8,
+        "pooled_wilson_95_ci_run_count_dependent": [
+          0.5839825677481064,
+          0.919342337420202
+        ]
+      },
+      "abstention_correctness": {
+        "macro": 0.0,
+        "pooled_correct": 0,
+        "pooled_n": 4,
+        "pooled_rate_run_count_dependent": 0.0,
+        "pooled_wilson_95_ci_run_count_dependent": [
+          0.0,
+          0.4898908364545973
+        ]
+      }
+    },
+    "consensus_else_abstain": {
+      "exact_correct": 24,
+      "n": 56,
+      "exact_accuracy": 0.42857142857142855,
+      "exact_wilson_95_ci": [
+        0.3076896268393824,
+        0.5586237926918696
+      ],
+      "macro_sensitivity": {
+        "macro": 0.15625,
+        "pooled_correct": 5,
+        "pooled_n": 32,
+        "pooled_rate_run_count_dependent": 0.15625,
+        "pooled_wilson_95_ci_run_count_dependent": [
+          0.0686442028250571,
+          0.3175414959753039
+        ]
+      },
+      "macro_specificity": {
+        "macro": 0.75,
+        "pooled_correct": 15,
+        "pooled_n": 20,
+        "pooled_rate_run_count_dependent": 0.75,
+        "pooled_wilson_95_ci_run_count_dependent": [
+          0.531299122381256,
+          0.8881382985923343
+        ]
+      },
+      "abstention_correctness": {
+        "macro": 1.0,
+        "pooled_correct": 4,
+        "pooled_n": 4,
+        "pooled_rate_run_count_dependent": 1.0,
+        "pooled_wilson_95_ci_run_count_dependent": [
+          0.5101091635454027,
+          1.0
+        ]
+      }
+    }
+  },
+  "fault_class_crossovers": {
+    "armB_correct_where_armA_missed_scenarios": [
+      "B_bc_replacement"
+    ],
+    "armB_unique_capabilities_beyond_always_benign": [],
+    "armB_crossover_interpretation": "B_bc_replacement is a raw crossover versus ARM A, but always-BENIGN also scores 4/4; no unique ARM B capability is established.",
+    "armA_correct_where_armB_missed_scenarios": [
+      "A1_rogue_master",
+      "A2_sync_spoof",
+      "A3_replay",
+      "A5_dos_flood",
+      "A8_rogue_bc",
+      "B3_pdv_congestion",
+      "B_unplanned_failover",
+      "C1_removal",
+      "C2_malformed",
+      "C3_wholesecond"
+    ]
+  },
+  "feature_importances_top15": [
+    {
+      "feature": "offset_abs_max",
+      "importance": 0.2675879173199979
+    },
+    {
+      "feature": "path_delay_mean",
+      "importance": 0.26151749210874803
+    },
+    {
+      "feature": "offset_std",
+      "importance": 0.20827735016435867
+    },
+    {
+      "feature": "pdv_std",
+      "importance": 0.1388272272293974
+    },
+    {
+      "feature": "offset_mean",
+      "importance": 0.12379001317749805
+    },
+    {
+      "feature": "holdover_rate",
+      "importance": 0.0
+    }
+  ],
+  "per_run_test_results": [
+    {
+      "run_name": "A1_rogue_master__r10",
+      "scenario": "A1_rogue_master",
+      "rep": 10,
+      "expected": "ATTACK",
+      "armA": "ATTACK",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 39,
+      "novel_windows": 0,
+      "combo_or": "ATTACK",
+      "combo_rule_first_fallback_ml": "ATTACK",
+      "combo_consensus_else_abstain": "UNKNOWN"
+    },
+    {
+      "run_name": "A1_rogue_master__r11",
+      "scenario": "A1_rogue_master",
+      "rep": 11,
+      "expected": "ATTACK",
+      "armA": "ATTACK",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 36,
+      "novel_windows": 0,
+      "combo_or": "ATTACK",
+      "combo_rule_first_fallback_ml": "ATTACK",
+      "combo_consensus_else_abstain": "UNKNOWN"
+    },
+    {
+      "run_name": "A1_rogue_master__r12",
+      "scenario": "A1_rogue_master",
+      "rep": 12,
+      "expected": "ATTACK",
+      "armA": "ATTACK",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 42,
+      "novel_windows": 0,
+      "combo_or": "ATTACK",
+      "combo_rule_first_fallback_ml": "ATTACK",
+      "combo_consensus_else_abstain": "UNKNOWN"
+    },
+    {
+      "run_name": "A1_rogue_master__r9",
+      "scenario": "A1_rogue_master",
+      "rep": 9,
+      "expected": "ATTACK",
+      "armA": "ATTACK",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 42,
+      "novel_windows": 0,
+      "combo_or": "ATTACK",
+      "combo_rule_first_fallback_ml": "ATTACK",
+      "combo_consensus_else_abstain": "UNKNOWN"
+    },
+    {
+      "run_name": "A2_sync_spoof__r10",
+      "scenario": "A2_sync_spoof",
+      "rep": 10,
+      "expected": "ATTACK",
+      "armA": "ATTACK",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 39,
+      "novel_windows": 0,
+      "combo_or": "ATTACK",
+      "combo_rule_first_fallback_ml": "ATTACK",
+      "combo_consensus_else_abstain": "UNKNOWN"
+    },
+    {
+      "run_name": "A2_sync_spoof__r11",
+      "scenario": "A2_sync_spoof",
+      "rep": 11,
+      "expected": "ATTACK",
+      "armA": "ATTACK",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 37,
+      "novel_windows": 0,
+      "combo_or": "ATTACK",
+      "combo_rule_first_fallback_ml": "ATTACK",
+      "combo_consensus_else_abstain": "UNKNOWN"
+    },
+    {
+      "run_name": "A2_sync_spoof__r12",
+      "scenario": "A2_sync_spoof",
+      "rep": 12,
+      "expected": "ATTACK",
+      "armA": "ATTACK",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 43,
+      "novel_windows": 0,
+      "combo_or": "ATTACK",
+      "combo_rule_first_fallback_ml": "ATTACK",
+      "combo_consensus_else_abstain": "UNKNOWN"
+    },
+    {
+      "run_name": "A2_sync_spoof__r9",
+      "scenario": "A2_sync_spoof",
+      "rep": 9,
+      "expected": "ATTACK",
+      "armA": "ATTACK",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 43,
+      "novel_windows": 0,
+      "combo_or": "ATTACK",
+      "combo_rule_first_fallback_ml": "ATTACK",
+      "combo_consensus_else_abstain": "UNKNOWN"
+    },
+    {
+      "run_name": "A3_replay__r10",
+      "scenario": "A3_replay",
+      "rep": 10,
+      "expected": "ATTACK",
+      "armA": "ATTACK",
+      "armB": "UNKNOWN",
+      "always_benign": "BENIGN",
+      "n_windows": 53,
+      "novel_windows": 8,
+      "combo_or": "ATTACK",
+      "combo_rule_first_fallback_ml": "ATTACK",
+      "combo_consensus_else_abstain": "UNKNOWN"
+    },
+    {
+      "run_name": "A3_replay__r11",
+      "scenario": "A3_replay",
+      "rep": 11,
+      "expected": "ATTACK",
+      "armA": "ATTACK",
+      "armB": "UNKNOWN",
+      "always_benign": "BENIGN",
+      "n_windows": 63,
+      "novel_windows": 14,
+      "combo_or": "ATTACK",
+      "combo_rule_first_fallback_ml": "ATTACK",
+      "combo_consensus_else_abstain": "UNKNOWN"
+    },
+    {
+      "run_name": "A3_replay__r12",
+      "scenario": "A3_replay",
+      "rep": 12,
+      "expected": "ATTACK",
+      "armA": "ATTACK",
+      "armB": "UNKNOWN",
+      "always_benign": "BENIGN",
+      "n_windows": 107,
+      "novel_windows": 34,
+      "combo_or": "ATTACK",
+      "combo_rule_first_fallback_ml": "ATTACK",
+      "combo_consensus_else_abstain": "UNKNOWN"
+    },
+    {
+      "run_name": "A3_replay__r9",
+      "scenario": "A3_replay",
+      "rep": 9,
+      "expected": "ATTACK",
+      "armA": "ATTACK",
+      "armB": "ATTACK",
+      "always_benign": "BENIGN",
+      "n_windows": 61,
+      "novel_windows": 4,
+      "combo_or": "ATTACK",
+      "combo_rule_first_fallback_ml": "ATTACK",
+      "combo_consensus_else_abstain": "ATTACK"
+    },
+    {
+      "run_name": "A5_dos_flood__r10",
+      "scenario": "A5_dos_flood",
+      "rep": 10,
+      "expected": "ATTACK",
+      "armA": "ATTACK",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 39,
+      "novel_windows": 0,
+      "combo_or": "ATTACK",
+      "combo_rule_first_fallback_ml": "ATTACK",
+      "combo_consensus_else_abstain": "UNKNOWN"
+    },
+    {
+      "run_name": "A5_dos_flood__r11",
+      "scenario": "A5_dos_flood",
+      "rep": 11,
+      "expected": "ATTACK",
+      "armA": "ATTACK",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 37,
+      "novel_windows": 0,
+      "combo_or": "ATTACK",
+      "combo_rule_first_fallback_ml": "ATTACK",
+      "combo_consensus_else_abstain": "UNKNOWN"
+    },
+    {
+      "run_name": "A5_dos_flood__r12",
+      "scenario": "A5_dos_flood",
+      "rep": 12,
+      "expected": "ATTACK",
+      "armA": "ATTACK",
+      "armB": "ATTACK",
+      "always_benign": "BENIGN",
+      "n_windows": 43,
+      "novel_windows": 0,
+      "combo_or": "ATTACK",
+      "combo_rule_first_fallback_ml": "ATTACK",
+      "combo_consensus_else_abstain": "ATTACK"
+    },
+    {
+      "run_name": "A5_dos_flood__r9",
+      "scenario": "A5_dos_flood",
+      "rep": 9,
+      "expected": "ATTACK",
+      "armA": "ATTACK",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 43,
+      "novel_windows": 0,
+      "combo_or": "ATTACK",
+      "combo_rule_first_fallback_ml": "ATTACK",
+      "combo_consensus_else_abstain": "UNKNOWN"
+    },
+    {
+      "run_name": "A8_rogue_bc__r10",
+      "scenario": "A8_rogue_bc",
+      "rep": 10,
+      "expected": "ATTACK",
+      "armA": "ATTACK",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 39,
+      "novel_windows": 0,
+      "combo_or": "ATTACK",
+      "combo_rule_first_fallback_ml": "ATTACK",
+      "combo_consensus_else_abstain": "UNKNOWN"
+    },
+    {
+      "run_name": "A8_rogue_bc__r11",
+      "scenario": "A8_rogue_bc",
+      "rep": 11,
+      "expected": "ATTACK",
+      "armA": "ATTACK",
+      "armB": "ATTACK",
+      "always_benign": "BENIGN",
+      "n_windows": 37,
+      "novel_windows": 0,
+      "combo_or": "ATTACK",
+      "combo_rule_first_fallback_ml": "ATTACK",
+      "combo_consensus_else_abstain": "ATTACK"
+    },
+    {
+      "run_name": "A8_rogue_bc__r12",
+      "scenario": "A8_rogue_bc",
+      "rep": 12,
+      "expected": "ATTACK",
+      "armA": "ATTACK",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 43,
+      "novel_windows": 0,
+      "combo_or": "ATTACK",
+      "combo_rule_first_fallback_ml": "ATTACK",
+      "combo_consensus_else_abstain": "UNKNOWN"
+    },
+    {
+      "run_name": "A8_rogue_bc__r9",
+      "scenario": "A8_rogue_bc",
+      "rep": 9,
+      "expected": "ATTACK",
+      "armA": "ATTACK",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 43,
+      "novel_windows": 0,
+      "combo_or": "ATTACK",
+      "combo_rule_first_fallback_ml": "ATTACK",
+      "combo_consensus_else_abstain": "UNKNOWN"
+    },
+    {
+      "run_name": "B2_gm_failover__r10",
+      "scenario": "B2_gm_failover",
+      "rep": 10,
+      "expected": "BENIGN",
+      "armA": "BENIGN",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 37,
+      "novel_windows": 0,
+      "combo_or": "BENIGN",
+      "combo_rule_first_fallback_ml": "BENIGN",
+      "combo_consensus_else_abstain": "BENIGN"
+    },
+    {
+      "run_name": "B2_gm_failover__r11",
+      "scenario": "B2_gm_failover",
+      "rep": 11,
+      "expected": "BENIGN",
+      "armA": "BENIGN",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 37,
+      "novel_windows": 0,
+      "combo_or": "BENIGN",
+      "combo_rule_first_fallback_ml": "BENIGN",
+      "combo_consensus_else_abstain": "BENIGN"
+    },
+    {
+      "run_name": "B2_gm_failover__r12",
+      "scenario": "B2_gm_failover",
+      "rep": 12,
+      "expected": "BENIGN",
+      "armA": "BENIGN",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 43,
+      "novel_windows": 0,
+      "combo_or": "BENIGN",
+      "combo_rule_first_fallback_ml": "BENIGN",
+      "combo_consensus_else_abstain": "BENIGN"
+    },
+    {
+      "run_name": "B2_gm_failover__r9",
+      "scenario": "B2_gm_failover",
+      "rep": 9,
+      "expected": "BENIGN",
+      "armA": "BENIGN",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 41,
+      "novel_windows": 0,
+      "combo_or": "BENIGN",
+      "combo_rule_first_fallback_ml": "BENIGN",
+      "combo_consensus_else_abstain": "BENIGN"
+    },
+    {
+      "run_name": "B3_pdv_congestion__r10",
+      "scenario": "B3_pdv_congestion",
+      "rep": 10,
+      "expected": "BENIGN",
+      "armA": "BENIGN",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 39,
+      "novel_windows": 0,
+      "combo_or": "BENIGN",
+      "combo_rule_first_fallback_ml": "BENIGN",
+      "combo_consensus_else_abstain": "BENIGN"
+    },
+    {
+      "run_name": "B3_pdv_congestion__r11",
+      "scenario": "B3_pdv_congestion",
+      "rep": 11,
+      "expected": "BENIGN",
+      "armA": "BENIGN",
+      "armB": "ATTACK",
+      "always_benign": "BENIGN",
+      "n_windows": 15,
+      "novel_windows": 0,
+      "combo_or": "ATTACK",
+      "combo_rule_first_fallback_ml": "BENIGN",
+      "combo_consensus_else_abstain": "UNKNOWN"
+    },
+    {
+      "run_name": "B3_pdv_congestion__r12",
+      "scenario": "B3_pdv_congestion",
+      "rep": 12,
+      "expected": "BENIGN",
+      "armA": "BENIGN",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 43,
+      "novel_windows": 0,
+      "combo_or": "BENIGN",
+      "combo_rule_first_fallback_ml": "BENIGN",
+      "combo_consensus_else_abstain": "BENIGN"
+    },
+    {
+      "run_name": "B3_pdv_congestion__r9",
+      "scenario": "B3_pdv_congestion",
+      "rep": 9,
+      "expected": "BENIGN",
+      "armA": "BENIGN",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 43,
+      "novel_windows": 0,
+      "combo_or": "BENIGN",
+      "combo_rule_first_fallback_ml": "BENIGN",
+      "combo_consensus_else_abstain": "BENIGN"
+    },
+    {
+      "run_name": "B7_topology_change__r10",
+      "scenario": "B7_topology_change",
+      "rep": 10,
+      "expected": "BENIGN",
+      "armA": "BENIGN",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 39,
+      "novel_windows": 0,
+      "combo_or": "BENIGN",
+      "combo_rule_first_fallback_ml": "BENIGN",
+      "combo_consensus_else_abstain": "BENIGN"
+    },
+    {
+      "run_name": "B7_topology_change__r11",
+      "scenario": "B7_topology_change",
+      "rep": 11,
+      "expected": "BENIGN",
+      "armA": "BENIGN",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 37,
+      "novel_windows": 0,
+      "combo_or": "BENIGN",
+      "combo_rule_first_fallback_ml": "BENIGN",
+      "combo_consensus_else_abstain": "BENIGN"
+    },
+    {
+      "run_name": "B7_topology_change__r12",
+      "scenario": "B7_topology_change",
+      "rep": 12,
+      "expected": "BENIGN",
+      "armA": "BENIGN",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 43,
+      "novel_windows": 0,
+      "combo_or": "BENIGN",
+      "combo_rule_first_fallback_ml": "BENIGN",
+      "combo_consensus_else_abstain": "BENIGN"
+    },
+    {
+      "run_name": "B7_topology_change__r9",
+      "scenario": "B7_topology_change",
+      "rep": 9,
+      "expected": "BENIGN",
+      "armA": "BENIGN",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 43,
+      "novel_windows": 0,
+      "combo_or": "BENIGN",
+      "combo_rule_first_fallback_ml": "BENIGN",
+      "combo_consensus_else_abstain": "BENIGN"
+    },
+    {
+      "run_name": "B_bc_replacement__r10",
+      "scenario": "B_bc_replacement",
+      "rep": 10,
+      "expected": "BENIGN",
+      "armA": "ATTACK",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 37,
+      "novel_windows": 0,
+      "combo_or": "ATTACK",
+      "combo_rule_first_fallback_ml": "ATTACK",
+      "combo_consensus_else_abstain": "UNKNOWN"
+    },
+    {
+      "run_name": "B_bc_replacement__r11",
+      "scenario": "B_bc_replacement",
+      "rep": 11,
+      "expected": "BENIGN",
+      "armA": "ATTACK",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 35,
+      "novel_windows": 0,
+      "combo_or": "ATTACK",
+      "combo_rule_first_fallback_ml": "ATTACK",
+      "combo_consensus_else_abstain": "UNKNOWN"
+    },
+    {
+      "run_name": "B_bc_replacement__r12",
+      "scenario": "B_bc_replacement",
+      "rep": 12,
+      "expected": "BENIGN",
+      "armA": "ATTACK",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 41,
+      "novel_windows": 0,
+      "combo_or": "ATTACK",
+      "combo_rule_first_fallback_ml": "ATTACK",
+      "combo_consensus_else_abstain": "UNKNOWN"
+    },
+    {
+      "run_name": "B_bc_replacement__r9",
+      "scenario": "B_bc_replacement",
+      "rep": 9,
+      "expected": "BENIGN",
+      "armA": "ATTACK",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 41,
+      "novel_windows": 0,
+      "combo_or": "ATTACK",
+      "combo_rule_first_fallback_ml": "ATTACK",
+      "combo_consensus_else_abstain": "UNKNOWN"
+    },
+    {
+      "run_name": "B_unplanned_failover__r10",
+      "scenario": "B_unplanned_failover",
+      "rep": 10,
+      "expected": "UNKNOWN",
+      "armA": "UNKNOWN",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 37,
+      "novel_windows": 0,
+      "combo_or": "UNKNOWN",
+      "combo_rule_first_fallback_ml": "BENIGN",
+      "combo_consensus_else_abstain": "UNKNOWN"
+    },
+    {
+      "run_name": "B_unplanned_failover__r11",
+      "scenario": "B_unplanned_failover",
+      "rep": 11,
+      "expected": "UNKNOWN",
+      "armA": "UNKNOWN",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 37,
+      "novel_windows": 0,
+      "combo_or": "UNKNOWN",
+      "combo_rule_first_fallback_ml": "BENIGN",
+      "combo_consensus_else_abstain": "UNKNOWN"
+    },
+    {
+      "run_name": "B_unplanned_failover__r12",
+      "scenario": "B_unplanned_failover",
+      "rep": 12,
+      "expected": "UNKNOWN",
+      "armA": "UNKNOWN",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 43,
+      "novel_windows": 0,
+      "combo_or": "UNKNOWN",
+      "combo_rule_first_fallback_ml": "BENIGN",
+      "combo_consensus_else_abstain": "UNKNOWN"
+    },
+    {
+      "run_name": "B_unplanned_failover__r9",
+      "scenario": "B_unplanned_failover",
+      "rep": 9,
+      "expected": "UNKNOWN",
+      "armA": "UNKNOWN",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 41,
+      "novel_windows": 0,
+      "combo_or": "UNKNOWN",
+      "combo_rule_first_fallback_ml": "BENIGN",
+      "combo_consensus_else_abstain": "UNKNOWN"
+    },
+    {
+      "run_name": "baseline__r10",
+      "scenario": "baseline",
+      "rep": 10,
+      "expected": "BENIGN",
+      "armA": "BENIGN",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 41,
+      "novel_windows": 0,
+      "combo_or": "BENIGN",
+      "combo_rule_first_fallback_ml": "BENIGN",
+      "combo_consensus_else_abstain": "BENIGN"
+    },
+    {
+      "run_name": "baseline__r11",
+      "scenario": "baseline",
+      "rep": 11,
+      "expected": "BENIGN",
+      "armA": "BENIGN",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 41,
+      "novel_windows": 0,
+      "combo_or": "BENIGN",
+      "combo_rule_first_fallback_ml": "BENIGN",
+      "combo_consensus_else_abstain": "BENIGN"
+    },
+    {
+      "run_name": "baseline__r12",
+      "scenario": "baseline",
+      "rep": 12,
+      "expected": "BENIGN",
+      "armA": "BENIGN",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 41,
+      "novel_windows": 0,
+      "combo_or": "BENIGN",
+      "combo_rule_first_fallback_ml": "BENIGN",
+      "combo_consensus_else_abstain": "BENIGN"
+    },
+    {
+      "run_name": "baseline__r9",
+      "scenario": "baseline",
+      "rep": 9,
+      "expected": "BENIGN",
+      "armA": "BENIGN",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 41,
+      "novel_windows": 0,
+      "combo_or": "BENIGN",
+      "combo_rule_first_fallback_ml": "BENIGN",
+      "combo_consensus_else_abstain": "BENIGN"
+    },
+    {
+      "run_name": "C1_removal__r10",
+      "scenario": "C1_removal",
+      "rep": 10,
+      "expected": "ATTACK",
+      "armA": "ATTACK",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 15,
+      "novel_windows": 0,
+      "combo_or": "ATTACK",
+      "combo_rule_first_fallback_ml": "ATTACK",
+      "combo_consensus_else_abstain": "UNKNOWN"
+    },
+    {
+      "run_name": "C1_removal__r11",
+      "scenario": "C1_removal",
+      "rep": 11,
+      "expected": "ATTACK",
+      "armA": "ATTACK",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 11,
+      "novel_windows": 0,
+      "combo_or": "ATTACK",
+      "combo_rule_first_fallback_ml": "ATTACK",
+      "combo_consensus_else_abstain": "UNKNOWN"
+    },
+    {
+      "run_name": "C1_removal__r12",
+      "scenario": "C1_removal",
+      "rep": 12,
+      "expected": "ATTACK",
+      "armA": "BENIGN",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 17,
+      "novel_windows": 0,
+      "combo_or": "BENIGN",
+      "combo_rule_first_fallback_ml": "BENIGN",
+      "combo_consensus_else_abstain": "BENIGN"
+    },
+    {
+      "run_name": "C1_removal__r9",
+      "scenario": "C1_removal",
+      "rep": 9,
+      "expected": "ATTACK",
+      "armA": "ATTACK",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 13,
+      "novel_windows": 0,
+      "combo_or": "ATTACK",
+      "combo_rule_first_fallback_ml": "ATTACK",
+      "combo_consensus_else_abstain": "UNKNOWN"
+    },
+    {
+      "run_name": "C2_malformed__r10",
+      "scenario": "C2_malformed",
+      "rep": 10,
+      "expected": "ATTACK",
+      "armA": "ATTACK",
+      "armB": "ATTACK",
+      "always_benign": "BENIGN",
+      "n_windows": 35,
+      "novel_windows": 0,
+      "combo_or": "ATTACK",
+      "combo_rule_first_fallback_ml": "ATTACK",
+      "combo_consensus_else_abstain": "ATTACK"
+    },
+    {
+      "run_name": "C2_malformed__r11",
+      "scenario": "C2_malformed",
+      "rep": 11,
+      "expected": "ATTACK",
+      "armA": "ATTACK",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 35,
+      "novel_windows": 0,
+      "combo_or": "ATTACK",
+      "combo_rule_first_fallback_ml": "ATTACK",
+      "combo_consensus_else_abstain": "UNKNOWN"
+    },
+    {
+      "run_name": "C2_malformed__r12",
+      "scenario": "C2_malformed",
+      "rep": 12,
+      "expected": "ATTACK",
+      "armA": "ATTACK",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 35,
+      "novel_windows": 0,
+      "combo_or": "ATTACK",
+      "combo_rule_first_fallback_ml": "ATTACK",
+      "combo_consensus_else_abstain": "UNKNOWN"
+    },
+    {
+      "run_name": "C2_malformed__r9",
+      "scenario": "C2_malformed",
+      "rep": 9,
+      "expected": "ATTACK",
+      "armA": "ATTACK",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 35,
+      "novel_windows": 0,
+      "combo_or": "ATTACK",
+      "combo_rule_first_fallback_ml": "ATTACK",
+      "combo_consensus_else_abstain": "UNKNOWN"
+    },
+    {
+      "run_name": "C3_wholesecond__r10",
+      "scenario": "C3_wholesecond",
+      "rep": 10,
+      "expected": "ATTACK",
+      "armA": "ATTACK",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 5,
+      "novel_windows": 0,
+      "combo_or": "ATTACK",
+      "combo_rule_first_fallback_ml": "ATTACK",
+      "combo_consensus_else_abstain": "UNKNOWN"
+    },
+    {
+      "run_name": "C3_wholesecond__r11",
+      "scenario": "C3_wholesecond",
+      "rep": 11,
+      "expected": "ATTACK",
+      "armA": "ATTACK",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 5,
+      "novel_windows": 0,
+      "combo_or": "ATTACK",
+      "combo_rule_first_fallback_ml": "ATTACK",
+      "combo_consensus_else_abstain": "UNKNOWN"
+    },
+    {
+      "run_name": "C3_wholesecond__r12",
+      "scenario": "C3_wholesecond",
+      "rep": 12,
+      "expected": "ATTACK",
+      "armA": "ATTACK",
+      "armB": "ATTACK",
+      "always_benign": "BENIGN",
+      "n_windows": 5,
+      "novel_windows": 0,
+      "combo_or": "ATTACK",
+      "combo_rule_first_fallback_ml": "ATTACK",
+      "combo_consensus_else_abstain": "ATTACK"
+    },
+    {
+      "run_name": "C3_wholesecond__r9",
+      "scenario": "C3_wholesecond",
+      "rep": 9,
+      "expected": "ATTACK",
+      "armA": "ATTACK",
+      "armB": "BENIGN",
+      "always_benign": "BENIGN",
+      "n_windows": 5,
+      "novel_windows": 0,
+      "combo_or": "ATTACK",
+      "combo_rule_first_fallback_ml": "ATTACK",
+      "combo_consensus_else_abstain": "UNKNOWN"
+    }
+  ],
+  "measured": {
+    "checksum_and_inventory": true,
+    "predictions_and_metrics": true,
+    "feature_importances": true
+  },
+  "calculated": {
+    "wilson_confidence_level": 0.95,
+    "macro_definition": "unweighted mean of per-scenario correctness rates"
+  },
+  "assumed": [
+    "Node-local ptp4l timestamps may be rebased by the existing ingester and pooled within a run because node identity is not part of the shipped canonical feature schema.",
+    "Novel windows represent an abstention (UNKNOWN), while non-novel windows use the Random Forest H0/H1 verdict.",
+    "Strict-majority aggregation was fixed before inspecting head-to-head results."
+  ],
+  "limitations": [
+    "Forty-eight of 168 run directories lack pmc.jsonl; management-plane telemetry is therefore incomplete and was not used as an ML feature source.",
+    "36 context.json files disagree with their directory replicate number (the C-series files report rep 901). The pre-registered split uses the authoritative <scenario>__r<rep> directory name.",
+    "The gma.log and gmb.log files contain no parseable servo lines because those nodes act as grandmasters; this produced 336 preserved parser failures. BC/RU logs supplied the usable servo telemetry.",
+    "The canonical ingester supplies simulator-friendly defaults and synthetic sequence/message fields. Values derived only from those defaults were explicitly reset to NaN and excluded from ARM B.",
+    "The 0.4 s window is shorter than the roughly 2 s servo reporting cadence. A usable window is formed by pooling contemporaneous BC/RU samples after each node-local timestamp is rebased; it is cross-node rather than a dense single-node time window.",
+    "Window labels inherit the run-level scenario label, so pre-fault/settling windows may contain label noise.",
+    "Overlapping windows are correlated. Per-run, per-scenario results are primary; pooled window metrics have artificially large effective sample size.",
+    "Only four held-out replicates exist per scenario, giving wide Wilson intervals.",
+    "ARM A consumes protocol legality and provisioned context, whereas ARM B here is restricted to available ptp4l servo summaries. This is a head-to-head operational comparison, not an equal-input ablation.",
+    "The experiment uses one fixed split and one fixed seed as pre-registered; it does not estimate split-to-split or seed-to-seed variance."
+  ]
+}

@@ -1,0 +1,373 @@
+{
+  "schema_version": "v2-repeated-run-evaluation-v1",
+  "protocol": "V2_REPEATED_EVALUATION_PROTOCOL.json",
+  "frozen_input_verification": {
+    "streaming_discriminator_v1.py_sha256": "1c1d7edfbcc38b6e0c950984eff72b58592160c71ad8e797ff719d4aee0b8d0e",
+    "STREAMING_PROTOCOL_V2.json_sha256": "fcb4c64836b13ac929aff38e7794494af6ae69dbb97139e599956ebf1d5cc40d"
+  },
+  "scope": "predeclared n=3 per condition isolated software feasibility; intervals descriptive",
+  "runs": {
+    "baseline_control": {
+      "20260913_v2_b1": {
+        "capture_sha256": "5bab6ec013837ff758bf46df060057d905995a3e9779bb6e3c0e47d02e17cb31",
+        "packet_records": 608,
+        "state_counts": {
+          "WARMUP": 163,
+          "OBSERVATION": 153,
+          "ANNOUNCE_OBSERVED": 80,
+          "NOT_APPLICABLE": 204,
+          "CONFIGURED_IMPAIRMENT_SUSPECT": 8
+        },
+        "event_counts": {},
+        "first_event_or_state_s": {
+          "WARMUP": 0.0,
+          "OBSERVATION": 0.123739958,
+          "ANNOUNCE_OBSERVED": 0.250078917,
+          "NOT_APPLICABLE": 0.650090456,
+          "CONFIGURED_IMPAIRMENT_SUSPECT": 5.272939682
+        },
+        "any_CONFIGURED_IMPAIRMENT_SUSPECT": true,
+        "any_SOURCE_ANNOUNCE_SILENCE_OBSERVED": false
+      },
+      "20260913_v2_b2": {
+        "capture_sha256": "5ca1fa87152e37834b67e09a03fa5b2b77634768fab0a8eac95d3b36916a1383",
+        "packet_records": 644,
+        "state_counts": {
+          "WARMUP": 161,
+          "OBSERVATION": 159,
+          "ANNOUNCE_OBSERVED": 80,
+          "NOT_APPLICABLE": 239,
+          "UNKNOWN": 5
+        },
+        "event_counts": {},
+        "first_event_or_state_s": {
+          "WARMUP": 0.0,
+          "OBSERVATION": 0.119932413,
+          "ANNOUNCE_OBSERVED": 0.25036335,
+          "NOT_APPLICABLE": 0.522072315,
+          "UNKNOWN": 1.432279825
+        },
+        "any_CONFIGURED_IMPAIRMENT_SUSPECT": false,
+        "any_SOURCE_ANNOUNCE_SILENCE_OBSERVED": false
+      },
+      "20260913_v2_b3": {
+        "capture_sha256": "4fc8455c8a6de26f96907a9f4654d67f4f178ea95292c217ac1533b9c1818d35",
+        "packet_records": 629,
+        "state_counts": {
+          "WARMUP": 162,
+          "OBSERVATION": 160,
+          "ANNOUNCE_OBSERVED": 79,
+          "NOT_APPLICABLE": 227,
+          "UNKNOWN": 1
+        },
+        "event_counts": {},
+        "first_event_or_state_s": {
+          "WARMUP": 0.0,
+          "OBSERVATION": 0.122372866,
+          "ANNOUNCE_OBSERVED": 0.250170946,
+          "NOT_APPLICABLE": 0.74956727,
+          "UNKNOWN": 8.855545998
+        },
+        "any_CONFIGURED_IMPAIRMENT_SUSPECT": false,
+        "any_SOURCE_ANNOUNCE_SILENCE_OBSERVED": false
+      }
+    },
+    "netem_delay_jitter_loss": {
+      "20260913_v2_n1": {
+        "capture_sha256": "32ba0e50c456dcd2856abd3f911330ed1535d2e7aadd29c17d36285a256feae3",
+        "packet_records": 640,
+        "state_counts": {
+          "WARMUP": 161,
+          "OBSERVATION": 64,
+          "ANNOUNCE_OBSERVED": 79,
+          "NOT_APPLICABLE": 241,
+          "UNKNOWN": 38,
+          "CONFIGURED_IMPAIRMENT_SUSPECT": 57
+        },
+        "event_counts": {},
+        "first_event_or_state_s": {
+          "WARMUP": 0.0,
+          "OBSERVATION": 0.123353004,
+          "ANNOUNCE_OBSERVED": 0.250039577,
+          "NOT_APPLICABLE": 0.529557943,
+          "UNKNOWN": 2.376602888,
+          "CONFIGURED_IMPAIRMENT_SUSPECT": 3.504833698
+        },
+        "any_CONFIGURED_IMPAIRMENT_SUSPECT": true,
+        "any_SOURCE_ANNOUNCE_SILENCE_OBSERVED": false
+      },
+      "20260913_v2_n2": {
+        "capture_sha256": "4898dd14c1fc9756a3b966b5e3f2eb2064c61af8162a68c632c72715a32555ed",
+        "packet_records": 630,
+        "state_counts": {
+          "WARMUP": 162,
+          "OBSERVATION": 65,
+          "ANNOUNCE_OBSERVED": 79,
+          "NOT_APPLICABLE": 231,
+          "UNKNOWN": 37,
+          "CONFIGURED_IMPAIRMENT_SUSPECT": 56
+        },
+        "event_counts": {},
+        "first_event_or_state_s": {
+          "WARMUP": 0.0,
+          "OBSERVATION": 0.123061657,
+          "ANNOUNCE_OBSERVED": 0.250080347,
+          "NOT_APPLICABLE": 0.548883438,
+          "UNKNOWN": 2.378088713,
+          "CONFIGURED_IMPAIRMENT_SUSPECT": 3.380828381
+        },
+        "any_CONFIGURED_IMPAIRMENT_SUSPECT": true,
+        "any_SOURCE_ANNOUNCE_SILENCE_OBSERVED": false
+      },
+      "20260913_v2_n3": {
+        "capture_sha256": "3e4fe70fe4e49ae50b5dd181eb8a13ac0e756921f00efe22f682477303a24976",
+        "packet_records": 622,
+        "state_counts": {
+          "WARMUP": 161,
+          "OBSERVATION": 67,
+          "ANNOUNCE_OBSERVED": 77,
+          "NOT_APPLICABLE": 225,
+          "UNKNOWN": 40,
+          "CONFIGURED_IMPAIRMENT_SUSPECT": 52
+        },
+        "event_counts": {},
+        "first_event_or_state_s": {
+          "WARMUP": 0.0,
+          "OBSERVATION": 0.120622635,
+          "ANNOUNCE_OBSERVED": 0.25002265,
+          "NOT_APPLICABLE": 0.754324913,
+          "UNKNOWN": 2.449269295,
+          "CONFIGURED_IMPAIRMENT_SUSPECT": 3.8266325
+        },
+        "any_CONFIGURED_IMPAIRMENT_SUSPECT": true,
+        "any_SOURCE_ANNOUNCE_SILENCE_OBSERVED": false
+      }
+    },
+    "authorized_source_change_no_action_control": {
+      "20260913_v2_c1": {
+        "capture_sha256": "ac39610f94113d54a25a4964f4b014da5de2e3cc3ffa4b9bf05b04d73d682968",
+        "packet_records": 612,
+        "state_counts": {
+          "WARMUP": 162,
+          "OBSERVATION": 160,
+          "ANNOUNCE_OBSERVED": 80,
+          "NOT_APPLICABLE": 210
+        },
+        "event_counts": {},
+        "first_event_or_state_s": {
+          "WARMUP": 0.0,
+          "OBSERVATION": 0.119379044,
+          "ANNOUNCE_OBSERVED": 0.250224829,
+          "NOT_APPLICABLE": 0.752120733
+        },
+        "any_CONFIGURED_IMPAIRMENT_SUSPECT": false,
+        "any_SOURCE_ANNOUNCE_SILENCE_OBSERVED": false
+      },
+      "20260913_v2_c2_retry": {
+        "capture_sha256": "fe945b216f887af2d21eb211acde3da014b432d643c0463dc6f5af8512dd2ee9",
+        "packet_records": 642,
+        "state_counts": {
+          "WARMUP": 162,
+          "OBSERVATION": 159,
+          "ANNOUNCE_OBSERVED": 80,
+          "NOT_APPLICABLE": 240,
+          "CONFIGURED_IMPAIRMENT_SUSPECT": 1
+        },
+        "event_counts": {},
+        "first_event_or_state_s": {
+          "WARMUP": 0.0,
+          "OBSERVATION": 0.119373798,
+          "ANNOUNCE_OBSERVED": 0.250271559,
+          "NOT_APPLICABLE": 0.646964312,
+          "CONFIGURED_IMPAIRMENT_SUSPECT": 8.779455185
+        },
+        "any_CONFIGURED_IMPAIRMENT_SUSPECT": true,
+        "any_SOURCE_ANNOUNCE_SILENCE_OBSERVED": false
+      },
+      "20260913_v2_c3": {
+        "capture_sha256": "07ca725f6cf437f4073e67525070a0efedca0f346fd36576de4271b524767e00",
+        "packet_records": 621,
+        "state_counts": {
+          "WARMUP": 161,
+          "OBSERVATION": 151,
+          "ANNOUNCE_OBSERVED": 79,
+          "NOT_APPLICABLE": 222,
+          "CONFIGURED_IMPAIRMENT_SUSPECT": 8
+        },
+        "event_counts": {},
+        "first_event_or_state_s": {
+          "WARMUP": 0.0,
+          "OBSERVATION": 0.12099576,
+          "ANNOUNCE_OBSERVED": 0.250000715,
+          "NOT_APPLICABLE": 0.686989546,
+          "CONFIGURED_IMPAIRMENT_SUSPECT": 1.249262094
+        },
+        "any_CONFIGURED_IMPAIRMENT_SUSPECT": true,
+        "any_SOURCE_ANNOUNCE_SILENCE_OBSERVED": false
+      }
+    },
+    "authorized_source_change_intervention": {
+      "20260913_v2_s1_retry": {
+        "capture_sha256": "6a7bc76ce539f8ec95712b419c98ed5b7cd3a9c1559bb2e78367aee211d531c3",
+        "packet_records": 924,
+        "state_counts": {
+          "WARMUP": 226,
+          "OBSERVATION": 218,
+          "ANNOUNCE_OBSERVED": 111,
+          "NOT_APPLICABLE": 363,
+          "CONFIGURED_IMPAIRMENT_SUSPECT": 6
+        },
+        "event_counts": {
+          "SOURCE_ANNOUNCE_SILENCE_OBSERVED": 1
+        },
+        "first_event_or_state_s": {
+          "WARMUP": 0.0,
+          "OBSERVATION": 0.12406373,
+          "ANNOUNCE_OBSERVED": 0.250065327,
+          "NOT_APPLICABLE": 0.687678814,
+          "CONFIGURED_IMPAIRMENT_SUSPECT": 6.511587381,
+          "SOURCE_ANNOUNCE_SILENCE_OBSERVED": 10.767579317
+        },
+        "any_CONFIGURED_IMPAIRMENT_SUSPECT": true,
+        "any_SOURCE_ANNOUNCE_SILENCE_OBSERVED": true
+      },
+      "20260913_v2_s2": {
+        "capture_sha256": "a30196e4a523317f9c55c54ea72749a2b3d774b51577f4889dc93ed03b4a5c2e",
+        "packet_records": 920,
+        "state_counts": {
+          "WARMUP": 225,
+          "OBSERVATION": 223,
+          "ANNOUNCE_OBSERVED": 111,
+          "NOT_APPLICABLE": 361
+        },
+        "event_counts": {
+          "SOURCE_ANNOUNCE_SILENCE_OBSERVED": 1
+        },
+        "first_event_or_state_s": {
+          "WARMUP": 0.0,
+          "OBSERVATION": 0.119940758,
+          "ANNOUNCE_OBSERVED": 0.250306129,
+          "NOT_APPLICABLE": 0.669448853,
+          "SOURCE_ANNOUNCE_SILENCE_OBSERVED": 10.771729469
+        },
+        "any_CONFIGURED_IMPAIRMENT_SUSPECT": false,
+        "any_SOURCE_ANNOUNCE_SILENCE_OBSERVED": true
+      },
+      "20260913_v2_s3": {
+        "capture_sha256": "e904f40952b92fdd645c99c5e52bed0e8f1e43c60eb82fb0e91360b82d7fdc44",
+        "packet_records": 892,
+        "state_counts": {
+          "WARMUP": 224,
+          "OBSERVATION": 222,
+          "ANNOUNCE_OBSERVED": 110,
+          "NOT_APPLICABLE": 333,
+          "UNKNOWN": 3
+        },
+        "event_counts": {
+          "SOURCE_ANNOUNCE_SILENCE_OBSERVED": 1
+        },
+        "first_event_or_state_s": {
+          "WARMUP": 0.0,
+          "OBSERVATION": 0.121653557,
+          "ANNOUNCE_OBSERVED": 0.250165701,
+          "NOT_APPLICABLE": 0.582684755,
+          "UNKNOWN": 1.575267553,
+          "SOURCE_ANNOUNCE_SILENCE_OBSERVED": 10.588143826
+        },
+        "any_CONFIGURED_IMPAIRMENT_SUSPECT": false,
+        "any_SOURCE_ANNOUNCE_SILENCE_OBSERVED": true
+      }
+    }
+  },
+  "run_level_summary": {
+    "baseline_control": {
+      "impairment_suspect": {
+        "k": 1,
+        "n": 3,
+        "proportion": 0.3333333333333333,
+        "wilson95": [
+          0.061491944720398706,
+          0.7923403991979452
+        ]
+      },
+      "source_silence": {
+        "k": 0,
+        "n": 3,
+        "proportion": 0.0,
+        "wilson95": [
+          0,
+          0.561497031755032
+        ]
+      }
+    },
+    "netem_delay_jitter_loss": {
+      "impairment_suspect": {
+        "k": 3,
+        "n": 3,
+        "proportion": 1.0,
+        "wilson95": [
+          0.4385029682449681,
+          1
+        ]
+      },
+      "source_silence": {
+        "k": 0,
+        "n": 3,
+        "proportion": 0.0,
+        "wilson95": [
+          0,
+          0.561497031755032
+        ]
+      }
+    },
+    "authorized_source_change_no_action_control": {
+      "impairment_suspect": {
+        "k": 2,
+        "n": 3,
+        "proportion": 0.6666666666666666,
+        "wilson95": [
+          0.20765960080205476,
+          0.9385080552796012
+        ]
+      },
+      "source_silence": {
+        "k": 0,
+        "n": 3,
+        "proportion": 0.0,
+        "wilson95": [
+          0,
+          0.561497031755032
+        ]
+      }
+    },
+    "authorized_source_change_intervention": {
+      "impairment_suspect": {
+        "k": 1,
+        "n": 3,
+        "proportion": 0.3333333333333333,
+        "wilson95": [
+          0.061491944720398706,
+          0.7923403991979452
+        ]
+      },
+      "source_silence": {
+        "k": 3,
+        "n": 3,
+        "proportion": 1.0,
+        "wilson95": [
+          0.4385029682449681,
+          1
+        ]
+      }
+    }
+  },
+  "excluded_partial_attempts": [
+    "20260913_v2_s1",
+    "20260913_v2_c2"
+  ],
+  "limits": [
+    "run labels are evaluation metadata, never engine features",
+    "free_running shared-host software clocks",
+    "no physical timing/recovery/attack/health inference"
+  ]
+}

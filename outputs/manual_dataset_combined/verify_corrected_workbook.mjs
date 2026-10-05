@@ -1,0 +1,15 @@
+import fs from "node:fs/promises";
+import path from "node:path";
+import { FileBlob, SpreadsheetFile } from "@oai/artifact-tool";
+const base = path.resolve("outputs/manual_dataset_combined");
+const file = await FileBlob.load(path.join(base, "ORAN_All_Current_Datasets_CORRECTED.xlsx"));
+const wb = await SpreadsheetFile.importXlsx(file);
+const sheets = await wb.inspect({kind:"sheet", include:"id,name"});
+const summary = await wb.inspect({kind:"table", range:"Summary!A1:B12", include:"values,formulas", tableMaxRows:12, tableMaxCols:2});
+const status = await wb.inspect({kind:"table", range:"Source status!A1:J8", include:"values", tableMaxRows:8, tableMaxCols:10});
+const errors = await wb.inspect({kind:"match", searchTerm:"#REF!|#DIV/0!|#VALUE!|#NAME\\?|#N/A|#NUM!|#NULL!|#SPILL!|#CALC!", options:{useRegex:true,maxResults:100}});
+const png = await wb.render({sheetName:"Summary", range:"A1:F12", scale:1.5});
+await fs.writeFile(path.join(base,"corrected_workbook_summary.png"), new Uint8Array(await png.arrayBuffer()));
+const result = {sheets:sheets.ndjson, summary:summary.ndjson, source_status:status.ndjson, errors:errors.ndjson};
+await fs.writeFile(path.join(base,"corrected_workbook_verification.json"), JSON.stringify(result,null,2));
+console.log(JSON.stringify(result,null,2));

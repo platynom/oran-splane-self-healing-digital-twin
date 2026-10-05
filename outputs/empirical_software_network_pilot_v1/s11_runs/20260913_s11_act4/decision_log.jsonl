@@ -1,0 +1,6 @@
+{"event": "stream_started", "utc": "2026-09-13T04:57:18Z", "monotonic_s": 351.103243, "arm": "action", "stream_id": "seg1-sa4", "pcap_magic": "0xa1b23c4d", "ts_divisor": 1000000000.0, "action_command": "ip netns exec s11sa4s ip link set s11sa4y1 down"}
+{"event": "detection_trigger", "utc": "2026-09-13T04:57:34Z", "monotonic_s": 366.929617, "arm": "action", "classification": "NONOVERLAPPING_BLOCK_PERSISTENCE_OBSERVED", "reason": "prospective_causal_nonoverlap_block_count", "packet_ts": 1789275453.7457502, "frames_consumed": 536}
+{"event": "action_intent", "utc": "2026-09-13T04:57:34Z", "monotonic_s": 366.931875, "arm": "action", "command": "ip netns exec s11sa4s ip link set s11sa4y1 down"}
+{"event": "action_execution_result", "utc": "2026-09-13T04:57:34Z", "monotonic_s": 366.943308, "arm": "action", "returncode": 0, "elapsed_s": 0.009784, "stdout_bytes": 0, "stderr_text": ""}
+{"event": "stream_ended", "utc": "2026-09-13T04:58:03Z", "monotonic_s": 395.656672, "arm": "action", "frames": 554}
+{"event": "detector_finished", "utc": "2026-09-13T04:58:03Z", "monotonic_s": 395.657534, "arm": "action", "frames": 554, "triggered": true}

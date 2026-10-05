@@ -1,0 +1,11 @@
+capture,segment,classification,attack_family,rows,start_s,end_s,duration_s
+announce_session_1,announce,H1,announce,46987,0.08969,664.549833,664.460143
+announce_session_1,benign,H0,announce,11,0.0,664.575721,664.575721
+announce_session_2,announce,H1,announce,46992,0.024666,664.549833,664.525167
+announce_session_2,benign,H0,announce,6,0.0,664.575721,664.575721
+announce_session_3,announce,H1,announce,4538,10.89153,74.666872,63.775341999999995
+announce_session_3,benign,H0,announce,1485,8e-06,90.064947,90.06493900000001
+sync_followup_session,benign,H0,sync_follow_up,1016,0.0,77.745033,77.745033
+sync_followup_session,sync_follow_up,H1,sync_follow_up,7424,11.571356,71.517053,59.945697
+sync_singlestep_session,benign,H0,sync_single_step,1707,3.8e-05,91.120606,91.12056799999999
+sync_singlestep_session,sync_single_step,H1,sync_single_step,7370,8.559686,68.505768,59.946082000000004

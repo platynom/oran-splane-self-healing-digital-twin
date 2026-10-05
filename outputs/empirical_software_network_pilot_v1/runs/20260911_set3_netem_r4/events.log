@@ -1,0 +1,7 @@
+run_id=n44 phase=setup event=tcpdump_ready utc=2026-09-11T16:58:13Z monotonic_s=95.23 status=PASS
+run_id=n44 phase=setup event=master_a_ready utc=2026-09-11T16:58:13Z monotonic_s=95.24 status=PASS
+run_id=n44 phase=setup event=master_b_ready utc=2026-09-11T16:58:13Z monotonic_s=95.24 status=PASS
+run_id=n44 phase=setup event=slave_ready utc=2026-09-11T16:58:13Z monotonic_s=95.25 status=PASS
+run_id=n44 phase=netem_delay_jitter_loss event=phase_started utc=2026-09-11T16:58:13Z monotonic_s=95.26 status=PASS
+run_id=n44 phase=netem_delay_jitter_loss event=netem_command_confirmed utc=2026-09-11T16:58:13Z monotonic_s=95.28 status=PASS
+run_id=n44 phase=netem_delay_jitter_loss event=phase_finished utc=2026-09-11T16:58:43Z monotonic_s=125.30 status=PASS

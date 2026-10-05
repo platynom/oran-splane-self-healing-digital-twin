@@ -1,0 +1,206 @@
+{
+  "baseline": {
+    "ordinal_positions": [
+      12,
+      16,
+      20
+    ],
+    "total_frames": {
+      "values": [
+        2037,
+        2020,
+        2014
+      ],
+      "min": 2014,
+      "median": 2020,
+      "max": 2037,
+      "spread": 23
+    },
+    "observed_missing_master_to_slave": {
+      "values": [
+        0,
+        0,
+        0
+      ],
+      "min": 0,
+      "median": 0,
+      "max": 0,
+      "spread": 0
+    },
+    "setup_epoch_offset_s": {
+      "values": [
+        2.982,
+        2.982,
+        2.964
+      ],
+      "min": 2.964,
+      "median": 2.982,
+      "max": 2.982,
+      "spread": 0.018
+    }
+  },
+  "netem": {
+    "ordinal_positions": [
+      13,
+      17,
+      21
+    ],
+    "total_frames": {
+      "values": [
+        2045,
+        2058,
+        2013
+      ],
+      "min": 2013,
+      "median": 2045,
+      "max": 2058,
+      "spread": 45
+    },
+    "observed_missing_master_to_slave": {
+      "values": [
+        20,
+        19,
+        19
+      ],
+      "min": 19,
+      "median": 19,
+      "max": 20,
+      "spread": 1
+    },
+    "setup_epoch_offset_s": {
+      "values": [
+        2.978,
+        2.95,
+        2.982
+      ],
+      "min": 2.95,
+      "median": 2.978,
+      "max": 2.982,
+      "spread": 0.032
+    },
+    "qdisc_after_sent_pkts": {
+      "values": [
+        1693,
+        1697,
+        1674
+      ],
+      "min": 1674,
+      "median": 1693,
+      "max": 1697,
+      "spread": 23
+    },
+    "qdisc_after_dropped_pkts": {
+      "values": [
+        20,
+        20,
+        19
+      ],
+      "min": 19,
+      "median": 20,
+      "max": 20,
+      "spread": 1
+    }
+  },
+  "control": {
+    "ordinal_positions": [
+      14,
+      18,
+      22
+    ],
+    "total_frames": {
+      "values": [
+        2026,
+        2048,
+        2017
+      ],
+      "min": 2017,
+      "median": 2026,
+      "max": 2048,
+      "spread": 31
+    },
+    "observed_missing_master_to_slave": {
+      "values": [
+        0,
+        0,
+        0
+      ],
+      "min": 0,
+      "median": 0,
+      "max": 0,
+      "spread": 0
+    },
+    "setup_epoch_offset_s": {
+      "values": [
+        2.98,
+        2.97,
+        2.968
+      ],
+      "min": 2.968,
+      "median": 2.97,
+      "max": 2.98,
+      "spread": 0.012
+    }
+  },
+  "intervention": {
+    "ordinal_positions": [
+      15,
+      19,
+      23
+    ],
+    "total_frames": {
+      "values": [
+        3114,
+        3244,
+        3130
+      ],
+      "min": 3114,
+      "median": 3130,
+      "max": 3244,
+      "spread": 130
+    },
+    "observed_missing_master_to_slave": {
+      "values": [
+        0,
+        0,
+        0
+      ],
+      "min": 0,
+      "median": 0,
+      "max": 0,
+      "spread": 0
+    },
+    "setup_epoch_offset_s": {
+      "values": [
+        3.0,
+        2.974,
+        2.982
+      ],
+      "min": 2.974,
+      "median": 2.982,
+      "max": 3.0,
+      "spread": 0.026
+    },
+    "delay_req_outage_s": {
+      "values": [
+        0.486946,
+        0.466648,
+        0.656833
+      ],
+      "min": 0.466648,
+      "median": 0.486946,
+      "max": 0.656833,
+      "spread": 0.190185
+    },
+    "announce_loss_to_resumption_s": {
+      "values": [
+        1.292393,
+        1.336006,
+        1.298468
+      ],
+      "min": 1.292393,
+      "median": 1.298468,
+      "max": 1.336006,
+      "spread": 0.043613
+    }
+  }
+}

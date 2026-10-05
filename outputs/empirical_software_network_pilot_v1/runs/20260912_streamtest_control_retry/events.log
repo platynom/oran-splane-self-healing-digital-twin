@@ -1,0 +1,7 @@
+run_id=c9 phase=setup event=tcpdump_ready utc=2026-09-12T13:14:28Z monotonic_s=73.08 status=PASS
+run_id=c9 phase=setup event=master_a_ready utc=2026-09-12T13:14:28Z monotonic_s=73.09 status=PASS
+run_id=c9 phase=setup event=master_b_ready utc=2026-09-12T13:14:28Z monotonic_s=73.09 status=PASS
+run_id=c9 phase=setup event=slave_ready utc=2026-09-12T13:14:28Z monotonic_s=73.10 status=PASS
+run_id=c9 phase=authorized_source_change_no_action_control event=phase_started utc=2026-09-12T13:14:28Z monotonic_s=73.11 status=PASS
+run_id=c9 phase=authorized_source_change_no_action_control event=qdisc_baseline_observed utc=2026-09-12T13:14:28Z monotonic_s=73.12 status=PASS
+run_id=c9 phase=authorized_source_change_no_action_control event=phase_finished utc=2026-09-12T13:14:40Z monotonic_s=85.13 status=PASS

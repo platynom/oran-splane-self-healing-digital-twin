@@ -1,0 +1,97 @@
+{
+  "errors": [],
+  "events": [
+    {
+      "event": "tcpdump_ready",
+      "monotonic_s": "187.77",
+      "phase": "setup",
+      "run_id": "w5a4",
+      "status": "PASS",
+      "utc": "2026-09-13T04:18:12Z"
+    },
+    {
+      "event": "master_a_ready",
+      "monotonic_s": "187.78",
+      "phase": "setup",
+      "run_id": "w5a4",
+      "status": "PASS",
+      "utc": "2026-09-13T04:18:12Z"
+    },
+    {
+      "event": "master_b_ready",
+      "monotonic_s": "187.78",
+      "phase": "setup",
+      "run_id": "w5a4",
+      "status": "PASS",
+      "utc": "2026-09-13T04:18:12Z"
+    },
+    {
+      "event": "slave_ready",
+      "monotonic_s": "187.79",
+      "phase": "setup",
+      "run_id": "w5a4",
+      "status": "PASS",
+      "utc": "2026-09-13T04:18:12Z"
+    },
+    {
+      "event": "phase_started",
+      "monotonic_s": "187.80",
+      "phase": "benign_delay_jitter_no_loss",
+      "run_id": "w5a4",
+      "status": "PASS",
+      "utc": "2026-09-13T04:18:12Z"
+    },
+    {
+      "event": "benign_netem_command_confirmed",
+      "monotonic_s": "187.82",
+      "phase": "benign_delay_jitter_no_loss",
+      "run_id": "w5a4",
+      "status": "PASS",
+      "utc": "2026-09-13T04:18:12Z"
+    },
+    {
+      "event": "phase_finished",
+      "monotonic_s": "195.83",
+      "phase": "benign_delay_jitter_no_loss",
+      "run_id": "w5a4",
+      "status": "PASS",
+      "utc": "2026-09-13T04:18:20Z"
+    }
+  ],
+  "interpretation_limit": "This validates artifact integrity and documented process/qdisc commands only. free_running 1 means no closed-loop clock recovery or independent-clock claim.",
+  "log_bytes": {
+    "master_a.log": 530,
+    "master_b.log": 530,
+    "slave.log": 2852,
+    "tcpdump.log": 171
+  },
+  "manifest_hashes_match": {
+    "capture.pcap": true,
+    "events.log": true,
+    "master_a.conf": true,
+    "master_a.log": true,
+    "master_b.conf": true,
+    "master_b.log": true,
+    "run_environment.txt": true,
+    "slave.conf": true,
+    "slave.log": true,
+    "tcpdump.log": true
+  },
+  "missing_required_artifacts": [],
+  "outcome_label_policy": "NOT_ASSIGNED",
+  "pcap": {
+    "decoded_message_counts": {
+      "Announce": 82,
+      "Delay_Req": 72,
+      "Delay_Resp": 144,
+      "Follow_Up": 161,
+      "Sync": 161
+    },
+    "records": 620,
+    "undecoded_records": 0
+  },
+  "run_directory": "C:\\Users\\Admin\\Documents\\AI-Native Self-Healing O-RAN Network using a Digital Twin\\outputs\\empirical_software_network_pilot_v1\\v5_runs\\20260913_v5_a4",
+  "scenario": "benign_delay_jitter_no_loss",
+  "schema_version": "pilot-validation-v2",
+  "status": "STRUCTURALLY_COMPLETE"
+}

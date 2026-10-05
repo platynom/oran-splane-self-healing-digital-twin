@@ -1,0 +1,757 @@
+{
+  "generated": "2026-09-20T21:07:21.988442Z",
+  "evaluator": "evaluate_v4.py",
+  "reps": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+  ],
+  "n_runs": 168,
+  "per_scenario_n": {
+    "A1_rogue_master": 12,
+    "A2_sync_spoof": 12,
+    "A3_replay": 12,
+    "A5_dos_flood": 12,
+    "A8_rogue_bc": 12,
+    "B2_gm_failover": 12,
+    "B3_pdv_congestion": 12,
+    "B7_topology_change": 12,
+    "B_bc_replacement": 12,
+    "B_unplanned_failover": 12,
+    "C1_removal": 12,
+    "C2_malformed": 12,
+    "C3_wholesecond": 12,
+    "baseline": 12
+  },
+  "skipped": {
+    "rep_out_of_range": 120
+  },
+  "frozen": {
+    "label": "FROZEN rule c362e11",
+    "n_attack": 96,
+    "n_benign": 60,
+    "n_unknown": 12,
+    "tp": 60,
+    "fn": 36,
+    "unknown_on_attack": 0,
+    "tn": 47,
+    "fp": 12,
+    "unknown_on_benign": 1,
+    "abstain_substantive": 12,
+    "abstain_via_error_path": 0,
+    "pooled_sensitivity": [
+      0.625,
+      0.5251,
+      0.7153
+    ],
+    "pooled_specificity": [
+      0.7833,
+      0.6638,
+      0.8688
+    ],
+    "abstention": [
+      1.0,
+      0.7575,
+      1.0
+    ],
+    "macro_sensitivity": 0.625,
+    "macro_specificity": 0.7833,
+    "attribution": [
+      0.5521,
+      0.4525,
+      0.6476
+    ],
+    "per_scenario": {
+      "A1_rogue_master": {
+        "correct": 12,
+        "n": 12,
+        "expect": "ATTACK",
+        "est": [
+          1.0,
+          0.7575,
+          1.0
+        ]
+      },
+      "A2_sync_spoof": {
+        "correct": 12,
+        "n": 12,
+        "expect": "ATTACK",
+        "est": [
+          1.0,
+          0.7575,
+          1.0
+        ]
+      },
+      "A3_replay": {
+        "correct": 12,
+        "n": 12,
+        "expect": "ATTACK",
+        "est": [
+          1.0,
+          0.7575,
+          1.0
+        ]
+      },
+      "A5_dos_flood": {
+        "correct": 12,
+        "n": 12,
+        "expect": "ATTACK",
+        "est": [
+          1.0,
+          0.7575,
+          1.0
+        ]
+      },
+      "A8_rogue_bc": {
+        "correct": 12,
+        "n": 12,
+        "expect": "ATTACK",
+        "est": [
+          1.0,
+          0.7575,
+          1.0
+        ]
+      },
+      "B2_gm_failover": {
+        "correct": 12,
+        "n": 12,
+        "expect": "BENIGN",
+        "est": [
+          1.0,
+          0.7575,
+          1.0
+        ]
+      },
+      "B3_pdv_congestion": {
+        "correct": 11,
+        "n": 12,
+        "expect": "BENIGN",
+        "est": [
+          0.9167,
+          0.6461,
+          0.9851
+        ]
+      },
+      "B7_topology_change": {
+        "correct": 12,
+        "n": 12,
+        "expect": "BENIGN",
+        "est": [
+          1.0,
+          0.7575,
+          1.0
+        ]
+      },
+      "B_bc_replacement": {
+        "correct": 0,
+        "n": 12,
+        "expect": "BENIGN",
+        "est": [
+          0.0,
+          0.0,
+          0.2425
+        ]
+      },
+      "B_unplanned_failover": {
+        "correct": 12,
+        "n": 12,
+        "expect": "UNKNOWN",
+        "est": [
+          1.0,
+          0.7575,
+          1.0
+        ]
+      },
+      "C1_removal": {
+        "correct": 0,
+        "n": 12,
+        "expect": "ATTACK",
+        "est": [
+          0.0,
+          0.0,
+          0.2425
+        ]
+      },
+      "C2_malformed": {
+        "correct": 0,
+        "n": 12,
+        "expect": "ATTACK",
+        "est": [
+          0.0,
+          0.0,
+          0.2425
+        ]
+      },
+      "C3_wholesecond": {
+        "correct": 0,
+        "n": 12,
+        "expect": "ATTACK",
+        "est": [
+          0.0,
+          0.0,
+          0.2425
+        ]
+      },
+      "baseline": {
+        "correct": 12,
+        "n": 12,
+        "expect": "BENIGN",
+        "est": [
+          1.0,
+          0.7575,
+          1.0
+        ]
+      }
+    }
+  },
+  "v2": {
+    "label": "FROZEN v2 e32eb65b  (superseded - see FROZEN_V3.json)",
+    "n_attack": 96,
+    "n_benign": 60,
+    "n_unknown": 12,
+    "tp": 95,
+    "fn": 1,
+    "unknown_on_attack": 0,
+    "tn": 47,
+    "fp": 12,
+    "unknown_on_benign": 1,
+    "abstain_substantive": 12,
+    "abstain_via_error_path": 0,
+    "pooled_sensitivity": [
+      0.9896,
+      0.9433,
+      0.9982
+    ],
+    "pooled_specificity": [
+      0.7833,
+      0.6638,
+      0.8688
+    ],
+    "abstention": [
+      1.0,
+      0.7575,
+      1.0
+    ],
+    "macro_sensitivity": 0.9896,
+    "macro_specificity": 0.7833,
+    "attribution": [
+      0.875,
+      0.7941,
+      0.927
+    ],
+    "per_scenario": {
+      "A1_rogue_master": {
+        "correct": 12,
+        "n": 12,
+        "expect": "ATTACK",
+        "est": [
+          1.0,
+          0.7575,
+          1.0
+        ]
+      },
+      "A2_sync_spoof": {
+        "correct": 12,
+        "n": 12,
+        "expect": "ATTACK",
+        "est": [
+          1.0,
+          0.7575,
+          1.0
+        ]
+      },
+      "A3_replay": {
+        "correct": 12,
+        "n": 12,
+        "expect": "ATTACK",
+        "est": [
+          1.0,
+          0.7575,
+          1.0
+        ]
+      },
+      "A5_dos_flood": {
+        "correct": 12,
+        "n": 12,
+        "expect": "ATTACK",
+        "est": [
+          1.0,
+          0.7575,
+          1.0
+        ]
+      },
+      "A8_rogue_bc": {
+        "correct": 12,
+        "n": 12,
+        "expect": "ATTACK",
+        "est": [
+          1.0,
+          0.7575,
+          1.0
+        ]
+      },
+      "B2_gm_failover": {
+        "correct": 12,
+        "n": 12,
+        "expect": "BENIGN",
+        "est": [
+          1.0,
+          0.7575,
+          1.0
+        ]
+      },
+      "B3_pdv_congestion": {
+        "correct": 11,
+        "n": 12,
+        "expect": "BENIGN",
+        "est": [
+          0.9167,
+          0.6461,
+          0.9851
+        ]
+      },
+      "B7_topology_change": {
+        "correct": 12,
+        "n": 12,
+        "expect": "BENIGN",
+        "est": [
+          1.0,
+          0.7575,
+          1.0
+        ]
+      },
+      "B_bc_replacement": {
+        "correct": 0,
+        "n": 12,
+        "expect": "BENIGN",
+        "est": [
+          0.0,
+          0.0,
+          0.2425
+        ]
+      },
+      "B_unplanned_failover": {
+        "correct": 12,
+        "n": 12,
+        "expect": "UNKNOWN",
+        "est": [
+          1.0,
+          0.7575,
+          1.0
+        ]
+      },
+      "C1_removal": {
+        "correct": 11,
+        "n": 12,
+        "expect": "ATTACK",
+        "est": [
+          0.9167,
+          0.6461,
+          0.9851
+        ]
+      },
+      "C2_malformed": {
+        "correct": 12,
+        "n": 12,
+        "expect": "ATTACK",
+        "est": [
+          1.0,
+          0.7575,
+          1.0
+        ]
+      },
+      "C3_wholesecond": {
+        "correct": 12,
+        "n": 12,
+        "expect": "ATTACK",
+        "est": [
+          1.0,
+          0.7575,
+          1.0
+        ]
+      },
+      "baseline": {
+        "correct": 12,
+        "n": 12,
+        "expect": "BENIGN",
+        "est": [
+          1.0,
+          0.7575,
+          1.0
+        ]
+      }
+    }
+  },
+  "v3": {
+    "label": "FROZEN v3 aa9417b7  (defect-fix revision - PRIMARY)",
+    "n_attack": 96,
+    "n_benign": 60,
+    "n_unknown": 12,
+    "tp": 95,
+    "fn": 1,
+    "unknown_on_attack": 0,
+    "tn": 47,
+    "fp": 12,
+    "unknown_on_benign": 1,
+    "abstain_substantive": 12,
+    "abstain_via_error_path": 0,
+    "pooled_sensitivity": [
+      0.9896,
+      0.9433,
+      0.9982
+    ],
+    "pooled_specificity": [
+      0.7833,
+      0.6638,
+      0.8688
+    ],
+    "abstention": [
+      1.0,
+      0.7575,
+      1.0
+    ],
+    "macro_sensitivity": 0.9896,
+    "macro_specificity": 0.7833,
+    "attribution": [
+      0.875,
+      0.7941,
+      0.927
+    ],
+    "per_scenario": {
+      "A1_rogue_master": {
+        "correct": 12,
+        "n": 12,
+        "expect": "ATTACK",
+        "est": [
+          1.0,
+          0.7575,
+          1.0
+        ]
+      },
+      "A2_sync_spoof": {
+        "correct": 12,
+        "n": 12,
+        "expect": "ATTACK",
+        "est": [
+          1.0,
+          0.7575,
+          1.0
+        ]
+      },
+      "A3_replay": {
+        "correct": 12,
+        "n": 12,
+        "expect": "ATTACK",
+        "est": [
+          1.0,
+          0.7575,
+          1.0
+        ]
+      },
+      "A5_dos_flood": {
+        "correct": 12,
+        "n": 12,
+        "expect": "ATTACK",
+        "est": [
+          1.0,
+          0.7575,
+          1.0
+        ]
+      },
+      "A8_rogue_bc": {
+        "correct": 12,
+        "n": 12,
+        "expect": "ATTACK",
+        "est": [
+          1.0,
+          0.7575,
+          1.0
+        ]
+      },
+      "B2_gm_failover": {
+        "correct": 12,
+        "n": 12,
+        "expect": "BENIGN",
+        "est": [
+          1.0,
+          0.7575,
+          1.0
+        ]
+      },
+      "B3_pdv_congestion": {
+        "correct": 11,
+        "n": 12,
+        "expect": "BENIGN",
+        "est": [
+          0.9167,
+          0.6461,
+          0.9851
+        ]
+      },
+      "B7_topology_change": {
+        "correct": 12,
+        "n": 12,
+        "expect": "BENIGN",
+        "est": [
+          1.0,
+          0.7575,
+          1.0
+        ]
+      },
+      "B_bc_replacement": {
+        "correct": 0,
+        "n": 12,
+        "expect": "BENIGN",
+        "est": [
+          0.0,
+          0.0,
+          0.2425
+        ]
+      },
+      "B_unplanned_failover": {
+        "correct": 12,
+        "n": 12,
+        "expect": "UNKNOWN",
+        "est": [
+          1.0,
+          0.7575,
+          1.0
+        ]
+      },
+      "C1_removal": {
+        "correct": 11,
+        "n": 12,
+        "expect": "ATTACK",
+        "est": [
+          0.9167,
+          0.6461,
+          0.9851
+        ]
+      },
+      "C2_malformed": {
+        "correct": 12,
+        "n": 12,
+        "expect": "ATTACK",
+        "est": [
+          1.0,
+          0.7575,
+          1.0
+        ]
+      },
+      "C3_wholesecond": {
+        "correct": 12,
+        "n": 12,
+        "expect": "ATTACK",
+        "est": [
+          1.0,
+          0.7575,
+          1.0
+        ]
+      },
+      "baseline": {
+        "correct": 12,
+        "n": 12,
+        "expect": "BENIGN",
+        "est": [
+          1.0,
+          0.7575,
+          1.0
+        ]
+      }
+    }
+  },
+  "additive_only": {
+    "passed": true,
+    "regressions": [],
+    "escalations": {
+      "C1_removal": 11,
+      "C2_malformed": 12,
+      "C3_wholesecond": 12
+    },
+    "n_changed": 35
+  },
+  "design_effective_n": {
+    "C1_removal": 5,
+    "C2_malformed": 4,
+    "C3_wholesecond": 4
+  },
+  "run_list": [
+    "A1_rogue_master__r1",
+    "A1_rogue_master__r10",
+    "A1_rogue_master__r11",
+    "A1_rogue_master__r12",
+    "A1_rogue_master__r2",
+    "A1_rogue_master__r3",
+    "A1_rogue_master__r4",
+    "A1_rogue_master__r5",
+    "A1_rogue_master__r6",
+    "A1_rogue_master__r7",
+    "A1_rogue_master__r8",
+    "A1_rogue_master__r9",
+    "A2_sync_spoof__r1",
+    "A2_sync_spoof__r10",
+    "A2_sync_spoof__r11",
+    "A2_sync_spoof__r12",
+    "A2_sync_spoof__r2",
+    "A2_sync_spoof__r3",
+    "A2_sync_spoof__r4",
+    "A2_sync_spoof__r5",
+    "A2_sync_spoof__r6",
+    "A2_sync_spoof__r7",
+    "A2_sync_spoof__r8",
+    "A2_sync_spoof__r9",
+    "A3_replay__r1",
+    "A3_replay__r10",
+    "A3_replay__r11",
+    "A3_replay__r12",
+    "A3_replay__r2",
+    "A3_replay__r3",
+    "A3_replay__r4",
+    "A3_replay__r5",
+    "A3_replay__r6",
+    "A3_replay__r7",
+    "A3_replay__r8",
+    "A3_replay__r9",
+    "A5_dos_flood__r1",
+    "A5_dos_flood__r10",
+    "A5_dos_flood__r11",
+    "A5_dos_flood__r12",
+    "A5_dos_flood__r2",
+    "A5_dos_flood__r3",
+    "A5_dos_flood__r4",
+    "A5_dos_flood__r5",
+    "A5_dos_flood__r6",
+    "A5_dos_flood__r7",
+    "A5_dos_flood__r8",
+    "A5_dos_flood__r9",
+    "A8_rogue_bc__r1",
+    "A8_rogue_bc__r10",
+    "A8_rogue_bc__r11",
+    "A8_rogue_bc__r12",
+    "A8_rogue_bc__r2",
+    "A8_rogue_bc__r3",
+    "A8_rogue_bc__r4",
+    "A8_rogue_bc__r5",
+    "A8_rogue_bc__r6",
+    "A8_rogue_bc__r7",
+    "A8_rogue_bc__r8",
+    "A8_rogue_bc__r9",
+    "B2_gm_failover__r1",
+    "B2_gm_failover__r10",
+    "B2_gm_failover__r11",
+    "B2_gm_failover__r12",
+    "B2_gm_failover__r2",
+    "B2_gm_failover__r3",
+    "B2_gm_failover__r4",
+    "B2_gm_failover__r5",
+    "B2_gm_failover__r6",
+    "B2_gm_failover__r7",
+    "B2_gm_failover__r8",
+    "B2_gm_failover__r9",
+    "B3_pdv_congestion__r1",
+    "B3_pdv_congestion__r10",
+    "B3_pdv_congestion__r11",
+    "B3_pdv_congestion__r12",
+    "B3_pdv_congestion__r2",
+    "B3_pdv_congestion__r3",
+    "B3_pdv_congestion__r4",
+    "B3_pdv_congestion__r5",
+    "B3_pdv_congestion__r6",
+    "B3_pdv_congestion__r7",
+    "B3_pdv_congestion__r8",
+    "B3_pdv_congestion__r9",
+    "B7_topology_change__r1",
+    "B7_topology_change__r10",
+    "B7_topology_change__r11",
+    "B7_topology_change__r12",
+    "B7_topology_change__r2",
+    "B7_topology_change__r3",
+    "B7_topology_change__r4",
+    "B7_topology_change__r5",
+    "B7_topology_change__r6",
+    "B7_topology_change__r7",
+    "B7_topology_change__r8",
+    "B7_topology_change__r9",
+    "B_bc_replacement__r1",
+    "B_bc_replacement__r10",
+    "B_bc_replacement__r11",
+    "B_bc_replacement__r12",
+    "B_bc_replacement__r2",
+    "B_bc_replacement__r3",
+    "B_bc_replacement__r4",
+    "B_bc_replacement__r5",
+    "B_bc_replacement__r6",
+    "B_bc_replacement__r7",
+    "B_bc_replacement__r8",
+    "B_bc_replacement__r9",
+    "B_unplanned_failover__r1",
+    "B_unplanned_failover__r10",
+    "B_unplanned_failover__r11",
+    "B_unplanned_failover__r12",
+    "B_unplanned_failover__r2",
+    "B_unplanned_failover__r3",
+    "B_unplanned_failover__r4",
+    "B_unplanned_failover__r5",
+    "B_unplanned_failover__r6",
+    "B_unplanned_failover__r7",
+    "B_unplanned_failover__r8",
+    "B_unplanned_failover__r9",
+    "C1_removal__r1",
+    "C1_removal__r10",
+    "C1_removal__r11",
+    "C1_removal__r12",
+    "C1_removal__r2",
+    "C1_removal__r3",
+    "C1_removal__r4",
+    "C1_removal__r5",
+    "C1_removal__r6",
+    "C1_removal__r7",
+    "C1_removal__r8",
+    "C1_removal__r9",
+    "C2_malformed__r1",
+    "C2_malformed__r10",
+    "C2_malformed__r11",
+    "C2_malformed__r12",
+    "C2_malformed__r2",
+    "C2_malformed__r3",
+    "C2_malformed__r4",
+    "C2_malformed__r5",
+    "C2_malformed__r6",
+    "C2_malformed__r7",
+    "C2_malformed__r8",
+    "C2_malformed__r9",
+    "C3_wholesecond__r1",
+    "C3_wholesecond__r10",
+    "C3_wholesecond__r11",
+    "C3_wholesecond__r12",
+    "C3_wholesecond__r2",
+    "C3_wholesecond__r3",
+    "C3_wholesecond__r4",
+    "C3_wholesecond__r5",
+    "C3_wholesecond__r6",
+    "C3_wholesecond__r7",
+    "C3_wholesecond__r8",
+    "C3_wholesecond__r9",
+    "baseline__r1",
+    "baseline__r10",
+    "baseline__r11",
+    "baseline__r12",
+    "baseline__r2",
+    "baseline__r3",
+    "baseline__r4",
+    "baseline__r5",
+    "baseline__r6",
+    "baseline__r7",
+    "baseline__r8",
+    "baseline__r9"
+  ]
+}

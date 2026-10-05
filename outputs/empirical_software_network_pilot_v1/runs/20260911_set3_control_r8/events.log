@@ -1,0 +1,7 @@
+run_id=c38 phase=setup event=tcpdump_ready utc=2026-09-11T17:19:09Z monotonic_s=201.43 status=PASS
+run_id=c38 phase=setup event=master_a_ready utc=2026-09-11T17:19:09Z monotonic_s=201.44 status=PASS
+run_id=c38 phase=setup event=master_b_ready utc=2026-09-11T17:19:09Z monotonic_s=201.45 status=PASS
+run_id=c38 phase=setup event=slave_ready utc=2026-09-11T17:19:09Z monotonic_s=201.46 status=PASS
+run_id=c38 phase=authorized_source_change_no_action_control event=phase_started utc=2026-09-11T17:19:09Z monotonic_s=201.46 status=PASS
+run_id=c38 phase=authorized_source_change_no_action_control event=qdisc_baseline_observed utc=2026-09-11T17:19:09Z monotonic_s=201.48 status=PASS
+run_id=c38 phase=authorized_source_change_no_action_control event=phase_finished utc=2026-09-11T17:19:39Z monotonic_s=231.49 status=PASS

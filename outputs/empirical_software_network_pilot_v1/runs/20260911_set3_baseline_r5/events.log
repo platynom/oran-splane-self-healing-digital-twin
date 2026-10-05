@@ -1,0 +1,7 @@
+run_id=b35 phase=setup event=tcpdump_ready utc=2026-09-11T17:00:24Z monotonic_s=226.26 status=PASS
+run_id=b35 phase=setup event=master_a_ready utc=2026-09-11T17:00:24Z monotonic_s=226.27 status=PASS
+run_id=b35 phase=setup event=master_b_ready utc=2026-09-11T17:00:24Z monotonic_s=226.28 status=PASS
+run_id=b35 phase=setup event=slave_ready utc=2026-09-11T17:00:24Z monotonic_s=226.28 status=PASS
+run_id=b35 phase=baseline_control event=phase_started utc=2026-09-11T17:00:24Z monotonic_s=226.29 status=PASS
+run_id=b35 phase=baseline_control event=qdisc_baseline_observed utc=2026-09-11T17:00:24Z monotonic_s=226.30 status=PASS
+run_id=b35 phase=baseline_control event=phase_finished utc=2026-09-11T17:00:54Z monotonic_s=256.31 status=PASS

@@ -1,0 +1,7 @@
+run_id=c33 phase=setup event=tcpdump_ready utc=2026-09-11T14:47:13Z monotonic_s=406.18 status=PASS
+run_id=c33 phase=setup event=master_a_ready utc=2026-09-11T14:47:13Z monotonic_s=406.19 status=PASS
+run_id=c33 phase=setup event=master_b_ready utc=2026-09-11T14:47:13Z monotonic_s=406.19 status=PASS
+run_id=c33 phase=setup event=slave_ready utc=2026-09-11T14:47:13Z monotonic_s=406.20 status=PASS
+run_id=c33 phase=authorized_source_change_no_action_control event=phase_started utc=2026-09-11T14:47:13Z monotonic_s=406.20 status=PASS
+run_id=c33 phase=authorized_source_change_no_action_control event=qdisc_baseline_observed utc=2026-09-11T14:47:13Z monotonic_s=406.22 status=PASS
+run_id=c33 phase=authorized_source_change_no_action_control event=phase_finished utc=2026-09-11T14:47:43Z monotonic_s=436.23 status=PASS

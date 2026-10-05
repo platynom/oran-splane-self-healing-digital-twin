@@ -1,0 +1,8 @@
+run_id=sg1
+arm=no_action
+condition=benign_delay_jitter
+linuxptp=3.1.1
+topology=two_independent_l2_segments
+host_clock_adjustment=disabled_by_free_running_1
+started_utc=2026-09-13T17:02:45Z
+ended_utc=2026-09-13T17:03:33Z

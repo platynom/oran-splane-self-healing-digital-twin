@@ -1,0 +1,1385 @@
+{
+  "schema_version": "empirical-3class-discriminator-v2",
+  "evaluation_scope": {
+    "target": "CONFIGURED IMPAIRMENT AND OPERATOR-INITIATED SOURCE TERMINATION",
+    "mandatory_disclaimer": "SOURCE_LOSS is an authorised, operator-initiated termination of a timing source in an emulated testbed. It is NOT an attack, and nothing here establishes attack detection, clock health, physical timing quality or recovery.",
+    "unit_of_analysis": "1 run",
+    "classes": {
+      "UNIMPAIRED": "baseline_control + authorized_source_change_no_action_control",
+      "IMPAIRED": "netem_delay_jitter_loss",
+      "SOURCE_LOSS": "authorized_source_change_intervention"
+    },
+    "sample_counts": {
+      "total_runs_evaluated": 32,
+      "by_class": {
+        "UNIMPAIRED": 16,
+        "IMPAIRED": 8,
+        "SOURCE_LOSS": 8
+      },
+      "class_imbalance": "16:8:8"
+    },
+    "anti_circularity_design": "Run class assignment is fixed by the experiment configuration and confirmed by physical kernel qdisc counters and daemon lifecycle event logs, independent of packet timing features.",
+    "leakage_guard": "extract_features_from_pcap accepts an anonymous binary stream with assertions failing loudly if directory or scenario names are passed."
+  },
+  "manipulation_checks_reclassification": {
+    "statement": "Two features directly read back the injected operational interventions: (1) missing_master_to_slave_seq_count directly tallies dropped packets from netem 1% loss, confirming link impairment delivery; (2) max_announce_silence_at_end_s measures trailing silence from the stopped master through capture completion (~30 s), confirming the master termination was delivered. Neither represents evidence of an anomaly detection capability. Crucially, max_announce_silence_at_end_s is RETROSPECTIVE and cannot run in a real-time self-healing loop.",
+    "manipulation_check_features": [
+      "missing_master_to_slave_seq_count",
+      "max_announce_silence_at_end_s"
+    ]
+  },
+  "feature_selection_provenance": {
+    "feature_set_status": "POST_SPECIFIED_SUBSTITUTION",
+    "features_originally_specified": [
+      "per-source Announce inter-arrival median, p95, max, and standard deviation",
+      "per-source missing sequence fraction by messageType",
+      "total frame count normalised by capture duration",
+      "Delay_Req inter-arrival median and p95"
+    ],
+    "features_explored_before_selection": [
+      "num_announce_sources",
+      "announce_max_gap_any_source_s",
+      "max_announce_silence_at_end_s",
+      "max_delay_req_gap_s",
+      "sync_fu_paired_delay_std_s",
+      "sync_interarrival_jitter_s",
+      "missing_master_to_slave_seq_count"
+    ],
+    "selection_note": "The feature sync_fu_paired_delay_std_s cleanly separates in-path queuing impairment. However, on every ONLINE feature, SOURCE_LOSS overlaps UNIMPAIRED, demonstrating that without whole-capture retrospective silence, timing features do not cleanly separate source termination in this shared-clock testbed.",
+    "separability_summary": {
+      "IMPAIRED_vs_UNIMPAIRED": "Separable with 183.26 us margin via sync_fu_paired_delay_std_s (ONLINE: link queuing delay dispersion).",
+      "SOURCE_LOSS_vs_UNIMPAIRED_RETROSPECTIVE": "Separable with 29.70 s margin via max_announce_silence_at_end_s (RETROSPECTIVE MANIPULATION CHECK ONLY).",
+      "SOURCE_LOSS_vs_UNIMPAIRED_ONLINE": "Inseparable with zero non-overlapping margin across all online timing features (max_delay_req_gap_s overlaps at 249.7 ms vs 250.1 ms; sync_fu_paired_delay_std_s overlaps [18.3 us, 72.2 us] vs [20.4 us, 64.9 us])."
+    }
+  },
+  "dataset_inventory": [
+    {
+      "run": "20260911_set2_baseline_r1",
+      "class": "UNIMPAIRED",
+      "condition": "baseline_control",
+      "features": {
+        "missing_master_to_slave_seq_count": 0,
+        "sync_fu_paired_delay_std_s": 5.888e-05,
+        "sync_interarrival_jitter_s": 0.00012596,
+        "num_announce_sources": 2,
+        "announce_max_gap_any_source_s": 0.250971,
+        "max_announce_silence_at_end_s": 0.187595,
+        "max_delay_req_gap_s": 0.248174
+      }
+    },
+    {
+      "run": "20260911_set2_baseline_r2",
+      "class": "UNIMPAIRED",
+      "condition": "baseline_control",
+      "features": {
+        "missing_master_to_slave_seq_count": 0,
+        "sync_fu_paired_delay_std_s": 5.221e-05,
+        "sync_interarrival_jitter_s": 0.00011158,
+        "num_announce_sources": 2,
+        "announce_max_gap_any_source_s": 0.250589,
+        "max_announce_silence_at_end_s": 0.191366,
+        "max_delay_req_gap_s": 0.249629
+      }
+    },
+    {
+      "run": "20260911_set2_baseline_r3",
+      "class": "UNIMPAIRED",
+      "condition": "baseline_control",
+      "features": {
+        "missing_master_to_slave_seq_count": 0,
+        "sync_fu_paired_delay_std_s": 6.582e-05,
+        "sync_interarrival_jitter_s": 0.00013486,
+        "num_announce_sources": 2,
+        "announce_max_gap_any_source_s": 0.250683,
+        "max_announce_silence_at_end_s": 0.023757,
+        "max_delay_req_gap_s": 0.250013
+      }
+    },
+    {
+      "run": "20260911_set2_control_r1",
+      "class": "UNIMPAIRED",
+      "condition": "authorized_source_change_no_action_control",
+      "features": {
+        "missing_master_to_slave_seq_count": 0,
+        "sync_fu_paired_delay_std_s": 5.048e-05,
+        "sync_interarrival_jitter_s": 0.00013595,
+        "num_announce_sources": 2,
+        "announce_max_gap_any_source_s": 0.250684,
+        "max_announce_silence_at_end_s": 0.20032,
+        "max_delay_req_gap_s": 0.249118
+      }
+    },
+    {
+      "run": "20260911_set2_control_r2",
+      "class": "UNIMPAIRED",
+      "condition": "authorized_source_change_no_action_control",
+      "features": {
+        "missing_master_to_slave_seq_count": 0,
+        "sync_fu_paired_delay_std_s": 7.222e-05,
+        "sync_interarrival_jitter_s": 0.00016039,
+        "num_announce_sources": 2,
+        "announce_max_gap_any_source_s": 0.250483,
+        "max_announce_silence_at_end_s": 0.098419,
+        "max_delay_req_gap_s": 0.249012
+      }
+    },
+    {
+      "run": "20260911_set2_control_r3",
+      "class": "UNIMPAIRED",
+      "condition": "authorized_source_change_no_action_control",
+      "features": {
+        "missing_master_to_slave_seq_count": 0,
+        "sync_fu_paired_delay_std_s": 5.464e-05,
+        "sync_interarrival_jitter_s": 0.00011795,
+        "num_announce_sources": 2,
+        "announce_max_gap_any_source_s": 0.250477,
+        "max_announce_silence_at_end_s": 0.156584,
+        "max_delay_req_gap_s": 0.246268
+      }
+    },
+    {
+      "run": "20260911_set2_intervention_r1",
+      "class": "SOURCE_LOSS",
+      "condition": "authorized_source_change_intervention",
+      "features": {
+        "missing_master_to_slave_seq_count": 0,
+        "sync_fu_paired_delay_std_s": 5.094e-05,
+        "sync_interarrival_jitter_s": 0.00012162,
+        "num_announce_sources": 2,
+        "announce_max_gap_any_source_s": 0.25044,
+        "max_announce_silence_at_end_s": 30.133972,
+        "max_delay_req_gap_s": 0.486946
+      }
+    },
+    {
+      "run": "20260911_set2_intervention_r2",
+      "class": "SOURCE_LOSS",
+      "condition": "authorized_source_change_intervention",
+      "features": {
+        "missing_master_to_slave_seq_count": 0,
+        "sync_fu_paired_delay_std_s": 6.488e-05,
+        "sync_interarrival_jitter_s": 0.00015523,
+        "num_announce_sources": 2,
+        "announce_max_gap_any_source_s": 0.250813,
+        "max_announce_silence_at_end_s": 30.171624,
+        "max_delay_req_gap_s": 0.466648
+      }
+    },
+    {
+      "run": "20260911_set2_intervention_r3",
+      "class": "SOURCE_LOSS",
+      "condition": "authorized_source_change_intervention",
+      "features": {
+        "missing_master_to_slave_seq_count": 0,
+        "sync_fu_paired_delay_std_s": 4.237e-05,
+        "sync_interarrival_jitter_s": 0.00012254,
+        "num_announce_sources": 2,
+        "announce_max_gap_any_source_s": 0.250609,
+        "max_announce_silence_at_end_s": 29.928553,
+        "max_delay_req_gap_s": 0.656833
+      }
+    },
+    {
+      "run": "20260911_set2_netem_r1",
+      "class": "IMPAIRED",
+      "condition": "netem_delay_jitter_loss",
+      "features": {
+        "missing_master_to_slave_seq_count": 20,
+        "sync_fu_paired_delay_std_s": 0.00026055,
+        "sync_interarrival_jitter_s": 0.0002692,
+        "num_announce_sources": 2,
+        "announce_max_gap_any_source_s": 0.500414,
+        "max_announce_silence_at_end_s": 0.203449,
+        "max_delay_req_gap_s": 0.249916
+      }
+    },
+    {
+      "run": "20260911_set2_netem_r2",
+      "class": "IMPAIRED",
+      "condition": "netem_delay_jitter_loss",
+      "features": {
+        "missing_master_to_slave_seq_count": 19,
+        "sync_fu_paired_delay_std_s": 0.00025951,
+        "sync_interarrival_jitter_s": 0.00024526,
+        "num_announce_sources": 2,
+        "announce_max_gap_any_source_s": 0.500715,
+        "max_announce_silence_at_end_s": 0.178856,
+        "max_delay_req_gap_s": 0.248842
+      }
+    },
+    {
+      "run": "20260911_set2_netem_r3",
+      "class": "IMPAIRED",
+      "condition": "netem_delay_jitter_loss",
+      "features": {
+        "missing_master_to_slave_seq_count": 19,
+        "sync_fu_paired_delay_std_s": 0.00026686,
+        "sync_interarrival_jitter_s": 0.00026893,
+        "num_announce_sources": 2,
+        "announce_max_gap_any_source_s": 0.50058,
+        "max_announce_silence_at_end_s": 0.18164,
+        "max_delay_req_gap_s": 0.247095
+      }
+    },
+    {
+      "run": "20260911_set3_baseline_r4",
+      "class": "UNIMPAIRED",
+      "condition": "baseline_control",
+      "features": {
+        "missing_master_to_slave_seq_count": 0,
+        "sync_fu_paired_delay_std_s": 4.817e-05,
+        "sync_interarrival_jitter_s": 0.0001442,
+        "num_announce_sources": 2,
+        "announce_max_gap_any_source_s": 0.250643,
+        "max_announce_silence_at_end_s": 0.20986,
+        "max_delay_req_gap_s": 0.249743
+      }
+    },
+    {
+      "run": "20260911_set3_baseline_r5",
+      "class": "UNIMPAIRED",
+      "condition": "baseline_control",
+      "features": {
+        "missing_master_to_slave_seq_count": 0,
+        "sync_fu_paired_delay_std_s": 3.932e-05,
+        "sync_interarrival_jitter_s": 0.00015201,
+        "num_announce_sources": 2,
+        "announce_max_gap_any_source_s": 0.250908,
+        "max_announce_silence_at_end_s": 0.162582,
+        "max_delay_req_gap_s": 0.249789
+      }
+    },
+    {
+      "run": "20260911_set3_baseline_r6",
+      "class": "UNIMPAIRED",
+      "condition": "baseline_control",
+      "features": {
+        "missing_master_to_slave_seq_count": 0,
+        "sync_fu_paired_delay_std_s": 2.6e-05,
+        "sync_interarrival_jitter_s": 0.00010026,
+        "num_announce_sources": 2,
+        "announce_max_gap_any_source_s": 0.250438,
+        "max_announce_silence_at_end_s": 0.135655,
+        "max_delay_req_gap_s": 0.249834
+      }
+    },
+    {
+      "run": "20260911_set3_baseline_r7",
+      "class": "UNIMPAIRED",
+      "condition": "baseline_control",
+      "features": {
+        "missing_master_to_slave_seq_count": 0,
+        "sync_fu_paired_delay_std_s": 3.25e-05,
+        "sync_interarrival_jitter_s": 9.12e-05,
+        "num_announce_sources": 2,
+        "announce_max_gap_any_source_s": 0.250455,
+        "max_announce_silence_at_end_s": 0.210296,
+        "max_delay_req_gap_s": 0.249096
+      }
+    },
+    {
+      "run": "20260911_set3_baseline_r8",
+      "class": "UNIMPAIRED",
+      "condition": "baseline_control",
+      "features": {
+        "missing_master_to_slave_seq_count": 0,
+        "sync_fu_paired_delay_std_s": 3.361e-05,
+        "sync_interarrival_jitter_s": 8.038e-05,
+        "num_announce_sources": 2,
+        "announce_max_gap_any_source_s": 0.250564,
+        "max_announce_silence_at_end_s": 0.216086,
+        "max_delay_req_gap_s": 0.24891
+      }
+    },
+    {
+      "run": "20260911_set3_control_r4",
+      "class": "UNIMPAIRED",
+      "condition": "authorized_source_change_no_action_control",
+      "features": {
+        "missing_master_to_slave_seq_count": 0,
+        "sync_fu_paired_delay_std_s": 4.074e-05,
+        "sync_interarrival_jitter_s": 0.00015836,
+        "num_announce_sources": 2,
+        "announce_max_gap_any_source_s": 0.250918,
+        "max_announce_silence_at_end_s": 0.037485,
+        "max_delay_req_gap_s": 0.249844
+      }
+    },
+    {
+      "run": "20260911_set3_control_r5",
+      "class": "UNIMPAIRED",
+      "condition": "authorized_source_change_no_action_control",
+      "features": {
+        "missing_master_to_slave_seq_count": 0,
+        "sync_fu_paired_delay_std_s": 3.843e-05,
+        "sync_interarrival_jitter_s": 0.0001544,
+        "num_announce_sources": 2,
+        "announce_max_gap_any_source_s": 0.250626,
+        "max_announce_silence_at_end_s": 0.143857,
+        "max_delay_req_gap_s": 0.250036
+      }
+    },
+    {
+      "run": "20260911_set3_control_r6",
+      "class": "UNIMPAIRED",
+      "condition": "authorized_source_change_no_action_control",
+      "features": {
+        "missing_master_to_slave_seq_count": 0,
+        "sync_fu_paired_delay_std_s": 2.789e-05,
+        "sync_interarrival_jitter_s": 0.00011868,
+        "num_announce_sources": 2,
+        "announce_max_gap_any_source_s": 0.250432,
+        "max_announce_silence_at_end_s": 0.136025,
+        "max_delay_req_gap_s": 0.250095
+      }
+    },
+    {
+      "run": "20260911_set3_control_r7",
+      "class": "UNIMPAIRED",
+      "condition": "authorized_source_change_no_action_control",
+      "features": {
+        "missing_master_to_slave_seq_count": 0,
+        "sync_fu_paired_delay_std_s": 2.364e-05,
+        "sync_interarrival_jitter_s": 9.997e-05,
+        "num_announce_sources": 2,
+        "announce_max_gap_any_source_s": 0.250678,
+        "max_announce_silence_at_end_s": 0.070696,
+        "max_delay_req_gap_s": 0.249774
+      }
+    },
+    {
+      "run": "20260911_set3_control_r8",
+      "class": "UNIMPAIRED",
+      "condition": "authorized_source_change_no_action_control",
+      "features": {
+        "missing_master_to_slave_seq_count": 0,
+        "sync_fu_paired_delay_std_s": 1.833e-05,
+        "sync_interarrival_jitter_s": 8.644e-05,
+        "num_announce_sources": 2,
+        "announce_max_gap_any_source_s": 0.250769,
+        "max_announce_silence_at_end_s": 0.060141,
+        "max_delay_req_gap_s": 0.249357
+      }
+    },
+    {
+      "run": "20260911_set3_intervention_r4",
+      "class": "SOURCE_LOSS",
+      "condition": "authorized_source_change_intervention",
+      "features": {
+        "missing_master_to_slave_seq_count": 0,
+        "sync_fu_paired_delay_std_s": 3.943e-05,
+        "sync_interarrival_jitter_s": 0.00014758,
+        "num_announce_sources": 2,
+        "announce_max_gap_any_source_s": 0.253829,
+        "max_announce_silence_at_end_s": 30.098903,
+        "max_delay_req_gap_s": 0.249719
+      }
+    },
+    {
+      "run": "20260911_set3_intervention_r5",
+      "class": "SOURCE_LOSS",
+      "condition": "authorized_source_change_intervention",
+      "features": {
+        "missing_master_to_slave_seq_count": 0,
+        "sync_fu_paired_delay_std_s": 3.79e-05,
+        "sync_interarrival_jitter_s": 0.00018018,
+        "num_announce_sources": 2,
+        "announce_max_gap_any_source_s": 0.253379,
+        "max_announce_silence_at_end_s": 30.057623,
+        "max_delay_req_gap_s": 0.350156
+      }
+    },
+    {
+      "run": "20260911_set3_intervention_r6",
+      "class": "SOURCE_LOSS",
+      "condition": "authorized_source_change_intervention",
+      "features": {
+        "missing_master_to_slave_seq_count": 0,
+        "sync_fu_paired_delay_std_s": 3.569e-05,
+        "sync_interarrival_jitter_s": 0.00013093,
+        "num_announce_sources": 2,
+        "announce_max_gap_any_source_s": 0.251389,
+        "max_announce_silence_at_end_s": 29.913276,
+        "max_delay_req_gap_s": 0.294617
+      }
+    },
+    {
+      "run": "20260911_set3_intervention_r7",
+      "class": "SOURCE_LOSS",
+      "condition": "authorized_source_change_intervention",
+      "features": {
+        "missing_master_to_slave_seq_count": 0,
+        "sync_fu_paired_delay_std_s": 3.301e-05,
+        "sync_interarrival_jitter_s": 9.719e-05,
+        "num_announce_sources": 2,
+        "announce_max_gap_any_source_s": 0.251151,
+        "max_announce_silence_at_end_s": 30.053794,
+        "max_delay_req_gap_s": 0.341005
+      }
+    },
+    {
+      "run": "20260911_set3_intervention_r8",
+      "class": "SOURCE_LOSS",
+      "condition": "authorized_source_change_intervention",
+      "features": {
+        "missing_master_to_slave_seq_count": 0,
+        "sync_fu_paired_delay_std_s": 2.035e-05,
+        "sync_interarrival_jitter_s": 8.101e-05,
+        "num_announce_sources": 2,
+        "announce_max_gap_any_source_s": 0.250933,
+        "max_announce_silence_at_end_s": 30.062799,
+        "max_delay_req_gap_s": 0.279831
+      }
+    },
+    {
+      "run": "20260911_set3_netem_r4",
+      "class": "IMPAIRED",
+      "condition": "netem_delay_jitter_loss",
+      "features": {
+        "missing_master_to_slave_seq_count": 11,
+        "sync_fu_paired_delay_std_s": 0.00026216,
+        "sync_interarrival_jitter_s": 0.00026472,
+        "num_announce_sources": 2,
+        "announce_max_gap_any_source_s": 0.500166,
+        "max_announce_silence_at_end_s": 0.148434,
+        "max_delay_req_gap_s": 0.249856
+      }
+    },
+    {
+      "run": "20260911_set3_netem_r5",
+      "class": "IMPAIRED",
+      "condition": "netem_delay_jitter_loss",
+      "features": {
+        "missing_master_to_slave_seq_count": 21,
+        "sync_fu_paired_delay_std_s": 0.00026534,
+        "sync_interarrival_jitter_s": 0.00025844,
+        "num_announce_sources": 2,
+        "announce_max_gap_any_source_s": 0.500774,
+        "max_announce_silence_at_end_s": 0.077851,
+        "max_delay_req_gap_s": 0.250013
+      }
+    },
+    {
+      "run": "20260911_set3_netem_r6",
+      "class": "IMPAIRED",
+      "condition": "netem_delay_jitter_loss",
+      "features": {
+        "missing_master_to_slave_seq_count": 20,
+        "sync_fu_paired_delay_std_s": 0.00027006,
+        "sync_interarrival_jitter_s": 0.00025657,
+        "num_announce_sources": 2,
+        "announce_max_gap_any_source_s": 0.500293,
+        "max_announce_silence_at_end_s": 0.221089,
+        "max_delay_req_gap_s": 0.249099
+      }
+    },
+    {
+      "run": "20260911_set3_netem_r7",
+      "class": "IMPAIRED",
+      "condition": "netem_delay_jitter_loss",
+      "features": {
+        "missing_master_to_slave_seq_count": 16,
+        "sync_fu_paired_delay_std_s": 0.00032772,
+        "sync_interarrival_jitter_s": 0.00030441,
+        "num_announce_sources": 2,
+        "announce_max_gap_any_source_s": 0.500595,
+        "max_announce_silence_at_end_s": 0.009635,
+        "max_delay_req_gap_s": 0.249196
+      }
+    },
+    {
+      "run": "20260911_set3_netem_r8",
+      "class": "IMPAIRED",
+      "condition": "netem_delay_jitter_loss",
+      "features": {
+        "missing_master_to_slave_seq_count": 18,
+        "sync_fu_paired_delay_std_s": 0.00025548,
+        "sync_interarrival_jitter_s": 0.00023791,
+        "num_announce_sources": 2,
+        "announce_max_gap_any_source_s": 0.500448,
+        "max_announce_silence_at_end_s": 0.217816,
+        "max_delay_req_gap_s": 0.249528
+      }
+    }
+  ],
+  "feature_distributions_and_margins": {
+    "max_announce_silence_at_end_s": {
+      "role": "MANIPULATION_CHECK",
+      "causality": "RETROSPECTIVE",
+      "description": "Trailing duration from the stopped master's last Announce to capture end. Measures remaining capture duration after injected daemon termination. Cannot run in an online self-healing loop.",
+      "per_class_stats": {
+        "UNIMPAIRED": {
+          "n": 16,
+          "min": 0.023757,
+          "median": 0.1502205,
+          "max": 0.216086
+        },
+        "IMPAIRED": {
+          "n": 8,
+          "min": 0.009635,
+          "median": 0.180248,
+          "max": 0.221089
+        },
+        "SOURCE_LOSS": {
+          "n": 8,
+          "min": 29.913276,
+          "median": 30.060211,
+          "max": 30.171624
+        }
+      },
+      "pairwise_margins": {
+        "UNIMPAIRED_vs_IMPAIRED": {
+          "separable": false,
+          "separation_margin": null,
+          "relationship": "overlapping range [0.023757, 0.216086]"
+        },
+        "UNIMPAIRED_vs_SOURCE_LOSS": {
+          "separable": true,
+          "separation_margin": 29.69719,
+          "relationship": "UNIMPAIRED strictly less than SOURCE_LOSS"
+        },
+        "IMPAIRED_vs_SOURCE_LOSS": {
+          "separable": true,
+          "separation_margin": 29.692187,
+          "relationship": "IMPAIRED strictly less than SOURCE_LOSS"
+        }
+      }
+    },
+    "sync_fu_paired_delay_std_s": {
+      "role": "DETECTION_FEATURE",
+      "causality": "ONLINE",
+      "description": "Dispersion of delay between two-step Sync and paired Follow_Up frames. Computable in real time from bounded packet window.",
+      "per_class_stats": {
+        "UNIMPAIRED": {
+          "n": 16,
+          "min": 1.833e-05,
+          "median": 4.003e-05,
+          "max": 7.222e-05
+        },
+        "IMPAIRED": {
+          "n": 8,
+          "min": 0.00025548,
+          "median": 0.00026375,
+          "max": 0.00032772
+        },
+        "SOURCE_LOSS": {
+          "n": 8,
+          "min": 2.035e-05,
+          "median": 3.8664999999999997e-05,
+          "max": 6.488e-05
+        }
+      },
+      "pairwise_margins": {
+        "UNIMPAIRED_vs_IMPAIRED": {
+          "separable": true,
+          "separation_margin": 0.00018326,
+          "relationship": "UNIMPAIRED strictly less than IMPAIRED"
+        },
+        "UNIMPAIRED_vs_SOURCE_LOSS": {
+          "separable": false,
+          "separation_margin": null,
+          "relationship": "overlapping range [2.035e-05, 6.488e-05]"
+        },
+        "IMPAIRED_vs_SOURCE_LOSS": {
+          "separable": true,
+          "separation_margin": 0.0001906,
+          "relationship": "SOURCE_LOSS strictly less than IMPAIRED"
+        }
+      }
+    },
+    "sync_interarrival_jitter_s": {
+      "role": "DETECTION_FEATURE",
+      "causality": "ONLINE",
+      "description": "Mean absolute deviation of Sync intervals from nominal 125 ms pacing. Computable in real time.",
+      "per_class_stats": {
+        "UNIMPAIRED": {
+          "n": 16,
+          "min": 8.038e-05,
+          "median": 0.00012231999999999998,
+          "max": 0.00016039
+        },
+        "IMPAIRED": {
+          "n": 8,
+          "min": 0.00023791,
+          "median": 0.00026158,
+          "max": 0.00030441
+        },
+        "SOURCE_LOSS": {
+          "n": 8,
+          "min": 8.101e-05,
+          "median": 0.000126735,
+          "max": 0.00018018
+        }
+      },
+      "pairwise_margins": {
+        "UNIMPAIRED_vs_IMPAIRED": {
+          "separable": true,
+          "separation_margin": 7.752e-05,
+          "relationship": "UNIMPAIRED strictly less than IMPAIRED"
+        },
+        "UNIMPAIRED_vs_SOURCE_LOSS": {
+          "separable": false,
+          "separation_margin": null,
+          "relationship": "overlapping range [8.101e-05, 0.00016039]"
+        },
+        "IMPAIRED_vs_SOURCE_LOSS": {
+          "separable": true,
+          "separation_margin": 5.773e-05,
+          "relationship": "SOURCE_LOSS strictly less than IMPAIRED"
+        }
+      }
+    },
+    "announce_max_gap_any_source_s": {
+      "role": "DETECTION_FEATURE",
+      "causality": "ONLINE",
+      "description": "Largest inter-arrival gap between consecutive Announce frames from any single source.",
+      "per_class_stats": {
+        "UNIMPAIRED": {
+          "n": 16,
+          "min": 0.250432,
+          "median": 0.2506345,
+          "max": 0.250971
+        },
+        "IMPAIRED": {
+          "n": 8,
+          "min": 0.500166,
+          "median": 0.500514,
+          "max": 0.500774
+        },
+        "SOURCE_LOSS": {
+          "n": 8,
+          "min": 0.25044,
+          "median": 0.251042,
+          "max": 0.253829
+        }
+      },
+      "pairwise_margins": {
+        "UNIMPAIRED_vs_IMPAIRED": {
+          "separable": true,
+          "separation_margin": 0.249195,
+          "relationship": "UNIMPAIRED strictly less than IMPAIRED"
+        },
+        "UNIMPAIRED_vs_SOURCE_LOSS": {
+          "separable": false,
+          "separation_margin": null,
+          "relationship": "overlapping range [0.25044, 0.250971]"
+        },
+        "IMPAIRED_vs_SOURCE_LOSS": {
+          "separable": true,
+          "separation_margin": 0.246337,
+          "relationship": "SOURCE_LOSS strictly less than IMPAIRED"
+        }
+      }
+    },
+    "max_delay_req_gap_s": {
+      "role": "DETECTION_FEATURE",
+      "causality": "ONLINE",
+      "description": "Largest inter-arrival gap between slave Delay_Req frames. Computable from trailing window.",
+      "per_class_stats": {
+        "UNIMPAIRED": {
+          "n": 16,
+          "min": 0.246268,
+          "median": 0.249686,
+          "max": 0.250095
+        },
+        "IMPAIRED": {
+          "n": 8,
+          "min": 0.247095,
+          "median": 0.249362,
+          "max": 0.250013
+        },
+        "SOURCE_LOSS": {
+          "n": 8,
+          "min": 0.249719,
+          "median": 0.3455805,
+          "max": 0.656833
+        }
+      },
+      "pairwise_margins": {
+        "UNIMPAIRED_vs_IMPAIRED": {
+          "separable": false,
+          "separation_margin": null,
+          "relationship": "overlapping range [0.247095, 0.250013]"
+        },
+        "UNIMPAIRED_vs_SOURCE_LOSS": {
+          "separable": false,
+          "separation_margin": null,
+          "relationship": "overlapping range [0.249719, 0.250095]"
+        },
+        "IMPAIRED_vs_SOURCE_LOSS": {
+          "separable": false,
+          "separation_margin": null,
+          "relationship": "overlapping range [0.249719, 0.250013]"
+        }
+      }
+    },
+    "num_announce_sources": {
+      "role": "DETECTION_FEATURE",
+      "causality": "ONLINE",
+      "description": "Count of distinct source MAC identities observed emitting Announce frames.",
+      "per_class_stats": {
+        "UNIMPAIRED": {
+          "n": 16,
+          "min": 2,
+          "median": 2.0,
+          "max": 2
+        },
+        "IMPAIRED": {
+          "n": 8,
+          "min": 2,
+          "median": 2.0,
+          "max": 2
+        },
+        "SOURCE_LOSS": {
+          "n": 8,
+          "min": 2,
+          "median": 2.0,
+          "max": 2
+        }
+      },
+      "pairwise_margins": {
+        "UNIMPAIRED_vs_IMPAIRED": {
+          "separable": false,
+          "separation_margin": null,
+          "relationship": "overlapping range [2, 2]"
+        },
+        "UNIMPAIRED_vs_SOURCE_LOSS": {
+          "separable": false,
+          "separation_margin": null,
+          "relationship": "overlapping range [2, 2]"
+        },
+        "IMPAIRED_vs_SOURCE_LOSS": {
+          "separable": false,
+          "separation_margin": null,
+          "relationship": "overlapping range [2, 2]"
+        }
+      }
+    },
+    "missing_master_to_slave_seq_count": {
+      "role": "MANIPULATION_CHECK",
+      "causality": "ONLINE",
+      "description": "Tally of dropped sequence IDs across bridge-to-slave queue confirming netem delivery.",
+      "per_class_stats": {
+        "UNIMPAIRED": {
+          "n": 16,
+          "min": 0,
+          "median": 0.0,
+          "max": 0
+        },
+        "IMPAIRED": {
+          "n": 8,
+          "min": 11,
+          "median": 19.0,
+          "max": 21
+        },
+        "SOURCE_LOSS": {
+          "n": 8,
+          "min": 0,
+          "median": 0.0,
+          "max": 0
+        }
+      },
+      "pairwise_margins": {
+        "UNIMPAIRED_vs_IMPAIRED": {
+          "separable": true,
+          "separation_margin": 11,
+          "relationship": "UNIMPAIRED strictly less than IMPAIRED"
+        },
+        "UNIMPAIRED_vs_SOURCE_LOSS": {
+          "separable": false,
+          "separation_margin": null,
+          "relationship": "overlapping range [0, 0]"
+        },
+        "IMPAIRED_vs_SOURCE_LOSS": {
+          "separable": true,
+          "separation_margin": 11,
+          "relationship": "SOURCE_LOSS strictly less than IMPAIRED"
+        }
+      }
+    }
+  },
+  "retrospective_evaluation": {
+    "role": "REFERENCE_ONLY_RETROSPECTIVE_MANIPULATION_CHECK",
+    "warning": "Includes max_announce_silence_at_end_s, which requires the entire capture and measures trailing silence of the stopped master. Cannot run in an operational self-healing loop.",
+    "leave_one_out_cross_validation": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "confusion_matrix": {
+        "UNIMPAIRED": {
+          "UNIMPAIRED": 16,
+          "IMPAIRED": 0,
+          "SOURCE_LOSS": 0
+        },
+        "IMPAIRED": {
+          "UNIMPAIRED": 0,
+          "IMPAIRED": 8,
+          "SOURCE_LOSS": 0
+        },
+        "SOURCE_LOSS": {
+          "UNIMPAIRED": 0,
+          "IMPAIRED": 0,
+          "SOURCE_LOSS": 8
+        }
+      },
+      "per_class_metrics": {
+        "UNIMPAIRED": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 16,
+          "fp": 0,
+          "fn": 0,
+          "total_actual": 16
+        },
+        "IMPAIRED": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 8,
+          "fp": 0,
+          "fn": 0,
+          "total_actual": 8
+        },
+        "SOURCE_LOSS": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 8,
+          "fp": 0,
+          "fn": 0,
+          "total_actual": 8
+        }
+      },
+      "predictions": [
+        {
+          "run": "20260911_set2_baseline_r1",
+          "actual": "UNIMPAIRED",
+          "predicted": "UNIMPAIRED",
+          "threshold_source_loss_silence": 15.067182,
+          "threshold_impaired_paired_delay_std": 0.00016385
+        },
+        {
+          "run": "20260911_set2_baseline_r2",
+          "actual": "UNIMPAIRED",
+          "predicted": "UNIMPAIRED",
+          "threshold_source_loss_silence": 15.067182,
+          "threshold_impaired_paired_delay_std": 0.00016385
+        },
+        {
+          "run": "20260911_set2_baseline_r3",
+          "actual": "UNIMPAIRED",
+          "predicted": "UNIMPAIRED",
+          "threshold_source_loss_silence": 15.067182,
+          "threshold_impaired_paired_delay_std": 0.00016385
+        },
+        {
+          "run": "20260911_set2_control_r1",
+          "actual": "UNIMPAIRED",
+          "predicted": "UNIMPAIRED",
+          "threshold_source_loss_silence": 15.067182,
+          "threshold_impaired_paired_delay_std": 0.00016385
+        },
+        {
+          "run": "20260911_set2_control_r2",
+          "actual": "UNIMPAIRED",
+          "predicted": "UNIMPAIRED",
+          "threshold_source_loss_silence": 15.067182,
+          "threshold_impaired_paired_delay_std": 0.00016065
+        },
+        {
+          "run": "20260911_set2_control_r3",
+          "actual": "UNIMPAIRED",
+          "predicted": "UNIMPAIRED",
+          "threshold_source_loss_silence": 15.067182,
+          "threshold_impaired_paired_delay_std": 0.00016385
+        },
+        {
+          "run": "20260911_set2_intervention_r1",
+          "actual": "SOURCE_LOSS",
+          "predicted": "SOURCE_LOSS",
+          "threshold_source_loss_silence": 15.067182,
+          "threshold_impaired_paired_delay_std": 0.00016385
+        },
+        {
+          "run": "20260911_set2_intervention_r2",
+          "actual": "SOURCE_LOSS",
+          "predicted": "SOURCE_LOSS",
+          "threshold_source_loss_silence": 15.067182,
+          "threshold_impaired_paired_delay_std": 0.00016385
+        },
+        {
+          "run": "20260911_set2_intervention_r3",
+          "actual": "SOURCE_LOSS",
+          "predicted": "SOURCE_LOSS",
+          "threshold_source_loss_silence": 15.067182,
+          "threshold_impaired_paired_delay_std": 0.00016385
+        },
+        {
+          "run": "20260911_set2_netem_r1",
+          "actual": "IMPAIRED",
+          "predicted": "IMPAIRED",
+          "threshold_source_loss_silence": 15.067182,
+          "threshold_impaired_paired_delay_std": 0.00016385
+        },
+        {
+          "run": "20260911_set2_netem_r2",
+          "actual": "IMPAIRED",
+          "predicted": "IMPAIRED",
+          "threshold_source_loss_silence": 15.067182,
+          "threshold_impaired_paired_delay_std": 0.00016385
+        },
+        {
+          "run": "20260911_set2_netem_r3",
+          "actual": "IMPAIRED",
+          "predicted": "IMPAIRED",
+          "threshold_source_loss_silence": 15.067182,
+          "threshold_impaired_paired_delay_std": 0.00016385
+        },
+        {
+          "run": "20260911_set3_baseline_r4",
+          "actual": "UNIMPAIRED",
+          "predicted": "UNIMPAIRED",
+          "threshold_source_loss_silence": 15.067182,
+          "threshold_impaired_paired_delay_std": 0.00016385
+        },
+        {
+          "run": "20260911_set3_baseline_r5",
+          "actual": "UNIMPAIRED",
+          "predicted": "UNIMPAIRED",
+          "threshold_source_loss_silence": 15.067182,
+          "threshold_impaired_paired_delay_std": 0.00016385
+        },
+        {
+          "run": "20260911_set3_baseline_r6",
+          "actual": "UNIMPAIRED",
+          "predicted": "UNIMPAIRED",
+          "threshold_source_loss_silence": 15.067182,
+          "threshold_impaired_paired_delay_std": 0.00016385
+        },
+        {
+          "run": "20260911_set3_baseline_r7",
+          "actual": "UNIMPAIRED",
+          "predicted": "UNIMPAIRED",
+          "threshold_source_loss_silence": 15.067182,
+          "threshold_impaired_paired_delay_std": 0.00016385
+        },
+        {
+          "run": "20260911_set3_baseline_r8",
+          "actual": "UNIMPAIRED",
+          "predicted": "UNIMPAIRED",
+          "threshold_source_loss_silence": 15.067182,
+          "threshold_impaired_paired_delay_std": 0.00016385
+        },
+        {
+          "run": "20260911_set3_control_r4",
+          "actual": "UNIMPAIRED",
+          "predicted": "UNIMPAIRED",
+          "threshold_source_loss_silence": 15.067182,
+          "threshold_impaired_paired_delay_std": 0.00016385
+        },
+        {
+          "run": "20260911_set3_control_r5",
+          "actual": "UNIMPAIRED",
+          "predicted": "UNIMPAIRED",
+          "threshold_source_loss_silence": 15.067182,
+          "threshold_impaired_paired_delay_std": 0.00016385
+        },
+        {
+          "run": "20260911_set3_control_r6",
+          "actual": "UNIMPAIRED",
+          "predicted": "UNIMPAIRED",
+          "threshold_source_loss_silence": 15.067182,
+          "threshold_impaired_paired_delay_std": 0.00016385
+        },
+        {
+          "run": "20260911_set3_control_r7",
+          "actual": "UNIMPAIRED",
+          "predicted": "UNIMPAIRED",
+          "threshold_source_loss_silence": 15.067182,
+          "threshold_impaired_paired_delay_std": 0.00016385
+        },
+        {
+          "run": "20260911_set3_control_r8",
+          "actual": "UNIMPAIRED",
+          "predicted": "UNIMPAIRED",
+          "threshold_source_loss_silence": 15.067182,
+          "threshold_impaired_paired_delay_std": 0.00016385
+        },
+        {
+          "run": "20260911_set3_intervention_r4",
+          "actual": "SOURCE_LOSS",
+          "predicted": "SOURCE_LOSS",
+          "threshold_source_loss_silence": 15.067182,
+          "threshold_impaired_paired_delay_std": 0.00016385
+        },
+        {
+          "run": "20260911_set3_intervention_r5",
+          "actual": "SOURCE_LOSS",
+          "predicted": "SOURCE_LOSS",
+          "threshold_source_loss_silence": 15.067182,
+          "threshold_impaired_paired_delay_std": 0.00016385
+        },
+        {
+          "run": "20260911_set3_intervention_r6",
+          "actual": "SOURCE_LOSS",
+          "predicted": "SOURCE_LOSS",
+          "threshold_source_loss_silence": 15.074821,
+          "threshold_impaired_paired_delay_std": 0.00016385
+        },
+        {
+          "run": "20260911_set3_intervention_r7",
+          "actual": "SOURCE_LOSS",
+          "predicted": "SOURCE_LOSS",
+          "threshold_source_loss_silence": 15.067182,
+          "threshold_impaired_paired_delay_std": 0.00016385
+        },
+        {
+          "run": "20260911_set3_intervention_r8",
+          "actual": "SOURCE_LOSS",
+          "predicted": "SOURCE_LOSS",
+          "threshold_source_loss_silence": 15.067182,
+          "threshold_impaired_paired_delay_std": 0.00016385
+        },
+        {
+          "run": "20260911_set3_netem_r4",
+          "actual": "IMPAIRED",
+          "predicted": "IMPAIRED",
+          "threshold_source_loss_silence": 15.067182,
+          "threshold_impaired_paired_delay_std": 0.00016385
+        },
+        {
+          "run": "20260911_set3_netem_r5",
+          "actual": "IMPAIRED",
+          "predicted": "IMPAIRED",
+          "threshold_source_loss_silence": 15.067182,
+          "threshold_impaired_paired_delay_std": 0.00016385
+        },
+        {
+          "run": "20260911_set3_netem_r6",
+          "actual": "IMPAIRED",
+          "predicted": "IMPAIRED",
+          "threshold_source_loss_silence": 15.065546,
+          "threshold_impaired_paired_delay_std": 0.00016385
+        },
+        {
+          "run": "20260911_set3_netem_r7",
+          "actual": "IMPAIRED",
+          "predicted": "IMPAIRED",
+          "threshold_source_loss_silence": 15.067182,
+          "threshold_impaired_paired_delay_std": 0.00016385
+        },
+        {
+          "run": "20260911_set3_netem_r8",
+          "actual": "IMPAIRED",
+          "predicted": "IMPAIRED",
+          "threshold_source_loss_silence": 15.067182,
+          "threshold_impaired_paired_delay_std": 0.00016587
+        }
+      ]
+    },
+    "permutation_control": {
+      "num_permutations": 1000,
+      "seed": 42,
+      "actual_macro_f1": 1.0,
+      "permutation_p_value": 0.0,
+      "null_distribution": {
+        "min": 0.125,
+        "median": 0.333333,
+        "mean": 0.333818,
+        "max": 0.625
+      }
+    }
+  },
+  "honest_online_evaluation": {
+    "role": "HONEST_ONLINE_DETECTION_PERFORMANCE",
+    "statement": "Uses strictly ONLINE features (sync_fu_paired_delay_std_s for link impairment; max_delay_req_gap_s for slave handover). Evaluates real-time detection feasibility in an active control loop.",
+    "leave_one_out_cross_validation": {
+      "accuracy": 0.96875,
+      "macro_f1": 0.967677,
+      "confusion_matrix": {
+        "UNIMPAIRED": {
+          "UNIMPAIRED": 16,
+          "IMPAIRED": 0,
+          "SOURCE_LOSS": 0
+        },
+        "IMPAIRED": {
+          "UNIMPAIRED": 0,
+          "IMPAIRED": 8,
+          "SOURCE_LOSS": 0
+        },
+        "SOURCE_LOSS": {
+          "UNIMPAIRED": 1,
+          "IMPAIRED": 0,
+          "SOURCE_LOSS": 7
+        }
+      },
+      "per_class_metrics": {
+        "UNIMPAIRED": {
+          "precision": 0.941176,
+          "recall": 1.0,
+          "f1": 0.969697,
+          "tp": 16,
+          "fp": 1,
+          "fn": 0,
+          "total_actual": 16
+        },
+        "IMPAIRED": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 8,
+          "fp": 0,
+          "fn": 0,
+          "total_actual": 8
+        },
+        "SOURCE_LOSS": {
+          "precision": 1.0,
+          "recall": 0.875,
+          "f1": 0.933333,
+          "tp": 7,
+          "fp": 0,
+          "fn": 1,
+          "total_actual": 8
+        }
+      },
+      "predictions": [
+        {
+          "run": "20260911_set2_baseline_r1",
+          "actual": "UNIMPAIRED",
+          "predicted": "UNIMPAIRED",
+          "threshold_impaired_paired_delay_std": 0.00016385,
+          "threshold_source_loss_max_delay_req_gap": 0.264963
+        },
+        {
+          "run": "20260911_set2_baseline_r2",
+          "actual": "UNIMPAIRED",
+          "predicted": "UNIMPAIRED",
+          "threshold_impaired_paired_delay_std": 0.00016385,
+          "threshold_source_loss_max_delay_req_gap": 0.264963
+        },
+        {
+          "run": "20260911_set2_baseline_r3",
+          "actual": "UNIMPAIRED",
+          "predicted": "UNIMPAIRED",
+          "threshold_impaired_paired_delay_std": 0.00016385,
+          "threshold_source_loss_max_delay_req_gap": 0.264963
+        },
+        {
+          "run": "20260911_set2_control_r1",
+          "actual": "UNIMPAIRED",
+          "predicted": "UNIMPAIRED",
+          "threshold_impaired_paired_delay_std": 0.00016385,
+          "threshold_source_loss_max_delay_req_gap": 0.264963
+        },
+        {
+          "run": "20260911_set2_control_r2",
+          "actual": "UNIMPAIRED",
+          "predicted": "UNIMPAIRED",
+          "threshold_impaired_paired_delay_std": 0.00016065,
+          "threshold_source_loss_max_delay_req_gap": 0.264963
+        },
+        {
+          "run": "20260911_set2_control_r3",
+          "actual": "UNIMPAIRED",
+          "predicted": "UNIMPAIRED",
+          "threshold_impaired_paired_delay_std": 0.00016385,
+          "threshold_source_loss_max_delay_req_gap": 0.264963
+        },
+        {
+          "run": "20260911_set2_intervention_r1",
+          "actual": "SOURCE_LOSS",
+          "predicted": "SOURCE_LOSS",
+          "threshold_impaired_paired_delay_std": 0.00016385,
+          "threshold_source_loss_max_delay_req_gap": 0.264963
+        },
+        {
+          "run": "20260911_set2_intervention_r2",
+          "actual": "SOURCE_LOSS",
+          "predicted": "SOURCE_LOSS",
+          "threshold_impaired_paired_delay_std": 0.00016385,
+          "threshold_source_loss_max_delay_req_gap": 0.264963
+        },
+        {
+          "run": "20260911_set2_intervention_r3",
+          "actual": "SOURCE_LOSS",
+          "predicted": "SOURCE_LOSS",
+          "threshold_impaired_paired_delay_std": 0.00016385,
+          "threshold_source_loss_max_delay_req_gap": 0.264963
+        },
+        {
+          "run": "20260911_set2_netem_r1",
+          "actual": "IMPAIRED",
+          "predicted": "IMPAIRED",
+          "threshold_impaired_paired_delay_std": 0.00016385,
+          "threshold_source_loss_max_delay_req_gap": 0.264963
+        },
+        {
+          "run": "20260911_set2_netem_r2",
+          "actual": "IMPAIRED",
+          "predicted": "IMPAIRED",
+          "threshold_impaired_paired_delay_std": 0.00016385,
+          "threshold_source_loss_max_delay_req_gap": 0.264963
+        },
+        {
+          "run": "20260911_set2_netem_r3",
+          "actual": "IMPAIRED",
+          "predicted": "IMPAIRED",
+          "threshold_impaired_paired_delay_std": 0.00016385,
+          "threshold_source_loss_max_delay_req_gap": 0.264963
+        },
+        {
+          "run": "20260911_set3_baseline_r4",
+          "actual": "UNIMPAIRED",
+          "predicted": "UNIMPAIRED",
+          "threshold_impaired_paired_delay_std": 0.00016385,
+          "threshold_source_loss_max_delay_req_gap": 0.264963
+        },
+        {
+          "run": "20260911_set3_baseline_r5",
+          "actual": "UNIMPAIRED",
+          "predicted": "UNIMPAIRED",
+          "threshold_impaired_paired_delay_std": 0.00016385,
+          "threshold_source_loss_max_delay_req_gap": 0.264963
+        },
+        {
+          "run": "20260911_set3_baseline_r6",
+          "actual": "UNIMPAIRED",
+          "predicted": "UNIMPAIRED",
+          "threshold_impaired_paired_delay_std": 0.00016385,
+          "threshold_source_loss_max_delay_req_gap": 0.264963
+        },
+        {
+          "run": "20260911_set3_baseline_r7",
+          "actual": "UNIMPAIRED",
+          "predicted": "UNIMPAIRED",
+          "threshold_impaired_paired_delay_std": 0.00016385,
+          "threshold_source_loss_max_delay_req_gap": 0.264963
+        },
+        {
+          "run": "20260911_set3_baseline_r8",
+          "actual": "UNIMPAIRED",
+          "predicted": "UNIMPAIRED",
+          "threshold_impaired_paired_delay_std": 0.00016385,
+          "threshold_source_loss_max_delay_req_gap": 0.264963
+        },
+        {
+          "run": "20260911_set3_control_r4",
+          "actual": "UNIMPAIRED",
+          "predicted": "UNIMPAIRED",
+          "threshold_impaired_paired_delay_std": 0.00016385,
+          "threshold_source_loss_max_delay_req_gap": 0.264963
+        },
+        {
+          "run": "20260911_set3_control_r5",
+          "actual": "UNIMPAIRED",
+          "predicted": "UNIMPAIRED",
+          "threshold_impaired_paired_delay_std": 0.00016385,
+          "threshold_source_loss_max_delay_req_gap": 0.264963
+        },
+        {
+          "run": "20260911_set3_control_r6",
+          "actual": "UNIMPAIRED",
+          "predicted": "UNIMPAIRED",
+          "threshold_impaired_paired_delay_std": 0.00016385,
+          "threshold_source_loss_max_delay_req_gap": 0.264933
+        },
+        {
+          "run": "20260911_set3_control_r7",
+          "actual": "UNIMPAIRED",
+          "predicted": "UNIMPAIRED",
+          "threshold_impaired_paired_delay_std": 0.00016385,
+          "threshold_source_loss_max_delay_req_gap": 0.264963
+        },
+        {
+          "run": "20260911_set3_control_r8",
+          "actual": "UNIMPAIRED",
+          "predicted": "UNIMPAIRED",
+          "threshold_impaired_paired_delay_std": 0.00016385,
+          "threshold_source_loss_max_delay_req_gap": 0.264963
+        },
+        {
+          "run": "20260911_set3_intervention_r4",
+          "actual": "SOURCE_LOSS",
+          "predicted": "UNIMPAIRED",
+          "threshold_impaired_paired_delay_std": 0.00016385,
+          "threshold_source_loss_max_delay_req_gap": 0.264963
+        },
+        {
+          "run": "20260911_set3_intervention_r5",
+          "actual": "SOURCE_LOSS",
+          "predicted": "SOURCE_LOSS",
+          "threshold_impaired_paired_delay_std": 0.00016385,
+          "threshold_source_loss_max_delay_req_gap": 0.264963
+        },
+        {
+          "run": "20260911_set3_intervention_r6",
+          "actual": "SOURCE_LOSS",
+          "predicted": "SOURCE_LOSS",
+          "threshold_impaired_paired_delay_std": 0.00016385,
+          "threshold_source_loss_max_delay_req_gap": 0.264963
+        },
+        {
+          "run": "20260911_set3_intervention_r7",
+          "actual": "SOURCE_LOSS",
+          "predicted": "SOURCE_LOSS",
+          "threshold_impaired_paired_delay_std": 0.00016385,
+          "threshold_source_loss_max_delay_req_gap": 0.264963
+        },
+        {
+          "run": "20260911_set3_intervention_r8",
+          "actual": "SOURCE_LOSS",
+          "predicted": "SOURCE_LOSS",
+          "threshold_impaired_paired_delay_std": 0.00016385,
+          "threshold_source_loss_max_delay_req_gap": 0.272356
+        },
+        {
+          "run": "20260911_set3_netem_r4",
+          "actual": "IMPAIRED",
+          "predicted": "IMPAIRED",
+          "threshold_impaired_paired_delay_std": 0.00016385,
+          "threshold_source_loss_max_delay_req_gap": 0.264963
+        },
+        {
+          "run": "20260911_set3_netem_r5",
+          "actual": "IMPAIRED",
+          "predicted": "IMPAIRED",
+          "threshold_impaired_paired_delay_std": 0.00016385,
+          "threshold_source_loss_max_delay_req_gap": 0.264963
+        },
+        {
+          "run": "20260911_set3_netem_r6",
+          "actual": "IMPAIRED",
+          "predicted": "IMPAIRED",
+          "threshold_impaired_paired_delay_std": 0.00016385,
+          "threshold_source_loss_max_delay_req_gap": 0.264963
+        },
+        {
+          "run": "20260911_set3_netem_r7",
+          "actual": "IMPAIRED",
+          "predicted": "IMPAIRED",
+          "threshold_impaired_paired_delay_std": 0.00016385,
+          "threshold_source_loss_max_delay_req_gap": 0.264963
+        },
+        {
+          "run": "20260911_set3_netem_r8",
+          "actual": "IMPAIRED",
+          "predicted": "IMPAIRED",
+          "threshold_impaired_paired_delay_std": 0.00016587,
+          "threshold_source_loss_max_delay_req_gap": 0.264963
+        }
+      ]
+    },
+    "permutation_control": {
+      "num_permutations": 1000,
+      "seed": 42,
+      "actual_macro_f1": 0.967677,
+      "permutation_p_value": 0.0,
+      "null_distribution": {
+        "min": 0.040404,
+        "median": 0.310786,
+        "mean": 0.31057,
+        "max": 0.641482
+      }
+    }
+  }
+}

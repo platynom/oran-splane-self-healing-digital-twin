@@ -1,0 +1,11 @@
+{
+  "scenario": "C1_removal",
+  "truth_class": "attack",
+  "truth_fault": "C1",
+  "verdict": "BENIGN",
+  "fault_hint": null,
+  "reasons": [
+    "Only provisioned clocks present; no protocol-legality violation"
+  ],
+  "rule": "decision_rule_v3 (frozen v3)"
+}

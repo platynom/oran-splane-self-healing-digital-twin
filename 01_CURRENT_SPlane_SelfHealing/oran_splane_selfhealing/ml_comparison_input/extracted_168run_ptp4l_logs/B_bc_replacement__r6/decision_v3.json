@@ -1,0 +1,11 @@
+{
+  "scenario": "B_bc_replacement",
+  "truth_class": "benign",
+  "truth_fault": "B_BCREPL",
+  "verdict": "ATTACK",
+  "fault_hint": "A8",
+  "reasons": [
+    "Unauthorised clock inserted in the timing path, relaying another grandmaster with stepsRemoved incremented: {'020000fffe0000b1': {'n': 156, 'max_steps_removed': 1, 'relays': ['020000fffe00000a']}}"
+  ],
+  "rule": "decision_rule_v3 (frozen v3)"
+}

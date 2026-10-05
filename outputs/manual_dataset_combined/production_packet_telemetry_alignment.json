@@ -1,0 +1,288 @@
+{
+  "purpose": "Read-only trace that mirrors pcap_ingest state transitions; not a cross-capture join.",
+  "pcap": "01_CURRENT_SPlane_SelfHealing\\oran_splane_selfhealing\\data\\external\\timesafe_prod_successful_announce_attack_ptp.pcap",
+  "decoded_ptp_packets": 13565,
+  "message_counts": {
+    "Delay_Req": 3676,
+    "Delay_Resp": 3622,
+    "Announce": 1964,
+    "Sync": 3911,
+    "Follow_Up": 392
+  },
+  "telemetry_emissions": 13562,
+  "source_packets_with_no_emission": 3,
+  "source_packets_with_multiple_emissions": 0,
+  "max_emissions_per_packet": 1,
+  "skipped_reason_counts": {
+    "no resolved Sync origin/arrival state": 3,
+    "two-step Sync waits for matching Follow_Up": 392
+  },
+  "unresolved_pending_sync_sequences": 0,
+  "unresolved_delay_request_sequences": 55,
+  "duplicate_derived_timestamps": 118,
+  "reused_message_type_sequence_pairs": 0,
+  "first_skipped": [
+    {
+      "packet_index": 1,
+      "message_type": "Delay_Req",
+      "sequence_id": 19114,
+      "reason": "no resolved Sync origin/arrival state"
+    },
+    {
+      "packet_index": 2,
+      "message_type": "Delay_Resp",
+      "sequence_id": 19114,
+      "reason": "no resolved Sync origin/arrival state"
+    },
+    {
+      "packet_index": 3,
+      "message_type": "Announce",
+      "sequence_id": 43810,
+      "reason": "no resolved Sync origin/arrival state"
+    },
+    {
+      "packet_index": 4370,
+      "message_type": "Sync",
+      "sequence_id": 1314,
+      "reason": "two-step Sync waits for matching Follow_Up"
+    },
+    {
+      "packet_index": 4373,
+      "message_type": "Sync",
+      "sequence_id": 1315,
+      "reason": "two-step Sync waits for matching Follow_Up"
+    },
+    {
+      "packet_index": 4378,
+      "message_type": "Sync",
+      "sequence_id": 1316,
+      "reason": "two-step Sync waits for matching Follow_Up"
+    },
+    {
+      "packet_index": 4381,
+      "message_type": "Sync",
+      "sequence_id": 1317,
+      "reason": "two-step Sync waits for matching Follow_Up"
+    },
+    {
+      "packet_index": 4384,
+      "message_type": "Sync",
+      "sequence_id": 1318,
+      "reason": "two-step Sync waits for matching Follow_Up"
+    },
+    {
+      "packet_index": 4386,
+      "message_type": "Sync",
+      "sequence_id": 1319,
+      "reason": "two-step Sync waits for matching Follow_Up"
+    },
+    {
+      "packet_index": 4391,
+      "message_type": "Sync",
+      "sequence_id": 1320,
+      "reason": "two-step Sync waits for matching Follow_Up"
+    },
+    {
+      "packet_index": 4393,
+      "message_type": "Sync",
+      "sequence_id": 1321,
+      "reason": "two-step Sync waits for matching Follow_Up"
+    },
+    {
+      "packet_index": 4396,
+      "message_type": "Sync",
+      "sequence_id": 1322,
+      "reason": "two-step Sync waits for matching Follow_Up"
+    },
+    {
+      "packet_index": 4398,
+      "message_type": "Sync",
+      "sequence_id": 1323,
+      "reason": "two-step Sync waits for matching Follow_Up"
+    },
+    {
+      "packet_index": 4401,
+      "message_type": "Sync",
+      "sequence_id": 1324,
+      "reason": "two-step Sync waits for matching Follow_Up"
+    },
+    {
+      "packet_index": 4403,
+      "message_type": "Sync",
+      "sequence_id": 1325,
+      "reason": "two-step Sync waits for matching Follow_Up"
+    },
+    {
+      "packet_index": 4408,
+      "message_type": "Sync",
+      "sequence_id": 1326,
+      "reason": "two-step Sync waits for matching Follow_Up"
+    },
+    {
+      "packet_index": 4413,
+      "message_type": "Sync",
+      "sequence_id": 1327,
+      "reason": "two-step Sync waits for matching Follow_Up"
+    },
+    {
+      "packet_index": 4418,
+      "message_type": "Sync",
+      "sequence_id": 1328,
+      "reason": "two-step Sync waits for matching Follow_Up"
+    },
+    {
+      "packet_index": 4422,
+      "message_type": "Sync",
+      "sequence_id": 1329,
+      "reason": "two-step Sync waits for matching Follow_Up"
+    },
+    {
+      "packet_index": 4427,
+      "message_type": "Sync",
+      "sequence_id": 1330,
+      "reason": "two-step Sync waits for matching Follow_Up"
+    }
+  ],
+  "first_emitted": [
+    {
+      "packet_index": 4,
+      "t_s": 0.008973,
+      "message_type": "Sync",
+      "sequence_id": 22057,
+      "path_delay_state": "last_known_or_zero"
+    },
+    {
+      "packet_index": 5,
+      "t_s": 0.027084,
+      "message_type": "Delay_Req",
+      "sequence_id": 19115,
+      "path_delay_state": "last_known_or_zero"
+    },
+    {
+      "packet_index": 6,
+      "t_s": 0.027289,
+      "message_type": "Delay_Resp",
+      "sequence_id": 19115,
+      "path_delay_state": "fresh"
+    },
+    {
+      "packet_index": 7,
+      "t_s": 0.072926,
+      "message_type": "Sync",
+      "sequence_id": 22058,
+      "path_delay_state": "fresh"
+    },
+    {
+      "packet_index": 8,
+      "t_s": 0.136951,
+      "message_type": "Announce",
+      "sequence_id": 43811,
+      "path_delay_state": "fresh"
+    },
+    {
+      "packet_index": 9,
+      "t_s": 0.13697,
+      "message_type": "Sync",
+      "sequence_id": 22059,
+      "path_delay_state": "fresh"
+    },
+    {
+      "packet_index": 10,
+      "t_s": 0.150002,
+      "message_type": "Delay_Req",
+      "sequence_id": 19116,
+      "path_delay_state": "fresh"
+    },
+    {
+      "packet_index": 11,
+      "t_s": 0.150204,
+      "message_type": "Delay_Resp",
+      "sequence_id": 19116,
+      "path_delay_state": "fresh"
+    },
+    {
+      "packet_index": 12,
+      "t_s": 0.163517,
+      "message_type": "Delay_Req",
+      "sequence_id": 19117,
+      "path_delay_state": "fresh"
+    },
+    {
+      "packet_index": 13,
+      "t_s": 0.163727,
+      "message_type": "Delay_Resp",
+      "sequence_id": 19117,
+      "path_delay_state": "fresh"
+    },
+    {
+      "packet_index": 14,
+      "t_s": 0.176037,
+      "message_type": "Delay_Req",
+      "sequence_id": 19118,
+      "path_delay_state": "fresh"
+    },
+    {
+      "packet_index": 15,
+      "t_s": 0.176221,
+      "message_type": "Delay_Resp",
+      "sequence_id": 19118,
+      "path_delay_state": "fresh"
+    },
+    {
+      "packet_index": 16,
+      "t_s": 0.192939,
+      "message_type": "Sync",
+      "sequence_id": 22060,
+      "path_delay_state": "fresh"
+    },
+    {
+      "packet_index": 17,
+      "t_s": 0.240636,
+      "message_type": "Delay_Req",
+      "sequence_id": 19119,
+      "path_delay_state": "fresh"
+    },
+    {
+      "packet_index": 18,
+      "t_s": 0.240857,
+      "message_type": "Delay_Resp",
+      "sequence_id": 19119,
+      "path_delay_state": "fresh"
+    },
+    {
+      "packet_index": 19,
+      "t_s": 0.256933,
+      "message_type": "Announce",
+      "sequence_id": 43812,
+      "path_delay_state": "fresh"
+    },
+    {
+      "packet_index": 20,
+      "t_s": 0.256985,
+      "message_type": "Sync",
+      "sequence_id": 22061,
+      "path_delay_state": "fresh"
+    },
+    {
+      "packet_index": 21,
+      "t_s": 0.285966,
+      "message_type": "Delay_Req",
+      "sequence_id": 19120,
+      "path_delay_state": "fresh"
+    },
+    {
+      "packet_index": 22,
+      "t_s": 0.286174,
+      "message_type": "Delay_Resp",
+      "sequence_id": 19120,
+      "path_delay_state": "fresh"
+    },
+    {
+      "packet_index": 23,
+      "t_s": 0.304571,
+      "message_type": "Delay_Req",
+      "sequence_id": 19121,
+      "path_delay_state": "fresh"
+    }
+  ]
+}

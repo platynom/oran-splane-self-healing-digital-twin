@@ -1,0 +1,37 @@
+ptp4l[4231.324]: port 1 (v-ru2): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[4231.324]: port 0 (/var/run/p.ru2): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[4231.324]: port 0 (/var/run/pr.ru2): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[4231.755]: selected local clock 020000.fffe.00000d as best master
+ptp4l[4231.766]: port 1 (v-ru2): new foreign master 020000.fffe.000001-2
+ptp4l[4232.016]: selected best master clock 020000.fffe.00000b
+ptp4l[4232.016]: foreign master not using PTP timescale
+ptp4l[4232.016]: port 1 (v-ru2): LISTENING to UNCALIBRATED on RS_SLAVE
+ptp4l[4232.141]: selected best master clock 020000.fffe.00000a
+ptp4l[4232.141]: foreign master not using PTP timescale
+ptp4l[4234.208]: master offset       4704 s0 freq    +224 path delay      6795
+ptp4l[4236.209]: master offset       3392 s0 freq   -1393 path delay      5318
+ptp4l[4238.211]: master offset       1349 s0 freq    -271 path delay      6819
+ptp4l[4240.213]: master offset       2881 s0 freq    +660 path delay      6608
+ptp4l[4242.215]: master offset       4417 s0 freq    +698 path delay      6469
+ptp4l[4244.217]: master offset      -2851 s0 freq   -4012 path delay      5704
+ptp4l[4246.219]: master offset      -3314 s0 freq    -177 path delay      5813
+ptp4l[4248.222]: master offset      -2513 s0 freq    +876 path delay      6767
+ptp4l[4250.224]: master offset       5647 s0 freq   +3129 path delay      4872
+ptp4l[4252.226]: master offset       2686 s0 freq    -997 path delay      5837
+ptp4l[4254.228]: master offset      -2957 s0 freq   -2423 path delay      6629
+ptp4l[4256.230]: master offset      -1815 s0 freq    +602 path delay      6693
+ptp4l[4258.233]: master offset      -1641 s0 freq    -890 path delay      4737
+ptp4l[4260.235]: master offset        240 s0 freq   +1088 path delay      5035
+ptp4l[4262.238]: master offset       2260 s0 freq   +2033 path delay      7086
+ptp4l[4264.240]: master offset       -362 s0 freq   -2155 path delay      5393
+ptp4l[4264.659]: selected best master clock 020000.fffe.000001
+ptp4l[4264.659]: foreign master not using PTP timescale
+ptp4l[4264.784]: selected best master clock 020000.fffe.00000b
+ptp4l[4264.784]: foreign master not using PTP timescale
+ptp4l[4266.805]: master offset        860 s0 freq    -552 path delay      4865
+ptp4l[4268.808]: master offset        800 s0 freq    +170 path delay      5266
+ptp4l[4270.809]: master offset      -2481 s0 freq   -1199 path delay      6147
+ptp4l[4272.812]: master offset       2680 s0 freq   +2526 path delay      6044
+ptp4l[4274.816]: master offset       -371 s0 freq   -1436 path delay      6218
+ptp4l[4276.818]: master offset        729 s0 freq    +791 path delay      6701
+ptp4l[4278.821]: master offset       -843 s0 freq   -1070 path delay      6129

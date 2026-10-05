@@ -1,0 +1,50 @@
+{
+  "generated_utc": "2026-09-14T01:44:19Z",
+  "protocol": "S15_INDEPENDENT_VALIDATION_PROTOCOL_V5.json",
+  "artifacts": {
+    "S15_INDEPENDENT_VALIDATION_PROTOCOL_V5.json": {
+      "sha256": "4a0134048067b31d934f3d283e81d38c538868932b599523167624a66d762f3f",
+      "bytes": 29888
+    },
+    "S15_INDEPENDENT_VALIDATION_EVALUATION.json": {
+      "sha256": "5c7fedd8ee8a1b63662ea913f4a8196ceb8d4bd3c1f6c0cda34b4bfd864157b5",
+      "bytes": 92237
+    },
+    "s14_dataset/s14_packets.csv": {
+      "sha256": "99c1d6acd64dca8256a0c6a869fb7e2aad4e2cd36e5fce57f556adb45760ee62",
+      "bytes": 161332458
+    },
+    "s14_dataset/s14_runs.csv": {
+      "sha256": "495964ce42384eaef388289c5e36f5cf4fa1867b320c4517ae5eaa7743867bb9",
+      "bytes": 106584
+    },
+    "s14_dataset/s14_events.csv": {
+      "sha256": "47cb2fad726c6f435fb2b864d83bbca1951cf45357e421a4028ef22ccc2b4dc9",
+      "bytes": 401992
+    },
+    "s14_dataset/s14_decisions.csv": {
+      "sha256": "c94b95a997f1cd8be03773a698d740ad1143fdcc70f07d47546633586283c667",
+      "bytes": 140467
+    },
+    "s14_dataset/s14_receiver_log.csv": {
+      "sha256": "9386655b013773b26ae8c5ad5c2842cc671c616d73b698f5d6a0235471cda695",
+      "bytes": 8479637
+    },
+    "s14_dataset/s14_receiver_transitions.csv": {
+      "sha256": "acdb531b4785ed6d2af992844b0c36fd6e26ce8f86b085980fa44ba9290d705b",
+      "bytes": 3212266
+    },
+    "s14_dataset/s14_outcomes.csv": {
+      "sha256": "faa81abe0a7bbcf826533760e95e9fa1c5c7c2e8ef9df57635b95c20f90a35ef",
+      "bytes": 13827
+    },
+    "s14_dataset/s14_full_detail_reconciliation.json": {
+      "sha256": "e2fbd54fc197527c4f7cb0b4658690d9814cc9a0067a5d3f0a9c27f042d6607f",
+      "bytes": 424
+    },
+    "s14_dataset/S14_empirical_full_packet_streamed.xlsx": {
+      "sha256": "4c786011567611c7e49b0c4e568d41c92c4c8dd111a9564ddf2cba8a59c1bd76",
+      "bytes": 51154121
+    }
+  }
+}

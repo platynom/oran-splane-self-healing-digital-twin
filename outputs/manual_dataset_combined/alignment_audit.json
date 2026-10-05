@@ -1,0 +1,86 @@
+{
+  "purpose": "Read-only alignment audit. No new labels assigned; field agreement is not validation of label meaning.",
+  "pairs": [
+    {
+      "pair": "production",
+      "raw_rows": 13565,
+      "ptp_rows": 13565,
+      "labeled_rows": 13565,
+      "field_mismatches": {},
+      "max_relative_time_error_seconds": 3.469446951953614e-18,
+      "label_counts": {
+        "0": 13365,
+        "1": 200
+      }
+    },
+    {
+      "pair": "announce_1",
+      "raw_rows": 48212,
+      "ptp_rows": 46998,
+      "labeled_rows": 46998,
+      "field_mismatches": {},
+      "max_relative_time_error_seconds": 0.0,
+      "label_counts": {
+        "0": 42521,
+        "1": 4477
+      }
+    },
+    {
+      "pair": "announce_2",
+      "raw_rows": 48212,
+      "ptp_rows": 46998,
+      "labeled_rows": 46998,
+      "field_mismatches": {},
+      "max_relative_time_error_seconds": 0.0,
+      "label_counts": {
+        "0": 37211,
+        "1": 9787
+      }
+    },
+    {
+      "pair": "announce_3",
+      "raw_rows": 6256,
+      "ptp_rows": 6024,
+      "labeled_rows": 6024,
+      "field_mismatches": {},
+      "max_relative_time_error_seconds": 0.0,
+      "label_counts": {
+        "0": 5057,
+        "1": 967
+      }
+    },
+    {
+      "pair": "sync_followup",
+      "raw_rows": 8640,
+      "ptp_rows": 8440,
+      "labeled_rows": 8440,
+      "field_mismatches": {},
+      "max_relative_time_error_seconds": 0.0,
+      "label_counts": {
+        "0": 3470,
+        "1": 4970
+      }
+    },
+    {
+      "pair": "sync_singlestep",
+      "raw_rows": 9312,
+      "ptp_rows": 9078,
+      "labeled_rows": 9078,
+      "field_mismatches": {},
+      "max_relative_time_error_seconds": 0.0,
+      "label_counts": {
+        "0": 4099,
+        "1": 4979
+      }
+    }
+  ],
+  "duplicate_label_conflict": {
+    "pair": [
+      "announce_1",
+      "announce_2"
+    ],
+    "rows": 46998,
+    "identical_nonlabel_rows": 46998,
+    "conflicting_labels": 5312
+  }
+}

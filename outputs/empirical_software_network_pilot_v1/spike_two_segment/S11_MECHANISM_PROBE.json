@@ -1,0 +1,255 @@
+{
+  "schema_version": "s11-two-segment-mechanism-probe-v1",
+  "scope": "Feasibility probe of a commanded failover between two INDEPENDENT L2 segments. No closed-loop experiment, no recovery claim, no performance estimate.",
+  "phase_monotonic_s": {
+    "topology_created": 18.19,
+    "tcpdump_seg1_ready": 21.24,
+    "tcpdump_seg2_ready": 21.24,
+    "master_a_ready": 21.25,
+    "master_b_ready": 21.26,
+    "slave_ready": 21.26,
+    "phase1_clean_started": 21.27,
+    "phase1_clean_recorded": 33.42,
+    "phase2_jitter_impairment_applied_seg1": 33.43,
+    "phase2_impaired_recorded": 45.56,
+    "phase3_commanded_action_port_down": 45.57,
+    "phase3_post_action_recorded": 57.73,
+    "phase_finished": 57.74
+  },
+  "segment1_capture": {
+    "capture_sha256": "526d962f55b2f5e9ada67c872503450a2a5812286472e98d59da8492beb0d450",
+    "records": 942,
+    "classification_counts": {
+      "WARMUP": 211,
+      "OBSERVATION": 126,
+      "ANNOUNCE_OBSERVED": 105,
+      "NOT_APPLICABLE": 416,
+      "NONOVERLAPPING_BLOCK_OBSERVED": 17,
+      "UNKNOWN": 39,
+      "CONFIGURED_IMPAIRMENT_SUSPECT": 24,
+      "NONOVERLAPPING_HIGH_DISPERSION_BLOCK_OBSERVED": 2,
+      "NONOVERLAPPING_BLOCK_PERSISTENCE_OBSERVED": 2
+    },
+    "first_classification_s": {
+      "WARMUP": 0.0,
+      "OBSERVATION": 0.123983,
+      "ANNOUNCE_OBSERVED": 0.250045,
+      "NOT_APPLICABLE": 0.549181,
+      "NONOVERLAPPING_BLOCK_OBSERVED": 1.000567,
+      "UNKNOWN": 14.264535,
+      "CONFIGURED_IMPAIRMENT_SUSPECT": 15.141385,
+      "NONOVERLAPPING_HIGH_DISPERSION_BLOCK_OBSERVED": 15.266399,
+      "NONOVERLAPPING_BLOCK_PERSISTENCE_OBSERVED": 22.154801
+    },
+    "persistence_event_times_s": [
+      22.154801,
+      23.531608
+    ],
+    "any_persistence": true
+  },
+  "segment2_capture": {
+    "capture_sha256": "69f95dd578933beb10d0b97a22e5ead43beba3c691be21b44a1106b83e227fc1",
+    "records": 941,
+    "classification_counts": {
+      "WARMUP": 305,
+      "OBSERVATION": 266,
+      "ANNOUNCE_OBSERVED": 152,
+      "NONOVERLAPPING_BLOCK_OBSERVED": 38,
+      "NOT_APPLICABLE": 180
+    },
+    "first_classification_s": {
+      "WARMUP": 0.0,
+      "OBSERVATION": 0.124164,
+      "ANNOUNCE_OBSERVED": 0.250028,
+      "NONOVERLAPPING_BLOCK_OBSERVED": 1.00055,
+      "NOT_APPLICABLE": 26.562545
+    },
+    "persistence_event_times_s": [],
+    "any_persistence": false
+  },
+  "port_states": {
+    "p1": {
+      "present": true,
+      "portIdentity_states": [
+        "UNCALIBRATED",
+        "LISTENING"
+      ],
+      "raw_excerpt": [
+        "sending: GET PORT_DATA_SET",
+        "\t064574.fffe.ea263b-1 seq 0 RESPONSE MANAGEMENT PORT_DATA_SET ",
+        "\t\tportIdentity            064574.fffe.ea263b-1",
+        "\t\tportState               UNCALIBRATED",
+        "\t\tlogMinDelayReqInterval  -3",
+        "\t\tpeerMeanPathDelay       0",
+        "\t\tlogAnnounceInterval     -2",
+        "\t\tannounceReceiptTimeout  3",
+        "\t\tlogSyncInterval         -3",
+        "\t\tdelayMechanism          1",
+        "\t\tlogMinPdelayReqInterval 0",
+        "\t\tversionNumber           2",
+        "\t064574.fffe.ea263b-2 seq 0 RESPONSE MANAGEMENT PORT_DATA_SET ",
+        "\t\tportIdentity            064574.fffe.ea263b-2",
+        "\t\tportState               LISTENING",
+        "\t\tlogMinDelayReqInterval  -3",
+        "\t\tpeerMeanPathDelay       0",
+        "\t\tlogAnnounceInterval     -2",
+        "\t\tannounceReceiptTimeout  3",
+        "\t\tlogSyncInterval         -3"
+      ]
+    },
+    "p2": {
+      "present": true,
+      "portIdentity_states": [
+        "UNCALIBRATED",
+        "LISTENING"
+      ],
+      "raw_excerpt": [
+        "sending: GET PORT_DATA_SET",
+        "\t064574.fffe.ea263b-1 seq 0 RESPONSE MANAGEMENT PORT_DATA_SET ",
+        "\t\tportIdentity            064574.fffe.ea263b-1",
+        "\t\tportState               UNCALIBRATED",
+        "\t\tlogMinDelayReqInterval  -3",
+        "\t\tpeerMeanPathDelay       0",
+        "\t\tlogAnnounceInterval     -2",
+        "\t\tannounceReceiptTimeout  3",
+        "\t\tlogSyncInterval         -3",
+        "\t\tdelayMechanism          1",
+        "\t\tlogMinPdelayReqInterval 0",
+        "\t\tversionNumber           2",
+        "\t064574.fffe.ea263b-2 seq 0 RESPONSE MANAGEMENT PORT_DATA_SET ",
+        "\t\tportIdentity            064574.fffe.ea263b-2",
+        "\t\tportState               LISTENING",
+        "\t\tlogMinDelayReqInterval  -3",
+        "\t\tpeerMeanPathDelay       0",
+        "\t\tlogAnnounceInterval     -2",
+        "\t\tannounceReceiptTimeout  3",
+        "\t\tlogSyncInterval         -3"
+      ]
+    },
+    "p3": {
+      "present": true,
+      "portIdentity_states": [
+        "FAULTY",
+        "UNCALIBRATED"
+      ],
+      "raw_excerpt": [
+        "sending: GET PORT_DATA_SET",
+        "\t064574.fffe.ea263b-1 seq 0 RESPONSE MANAGEMENT PORT_DATA_SET ",
+        "\t\tportIdentity            064574.fffe.ea263b-1",
+        "\t\tportState               FAULTY",
+        "\t\tlogMinDelayReqInterval  -3",
+        "\t\tpeerMeanPathDelay       0",
+        "\t\tlogAnnounceInterval     -2",
+        "\t\tannounceReceiptTimeout  3",
+        "\t\tlogSyncInterval         -3",
+        "\t\tdelayMechanism          1",
+        "\t\tlogMinPdelayReqInterval 0",
+        "\t\tversionNumber           2",
+        "\t064574.fffe.ea263b-2 seq 0 RESPONSE MANAGEMENT PORT_DATA_SET ",
+        "\t\tportIdentity            064574.fffe.ea263b-2",
+        "\t\tportState               UNCALIBRATED",
+        "\t\tlogMinDelayReqInterval  -3",
+        "\t\tpeerMeanPathDelay       0",
+        "\t\tlogAnnounceInterval     -2",
+        "\t\tannounceReceiptTimeout  3",
+        "\t\tlogSyncInterval         -3"
+      ]
+    }
+  },
+  "tc_counters": {
+    "seg1_p1": {
+      "present": true,
+      "qdisc_line": "qdisc noqueue 0: root refcnt 2 ",
+      "sent_pkt": 0,
+      "dropped": 0,
+      "counter_informative": false
+    },
+    "seg1_p2": {
+      "present": true,
+      "qdisc_line": "qdisc netem 8001: root refcnt 7 limit 1000 delay 99us  200us",
+      "sent_pkt": 339,
+      "dropped": 0,
+      "counter_informative": true
+    },
+    "seg1_p3": {
+      "present": true,
+      "qdisc_line": "qdisc netem 8001: root refcnt 7 limit 1000 delay 99us  200us",
+      "sent_pkt": 343,
+      "dropped": 0,
+      "counter_informative": true
+    },
+    "seg2_p1": {
+      "present": true,
+      "qdisc_line": "qdisc noqueue 0: root refcnt 2 ",
+      "sent_pkt": 0,
+      "dropped": 0,
+      "counter_informative": false
+    },
+    "seg2_p2": {
+      "present": true,
+      "qdisc_line": "qdisc noqueue 0: root refcnt 2 ",
+      "sent_pkt": 0,
+      "dropped": 0,
+      "counter_informative": false
+    },
+    "seg2_p3": {
+      "present": true,
+      "qdisc_line": "qdisc noqueue 0: root refcnt 2 ",
+      "sent_pkt": 0,
+      "dropped": 0,
+      "counter_informative": false
+    }
+  },
+  "capability_questions": {
+    "Q1_two_ports_one_active_one_standby_and_neither_MASTER": {
+      "answer": "YES",
+      "observed_phase1_port_states": [
+        "UNCALIBRATED",
+        "LISTENING"
+      ],
+      "note": "ptp4l reports UNCALIBRATED for an active port still converging and LISTENING for a standby port. A port in MASTER state would mean the two segments are not independent and the topology could not fail over."
+    },
+    "Q2_both_segments_carry_ptp": {
+      "answer": "YES",
+      "segment1_records": 942,
+      "segment2_records": 941
+    },
+    "Q3_detector_observes_the_impaired_segment": {
+      "answer": "YES",
+      "persistence_event_times_s": [
+        22.154801,
+        23.531608
+      ],
+      "impairment_applied_at_monotonic_s": 33.43
+    },
+    "Q4_commanded_action_moves_the_active_port_to_the_clean_segment": {
+      "answer": "YES",
+      "phase1_states": [
+        "UNCALIBRATED",
+        "LISTENING"
+      ],
+      "phase3_states": [
+        "FAULTY",
+        "UNCALIBRATED"
+      ],
+      "action_event_present": true,
+      "impaired_port_fault_transition": "port 1: UNCALIBRATED to FAULTY on FAULT_DETECTED",
+      "standby_port_takeover_transition": "port 2: LISTENING to UNCALIBRATED on RS_SLAVE",
+      "takeover_latency_s_from_fault_to_takeover": 0.057,
+      "segment1_egress_packets_after_action": 4,
+      "segment1_egress_packets_during_impairment": 339,
+      "egress_note": "Packets leaving the bridge toward the impaired slave port after the action, compared with the same length of time before it. A near-zero value is on-wire evidence the slave stopped using that segment."
+    },
+    "Q5_clean_segment_stays_unobserved_throughout": {
+      "answer": "YES",
+      "segment2_persistence_times_s": []
+    }
+  },
+  "interpretation_limits": [
+    "The commanded action stops the slave USING the impaired segment. It does not repair the segment: segment 1 stays impaired on the wire and its capture continues to show it.",
+    "The detector is replayed over each whole capture in one causal pass; state is never reset mid-capture and no future packet is used.",
+    "A single probe run. No repetition, no control arm, no latency or effectiveness estimate.",
+    "Shared host software clock, free_running 1. No physical timing or clock-recovery claim.",
+    "A tc counter on a noqueue qdisc does not count packets; such a counter is uninformative and is flagged as counter_informative=false rather than read as zero traffic."
+  ]
+}

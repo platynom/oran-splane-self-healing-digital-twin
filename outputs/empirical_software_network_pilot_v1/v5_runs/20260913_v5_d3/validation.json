@@ -1,0 +1,97 @@
+{
+  "errors": [],
+  "events": [
+    {
+      "event": "tcpdump_ready",
+      "monotonic_s": "164.70",
+      "phase": "setup",
+      "run_id": "w5d3",
+      "status": "PASS",
+      "utc": "2026-09-13T04:17:49Z"
+    },
+    {
+      "event": "master_a_ready",
+      "monotonic_s": "164.71",
+      "phase": "setup",
+      "run_id": "w5d3",
+      "status": "PASS",
+      "utc": "2026-09-13T04:17:49Z"
+    },
+    {
+      "event": "master_b_ready",
+      "monotonic_s": "164.72",
+      "phase": "setup",
+      "run_id": "w5d3",
+      "status": "PASS",
+      "utc": "2026-09-13T04:17:49Z"
+    },
+    {
+      "event": "slave_ready",
+      "monotonic_s": "164.73",
+      "phase": "setup",
+      "run_id": "w5d3",
+      "status": "PASS",
+      "utc": "2026-09-13T04:17:49Z"
+    },
+    {
+      "event": "phase_started",
+      "monotonic_s": "164.74",
+      "phase": "v5_delay_only",
+      "run_id": "w5d3",
+      "status": "PASS",
+      "utc": "2026-09-13T04:17:49Z"
+    },
+    {
+      "event": "v5_netem_command_confirmed",
+      "monotonic_s": "164.76",
+      "phase": "v5_delay_only",
+      "run_id": "w5d3",
+      "status": "PASS",
+      "utc": "2026-09-13T04:17:49Z"
+    },
+    {
+      "event": "phase_finished",
+      "monotonic_s": "172.77",
+      "phase": "v5_delay_only",
+      "run_id": "w5d3",
+      "status": "PASS",
+      "utc": "2026-09-13T04:17:57Z"
+    }
+  ],
+  "interpretation_limit": "This validates artifact integrity and documented process/qdisc commands only. free_running 1 means no closed-loop clock recovery or independent-clock claim.",
+  "log_bytes": {
+    "master_a.log": 530,
+    "master_b.log": 530,
+    "slave.log": 2852,
+    "tcpdump.log": 171
+  },
+  "manifest_hashes_match": {
+    "capture.pcap": true,
+    "events.log": true,
+    "master_a.conf": true,
+    "master_a.log": true,
+    "master_b.conf": true,
+    "master_b.log": true,
+    "run_environment.txt": true,
+    "slave.conf": true,
+    "slave.log": true,
+    "tcpdump.log": true
+  },
+  "missing_required_artifacts": [],
+  "outcome_label_policy": "NOT_ASSIGNED",
+  "pcap": {
+    "decoded_message_counts": {
+      "Announce": 81,
+      "Delay_Req": 69,
+      "Delay_Resp": 138,
+      "Follow_Up": 159,
+      "Sync": 159
+    },
+    "records": 606,
+    "undecoded_records": 0
+  },
+  "run_directory": "C:\\Users\\Admin\\Documents\\AI-Native Self-Healing O-RAN Network using a Digital Twin\\outputs\\empirical_software_network_pilot_v1\\v5_runs\\20260913_v5_d3",
+  "scenario": "v5_delay_only",
+  "schema_version": "pilot-validation-v2",
+  "status": "STRUCTURALLY_COMPLETE"
+}

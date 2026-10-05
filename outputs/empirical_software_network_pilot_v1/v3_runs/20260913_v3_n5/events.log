@@ -1,0 +1,7 @@
+run_id=w3n5 phase=setup event=tcpdump_ready utc=2026-09-13T02:22:19Z monotonic_s=297.41 status=PASS
+run_id=w3n5 phase=setup event=master_a_ready utc=2026-09-13T02:22:19Z monotonic_s=297.41 status=PASS
+run_id=w3n5 phase=setup event=master_b_ready utc=2026-09-13T02:22:19Z monotonic_s=297.42 status=PASS
+run_id=w3n5 phase=setup event=slave_ready utc=2026-09-13T02:22:19Z monotonic_s=297.43 status=PASS
+run_id=w3n5 phase=netem_delay_jitter_loss event=phase_started utc=2026-09-13T02:22:19Z monotonic_s=297.43 status=PASS
+run_id=w3n5 phase=netem_delay_jitter_loss event=netem_command_confirmed utc=2026-09-13T02:22:19Z monotonic_s=297.45 status=PASS
+run_id=w3n5 phase=netem_delay_jitter_loss event=phase_finished utc=2026-09-13T02:22:28Z monotonic_s=305.47 status=PASS

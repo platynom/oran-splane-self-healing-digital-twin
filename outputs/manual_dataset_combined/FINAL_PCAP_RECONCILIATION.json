@@ -1,0 +1,360 @@
+{
+  "base_workbook_sha256": "a970ff9b87c9813d2c592f74ad00b7403e497cd1d8d783db7e91becb20c39038",
+  "decoder_sha256": "7731f2628c502e5324c32957c38100b792805a1bd21a1749c5330c88722aa51a",
+  "canonical_pcaps": 14,
+  "appended_sheets": 19,
+  "pcap_exports": [
+    {
+      "sheet": "PCAP start",
+      "kind": "guide",
+      "rows": 7
+    },
+    {
+      "sheet": "PCAP dictionary",
+      "kind": "guide",
+      "rows": 152
+    },
+    {
+      "sheet": "PCAP index",
+      "kind": "guide",
+      "rows": 14
+    },
+    {
+      "sheet": "PCAP rules",
+      "kind": "guide",
+      "rows": 4
+    },
+    {
+      "sheet": "PCAP evidence gaps",
+      "kind": "guide",
+      "rows": 4
+    },
+    {
+      "sheet": "PCAP 0092ac2ccd29",
+      "sheet_part": "xl/worksheets/sheet55.xml",
+      "kind": "pcap",
+      "canonical_sha256": "0092ac2ccd29576fcbf0dfeec263344750814c7526c6101a6ef4ac4d76e64c9a",
+      "representative_path": "01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/data/external/dataset_2026-08-30/timesafe/timesafe_multi_raw/sync_followup_session.pcap",
+      "alias_paths": [
+        "01_CURRENT_SPlane_SelfHealing\\oran_splane_selfhealing\\data\\external\\dataset_2026-08-30\\timesafe\\timesafe_multi_raw\\sync_followup_session.pcap",
+        "01_CURRENT_SPlane_SelfHealing\\oran_splane_selfhealing\\data\\external\\s-plane_security_repo\\DataCollectionPTP\\2024-10-08-sync_attack 1.pcap",
+        "01_CURRENT_SPlane_SelfHealing\\oran_splane_selfhealing\\data\\external\\timesafe_multi_raw\\sync_followup_session.pcap"
+      ],
+      "packets": 8640,
+      "ptp_decoded": 8440,
+      "advertised_transition_rows": 0
+    },
+    {
+      "sheet": "PCAP 0690ed95ddc3",
+      "sheet_part": "xl/worksheets/sheet56.xml",
+      "kind": "pcap",
+      "canonical_sha256": "0690ed95ddc3134e0dbec8e0d7a79b65b379c9574542a7792c1ff2f5a1b20599",
+      "representative_path": "01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/data/external/dataset_2026-08-30/timesafe/timesafe_prod_successful_announce_attack_ptp.pcap",
+      "alias_paths": [
+        "01_CURRENT_SPlane_SelfHealing\\oran_splane_selfhealing\\data\\external\\dataset_2026-08-30\\timesafe\\timesafe_prod_successful_announce_attack_ptp.pcap",
+        "01_CURRENT_SPlane_SelfHealing\\oran_splane_selfhealing\\data\\external\\s-plane_security_repo\\DataCollectionPTP\\prod_successful_announce_attack_ptp.pcap",
+        "01_CURRENT_SPlane_SelfHealing\\oran_splane_selfhealing\\data\\external\\timesafe_prod_successful_announce_attack_ptp.pcap"
+      ],
+      "packets": 13565,
+      "ptp_decoded": 13565,
+      "advertised_transition_rows": 0
+    },
+    {
+      "sheet": "PCAP 0cde58c560d7",
+      "sheet_part": "xl/worksheets/sheet57.xml",
+      "kind": "pcap",
+      "canonical_sha256": "0cde58c560d71df4585faf8aeb4f158970d15f61461f922c5ff2c929e16d31fa",
+      "representative_path": "01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/data/external/dataset_2026-08-30/timesafe/timesafe_multi_raw/sync_singlestep_session.pcap",
+      "alias_paths": [
+        "01_CURRENT_SPlane_SelfHealing\\oran_splane_selfhealing\\data\\external\\dataset_2026-08-30\\timesafe\\timesafe_multi_raw\\sync_singlestep_session.pcap",
+        "01_CURRENT_SPlane_SelfHealing\\oran_splane_selfhealing\\data\\external\\s-plane_security_repo\\DataCollectionPTP\\2024-10-08-sync_attack_singlestep 1.pcap",
+        "01_CURRENT_SPlane_SelfHealing\\oran_splane_selfhealing\\data\\external\\timesafe_multi_raw\\sync_singlestep_session.pcap"
+      ],
+      "packets": 9312,
+      "ptp_decoded": 9078,
+      "advertised_transition_rows": 0
+    },
+    {
+      "sheet": "PCAP 13812c7d1c14",
+      "sheet_part": "xl/worksheets/sheet58.xml",
+      "kind": "pcap",
+      "canonical_sha256": "13812c7d1c14e40f642ac72d3c0c3cd1930b91062778cab44e2248b376ad7d15",
+      "representative_path": "01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/data/external/dataset_2026-08-30/Netem/loss2.pcap",
+      "alias_paths": [
+        "01_CURRENT_SPlane_SelfHealing\\oran_splane_selfhealing\\data\\external\\dataset_2026-08-30\\Netem\\loss2.pcap"
+      ],
+      "packets": 442,
+      "ptp_decoded": 442,
+      "advertised_transition_rows": 0
+    },
+    {
+      "sheet": "PCAP 3ee0b3b367fd",
+      "sheet_part": "xl/worksheets/sheet59.xml",
+      "kind": "pcap",
+      "canonical_sha256": "3ee0b3b367fdaf61032b7ae2b83d1ed3f0819c480828e11bc3155df1e7d815d0",
+      "representative_path": "01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/data/external/dataset_2026-08-30/Netem/holdover.pcap",
+      "alias_paths": [
+        "01_CURRENT_SPlane_SelfHealing\\oran_splane_selfhealing\\data\\external\\dataset_2026-08-30\\Netem\\holdover.pcap"
+      ],
+      "packets": 23,
+      "ptp_decoded": 23,
+      "advertised_transition_rows": 0
+    },
+    {
+      "sheet": "PCAP 43d56d626fb1",
+      "sheet_part": "xl/worksheets/sheet60.xml",
+      "kind": "pcap",
+      "canonical_sha256": "43d56d626fb12e1c6a410fb689117ee696b8e0ac4d45cf3f395931861edb87fd",
+      "representative_path": "01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/data/external/dataset_2026-08-30/Netem/fail_closed_holdover.pcap",
+      "alias_paths": [
+        "01_CURRENT_SPlane_SelfHealing\\oran_splane_selfhealing\\data\\external\\dataset_2026-08-30\\Netem\\fail_closed_holdover.pcap"
+      ],
+      "packets": 22,
+      "ptp_decoded": 22,
+      "advertised_transition_rows": 0
+    },
+    {
+      "sheet": "PCAP 52d30a9949d1",
+      "sheet_part": "xl/worksheets/sheet61.xml",
+      "kind": "pcap",
+      "canonical_sha256": "52d30a9949d167db70df9add7227b4f8a74ff9a890cd2d646ef2bd1a9a58fbd6",
+      "representative_path": "01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/data/external/dataset_2026-08-30/Netem/netem_pdv.pcap",
+      "alias_paths": [
+        "01_CURRENT_SPlane_SelfHealing\\oran_splane_selfhealing\\data\\external\\dataset_2026-08-30\\Netem\\netem_pdv.pcap"
+      ],
+      "packets": 2590,
+      "ptp_decoded": 2590,
+      "advertised_transition_rows": 0
+    },
+    {
+      "sheet": "PCAP 57ea462c6db7",
+      "sheet_part": "xl/worksheets/sheet62.xml",
+      "kind": "pcap",
+      "canonical_sha256": "57ea462c6db7871feeaf6bbd661c7a420022a0c55037e128dcbae4ddef40ffb8",
+      "representative_path": "01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/data/external/dataset_2026-08-30/Netem/netem_loss.pcap",
+      "alias_paths": [
+        "01_CURRENT_SPlane_SelfHealing\\oran_splane_selfhealing\\data\\external\\dataset_2026-08-30\\Netem\\netem_loss.pcap"
+      ],
+      "packets": 399,
+      "ptp_decoded": 399,
+      "advertised_transition_rows": 0
+    },
+    {
+      "sheet": "PCAP 7be60c0c44d3",
+      "sheet_part": "xl/worksheets/sheet63.xml",
+      "kind": "pcap",
+      "canonical_sha256": "7be60c0c44d34d8ce444c1cab80bed0cf9ae6b216e4115ffae1a24ef7796c0e6",
+      "representative_path": "01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/data/external/s-plane_security_repo/DataCollectionPTP/2024-10-16-announce_attack.pcap",
+      "alias_paths": [
+        "01_CURRENT_SPlane_SelfHealing\\oran_splane_selfhealing\\data\\external\\s-plane_security_repo\\DataCollectionPTP\\2024-10-16-announce_attack.pcap"
+      ],
+      "packets": 267084,
+      "ptp_decoded": 260525,
+      "advertised_transition_rows": 0
+    },
+    {
+      "sheet": "PCAP 8460df3e0e18",
+      "sheet_part": "xl/worksheets/sheet64.xml",
+      "kind": "pcap",
+      "canonical_sha256": "8460df3e0e18c59a46e8fbdbc2945c379a311e14497614b4cc0ee807b60026e0",
+      "representative_path": "01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/data/external/dataset_2026-08-30/Netem/fail_closed_holdover_after.pcap",
+      "alias_paths": [
+        "01_CURRENT_SPlane_SelfHealing\\oran_splane_selfhealing\\data\\external\\dataset_2026-08-30\\Netem\\fail_closed_holdover_after.pcap"
+      ],
+      "packets": 1,
+      "ptp_decoded": 1,
+      "advertised_transition_rows": 0
+    },
+    {
+      "sheet": "PCAP 84e637f174b2",
+      "sheet_part": "xl/worksheets/sheet65.xml",
+      "kind": "pcap",
+      "canonical_sha256": "84e637f174b24879dfee97b2694ab2a925b5e07b6df1c1f6435c2e2b50e7e632",
+      "representative_path": "01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/data/external/dataset_2026-08-30/timesafe/timesafe_multi_raw/announce_session_3.pcap",
+      "alias_paths": [
+        "01_CURRENT_SPlane_SelfHealing\\oran_splane_selfhealing\\data\\external\\dataset_2026-08-30\\timesafe\\timesafe_multi_raw\\announce_session_3.pcap",
+        "01_CURRENT_SPlane_SelfHealing\\oran_splane_selfhealing\\data\\external\\s-plane_security_repo\\DataCollectionPTP\\2024-10-08-announce_attack 1.pcap",
+        "01_CURRENT_SPlane_SelfHealing\\oran_splane_selfhealing\\data\\external\\timesafe_multi_raw\\announce_session_3.pcap"
+      ],
+      "packets": 6256,
+      "ptp_decoded": 6024,
+      "advertised_transition_rows": 0
+    },
+    {
+      "sheet": "PCAP b9bc30248448",
+      "sheet_part": "xl/worksheets/sheet66.xml",
+      "kind": "pcap",
+      "canonical_sha256": "b9bc30248448dac0415dd09de7665d6724371b08206b7605f882dcc3573c622f",
+      "representative_path": "01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/data/external/dataset_2026-08-30/Netem/netem_baseline.pcap",
+      "alias_paths": [
+        "01_CURRENT_SPlane_SelfHealing\\oran_splane_selfhealing\\data\\external\\dataset_2026-08-30\\Netem\\netem_baseline.pcap"
+      ],
+      "packets": 2670,
+      "ptp_decoded": 2670,
+      "advertised_transition_rows": 0
+    },
+    {
+      "sheet": "PCAP cc75c8bf1b02",
+      "sheet_part": "xl/worksheets/sheet67.xml",
+      "kind": "pcap",
+      "canonical_sha256": "cc75c8bf1b027419f62ddd8c2aa83f969044444baa708cde7f4b68343db8d6af",
+      "representative_path": "01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/data/external/dataset_2026-08-30/Netem/netem_holdover.pcap",
+      "alias_paths": [
+        "01_CURRENT_SPlane_SelfHealing\\oran_splane_selfhealing\\data\\external\\dataset_2026-08-30\\Netem\\netem_holdover.pcap"
+      ],
+      "packets": 17,
+      "ptp_decoded": 17,
+      "advertised_transition_rows": 0
+    },
+    {
+      "sheet": "PCAP d2c91b3e4f09",
+      "sheet_part": "xl/worksheets/sheet68.xml",
+      "kind": "pcap",
+      "canonical_sha256": "d2c91b3e4f09a3ecaffc81b9fb5b45b874adf2946ed88fc3eccaeaf3a631983e",
+      "representative_path": "01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/data/external/dataset_2026-08-30/timesafe/timesafe_multi_raw/announce_session_1.pcap",
+      "alias_paths": [
+        "01_CURRENT_SPlane_SelfHealing\\oran_splane_selfhealing\\data\\external\\dataset_2026-08-30\\timesafe\\timesafe_multi_raw\\announce_session_1.pcap",
+        "01_CURRENT_SPlane_SelfHealing\\oran_splane_selfhealing\\data\\external\\dataset_2026-08-30\\timesafe\\timesafe_multi_raw\\announce_session_2.pcap",
+        "01_CURRENT_SPlane_SelfHealing\\oran_splane_selfhealing\\data\\external\\s-plane_security_repo\\DataCollectionPTP\\15min_announce_attack.pcap",
+        "01_CURRENT_SPlane_SelfHealing\\oran_splane_selfhealing\\data\\external\\s-plane_security_repo\\DataCollectionPTP\\2024-10-06-announce_attack_UEdata.pcap",
+        "01_CURRENT_SPlane_SelfHealing\\oran_splane_selfhealing\\data\\external\\timesafe_multi_raw\\announce_session_1.pcap",
+        "01_CURRENT_SPlane_SelfHealing\\oran_splane_selfhealing\\data\\external\\timesafe_multi_raw\\announce_session_2.pcap"
+      ],
+      "packets": 48212,
+      "ptp_decoded": 46998,
+      "advertised_transition_rows": 0
+    }
+  ],
+  "final_workbook_sha256": "6411de3e028ce06bc5f00cb0e0776ca7e459d4cee72b615839107a94e2a62c9a",
+  "zip_integrity": true,
+  "sheet_count": 68,
+  "formula_errors_in_new_sheets": 0,
+  "full_pcap_row_width_and_provenance_checks": [
+    {
+      "sheet": "PCAP 0092ac2ccd29",
+      "every_row_width": 39,
+      "header_exact": true,
+      "canonical_sha256_column": 38,
+      "decoder_sha256_column": 39,
+      "rows_checked": 8640
+    },
+    {
+      "sheet": "PCAP 0690ed95ddc3",
+      "every_row_width": 39,
+      "header_exact": true,
+      "canonical_sha256_column": 38,
+      "decoder_sha256_column": 39,
+      "rows_checked": 13565
+    },
+    {
+      "sheet": "PCAP 0cde58c560d7",
+      "every_row_width": 39,
+      "header_exact": true,
+      "canonical_sha256_column": 38,
+      "decoder_sha256_column": 39,
+      "rows_checked": 9312
+    },
+    {
+      "sheet": "PCAP 13812c7d1c14",
+      "every_row_width": 39,
+      "header_exact": true,
+      "canonical_sha256_column": 38,
+      "decoder_sha256_column": 39,
+      "rows_checked": 442
+    },
+    {
+      "sheet": "PCAP 3ee0b3b367fd",
+      "every_row_width": 39,
+      "header_exact": true,
+      "canonical_sha256_column": 38,
+      "decoder_sha256_column": 39,
+      "rows_checked": 23
+    },
+    {
+      "sheet": "PCAP 43d56d626fb1",
+      "every_row_width": 39,
+      "header_exact": true,
+      "canonical_sha256_column": 38,
+      "decoder_sha256_column": 39,
+      "rows_checked": 22
+    },
+    {
+      "sheet": "PCAP 52d30a9949d1",
+      "every_row_width": 39,
+      "header_exact": true,
+      "canonical_sha256_column": 38,
+      "decoder_sha256_column": 39,
+      "rows_checked": 2590
+    },
+    {
+      "sheet": "PCAP 57ea462c6db7",
+      "every_row_width": 39,
+      "header_exact": true,
+      "canonical_sha256_column": 38,
+      "decoder_sha256_column": 39,
+      "rows_checked": 399
+    },
+    {
+      "sheet": "PCAP 7be60c0c44d3",
+      "every_row_width": 39,
+      "header_exact": true,
+      "canonical_sha256_column": 38,
+      "decoder_sha256_column": 39,
+      "rows_checked": 267084
+    },
+    {
+      "sheet": "PCAP 8460df3e0e18",
+      "every_row_width": 39,
+      "header_exact": true,
+      "canonical_sha256_column": 38,
+      "decoder_sha256_column": 39,
+      "rows_checked": 1
+    },
+    {
+      "sheet": "PCAP 84e637f174b2",
+      "every_row_width": 39,
+      "header_exact": true,
+      "canonical_sha256_column": 38,
+      "decoder_sha256_column": 39,
+      "rows_checked": 6256
+    },
+    {
+      "sheet": "PCAP b9bc30248448",
+      "every_row_width": 39,
+      "header_exact": true,
+      "canonical_sha256_column": 38,
+      "decoder_sha256_column": 39,
+      "rows_checked": 2670
+    },
+    {
+      "sheet": "PCAP cc75c8bf1b02",
+      "every_row_width": 39,
+      "header_exact": true,
+      "canonical_sha256_column": 38,
+      "decoder_sha256_column": 39,
+      "rows_checked": 17
+    },
+    {
+      "sheet": "PCAP d2c91b3e4f09",
+      "every_row_width": 39,
+      "header_exact": true,
+      "canonical_sha256_column": 38,
+      "decoder_sha256_column": 39,
+      "rows_checked": 48212
+    }
+  ],
+  "base_detail_reconciliation_reused": "detailed_reconciliation.json: 45 sources, 523176 rows, 9590610 original lexical cells verified before this append-only operation.",
+  "source_hashes_rechecked": 45,
+  "base_49_worksheet_parts_byte_identical": true,
+  "original_cell_reconciliation": "45 sources / 523176 rows / 9590610 lexical original cells were fully reconciled in detailed_reconciliation.json; the 49 inherited worksheet XML parts are byte-identical in this final append-only workbook.",
+  "targeted_history": {
+    "head": "77a47ccb87a8170f1067f7783b12c9ed742ceb6f",
+    "capture_commit": "fb0b60d582710baed897395502c049b74e453689",
+    "finding": "Commit adds/renames the production PCAP and related dataset files; it does not supply packet-level label-generation, receiver selection, GNSS, or recovery logs."
+  },
+  "preprint_context": {
+    "local_file": "docs/reference_papers/Groen_TIMESAFE_ACM_ToPS_2025__STUDY-ONLY_preprint.pdf",
+    "pages": "5-6, 10-11, 20",
+    "finding": "Narrative describes BMCA/Announce fields, testbed context and a feature pipeline. It is an author preprint, not the blocked ACM version of record, and does not bind the local capture to a verified physical outcome."
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "frozen_rule_sha256": "c362e11072344161437aaae33b2902caf9bca57dfc33f653a9c2184edae8a985",
+  "captures_evaluated": 6,
+  "detected_by_standards_alone": 3,
+  "detected_as_attack_by_rule": 6,
+  "results": [
+    {
+      "capture": "2024-10-16-announce_attack",
+      "total_packets": 260525,
+      "announce": 81969,
+      "distinct_gm_ids": 2,
+      "standards_only": {
+        "violating_announce": 24653,
+        "attributed_to": {
+          "b8cef6fffe5e6afa": 24653
+        },
+        "conformant_gm_ids": [
+          "fcaf6afffe02babe"
+        ],
+        "detected_by_standards_alone": true
+      },
+      "provenance": {
+        "allowlist_used": [
+          "fcaf6afffe02babe"
+        ],
+        "verdict": "ATTACK",
+        "fault_hint": "A8",
+        "clause": "Unauthorised clock inserted in the timing path, relaying another grandmaster with stepsRemoved incremented: {'c45ab1ffff806085': {'n': 29778, 'max_steps_removed': 2, 'relays': ['fcaf6afffe02babe']}, 'b8cef6ffff5e6afa': {'n': 24653, 'max_steps_removed': 2, 'relays': ['b8cef6fffe5e6afa']}}"
+      }
+    },
+    {
+      "capture": "15min_announce_attack",
+      "total_packets": 46998,
+      "announce": 15104,
+      "distinct_gm_ids": 2,
+      "standards_only": {
+        "violating_announce": 0,
+        "attributed_to": {},
+        "conformant_gm_ids": [
+          "b8cef6fffe5e6afa",
+          "fcaf6afffe02babe"
+        ],
+        "detected_by_standards_alone": false
+      },
+      "provenance": {
+        "allowlist_used": [
+          "b8cef6fffe5e6afa",
+          "fcaf6afffe02babe"
+        ],
+        "verdict": "ATTACK",
+        "fault_hint": "A8",
+        "clause": "Unauthorised clock inserted in the timing path, relaying another grandmaster with stepsRemoved incremented: {'c45ab1ffff806085': {'n': 5317, 'max_steps_removed': 2, 'relays': ['fcaf6afffe02babe']}, 'b8cef6ffff5e6afa': {'n': 4476, 'max_steps_removed': 2, 'relays': ['b8cef6fffe5e6afa']}}"
+      }
+    },
+    {
+      "capture": "prod_successful_announce_attack_ptp",
+      "total_packets": 13565,
+      "announce": 1964,
+      "distinct_gm_ids": 3,
+      "standards_only": {
+        "violating_announce": 39,
+        "attributed_to": {
+          "c45ab1ffff3a1b05": 1,
+          "b8cef6fffe5e6b4a": 38
+        },
+        "conformant_gm_ids": [
+          "fcaf6afffe02babe"
+        ],
+        "detected_by_standards_alone": true
+      },
+      "provenance": {
+        "allowlist_used": [
+          "fcaf6afffe02babe"
+        ],
+        "verdict": "ATTACK",
+        "fault_hint": "A1",
+        "clause": "Unauthorised clock advertising ITSELF as grandmaster (not in the provisioned allow-list): {'b8cef6fffe5e6b4a': {'n': 200, 'self_announce_pkts': 200}, 'c45ab1ffff3a1b05': {'n': 1764, 'self_announce_pkts': 1099}}"
+      }
+    },
+    {
+      "capture": "2024-10-08-announce_attack_1",
+      "total_packets": 6024,
+      "announce": 1688,
+      "distinct_gm_ids": 2,
+      "standards_only": {
+        "violating_announce": 457,
+        "attributed_to": {
+          "b8cef6fffe5e6afa": 457
+        },
+        "conformant_gm_ids": [
+          "fcaf6afffe02babe"
+        ],
+        "detected_by_standards_alone": true
+      },
+      "provenance": {
+        "allowlist_used": [
+          "fcaf6afffe02babe"
+        ],
+        "verdict": "ATTACK",
+        "fault_hint": "A8",
+        "clause": "Unauthorised clock inserted in the timing path, relaying another grandmaster with stepsRemoved incremented: {'c45ab1ffff806085': {'n': 721, 'max_steps_removed': 2, 'relays': ['fcaf6afffe02babe']}, 'b8cef6ffff5e6afa': {'n': 457, 'max_steps_removed': 2, 'relays': ['b8cef6fffe5e6afa']}}"
+      }
+    },
+    {
+      "capture": "2024-10-08-sync_attack_1",
+      "total_packets": 8440,
+      "announce": 622,
+      "distinct_gm_ids": 1,
+      "standards_only": {
+        "violating_announce": 0,
+        "attributed_to": {},
+        "conformant_gm_ids": [
+          "fcaf6afffe02babe"
+        ],
+        "detected_by_standards_alone": false
+      },
+      "provenance": {
+        "allowlist_used": [
+          "fcaf6afffe02babe"
+        ],
+        "verdict": "ATTACK",
+        "fault_hint": "A3",
+        "clause": "sequenceId regressions=2500 (counter keyed per requesting port for Delay_Resp); a compliant sender is strictly increasing"
+      }
+    },
+    {
+      "capture": "2024-10-08-sync_attack_singlestep_1",
+      "total_packets": 9078,
+      "announce": 730,
+      "distinct_gm_ids": 1,
+      "standards_only": {
+        "violating_announce": 0,
+        "attributed_to": {},
+        "conformant_gm_ids": [
+          "fcaf6afffe02babe"
+        ],
+        "detected_by_standards_alone": false
+      },
+      "provenance": {
+        "allowlist_used": [
+          "fcaf6afffe02babe"
+        ],
+        "verdict": "ATTACK",
+        "fault_hint": "A3",
+        "clause": "sequenceId regressions=2455 (counter keyed per requesting port for Delay_Resp); a compliant sender is strictly increasing"
+      }
+    }
+  ]
+}

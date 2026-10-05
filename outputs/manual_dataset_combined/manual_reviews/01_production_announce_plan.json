@@ -1,0 +1,33 @@
+{
+  "raw": "dataset/timesafe/timesafe_prod_successful_announce_attack_ptp.csv",
+  "labels": "dataset/timesafe/timesafe_prod_successful_announce_attack_labeled.csv",
+  "raw_sha256": "84dda5b1441acbff265f938663aec9ac802d227f751ca670ec459e7f79e3c2c4",
+  "label_sha256": "25952abb52085e8ca7f6d618c5c0329a415ea09a8687b4ecddcc34985720f655",
+  "rows": 13565,
+  "raw_headers": [
+    "Time",
+    "Source",
+    "Destination",
+    "Protocol",
+    "Length",
+    "SequenceID",
+    "MessageType"
+  ],
+  "label_headers": [
+    "Source",
+    "Destination",
+    "Length",
+    "SequenceID",
+    "MessageType",
+    "Time Interval",
+    "Label"
+  ],
+  "label_header": "Label",
+  "positive_count": 200,
+  "zero_count": 13365,
+  "first_positive_record": 4369,
+  "last_positive_record": 6001,
+  "first_positive_time": "78.506815",
+  "last_positive_time": "105.308242",
+  "linkage": "Exact decoder-projection correspondence verified for all rows: encounter-order endpoint IDs, Length, SequenceID, numeric MessageType, per-row elapsed time, and supplied Label."
+}

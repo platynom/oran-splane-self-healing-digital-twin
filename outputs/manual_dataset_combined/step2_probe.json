@@ -1,0 +1,290 @@
+{
+  "file_facts": {
+    "raw_A": {
+      "path": "C:\\Users\\Admin\\Documents\\AI-Native Self-Healing O-RAN Network using a Digital Twin\\dataset\\timesafe\\s-plane_security_repo\\DataCollectionPTP\\15min_announce_attack.csv",
+      "exists": true,
+      "bytes": 3117547,
+      "sha256": "ecea55d2f857ae35a07d5228fe455dec7d7672a67a8ced58afaebffb81368733"
+    },
+    "raw_B": {
+      "path": "C:\\Users\\Admin\\Documents\\AI-Native Self-Healing O-RAN Network using a Digital Twin\\dataset\\timesafe\\s-plane_security_repo\\DataCollectionPTP\\2024-10-06-announce_attack_UEdata.csv",
+      "exists": true,
+      "bytes": 3357075,
+      "sha256": "603a00c5f9f2b9995d5fd2e955af73e5c3c707906ffcd872d003baa2ab6f1892"
+    },
+    "lab_1": {
+      "path": "C:\\Users\\Admin\\Documents\\AI-Native Self-Healing O-RAN Network using a Digital Twin\\dataset\\timesafe\\timesafe_multi_raw\\announce_session_1_labels.csv",
+      "exists": true,
+      "bytes": 1850844,
+      "sha256": "6a03a10bd9f4748031a7e8dc66305107d734db01079499fd7018661ba501046a"
+    },
+    "lab_2": {
+      "path": "C:\\Users\\Admin\\Documents\\AI-Native Self-Healing O-RAN Network using a Digital Twin\\dataset\\timesafe\\timesafe_multi_raw\\announce_session_2_labels.csv",
+      "exists": true,
+      "bytes": 1850844,
+      "sha256": "840769d5c5c54177dc3ee9ae1648f4edf36450b817c11b129c8e8973641fb689"
+    },
+    "pcap_1": {
+      "path": "C:\\Users\\Admin\\Documents\\AI-Native Self-Healing O-RAN Network using a Digital Twin\\dataset\\timesafe\\timesafe_multi_raw\\announce_session_1.pcap",
+      "exists": true,
+      "bytes": 3933172,
+      "sha256": "d2c91b3e4f09a3ecaffc81b9fb5b45b874adf2946ed88fc3eccaeaf3a631983e"
+    },
+    "pcap_2": {
+      "path": "C:\\Users\\Admin\\Documents\\AI-Native Self-Healing O-RAN Network using a Digital Twin\\dataset\\timesafe\\timesafe_multi_raw\\announce_session_2.pcap",
+      "exists": true,
+      "bytes": 3933172,
+      "sha256": "d2c91b3e4f09a3ecaffc81b9fb5b45b874adf2946ed88fc3eccaeaf3a631983e"
+    },
+    "pcap_A": {
+      "path": "C:\\Users\\Admin\\Documents\\AI-Native Self-Healing O-RAN Network using a Digital Twin\\dataset\\timesafe\\s-plane_security_repo\\DataCollectionPTP\\15min_announce_attack.pcap",
+      "exists": true,
+      "bytes": 3933172,
+      "sha256": "d2c91b3e4f09a3ecaffc81b9fb5b45b874adf2946ed88fc3eccaeaf3a631983e"
+    },
+    "pcap_B": {
+      "path": "C:\\Users\\Admin\\Documents\\AI-Native Self-Healing O-RAN Network using a Digital Twin\\dataset\\timesafe\\s-plane_security_repo\\DataCollectionPTP\\2024-10-06-announce_attack_UEdata.pcap",
+      "exists": true,
+      "bytes": 3933172,
+      "sha256": "d2c91b3e4f09a3ecaffc81b9fb5b45b874adf2946ed88fc3eccaeaf3a631983e"
+    }
+  },
+  "checks": {
+    "raw_rowcounts": [
+      48212,
+      48212
+    ],
+    "raw_headers": [
+      [
+        "Time",
+        "Source",
+        "Destination",
+        "Protocol",
+        "Length",
+        "SequenceID",
+        "MessageType"
+      ],
+      [
+        "Time",
+        "Source",
+        "Destination",
+        "Protocol",
+        "Length",
+        "SequenceID",
+        "MessageType"
+      ]
+    ],
+    "raw_ptp_rowcounts": [
+      46998,
+      46998
+    ],
+    "raw_ptp_field_diff_counts": {
+      "MessageType": 46998
+    },
+    "raw_A_first3": [
+      {
+        "Time": "0.000000",
+        "Source": "c4:5a:b1:80:60:8a",
+        "Destination": "01:1b:19:00:00:00",
+        "Protocol": "PTPv2",
+        "Length": "60",
+        "SequenceID": "11771",
+        "MessageType": "0"
+      },
+      {
+        "Time": "0.024631",
+        "Source": "b8:ce:f6:5e:6a:fa",
+        "Destination": "01:1b:19:00:00:00",
+        "Protocol": "PTPv2",
+        "Length": "58",
+        "SequenceID": "5731",
+        "MessageType": "0"
+      },
+      {
+        "Time": "0.024662",
+        "Source": "b8:ce:f6:5e:6a:fa",
+        "Destination": "01:1b:19:00:00:00",
+        "Protocol": "PTPv2",
+        "Length": "58",
+        "SequenceID": "5731",
+        "MessageType": "8"
+      }
+    ],
+    "raw_B_first3": [
+      {
+        "Time": "0.000000",
+        "Source": "c4:5a:b1:80:60:8a",
+        "Destination": "01:1b:19:00:00:00",
+        "Protocol": "PTPv2",
+        "Length": "60",
+        "SequenceID": "11771",
+        "MessageType": "Sync"
+      },
+      {
+        "Time": "0.024631",
+        "Source": "b8:ce:f6:5e:6a:fa",
+        "Destination": "01:1b:19:00:00:00",
+        "Protocol": "PTPv2",
+        "Length": "58",
+        "SequenceID": "5731",
+        "MessageType": "Sync"
+      },
+      {
+        "Time": "0.024662",
+        "Source": "b8:ce:f6:5e:6a:fa",
+        "Destination": "01:1b:19:00:00:00",
+        "Protocol": "PTPv2",
+        "Length": "58",
+        "SequenceID": "5731",
+        "MessageType": "Follow_Up"
+      }
+    ],
+    "raw_A_sources": {
+      "c4:5a:b1:80:60:8a": 15963,
+      "b8:ce:f6:5e:6a:fa": 31035
+    },
+    "raw_B_sources": {
+      "c4:5a:b1:80:60:8a": 15963,
+      "b8:ce:f6:5e:6a:fa": 31035
+    },
+    "raw_A_src_msgtype": {
+      "c4:5a:b1:80:60:8a|0": 10634,
+      "b8:ce:f6:5e:6a:fa|0": 10618,
+      "b8:ce:f6:5e:6a:fa|8": 10618,
+      "b8:ce:f6:5e:6a:fa|11": 9787,
+      "c4:5a:b1:80:60:8a|11": 5317,
+      "b8:ce:f6:5e:6a:fa|1": 12,
+      "c4:5a:b1:80:60:8a|9": 12
+    },
+    "raw_B_src_msgtype": {
+      "c4:5a:b1:80:60:8a|Sync": 10634,
+      "b8:ce:f6:5e:6a:fa|Sync": 10618,
+      "b8:ce:f6:5e:6a:fa|Follow_Up": 10618,
+      "b8:ce:f6:5e:6a:fa|Announce": 9787,
+      "c4:5a:b1:80:60:8a|Announce": 5317,
+      "b8:ce:f6:5e:6a:fa|Delay_Req": 12,
+      "c4:5a:b1:80:60:8a|Delay_Resp": 12
+    },
+    "raw_A_timespan": [
+      "0.000000",
+      "664.575721"
+    ],
+    "raw_B_timespan": [
+      "0.000000",
+      "664.575721"
+    ],
+    "label_rowcounts": [
+      46998,
+      46998
+    ],
+    "label_counts_1": {
+      "0": 42521,
+      "1": 4477
+    },
+    "label_counts_2": {
+      "0": 37211,
+      "1": 9787
+    },
+    "nonlabel_identical_rows": 46998,
+    "conflicting_label_rows": 5312,
+    "conflict_direction": {
+      "0->1": 5311,
+      "1->0": 1
+    },
+    "rule_scan_labels1": {
+      "0|0": {
+        "rule_matches": 10634,
+        "rows_agreeing": 31887,
+        "exact": false
+      },
+      "0|11": {
+        "rule_matches": 5317,
+        "rows_agreeing": 37204,
+        "exact": false
+      },
+      "0|9": {
+        "rule_matches": 12,
+        "rows_agreeing": 42509,
+        "exact": false
+      },
+      "1|0": {
+        "rule_matches": 10618,
+        "rows_agreeing": 31903,
+        "exact": false
+      },
+      "1|1": {
+        "rule_matches": 12,
+        "rows_agreeing": 42509,
+        "exact": false
+      },
+      "1|11": {
+        "rule_matches": 9787,
+        "rows_agreeing": 41686,
+        "exact": false
+      },
+      "1|8": {
+        "rule_matches": 10618,
+        "rows_agreeing": 31905,
+        "exact": false
+      }
+    },
+    "rule_scan_labels2": {
+      "0|0": {
+        "rule_matches": 10634,
+        "rows_agreeing": 26577,
+        "exact": false
+      },
+      "0|11": {
+        "rule_matches": 5317,
+        "rows_agreeing": 31894,
+        "exact": false
+      },
+      "0|9": {
+        "rule_matches": 12,
+        "rows_agreeing": 37199,
+        "exact": false
+      },
+      "1|0": {
+        "rule_matches": 10618,
+        "rows_agreeing": 26593,
+        "exact": false
+      },
+      "1|1": {
+        "rule_matches": 12,
+        "rows_agreeing": 37199,
+        "exact": false
+      },
+      "1|11": {
+        "rule_matches": 9787,
+        "rows_agreeing": 46998,
+        "exact": true
+      },
+      "1|8": {
+        "rule_matches": 10618,
+        "rows_agreeing": 26593,
+        "exact": false
+      }
+    },
+    "pos_time_1": {
+      "n_pos": 4477,
+      "first": 0.08969,
+      "last": 664.570664,
+      "total_span": 664.575721,
+      "pos_by_src_type": {}
+    },
+    "pos_time_2": {
+      "n_pos": 9787,
+      "first": 0.024666,
+      "last": 664.570664,
+      "total_span": 664.575721,
+      "pos_by_src_type": {}
+    },
+    "pos_src_type_1": {
+      "1|11": 4476,
+      "1|8": 1
+    },
+    "pos_src_type_2": {
+      "1|11": 9787
+    }
+  }
+}

@@ -9,6 +9,7 @@ window-level split leakage while retaining its two-layer Transformer design.
 """
 
 import json
+import hashlib
 import math
 import random
 from dataclasses import dataclass
@@ -41,10 +42,12 @@ FEATURE_NAMES = (
 WINDOW_SIZE = 40
 WINDOW_STRIDE = 2
 GATE_THRESHOLD = 0.95
+QUARANTINED_CAPTURE_IDS = {"announce_session_1", "announce_session_2"}
 
-# Each label stream was produced from the named public pcap. Announce sessions 1
-# and 2 are separate released capture files whose packet streams happen to match,
-# but their attack intervals differ and remain grouped by their declared session.
+# These paths locate released packet captures. Their supplied annotations must
+# pass the manifest gate below before any training/evaluation call can use them.
+# In particular, Announce sessions 1 and 2 are a byte-identical capture with
+# conflicting annotations and are not independent sessions.
 SESSION_SOURCES = {
     "announce_session_1": ("15min_announce_attack.pcap", "announce"),
     "announce_session_2": ("2024-10-06-announce_attack_UEdata.pcap", "announce"),
@@ -122,6 +125,85 @@ class PacketTransformer(nn.Module):
         return self.output(self.encoder(encoded)[:, 0]).squeeze(-1)
 
 
+def _sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for block in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(block)
+    return digest.hexdigest()
+
+
+def _is_nonempty_string(value: object) -> bool:
+    return isinstance(value, str) and bool(value.strip())
+
+
+def _is_sha256(value: object) -> bool:
+    return (
+        isinstance(value, str)
+        and len(value) == 64
+        and all(character in "0123456789abcdef" for character in value.lower())
+    )
+
+
+def _packet_input_hashes(root: Path) -> dict[str, str]:
+    """Return the exact public label/PCAP inputs consumed by this loader."""
+    label_root = root / "data" / "external" / "timesafe_multi_raw"
+    pcap_root = root / "data" / "external" / "s-plane_security_repo" / "DataCollectionPTP"
+    paths: list[Path] = []
+    for capture_id, (pcap_name, _) in SESSION_SOURCES.items():
+        paths.extend([label_root / f"{capture_id}_labels.csv", pcap_root / pcap_name])
+    if not all(path.is_file() for path in paths):
+        raise ValueError("packet evaluation inputs are incomplete")
+    return {path.relative_to(root).as_posix(): _sha256(path) for path in paths}
+
+
+def _require_traceable_validation(root: Path, name: str, semantics: str) -> None:
+    """Reject self-asserted metadata and keep labels/clock-health distinct."""
+    manifest = root / "data" / "external" / name
+    if not manifest.is_file():
+        raise ValueError(f"missing {name}; refusing unvalidated TIMESAFE evaluation")
+    try:
+        metadata = json.loads(manifest.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise ValueError(f"{name} metadata is unreadable") from exc
+    required_text = ("validation_method", "evidence_artifact", "evidence_sha256", "reviewer", "review_date")
+    if (not isinstance(metadata, dict)
+            or metadata.get("validation_status") != "independently_validated"
+            or metadata.get("label_semantics") != semantics
+            or metadata.get("evidence_type") not in ("capture_specific_launch_log", "controlled_experiment_log")
+            or not all(_is_nonempty_string(metadata.get(key)) for key in required_text)
+            or not _is_sha256(metadata.get("evidence_sha256"))
+            or not _source_hashes_match(root, metadata.get("source_sha256"))):
+        raise ValueError(f"{name} does not provide traceable independent validation")
+    evaluated_inputs = _packet_input_hashes(root)
+    if any(metadata["source_sha256"].get(rel) != digest for rel, digest in evaluated_inputs.items()):
+        raise ValueError(f"{name} does not bind every evaluated packet input")
+    evidence = (root / str(metadata["evidence_artifact"])).resolve()
+    try:
+        evidence.relative_to(root.resolve())
+    except ValueError as exc:
+        raise ValueError(f"{name} evidence artifact escapes project root") from exc
+    if (not evidence.is_file() or _sha256(evidence) != metadata["evidence_sha256"]
+            or _sha256(evidence) in set(metadata["source_sha256"].values()) | set(evaluated_inputs.values())):
+        raise ValueError(f"{name} evidence artifact is absent or hash-mismatched")
+
+
+def _source_hashes_match(root: Path, declared: object) -> bool:
+    if not isinstance(declared, dict) or not declared:
+        return False
+    for rel, expected in declared.items():
+        if not isinstance(rel, str) or not _is_sha256(expected):
+            return False
+        candidate = (root / rel).resolve()
+        try:
+            candidate.relative_to(root.resolve())
+        except ValueError:
+            return False
+        if not candidate.is_file() or _sha256(candidate) != expected:
+            return False
+    return True
+
+
 def _pcap_packet_frame(path: Path) -> pd.DataFrame:
     """Read the five specified packet features directly from a public pcap."""
     rows: list[dict[str, float]] = []
@@ -166,6 +248,14 @@ def _validate_operational_sessions(root: Path, capture_id: str, packet_count: in
 
 def load_capture_sessions(root: Path = ROOT) -> list[CaptureSession]:
     """Load labels, verify their pcap alignment, and validate operational CSVs."""
+    _require_traceable_validation(
+        root, "TIMESAFE_PACKET_LABEL_VALIDATION.json", "packet_maliciousness"
+    )
+    conflicted = sorted(set(SESSION_SOURCES) & QUARANTINED_CAPTURE_IDS)
+    if conflicted:
+        raise ValueError(
+            "refusing conflicting Announce annotations: " + ", ".join(conflicted)
+        )
     label_root = root / "data" / "external" / "timesafe_multi_raw"
     pcap_root = root / "data" / "external" / "s-plane_security_repo" / "DataCollectionPTP"
     sessions: list[CaptureSession] = []
@@ -419,6 +509,9 @@ def evaluate_transformer_victim(
 
 
 def _load_project_windows(root: Path) -> pd.DataFrame:
+    _require_traceable_validation(
+        root, "TIMESAFE_SESSION_METADATA.json", "measured_clock_health"
+    )
     frames: list[pd.DataFrame] = []
     for path in sorted((root / "data" / "external" / "timesafe_sessions").glob("*.csv")):
         telemetry = coerce_telemetry(pd.read_csv(path))

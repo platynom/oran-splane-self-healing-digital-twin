@@ -1,0 +1,33 @@
+{
+  "interpreter": "C:\\Python314\\python.exe",
+  "results": {
+    "fixtures_are_mechanical_only": true,
+    "valid_fixture_loads": true,
+    "recorded_h0_label_is_preserved": true,
+    "undeclared_file_rejected": true,
+    "altered_declared_file_rejected": true,
+    "missing_label_column_rejected": true,
+    "partial_missing_labels_rejected_after_hash_binding": true,
+    "malformed_run_id_rejected_after_hash_binding": true,
+    "unrelated_source_map_rejected": true,
+    "quarantined_capture_id_rejected": true,
+    "list_evidence_artifact_rejected_without_exception": true,
+    "evaluated_csv_cannot_validate_itself": true,
+    "renamed_quarantined_content_rejected": true,
+    "malformed_validation_method_rejected": true,
+    "malformed_reviewer_rejected": true,
+    "malformed_review_date_rejected": true,
+    "malformed_evidence_sha256_rejected": true,
+    "malformed_source_sha256_rejected": true,
+    "malformed_inputs_rejected": true,
+    "malformed_evidence_type_rejected": true,
+    "missing_source_map_rejected_without_exception": true,
+    "eligible_control_flow_has_no_removed_helper_call": true,
+    "no_eligible_family_returns_empty_without_crash": true,
+    "packet_consumer_full_input_binding_control": true,
+    "packet_consumer_rejects_evaluated_input_as_evidence": true,
+    "packet_consumer_rejects_evidence_type": true,
+    "packet_consumer_rejects_evidence_artifact": true,
+    "packet_consumer_rejects_source_sha256": true
+  }
+}

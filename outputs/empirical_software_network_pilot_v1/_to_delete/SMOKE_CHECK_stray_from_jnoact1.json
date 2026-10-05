@@ -1,0 +1,63 @@
+{
+  "smoke_run": "/sessions/rcw-01a5njwkcz7nmnyawgmdm4vv/mnt/AI-Native Self-Healing O-RAN Network using a Digital Twin/outputs/empirical_software_network_pilot_v1/s14_runs/20260913_s14_jnoact1",
+  "checks": [
+    {
+      "check": "every written ptp4l config sets free_running 1",
+      "pass": true,
+      "detail": {
+        "configs": [
+          "master_a.conf",
+          "master_b.conf",
+          "slave.conf"
+        ],
+        "without_free_running": []
+      }
+    },
+    {
+      "check": "run environment records that host clock adjustment is disabled",
+      "pass": true,
+      "detail": {
+        "run_environment_present": true
+      }
+    },
+    {
+      "check": "receiver produced servo summary lines",
+      "pass": true,
+      "detail": {
+        "servo_summary_lines": 2
+      }
+    },
+    {
+      "check": "at least 2 wholly-in-phase summary windows",
+      "pass": false,
+      "detail": {
+        "valid_window_count": 0,
+        "first_valid_window_dispersion_ns": null,
+        "apply_monotonic_s": null,
+        "window_durations_s": [
+          null,
+          16.021
+        ]
+      }
+    },
+    {
+      "check": "all writers closed gracefully",
+      "pass": true,
+      "detail": {
+        "writer_exit_status_present": true,
+        "nonzero_lines": []
+      }
+    },
+    {
+      "check": "run is sealed and every manifest hash verifies",
+      "pass": true,
+      "detail": {
+        "problems": []
+      }
+    }
+  ],
+  "all_passed": false,
+  "observed_receiver_label": "UNKNOWN",
+  "observed_detector_outcome": "UNKNOWN",
+  "note": "This run is a configuration and integrity check only. Its label and detector outcome are NOT evidence for or against the hypothesis and are excluded from S15 estimation. It is stored under s15_smoke/, which evaluate_s15.py never reads."
+}

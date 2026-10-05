@@ -1,0 +1,7 @@
+{ "scenario":"C2_malformed", "class":"attack", "fault_id":"C2", "rep":901,
+  "gm_allowlist":["020000fffe00000a","020000fffe00000b"],
+  "provisioned_backup_gm":"020000fffe00000b",
+  "expected_bc_identity":"020000fffe000001",
+  "expected_client_identities":["020000fffe00000c","020000fffe00000d","020000fffe00000e"],
+  "expected_steps_removed_at_ru":1, "maintenance_window_open":false, "leap_window_open":false,
+  "description":"Malformed/fuzzed PTP injected on RU segment (spoofed GM id): versionPTP=3, messageLength=20, messageType=0xF, controlField=0x63 - O-RAN WG11 24.2.1.2" }

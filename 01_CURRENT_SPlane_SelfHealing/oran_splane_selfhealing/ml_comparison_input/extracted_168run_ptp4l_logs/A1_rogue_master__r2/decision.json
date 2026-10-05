@@ -1,0 +1,59 @@
+{
+  "scenario": "A1_rogue_master",
+  "truth_class": "attack",
+  "truth_fault": "A1",
+  "verdict": "ATTACK",
+  "fault_hint": "A1",
+  "reasons": [
+    "Unauthorised clock advertising ITSELF as grandmaster (not in the provisioned allow-list): {'020000fffe0000fc': {'n': 156, 'self_announce_pkts': 156}}"
+  ],
+  "evidence": {
+    "n_packets": 7629,
+    "n_announce": 512,
+    "allowlist": [
+      "020000fffe000001",
+      "020000fffe00000a",
+      "020000fffe00000b"
+    ],
+    "illegal_clockclass_pkts": 0,
+    "nonconformant_priority1_pkts": 0,
+    "out_of_profile_domain_pkts": 0,
+    "wrong_multicast_pkts": 0,
+    "stepsRemoved_ge_255_pkts": 0,
+    "alternate_master_flag_pkts": 0,
+    "gm_identities": {
+      "020000fffe000001": 1,
+      "020000fffe00000a": 355,
+      "020000fffe0000fc": 156
+    },
+    "off_allowlist_sustained": {
+      "020000fffe0000fc": 156
+    },
+    "provisioned_gms_seen": [
+      "020000fffe00000a"
+    ],
+    "maintenance_window_open": false,
+    "ptp_sources": {
+      "020000fffe000001": 3857,
+      "020000fffe00000e": 680,
+      "020000fffe00000c": 707,
+      "020000fffe00000d": 694,
+      "020000fffe0000fc": 1691
+    },
+    "unknown_sources_sustained": {
+      "020000fffe0000fc": 1691
+    },
+    "announce_rate_self_inconsistent": {},
+    "capture_span_s": 44.441,
+    "unknown_relaying_sources": {},
+    "unknown_selfannouncing_sources": {
+      "020000fffe0000fc": {
+        "n": 156,
+        "self_announce_pkts": 156
+      }
+    },
+    "sequence_regressions": 0,
+    "nonconformant_sync_cadence_pkts": 0,
+    "nonconformant_announce_cadence_pkts": 0
+  }
+}

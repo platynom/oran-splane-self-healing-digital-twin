@@ -1,0 +1,14 @@
+run_id=v1006
+arm=no_action
+condition=j100
+linuxptp=3.1.1
+topology=two_independent_l2_segments
+host_clock_adjustment=disabled_by_free_running_1
+started_utc=2026-09-14T00:41:39Z
+ended_utc=2026-09-14T00:43:18Z
+settle_s=12
+impair_s=80
+detector_max_seconds=172
+phase_clock=CLOCK_MONOTONIC_via_python_clock_gettime
+ptp4l_log_clock=CLOCK_MONOTONIC_truncated_to_1ms
+expected_summary_cadence_s=16

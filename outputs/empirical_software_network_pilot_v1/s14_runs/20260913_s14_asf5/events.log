@@ -1,0 +1,12 @@
+run_id=saf5 arm=no_action condition=authorized_source_failover phase=setup event=topology_created utc=2026-09-13T17:21:45Z monotonic_s=1653.27 status=PASS
+run_id=saf5 arm=no_action condition=authorized_source_failover phase=setup event=tcpdump_seg1_ready utc=2026-09-13T17:21:49Z monotonic_s=1656.34 status=PASS
+run_id=saf5 arm=no_action condition=authorized_source_failover phase=setup event=tcpdump_seg2_ready utc=2026-09-13T17:21:49Z monotonic_s=1656.35 status=PASS
+run_id=saf5 arm=no_action condition=authorized_source_failover phase=setup event=master_a_ready utc=2026-09-13T17:21:49Z monotonic_s=1656.37 status=PASS
+run_id=saf5 arm=no_action condition=authorized_source_failover phase=setup event=master_b_ready utc=2026-09-13T17:21:49Z monotonic_s=1656.38 status=PASS
+run_id=saf5 arm=no_action condition=authorized_source_failover phase=setup event=slave_ready utc=2026-09-13T17:21:49Z monotonic_s=1656.39 status=PASS
+run_id=saf5 arm=no_action condition=authorized_source_failover phase=setup event=live_detector_ready utc=2026-09-13T17:21:51Z monotonic_s=1658.42 status=PASS
+run_id=saf5 arm=no_action condition=authorized_source_failover phase=trial event=phase1_clean_started utc=2026-09-13T17:21:51Z monotonic_s=1658.46 status=PASS
+run_id=saf5 arm=no_action condition=authorized_source_failover phase=trial event=phase1_clean_recorded utc=2026-09-13T17:22:03Z monotonic_s=1670.70 status=PASS
+run_id=saf5 arm=no_action condition=authorized_source_failover phase=trial event=phase2_master_a_cleanly_terminated utc=2026-09-13T17:22:03Z monotonic_s=1670.76 status=PASS
+run_id=saf5 arm=no_action condition=authorized_source_failover phase=trial event=phase2_end_recorded utc=2026-09-13T17:22:33Z monotonic_s=1700.92 status=PASS
+run_id=saf5 arm=no_action condition=authorized_source_failover phase=trial event=phase_finished utc=2026-09-13T17:22:33Z monotonic_s=1700.93 status=PASS

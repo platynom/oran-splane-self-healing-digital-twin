@@ -1,0 +1,80 @@
+{
+  "title": "S-plane coverage-gap closure: detection-logic validation",
+  "generated": "2026-09-20T08:28:07.436317Z",
+  "method": "Crafted-input detection-logic tests. NOT live on-wire captures. No frozen artefact modified. decision_rule_v2 is an UNFROZEN development extension.",
+  "frozen_rule": {
+    "file": "run/decision_rule.py",
+    "sha256": "c362e11072344161437aaae33b2902caf9bca57dfc33f653a9c2184edae8a985",
+    "matches_FROZEN_json": true
+  },
+  "items_addressed": {
+    "item1": "packet removal / selective interception (O-RAN WG11 11.1.5.3.1)",
+    "item2": "malformed / fuzzed PTP frames (O-RAN WG11 24.2.1.2)",
+    "item3": "whole-second field abuse: leap61/59, currentUtcOffset, traceability (IEEE 1588-2019 7.2.4)"
+  },
+  "frozen_rule_on_crafted": {
+    "synth_base": {
+      "verdict": "BENIGN",
+      "sha256": "8eb3fecc9768ed8c3913ac6f0038cac0e5b9b301f135b4680695d6bd196e0ed4"
+    },
+    "synth_item1_removal": {
+      "verdict": "BENIGN",
+      "sha256": "3b0364bf6315147b3ba1dc814c8d532c547c0bcaf7ba868ea45936c368d5f7eb"
+    },
+    "synth_item2_malformed": {
+      "verdict": "BENIGN",
+      "sha256": "73c6e4000f40121d87087a7c99d2143056060e21b5ddf3533b47973cb51b9a57"
+    },
+    "synth_item3_wholesecond": {
+      "verdict": "BENIGN",
+      "sha256": "131ae948daf3aea21cec08aeb137c40c3b5ec3cc6c26864a98401ffdff1a4d57"
+    }
+  },
+  "finding_frozen_gaps": "Frozen rule returns BENIGN on all three attack classes while returning BENIGN on the conformant control -> the three classes are genuine coverage gaps.",
+  "v2_extension": {
+    "file": "run/decision_rule_v2.py",
+    "frozen": "NO -- development only",
+    "additive_only": true,
+    "on_crafted": {
+      "synth_base": {
+        "verdict": "BENIGN",
+        "hint": null
+      },
+      "synth_item1_removal": {
+        "verdict": "ATTACK",
+        "hint": "A_intercept"
+      },
+      "synth_item2_malformed": {
+        "verdict": "ATTACK",
+        "hint": "A_malformed"
+      },
+      "synth_item3_wholesecond": {
+        "verdict": "ATTACK",
+        "hint": "A_wholesecond"
+      }
+    }
+  },
+  "v2_new_detector_FP_check_on_real_healthy_captures": {
+    "netem_baseline.deep.csv": {
+      "D1_removal": false,
+      "D2_malformed": false,
+      "D3_wholesecond": false,
+      "frozen_base": "ATTACK",
+      "v2": "ATTACK",
+      "sha256": "e0646ac8c8f8b6d8996119368aa81a88a602b0cc5434691a67f984ee18e59d8a"
+    },
+    "netem_pdv.deep.csv": {
+      "D1_removal": false,
+      "D2_malformed": false,
+      "D3_wholesecond": false,
+      "frozen_base": "ATTACK",
+      "v2": "ATTACK",
+      "sha256": "18995f98589bd2d4512a6964901c5f269a158db7bb8b3db59f1de41257fabeab"
+    }
+  },
+  "hard_constraints": [
+    "No live on-wire runs this session: device VM is unprivileged (netns denied, no ptp4l/scapy); cloud shell blocked.",
+    "v2 detectors are NOT frozen and NOT campaign-validated. Reporting them in a headline metric requires re-freeze + a fresh randomized campaign on the testbed.",
+    "netem_baseline/netem_pdv are domain-0 real captures: valid as new-detector FP controls, NOT as G.8275.1 benign-classification controls (frozen base flags them A5 on domain, by design)."
+  ]
+}

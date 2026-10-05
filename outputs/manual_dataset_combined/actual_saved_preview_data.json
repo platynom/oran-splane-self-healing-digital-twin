@@ -1,0 +1,1867 @@
+{
+  "dictionary": {
+    "sheet": "PCAP dictionary",
+    "cols": [
+      {
+        "min": "1",
+        "max": "1",
+        "width": "24",
+        "customWidth": "1"
+      },
+      {
+        "min": "2",
+        "max": "2",
+        "width": "24",
+        "customWidth": "1"
+      },
+      {
+        "min": "3",
+        "max": "3",
+        "width": "24",
+        "customWidth": "1"
+      },
+      {
+        "min": "4",
+        "max": "4",
+        "width": "24",
+        "customWidth": "1"
+      },
+      {
+        "min": "5",
+        "max": "5",
+        "width": "24",
+        "customWidth": "1"
+      },
+      {
+        "min": "6",
+        "max": "6",
+        "width": "29",
+        "customWidth": "1"
+      },
+      {
+        "min": "7",
+        "max": "7",
+        "width": "24",
+        "customWidth": "1"
+      }
+    ],
+    "rows": [
+      {
+        "r": "1",
+        "ht": "42",
+        "cells": [
+          {
+            "v": "Field",
+            "s": "5",
+            "r": "A1"
+          },
+          {
+            "v": "Representation",
+            "s": "5",
+            "r": "B1"
+          },
+          {
+            "v": "Applies to",
+            "s": "5",
+            "r": "C1"
+          },
+          {
+            "v": "What / units",
+            "s": "5",
+            "r": "D1"
+          },
+          {
+            "v": "Example / meaning",
+            "s": "5",
+            "r": "E1"
+          },
+          {
+            "v": "What a change can support",
+            "s": "5",
+            "r": "F1"
+          },
+          {
+            "v": "Limits / source",
+            "s": "5",
+            "r": "G1"
+          }
+        ]
+      },
+      {
+        "r": "5",
+        "ht": "135",
+        "cells": [
+          {
+            "v": "MessageType",
+            "s": "10",
+            "r": "A5"
+          },
+          {
+            "v": "Raw versus encoded protocol field",
+            "s": "10",
+            "r": "B5"
+          },
+          {
+            "v": "S021, S022, S023, S024, S025, S026, S027, S040, S041, S042, S043, S044, S045",
+            "s": "10",
+            "r": "C5"
+          },
+          {
+            "v": "Raw capture exports use their supplied message-type representation; derived/session sources may encode the same protocol concept numerically. Preserve the source representation and consult the source tab.",
+            "s": "10",
+            "r": "D5"
+          },
+          {
+            "v": "Example: `Announce` is a PTP message name; numeric forms are encoded representations.",
+            "s": "10",
+            "r": "E5"
+          },
+          {
+            "v": "A change can describe packet role/order, not receiver selection or maliciousness.",
+            "s": "10",
+            "r": "F5"
+          },
+          {
+            "v": "S026/S027 raw-capture tabs and source-specific derived tabs",
+            "s": "10",
+            "r": "G5"
+          }
+        ]
+      },
+      {
+        "r": "8",
+        "ht": "135",
+        "cells": [
+          {
+            "v": "Source",
+            "s": "10",
+            "r": "A8"
+          },
+          {
+            "v": "Raw versus encoded identifier",
+            "s": "10",
+            "r": "B8"
+          },
+          {
+            "v": "S021, S022, S023, S024, S025, S026, S027, S040, S041, S042, S043, S044, S045",
+            "s": "10",
+            "r": "C8"
+          },
+          {
+            "v": "S026/S027 raw capture exports store displayed MAC-address text; transformed sources may use an encoded/integer representation. Preserve the exact source-tab lexical value rather than treating representations as interchangeable.",
+            "s": "10",
+            "r": "D8"
+          },
+          {
+            "v": "Example: `b8:ce:f6:5e:6b:4a` is a displayed captured sender address.",
+            "s": "10",
+            "r": "E8"
+          },
+          {
+            "v": "A change can indicate a different observed flow or encoding, not an authorised role or physical identity.",
+            "s": "10",
+            "r": "F8"
+          },
+          {
+            "v": "S026/S027 raw-capture tabs; transformed-source tabs retain their own encoding",
+            "s": "10",
+            "r": "G8"
+          }
+        ]
+      },
+      {
+        "r": "115",
+        "ht": "90",
+        "cells": [
+          {
+            "v": "Packet ordinal (derived)",
+            "s": "10",
+            "r": "A115"
+          },
+          {
+            "v": "Derived full-PCAP field",
+            "s": "10",
+            "r": "B115"
+          },
+          {
+            "v": "PCAP tabs",
+            "s": "10",
+            "r": "C115"
+          },
+          {
+            "v": "Derived 1-based packet count",
+            "s": "10",
+            "r": "D115"
+          },
+          {
+            "v": "Sequential record number in this one raw PCAP file; unit: packets.",
+            "s": "10",
+            "r": "E115"
+          },
+          {
+            "v": "Packet 1 is the first capture record, irrespective of PTP decode status.",
+            "s": "10",
+            "r": "F115"
+          },
+          {
+            "v": "Supports reproducible location in this capture only; not a global packet identifier.",
+            "s": "10",
+            "r": "G115"
+          }
+        ]
+      },
+      {
+        "r": "119",
+        "ht": "90",
+        "cells": [
+          {
+            "v": "Captured frame length bytes (derived)",
+            "s": "10",
+            "r": "A119"
+          },
+          {
+            "v": "Derived full-PCAP field",
+            "s": "10",
+            "r": "B119"
+          },
+          {
+            "v": "PCAP tabs",
+            "s": "10",
+            "r": "C119"
+          },
+          {
+            "v": "Derived captured length in bytes",
+            "s": "10",
+            "r": "D119"
+          },
+          {
+            "v": "Length of the captured frame byte string; unit: bytes.",
+            "s": "10",
+            "r": "E119"
+          },
+          {
+            "v": "A larger value means more captured bytes, not necessarily malicious payload.",
+            "s": "10",
+            "r": "F119"
+          },
+          {
+            "v": "May be affected by capture truncation and link-layer representation.",
+            "s": "10",
+            "r": "G119"
+          }
+        ]
+      },
+      {
+        "r": "122",
+        "ht": "90",
+        "cells": [
+          {
+            "v": "EtherType (derived)",
+            "s": "10",
+            "r": "A122"
+          },
+          {
+            "v": "Derived full-PCAP field",
+            "s": "10",
+            "r": "B122"
+          },
+          {
+            "v": "PCAP tabs",
+            "s": "10",
+            "r": "C122"
+          },
+          {
+            "v": "Decoded 16-bit Ethernet EtherType",
+            "s": "10",
+            "r": "D122"
+          },
+          {
+            "v": "Hexadecimal field at Ethernet bytes 12-13; `0x88f7` denotes PTP over Ethernet.",
+            "s": "10",
+            "r": "E122"
+          },
+          {
+            "v": "Identifies the Ethernet protocol discriminator.",
+            "s": "10",
+            "r": "F122"
+          },
+          {
+            "v": "Does not decode VLAN encapsulation or establish message authenticity.",
+            "s": "10",
+            "r": "G122"
+          }
+        ]
+      },
+      {
+        "r": "130",
+        "ht": "90",
+        "cells": [
+          {
+            "v": "PTP flags hex (derived)",
+            "s": "10",
+            "r": "A130"
+          },
+          {
+            "v": "Derived full-PCAP field",
+            "s": "10",
+            "r": "B130"
+          },
+          {
+            "v": "PCAP tabs",
+            "s": "10",
+            "r": "C130"
+          },
+          {
+            "v": "Decoded 16-bit PTP flagField",
+            "s": "10",
+            "r": "D130"
+          },
+          {
+            "v": "Two raw PTP header bytes represented as lowercase hexadecimal; unit: bit field.",
+            "s": "10",
+            "r": "E130"
+          },
+          {
+            "v": "Each bit is protocol-defined, not a generic health score.",
+            "s": "10",
+            "r": "F130"
+          },
+          {
+            "v": "No individual flag is converted here into a diagnosis without a field-specific rule.",
+            "s": "10",
+            "r": "G130"
+          }
+        ]
+      },
+      {
+        "r": "134",
+        "ht": "90",
+        "cells": [
+          {
+            "v": "PTP source port (derived)",
+            "s": "10",
+            "r": "A134"
+          },
+          {
+            "v": "Derived full-PCAP field",
+            "s": "10",
+            "r": "B134"
+          },
+          {
+            "v": "PCAP tabs",
+            "s": "10",
+            "r": "C134"
+          },
+          {
+            "v": "Decoded unsigned 16-bit portNumber",
+            "s": "10",
+            "r": "D134"
+          },
+          {
+            "v": "The port-number portion of the PTP sourcePortIdentity; unit: integer.",
+            "s": "10",
+            "r": "E134"
+          },
+          {
+            "v": "Together with clock identity it scopes a PTP source port.",
+            "s": "10",
+            "r": "F134"
+          },
+          {
+            "v": "It is not a UDP/TCP port and does not identify a physical receiver.",
+            "s": "10",
+            "r": "G134"
+          }
+        ]
+      },
+      {
+        "r": "138",
+        "ht": "90",
+        "cells": [
+          {
+            "v": "PTP originTimestamp ns (derived)",
+            "s": "10",
+            "r": "A138"
+          },
+          {
+            "v": "Derived full-PCAP field",
+            "s": "10",
+            "r": "B138"
+          },
+          {
+            "v": "PCAP tabs",
+            "s": "10",
+            "r": "C138"
+          },
+          {
+            "v": "Decoded PTP message-body timestamp in ns",
+            "s": "10",
+            "r": "D138"
+          },
+          {
+            "v": "Timestamp carried in a decodable PTP message body, distinct from the classic-PCAP capture-record timestamp.",
+            "s": "10",
+            "r": "E138"
+          },
+          {
+            "v": "Represents protocol content such as a message origin time; it is not the observer capture time.",
+            "s": "10",
+            "r": "F138"
+          },
+          {
+            "v": "Compare only with the PTP message type and capture context; it does not prove path delay or clock health.",
+            "s": "10",
+            "r": "G138"
+          }
+        ]
+      }
+    ]
+  },
+  "production": {
+    "sheet": "PCAP 0690ed95ddc3",
+    "cols": [
+      {
+        "min": "1",
+        "max": "1",
+        "width": "42",
+        "customWidth": "1"
+      },
+      {
+        "min": "2",
+        "max": "2",
+        "width": "42",
+        "customWidth": "1"
+      },
+      {
+        "min": "3",
+        "max": "3",
+        "width": "42",
+        "customWidth": "1"
+      },
+      {
+        "min": "4",
+        "max": "4",
+        "width": "70",
+        "customWidth": "1"
+      },
+      {
+        "min": "5",
+        "max": "5",
+        "width": "42",
+        "customWidth": "1"
+      },
+      {
+        "min": "6",
+        "max": "6",
+        "width": "42",
+        "customWidth": "1"
+      },
+      {
+        "min": "7",
+        "max": "7",
+        "width": "42",
+        "customWidth": "1"
+      },
+      {
+        "min": "8",
+        "max": "8",
+        "width": "42",
+        "customWidth": "1"
+      },
+      {
+        "min": "9",
+        "max": "9",
+        "width": "42",
+        "customWidth": "1"
+      },
+      {
+        "min": "10",
+        "max": "10",
+        "width": "42",
+        "customWidth": "1"
+      },
+      {
+        "min": "11",
+        "max": "11",
+        "width": "42",
+        "customWidth": "1"
+      },
+      {
+        "min": "12",
+        "max": "12",
+        "width": "42",
+        "customWidth": "1"
+      },
+      {
+        "min": "13",
+        "max": "13",
+        "width": "42",
+        "customWidth": "1"
+      },
+      {
+        "min": "14",
+        "max": "14",
+        "width": "42",
+        "customWidth": "1"
+      },
+      {
+        "min": "15",
+        "max": "15",
+        "width": "42",
+        "customWidth": "1"
+      },
+      {
+        "min": "16",
+        "max": "16",
+        "width": "42",
+        "customWidth": "1"
+      },
+      {
+        "min": "17",
+        "max": "17",
+        "width": "42",
+        "customWidth": "1"
+      },
+      {
+        "min": "18",
+        "max": "18",
+        "width": "42",
+        "customWidth": "1"
+      },
+      {
+        "min": "19",
+        "max": "19",
+        "width": "42",
+        "customWidth": "1"
+      },
+      {
+        "min": "20",
+        "max": "20",
+        "width": "42",
+        "customWidth": "1"
+      },
+      {
+        "min": "21",
+        "max": "21",
+        "width": "42",
+        "customWidth": "1"
+      },
+      {
+        "min": "22",
+        "max": "22",
+        "width": "42",
+        "customWidth": "1"
+      },
+      {
+        "min": "23",
+        "max": "23",
+        "width": "42",
+        "customWidth": "1"
+      },
+      {
+        "min": "24",
+        "max": "24",
+        "width": "42",
+        "customWidth": "1"
+      },
+      {
+        "min": "25",
+        "max": "25",
+        "width": "42",
+        "customWidth": "1"
+      },
+      {
+        "min": "26",
+        "max": "26",
+        "width": "42",
+        "customWidth": "1"
+      },
+      {
+        "min": "27",
+        "max": "27",
+        "width": "42",
+        "customWidth": "1"
+      },
+      {
+        "min": "28",
+        "max": "28",
+        "width": "42",
+        "customWidth": "1"
+      },
+      {
+        "min": "29",
+        "max": "29",
+        "width": "42",
+        "customWidth": "1"
+      },
+      {
+        "min": "30",
+        "max": "30",
+        "width": "42",
+        "customWidth": "1"
+      },
+      {
+        "min": "31",
+        "max": "31",
+        "width": "42",
+        "customWidth": "1"
+      },
+      {
+        "min": "32",
+        "max": "32",
+        "width": "42",
+        "customWidth": "1"
+      },
+      {
+        "min": "33",
+        "max": "33",
+        "width": "42",
+        "customWidth": "1"
+      },
+      {
+        "min": "34",
+        "max": "34",
+        "width": "70",
+        "customWidth": "1"
+      },
+      {
+        "min": "35",
+        "max": "35",
+        "width": "70",
+        "customWidth": "1"
+      },
+      {
+        "min": "36",
+        "max": "36",
+        "width": "70",
+        "customWidth": "1"
+      },
+      {
+        "min": "37",
+        "max": "37",
+        "width": "70",
+        "customWidth": "1"
+      },
+      {
+        "min": "38",
+        "max": "38",
+        "width": "70",
+        "customWidth": "1"
+      },
+      {
+        "min": "39",
+        "max": "39",
+        "width": "70",
+        "customWidth": "1"
+      }
+    ],
+    "rows": [
+      {
+        "r": "1",
+        "ht": "42",
+        "cells": [
+          {
+            "v": "Packet ordinal (derived)",
+            "s": "5",
+            "r": "A1"
+          },
+          {
+            "v": "Capture timestamp ns (derived)",
+            "s": "5",
+            "r": "B1"
+          },
+          {
+            "v": "Relative time s (derived)",
+            "s": "5",
+            "r": "C1"
+          },
+          {
+            "v": "Frame SHA256 (derived)",
+            "s": "5",
+            "r": "D1"
+          },
+          {
+            "v": "Captured frame length bytes (derived)",
+            "s": "5",
+            "r": "E1"
+          },
+          {
+            "v": "Destination MAC (derived)",
+            "s": "5",
+            "r": "F1"
+          },
+          {
+            "v": "Source MAC (derived)",
+            "s": "5",
+            "r": "G1"
+          },
+          {
+            "v": "EtherType (derived)",
+            "s": "5",
+            "r": "H1"
+          },
+          {
+            "v": "PTP parse status (derived)",
+            "s": "5",
+            "r": "I1"
+          },
+          {
+            "v": "PTP message type code (derived)",
+            "s": "5",
+            "r": "J1"
+          },
+          {
+            "v": "PTP message type name (derived)",
+            "s": "5",
+            "r": "K1"
+          },
+          {
+            "v": "PTP transportSpecific (derived)",
+            "s": "5",
+            "r": "L1"
+          },
+          {
+            "v": "PTP version (derived)",
+            "s": "5",
+            "r": "M1"
+          },
+          {
+            "v": "PTP message length (derived)",
+            "s": "5",
+            "r": "N1"
+          },
+          {
+            "v": "PTP domain (derived)",
+            "s": "5",
+            "r": "O1"
+          },
+          {
+            "v": "PTP flags hex (derived)",
+            "s": "5",
+            "r": "P1"
+          },
+          {
+            "v": "PTP correctionField scaled-ns (derived)",
+            "s": "5",
+            "r": "Q1"
+          },
+          {
+            "v": "PTP correctionField ns (derived)",
+            "s": "5",
+            "r": "R1"
+          },
+          {
+            "v": "PTP sourcePortIdentity (derived)",
+            "s": "5",
+            "r": "S1"
+          },
+          {
+            "v": "PTP source port (derived)",
+            "s": "5",
+            "r": "T1"
+          },
+          {
+            "v": "PTP sequenceId (derived)",
+            "s": "5",
+            "r": "U1"
+          },
+          {
+            "v": "PTP controlField (derived)",
+            "s": "5",
+            "r": "V1"
+          },
+          {
+            "v": "PTP logMessageInterval (derived)",
+            "s": "5",
+            "r": "W1"
+          },
+          {
+            "v": "PTP originTimestamp ns (derived)",
+            "s": "5",
+            "r": "X1"
+          },
+          {
+            "v": "Announce currentUtcOffset (derived)",
+            "s": "5",
+            "r": "Y1"
+          },
+          {
+            "v": "Announce grandmasterPriority1 (derived)",
+            "s": "5",
+            "r": "Z1"
+          },
+          {
+            "v": "Announce grandmasterClockClass (derived)",
+            "s": "5",
+            "r": "AA1"
+          },
+          {
+            "v": "Announce grandmasterClockAccuracy (derived)",
+            "s": "5",
+            "r": "AB1"
+          },
+          {
+            "v": "Announce offsetScaledLogVariance (derived)",
+            "s": "5",
+            "r": "AC1"
+          },
+          {
+            "v": "Announce grandmasterPriority2 (derived)",
+            "s": "5",
+            "r": "AD1"
+          },
+          {
+            "v": "Announce grandmasterIdentity (derived)",
+            "s": "5",
+            "r": "AE1"
+          },
+          {
+            "v": "Announce stepsRemoved (derived)",
+            "s": "5",
+            "r": "AF1"
+          },
+          {
+            "v": "Announce timeSource (derived)",
+            "s": "5",
+            "r": "AG1"
+          },
+          {
+            "v": "Observable event/pattern (derived)",
+            "s": "5",
+            "r": "AH1"
+          },
+          {
+            "v": "Rule reference (derived)",
+            "s": "5",
+            "r": "AI1"
+          },
+          {
+            "v": "Supplied annotation handling (derived)",
+            "s": "5",
+            "r": "AJ1"
+          },
+          {
+            "v": "Conditional action (derived)",
+            "s": "5",
+            "r": "AK1"
+          },
+          {
+            "v": "Canonical capture SHA256 (derived)",
+            "s": "5",
+            "r": "AL1"
+          },
+          {
+            "v": "Decoder file SHA256 (derived)",
+            "s": "5",
+            "r": "AM1"
+          }
+        ]
+      },
+      {
+        "r": "2",
+        "ht": "30",
+        "cells": [
+          {
+            "v": "1",
+            "s": "0",
+            "r": "A2"
+          },
+          {
+            "v": "1717708527737608000",
+            "s": "0",
+            "r": "B2"
+          },
+          {
+            "v": "0.000000000",
+            "s": "0",
+            "r": "C2"
+          },
+          {
+            "v": "b635210d32f6576b08002780b5b7ab2405c6a9627b12a3698d0f2171993f29fc",
+            "s": "0",
+            "r": "D2"
+          },
+          {
+            "v": "58",
+            "s": "0",
+            "r": "E2"
+          },
+          {
+            "v": "01:1b:19:00:00:00",
+            "s": "0",
+            "r": "F2"
+          },
+          {
+            "v": "b8:ce:f6:5e:6b:4a",
+            "s": "0",
+            "r": "G2"
+          },
+          {
+            "v": "0x88f7",
+            "s": "0",
+            "r": "H2"
+          },
+          {
+            "v": "PTP_DECODED",
+            "s": "0",
+            "r": "I2"
+          },
+          {
+            "v": "1",
+            "s": "0",
+            "r": "J2"
+          },
+          {
+            "v": "Delay_Req",
+            "s": "0",
+            "r": "K2"
+          },
+          {
+            "v": "0",
+            "s": "0",
+            "r": "L2"
+          },
+          {
+            "v": "2",
+            "s": "0",
+            "r": "M2"
+          },
+          {
+            "v": "44",
+            "s": "0",
+            "r": "N2"
+          },
+          {
+            "v": "24",
+            "s": "0",
+            "r": "O2"
+          },
+          {
+            "v": "0000",
+            "s": "0",
+            "r": "P2"
+          },
+          {
+            "v": "0",
+            "s": "0",
+            "r": "Q2"
+          },
+          {
+            "v": "0.000000000",
+            "s": "0",
+            "r": "R2"
+          },
+          {
+            "v": "b8cef6fffe5e6b4a0001",
+            "s": "0",
+            "r": "S2"
+          },
+          {
+            "v": "1",
+            "s": "0",
+            "r": "T2"
+          },
+          {
+            "v": "19114",
+            "s": "0",
+            "r": "U2"
+          },
+          {
+            "v": "1",
+            "s": "0",
+            "r": "V2"
+          },
+          {
+            "v": "127",
+            "s": "0",
+            "r": "W2"
+          },
+          {
+            "v": "0",
+            "s": "0",
+            "r": "X2"
+          },
+          {
+            "v": "NOT_APPLICABLE",
+            "s": "0",
+            "r": "Y2"
+          },
+          {
+            "v": "NOT_APPLICABLE",
+            "s": "0",
+            "r": "Z2"
+          },
+          {
+            "v": "NOT_APPLICABLE",
+            "s": "0",
+            "r": "AA2"
+          },
+          {
+            "v": "NOT_APPLICABLE",
+            "s": "0",
+            "r": "AB2"
+          },
+          {
+            "v": "NOT_APPLICABLE",
+            "s": "0",
+            "r": "AC2"
+          },
+          {
+            "v": "NOT_APPLICABLE",
+            "s": "0",
+            "r": "AD2"
+          },
+          {
+            "v": "NOT_APPLICABLE",
+            "s": "0",
+            "r": "AE2"
+          },
+          {
+            "v": "NOT_APPLICABLE",
+            "s": "0",
+            "r": "AF2"
+          },
+          {
+            "v": "NOT_APPLICABLE",
+            "s": "0",
+            "r": "AG2"
+          },
+          {
+            "v": "NONE",
+            "s": "0",
+            "r": "AH2"
+          },
+          {
+            "v": "NONE",
+            "s": "0",
+            "r": "AI2"
+          },
+          {
+            "v": "S026 supplied labels remain only in S026; this full-field export does not transfer them.",
+            "s": "0",
+            "r": "AJ2"
+          },
+          {
+            "v": "No action from this packet alone; validate receiver logs, topology and policy prerequisites first.",
+            "s": "0",
+            "r": "AK2"
+          },
+          {
+            "v": "0690ed95ddc3134e0dbec8e0d7a79b65b379c9574542a7792c1ff2f5a1b20599",
+            "s": "0",
+            "r": "AL2"
+          },
+          {
+            "v": "7731f2628c502e5324c32957c38100b792805a1bd21a1749c5330c88722aa51a",
+            "s": "0",
+            "r": "AM2"
+          }
+        ]
+      },
+      {
+        "r": "3",
+        "ht": "30",
+        "cells": [
+          {
+            "v": "2",
+            "s": "0",
+            "r": "A3"
+          },
+          {
+            "v": "1717708527737835000",
+            "s": "0",
+            "r": "B3"
+          },
+          {
+            "v": "0.000227000",
+            "s": "0",
+            "r": "C3"
+          },
+          {
+            "v": "d7204e09ef93b23859882690e1ef297fdb0b5db44137fe109470cb985da07428",
+            "s": "0",
+            "r": "D3"
+          },
+          {
+            "v": "68",
+            "s": "0",
+            "r": "E3"
+          },
+          {
+            "v": "01:1b:19:00:00:00",
+            "s": "0",
+            "r": "F3"
+          },
+          {
+            "v": "c4:5a:b1:3a:1b:46",
+            "s": "0",
+            "r": "G3"
+          },
+          {
+            "v": "0x88f7",
+            "s": "0",
+            "r": "H3"
+          },
+          {
+            "v": "PTP_DECODED",
+            "s": "0",
+            "r": "I3"
+          },
+          {
+            "v": "9",
+            "s": "0",
+            "r": "J3"
+          },
+          {
+            "v": "Delay_Resp",
+            "s": "0",
+            "r": "K3"
+          },
+          {
+            "v": "0",
+            "s": "0",
+            "r": "L3"
+          },
+          {
+            "v": "2",
+            "s": "0",
+            "r": "M3"
+          },
+          {
+            "v": "54",
+            "s": "0",
+            "r": "N3"
+          },
+          {
+            "v": "24",
+            "s": "0",
+            "r": "O3"
+          },
+          {
+            "v": "0000",
+            "s": "0",
+            "r": "P3"
+          },
+          {
+            "v": "0",
+            "s": "0",
+            "r": "Q3"
+          },
+          {
+            "v": "0.000000000",
+            "s": "0",
+            "r": "R3"
+          },
+          {
+            "v": "c45ab1ffff3a1b05000e",
+            "s": "0",
+            "r": "S3"
+          },
+          {
+            "v": "14",
+            "s": "0",
+            "r": "T3"
+          },
+          {
+            "v": "19114",
+            "s": "0",
+            "r": "U3"
+          },
+          {
+            "v": "0",
+            "s": "0",
+            "r": "V3"
+          },
+          {
+            "v": "-4",
+            "s": "0",
+            "r": "W3"
+          },
+          {
+            "v": "1717708527737634470",
+            "s": "0",
+            "r": "X3"
+          },
+          {
+            "v": "NOT_APPLICABLE",
+            "s": "0",
+            "r": "Y3"
+          },
+          {
+            "v": "NOT_APPLICABLE",
+            "s": "0",
+            "r": "Z3"
+          },
+          {
+            "v": "NOT_APPLICABLE",
+            "s": "0",
+            "r": "AA3"
+          },
+          {
+            "v": "NOT_APPLICABLE",
+            "s": "0",
+            "r": "AB3"
+          },
+          {
+            "v": "NOT_APPLICABLE",
+            "s": "0",
+            "r": "AC3"
+          },
+          {
+            "v": "NOT_APPLICABLE",
+            "s": "0",
+            "r": "AD3"
+          },
+          {
+            "v": "NOT_APPLICABLE",
+            "s": "0",
+            "r": "AE3"
+          },
+          {
+            "v": "NOT_APPLICABLE",
+            "s": "0",
+            "r": "AF3"
+          },
+          {
+            "v": "NOT_APPLICABLE",
+            "s": "0",
+            "r": "AG3"
+          },
+          {
+            "v": "NONE",
+            "s": "0",
+            "r": "AH3"
+          },
+          {
+            "v": "NONE",
+            "s": "0",
+            "r": "AI3"
+          },
+          {
+            "v": "S026 supplied labels remain only in S026; this full-field export does not transfer them.",
+            "s": "0",
+            "r": "AJ3"
+          },
+          {
+            "v": "No action from this packet alone; validate receiver logs, topology and policy prerequisites first.",
+            "s": "0",
+            "r": "AK3"
+          },
+          {
+            "v": "0690ed95ddc3134e0dbec8e0d7a79b65b379c9574542a7792c1ff2f5a1b20599",
+            "s": "0",
+            "r": "AL3"
+          },
+          {
+            "v": "7731f2628c502e5324c32957c38100b792805a1bd21a1749c5330c88722aa51a",
+            "s": "0",
+            "r": "AM3"
+          }
+        ]
+      },
+      {
+        "r": "4",
+        "ht": "30",
+        "cells": [
+          {
+            "v": "3",
+            "s": "0",
+            "r": "A4"
+          },
+          {
+            "v": "1717708527746562000",
+            "s": "0",
+            "r": "B4"
+          },
+          {
+            "v": "0.008954000",
+            "s": "0",
+            "r": "C4"
+          },
+          {
+            "v": "eeeb94b4b137c464c6819961b0986a3ff3ea74a6166f9303ce2c9d1568d79578",
+            "s": "0",
+            "r": "D4"
+          },
+          {
+            "v": "78",
+            "s": "0",
+            "r": "E4"
+          },
+          {
+            "v": "01:1b:19:00:00:00",
+            "s": "0",
+            "r": "F4"
+          },
+          {
+            "v": "c4:5a:b1:3a:1b:46",
+            "s": "0",
+            "r": "G4"
+          },
+          {
+            "v": "0x88f7",
+            "s": "0",
+            "r": "H4"
+          },
+          {
+            "v": "PTP_DECODED",
+            "s": "0",
+            "r": "I4"
+          },
+          {
+            "v": "11",
+            "s": "0",
+            "r": "J4"
+          },
+          {
+            "v": "Announce",
+            "s": "0",
+            "r": "K4"
+          },
+          {
+            "v": "0",
+            "s": "0",
+            "r": "L4"
+          },
+          {
+            "v": "2",
+            "s": "0",
+            "r": "M4"
+          },
+          {
+            "v": "64",
+            "s": "0",
+            "r": "N4"
+          },
+          {
+            "v": "24",
+            "s": "0",
+            "r": "O4"
+          },
+          {
+            "v": "003c",
+            "s": "0",
+            "r": "P4"
+          },
+          {
+            "v": "0",
+            "s": "0",
+            "r": "Q4"
+          },
+          {
+            "v": "0.000000000",
+            "s": "0",
+            "r": "R4"
+          },
+          {
+            "v": "c45ab1ffff3a1b05000e",
+            "s": "0",
+            "r": "S4"
+          },
+          {
+            "v": "14",
+            "s": "0",
+            "r": "T4"
+          },
+          {
+            "v": "43810",
+            "s": "0",
+            "r": "U4"
+          },
+          {
+            "v": "0",
+            "s": "0",
+            "r": "V4"
+          },
+          {
+            "v": "-3",
+            "s": "0",
+            "r": "W4"
+          },
+          {
+            "v": "0",
+            "s": "0",
+            "r": "X4"
+          },
+          {
+            "v": "37",
+            "s": "0",
+            "r": "Y4"
+          },
+          {
+            "v": "128",
+            "s": "0",
+            "r": "Z4"
+          },
+          {
+            "v": "6",
+            "s": "0",
+            "r": "AA4"
+          },
+          {
+            "v": "33",
+            "s": "0",
+            "r": "AB4"
+          },
+          {
+            "v": "65535",
+            "s": "0",
+            "r": "AC4"
+          },
+          {
+            "v": "120",
+            "s": "0",
+            "r": "AD4"
+          },
+          {
+            "v": "fcaf6afffe02babe",
+            "s": "0",
+            "r": "AE4"
+          },
+          {
+            "v": "1",
+            "s": "0",
+            "r": "AF4"
+          },
+          {
+            "v": "32",
+            "s": "0",
+            "r": "AG4"
+          },
+          {
+            "v": "NONE",
+            "s": "0",
+            "r": "AH4"
+          },
+          {
+            "v": "NONE",
+            "s": "0",
+            "r": "AI4"
+          },
+          {
+            "v": "S026 supplied labels remain only in S026; this full-field export does not transfer them.",
+            "s": "0",
+            "r": "AJ4"
+          },
+          {
+            "v": "No action from this packet alone; validate receiver logs, topology and policy prerequisites first.",
+            "s": "0",
+            "r": "AK4"
+          },
+          {
+            "v": "0690ed95ddc3134e0dbec8e0d7a79b65b379c9574542a7792c1ff2f5a1b20599",
+            "s": "0",
+            "r": "AL4"
+          },
+          {
+            "v": "7731f2628c502e5324c32957c38100b792805a1bd21a1749c5330c88722aa51a",
+            "s": "0",
+            "r": "AM4"
+          }
+        ]
+      },
+      {
+        "r": "5",
+        "ht": "30",
+        "cells": [
+          {
+            "v": "4",
+            "s": "0",
+            "r": "A5"
+          },
+          {
+            "v": "1717708527746581000",
+            "s": "0",
+            "r": "B5"
+          },
+          {
+            "v": "0.008973000",
+            "s": "0",
+            "r": "C5"
+          },
+          {
+            "v": "b45c50ec085d903f271e7efa2c932d50ba5f623495f63c3d6cfb529df568daeb",
+            "s": "0",
+            "r": "D5"
+          },
+          {
+            "v": "60",
+            "s": "0",
+            "r": "E5"
+          },
+          {
+            "v": "01:1b:19:00:00:00",
+            "s": "0",
+            "r": "F5"
+          },
+          {
+            "v": "c4:5a:b1:3a:1b:46",
+            "s": "0",
+            "r": "G5"
+          },
+          {
+            "v": "0x88f7",
+            "s": "0",
+            "r": "H5"
+          },
+          {
+            "v": "PTP_DECODED",
+            "s": "0",
+            "r": "I5"
+          },
+          {
+            "v": "0",
+            "s": "0",
+            "r": "J5"
+          },
+          {
+            "v": "Sync",
+            "s": "0",
+            "r": "K5"
+          },
+          {
+            "v": "0",
+            "s": "0",
+            "r": "L5"
+          },
+          {
+            "v": "2",
+            "s": "0",
+            "r": "M5"
+          },
+          {
+            "v": "44",
+            "s": "0",
+            "r": "N5"
+          },
+          {
+            "v": "24",
+            "s": "0",
+            "r": "O5"
+          },
+          {
+            "v": "0000",
+            "s": "0",
+            "r": "P5"
+          },
+          {
+            "v": "238485504",
+            "s": "0",
+            "r": "Q5"
+          },
+          {
+            "v": "3639.000000000",
+            "s": "0",
+            "r": "R5"
+          },
+          {
+            "v": "c45ab1ffff3a1b05000e",
+            "s": "0",
+            "r": "S5"
+          },
+          {
+            "v": "14",
+            "s": "0",
+            "r": "T5"
+          },
+          {
+            "v": "22057",
+            "s": "0",
+            "r": "U5"
+          },
+          {
+            "v": "0",
+            "s": "0",
+            "r": "V5"
+          },
+          {
+            "v": "-4",
+            "s": "0",
+            "r": "W5"
+          },
+          {
+            "v": "1717708527746575968",
+            "s": "0",
+            "r": "X5"
+          },
+          {
+            "v": "NOT_APPLICABLE",
+            "s": "0",
+            "r": "Y5"
+          },
+          {
+            "v": "NOT_APPLICABLE",
+            "s": "0",
+            "r": "Z5"
+          },
+          {
+            "v": "NOT_APPLICABLE",
+            "s": "0",
+            "r": "AA5"
+          },
+          {
+            "v": "NOT_APPLICABLE",
+            "s": "0",
+            "r": "AB5"
+          },
+          {
+            "v": "NOT_APPLICABLE",
+            "s": "0",
+            "r": "AC5"
+          },
+          {
+            "v": "NOT_APPLICABLE",
+            "s": "0",
+            "r": "AD5"
+          },
+          {
+            "v": "NOT_APPLICABLE",
+            "s": "0",
+            "r": "AE5"
+          },
+          {
+            "v": "NOT_APPLICABLE",
+            "s": "0",
+            "r": "AF5"
+          },
+          {
+            "v": "NOT_APPLICABLE",
+            "s": "0",
+            "r": "AG5"
+          },
+          {
+            "v": "NONE",
+            "s": "0",
+            "r": "AH5"
+          },
+          {
+            "v": "NONE",
+            "s": "0",
+            "r": "AI5"
+          },
+          {
+            "v": "S026 supplied labels remain only in S026; this full-field export does not transfer them.",
+            "s": "0",
+            "r": "AJ5"
+          },
+          {
+            "v": "No action from this packet alone; validate receiver logs, topology and policy prerequisites first.",
+            "s": "0",
+            "r": "AK5"
+          },
+          {
+            "v": "0690ed95ddc3134e0dbec8e0d7a79b65b379c9574542a7792c1ff2f5a1b20599",
+            "s": "0",
+            "r": "AL5"
+          },
+          {
+            "v": "7731f2628c502e5324c32957c38100b792805a1bd21a1749c5330c88722aa51a",
+            "s": "0",
+            "r": "AM5"
+          }
+        ]
+      },
+      {
+        "r": "1",
+        "ht": "42",
+        "cells": [
+          {
+            "v": "Packet ordinal (derived)",
+            "s": "5",
+            "r": "A1"
+          },
+          {
+            "v": "Capture timestamp ns (derived)",
+            "s": "5",
+            "r": "B1"
+          },
+          {
+            "v": "Relative time s (derived)",
+            "s": "5",
+            "r": "C1"
+          },
+          {
+            "v": "Frame SHA256 (derived)",
+            "s": "5",
+            "r": "D1"
+          },
+          {
+            "v": "Captured frame length bytes (derived)",
+            "s": "5",
+            "r": "E1"
+          },
+          {
+            "v": "Destination MAC (derived)",
+            "s": "5",
+            "r": "F1"
+          },
+          {
+            "v": "Source MAC (derived)",
+            "s": "5",
+            "r": "G1"
+          },
+          {
+            "v": "EtherType (derived)",
+            "s": "5",
+            "r": "H1"
+          },
+          {
+            "v": "PTP parse status (derived)",
+            "s": "5",
+            "r": "I1"
+          },
+          {
+            "v": "PTP message type code (derived)",
+            "s": "5",
+            "r": "J1"
+          },
+          {
+            "v": "PTP message type name (derived)",
+            "s": "5",
+            "r": "K1"
+          },
+          {
+            "v": "PTP transportSpecific (derived)",
+            "s": "5",
+            "r": "L1"
+          },
+          {
+            "v": "PTP version (derived)",
+            "s": "5",
+            "r": "M1"
+          },
+          {
+            "v": "PTP message length (derived)",
+            "s": "5",
+            "r": "N1"
+          },
+          {
+            "v": "PTP domain (derived)",
+            "s": "5",
+            "r": "O1"
+          },
+          {
+            "v": "PTP flags hex (derived)",
+            "s": "5",
+            "r": "P1"
+          },
+          {
+            "v": "PTP correctionField scaled-ns (derived)",
+            "s": "5",
+            "r": "Q1"
+          },
+          {
+            "v": "PTP correctionField ns (derived)",
+            "s": "5",
+            "r": "R1"
+          },
+          {
+            "v": "PTP sourcePortIdentity (derived)",
+            "s": "5",
+            "r": "S1"
+          },
+          {
+            "v": "PTP source port (derived)",
+            "s": "5",
+            "r": "T1"
+          },
+          {
+            "v": "PTP sequenceId (derived)",
+            "s": "5",
+            "r": "U1"
+          },
+          {
+            "v": "PTP controlField (derived)",
+            "s": "5",
+            "r": "V1"
+          },
+          {
+            "v": "PTP logMessageInterval (derived)",
+            "s": "5",
+            "r": "W1"
+          },
+          {
+            "v": "PTP originTimestamp ns (derived)",
+            "s": "5",
+            "r": "X1"
+          },
+          {
+            "v": "Announce currentUtcOffset (derived)",
+            "s": "5",
+            "r": "Y1"
+          },
+          {
+            "v": "Announce grandmasterPriority1 (derived)",
+            "s": "5",
+            "r": "Z1"
+          },
+          {
+            "v": "Announce grandmasterClockClass (derived)",
+            "s": "5",
+            "r": "AA1"
+          },
+          {
+            "v": "Announce grandmasterClockAccuracy (derived)",
+            "s": "5",
+            "r": "AB1"
+          },
+          {
+            "v": "Announce offsetScaledLogVariance (derived)",
+            "s": "5",
+            "r": "AC1"
+          },
+          {
+            "v": "Announce grandmasterPriority2 (derived)",
+            "s": "5",
+            "r": "AD1"
+          },
+          {
+            "v": "Announce grandmasterIdentity (derived)",
+            "s": "5",
+            "r": "AE1"
+          },
+          {
+            "v": "Announce stepsRemoved (derived)",
+            "s": "5",
+            "r": "AF1"
+          },
+          {
+            "v": "Announce timeSource (derived)",
+            "s": "5",
+            "r": "AG1"
+          },
+          {
+            "v": "Observable event/pattern (derived)",
+            "s": "5",
+            "r": "AH1"
+          },
+          {
+            "v": "Rule reference (derived)",
+            "s": "5",
+            "r": "AI1"
+          },
+          {
+            "v": "Supplied annotation handling (derived)",
+            "s": "5",
+            "r": "AJ1"
+          },
+          {
+            "v": "Conditional action (derived)",
+            "s": "5",
+            "r": "AK1"
+          },
+          {
+            "v": "Canonical capture SHA256 (derived)",
+            "s": "5",
+            "r": "AL1"
+          },
+          {
+            "v": "Decoder file SHA256 (derived)",
+            "s": "5",
+            "r": "AM1"
+          }
+        ]
+      }
+    ]
+  }
+}

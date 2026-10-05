@@ -1,0 +1,11 @@
+{
+  "scenario": "A1_rogue_master",
+  "truth_class": "attack",
+  "truth_fault": "A1",
+  "verdict": "ATTACK",
+  "fault_hint": "A3",
+  "reasons": [
+    "sequenceId regressions=1 (counter keyed per requesting port for Delay_Resp); a compliant sender is strictly increasing"
+  ],
+  "rule": "decision_rule_v3 (frozen v3)"
+}

@@ -1,0 +1,11 @@
+{
+  "scenario": "A3_replay",
+  "truth_class": "attack",
+  "truth_fault": "A3",
+  "verdict": "ATTACK",
+  "fault_hint": "A3",
+  "reasons": [
+    "sequenceId regressions=1409 (counter keyed per requesting port for Delay_Resp); a compliant sender is strictly increasing"
+  ],
+  "rule": "decision_rule_v3 (frozen v3)"
+}

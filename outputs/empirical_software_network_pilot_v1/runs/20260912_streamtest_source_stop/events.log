@@ -1,0 +1,7 @@
+run_id=ts1 phase=setup event=tcpdump_ready utc=2026-09-12T13:14:13Z monotonic_s=58.52 status=PASS
+run_id=ts1 phase=setup event=master_a_ready utc=2026-09-12T13:14:13Z monotonic_s=58.53 status=PASS
+run_id=ts1 phase=setup event=master_b_ready utc=2026-09-12T13:14:13Z monotonic_s=58.54 status=PASS
+run_id=ts1 phase=setup event=slave_ready utc=2026-09-12T13:14:13Z monotonic_s=58.55 status=PASS
+run_id=ts1 phase=authorized_source_change_intervention event=phase_started utc=2026-09-12T13:14:13Z monotonic_s=58.56 status=PASS
+run_id=ts1 phase=authorized_source_change_intervention event=preferred_master_stop_confirmed utc=2026-09-12T13:14:25Z monotonic_s=70.57 status=PASS
+run_id=ts1 phase=authorized_source_change_intervention event=phase_finished utc=2026-09-12T13:14:37Z monotonic_s=82.58 status=PASS

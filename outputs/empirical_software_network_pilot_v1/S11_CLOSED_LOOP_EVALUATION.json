@@ -1,0 +1,406 @@
+{
+  "schema_version": "s11-closed-loop-evaluation-v1",
+  "protocol": "S11_CLOSED_LOOP_PROTOCOL.json",
+  "frozen_input_verification": {
+    "frozen_hashes_match": true,
+    "v1_engine_sha256": "1c1d7edfbcc38b6e0c950984eff72b58592160c71ad8e797ff719d4aee0b8d0e",
+    "v3_nonoverlap_engine_sha256": "ee328876367e6547878f85eed60405624f55bd21a03348f4d9527fd302250172",
+    "live_detector_sha256": "897ed8833e5c5615acf2d725add0da0282a65ce9067a0793c1b9117077bcec84",
+    "s11_runner_sha256": "db07b4760c7d892ae5893e29fb6ba19a4876ad4da5e641e97149740611c070c2"
+  },
+  "runs": {
+    "action": {
+      "20260913_s11_act1": {
+        "run": "20260913_s11_act1",
+        "detector_triggered": true,
+        "detection_trigger_monotonic_s": 77.065779,
+        "action_withheld": false,
+        "action_executed": true,
+        "action_returncode": 0,
+        "detection_to_action_result_s": 0.006594,
+        "impaired_port_fault": "port 1: UNCALIBRATED to FAULTY on FAULT_DETECTED (FT_UNSPECIFIED)",
+        "standby_takeover": "port 2: LISTENING to UNCALIBRATED on RS_SLAVE",
+        "fault_to_takeover_s": 0.022,
+        "active_port_moved_to_clean_segment": true,
+        "receiver_port_state_eligible": true,
+        "master_transitions": [],
+        "ordering_timebase_limit": "Detector/action uses host monotonic time. The ptp4l printed timestamp basis was not established from the sealed local package/source, and no cross-clock mapping was recorded. Port-event ordering is used only within slave.log; a numeric command-to-fault interval is not established.",
+        "seg1_egress_pkt_phase1": 0,
+        "seg1_egress_pkt_phase2": 103,
+        "seg1_egress_counter_informative": [
+          false,
+          true
+        ],
+        "seg1_egress_note": "phase1 is read before netem is applied, on a noqueue qdisc that does not count packets; only the phase2 value is informative",
+        "capture_seg1_sha256": "e7e880d362462c22b0dc9223854ef7fcf35b5aaa0ea7ff2c74127b72161d7401",
+        "capture_seg2_sha256": "95575d12bb12b57d9bafe6be14b53dbb1b7a3e49b966d5d4a52e0924bd05e90e",
+        "manifest_sha256": "518a624688fdaa2eaca660d9cfa833132d51f71e3be1617784e366621c587a70",
+        "input_integrity": {
+          "manifest_entries_rehashed": 22,
+          "all_manifest_inputs_match_or_accepted_prefix": true,
+          "decision_log_post_seal_append": null
+        }
+      },
+      "20260913_s11_act2": {
+        "run": "20260913_s11_act2",
+        "detector_triggered": true,
+        "detection_trigger_monotonic_s": 172.500547,
+        "action_withheld": false,
+        "action_executed": true,
+        "action_returncode": 0,
+        "detection_to_action_result_s": 0.006014,
+        "impaired_port_fault": "port 1: UNCALIBRATED to FAULTY on FAULT_DETECTED (FT_UNSPECIFIED)",
+        "standby_takeover": "port 2: LISTENING to UNCALIBRATED on RS_SLAVE",
+        "fault_to_takeover_s": 0.053,
+        "active_port_moved_to_clean_segment": true,
+        "receiver_port_state_eligible": true,
+        "master_transitions": [],
+        "ordering_timebase_limit": "Detector/action uses host monotonic time. The ptp4l printed timestamp basis was not established from the sealed local package/source, and no cross-clock mapping was recorded. Port-event ordering is used only within slave.log; a numeric command-to-fault interval is not established.",
+        "seg1_egress_pkt_phase1": 0,
+        "seg1_egress_pkt_phase2": 53,
+        "seg1_egress_counter_informative": [
+          false,
+          true
+        ],
+        "seg1_egress_note": "phase1 is read before netem is applied, on a noqueue qdisc that does not count packets; only the phase2 value is informative",
+        "capture_seg1_sha256": "fcffe6ce7a18ad21997d79f637950108584e90de0d70f4d6da7652a6a8366116",
+        "capture_seg2_sha256": "cf0413b1096fca26356e64361a77da0c839e1b67c50b0462c53339978b8b1c02",
+        "manifest_sha256": "59695eeb60ed10a588312e4822f70485030457516188979bb8ca509b1a5aa81d",
+        "input_integrity": {
+          "manifest_entries_rehashed": 22,
+          "all_manifest_inputs_match_or_accepted_prefix": true,
+          "decision_log_post_seal_append": null
+        }
+      },
+      "20260913_s11_act3": {
+        "run": "20260913_s11_act3",
+        "detector_triggered": true,
+        "detection_trigger_monotonic_s": 285.125161,
+        "action_withheld": false,
+        "action_executed": true,
+        "action_returncode": 0,
+        "detection_to_action_result_s": 0.021669,
+        "impaired_port_fault": "port 1: UNCALIBRATED to FAULTY on FAULT_DETECTED (FT_UNSPECIFIED)",
+        "standby_takeover": "port 2: LISTENING to UNCALIBRATED on RS_SLAVE",
+        "fault_to_takeover_s": 0.072,
+        "active_port_moved_to_clean_segment": true,
+        "receiver_port_state_eligible": true,
+        "master_transitions": [],
+        "ordering_timebase_limit": "Detector/action uses host monotonic time. The ptp4l printed timestamp basis was not established from the sealed local package/source, and no cross-clock mapping was recorded. Port-event ordering is used only within slave.log; a numeric command-to-fault interval is not established.",
+        "seg1_egress_pkt_phase1": 0,
+        "seg1_egress_pkt_phase2": 470,
+        "seg1_egress_counter_informative": [
+          false,
+          true
+        ],
+        "seg1_egress_note": "phase1 is read before netem is applied, on a noqueue qdisc that does not count packets; only the phase2 value is informative",
+        "capture_seg1_sha256": "9ae6831b569b18a2a0f33a6d1c969831e985c621113643f1d262e9f905d35351",
+        "capture_seg2_sha256": "e6de2fb0f36253985d3b165d18ad431b973fc89d59c93dbf813d9e835db2ddf8",
+        "manifest_sha256": "9769e97d87175b4bd643d8c03e46a45ba3929561b6089f9f3b171152cb6d27ab",
+        "input_integrity": {
+          "manifest_entries_rehashed": 22,
+          "all_manifest_inputs_match_or_accepted_prefix": true,
+          "decision_log_post_seal_append": null
+        }
+      },
+      "20260913_s11_act4": {
+        "run": "20260913_s11_act4",
+        "detector_triggered": true,
+        "detection_trigger_monotonic_s": 366.929617,
+        "action_withheld": false,
+        "action_executed": true,
+        "action_returncode": 0,
+        "detection_to_action_result_s": 0.013691,
+        "impaired_port_fault": "port 1: UNCALIBRATED to FAULTY on FAULT_DETECTED (FT_UNSPECIFIED)",
+        "standby_takeover": "port 2: LISTENING to UNCALIBRATED on RS_SLAVE",
+        "fault_to_takeover_s": 0.1,
+        "active_port_moved_to_clean_segment": true,
+        "receiver_port_state_eligible": true,
+        "master_transitions": [],
+        "ordering_timebase_limit": "Detector/action uses host monotonic time. The ptp4l printed timestamp basis was not established from the sealed local package/source, and no cross-clock mapping was recorded. Port-event ordering is used only within slave.log; a numeric command-to-fault interval is not established.",
+        "seg1_egress_pkt_phase1": 0,
+        "seg1_egress_pkt_phase2": 51,
+        "seg1_egress_counter_informative": [
+          false,
+          true
+        ],
+        "seg1_egress_note": "phase1 is read before netem is applied, on a noqueue qdisc that does not count packets; only the phase2 value is informative",
+        "capture_seg1_sha256": "9569c92c89fc454c1a98752e59f5c4061fd801bc211d0ad2a904903945b38c00",
+        "capture_seg2_sha256": "690c09c19535bb7561befa991b147517057d39451c035c62fbb19f6321517cb1",
+        "manifest_sha256": "78704f12bf6d663003fdcd73f10876a5fae139e2bf65179f553048faf610e5c3",
+        "input_integrity": {
+          "manifest_entries_rehashed": 22,
+          "all_manifest_inputs_match_or_accepted_prefix": true,
+          "decision_log_post_seal_append": {
+            "sealed_lines": 4,
+            "current_lines": 6,
+            "reason": "post_seal_append_only; sealed decision prefix is used for S11 evidence"
+          }
+        }
+      },
+      "20260913_s11_act5": {
+        "run": "20260913_s11_act5",
+        "detector_triggered": true,
+        "detection_trigger_monotonic_s": 466.989038,
+        "action_withheld": false,
+        "action_executed": true,
+        "action_returncode": 0,
+        "detection_to_action_result_s": 0.008745,
+        "impaired_port_fault": "port 1: UNCALIBRATED to FAULTY on FAULT_DETECTED (FT_UNSPECIFIED)",
+        "standby_takeover": "port 2: LISTENING to UNCALIBRATED on RS_SLAVE",
+        "fault_to_takeover_s": 0.106,
+        "active_port_moved_to_clean_segment": true,
+        "receiver_port_state_eligible": true,
+        "master_transitions": [],
+        "ordering_timebase_limit": "Detector/action uses host monotonic time. The ptp4l printed timestamp basis was not established from the sealed local package/source, and no cross-clock mapping was recorded. Port-event ordering is used only within slave.log; a numeric command-to-fault interval is not established.",
+        "seg1_egress_pkt_phase1": 0,
+        "seg1_egress_pkt_phase2": 134,
+        "seg1_egress_counter_informative": [
+          false,
+          true
+        ],
+        "seg1_egress_note": "phase1 is read before netem is applied, on a noqueue qdisc that does not count packets; only the phase2 value is informative",
+        "capture_seg1_sha256": "dad752bce847e7b0c97b8e78ec749b9e25738677a8534a0808d233f2f3aa8d0b",
+        "capture_seg2_sha256": "bff72d355d83f9049bc43fc39da5d246552a3be52aa8b249d1382731e7c9fd23",
+        "manifest_sha256": "bde0058c1a62ad1bb3f4a55e3eb055f63bb5e5e46c82ee5a3a48b04715cec937",
+        "input_integrity": {
+          "manifest_entries_rehashed": 22,
+          "all_manifest_inputs_match_or_accepted_prefix": true,
+          "decision_log_post_seal_append": null
+        }
+      }
+    },
+    "no_action": {
+      "20260913_s11_noact1": {
+        "run": "20260913_s11_noact1",
+        "detector_triggered": true,
+        "detection_trigger_monotonic_s": 124.840575,
+        "action_withheld": true,
+        "action_executed": false,
+        "action_returncode": null,
+        "detection_to_action_result_s": null,
+        "impaired_port_fault": null,
+        "standby_takeover": null,
+        "fault_to_takeover_s": null,
+        "active_port_moved_to_clean_segment": false,
+        "receiver_port_state_eligible": true,
+        "master_transitions": [],
+        "ordering_timebase_limit": "Detector/action uses host monotonic time. The ptp4l printed timestamp basis was not established from the sealed local package/source, and no cross-clock mapping was recorded. Port-event ordering is used only within slave.log; a numeric command-to-fault interval is not established.",
+        "seg1_egress_pkt_phase1": 0,
+        "seg1_egress_pkt_phase2": 844,
+        "seg1_egress_counter_informative": [
+          false,
+          true
+        ],
+        "seg1_egress_note": "phase1 is read before netem is applied, on a noqueue qdisc that does not count packets; only the phase2 value is informative",
+        "capture_seg1_sha256": "12a81bb0934b8e8b2c9a1df3188943a85d8fa1f65b684c3470d307659b649fbf",
+        "capture_seg2_sha256": "6576a2cc9f325c283f15b45438c11de20a9ddb20de7b29b2f5f3214664f952b7",
+        "manifest_sha256": "888a5e7d6ba798913b2024d57d57c73f2b172253c6ccc1661a242079406db66c",
+        "input_integrity": {
+          "manifest_entries_rehashed": 22,
+          "all_manifest_inputs_match_or_accepted_prefix": true,
+          "decision_log_post_seal_append": null
+        }
+      },
+      "20260913_s11_noact2": {
+        "run": "20260913_s11_noact2",
+        "detector_triggered": true,
+        "detection_trigger_monotonic_s": 237.066707,
+        "action_withheld": true,
+        "action_executed": false,
+        "action_returncode": null,
+        "detection_to_action_result_s": null,
+        "impaired_port_fault": null,
+        "standby_takeover": null,
+        "fault_to_takeover_s": null,
+        "active_port_moved_to_clean_segment": false,
+        "receiver_port_state_eligible": true,
+        "master_transitions": [],
+        "ordering_timebase_limit": "Detector/action uses host monotonic time. The ptp4l printed timestamp basis was not established from the sealed local package/source, and no cross-clock mapping was recorded. Port-event ordering is used only within slave.log; a numeric command-to-fault interval is not established.",
+        "seg1_egress_pkt_phase1": 0,
+        "seg1_egress_pkt_phase2": 841,
+        "seg1_egress_counter_informative": [
+          false,
+          true
+        ],
+        "seg1_egress_note": "phase1 is read before netem is applied, on a noqueue qdisc that does not count packets; only the phase2 value is informative",
+        "capture_seg1_sha256": "23f53c0bfd330a10ec63681b88f9ac57097c7c4f4173c5666346aa93d2407f00",
+        "capture_seg2_sha256": "de32296f3d3bacb207ebb0d13f900b6c8e50106807dd2ed2691931fbab6958f7",
+        "manifest_sha256": "1b9358eb40384d809a0c2cf45ea17e9d400a54c2511f38ad0eee1432118ea8bb",
+        "input_integrity": {
+          "manifest_entries_rehashed": 22,
+          "all_manifest_inputs_match_or_accepted_prefix": true,
+          "decision_log_post_seal_append": null
+        }
+      },
+      "20260913_s11_noact3": {
+        "run": "20260913_s11_noact3",
+        "detector_triggered": true,
+        "detection_trigger_monotonic_s": 324.623838,
+        "action_withheld": true,
+        "action_executed": false,
+        "action_returncode": null,
+        "detection_to_action_result_s": null,
+        "impaired_port_fault": null,
+        "standby_takeover": null,
+        "fault_to_takeover_s": null,
+        "active_port_moved_to_clean_segment": false,
+        "receiver_port_state_eligible": true,
+        "master_transitions": [],
+        "ordering_timebase_limit": "Detector/action uses host monotonic time. The ptp4l printed timestamp basis was not established from the sealed local package/source, and no cross-clock mapping was recorded. Port-event ordering is used only within slave.log; a numeric command-to-fault interval is not established.",
+        "seg1_egress_pkt_phase1": 0,
+        "seg1_egress_pkt_phase2": 846,
+        "seg1_egress_counter_informative": [
+          false,
+          true
+        ],
+        "seg1_egress_note": "phase1 is read before netem is applied, on a noqueue qdisc that does not count packets; only the phase2 value is informative",
+        "capture_seg1_sha256": "b26fec30a438405f00254899ea9c1855c4faece30b98dd764e3d8316445f79ce",
+        "capture_seg2_sha256": "b334061ec64c82f963d0040afc79ecf24806c8f2ba89bae50810378dde75da0d",
+        "manifest_sha256": "1f8f3e05e6e26804e071f1da2a8a8815b9e9a7e2dc7a062e6f9c198ed1df8942",
+        "input_integrity": {
+          "manifest_entries_rehashed": 22,
+          "all_manifest_inputs_match_or_accepted_prefix": true,
+          "decision_log_post_seal_append": {
+            "sealed_lines": 3,
+            "current_lines": 5,
+            "reason": "post_seal_append_only; sealed decision prefix is used for S11 evidence"
+          }
+        }
+      },
+      "20260913_s11_noact4": {
+        "run": "20260913_s11_noact4",
+        "detector_triggered": true,
+        "detection_trigger_monotonic_s": 423.447502,
+        "action_withheld": true,
+        "action_executed": false,
+        "action_returncode": null,
+        "detection_to_action_result_s": null,
+        "impaired_port_fault": null,
+        "standby_takeover": null,
+        "fault_to_takeover_s": null,
+        "active_port_moved_to_clean_segment": false,
+        "receiver_port_state_eligible": true,
+        "master_transitions": [],
+        "ordering_timebase_limit": "Detector/action uses host monotonic time. The ptp4l printed timestamp basis was not established from the sealed local package/source, and no cross-clock mapping was recorded. Port-event ordering is used only within slave.log; a numeric command-to-fault interval is not established.",
+        "seg1_egress_pkt_phase1": 0,
+        "seg1_egress_pkt_phase2": 837,
+        "seg1_egress_counter_informative": [
+          false,
+          true
+        ],
+        "seg1_egress_note": "phase1 is read before netem is applied, on a noqueue qdisc that does not count packets; only the phase2 value is informative",
+        "capture_seg1_sha256": "208ad3001602cd7ab27a30d49ed7142da01111143ec6595766783756b11e6300",
+        "capture_seg2_sha256": "bdc208d78906781a5e42e613069da01ad6fcac6a2597e054331aca4eb654fb45",
+        "manifest_sha256": "2239a980c79031fb04557d188f3a70fb6811a901d253de8f31759761e962e504",
+        "input_integrity": {
+          "manifest_entries_rehashed": 22,
+          "all_manifest_inputs_match_or_accepted_prefix": true,
+          "decision_log_post_seal_append": {
+            "sealed_lines": 3,
+            "current_lines": 5,
+            "reason": "post_seal_append_only; sealed decision prefix is used for S11 evidence"
+          }
+        }
+      },
+      "20260913_s11_noact5": {
+        "run": "20260913_s11_noact5",
+        "detector_triggered": true,
+        "detection_trigger_monotonic_s": 515.139906,
+        "action_withheld": true,
+        "action_executed": false,
+        "action_returncode": null,
+        "detection_to_action_result_s": null,
+        "impaired_port_fault": null,
+        "standby_takeover": null,
+        "fault_to_takeover_s": null,
+        "active_port_moved_to_clean_segment": false,
+        "receiver_port_state_eligible": true,
+        "master_transitions": [],
+        "ordering_timebase_limit": "Detector/action uses host monotonic time. The ptp4l printed timestamp basis was not established from the sealed local package/source, and no cross-clock mapping was recorded. Port-event ordering is used only within slave.log; a numeric command-to-fault interval is not established.",
+        "seg1_egress_pkt_phase1": 0,
+        "seg1_egress_pkt_phase2": 846,
+        "seg1_egress_counter_informative": [
+          false,
+          true
+        ],
+        "seg1_egress_note": "phase1 is read before netem is applied, on a noqueue qdisc that does not count packets; only the phase2 value is informative",
+        "capture_seg1_sha256": "3fe325a043ca86f3ed1b301cf7858c470d21f066a0c57148c0e51d7ec04e00ac",
+        "capture_seg2_sha256": "dbf369ec1710c598a050a71aee4d00dfaee1b90b3fbad7e17b9a3a5db91ebbe7",
+        "manifest_sha256": "b8afe016bfb54c56306c19faf4311dcaa4d0387d2f529e627f19cef8c84bfef0",
+        "input_integrity": {
+          "manifest_entries_rehashed": 22,
+          "all_manifest_inputs_match_or_accepted_prefix": true,
+          "decision_log_post_seal_append": null
+        }
+      }
+    }
+  },
+  "primary_outcome_summary": {
+    "action": {
+      "k": 5,
+      "n": 5,
+      "proportion": 1.0,
+      "wilson95": [
+        0.5655175352168389,
+        1
+      ]
+    },
+    "no_action": {
+      "k": 0,
+      "n": 5,
+      "proportion": 0.0,
+      "wilson95": [
+        5.551115123125783e-17,
+        0.4344824647831612
+      ]
+    }
+  },
+  "primary_outcome_eligible_runs": {
+    "action": [
+      "20260913_s11_act1",
+      "20260913_s11_act2",
+      "20260913_s11_act3",
+      "20260913_s11_act4",
+      "20260913_s11_act5"
+    ],
+    "no_action": [
+      "20260913_s11_noact1",
+      "20260913_s11_noact2",
+      "20260913_s11_noact3",
+      "20260913_s11_noact4",
+      "20260913_s11_noact5"
+    ]
+  },
+  "excluded_receiver_master_runs": [],
+  "detector_trigger_rate": {
+    "action": {
+      "k": 5,
+      "n": 5,
+      "proportion": 1.0,
+      "wilson95": [
+        0.5655175352168389,
+        1
+      ]
+    },
+    "no_action": {
+      "k": 5,
+      "n": 5,
+      "proportion": 1.0,
+      "wilson95": [
+        0.5655175352168389,
+        1
+      ]
+    }
+  },
+  "prespecified_branch_selected": "action_>=4of5_and_no_action_0of5",
+  "prespecified_statement": "the commanded action, and not the passage of time or the impairment alone, moves the receiver off the impaired segment under these software conditions",
+  "action_command_failures": [],
+  "limits": [
+    "Eligible n is reported per arm. Any receiver-MASTER run is retained but excluded by the frozen protocol; this pilot happened to have none.",
+    "The commanded action stops the receiver using the impaired segment. The segment stays impaired; nothing was repaired and no laboratory impairment was removed.",
+    "Shared host software clock, free_running 1. No physical clock recovery is demonstrated.",
+    "Detector sensitivity is roughly 13 of 15 from V3-V5; a non-trigger is a known miss, not an excluded run.",
+    "A tc counter on a noqueue qdisc does not count packets and is flagged as uninformative."
+  ]
+}

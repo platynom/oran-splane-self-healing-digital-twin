@@ -1,0 +1,29 @@
+ptp4l[2979.860]: port 1 (v-ru3): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[2979.860]: port 0 (/var/run/p.ru3): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[2979.860]: port 0 (/var/run/pr.ru3): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[2980.282]: selected local clock 020000.fffe.00000e as best master
+ptp4l[2980.370]: port 1 (v-ru3): new foreign master 020000.fffe.000001-2
+ptp4l[2980.620]: selected best master clock 020000.fffe.00000a
+ptp4l[2980.620]: foreign master not using PTP timescale
+ptp4l[2980.620]: port 1 (v-ru3): LISTENING to UNCALIBRATED on RS_SLAVE
+ptp4l[2982.683]: master offset      -3307 s0 freq   -1001 path delay      5434
+ptp4l[2984.686]: master offset      -2008 s0 freq    +268 path delay      4671
+ptp4l[2986.688]: master offset       1135 s0 freq   +1374 path delay      4278
+ptp4l[2988.690]: master offset        -57 s0 freq    -560 path delay      4349
+ptp4l[2990.692]: master offset      -1501 s0 freq    -459 path delay      4874
+ptp4l[2992.694]: master offset      -1110 s0 freq    -376 path delay      3730
+ptp4l[2994.696]: master offset        979 s0 freq   +1346 path delay      4336
+ptp4l[2996.698]: master offset      -2274 s0 freq   -1779 path delay      4026
+ptp4l[2998.700]: master offset      -2044 s0 freq    +100 path delay      3996
+ptp4l[3000.823]: master offset       5326 s0 freq   +7807 path delay     12661
+ptp4l[3001.662]: selected best master clock 020000.fffe.000001
+ptp4l[3001.662]: foreign master not using PTP timescale
+ptp4l[3006.560]: port 1 (v-ru3): UNCALIBRATED to LISTENING on ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES
+ptp4l[3006.560]: selected local clock 020000.fffe.00000e as best master
+ptp4l[3022.859]: selected best master clock 020000.fffe.00000a
+ptp4l[3022.859]: foreign master not using PTP timescale
+ptp4l[3022.859]: port 1 (v-ru3): LISTENING to UNCALIBRATED on RS_SLAVE
+ptp4l[3023.205]: selected best master clock 020000.fffe.000001
+ptp4l[3023.205]: foreign master not using PTP timescale
+ptp4l[3023.260]: selected best master clock 020000.fffe.00000a
+ptp4l[3023.260]: foreign master not using PTP timescale

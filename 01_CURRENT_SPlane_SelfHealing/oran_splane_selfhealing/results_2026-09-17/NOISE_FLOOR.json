@@ -1,0 +1,82 @@
+{
+  "n_baseline_runs": 9,
+  "runs": [
+    "baseline__r30",
+    "baseline__r31",
+    "baseline__r32",
+    "baseline__r33",
+    "baseline__r34",
+    "baseline__r35",
+    "baseline__r36",
+    "baseline__r37",
+    "baseline__r38"
+  ],
+  "n_windows": 1159,
+  "method": "Floor computed from healthy baseline runs only. Metric definitions follow ITU-T G.8260 (definitions and terminology for synchronization in packet networks). Thresholds MUST be expressed as multiples of these values, never as absolute ns.",
+  "caveat": "Software timestamping only. veth reports 'PTP Hardware Clock: none'. This floor is an INSTRUMENT property, not a network property, and cannot support any conformance claim against G.8273.2 / G.8271.1.",
+  "floor": {
+    "interarrival_ms_mean": {
+      "n": 1159,
+      "mean": 7.220696,
+      "sd": 1.055244,
+      "p50": 7.0732,
+      "p95": 8.59437,
+      "p99": 10.55505,
+      "max": 17.0186
+    },
+    "interarrival_ms_std": {
+      "n": 1159,
+      "mean": 11.298891,
+      "sd": 1.804388,
+      "p50": 11.0968,
+      "p95": 13.92412,
+      "p99": 16.982162,
+      "max": 25.0636
+    },
+    "msg_rate_hz": {
+      "n": 1159,
+      "mean": 143.615993,
+      "sd": 17.053798,
+      "p50": 144.109,
+      "p95": 168.899,
+      "p99": 185.89598,
+      "max": 247.492
+    },
+    "announce_rate_hz": {
+      "n": 1159,
+      "mean": 8.521903,
+      "sd": 1.177505,
+      "p50": 8.116,
+      "p95": 10.5741,
+      "p99": 10.659,
+      "max": 10.663
+    },
+    "sync_rate_hz": {
+      "n": 1159,
+      "mean": 17.166799,
+      "sd": 2.000407,
+      "p50": 17.11,
+      "p95": 18.642,
+      "p99": 18.84842,
+      "max": 61.873
+    },
+    "correction_ns_mean": {
+      "n": 1159,
+      "mean": 0.0,
+      "sd": 0.0,
+      "p50": 0.0,
+      "p95": 0.0,
+      "p99": 0.0,
+      "max": 0.0
+    },
+    "correction_ns_max": {
+      "n": 1159,
+      "mean": 0.0,
+      "sd": 0.0,
+      "p50": 0.0,
+      "p95": 0.0,
+      "p99": 0.0,
+      "max": 0.0
+    }
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "errors": [],
+  "events": [
+    {
+      "event": "tcpdump_ready",
+      "monotonic_s": "410.84",
+      "phase": "setup",
+      "run_id": "s4",
+      "status": "PASS",
+      "utc": "2026-09-10T05:25:53Z"
+    },
+    {
+      "event": "master_a_ready",
+      "monotonic_s": "410.85",
+      "phase": "setup",
+      "run_id": "s4",
+      "status": "PASS",
+      "utc": "2026-09-10T05:25:53Z"
+    },
+    {
+      "event": "master_b_ready",
+      "monotonic_s": "410.85",
+      "phase": "setup",
+      "run_id": "s4",
+      "status": "PASS",
+      "utc": "2026-09-10T05:25:53Z"
+    },
+    {
+      "event": "slave_ready",
+      "monotonic_s": "410.86",
+      "phase": "setup",
+      "run_id": "s4",
+      "status": "PASS",
+      "utc": "2026-09-10T05:25:53Z"
+    },
+    {
+      "event": "phase_started",
+      "monotonic_s": "410.87",
+      "phase": "authorized_source_change_intervention",
+      "run_id": "s4",
+      "status": "PASS",
+      "utc": "2026-09-10T05:25:53Z"
+    },
+    {
+      "event": "preferred_master_stop_confirmed",
+      "monotonic_s": "422.87",
+      "phase": "authorized_source_change_intervention",
+      "run_id": "s4",
+      "status": "PASS",
+      "utc": "2026-09-10T05:26:05Z"
+    },
+    {
+      "event": "phase_finished",
+      "monotonic_s": "434.88",
+      "phase": "authorized_source_change_intervention",
+      "run_id": "s4",
+      "status": "PASS",
+      "utc": "2026-09-10T05:26:17Z"
+    }
+  ],
+  "interpretation_limit": "This validates artifact integrity and documented process/qdisc commands only. free_running 1 means no closed-loop clock recovery or independent-clock claim.",
+  "log_bytes": {
+    "master_a.log": 530,
+    "master_b.log": 530,
+    "slave.log": 974,
+    "tcpdump.log": 171
+  },
+  "manifest_hashes_match": {
+    "capture.pcap": true,
+    "events.log": true,
+    "master_a.conf": true,
+    "master_a.log": true,
+    "master_b.conf": true,
+    "master_b.log": true,
+    "run_environment.txt": true,
+    "slave.conf": true,
+    "slave.log": true,
+    "tcpdump.log": true
+  },
+  "missing_required_artifacts": [],
+  "outcome_label_policy": "NOT_ASSIGNED",
+  "pcap": {
+    "decoded_message_counts": {
+      "Announce": 162,
+      "Delay_Req": 210,
+      "Delay_Resp": 322,
+      "Follow_Up": 320,
+      "Sync": 320
+    },
+    "records": 1334,
+    "undecoded_records": 0
+  },
+  "run_directory": "outputs\\empirical_software_network_pilot_v1\\runs\\20260910_calibrated_source_stop_retry2",
+  "scenario": "authorized_source_change_intervention",
+  "schema_version": "pilot-validation-v2",
+  "status": "STRUCTURALLY_COMPLETE"
+}

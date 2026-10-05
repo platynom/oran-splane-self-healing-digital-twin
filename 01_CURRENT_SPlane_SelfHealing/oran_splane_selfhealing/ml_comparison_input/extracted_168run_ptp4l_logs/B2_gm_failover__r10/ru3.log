@@ -1,0 +1,30 @@
+ptp4l[5937.856]: port 1 (v-ru3): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[5937.856]: port 0 (/var/run/p.ru3): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[5937.856]: port 0 (/var/run/pr.ru3): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[5938.249]: selected local clock 020000.fffe.00000e as best master
+ptp4l[5938.336]: port 1 (v-ru3): new foreign master 020000.fffe.000001-2
+ptp4l[5938.586]: selected best master clock 020000.fffe.00000a
+ptp4l[5938.586]: foreign master not using PTP timescale
+ptp4l[5938.586]: port 1 (v-ru3): LISTENING to UNCALIBRATED on RS_SLAVE
+ptp4l[5940.651]: master offset      13424 s0 freq   +8112 path delay      8664
+ptp4l[5942.653]: master offset      -3534 s0 freq   -9959 path delay      5683
+ptp4l[5944.655]: master offset      -4027 s0 freq    +788 path delay      7753
+ptp4l[5946.657]: master offset         78 s0 freq    +611 path delay      4872
+ptp4l[5948.660]: master offset       -649 s0 freq    -310 path delay      4978
+ptp4l[5950.663]: master offset       3103 s0 freq   +2245 path delay      5724
+ptp4l[5952.665]: master offset         48 s0 freq    -802 path delay      7173
+ptp4l[5954.668]: master offset       2899 s0 freq    +742 path delay      5807
+ptp4l[5956.674]: master offset      -1662 s0 freq   -1444 path delay      7471
+ptp4l[5958.676]: master offset      -1291 s0 freq    -606 path delay      5886
+ptp4l[5960.679]: master offset       2305 s0 freq   +2722 path delay      7742
+ptp4l[5962.682]: master offset      -6158 s0 freq   -4050 path delay      8094
+ptp4l[5964.686]: master offset      -1552 s0 freq    +129 path delay      3746
+ptp4l[5966.231]: selected best master clock 020000.fffe.00000b
+ptp4l[5966.231]: foreign master not using PTP timescale
+ptp4l[5968.254]: master offset       2064 s0 freq   +1950 path delay      4791
+ptp4l[5970.256]: master offset      -3876 s0 freq   -2579 path delay      5567
+ptp4l[5972.258]: master offset       -542 s0 freq   +2118 path delay      6473
+ptp4l[5974.261]: master offset      -2307 s0 freq   -1586 path delay      5063
+ptp4l[5976.263]: master offset      -1616 s0 freq     +35 path delay      4443
+ptp4l[5978.265]: master offset      -2179 s0 freq    +468 path delay      5943
+ptp4l[5980.267]: master offset       1055 s0 freq    +570 path delay      3851

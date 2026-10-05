@@ -1,0 +1,7 @@
+run_id=v2c3 phase=setup event=tcpdump_ready utc=2026-09-13T00:57:39Z monotonic_s=338.19 status=PASS
+run_id=v2c3 phase=setup event=master_a_ready utc=2026-09-13T00:57:39Z monotonic_s=338.21 status=PASS
+run_id=v2c3 phase=setup event=master_b_ready utc=2026-09-13T00:57:39Z monotonic_s=338.24 status=PASS
+run_id=v2c3 phase=setup event=slave_ready utc=2026-09-13T00:57:39Z monotonic_s=338.26 status=PASS
+run_id=v2c3 phase=authorized_source_change_no_action_control event=phase_started utc=2026-09-13T00:57:39Z monotonic_s=338.29 status=PASS
+run_id=v2c3 phase=authorized_source_change_no_action_control event=qdisc_baseline_observed utc=2026-09-13T00:57:39Z monotonic_s=338.34 status=PASS
+run_id=v2c3 phase=authorized_source_change_no_action_control event=phase_finished utc=2026-09-13T00:57:47Z monotonic_s=346.37 status=PASS

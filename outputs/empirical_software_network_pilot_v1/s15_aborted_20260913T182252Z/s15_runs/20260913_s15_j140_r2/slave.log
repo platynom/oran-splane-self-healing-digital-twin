@@ -1,0 +1,676 @@
+ptp4l[791.552]: port 1: INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[791.588]: port 2: INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[791.588]: port 0: INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[792.420]: selected local clock 861259.fffe.7415be as best master
+ptp4l[792.420]: port 1: new foreign master 52c2ad.fffe.a9ded0-1
+ptp4l[792.528]: selected local clock 861259.fffe.7415be as best master
+ptp4l[792.624]: port 2: new foreign master ced01c.fffe.115ae1-1
+ptp4l[792.903]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[792.904]: foreign master not using PTP timescale
+ptp4l[792.904]: port 1: LISTENING to UNCALIBRATED on RS_SLAVE
+ptp4l[793.125]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[793.125]: foreign master not using PTP timescale
+ptp4l[793.126]: port 2: master state recommended in slave only mode
+ptp4l[793.126]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[793.240]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[793.240]: foreign master not using PTP timescale
+ptp4l[793.625]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[793.625]: foreign master not using PTP timescale
+ptp4l[793.626]: port 2: master state recommended in slave only mode
+ptp4l[793.627]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[794.148]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[794.149]: foreign master not using PTP timescale
+ptp4l[794.625]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[794.626]: foreign master not using PTP timescale
+ptp4l[794.626]: port 2: master state recommended in slave only mode
+ptp4l[794.627]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[795.144]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[795.146]: foreign master not using PTP timescale
+ptp4l[795.626]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[795.626]: foreign master not using PTP timescale
+ptp4l[795.627]: port 2: master state recommended in slave only mode
+ptp4l[795.627]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[796.108]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[796.108]: foreign master not using PTP timescale
+ptp4l[796.376]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[796.378]: foreign master not using PTP timescale
+ptp4l[796.380]: port 2: master state recommended in slave only mode
+ptp4l[796.381]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[797.004]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[797.004]: foreign master not using PTP timescale
+ptp4l[797.377]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[797.377]: foreign master not using PTP timescale
+ptp4l[797.378]: port 2: master state recommended in slave only mode
+ptp4l[797.378]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[797.988]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[797.988]: foreign master not using PTP timescale
+ptp4l[798.377]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[798.377]: foreign master not using PTP timescale
+ptp4l[798.378]: port 2: master state recommended in slave only mode
+ptp4l[798.379]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[798.844]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[798.845]: foreign master not using PTP timescale
+ptp4l[799.127]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[799.128]: foreign master not using PTP timescale
+ptp4l[799.128]: port 2: master state recommended in slave only mode
+ptp4l[799.129]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[799.752]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[799.752]: foreign master not using PTP timescale
+ptp4l[800.127]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[800.128]: foreign master not using PTP timescale
+ptp4l[800.129]: port 2: master state recommended in slave only mode
+ptp4l[800.130]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[800.544]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[800.544]: foreign master not using PTP timescale
+ptp4l[800.878]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[800.878]: foreign master not using PTP timescale
+ptp4l[800.879]: port 2: master state recommended in slave only mode
+ptp4l[800.879]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[801.300]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[801.301]: foreign master not using PTP timescale
+ptp4l[801.628]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[801.628]: foreign master not using PTP timescale
+ptp4l[801.629]: port 2: master state recommended in slave only mode
+ptp4l[801.630]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[802.220]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[802.220]: foreign master not using PTP timescale
+ptp4l[802.628]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[802.629]: foreign master not using PTP timescale
+ptp4l[802.630]: port 2: master state recommended in slave only mode
+ptp4l[802.630]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[803.212]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[803.212]: foreign master not using PTP timescale
+ptp4l[803.630]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[803.633]: foreign master not using PTP timescale
+ptp4l[803.635]: port 2: master state recommended in slave only mode
+ptp4l[803.636]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[804.124]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[804.124]: foreign master not using PTP timescale
+ptp4l[804.379]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[804.380]: foreign master not using PTP timescale
+ptp4l[804.381]: port 2: master state recommended in slave only mode
+ptp4l[804.381]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[805.040]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[805.041]: foreign master not using PTP timescale
+ptp4l[805.380]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[805.383]: foreign master not using PTP timescale
+ptp4l[805.385]: port 2: master state recommended in slave only mode
+ptp4l[805.386]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[805.920]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[805.922]: foreign master not using PTP timescale
+ptp4l[806.381]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[806.384]: foreign master not using PTP timescale
+ptp4l[806.386]: port 2: master state recommended in slave only mode
+ptp4l[806.389]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[806.680]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[806.682]: foreign master not using PTP timescale
+ptp4l[807.132]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[807.135]: foreign master not using PTP timescale
+ptp4l[807.137]: port 2: master state recommended in slave only mode
+ptp4l[807.140]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[807.612]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[807.612]: foreign master not using PTP timescale
+ptp4l[807.882]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[807.883]: foreign master not using PTP timescale
+ptp4l[807.884]: port 2: master state recommended in slave only mode
+ptp4l[807.885]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[808.404]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[808.404]: foreign master not using PTP timescale
+ptp4l[808.882]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[808.883]: foreign master not using PTP timescale
+ptp4l[808.884]: port 2: master state recommended in slave only mode
+ptp4l[808.884]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[809.043]: rms 76154 max 214976 freq +13877 +/- 36995 delay 13709 +/- 2489
+ptp4l[809.352]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[809.352]: foreign master not using PTP timescale
+ptp4l[809.632]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[809.633]: foreign master not using PTP timescale
+ptp4l[809.634]: port 2: master state recommended in slave only mode
+ptp4l[809.635]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[810.192]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[810.192]: foreign master not using PTP timescale
+ptp4l[810.633]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[810.633]: foreign master not using PTP timescale
+ptp4l[810.634]: port 2: master state recommended in slave only mode
+ptp4l[810.635]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[811.164]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[811.164]: foreign master not using PTP timescale
+ptp4l[811.633]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[811.634]: foreign master not using PTP timescale
+ptp4l[811.634]: port 2: master state recommended in slave only mode
+ptp4l[811.635]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[812.144]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[812.146]: foreign master not using PTP timescale
+ptp4l[812.634]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[812.635]: foreign master not using PTP timescale
+ptp4l[812.635]: port 2: master state recommended in slave only mode
+ptp4l[812.636]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[813.088]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[813.088]: foreign master not using PTP timescale
+ptp4l[813.384]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[813.385]: foreign master not using PTP timescale
+ptp4l[813.385]: port 2: master state recommended in slave only mode
+ptp4l[813.386]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[813.832]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[813.833]: foreign master not using PTP timescale
+ptp4l[814.134]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[814.135]: foreign master not using PTP timescale
+ptp4l[814.136]: port 2: master state recommended in slave only mode
+ptp4l[814.136]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[814.776]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[814.776]: foreign master not using PTP timescale
+ptp4l[815.135]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[815.136]: foreign master not using PTP timescale
+ptp4l[815.136]: port 2: master state recommended in slave only mode
+ptp4l[815.137]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[815.532]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[815.533]: foreign master not using PTP timescale
+ptp4l[815.885]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[815.886]: foreign master not using PTP timescale
+ptp4l[815.886]: port 2: master state recommended in slave only mode
+ptp4l[815.887]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[816.464]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[816.465]: foreign master not using PTP timescale
+ptp4l[816.886]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[816.886]: foreign master not using PTP timescale
+ptp4l[816.887]: port 2: master state recommended in slave only mode
+ptp4l[816.887]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[817.376]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[817.376]: foreign master not using PTP timescale
+ptp4l[817.637]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[817.639]: foreign master not using PTP timescale
+ptp4l[817.642]: port 2: master state recommended in slave only mode
+ptp4l[817.644]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[818.260]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[818.261]: foreign master not using PTP timescale
+ptp4l[818.638]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[818.640]: foreign master not using PTP timescale
+ptp4l[818.642]: port 2: master state recommended in slave only mode
+ptp4l[818.644]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[819.072]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[819.075]: foreign master not using PTP timescale
+ptp4l[819.388]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[819.388]: foreign master not using PTP timescale
+ptp4l[819.389]: port 2: master state recommended in slave only mode
+ptp4l[819.389]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[820.032]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[820.035]: foreign master not using PTP timescale
+ptp4l[820.388]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[820.389]: foreign master not using PTP timescale
+ptp4l[820.389]: port 2: master state recommended in slave only mode
+ptp4l[820.390]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[821.000]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[821.002]: foreign master not using PTP timescale
+ptp4l[821.389]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[821.389]: foreign master not using PTP timescale
+ptp4l[821.390]: port 2: master state recommended in slave only mode
+ptp4l[821.390]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[821.936]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[821.936]: foreign master not using PTP timescale
+ptp4l[822.389]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[822.390]: foreign master not using PTP timescale
+ptp4l[822.390]: port 2: master state recommended in slave only mode
+ptp4l[822.391]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[822.812]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[822.812]: foreign master not using PTP timescale
+ptp4l[823.140]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[823.143]: foreign master not using PTP timescale
+ptp4l[823.145]: port 2: master state recommended in slave only mode
+ptp4l[823.147]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[823.624]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[823.624]: foreign master not using PTP timescale
+ptp4l[823.890]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[823.891]: foreign master not using PTP timescale
+ptp4l[823.892]: port 2: master state recommended in slave only mode
+ptp4l[823.892]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[824.420]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[824.422]: foreign master not using PTP timescale
+ptp4l[824.891]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[824.892]: foreign master not using PTP timescale
+ptp4l[824.892]: port 2: master state recommended in slave only mode
+ptp4l[824.893]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[825.058]: rms 200362 max 462277 freq -13753 +/- 160134 delay 73764 +/- 36421
+ptp4l[825.372]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[825.373]: foreign master not using PTP timescale
+ptp4l[825.642]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[825.644]: foreign master not using PTP timescale
+ptp4l[825.647]: port 2: master state recommended in slave only mode
+ptp4l[825.649]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[826.344]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[826.344]: foreign master not using PTP timescale
+ptp4l[826.642]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[826.643]: foreign master not using PTP timescale
+ptp4l[826.643]: port 2: master state recommended in slave only mode
+ptp4l[826.644]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[827.248]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[827.248]: foreign master not using PTP timescale
+ptp4l[827.643]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[827.643]: foreign master not using PTP timescale
+ptp4l[827.644]: port 2: master state recommended in slave only mode
+ptp4l[827.644]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[828.172]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[828.172]: foreign master not using PTP timescale
+ptp4l[828.643]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[828.643]: foreign master not using PTP timescale
+ptp4l[828.644]: port 2: master state recommended in slave only mode
+ptp4l[828.644]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[828.932]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[828.935]: foreign master not using PTP timescale
+ptp4l[829.394]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[829.397]: foreign master not using PTP timescale
+ptp4l[829.399]: port 2: master state recommended in slave only mode
+ptp4l[829.402]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[829.912]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[829.912]: foreign master not using PTP timescale
+ptp4l[830.394]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[830.397]: foreign master not using PTP timescale
+ptp4l[830.400]: port 2: master state recommended in slave only mode
+ptp4l[830.402]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[830.860]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[830.861]: foreign master not using PTP timescale
+ptp4l[831.145]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[831.146]: foreign master not using PTP timescale
+ptp4l[831.146]: port 2: master state recommended in slave only mode
+ptp4l[831.147]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[831.660]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[831.660]: foreign master not using PTP timescale
+ptp4l[832.145]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[832.146]: foreign master not using PTP timescale
+ptp4l[832.146]: port 2: master state recommended in slave only mode
+ptp4l[832.147]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[832.616]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[832.619]: foreign master not using PTP timescale
+ptp4l[832.896]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[832.898]: foreign master not using PTP timescale
+ptp4l[832.901]: port 2: master state recommended in slave only mode
+ptp4l[832.904]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[833.452]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[833.452]: foreign master not using PTP timescale
+ptp4l[833.896]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[833.897]: foreign master not using PTP timescale
+ptp4l[833.898]: port 2: master state recommended in slave only mode
+ptp4l[833.899]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[834.312]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[834.312]: foreign master not using PTP timescale
+ptp4l[834.647]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[834.648]: foreign master not using PTP timescale
+ptp4l[834.648]: port 2: master state recommended in slave only mode
+ptp4l[834.649]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[835.212]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[835.212]: foreign master not using PTP timescale
+ptp4l[835.648]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[835.648]: foreign master not using PTP timescale
+ptp4l[835.649]: port 2: master state recommended in slave only mode
+ptp4l[835.649]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[836.196]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[836.196]: foreign master not using PTP timescale
+ptp4l[836.648]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[836.649]: foreign master not using PTP timescale
+ptp4l[836.649]: port 2: master state recommended in slave only mode
+ptp4l[836.650]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[837.068]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[837.068]: foreign master not using PTP timescale
+ptp4l[837.398]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[837.399]: foreign master not using PTP timescale
+ptp4l[837.400]: port 2: master state recommended in slave only mode
+ptp4l[837.400]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[837.840]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[837.840]: foreign master not using PTP timescale
+ptp4l[838.149]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[838.149]: foreign master not using PTP timescale
+ptp4l[838.150]: port 2: master state recommended in slave only mode
+ptp4l[838.151]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[838.600]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[838.601]: foreign master not using PTP timescale
+ptp4l[838.899]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[838.901]: foreign master not using PTP timescale
+ptp4l[838.902]: port 2: master state recommended in slave only mode
+ptp4l[838.902]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[839.456]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[839.456]: foreign master not using PTP timescale
+ptp4l[839.900]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[839.900]: foreign master not using PTP timescale
+ptp4l[839.901]: port 2: master state recommended in slave only mode
+ptp4l[839.902]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[840.364]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[840.366]: foreign master not using PTP timescale
+ptp4l[840.651]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[840.651]: foreign master not using PTP timescale
+ptp4l[840.652]: port 2: master state recommended in slave only mode
+ptp4l[840.652]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[841.074]: rms 144788 max 236176 freq   -118 +/- 118267 delay 83437 +/- 34838
+ptp4l[841.180]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[841.183]: foreign master not using PTP timescale
+ptp4l[841.651]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[841.652]: foreign master not using PTP timescale
+ptp4l[841.653]: port 2: master state recommended in slave only mode
+ptp4l[841.653]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[842.004]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[842.004]: foreign master not using PTP timescale
+ptp4l[842.401]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[842.402]: foreign master not using PTP timescale
+ptp4l[842.403]: port 2: master state recommended in slave only mode
+ptp4l[842.403]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[842.972]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[842.972]: foreign master not using PTP timescale
+ptp4l[843.402]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[843.402]: foreign master not using PTP timescale
+ptp4l[843.403]: port 2: master state recommended in slave only mode
+ptp4l[843.403]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[843.876]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[843.878]: foreign master not using PTP timescale
+ptp4l[844.152]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[844.153]: foreign master not using PTP timescale
+ptp4l[844.153]: port 2: master state recommended in slave only mode
+ptp4l[844.153]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[844.816]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[844.818]: foreign master not using PTP timescale
+ptp4l[845.153]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[845.155]: foreign master not using PTP timescale
+ptp4l[845.158]: port 2: master state recommended in slave only mode
+ptp4l[845.160]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[845.744]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[845.744]: foreign master not using PTP timescale
+ptp4l[846.154]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[846.156]: foreign master not using PTP timescale
+ptp4l[846.159]: port 2: master state recommended in slave only mode
+ptp4l[846.161]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[846.564]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[846.564]: foreign master not using PTP timescale
+ptp4l[846.904]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[846.905]: foreign master not using PTP timescale
+ptp4l[846.905]: port 2: master state recommended in slave only mode
+ptp4l[846.906]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[847.388]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[847.390]: foreign master not using PTP timescale
+ptp4l[847.655]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[847.657]: foreign master not using PTP timescale
+ptp4l[847.659]: port 2: master state recommended in slave only mode
+ptp4l[847.661]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[848.312]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[848.312]: foreign master not using PTP timescale
+ptp4l[848.655]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[848.656]: foreign master not using PTP timescale
+ptp4l[848.656]: port 2: master state recommended in slave only mode
+ptp4l[848.657]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[849.172]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[849.174]: foreign master not using PTP timescale
+ptp4l[849.656]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[849.656]: foreign master not using PTP timescale
+ptp4l[849.656]: port 2: master state recommended in slave only mode
+ptp4l[849.657]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[850.032]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[850.034]: foreign master not using PTP timescale
+ptp4l[850.407]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[850.409]: foreign master not using PTP timescale
+ptp4l[850.411]: port 2: master state recommended in slave only mode
+ptp4l[850.413]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[850.896]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[850.896]: foreign master not using PTP timescale
+ptp4l[851.157]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[851.160]: foreign master not using PTP timescale
+ptp4l[851.163]: port 2: master state recommended in slave only mode
+ptp4l[851.165]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[851.824]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[851.825]: foreign master not using PTP timescale
+ptp4l[852.158]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[852.158]: foreign master not using PTP timescale
+ptp4l[852.159]: port 2: master state recommended in slave only mode
+ptp4l[852.159]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[852.684]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[852.687]: foreign master not using PTP timescale
+ptp4l[853.158]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[853.159]: foreign master not using PTP timescale
+ptp4l[853.160]: port 2: master state recommended in slave only mode
+ptp4l[853.160]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[853.644]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[853.644]: foreign master not using PTP timescale
+ptp4l[853.909]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[853.910]: foreign master not using PTP timescale
+ptp4l[853.910]: port 2: master state recommended in slave only mode
+ptp4l[853.911]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[854.580]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[854.580]: foreign master not using PTP timescale
+ptp4l[854.909]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[854.910]: foreign master not using PTP timescale
+ptp4l[854.910]: port 2: master state recommended in slave only mode
+ptp4l[854.911]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[855.420]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[855.420]: foreign master not using PTP timescale
+ptp4l[855.909]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[855.910]: foreign master not using PTP timescale
+ptp4l[855.910]: port 2: master state recommended in slave only mode
+ptp4l[855.911]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[856.260]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[856.260]: foreign master not using PTP timescale
+ptp4l[856.659]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[856.660]: foreign master not using PTP timescale
+ptp4l[856.660]: port 2: master state recommended in slave only mode
+ptp4l[856.661]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[857.091]: rms 162169 max 222152 freq +14084 +/- 73420 delay 70342 +/- 26457
+ptp4l[857.184]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[857.185]: foreign master not using PTP timescale
+ptp4l[857.660]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[857.660]: foreign master not using PTP timescale
+ptp4l[857.661]: port 2: master state recommended in slave only mode
+ptp4l[857.661]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[858.056]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[858.056]: foreign master not using PTP timescale
+ptp4l[858.410]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[858.411]: foreign master not using PTP timescale
+ptp4l[858.411]: port 2: master state recommended in slave only mode
+ptp4l[858.412]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[858.816]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[858.816]: foreign master not using PTP timescale
+ptp4l[859.160]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[859.161]: foreign master not using PTP timescale
+ptp4l[859.161]: port 2: master state recommended in slave only mode
+ptp4l[859.162]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[859.840]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[859.841]: foreign master not using PTP timescale
+ptp4l[860.161]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[860.164]: foreign master not using PTP timescale
+ptp4l[860.166]: port 2: master state recommended in slave only mode
+ptp4l[860.168]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[860.708]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[860.711]: foreign master not using PTP timescale
+ptp4l[861.162]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[861.162]: foreign master not using PTP timescale
+ptp4l[861.163]: port 2: master state recommended in slave only mode
+ptp4l[861.164]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[861.652]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[861.652]: foreign master not using PTP timescale
+ptp4l[861.912]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[861.915]: foreign master not using PTP timescale
+ptp4l[861.918]: port 2: master state recommended in slave only mode
+ptp4l[861.920]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[862.576]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[862.576]: foreign master not using PTP timescale
+ptp4l[862.912]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[862.913]: foreign master not using PTP timescale
+ptp4l[862.914]: port 2: master state recommended in slave only mode
+ptp4l[862.914]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[863.408]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[863.409]: foreign master not using PTP timescale
+ptp4l[863.663]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[863.664]: foreign master not using PTP timescale
+ptp4l[863.664]: port 2: master state recommended in slave only mode
+ptp4l[863.665]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[864.268]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[864.268]: foreign master not using PTP timescale
+ptp4l[864.663]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[864.664]: foreign master not using PTP timescale
+ptp4l[864.665]: port 2: master state recommended in slave only mode
+ptp4l[864.665]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[865.148]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[865.148]: foreign master not using PTP timescale
+ptp4l[865.414]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[865.415]: foreign master not using PTP timescale
+ptp4l[865.416]: port 2: master state recommended in slave only mode
+ptp4l[865.417]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[865.908]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[865.908]: foreign master not using PTP timescale
+ptp4l[866.164]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[866.165]: foreign master not using PTP timescale
+ptp4l[866.165]: port 2: master state recommended in slave only mode
+ptp4l[866.166]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[866.892]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[866.893]: foreign master not using PTP timescale
+ptp4l[867.165]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[867.165]: foreign master not using PTP timescale
+ptp4l[867.166]: port 2: master state recommended in slave only mode
+ptp4l[867.167]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[867.848]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[867.850]: foreign master not using PTP timescale
+ptp4l[868.166]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[868.167]: foreign master not using PTP timescale
+ptp4l[868.168]: port 2: master state recommended in slave only mode
+ptp4l[868.168]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[868.648]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[868.648]: foreign master not using PTP timescale
+ptp4l[868.916]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[868.917]: foreign master not using PTP timescale
+ptp4l[868.917]: port 2: master state recommended in slave only mode
+ptp4l[868.917]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[869.480]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[869.480]: foreign master not using PTP timescale
+ptp4l[869.916]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[869.918]: foreign master not using PTP timescale
+ptp4l[869.919]: port 2: master state recommended in slave only mode
+ptp4l[869.920]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[870.392]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[870.394]: foreign master not using PTP timescale
+ptp4l[870.667]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[870.669]: foreign master not using PTP timescale
+ptp4l[870.672]: port 2: master state recommended in slave only mode
+ptp4l[870.674]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[871.292]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[871.292]: foreign master not using PTP timescale
+ptp4l[871.668]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[871.670]: foreign master not using PTP timescale
+ptp4l[871.672]: port 2: master state recommended in slave only mode
+ptp4l[871.675]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[872.228]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[872.229]: foreign master not using PTP timescale
+ptp4l[872.668]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[872.669]: foreign master not using PTP timescale
+ptp4l[872.669]: port 2: master state recommended in slave only mode
+ptp4l[872.670]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[873.080]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[873.083]: foreign master not using PTP timescale
+ptp4l[873.108]: rms 146026 max 330578 freq  -5496 +/- 89987 delay 70152 +/- 30354
+ptp4l[873.419]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[873.421]: foreign master not using PTP timescale
+ptp4l[873.423]: port 2: master state recommended in slave only mode
+ptp4l[873.424]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[873.908]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[873.908]: foreign master not using PTP timescale
+ptp4l[874.169]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[874.170]: foreign master not using PTP timescale
+ptp4l[874.170]: port 2: master state recommended in slave only mode
+ptp4l[874.171]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[874.712]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[874.715]: foreign master not using PTP timescale
+ptp4l[875.170]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[875.173]: foreign master not using PTP timescale
+ptp4l[875.175]: port 2: master state recommended in slave only mode
+ptp4l[875.177]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[875.636]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[875.638]: foreign master not using PTP timescale
+ptp4l[875.921]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[875.924]: foreign master not using PTP timescale
+ptp4l[875.926]: port 2: master state recommended in slave only mode
+ptp4l[875.929]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[876.436]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[876.436]: foreign master not using PTP timescale
+ptp4l[876.921]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[876.924]: foreign master not using PTP timescale
+ptp4l[876.926]: port 2: master state recommended in slave only mode
+ptp4l[876.929]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[877.212]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[877.215]: foreign master not using PTP timescale
+ptp4l[877.671]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[877.672]: foreign master not using PTP timescale
+ptp4l[877.672]: port 2: master state recommended in slave only mode
+ptp4l[877.673]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[878.132]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[878.135]: foreign master not using PTP timescale
+ptp4l[878.422]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[878.425]: foreign master not using PTP timescale
+ptp4l[878.427]: port 2: master state recommended in slave only mode
+ptp4l[878.429]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[878.920]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[878.920]: foreign master not using PTP timescale
+ptp4l[879.172]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[879.173]: foreign master not using PTP timescale
+ptp4l[879.174]: port 2: master state recommended in slave only mode
+ptp4l[879.175]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[879.756]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[879.756]: foreign master not using PTP timescale
+ptp4l[880.173]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[880.173]: foreign master not using PTP timescale
+ptp4l[880.174]: port 2: master state recommended in slave only mode
+ptp4l[880.174]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[880.544]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[880.544]: foreign master not using PTP timescale
+ptp4l[880.923]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[880.924]: foreign master not using PTP timescale
+ptp4l[880.924]: port 2: master state recommended in slave only mode
+ptp4l[880.925]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[881.536]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[881.537]: foreign master not using PTP timescale
+ptp4l[881.924]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[881.926]: foreign master not using PTP timescale
+ptp4l[881.929]: port 2: master state recommended in slave only mode
+ptp4l[881.931]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[882.508]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[882.508]: foreign master not using PTP timescale
+ptp4l[882.925]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[882.927]: foreign master not using PTP timescale
+ptp4l[882.930]: port 2: master state recommended in slave only mode
+ptp4l[882.932]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[883.420]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[883.421]: foreign master not using PTP timescale
+ptp4l[883.675]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[883.675]: foreign master not using PTP timescale
+ptp4l[883.676]: port 2: master state recommended in slave only mode
+ptp4l[883.676]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[884.204]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[884.204]: foreign master not using PTP timescale
+ptp4l[884.675]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[884.676]: foreign master not using PTP timescale
+ptp4l[884.677]: port 2: master state recommended in slave only mode
+ptp4l[884.677]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[885.100]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[885.101]: foreign master not using PTP timescale
+ptp4l[885.426]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[885.428]: foreign master not using PTP timescale
+ptp4l[885.431]: port 2: master state recommended in slave only mode
+ptp4l[885.434]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[886.056]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[886.056]: foreign master not using PTP timescale
+ptp4l[886.426]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[886.428]: foreign master not using PTP timescale
+ptp4l[886.429]: port 2: master state recommended in slave only mode
+ptp4l[886.431]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[886.956]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[886.957]: foreign master not using PTP timescale
+ptp4l[887.427]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[887.429]: foreign master not using PTP timescale
+ptp4l[887.432]: port 2: master state recommended in slave only mode
+ptp4l[887.434]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[887.732]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[887.733]: foreign master not using PTP timescale
+ptp4l[888.177]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[888.179]: foreign master not using PTP timescale
+ptp4l[888.180]: port 2: master state recommended in slave only mode
+ptp4l[888.181]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[888.624]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[888.625]: foreign master not using PTP timescale
+ptp4l[888.928]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[888.928]: foreign master not using PTP timescale
+ptp4l[888.929]: port 2: master state recommended in slave only mode
+ptp4l[888.929]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[889.130]: rms 127589 max 234901 freq  -8509 +/- 69326 delay 78930 +/- 38025
+ptp4l[889.496]: selected best master clock 52c2ad.fffe.a9ded0
+ptp4l[889.496]: foreign master not using PTP timescale

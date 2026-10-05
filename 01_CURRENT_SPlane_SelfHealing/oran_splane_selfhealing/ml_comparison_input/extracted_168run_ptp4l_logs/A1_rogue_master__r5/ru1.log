@@ -1,0 +1,107 @@
+ptp4l[2832.784]: port 1 (v-ru1): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[2832.784]: port 0 (/var/run/p.ru1): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[2832.784]: port 0 (/var/run/pr.ru1): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[2833.178]: selected local clock 020000.fffe.00000c as best master
+ptp4l[2833.264]: port 1 (v-ru1): new foreign master 020000.fffe.000001-2
+ptp4l[2833.514]: selected best master clock 020000.fffe.00000a
+ptp4l[2833.514]: foreign master not using PTP timescale
+ptp4l[2833.514]: port 1 (v-ru1): LISTENING to UNCALIBRATED on RS_SLAVE
+ptp4l[2835.578]: master offset       5407 s0 freq   +3508 path delay      7081
+ptp4l[2837.581]: master offset      -3588 s0 freq   -4670 path delay      6726
+ptp4l[2839.584]: master offset       1885 s0 freq   +3279 path delay      7821
+ptp4l[2841.586]: master offset       3755 s0 freq   +1024 path delay      8001
+ptp4l[2843.591]: master offset        926 s0 freq   -2240 path delay      6340
+ptp4l[2845.593]: master offset       2792 s0 freq   +1783 path delay      8045
+ptp4l[2847.596]: master offset      -2751 s0 freq   -2723 path delay      8135
+ptp4l[2849.598]: master offset      -2734 s0 freq     -38 path delay      8041
+ptp4l[2851.602]: master offset      -4040 s0 freq    +276 path delay      9901
+ptp4l[2853.605]: master offset       -467 s0 freq    +309 path delay      6947
+ptp4l[2855.261]: port 1 (v-ru1): new foreign master 020000.fffe.0000bf-1
+ptp4l[2855.511]: selected best master clock 020000.fffe.0000bf
+ptp4l[2855.511]: foreign master not using PTP timescale
+ptp4l[2855.656]: foreign master not using PTP timescale
+ptp4l[2855.906]: foreign master not using PTP timescale
+ptp4l[2856.156]: foreign master not using PTP timescale
+ptp4l[2856.407]: foreign master not using PTP timescale
+ptp4l[2856.657]: foreign master not using PTP timescale
+ptp4l[2856.907]: foreign master not using PTP timescale
+ptp4l[2857.157]: foreign master not using PTP timescale
+ptp4l[2857.407]: foreign master not using PTP timescale
+ptp4l[2857.575]: master offset       -508 s0 freq     +79 path delay      6797
+ptp4l[2857.657]: foreign master not using PTP timescale
+ptp4l[2857.907]: foreign master not using PTP timescale
+ptp4l[2858.158]: foreign master not using PTP timescale
+ptp4l[2858.408]: foreign master not using PTP timescale
+ptp4l[2858.658]: foreign master not using PTP timescale
+ptp4l[2858.908]: foreign master not using PTP timescale
+ptp4l[2859.158]: foreign master not using PTP timescale
+ptp4l[2859.409]: foreign master not using PTP timescale
+ptp4l[2859.577]: master offset        268 s0 freq    -322 path delay      5377
+ptp4l[2859.659]: foreign master not using PTP timescale
+ptp4l[2859.909]: foreign master not using PTP timescale
+ptp4l[2860.159]: foreign master not using PTP timescale
+ptp4l[2860.409]: foreign master not using PTP timescale
+ptp4l[2860.659]: foreign master not using PTP timescale
+ptp4l[2860.910]: foreign master not using PTP timescale
+ptp4l[2861.160]: foreign master not using PTP timescale
+ptp4l[2861.410]: foreign master not using PTP timescale
+ptp4l[2861.579]: master offset      -1723 s0 freq   -1742 path delay      3880
+ptp4l[2861.660]: foreign master not using PTP timescale
+ptp4l[2861.910]: foreign master not using PTP timescale
+ptp4l[2862.160]: foreign master not using PTP timescale
+ptp4l[2862.411]: foreign master not using PTP timescale
+ptp4l[2862.661]: foreign master not using PTP timescale
+ptp4l[2862.911]: foreign master not using PTP timescale
+ptp4l[2863.162]: foreign master not using PTP timescale
+ptp4l[2863.412]: foreign master not using PTP timescale
+ptp4l[2863.582]: master offset       4153 s0 freq   +4502 path delay      7020
+ptp4l[2863.662]: foreign master not using PTP timescale
+ptp4l[2863.913]: foreign master not using PTP timescale
+ptp4l[2864.163]: foreign master not using PTP timescale
+ptp4l[2864.413]: foreign master not using PTP timescale
+ptp4l[2864.663]: foreign master not using PTP timescale
+ptp4l[2864.914]: foreign master not using PTP timescale
+ptp4l[2865.164]: foreign master not using PTP timescale
+ptp4l[2865.414]: foreign master not using PTP timescale
+ptp4l[2865.585]: master offset       2990 s0 freq    -634 path delay      6914
+ptp4l[2865.664]: foreign master not using PTP timescale
+ptp4l[2865.914]: foreign master not using PTP timescale
+ptp4l[2866.164]: foreign master not using PTP timescale
+ptp4l[2866.415]: foreign master not using PTP timescale
+ptp4l[2866.665]: foreign master not using PTP timescale
+ptp4l[2866.915]: foreign master not using PTP timescale
+ptp4l[2867.165]: foreign master not using PTP timescale
+ptp4l[2867.415]: foreign master not using PTP timescale
+ptp4l[2867.587]: master offset       3956 s0 freq    +569 path delay      7087
+ptp4l[2867.666]: foreign master not using PTP timescale
+ptp4l[2867.916]: foreign master not using PTP timescale
+ptp4l[2868.166]: foreign master not using PTP timescale
+ptp4l[2868.416]: foreign master not using PTP timescale
+ptp4l[2868.666]: foreign master not using PTP timescale
+ptp4l[2868.916]: foreign master not using PTP timescale
+ptp4l[2869.167]: foreign master not using PTP timescale
+ptp4l[2869.417]: foreign master not using PTP timescale
+ptp4l[2869.591]: master offset       4144 s0 freq    +725 path delay      8352
+ptp4l[2869.667]: foreign master not using PTP timescale
+ptp4l[2869.917]: foreign master not using PTP timescale
+ptp4l[2870.167]: foreign master not using PTP timescale
+ptp4l[2870.417]: foreign master not using PTP timescale
+ptp4l[2870.668]: foreign master not using PTP timescale
+ptp4l[2870.918]: foreign master not using PTP timescale
+ptp4l[2871.168]: foreign master not using PTP timescale
+ptp4l[2871.418]: foreign master not using PTP timescale
+ptp4l[2871.596]: master offset      -4772 s0 freq   -4354 path delay      8541
+ptp4l[2871.668]: foreign master not using PTP timescale
+ptp4l[2871.918]: foreign master not using PTP timescale
+ptp4l[2872.169]: foreign master not using PTP timescale
+ptp4l[2872.419]: foreign master not using PTP timescale
+ptp4l[2872.669]: foreign master not using PTP timescale
+ptp4l[2872.919]: foreign master not using PTP timescale
+ptp4l[2873.169]: foreign master not using PTP timescale
+ptp4l[2873.420]: foreign master not using PTP timescale
+ptp4l[2873.599]: master offset       2606 s0 freq   +3477 path delay      8128
+ptp4l[2873.670]: foreign master not using PTP timescale
+ptp4l[2873.920]: foreign master not using PTP timescale
+ptp4l[2874.170]: foreign master not using PTP timescale
+ptp4l[2874.420]: foreign master not using PTP timescale
+ptp4l[2874.671]: foreign master not using PTP timescale

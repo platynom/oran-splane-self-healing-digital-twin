@@ -1,0 +1,12 @@
+{
+  "scenario": "C3_wholesecond",
+  "truth_class": "attack",
+  "truth_fault": "C3",
+  "verdict": "ATTACK",
+  "fault_hint": "A_wholesecond",
+  "reasons": [
+    "Timescale/whole-second metadata abuse: leap61/59 asserted in 250 Announce with no leap window open; 250 Announce claim traceable clockClass<=6 but deassert timeTraceable/currentUtcOffsetValid",
+    "(v2 detector; frozen base said BENIGN)"
+  ],
+  "rule": "decision_rule_v3 (frozen v3)"
+}

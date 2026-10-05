@@ -1,0 +1,95 @@
+{
+  "session": "2026-09-17",
+  "frozen_utc": "2026-09-17T04:49:33Z",
+  "frozen_artefacts": 18,
+  "admissible_reps": "30-41 (12 replicates)",
+  "scenarios": 11,
+  "validation_runs": 132,
+  "sensitivity": {
+    "v": "1.000",
+    "ci": "[0.940, 1.000]",
+    "n": 60,
+    "detail": "TP 60, FN 0"
+  },
+  "specificity": {
+    "v": "0.800",
+    "ci": "[0.682, 0.882]",
+    "n": 60,
+    "detail": "TN 48, FP 12"
+  },
+  "abstention": {
+    "v": "1.000",
+    "ci": "[0.757, 1.000]",
+    "n": 12,
+    "detail": "12 correct, 0 over-claim, 0 false-alarm"
+  },
+  "attribution": {
+    "v": "0.817",
+    "ci": "[0.701, 0.894]",
+    "n": 60,
+    "detail": "A1 8/12, A2 12/12, A3 12/12, A5 12/12, A8 5/12"
+  },
+  "binary_attack": "60/60",
+  "spec_excl_bc": {
+    "v": "1.000",
+    "ci": "[0.926, 1.000]",
+    "n": 48
+  },
+  "timesafe_crossval": "6 of 6 real hardware captures classified ATTACK by the frozen rule; 5 of 6 on standards/protocol rules alone (3 by Announce-field legality: clockClass<6 / priority1!=128; 2 by IEEE 1588 cl.11.3 sequenceId monotonicity). The 1 remaining (15min_announce_attack) is a healthy-looking spoof and requires the provisioned allow-list.",
+  "conformance_neg": "7 of 7 pass, each firing on its own cited clause",
+  "noise_floor": {
+    "runs": 9,
+    "windows": 1159,
+    "interarrival_p50_ms": "7.073",
+    "interarrival_p95_ms": "8.594",
+    "announce_hz_p50": "8.116",
+    "sync_hz_p50": "17.110"
+  },
+  "catalogue_coverage": {
+    "executed": 17,
+    "catalogued": "168+",
+    "spec_unrun": 106,
+    "impossible": 45,
+    "breakdown": "attack 5 RUN / conformance-negative 6 RUN / benign 6 RUN"
+  },
+  "scenario_list": [
+    "baseline",
+    "A1_rogue_master",
+    "A2_sync_spoof",
+    "A3_replay",
+    "A5_dos_flood",
+    "A8_rogue_bc",
+    "B2_gm_failover",
+    "B3_pdv_congestion",
+    "B7_topology_change",
+    "B_bc_replacement",
+    "B_unplanned_failover"
+  ],
+  "timesafe_corpus": {
+    "captures": 6,
+    "ptp_packets": 344630,
+    "announce": 102077,
+    "domain_24": "all",
+    "tlv_packets": 0,
+    "minor_version_ptp": "0 on all",
+    "note": "522,731 (quoted in SESSION_FINDINGS.md) could not be reproduced from any source and is replaced by 344,630 in all deliverables. All 14 extracted captures total 350,794 rows."
+  },
+  "noise_floor_offset_delay": {
+    "source": "ru*.log of the 132-run campaign's baseline runs",
+    "samples": 792,
+    "abs_offset_p50_us": 0.9,
+    "abs_offset_p95_us": 5.6,
+    "path_delay_p50_us": 7.2,
+    "path_delay_p95_us": 8.3
+  },
+  "timesafe_attacker_fields": "forged Announce from source b8cef6ffff5e6afa (one nibble different from b8cef6fffe5e6afa; both use MAC b8:ce:f6:5e:6a:fa) claiming grandmaster b8cef6fffe5e6afa with priority1=0, priority2=0, clockClass=0 (illegal, IEEE 1588 Table 5), stepsRemoved=2, in 24,653 Announce; the provisioned GM fcaf6afffe02babe is relayed by BC c45ab1ffff806085 with priority1=128, priority2=120, clockClass=6",
+  "frozen_rule_constants_status": {
+    "FOREIGN_MASTER_THRESHOLD=2": "identified, NOT adopted (rule uses TRANSIENT_FRACTION=0.01)",
+    "+-30% interval": "identified, not adopted",
+    "2x cadence cap": "in rule",
+    "stepsRemoved>=255": "in rule",
+    "alternateMasterFlag": "in rule",
+    "clockClass allow-set": "partly (rule checks >=6)",
+    "VLAN/unicast": "not adopted; domain+multicast in rule"
+  }
+}

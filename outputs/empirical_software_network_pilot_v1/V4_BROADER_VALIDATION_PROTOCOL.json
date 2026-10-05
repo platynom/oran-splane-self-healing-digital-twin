@@ -1,0 +1,27 @@
+{
+  "schema_version": "v4-broader-software-validation-protocol-2026-09-13",
+  "status": "FROZEN_BEFORE_ANY_V4_CAPTURE",
+  "purpose": "Independent follow-on feasibility validation of the V3 non-overlapping packet-arrival observation in isolated software networking. It is not a deployment, attack, health, receiver-selection, or recovery study.",
+  "development_exclusion": "All V1, V2, and V3 captures, including their 20 final V3 runs, are excluded from V4 performance estimation and parameter selection.",
+  "frozen_rule": {
+    "v1_engine_sha256": "1c1d7edfbcc38b6e0c950984eff72b58592160c71ad8e797ff719d4aee0b8d0e",
+    "v3_nonoverlap_engine_sha256": "ee328876367e6547878f85eed60405624f55bd21a03348f4d9527fd302250172",
+    "isolated_runner_sha256": "94774063f997e71024bf3325339f38820fd7ea04c5ba9f20fa97b53970725803",
+    "validator_sha256": "84afc4ea6045cd41d2733961b62eaa31ee1565699d13a070faf97f8663e38be2",
+    "standard_deviation_threshold_s": 0.00016,
+    "block_size": 8,
+    "high_block_count": 2,
+    "high_block_window_s": 3.0
+  },
+  "planned_conditions": {
+    "baseline_control": 5,
+    "netem_delay_jitter_loss": 5,
+    "benign_delay_jitter_no_loss": 5,
+    "benign_authorized_source_change_no_action": 5,
+    "authorized_source_termination_observation": 5
+  },
+  "condition_parameters": {"configured_netem_delay_jitter_loss": "delay 1000us 200us distribution normal loss 1%", "benign_delay_jitter_no_loss": "delay 100us 20us distribution normal, no configured loss"},
+  "execution_constraints": ["Each run records seed/configuration, UTC and monotonic phase times, packet capture, process logs, qdisc evidence, and source manifest.", "Conditions must be implemented in an isolated disposable namespace only and validated by a capability preflight.", "If a condition cannot be executed exactly as frozen, preserve the failed attempt and report it; do not substitute another condition."],
+  "analysis": {"unit": "run", "report": ["per-condition run counts", "Wilson intervals", "first observation times", "unknown/invalid reasons", "independent source-silence events", "all source-manifest rehashes"], "no_retuning": "No threshold, condition, or inclusion change after the first V4 capture without superseding this protocol."},
+  "decision_boundary": "V4 can only determine whether this packet-arrival observation repeats under its frozen software conditions. It cannot authorize a recovery loop, establish physical clock recovery, or prove detector generalization on its own."
+}

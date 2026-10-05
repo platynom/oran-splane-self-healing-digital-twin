@@ -1,0 +1,46 @@
+ptp4l[1825.656]: port 1 (v-bc-up): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[1825.688]: port 2 (v-bc-dn): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[1825.688]: port 0 (/var/run/p.bc): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[1825.688]: port 0 (/var/run/pr.bc): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[1826.055]: port 1 (v-bc-up): new foreign master 020000.fffe.00000a-1
+ptp4l[1826.071]: port 1 (v-bc-up): new foreign master 020000.fffe.00000b-1
+ptp4l[1826.120]: port 1 (v-bc-up): LISTENING to MASTER on ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES
+ptp4l[1826.120]: selected local clock 020000.fffe.000001 as best master
+ptp4l[1826.120]: port 1 (v-bc-up): assuming the grand master role
+ptp4l[1826.127]: port 2 (v-bc-dn): LISTENING to MASTER on ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES
+ptp4l[1826.127]: port 1 (v-bc-up): assuming the grand master role
+ptp4l[1826.127]: port 2 (v-bc-dn): assuming the grand master role
+ptp4l[1826.305]: selected best master clock 020000.fffe.00000a
+ptp4l[1826.305]: foreign master not using PTP timescale
+ptp4l[1826.305]: port 1 (v-bc-up): MASTER to UNCALIBRATED on RS_SLAVE
+ptp4l[1826.321]: foreign master not using PTP timescale
+ptp4l[1828.369]: master offset      -1132 s0 freq   -1173 path delay      3390
+ptp4l[1830.371]: master offset         47 s0 freq    +561 path delay      3335
+ptp4l[1832.374]: master offset       5835 s0 freq   +3216 path delay      3987
+ptp4l[1833.623]: port 2 (v-bc-dn): error on fda[0]: Network is down
+ptp4l[1833.623]: port 2 (v-bc-dn): MASTER to FAULTY on FAULT_DETECTED (FT_UNSPECIFIED)
+ptp4l[1833.640]: port 2 (v-bc-dn): link down
+ptp4l[1833.640]: foreign master not using PTP timescale
+ptp4l[1834.376]: master offset        566 s0 freq   -2907 path delay      3436
+ptp4l[1836.378]: master offset       1512 s0 freq   +2589 path delay      7674
+ptp4l[1838.381]: master offset       1616 s0 freq   -1570 path delay      4426
+ptp4l[1840.383]: master offset      -1758 s0 freq   -1049 path delay      5700
+ptp4l[1842.386]: master offset       2171 s0 freq   +3115 path delay      8010
+ptp4l[1844.389]: master offset       3050 s0 freq    -836 path delay      5457
+ptp4l[1846.391]: master offset        590 s0 freq   -1762 path delay      4389
+ptp4l[1848.394]: master offset        -10 s0 freq    -887 path delay      3212
+ptp4l[1850.396]: master offset        163 s0 freq    +876 path delay      4794
+ptp4l[1852.398]: master offset       -452 s0 freq    -617 path delay      4173
+ptp4l[1854.401]: master offset       3402 s0 freq   +1924 path delay      4173
+ptp4l[1856.403]: master offset       -818 s0 freq   -2278 path delay      3832
+ptp4l[1858.405]: master offset      -1418 s0 freq    +141 path delay      4715
+ptp4l[1860.408]: master offset      -1318 s0 freq   +1111 path delay      6839
+ptp4l[1860.632]: foreign master not using PTP timescale
+ptp4l[1860.632]: port 2 (v-bc-dn): link up
+ptp4l[1860.664]: port 2 (v-bc-dn): FAULTY to LISTENING on INIT_COMPLETE
+ptp4l[1861.106]: port 2 (v-bc-dn): LISTENING to MASTER on ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES
+ptp4l[1861.106]: foreign master not using PTP timescale
+ptp4l[1862.410]: master offset       1393 s0 freq    -119 path delay      3890
+ptp4l[1864.413]: master offset       2349 s0 freq    +288 path delay      3511
+ptp4l[1866.415]: master offset      30296 s0 freq  +14039 path delay      3676
+ptp4l[1868.418]: master offset        692 s0 freq  -14580 path delay      4072

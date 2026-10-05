@@ -1,0 +1,51 @@
+{
+  "schema_version": "s11-closed-loop-protocol-2026-09-13",
+  "status": "FROZEN_BEFORE_ANY_S11_TRIAL",
+  "purpose": "Determine whether a detector-triggered commanded action moves the receiver off an impaired timing segment, measured against a matched no-action control on identical topology and identical impairment.",
+  "development_exclusion": "All V1-V5 captures and the two feasibility spikes are excluded from S11 estimation. No threshold, block rule or condition may change.",
+  "mechanism_evidence": "spike_two_segment/S11_MECHANISM_PROBE.json - all five capability questions YES; commanded port-down produced port 1 UNCALIBRATED->FAULTY and port 2 LISTENING->UNCALIBRATED, and segment-1 egress collapsed.",
+  "frozen_rule": {
+    "v1_engine_sha256": "1c1d7edfbcc38b6e0c950984eff72b58592160c71ad8e797ff719d4aee0b8d0e",
+    "v3_nonoverlap_engine_sha256": "ee328876367e6547878f85eed60405624f55bd21a03348f4d9527fd302250172",
+    "live_detector_sha256": "897ed8833e5c5615acf2d725add0da0282a65ce9067a0793c1b9117077bcec84",
+    "s11_runner_sha256": "db07b4760c7d892ae5893e29fb6ba19a4876ad4da5e641e97149740611c070c2",
+    "standard_deviation_threshold_s": 0.00016,
+    "block_size": 8,
+    "high_block_count": 2,
+    "high_block_window_s": 3.0
+  },
+  "topology": "Two independent L2 bridges. Master A on segment 1, master B on segment 2. One slaveOnly ptp4l with one port on each segment. Neither slave port may be in MASTER state; a run where one is must be preserved and excluded with that reason.",
+  "injected_condition": "tc netem delay 100us 200us distribution normal on the segment-1 bridge port. Jitter magnitude is the parameter V5 attributed the observation to. No loss is configured.",
+  "commanded_action": "ip netns exec <slave_ns> ip link set <segment1 slave port> down, executed once, by the live detector, only on the first NONOVERLAPPING_BLOCK_PERSISTENCE_OBSERVED. This is an externally commanded action. It stops the receiver USING the impaired segment; it does not repair the segment.",
+  "arms": {
+    "action": {
+      "n": 5,
+      "description": "detector fires and executes the command"
+    },
+    "no_action": {
+      "n": 5,
+      "description": "matched control: identical topology, identical impairment, detector runs and records the trigger but executes nothing"
+    }
+  },
+  "execution_constraints": [
+    "Interleave action and no_action within each repetition.",
+    "Preserve every failed attempt with its reason; never delete a run directory.",
+    "Same runner, same detector, same thresholds for both arms.",
+    "Do not change the impairment, the settle time or the trial length after the first trial."
+  ],
+  "primary_outcome": "Per run: did the receiver's active timing port move from segment 1 to segment 2, evidenced by a FAULTY transition on port 1 and a LISTENING-to-UNCALIBRATED transition on port 2 in slave.log, corroborated by segment-1 egress packet collapse in the tc counters?",
+  "secondary_outcomes": [
+    "time from detection trigger to action execution result",
+    "time from action execution to standby port takeover",
+    "whether the detector triggered at all, per run",
+    "action command return code, per run"
+  ],
+  "prespecified_interpretation": {
+    "action_>=4of5_and_no_action_0of5": "the commanded action, and not the passage of time or the impairment alone, moves the receiver off the impaired segment under these software conditions",
+    "no_action_>0of5": "takeover occurs without the action; the action is not shown to be the cause and the comparison is void pending investigation",
+    "action_<4of5_with_triggers_present": "the mechanism is unreliable; report the per-run failure mode, do not retune",
+    "detector_does_not_trigger_in_some_action_runs": "a miss; report it against the known sensitivity of roughly 13 of 15 and do not exclude the run",
+    "action_command_returncode_nonzero": "execution failure; report the rate separately from detection performance"
+  },
+  "decision_boundary": "S11 can establish only that a commanded action changes which segment the receiver uses, in this emulation. It cannot establish physical clock recovery, service restoration, attack response, or that the action would be correct in a production network. Undoing an injected laboratory impairment is never claimed here; the impairment is left in place throughout."
+}

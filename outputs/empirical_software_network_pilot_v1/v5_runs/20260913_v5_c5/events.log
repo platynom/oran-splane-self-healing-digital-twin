@@ -1,0 +1,7 @@
+run_id=w5c5 phase=setup event=tcpdump_ready utc=2026-09-13T04:19:32Z monotonic_s=268.53 status=PASS
+run_id=w5c5 phase=setup event=master_a_ready utc=2026-09-13T04:19:32Z monotonic_s=268.53 status=PASS
+run_id=w5c5 phase=setup event=master_b_ready utc=2026-09-13T04:19:32Z monotonic_s=268.54 status=PASS
+run_id=w5c5 phase=setup event=slave_ready utc=2026-09-13T04:19:32Z monotonic_s=268.55 status=PASS
+run_id=w5c5 phase=v5_jitter_only event=phase_started utc=2026-09-13T04:19:32Z monotonic_s=268.56 status=PASS
+run_id=w5c5 phase=v5_jitter_only event=v5_netem_command_confirmed utc=2026-09-13T04:19:32Z monotonic_s=268.58 status=PASS
+run_id=w5c5 phase=v5_jitter_only event=phase_finished utc=2026-09-13T04:19:40Z monotonic_s=276.59 status=PASS

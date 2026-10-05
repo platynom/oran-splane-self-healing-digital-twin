@@ -1,5 +1,8 @@
 # O-RAN S-Plane Self-Healing Digital Twin
 
+> **Note (added 2026-10-04):** this README describes the August 2026 ML-pipeline state. Its results were withdrawn as evidence on 17 Sep 2026, and some files it links to were moved to `99_ARCHIVE_OLDER_AND_SUPERSEDED/`. Start with [`00_START_HERE.md`](00_START_HERE.md) for the current state.
+
+
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776AB)](https://www.python.org/)
 [![Tests](https://img.shields.io/badge/tests-56%20passed-2ea44f)](01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/tests)
 [![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)

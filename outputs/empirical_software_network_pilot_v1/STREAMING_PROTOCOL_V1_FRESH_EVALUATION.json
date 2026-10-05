@@ -1,0 +1,101 @@
+{
+  "schema_version": "streaming-protocol-v2-development-evaluation",
+  "scope": "four v1 captures are development/regression evidence after a silence-composition defect; not held-out evidence",
+  "runs": {
+    "20260912_streamtest_baseline": {
+      "declared_condition_for_evaluation_only": "baseline_control",
+      "capture_sha256": "ad66e555b67ae4ad128e777d09d9ab048cb3f5a24200526d69b83a4e35e18c22",
+      "packet_count": 864,
+      "state_counts": {
+        "WARMUP": 227,
+        "OBSERVATION": 225,
+        "ANNOUNCE_OBSERVED": 112,
+        "NOT_APPLICABLE": 300
+      },
+      "event_counts": {},
+      "first_state_time_s_from_capture_start": {
+        "WARMUP": 0.0,
+        "OBSERVATION": 0.123587132,
+        "ANNOUNCE_OBSERVED": 0.250063181,
+        "NOT_APPLICABLE": 0.646721125
+      },
+      "first_event_time_s_from_capture_start": {},
+      "validity": "STRUCTURAL_VALIDATION_REQUIRED_SEPARATELY"
+    },
+    "20260912_streamtest_netem": {
+      "declared_condition_for_evaluation_only": "netem_delay_jitter_loss",
+      "capture_sha256": "77b585d808d6606e0158d9f7d3c3cc8963a9f058a98a10c5d423e9a43102f05a",
+      "packet_count": 840,
+      "state_counts": {
+        "WARMUP": 222,
+        "OBSERVATION": 74,
+        "ANNOUNCE_OBSERVED": 109,
+        "NOT_APPLICABLE": 287,
+        "UNKNOWN": 59,
+        "CONFIGURED_IMPAIRMENT_SUSPECT": 89
+      },
+      "event_counts": {},
+      "first_state_time_s_from_capture_start": {
+        "WARMUP": 0.0,
+        "OBSERVATION": 0.120621681,
+        "ANNOUNCE_OBSERVED": 0.249997616,
+        "NOT_APPLICABLE": 0.646470308,
+        "UNKNOWN": 2.537465334,
+        "CONFIGURED_IMPAIRMENT_SUSPECT": 2.913682461
+      },
+      "first_event_time_s_from_capture_start": {},
+      "validity": "STRUCTURAL_VALIDATION_REQUIRED_SEPARATELY"
+    },
+    "20260912_streamtest_control_retry": {
+      "declared_condition_for_evaluation_only": "authorized_source_change_no_action_control",
+      "capture_sha256": "9991cd62ec3e48a1f9e57f210a369f736e3ea38bd45d8b9f965fbf315c96957e",
+      "packet_count": 874,
+      "state_counts": {
+        "WARMUP": 226,
+        "OBSERVATION": 224,
+        "ANNOUNCE_OBSERVED": 112,
+        "NOT_APPLICABLE": 312
+      },
+      "event_counts": {},
+      "first_state_time_s_from_capture_start": {
+        "WARMUP": 0.0,
+        "OBSERVATION": 0.117651701,
+        "ANNOUNCE_OBSERVED": 0.250103235,
+        "NOT_APPLICABLE": 0.703491449
+      },
+      "first_event_time_s_from_capture_start": {},
+      "validity": "STRUCTURAL_VALIDATION_REQUIRED_SEPARATELY"
+    },
+    "20260912_streamtest_source_stop_retry": {
+      "declared_condition_for_evaluation_only": "authorized_source_change_intervention",
+      "capture_sha256": "db5b88a323eeb30f54e4c870a69645eba7b344643d43386917d27a7d6b55fe56",
+      "packet_count": 1334,
+      "state_counts": {
+        "WARMUP": 323,
+        "OBSERVATION": 321,
+        "ANNOUNCE_OBSERVED": 160,
+        "NOT_APPLICABLE": 530
+      },
+      "event_counts": {
+        "SOURCE_ANNOUNCE_SILENCE_OBSERVED": 1
+      },
+      "first_state_time_s_from_capture_start": {
+        "WARMUP": 0.0,
+        "OBSERVATION": 0.120166302,
+        "ANNOUNCE_OBSERVED": 0.25021863,
+        "NOT_APPLICABLE": 0.63485527
+      },
+      "first_event_time_s_from_capture_start": {
+        "SOURCE_ANNOUNCE_SILENCE_OBSERVED": 14.8919909
+      },
+      "validity": "STRUCTURAL_VALIDATION_REQUIRED_SEPARATELY"
+    }
+  },
+  "limits": [
+    "one fresh run per condition",
+    "no EOF features",
+    "arrival-driven silence unless tick is supplied",
+    "source silence is observation only",
+    "no receiver service, attack, health, physical-clock, or recovery inference"
+  ]
+}

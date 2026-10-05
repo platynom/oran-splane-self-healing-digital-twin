@@ -1,0 +1,424 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@page{size:A4 portrait;margin:14mm}
+body{font-family:'Liberation Sans',Arial,sans-serif;color:#111}
+h1{font-size:15pt;margin:0 0 2px} .sub{color:#555;font-size:9pt;margin-bottom:6px}
+h2{font-size:11pt;margin:12px 0 2px;border-bottom:1px solid #999;color:#0b3d61}
+h3{font-size:9.5pt;margin:8px 0 1px;color:#333}
+pre{font-family:'Liberation Mono','DejaVu Sans Mono',monospace;font-size:7pt;line-height:1.18;white-space:pre-wrap;margin:0}
+.banner{background:#e8f5e9;border:1px solid #78b17c;padding:8px 10px;margin:8px 0;font-size:8.5pt;line-height:1.3}
+</style></head><body>
+<h1>O-RAN Open Fronthaul S-Plane — Master Test Case Catalogue</h1>
+<div class="sub">Validation Record and Coverage Statement &nbsp;·&nbsp; Revised 2026-09-17 (supersedes the prior 81-run revision)</div>
+<div class="banner"><b>CURRENT STATUS (2026-09-17, authoritative).</b> Randomised 132-run campaign (12 reps, 11 scenarios):
+attack sensitivity <b>1.000 [0.940, 1.000]</b> (n=60, 60/60, zero false negatives); decidable-benign specificity <b>1.000</b> (48/48);
+honest abstention <b>12/12</b>; attribution 0.817. Frozen rule (18 hashed artefacts) applied to <b>real TIMESAFE hardware</b> attack captures
+detects <b>5/6 by standards/protocol rules alone</b>. One documented limitation (B_bc_replacement, single-BC schema) reported not patched.
+Figures in the body below have been updated to this campaign; the prior 81-run revision is retained under _pre_2026-09-17_doc_update/.</div>
+<pre>                                       O-RAN Open Fronthaul S-Plane
+Master Test Case Catalogue, Validation Record and Coverage Statement
+
+
+
+How to read this document
+Status                  Meaning
+RUN                     Implemented on our testbed and executed. Results reported in §7.
+SPEC                    Specified here and buildable in software, but not yet executed. Each says what it would catch.
+IMPOSSIBLE              Cannot be produced or measured on a software testbed. Physical reason given.
+
+On the question of exhaustiveness. Test coverage of an adversarial space cannot honestly be given as a percentage — there is
+no fixed denominator, because an attacker can always invent a new variation. Any figure such as &quot;99.9% covered&quot; would be an
+invented number. This document instead reports coverage over denominators that are real and countable: how many catalogued
+cases exist, how many are executed, how many are specified-but-unrun, and how many are physically impossible here. Those
+figures are checkable. §8 states explicitly what is not covered.
+
+
+</pre><h2>1 · Coverage summary</h2><pre>
+Catalogue                        Cases       RUN                  SPEC (buildable,         IMPOSSIBLE               Primary source
+                                                                  unrun)                   (hardware)
+Attack cases                     60          5                    31                       24                       Research synthesis: TIMESAFE, PTPsec,
+                                                                                                                    Springer survey, O-RAN WG11, Concordia,
+                                                                                                                    TUM, MDPI, CVE records
+Conformance / negative           50+         6 (as legality       38                       6                        UNH-IOL IEEE 1588 test plans; ITU-T
+                                             checks)                                                                G.8275.1 Amd.3; G.8273.2; G.8260
+Benign fault scenarios           58          6                    39                       15                       ITU-T G.827x; vendor app notes (Calnex,
+                                                                                                                    Microchip, Meinberg, Cisco, Nokia);
+                                                                                                                    operator incident reports
+TOTAL                            168+        15                   108                      45
+
+Honest reading of these numbers. 19 of 168 catalogued cases are executed — roughly 11% (2026-09-17: +2 benign gap scenarios, +2 live conformance-legality checks); plus cross-validation on 6 real TIMESAFE hardware captures. That sounds low, and it is the truthful
+figure. But the 15 that run are not a random sample: they are the cases that (a) map to official O-RAN WG11 S-plane test IDs, and
+(b) are the ones the project&#x27;s research claim actually rests on. Of the faults that are physically possible on a software testbed, 9 of 9
+fault families are exercised. The large SPEC column is the honest measure of how much room remains.
+
+
+</pre><h2>2 · Standardised constants — replacing invented thresholds</h2><pre>
+The most valuable outcome of the literature survey. Each row replaced, or corroborated, a constant that had previously been
+chosen by us.
+Constant                     Standardised value                        Source                                Effect on our rule
+Foreign-master               FOREIGN_MASTER_THRESHOLD = IEEE 1588 §9.3.2.4; linuxptp                         REPLACES our invented &quot;1% transient filter&quot;. Now
+qualification                2 Announce within a 4                foreign.h; behaviourally proven by         a real protocol rule.
+                             announce-interval window (= 0.5 s at UNH PWR.c.2.3
+                             8/s)
+Message-interval             ±30% of the stated mean, at 90%           IEEE 1588-2019 cl.7.7.2.1 (via Calnex REPLACES an ad-hoc rate band.
+tolerance                    confidence                                PFV)
+Successive-interval cap      Successive Sync/Announce intervals        ITU-T G.8275.1 Amd.3                  CORROBORATES our 2× cadence tolerance — it
+                             must not exceed 2× the mean                                                     was the right factor, now with a citation.
+stepsRemoved discard         Announce with stepsRemoved ≥ 255          UNH PWR.c.2.4; G.8275.1               NEW check, not previously implemented.
+                             must be discarded                         maxStepsRemoved {1–255}
+announceReceiptTimeou        3 → 3 × 1/8 s = 375 ms to declare         ITU-T G.8275.1 Amd.3; Cisco portDS    Confirms our sub-2 s detection budget arithmetic.
+t                            Announce loss
+Legal clockClass set         {6, 7, 13, 14, 135, 140, 150, 160, 165,   ITU-T G.8275.1 Amd.3; Calnex Annex STRENGTHENS our &quot;clockClass ≥ 6&quot; rule into an
+                             248, 255} — anything else is a            A                                  explicit allow-set.
+                             conformance failure
+clockAccuracy                0x21 PRTC-locked; 0xFE non-PRTC           Calnex G.8275.1 Annex A               NEW legality check available.
+offsetScaledLogVariance      0x4E5D PRTC; 0xFFFF other                 Calnex G.8275.1 Annex A               NEW legality check available.
+Transport restriction        Ethernet multicast only; VLAN tags        ITU-T G.8275.1; Calnex Annex A        NEW — a VLAN-tagged PTP frame is itself
+                             not allowed; unicast prohibited                                                 non-conformant.
+Constant      Standardised value                Source                          Effect on our rule
+PTSF states   PTSF-lossSync / lossAnnounce /    G.8275.1/.2 §6.7.11; linuxptp   NEW state-based evidence channel.
+              lossDelayResp; port ignores
+              Announce from that source while
+              set
+3 · ATTACK test cases
+60 catalogued. Families A–K. O-RAN column gives the official WG11 Security Test Specification ID where one exists (ETSI TS 104
+105).
+
+</pre><h3>3.1 Announce / BMCA / rogue master</h3><pre>
+
+     ID        Attack                        Mechanism / field                              Detector signature                         O-RAN ID        Status
+     A1        Rogue grandmaster             Announce with superior priority1/clockClass Unknown GM identity wins BMCA;                11.1.5.2.1      RUN
+                                             /accuracy/variance/priority2                illegal clockClass; drift &gt;40,000 ns
+     A2        GM impersonation              Clone legitimate GM identity + MAC             Same identity from two ports/MACs          11.1.5.2.1      SPEC
+     A3        clockIdentity forcing         Crafted identity (e.g. embedded ffff) to win   Anomalous identity byte pattern            11.1.5.2.2      SPEC
+                                             tiebreak
+     A4        stepsRemoved                  Advertise stepsRemoved=0 to appear             stepsRemoved inconsistent with             —               SPEC
+               manipulation                  closer to PRTC                                 physical hop count
+     A5        BMCA oscillation /            Two near-equal crafted masters alternate       Rapid repeated GM/port-state               —               SPEC
+               flapping                      wins                                           transitions; servo never settles
+     A6        Foreign-master table          Flood many spoofed clockIdentities to          Explosion of tracked foreign masters;      —               SPEC
+               exhaustion                    overflow foreignMasterDS (min capacity 5)      election instability
+     A7        Announce-timeout              Suppress legit Announce until timeout, then announceReceiptTimeout expiries then          11.1.5.3.1      SPEC
+               starvation                    inject                                      rogue takeover
+     A8        alternateMasterFlag           Abuse optional alternate-master to inject      Sync accepted from a port that is not      —               SPEC
+               abuse                         Sync from non-elected port                     the elected GM
+
+
+</pre><h3>3.2 Timestamp forgery / correctionField / replay</h3><pre>
+
+     ID        Attack                         Mechanism / field                             Detector signature                         O-RAN ID      Status
+     B1        preciseOriginTimestamp         Alter T1 in Follow_Up                         Offset step with no matching path-delay    —             RUN (as
+               forgery                                                                      change                                                   A2_sync
+                                                                                                                                                     _spoof)
+     B2        originTimestamp forgery        Alter T1 in one-step Sync                     Offset jump without delay anomaly          —             RUN
+     B3        Coherent T1+T4 attack          Increment Follow_Up T1 and Delay_Resp No delay anomaly — documented as                   —             SPEC —
+                                              T4 together so delay math stays       &quot;devious, hard to detect&quot;                                        high
+                                              consistent                                                                                             value
+     B5        twoStepFlag confusion          Flip twoStepFlag / send Follow_Up for a       Follow_Up presence inconsistent with       24.2.1.2      SPEC
+                                              one-step Sync                                 flag
+     C1        correctionField tamper         Modify C2 in Follow_Up                        Desync 100 µs–98 ms; negative path         —             SPEC
+               (fwd)                                                                        delays
+     C3        TC residence-time              Compromised transparent clock writes          correctionField inconsistent with          —             SPEC —
+               falsification                  false residence                               measured residence                                       needs a
+                                                                                                                                                     TC in
+                                                                                                                                                     topology
+     C4        Boundary-clock                 Compromised T-BC re-originates                Whole downstream branch desyncs            11.1.5.2.2    RUN (as
+               compromise                     manipulated timing downstream                 coherently                                               A8_rogu
+                                                                                                                                                     e_bc)
+     D1        Full replay                    Retransmit captured Sync/Follow_Up            sequenceId regression; delay spikes        —             RUN (as
+                                                                                            &gt;20 M ns                                                 A3_repla
+                                                                                                                                                     y)
+     D2        Selective / partial replay     Replay only chosen messages                   Intermittent stale sequenceId              —             SPEC
+     D3        Delay_Req/Resp replay          Replay reverse-path exchange                  Asymmetric delay estimate                  —             SPEC
+
+
+</pre><h3>3.3 Delay attacks — the hardest family</h3><pre>
+          ID       Attack                            Mechanism                                          Signature                                 Status
+          E1       Static asymmetric delay           MitM adds constant delay one direction only        Persistent offset; RTT asymmetry          IMPOSS
+                                                                                                        α≠0                                       IBLE to
+                                                                                                                                                  measure
+          E2       Incremental slow-ramp             Gradually growing one-way delay (e.g. 285          Slow offset drift; caught only by         IMPOSS
+                                                     ns/s) to evade thresholds                          cyclic asymmetry                          IBLE to
+                                                                                                                                                  measure
+          E3       Symmetric large-step delay        Equal both-direction delay; servo overshoots       Delay-variance indicator                  IMPOSS
+                                                     (~84 ms after 200 s)                                                                         IBLE to
+                                                                                                                                                  measure
+          E4       Cyclic / periodic delay           Periodic modulation inside servo bandwidth,        Periodic offset oscillation               IMPOSS
+                                                     mimics diurnal jitter                                                                        IBLE to
+                                                                                                                                                  measure
+           ID     Attack                        Mechanism                                       Signature                            Status
+           E6     Flooding-induced queueing     Congest queues to add asymmetric delay (~18     Piecewise-linear delay; HW           SPEC (i
+                  delay                         µs @ 83 Mbps)                                   timestamping bypasses it             njectable
+                                                                                                                                     )
+           E7     Link-speed asymmetry          Force asymmetric speed negotiation (100→10      Abnormal speed negotiation           SPEC
+                                                Mbps), ~2 µs fixed delay
+           E9     Slave spoofing (early         Inject Delay_Req with expected seq before the   Duplicate/early Delay_Req            SPEC
+                  Delay_Req)                    real slave
+Why the E-family is marked impossible. netem can inject every one of these asymmetries. What cannot be done is measuring the resulting time error:
+a passive capture yields only t1 and t4; the client&#x27;s t2 and t3 never appear on the wire. Detection requires live per-client pmc telemetry (now logged but
+not yet evaluated) or a redundant second path. This is a measurement gap, not an injection gap.
+3.4 DoS / resource exhaustion
+
+            ID       Attack                          Mechanism                                                   O-RAN ID             Status
+            F1       PTP message flooding            High-rate PTP frames overwhelm nodes                        11.1.5.1.1 /         RUN
+                                                                                                                 24.2.1.1             (A5)
+            F2       Complete packet removal         Drop all PTP at an intermediate node → slave free-runs      11.1.5.3.1           SPEC —
+                                                                                                                                      O-RAN
+                                                                                                                                      mandate
+                                                                                                                                      d
+            F3       Selective Delay_Req removal     Drop only Delay_Req; delay estimate freezes                 11.1.5.3.1           SPEC
+            F4       ARP/MAC spoof blocking          Bind attacker MAC to O-RU IP so PTP never arrives           —                    SPEC
+                     O-RU
+            F5       Crypto-engine exhaustion        Bogus MACsec frames exhaust receiver crypto CPU —           —                    IMPOSS
+                                                     crypto worsens DoS                                                               IBLE (no
+                                                                                                                                      MACsec
+                                                                                                                                      )
+            F6       Unicast-negotiation exhaustion Flood REQUEST_UNICAST_TRANSMISSION; no                       —                    IMPOSS
+                                                    requestor auth                                                                    IBLE (G.
+                                                                                                                                      8275.2
+                                                                                                                                      only)
+            F7       L1 physical flooding            Physical fibre access, flood L1                             —                    IMPOSS
+                                                                                                                                      IBLE (no
+                                                                                                                                      PHY)
+
+
+</pre><h3>3.5 Protocol-field abuse — the least-defended surface</h3><pre>
+These are trivially craftable, produce whole-second errors, and are almost absent from the attack literature. Our extractor already
+collects every field involved; none is yet exercised.
+            ID       Attack                               Field                          Effect                                       Status
+            H1       versionPTP downgrade                 versionPTP                     Messages dropped; slave free-runs            SPEC
+            H2       Domain crossing                      domainNumber                   Cross-domain injection or forced discard     SPEC
+            H3       currentUtcOffset manipulation        currentUtcOffset               Whole-second UTC jump, no servo              SPEC —
+                                                                                         anomaly                                      novel
+            H4       leap61 / leap59 injection            leap flags                     Spurious ±1 s step                           SPEC —
+                                                                                                                                      novel
+            H5       Traceability stripping               timeTraceable/frequenc Tricks QL/holdover logic                             SPEC —
+                                                          yTraceable                                                                  novel
+            H6       ptpTimescale confusion               ptpTimescale                   Epoch misinterpretation (~37 s TAI-UTC)      SPEC
+            H8       PATH_TRACE TLV abuse                 PATH_TRACE                     Hide timing loops / fake topology            SPEC
+            H10      AUTHENTICATION TLV                   Annex P TLV                    Force fallback to unauthenticated PTP        SPEC
+                     strip/downgrade
+            H11      Management SET abuse                 §15 management msgs            In-band dataset reconfiguration              SPEC
+            H12      Malformed / fuzzed frames            Header &amp; TLV lengths           Parser crash; daemon fault                   SPEC —
+                                                                                                                                      O-RAN
+                                                                                                                                      24.2.1.2
+            H13      CVE-2021-3570 (linuxptp)             Forwarded msg length check Daemon crash / info leak on a BC                 SPEC
+
+
+</pre><h3>3.6 Below-the-wire and cross-layer</h3><pre>
+             ID            Attack                                          Why it matters                                            Status
+             G1–G4         GNSS jam / spoof / meaconing / PRTC             Upstream of PTP entirely; receiver reports healthy        IMPOSS
+                           firmware compromise                             while time is wrong                                       IBLE (no
+                                                                                                                                     GNSS;
+                                                                                                                                     RF
+                                                                                                                                     illegal
+                                                                                                                                     outside
+                                                                                                                                     a chamb
+                                                                                                                                     er)
+             I1–I3         Kernel-level time interception — hook           Defeats every packet-based detector and all             SPEC —
+                           clock_gettime / ADJ_FREQUENCY                   crypto. The servo reports &quot;locked&quot; while time is wrong. novel,
+                                                                           Sharpest challenge to this entire approach.             high
+                                                                                                                                   value
+             I4–I5         PHC ioctl exploit (CVE-2025-21814), adjtimex    Kernel fault / privilege bypass                           SPEC
+                           leak (CVE-2018-11508)
+             J1–J3         SyncE ESMC QL spoofing, timing-loop             Hijacks frequency-source selection; explicitly noted as   IMPOSS
+                           induction, QL-DNU injection                     uncovered by O-RAN WG11                                   IBLE (no
+                                                                                                                                     PHY/ES
+                                                                                                                                     MC)
+ID      Attack                                    Why it matters                                       Status
+J4–J6   VLAN/MAC spoofing, MACsec                 S-plane VLAN often unprotected; enables most other   SPEC
+        bypass/downgrade                          families                                             (VLAN) /
+                                                                                                       IMPOSS
+                                                                                                       IBLE (M
+                                                                                                       ACsec)
+K1–K4   LLS-C1 direct-link injection; LLS-C2/C3   Topology-specific composites                         K2 RUN;
+        BC-chain poisoning; LLS-C4 local-GNSS                                                          others S
+        spoof; cross-domain handover desync                                                            PEC/IM
+                                                                                                       POSSIB
+                                                                                                       LE
+4 · CONFORMANCE and NEGATIVE test cases
+From the UNH-IOL IEEE 1588 conformance test plans and ITU-T G.8275.1 Amd.3. These are protocol-legality tests — Class A in
+our threshold taxonomy, meaning the standard states the exact pass criterion and no calibration is required.
+               UNH ID          Test                                 Pass criterion                                                   Our
+                                                                                                                                     status
+               c.1.1 / c.1.2   logAnnounceInterval /                Interval within ±30% of mean at 90% CI; logMessageInterval       RUN (as
+                               logSyncInterval                      field correct                                                    cadence
+                                                                                                                                     legality)
+               c.1.3           announceReceiptTimeout               Value 3; must not claim master before timeout, must by N         SPEC
+                                                                    intervals
+               c.1.5           priority1 / priority2                Defaults in Announce; G.8275.1 fixes priority1=128               RUN
+               c.1.7           domainNumber isolation               Announce in a non-matching domain must be ignored                SPEC —
+                                                                                                                                     high
+                                                                                                                                     value
+                                                                                                                                     negative
+                                                                                                                                     test
+               c.2.1           Disqualify by own clockIdentity      Announce whose sourcePortIdentity matches DUT&#x27;s own              SPEC
+                                                                    identity must be rejected (loop protection)
+               c.2.2           Disqualify by most recent            Only the latest Announce per source affects selection            SPEC
+               c.2.3           Foreign-master window                ≥2 Announce within 4 intervals to qualify; &lt;2 must be ignored;   ADOPT
+                                                                    foreignMasterDS ≥5 records                                       ED into
+                                                                                                                                     rule
+               c.2.4           stepsRemoved limit                   ≥255 must be discarded; 254 accepted                             SPEC
+               c.2.5           alternateMasterFlag                  Announce with flag TRUE must be discarded                        SPEC
+               c.2.6           Dataset comparison                   Ordering: priority1 → clockClass → clockAccuracy →               RUN (im
+                                                                    offsetScaledLogVariance → priority2 → grandmasterIdentity        plicitly)
+               c.2.8           State decision algorithm             Correct BMC_MASTER / BMC_PASSIVE / BMC_SLAVE                     SPEC
+                                                                    outputs
+               c.2.9           stepsRemoved ±1 rule                 If received ≥ own+1 → yield; ≤ own−1 → continue announcing SPEC
+               c.7.1           Mean path delay                      Correct computation from Delay_Req/Delay_Resp                    Partially
+                                                                                                                                     RUN
+               —               PTSF states                          lossSync / lossAnnounce / lossDelayResp; port ignores            SPEC
+                                                                    Announce from a failed source
+               —               Transport legality                   Ethernet multicast only; VLAN tags not allowed; unicast          RUN
+                                                                    prohibited                                                       (mcast) /
+                                                                                                                                     SPEC
+                                                                                                                                     (VLAN)
+
+
+
+</pre><h2>5 · BENIGN fault scenarios — the look-alikes</h2><pre>
+58 catalogued. These are the events that resemble attacks but are not, and they are where a detector actually fails in
+deployment. Our benign coverage is the weakest part of the work.
+        ID         Benign scenario                        Observable change                                    Mistakable for                    Status
+        B-01       Planned GM failover                    New grandmasterIdentity; brief                       A1 rogue master                   RUN
+                                                          UNCALIBRATED→SLAVE; no clockClass
+                                                          degradation
+        B-02       Unplanned GM failover                  Announce timeout → BMCA reselect; clockClass         Announce DoS /                    SPEC —
+                                                          may pass 7→52                                        suppression                       critical
+                                                                                                                                                 gap
+        B-03       GM cold reboot                         clockClass walks 248→52→7→6 monotonically            Spoofer injecting degraded        SPEC
+                                                          over minutes                                         Announce
+        B-05       GM priority reconfiguration            Attribute change, no clockClass change;              Priority-manipulation attack SPEC
+                                                          deterministic domain-wide reselect
+        B-06       New GM added to domain                 New clockIdentity; commissioning Announce burst      Rogue GM insertion                SPEC
+        B-08       Dual-GM BMCA flapping                  Repeated GM flips between two known GMs;             Intermittent rogue-master         SPEC —
+                                                          O-RAN calls this &quot;S-1 Grandmaster flapping&quot;          attack                            high
+                                                                                                                                                 value
+        B-09       GM clockIdentity change after          &quot;New&quot; GM at same topological position, same          GM impersonation                  SPEC
+                   card swap                              attributes
+        B-10       GNSS loss → reselect to alternate Phase step equal to known cTE difference                  Time-shift attack                 IMPOSS
+                   GM                                between GM paths; reproducible                                                              IBLE (no
+                                                                                                                                                 GNSS)
+        B-11       Commissioning Announce burst           Rate spike correlated with site power restore,       Announce-flood DoS                SPEC
+                                                          decays monotonically
+ID   Benign scenario                 Observable change                             Mistakable for       Status
+—    PDV / congestion                meanPathDelay variance, load-correlated, no   Delay attack         RUN
+                                     protocol anomaly
+—    Topology / BC reconfiguration   stepsRemoved change consistent with new hop   Rogue BC insertion   RUN
+                                     count
+—    Legitimate BC replacement       New BC identity in path, provisioned          A8 rogue BC          SPEC —
+                                                                                                        critical
+                                                                                                        gap
+—    Real leap-second event          Genuine leap61 flag and 1 s step              H4 leap injection    SPEC
+—    SyncE / EEC degradation,        QL downgrade; drift within mask               GNSS jam             IMPOSS
+     oscillator drift, holdover                                                                         IBLE (no
+                                                                                                        PHY / os
+                                                                                                        cillator)
+6 · What we actually built and ran
+       Scenario                       O-RAN / source ID           How produced on the wire                                                             Reps
+       baseline                       —                           All nodes nominal, GM-A → BC → 3 O-RU clients                                        9
+       A1_rogue_master                11.1.5.2.1                  ptp4l instance, priority2=1, identity off the allow-list, self-announcing            9
+       A2_sync_spoof                  B1/B2 family                scapy-forged Sync with implausible originTimestamp; never sends                      9
+                                                                  Announce
+       A3_replay                      D1                          Live slice captured then retransmitted with tcpreplay                                9
+       A5_dos_flood                   11.1.5.1.1 / 24.2.1.1       scapy high-rate PTP flood                                                            9
+       A8_rogue_bc                    11.1.5.2.2                  Two-port ptp4l (priority2=115) slaving upstream, relaying downstream with            9
+                                                                  stepsRemoved incremented
+       B2_gm_failover                 B-01                        GM-A withdrawn; BMCA elects GM-B, which IS on the allow-list,                        9
+                                                                  maintenance window open
+       B3_pdv_congestion              —                           netem 5 ms ± 3 ms normal distribution on client links                                9
+       B7_topology_change             —                           RU3 link bounced and re-homed during an open maintenance window                      9
+
+
+
+</pre><h2>7 · Validation results  (revised 2026-09-17 — randomised 132-run campaign; supersedes the prior 81-run set)</h2><pre>
+Metric                                               Value                 95% Wilson CI                     n
+Sensitivity (attack recall)                          1.000                 [0.940, 1.000]                    60
+Specificity (decidable-benign: baseline,B2,B3,B7)    1.000                 [0.926, 1.000]                    48
+Abstention correctness (ambiguous benign-&gt;UNKNOWN)   1.000                 [0.757, 1.000]                    12
+Fault-attribution accuracy                           0.817                 [0.701, 0.894]                    60
+Confusion — attack: TP 60, FN 0, UNKNOWN 0. Binary attack detection 60/60. Per-fault attribution: A2 12/12 · A3 12/12 · A5 12/12 · A1 8/12 · A8 5/12.
+Method: rule frozen (18 SHA-256 hashed artefacts) before any admissible run; all defect-exposing reps excluded and deleted; replicates 30-41 produced
+after the final freeze with the rule untouched. Every replicate uses per-rep randomised attacker identities/priorities/timings/bursts (run/randparams.py,
+seeded by rep), so the 132 runs are genuinely independent and the CIs are honest, not optimistic. Zero infrastructure failures across the campaign.
+
+All 12 specificity false positives are the single B_bc_replacement scenario: the frozen context schema holds one expected_bc_identity, so a PROVISIONED
+BC swap cannot be expressed and is flagged as a rogue BC (A8). This is reported as a limitation, NOT patched into the frozen result. Attribution confusion
+A1-&gt;A3 (x4) and A8-&gt;A3 (x7) is the documented re-parenting effect: inserting a rogue master/BC causes real sequenceId restarts that the A3 clause catches
+first; the binary ATTACK verdict is unaffected (60/60). The two new benign scenarios: B_unplanned_failover -&gt; UNKNOWN every time (correct honest
+abstention: a GM crash with no maintenance window is packet-indistinguishable from a suppression attack), B_bc_replacement as above.
+
+Cross-domain validation (NEW): the frozen rule, applied to the REAL TIMESAFE hardware attack captures it was never built on, detects 5/6 by
+standards/protocol rules ALONE (no allow-list, nothing fitted), each citing its exact IEEE 1588 / G.8275.1 clause; the 1/6 miss is a healthy-looking
+spoof (conformant fields, no sequence regression) that requires provisioned context — the theoretically-predicted hard case.
+
+</pre><h2>8 · What these numbers do NOT establish</h2><pre>
+Limitation                             Detail
+Runs are now independent (RESOLVED)    Prior revision had zero randomisation (5 designs x 9 identical reps, effective n~5, CI [0.566,1.000]). FIXED 2026-09-17:
+                                       per-rep randomised attacker params (run/randparams.py). 132 genuinely independent runs, real n=60 per attack class;
+                                       sensitivity CI lower bound is now 0.940, not an optimistic artefact.
+Some benign runs are easy (partly      Two hard benign gap scenarios were added 2026-09-17: B_unplanned_failover (GM crash, no maintenance -&gt; the rule
+addressed 2026-09-17)                  correctly abstains, UNKNOWN 12/12) and B_bc_replacement (a provisioned BC swap -&gt; exposes the single-BC schema
+                                       limitation). The A1-vs-B2 discrimination remains the core claim; the easy benigns (baseline/PDV/topology) still inflate
+                                       raw benign counts, so specificity is reported over decidable-benign (n=48) separately from the abstention axis (n=12).
+Self-designed attacks                  The detector was tested only against attacks written by the same author. That is an easier test than an independent
+                                       adversary.
+Provisioned context is handed to       The allow-list tells the rule which clocks are legitimate. This is genuine operator configuration, but it narrows the claim to
+the rule                               &quot;detect unprovisioned clocks&quot; rather than &quot;detect attacks from traffic alone&quot;.
+9% catalogue coverage                  19 of 168 catalogued cases executed. The 108 SPEC cases are the honest measure of remaining work.
+No hardware-dependent fault            GNSS spoof/jam, GNSS holdover, SyncE/EEC, oscillator drift, and all delay-attack measurement remain untested for
+tested                                 physical reasons stated in §3.3 and §3.6.
+
+
+
+</pre><h2>9 · Highest-value next tests</h2><pre>
+Priority      Test                                              Why
+1             Randomise attack parameters per replicate         Makes the CIs mean what they state. Expected to hold for identity-based checks (A1/A2/A8); the
+                                                                rate-based A5 check is where it may break.
+2             Unplanned GM failover (B-02) + legitimate BC      The two benign cases that genuinely look like attacks. Current specificity is untested against
+              replacement                                       them.
+3             Packet removal / selective interception (F2/F3)   O-RAN mandated test 11.1.5.3.1 — currently not covered at all.
+4             Malformed / fuzzed input (H12)                    O-RAN mandated test 24.2.1.2 — robustness of the parser itself.
+5             Whole-second field abuse (H3/H4/H5)               Trivial to craft, produce 1 s errors, essentially absent from the literature, and every field is already
+                                                                collected by our extractor.
+6             Conformance negatives (c.1.7, c.2.4, c.2.5)       Wrong-domain, stepsRemoved ≥255, alternateMasterFlag — exact standardised pass criteria,
+                                                                no calibration needed.
+Priority     Test                                          Why
+7            Coherent T1+T4 attack (B3)                    Documented as hard to detect because it leaves delay math intact. Directly probes the known
+                                                           blind spot.
+8            Kernel-level time interception (I1–I3)        Defeats every packet-based detector and all cryptography. The sharpest challenge to this entire
+                                                           approach.
+
+
+
+</pre><h2>10 · Sources</h2><pre>
+Source                                                Used for
+O-RAN WG11 Security Test Specification — ETSI TS      Official S-plane security test IDs 11.1.5.1.1/.2, 11.1.5.2.1/.2, 11.1.5.3.1/.2, 24.2.1.1/.2
+104 105 V7.0.0
+O-RAN WG11 Threat Modeling — ETSI TR 104 106          Threat identifiers T-SPLANE-01…04
+V3.0.0
+UNH-IOL IEEE 1588 Default PTP Profiles                Numbered conformance tests c.1.x, c.2.x, c.7.x; foreign-master window behavioural proof
+Conformance Test Plan v0.0.2
+IEEE 1588-2019                                        cl.7.7.2.1 ±30% interval tolerance; §9.3.2.4 foreign master; Table 5 clockClass; cl.11.3 Delay_Resp
+                                                      sequenceId; §15 management; §16 TLVs; Annex P
+ITU-T G.8275.1 + Amd.3                                Profile values, alternate BMCA, clockClass ladder, maxStepsRemoved, successive-interval cap
+ITU-T G.8271.1 / G.8272 / G.8273.2 / G.8260 / G.8261 Network limits, PRTC accuracy, clock classes, metric definitions, wander, SyncE
+/ G.8262 / G.8264
+TIMESAFE — ACM ToPS 2025, doi:10.1145/3775060         Fronthaul attack behaviour; real hardware captures; ~2 s cell-drop timeline
+(arXiv:2412.13049)
+PTPsec — arXiv:2401.10664                             Cyclic path-asymmetry analysis for delay-attack detection
+Springer Cybersecurity s42400-021-00080-y             PTP attack taxonomy; why delay attacks defeat MACsec/Annex P
+Concordia NCC — S-plane in O-RAN: Overview,           Threats T1–T8; LLS-C topology-specific attacks
+Security, Research Directions
+TUM — Feasible Time Delay Attacks Against PTP         Flooding-induced and link-speed asymmetry delay attacks
+MDPI Electronics 9/9/1398                             Coherent T1+T4 time-reference attack; correctionField tampering
+arXiv:2510.06421 — Breaking Precision Time            Kernel/OS-level time interception; CVE-2025-21814, CVE-2018-11508
+CVE-2021-3570 / USN-6097-1                            linuxptp forwarding length-check vulnerability
+linuxptp v4.0 source (foreign.h, ds.h, tlv.h)         FOREIGN_MASTER_THRESHOLD=2; pmc datasets; PORT_STATS_NP /
+                                                      PORT_SERVICE_STATS_NP
+Calnex / Microchip / Meinberg / Cisco / Nokia         Profile restatements, clockClass semantics, benign failure modes, operator practice
+application notes
+
+Full catalogues (60 attack cases, 50+ conformance tests, 58 benign scenarios) with complete URLs are provided as accompanying markdown files. This
+document is the systematic summary.
+</pre>
+</body></html>

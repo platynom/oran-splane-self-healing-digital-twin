@@ -1,0 +1,27 @@
+ptp4l[6129.936]: port 1 (v-bc-up): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[6129.968]: port 2 (v-bc-dn): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[6129.968]: port 0 (/var/run/p.bc): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[6129.968]: port 0 (/var/run/pr.bc): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[6130.329]: port 1 (v-bc-up): LISTENING to MASTER on ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES
+ptp4l[6130.329]: selected local clock 020000.fffe.000001 as best master
+ptp4l[6130.329]: port 1 (v-bc-up): assuming the grand master role
+ptp4l[6130.366]: port 1 (v-bc-up): new foreign master 020000.fffe.00000a-1
+ptp4l[6130.417]: port 1 (v-bc-up): new foreign master 020000.fffe.00000b-1
+ptp4l[6130.420]: port 2 (v-bc-dn): LISTENING to MASTER on ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES
+ptp4l[6130.420]: port 1 (v-bc-up): assuming the grand master role
+ptp4l[6130.420]: port 2 (v-bc-dn): assuming the grand master role
+ptp4l[6130.616]: selected best master clock 020000.fffe.00000a
+ptp4l[6130.616]: foreign master not using PTP timescale
+ptp4l[6130.616]: port 1 (v-bc-up): MASTER to UNCALIBRATED on RS_SLAVE
+ptp4l[6130.667]: foreign master not using PTP timescale
+ptp4l[6132.680]: master offset        903 s0 freq   -1179 path delay      4141
+ptp4l[6134.682]: master offset       1531 s0 freq    +614 path delay      4743
+ptp4l[6136.686]: master offset       1068 s0 freq    +123 path delay      5452
+ptp4l[6138.689]: master offset        448 s0 freq    -118 path delay      5835
+ptp4l[6140.691]: master offset       -302 s0 freq    -728 path delay      5128
+ptp4l[6142.693]: master offset       -325 s0 freq    +479 path delay      6111
+ptp4l[6144.696]: master offset      -2491 s0 freq   -1546 path delay      5181
+ptp4l[6146.698]: master offset       -582 s0 freq   +2063 path delay      7403
+ptp4l[6148.701]: master offset       -542 s0 freq    -550 path delay      6261
+ptp4l[6150.703]: master offset        302 s0 freq    +435 path delay      6288
+ptp4l[6152.707]: master offset       1443 s0 freq    +834 path delay      6817

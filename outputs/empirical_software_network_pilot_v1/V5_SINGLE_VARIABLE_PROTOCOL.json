@@ -1,0 +1,88 @@
+{
+  "schema_version": "v5-single-variable-attribution-protocol-2026-09-13",
+  "status": "FROZEN_BEFORE_ANY_V5_CAPTURE",
+  "purpose": "Resolve the V4 three-parameter confound by varying one netem parameter at a time while holding the others fixed. Determines which configured parameter the frozen dispersion-persistence observation responds to.",
+  "development_exclusion": "All V1-V4 captures are excluded from V5 estimation and from any parameter selection.",
+  "frozen_rule": {
+    "standard_deviation_threshold_s": 0.00016,
+    "block_size": 8,
+    "high_block_count": 2,
+    "high_block_window_s": 3.0,
+    "v1_engine_sha256": "1c1d7edfbcc38b6e0c950984eff72b58592160c71ad8e797ff719d4aee0b8d0e",
+    "v3_nonoverlap_engine_sha256": "ee328876367e6547878f85eed60405624f55bd21a03348f4d9527fd302250172",
+    "isolated_runner_sha256": "d25a8441640f9d6faacbecfc9dba6bb50f7305bb555e5d9c556ab2831e118e79",
+    "validator_sha256": "5ebc2033e0c243f756ff02f8280c2fd115d43ecbd589697ffdee3cb6887d7e13"
+  },
+  "design": "One factor varied per arm from a common reference point. The reference is the V4 benign condition.",
+  "planned_conditions": {
+    "A_reference_benign": {
+      "n": 5,
+      "netem": "delay 100us 20us distribution normal",
+      "note": "reference arm, reproduces the V4 benign condition",
+      "runner_scenario": "benign_delay_jitter_no_loss"
+    },
+    "B_loss_only": {
+      "n": 5,
+      "netem": "delay 100us 20us distribution normal loss 1%",
+      "note": "adds ONLY loss to the reference",
+      "runner_scenario": "v5_loss_only"
+    },
+    "C_jitter_only": {
+      "n": 5,
+      "netem": "delay 100us 200us distribution normal",
+      "note": "adds ONLY the larger jitter to the reference",
+      "runner_scenario": "v5_jitter_only"
+    },
+    "D_delay_only": {
+      "n": 5,
+      "netem": "delay 1000us 20us distribution normal",
+      "note": "adds ONLY the larger mean delay to the reference",
+      "runner_scenario": "v5_delay_only"
+    },
+    "E_full_v4_impairment": {
+      "n": 5,
+      "netem": "delay 1000us 200us distribution normal loss 1%",
+      "note": "positive control, identical to the V4 impairment condition",
+      "runner_scenario": "netem_delay_jitter_loss"
+    }
+  },
+  "prespecified_interpretation": {
+    "if_only_B_and_E_positive": "the observation is attributable to configured loss",
+    "if_only_C_and_E_positive": "the observation is attributable to configured jitter magnitude",
+    "if_only_D_and_E_positive": "the observation is attributable to configured mean delay",
+    "if_multiple_single_factor_arms_positive": "the observation responds to more than one factor; report each",
+    "if_E_positive_but_no_single_factor_arm_positive": "the observation requires a combination; no single-parameter attribution is supported",
+    "if_A_positive": "the reference arm itself triggers; the V4 control result does not reproduce and the whole comparison is void pending investigation"
+  },
+  "execution_constraints": [
+    "Same frozen runner, detector, validator and thresholds as V4. No retuning.",
+    "Same PILOT_DURATION_SECONDS as V4 (8).",
+    "Interleave arms A,B,C,D,E within each repetition so host-load drift is spread across arms.",
+    "Preserve every failed attempt with its reason. Never delete a run directory.",
+    "If an arm cannot be executed exactly as frozen, preserve the failure and report it; do not substitute."
+  ],
+  "analysis": {
+    "unit": "run",
+    "report": [
+      "per-arm k/n and Wilson 95%",
+      "first observation times",
+      "validity and invalid reasons",
+      "independent source-silence events",
+      "all source-manifest rehashes"
+    ],
+    "no_retuning": "No threshold, arm, or inclusion change after the first V5 capture without superseding this protocol."
+  },
+  "decision_boundary": "V5 can attribute the observation to a configured netem parameter under these software conditions only. It cannot establish receiver harm, attack detection, physical timing quality, or recovery.",
+  "runner_and_validator_versioning": {
+    "reason": "V5 needs three single-variable arms the V4 runner does not implement. The V4 runner and validator were NOT modified; they remain byte-identical so V4 stays reproducible.",
+    "v4_runner_sha256_unchanged": "94774063f997e71024bf3325339f38820fd7ea04c5ba9f20fa97b53970725803",
+    "v4_validator_sha256_unchanged": "84afc4ea6045cd41d2733961b62eaa31ee1565699d13a070faf97f8663e38be2",
+    "v5_runner_path": "01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/harness/run_empirical_software_pilot_v5.sh",
+    "v5_validator_path": "outputs/empirical_software_network_pilot_v1/validate_pilot_v5.py",
+    "delta": "Adds scenarios v5_loss_only, v5_jitter_only, v5_delay_only, each emitting v5_netem_command_confirmed. Detector engines and all thresholds are unchanged.",
+    "arms_reusing_existing_scenarios": {
+      "A_reference_benign": "benign_delay_jitter_no_loss",
+      "E_full_v4_impairment": "netem_delay_jitter_loss"
+    }
+  }
+}

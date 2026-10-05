@@ -1,0 +1,101 @@
+{
+  "schema_version": "s14-broader-software-experiment-protocol-2026-09-13",
+  "status": "FROZEN_BEFORE_ANY_S14_TRIAL",
+  "purpose": "Evaluate classification performance across 5 broader conditions (baseline, benign, jitter fault with action, jitter fault with no-action, authorized source failover) and validate the revised integrated runner against post-seal append defects.",
+  "development_exclusion": "All V1-V5 and S11 historical runs are excluded from S14 parameter selection and estimation.",
+  "frozen_rule": {
+    "v1_engine_sha256": "1c1d7edfbcc38b6e0c950984eff72b58592160c71ad8e797ff719d4aee0b8d0e",
+    "v3_nonoverlap_engine_sha256": "ee328876367e6547878f85eed60405624f55bd21a03348f4d9527fd302250172",
+    "live_detector_sha256": "897ed8833e5c5615acf2d725add0da0282a65ce9067a0793c1b9117077bcec84",
+    "seal_owned_writers_v2_sha256": "da37664ae2d8adbbd3a3a90d266c5eee64736bca64a52e5b5b746ccb2111f0a7",
+    "s11_runner_v2_sha256": "90c9691416d4e54e96cc1d5e2f4c6654d56264fd091ffadc5cb71913e51f667e",
+    "standard_deviation_threshold_s": 0.00016,
+    "block_size": 8,
+    "high_block_count": 2,
+    "high_block_window_s": 3.0,
+    "announce_timeout_s": 0.75,
+    "s14_runner_sha256": "ec41100827495c39ba6c609c5f21416d4421c43e5a1969abb8933766626e22d7",
+    "s14_batch_runner_sha256": "8194c43115fdc6723795cfe033e99589a7ba27dd318a6209d68caa9eb7c38a71"
+  },
+  "topology": "Two independent L2 bridges. Master A on segment 1, master B on segment 2. One slaveOnly ptp4l with one port on each segment.",
+  "conditions": {
+    "baseline_clean": {
+      "n": 5,
+      "arm": "no_action",
+      "netem": "none",
+      "expected_classification": "BENIGN_WITHIN_POLICY",
+      "expected_receiver_state": "segment1 active, no failover"
+    },
+    "benign_delay_jitter": {
+      "n": 5,
+      "arm": "no_action",
+      "netem": "delay 100us 20us distribution normal",
+      "expected_classification": "BENIGN_WITHIN_POLICY",
+      "expected_receiver_state": "segment1 active, no failover"
+    },
+    "jitter_fault_action": {
+      "n": 5,
+      "arm": "action",
+      "netem": "delay 100us 200us distribution normal",
+      "expected_classification": "HARMFUL_UNDER_POLICY",
+      "expected_receiver_state": "port 1 FAULTY, port 2 UNCALIBRATED/SLAVE (takeover)"
+    },
+    "jitter_fault_no_action": {
+      "n": 5,
+      "arm": "no_action",
+      "netem": "delay 100us 200us distribution normal",
+      "expected_classification": "HARMFUL_UNDER_POLICY",
+      "expected_receiver_state": "port 1 stays impaired, no takeover"
+    },
+    "authorized_source_failover": {
+      "n": 5,
+      "arm": "no_action",
+      "netem": "none (clean master A termination)",
+      "expected_classification": "BENIGN_WITHIN_POLICY (no false jitter trigger)",
+      "expected_receiver_state": "BMCA failover to master B upon announce receipt timeout"
+    }
+  },
+  "prespecified_interpretation": {
+    "classification_validity": "Zero false triggers in baseline_clean, benign_delay_jitter, and authorized_source_failover arms (specificity = 1.0). High sensitivity in jitter_fault arms.",
+    "recovery_separation": "Action arm exhibits 100% active port failover to segment 2, while no_action control exhibits 0% failover despite identical impairment.",
+    "integrity_requirement": "All writers must exit with returncode 0 recorded in writer_exit_status.tsv, FIFO drained on EOF, and source_manifest.sha256 exactly matching all on-disk files without post-seal appending."
+  },
+  "decision_boundary": "S14 evaluates software-level packet statistics, protocol state transitions, and segment failover. It establishes no claims regarding physical clock phase accuracy, hardware conformance, or external cyber-attack attribution.",
+  "planned_runs": {
+    "baseline_clean": [
+      "20260913_s14_base1",
+      "20260913_s14_base2",
+      "20260913_s14_base3",
+      "20260913_s14_base4",
+      "20260913_s14_base5"
+    ],
+    "benign_delay_jitter": [
+      "20260913_s14_bng1",
+      "20260913_s14_bng2",
+      "20260913_s14_bng3",
+      "20260913_s14_bng4",
+      "20260913_s14_bng5"
+    ],
+    "jitter_fault_action": [
+      "20260913_s14_jact1",
+      "20260913_s14_jact2",
+      "20260913_s14_jact3",
+      "20260913_s14_jact4",
+      "20260913_s14_jact5"
+    ],
+    "jitter_fault_no_action": [
+      "20260913_s14_jnoact1",
+      "20260913_s14_jnoact2",
+      "20260913_s14_jnoact3",
+      "20260913_s14_jnoact4",
+      "20260913_s14_jnoact5"
+    ],
+    "authorized_source_failover": [
+      "20260913_s14_asf1",
+      "20260913_s14_asf2",
+      "20260913_s14_asf3",
+      "20260913_s14_asf4",
+      "20260913_s14_asf5"
+    ]
+  }
+}

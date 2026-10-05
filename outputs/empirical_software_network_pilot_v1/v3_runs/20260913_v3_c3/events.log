@@ -1,0 +1,7 @@
+run_id=w3c3 phase=setup event=tcpdump_ready utc=2026-09-13T02:20:43Z monotonic_s=201.01 status=PASS
+run_id=w3c3 phase=setup event=master_a_ready utc=2026-09-13T02:20:43Z monotonic_s=201.02 status=PASS
+run_id=w3c3 phase=setup event=master_b_ready utc=2026-09-13T02:20:43Z monotonic_s=201.02 status=PASS
+run_id=w3c3 phase=setup event=slave_ready utc=2026-09-13T02:20:43Z monotonic_s=201.03 status=PASS
+run_id=w3c3 phase=authorized_source_change_no_action_control event=phase_started utc=2026-09-13T02:20:43Z monotonic_s=201.04 status=PASS
+run_id=w3c3 phase=authorized_source_change_no_action_control event=qdisc_baseline_observed utc=2026-09-13T02:20:43Z monotonic_s=201.05 status=PASS
+run_id=w3c3 phase=authorized_source_change_no_action_control event=phase_finished utc=2026-09-13T02:20:51Z monotonic_s=209.06 status=PASS

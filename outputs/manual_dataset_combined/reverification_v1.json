@@ -1,0 +1,364 @@
+[
+  {
+    "criterion": "3",
+    "claim_as_recorded": "PCAP-to-telemetry alignment with cryptographic lineage sidecar binding source PCAP hash to generated telemetry records.",
+    "primary_sources_read": [
+      {
+        "path": "dataset\\timesafe\\s-plane_security_repo\\DataCollectionPTP\\prod_successful_announce_attack_ptp.pcap",
+        "sha256": "0690ed95ddc3134e0dbec8e0d7a79b65b379c9574542a7792c1ff2f5a1b20599"
+      },
+      {
+        "path": "outputs\\manual_dataset_combined\\production_telemetry_lineage.csv",
+        "sha256": "e7ddac745bed3ade9ad0f91cc5d78afd46fcda8b2c55c287eb218fd6cf0d58b5"
+      },
+      {
+        "path": "01_CURRENT_SPlane_SelfHealing\\oran_splane_selfhealing\\ingest\\pcap_ingest.py",
+        "sha256": "22183e62a18df627567d4a36ab8e8cdaa315f96a896bede1e2f27f283a6e2327"
+      }
+    ],
+    "what_the_code_computed": {
+      "total_pcap_ptp_frames": 13565,
+      "derived_telemetry_rows": 13562,
+      "unmatched_pcap_prefix_frames": 3,
+      "unmatched_derived_rows": 0,
+      "emitted_packet_indices_span": "4 to 13565",
+      "alignment_nature": "one-to-one for emitted records (13,562 derived rows map one-to-one to packets 4..13,565; packets 1..3 lack initial sync state)"
+    },
+    "verdict": "MEASURED",
+    "limitation": "The one-to-one binding is established for this exact capture and ingester version; it does not claim linkage to arbitrary historical unverified CSV exports."
+  },
+  {
+    "criterion": "4",
+    "claim_as_recorded": "Formal taxonomy established separating packet annotations, projections, simulation, model predictions, actions, and outcomes.",
+    "primary_sources_read": [
+      {
+        "path": "outputs\\manual_dataset_combined\\LABEL_TAXONOMY.md",
+        "sha256": "37bab61e02193a0db1abdaf3ed4044ffbd8782312c1ec0da19279bae7125dcb3"
+      }
+    ],
+    "what_the_code_computed": {
+      "defined_levels_count": 10,
+      "levels_with_carrier_count": 9,
+      "levels_lacking_carrier": [
+        "Measured clock health"
+      ],
+      "carrier_map": {
+        "Supplied packet Label=1": "dataset/timesafe/timesafe_prod_successful_announce_attack_labeled.csv",
+        "Supplied packet Label=0": "dataset/timesafe/timesafe_prod_successful_announce_attack_labeled.csv",
+        "Packet-pattern description": "outputs/manual_dataset_combined/issue01_production_verification.json",
+        "H0 simulated": "01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/faults/injectors.py",
+        "H1 simulated": "01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/faults/injectors.py",
+        "Projected TIMESAFE H0/H1": "outputs/manual_dataset_combined/prepare_timesafe_sessions.py (quarantined)",
+        "healthy simulated": "01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/fronthaul_sim/simulator.py",
+        "Model H1, novelty, UNKNOWN, PENDING": "01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/stats/openset_eval.py",
+        "safe_default / action candidate": "01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/healing/loop.py",
+        "Measured clock health": null
+      }
+    },
+    "verdict": "DOCUMENTED_ONLY",
+    "limitation": "The taxonomy defines 10 levels, but 'Measured clock health' has no carrier file in the repository (no hardware timestamping or physical M-plane logs exist)."
+  },
+  {
+    "criterion": "7",
+    "claim_as_recorded": "Active schema parameters mapped to code locations and consumer functions.",
+    "primary_sources_read": [
+      {
+        "path": "outputs\\manual_dataset_combined\\PARAMETER_PROVENANCE.md",
+        "sha256": "8921764c799cc4f9e8cb707ed8ffae146066919266b207eac937c522317d54b8"
+      },
+      {
+        "path": "01_CURRENT_SPlane_SelfHealing\\oran_splane_selfhealing\\ingest\\pcap_ingest.py",
+        "sha256": "22183e62a18df627567d4a36ab8e8cdaa315f96a896bede1e2f27f283a6e2327"
+      },
+      {
+        "path": "01_CURRENT_SPlane_SelfHealing\\oran_splane_selfhealing\\ingest\\schema.py",
+        "sha256": "3d53701da9344389f2dd43b0e3e381cbacc278f7b40d800f63c3c655cf0dee87"
+      },
+      {
+        "path": "01_CURRENT_SPlane_SelfHealing\\oran_splane_selfhealing\\telemetry\\features.py",
+        "sha256": "1406616a7c66fd8ab8819bbb9a5eb07f9557309bdc1f850429f6fbb0d419c461"
+      },
+      {
+        "path": "01_CURRENT_SPlane_SelfHealing\\oran_splane_selfhealing\\config\\default.yaml",
+        "sha256": "be2517cb3a8755d74ee6d09ed7d45e97664e74f50e79962c05bef90f5cfe4300"
+      },
+      {
+        "path": "01_CURRENT_SPlane_SelfHealing\\oran_splane_selfhealing\\healing\\loop.py",
+        "sha256": "f39b8f9e7f3ef3ddc75a45f3780d7e612ece1123f0e35287e0626810929411fd"
+      },
+      {
+        "path": "01_CURRENT_SPlane_SelfHealing\\oran_splane_selfhealing\\twin\\model.py",
+        "sha256": "81028155f9a7a1ecaea20ac80fece0e8e48ab246758431623d3b5feac2192610"
+      }
+    ],
+    "what_the_code_computed": {
+      "audited_parameters_count": 27,
+      "found_count": 27,
+      "parameter_details": {
+        "t_s": {
+          "status": "found",
+          "classification": "calculated"
+        },
+        "offset_ns": {
+          "status": "found",
+          "classification": "calculated"
+        },
+        "measured_offset_ns": {
+          "status": "found",
+          "classification": "default"
+        },
+        "path_delay_ns": {
+          "status": "found",
+          "classification": "calculated"
+        },
+        "pdv_ns": {
+          "status": "found",
+          "classification": "calculated"
+        },
+        "offset_valid": {
+          "status": "found",
+          "classification": "inferred"
+        },
+        "path_delay_valid": {
+          "status": "found",
+          "classification": "inferred"
+        },
+        "telemetry_valid": {
+          "status": "found",
+          "classification": "inferred"
+        },
+        "stale_s": {
+          "status": "found",
+          "classification": "inferred"
+        },
+        "ptp_seq_id": {
+          "status": "found",
+          "classification": "parsed"
+        },
+        "ptp_msg_type": {
+          "status": "found",
+          "classification": "parsed"
+        },
+        "msg_rate_hz": {
+          "status": "found",
+          "classification": "calculated"
+        },
+        "grandmaster_identity": {
+          "status": "found",
+          "classification": "parsed"
+        },
+        "priority1": {
+          "status": "found",
+          "classification": "parsed"
+        },
+        "clock_class": {
+          "status": "found",
+          "classification": "parsed"
+        },
+        "clock_accuracy": {
+          "status": "found",
+          "classification": "parsed"
+        },
+        "priority2": {
+          "status": "found",
+          "classification": "parsed"
+        },
+        "steps_removed": {
+          "status": "found",
+          "classification": "parsed"
+        },
+        "time_source": {
+          "status": "found",
+          "classification": "parsed"
+        },
+        "gnss_sync_status": {
+          "status": "found",
+          "classification": "unavailable"
+        },
+        "satellites_tracked": {
+          "status": "found",
+          "classification": "unavailable"
+        },
+        "gnss_available": {
+          "status": "found",
+          "classification": "unavailable"
+        },
+        "holdover": {
+          "status": "found",
+          "classification": "inferred"
+        },
+        "synce_ql": {
+          "status": "found",
+          "classification": "unavailable"
+        },
+        "freq_error_ppb": {
+          "status": "found",
+          "classification": "default"
+        },
+        "source_agreement_tolerance_ns": {
+          "status": "found",
+          "classification": "default"
+        },
+        "ACTION_EFFECT": {
+          "status": "found",
+          "classification": "simulated"
+        }
+      }
+    },
+    "verdict": "MEASURED",
+    "limitation": "Code confirmed that parameters are parsed, calculated, defaulted, or inferred in software; no parameter represents calibrated physical hardware telemetry."
+  },
+  {
+    "criterion": "8",
+    "claim_as_recorded": "Thresholds documented as configured software parameters rather than physical limits.",
+    "primary_sources_read": [
+      {
+        "path": "outputs\\manual_dataset_combined\\THRESHOLD_AND_RECOVERY_AUDIT.md",
+        "sha256": "f66319487150c20b8c371ab01b53e6bb158846711ccb66ed1fba13994aa763c1"
+      },
+      {
+        "path": "01_CURRENT_SPlane_SelfHealing\\oran_splane_selfhealing\\config\\default.yaml",
+        "sha256": "be2517cb3a8755d74ee6d09ed7d45e97664e74f50e79962c05bef90f5cfe4300"
+      }
+    ],
+    "what_the_code_computed": {
+      "audited_thresholds": [
+        {
+          "threshold": "100 ns",
+          "key": "anomaly_threshold_ns",
+          "unit": "ns",
+          "application": "healing/loop.py detect",
+          "in_config": true,
+          "origin_supported_in_repo": false
+        },
+        {
+          "threshold": "0.4 s / 0.2 s",
+          "key": "window_s / step_s",
+          "unit": "s",
+          "application": "telemetry/features.py window_features",
+          "in_config": true,
+          "origin_supported_in_repo": false
+        },
+        {
+          "threshold": "2 of 3",
+          "key": "persistence",
+          "unit": "windows",
+          "application": "stats/persistence_eval.py",
+          "in_config": true,
+          "origin_supported_in_repo": false
+        },
+        {
+          "threshold": "1.0 s / 2.0 s",
+          "key": "decision_budget_s / failure_window_s",
+          "unit": "s",
+          "application": "twin evaluation",
+          "in_config": true,
+          "origin_supported_in_repo": false
+        },
+        {
+          "threshold": "20 ns",
+          "key": "source_agreement_tolerance_ns",
+          "unit": "ns",
+          "application": "cross-source comparison",
+          "in_config": true,
+          "origin_supported_in_repo": false
+        },
+        {
+          "threshold": "6, 2, 1.5 ppb",
+          "key": "oscillator tolerances",
+          "unit": "ppb",
+          "application": "consistency check",
+          "in_config": false,
+          "origin_supported_in_repo": false
+        }
+      ],
+      "hundred_ns_justification_found": false,
+      "hundred_ns_origin": "Configured software default in default.yaml; no repository file provides physical calibration or empirical justification."
+    },
+    "verdict": "MEASURED",
+    "limitation": "All thresholds are confirmed to be configured software parameters without physical calibration in the repository."
+  },
+  {
+    "criterion": "9",
+    "claim_as_recorded": "Descriptive boundaries defined; causal recovery claims removed from pipeline.",
+    "primary_sources_read": [
+      {
+        "path": "outputs\\manual_dataset_combined\\THRESHOLD_AND_RECOVERY_AUDIT.md",
+        "sha256": "f66319487150c20b8c371ab01b53e6bb158846711ccb66ed1fba13994aa763c1"
+      },
+      {
+        "path": "01_CURRENT_SPlane_SelfHealing\\oran_splane_selfhealing\\stats\\openset_eval.py",
+        "sha256": "3c6fd92c96343a339cbe35d70759e6e4403493ac650883803f051e6dacf56111"
+      }
+    ],
+    "what_the_code_computed": {
+      "correlation_claims_inspected": [
+        {
+          "claim": "Window timing features (offset_abs_max, pdv_std) correlate with attack labels",
+          "feature_origin": "Derived from packet traffic inside the same time interval as the label projection",
+          "circularity_detected": true,
+          "code_action": "Quarantined by QUARANTINED_CAPTURE_IDS and QUARANTINED_INPUT_HASHES in openset_eval.py"
+        }
+      ],
+      "quarantine_enforced_in_code": true
+    },
+    "verdict": "QUARANTINED",
+    "limitation": "Historical session relationships are circular because features and labels are computed from the same packet window; code quarantines these sessions."
+  },
+  {
+    "criterion": "11",
+    "claim_as_recorded": "Parameter guide and explanations cover schema parameters, conditional actions and primary-source context.",
+    "primary_sources_read": [
+      {
+        "path": "outputs\\manual_dataset_combined\\ACCEPTANCE_REGISTER.md",
+        "sha256": "c4d704683622cf84af00326b5f19cb1e23b3789813bd46110e67936d597e2c09"
+      },
+      {
+        "path": "outputs\\empirical_software_network_pilot_v1\\EXPLANATION.md",
+        "sha256": "13447dbac18afaccb18f5f61c0455d4117ab7ac0ef30450204127467b85e9dbd"
+      },
+      {
+        "path": "outputs\\manual_dataset_combined\\CRITERION_06_FINDINGS.md",
+        "sha256": "b2443fc5508b023d8a1cf4e26703eef9dcdec54290d2dc1c764ca6183ffeef86"
+      },
+      {
+        "path": "outputs\\manual_dataset_combined\\PCAP_PRIMARY_EVIDENCE.md",
+        "sha256": "4226a42694f0283ccadaaf241c6aac47f297a2be28b616434c472f1480037c7d"
+      }
+    ],
+    "what_the_code_computed": {
+      "retained_conclusions_audited": 8,
+      "fully_explained_with_six_questions": 8,
+      "conclusions_lacking_six_questions": [],
+      "all_retained_conclusions_covered": true
+    },
+    "verdict": "MEASURED",
+    "limitation": "Every retained conclusion across empirical pilot, multi-raw session, and production PCAP findings carries an explicit WHAT/WHICH/WHERE/WHEN/WHY/HOW breakdown with evidence and bounds."
+  },
+  {
+    "criterion": "12",
+    "claim_as_recorded": "Reconciled all 45 source manifest records and cells against canonical workbook.",
+    "primary_sources_read": [
+      {
+        "path": "outputs\\manual_dataset_combined\\detailed_reconciliation.json",
+        "sha256": "eeb1681bc393a5570ce89a7d311b9ff0e0eb254660fceaef036a632091f64059"
+      },
+      {
+        "path": "outputs\\manual_dataset_combined\\part_01_000.json",
+        "sha256": "2d7c6b23f0534d55df26fb2043e5e1cbc2190dacbe0442b8f07a0dc19044c66c"
+      }
+    ],
+    "what_the_code_computed": {
+      "source_files_count_expected": 45,
+      "source_files_count_recomputed": 45,
+      "files_exist_count": 45,
+      "all_hashes_matched": true,
+      "total_rows_expected": 523176,
+      "total_rows_recomputed": 523176,
+      "row_count_match": true,
+      "disagreements": []
+    },
+    "verdict": "MEASURED",
+    "limitation": "Recomputed row counts and SHA-256 hashes exactly across all 45 source files; does not validate external authenticity of raw capture files."
+  }
+]

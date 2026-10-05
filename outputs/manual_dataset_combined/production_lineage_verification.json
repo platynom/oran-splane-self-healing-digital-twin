@@ -1,0 +1,16 @@
+{
+  "method": "Actual pcap_to_telemetry output matched by capture-hash and verified-unique message-type/sequence key; exact capture-relative time cross-check; no timestamp-only join",
+  "pcap_sha256": "0690ed95ddc3134e0dbec8e0d7a79b65b379c9574542a7792c1ff2f5a1b20599",
+  "decoded_packets": 13565,
+  "verified_output_records": 13562,
+  "unemitted_packet_indices": [
+    1,
+    2,
+    3
+  ],
+  "ingester_sha256": "22183e62a18df627567d4a36ab8e8cdaa315f96a896bede1e2f27f283a6e2327",
+  "schema_sha256": "3d53701da9344389f2dd43b0e3e381cbacc278f7b40d800f63c3c655cf0dee87",
+  "derived_csv_sha256": "17dab7f7600964028f1841e9ef69e17290774cca261a35495b7f43599c5c6c2d",
+  "sidecar_sha256": "e7ddac745bed3ade9ad0f91cc5d78afd46fcda8b2c55c287eb218fd6cf0d58b5",
+  "scope": "Only this exact PCAP and this regenerated actual output. Does not claim linkage to every historical telemetry export or validate physical timing/labels."
+}

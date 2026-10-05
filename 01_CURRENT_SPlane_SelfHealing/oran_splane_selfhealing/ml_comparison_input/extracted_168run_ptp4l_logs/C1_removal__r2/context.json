@@ -1,0 +1,7 @@
+{ "scenario":"C1_removal", "class":"attack", "fault_id":"C1", "rep":901,
+  "gm_allowlist":["020000fffe00000a","020000fffe00000b"],
+  "provisioned_backup_gm":"020000fffe00000b",
+  "expected_bc_identity":"020000fffe000001",
+  "expected_client_identities":["020000fffe00000c","020000fffe00000d","020000fffe00000e"],
+  "expected_steps_removed_at_ru":1, "maintenance_window_open":false, "leap_window_open":false,
+  "description":"On-path selective interception: BC downstream port (v-bc-dn) blackholed for a sustained sub-window - RUs starved of Sync/Announce below the rate the BC declares (netem unavailable in this kernel, so realised as a link blackhole)" }

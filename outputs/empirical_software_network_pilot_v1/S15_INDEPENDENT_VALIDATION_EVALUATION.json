@@ -1,0 +1,2856 @@
+{
+  "schema_version": "s15-independent-validation-evaluation-v1",
+  "protocol": "S15_INDEPENDENT_VALIDATION_PROTOCOL_V5.json",
+  "protocol_sha256": "4a0134048067b31d934f3d283e81d38c538868932b599523167624a66d762f3f",
+  "evaluator_sha256": "c6adc2be909ced7751b45c733295cb6ee99e5d10ce3b15688f3c500f7e9f7841",
+  "runs_found": 30,
+  "runs_counted": 30,
+  "runs_unknown": 0,
+  "two_by_two": {
+    "above_boundary_and_trigger": 14,
+    "above_boundary_and_no_trigger": 1,
+    "below_boundary_and_trigger": 7,
+    "below_boundary_and_no_trigger": 8,
+    "note": "Rows are the receiver-side dispersion label, columns the detector outcome. Below-boundary-and-trigger is a trigger-without-above-boundary, and above-boundary-and-no-trigger a missed-above-boundary. Neither is a false positive or a miss with respect to harm; harm is not measured here."
+  },
+  "sensitivity_trigger_rate_among_above_boundary": {
+    "point": 0.9333,
+    "low": 0.7018,
+    "high": 0.9881,
+    "n": 15,
+    "k": 14
+  },
+  "specificity_no_trigger_rate_among_below_boundary": {
+    "point": 0.5333,
+    "low": 0.3012,
+    "high": 0.7519,
+    "n": 15,
+    "k": 8
+  },
+  "overall_agreement": 0.7333,
+  "majority_label_rate": 0.5,
+  "prespecified_branch_reached": "the detector triggers at jitter levels the receiver measurement places below the boundary; see per-condition divergence",
+  "per_condition": {
+    "j020": {
+      "runs": 6,
+      "counted": 6,
+      "above_boundary": 0,
+      "below_boundary": 6,
+      "unknown": 0,
+      "triggered_among_counted": 0,
+      "dispersions_ns": [
+        10657,
+        13464,
+        14620,
+        15822,
+        16008,
+        24405
+      ],
+      "trigger_rate_among_counted": {
+        "point": 0.0,
+        "low": 0.0,
+        "high": 0.3903,
+        "n": 6,
+        "k": 0
+      },
+      "above_boundary_rate_among_counted": {
+        "point": 0.0,
+        "low": 0.0,
+        "high": 0.3903,
+        "n": 6,
+        "k": 0
+      }
+    },
+    "j060": {
+      "runs": 6,
+      "counted": 6,
+      "above_boundary": 0,
+      "below_boundary": 6,
+      "unknown": 0,
+      "triggered_among_counted": 5,
+      "dispersions_ns": [
+        13480,
+        17033,
+        21673,
+        23840,
+        24560,
+        27743
+      ],
+      "trigger_rate_among_counted": {
+        "point": 0.8333,
+        "low": 0.4365,
+        "high": 0.9699,
+        "n": 6,
+        "k": 5
+      },
+      "above_boundary_rate_among_counted": {
+        "point": 0.0,
+        "low": 0.0,
+        "high": 0.3903,
+        "n": 6,
+        "k": 0
+      }
+    },
+    "j100": {
+      "runs": 6,
+      "counted": 6,
+      "above_boundary": 3,
+      "below_boundary": 3,
+      "unknown": 0,
+      "triggered_among_counted": 4,
+      "dispersions_ns": [
+        20564,
+        25151,
+        28644,
+        31629,
+        32961,
+        38563
+      ],
+      "trigger_rate_among_counted": {
+        "point": 0.6667,
+        "low": 0.3,
+        "high": 0.9032,
+        "n": 6,
+        "k": 4
+      },
+      "above_boundary_rate_among_counted": {
+        "point": 0.5,
+        "low": 0.1876,
+        "high": 0.8124,
+        "n": 6,
+        "k": 3
+      }
+    },
+    "j140": {
+      "runs": 6,
+      "counted": 6,
+      "above_boundary": 6,
+      "below_boundary": 0,
+      "unknown": 0,
+      "triggered_among_counted": 6,
+      "dispersions_ns": [
+        29031,
+        31635,
+        33153,
+        34752,
+        36503,
+        40689
+      ],
+      "trigger_rate_among_counted": {
+        "point": 1.0,
+        "low": 0.6097,
+        "high": 1.0,
+        "n": 6,
+        "k": 6
+      },
+      "above_boundary_rate_among_counted": {
+        "point": 1.0,
+        "low": 0.6097,
+        "high": 1.0,
+        "n": 6,
+        "k": 6
+      }
+    },
+    "j200": {
+      "runs": 6,
+      "counted": 6,
+      "above_boundary": 6,
+      "below_boundary": 0,
+      "unknown": 0,
+      "triggered_among_counted": 6,
+      "dispersions_ns": [
+        38693,
+        46562,
+        47618,
+        47827,
+        51777,
+        63946
+      ],
+      "trigger_rate_among_counted": {
+        "point": 1.0,
+        "low": 0.6097,
+        "high": 1.0,
+        "n": 6,
+        "k": 6
+      },
+      "above_boundary_rate_among_counted": {
+        "point": 1.0,
+        "low": 0.6097,
+        "high": 1.0,
+        "n": 6,
+        "k": 6
+      }
+    }
+  },
+  "unknown_runs": [],
+  "every_run_dispersion_ns": {
+    "20260913_s15_j020_r1": 10657,
+    "20260913_s15_j020_r2": 15822,
+    "20260913_s15_j020_r3": 16008,
+    "20260913_s15_j020_r4": 14620,
+    "20260913_s15_j020_r5": 24405,
+    "20260913_s15_j020_r6": 13464,
+    "20260913_s15_j060_r1": 17033,
+    "20260913_s15_j060_r2": 13480,
+    "20260913_s15_j060_r3": 27743,
+    "20260913_s15_j060_r4": 21673,
+    "20260913_s15_j060_r5": 24560,
+    "20260913_s15_j060_r6": 23840,
+    "20260913_s15_j100_r1": 31629,
+    "20260913_s15_j100_r2": 25151,
+    "20260913_s15_j100_r3": 28644,
+    "20260913_s15_j100_r4": 38563,
+    "20260913_s15_j100_r5": 20564,
+    "20260913_s15_j100_r6": 32961,
+    "20260913_s15_j140_r1": 34752,
+    "20260913_s15_j140_r2": 29031,
+    "20260913_s15_j140_r3": 31635,
+    "20260913_s15_j140_r4": 36503,
+    "20260913_s15_j140_r5": 40689,
+    "20260913_s15_j140_r6": 33153,
+    "20260913_s15_j200_r1": 47618,
+    "20260913_s15_j200_r2": 63946,
+    "20260913_s15_j200_r3": 38693,
+    "20260913_s15_j200_r4": 51777,
+    "20260913_s15_j200_r5": 46562,
+    "20260913_s15_j200_r6": 47827
+  },
+  "every_run_valid_window_count": {
+    "20260913_s15_j020_r1": 4,
+    "20260913_s15_j020_r2": 4,
+    "20260913_s15_j020_r3": 4,
+    "20260913_s15_j020_r4": 4,
+    "20260913_s15_j020_r5": 4,
+    "20260913_s15_j020_r6": 4,
+    "20260913_s15_j060_r1": 4,
+    "20260913_s15_j060_r2": 4,
+    "20260913_s15_j060_r3": 4,
+    "20260913_s15_j060_r4": 4,
+    "20260913_s15_j060_r5": 4,
+    "20260913_s15_j060_r6": 4,
+    "20260913_s15_j100_r1": 5,
+    "20260913_s15_j100_r2": 5,
+    "20260913_s15_j100_r3": 4,
+    "20260913_s15_j100_r4": 4,
+    "20260913_s15_j100_r5": 4,
+    "20260913_s15_j100_r6": 4,
+    "20260913_s15_j140_r1": 4,
+    "20260913_s15_j140_r2": 4,
+    "20260913_s15_j140_r3": 4,
+    "20260913_s15_j140_r4": 5,
+    "20260913_s15_j140_r5": 4,
+    "20260913_s15_j140_r6": 4,
+    "20260913_s15_j200_r1": 4,
+    "20260913_s15_j200_r2": 4,
+    "20260913_s15_j200_r3": 4,
+    "20260913_s15_j200_r4": 4,
+    "20260913_s15_j200_r5": 4,
+    "20260913_s15_j200_r6": 4
+  },
+  "boundary_ns": 29000,
+  "timing_precision": {
+    "ptp4l_log_clock": "CLOCK_MONOTONIC, linuxptp 3.1.1 print.c line 68",
+    "ptp4l_log_quantum_s": 0.001,
+    "ptp4l_log_rounding": "truncation (ts.tv_nsec / 1000000), so a logged time is <= the true time",
+    "phase_clock": "CLOCK_MONOTONIC via python time.clock_gettime, microsecond precision, same clock as ptp4l",
+    "apply_instant": "an interval [phase2_apply_begin, phase2_graded_jitter_applied_seg1]; eligibility uses the later bound",
+    "window_containment": "A window is eligible only if it lies WHOLLY inside the declared impaired phase: start >= the apply upper bound and end + 1 ms <= phase2_end_recorded. The impairment persists past phase2_end_recorded until teardown, so this rejects some genuinely impaired windows; rejecting is the conservative direction.",
+    "apply_uncertainty_s_observed": {
+      "min": 0.001582,
+      "max": 0.007902
+    },
+    "no_fixed_exclusion_band": "The superseded evaluator excluded windows starting within a fixed 1 ms of the apply instant. That band was finer than the 10 ms phase clock then in use and was not derived from any recorded quantity. It is replaced by the recorded interval and the documented log quantum."
+  },
+  "apply_basis_counts": {
+    "bracketed interval": 30
+  },
+  "not_claimed": "Agreement between a packet-level decision and a receiver-side path-delay dispersion measurement in a software testbed. NOT harm, service impact, physical timing accuracy, attack detection, recovery benefit, or O-RAN conformance. Harmfulness remains UNKNOWN.",
+  "runs": [
+    {
+      "run": "20260913_s15_j020_r1",
+      "condition": "j020",
+      "integrity_problems": [],
+      "apply_monotonic_s": 320.179535,
+      "apply_begin_monotonic_s": 320.177567,
+      "apply_upper_bound_s": 320.179535,
+      "apply_basis": "bracketed interval",
+      "apply_uncertainty_s": 0.001968,
+      "apply_utc": "2026-09-13T23:56:30Z",
+      "phase_end_monotonic_s": 400.379748,
+      "valid_window_count": 4,
+      "first_valid_window_dispersion_ns": 10657,
+      "receiver_entered_master": false,
+      "receiver_unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_BELOW_BOUNDARY",
+      "summary_windows": [
+        {
+          "summary_time": 320.168,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 13120,
+          "path_delay_dispersion_ns": 3187,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 336.185,
+          "window_start": 320.168,
+          "window_duration_s": 16.017,
+          "path_delay_ns": 75502,
+          "path_delay_dispersion_ns": 17240,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "window start 320.168 is not provably at or after the apply upper bound 320.179535 (bracketed interval)"
+          ]
+        },
+        {
+          "summary_time": 352.204,
+          "window_start": 336.185,
+          "window_duration_s": 16.019,
+          "path_delay_ns": 83087,
+          "path_delay_dispersion_ns": 10657,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 368.222,
+          "window_start": 352.204,
+          "window_duration_s": 16.018,
+          "path_delay_ns": 83506,
+          "path_delay_dispersion_ns": 9882,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 384.239,
+          "window_start": 368.222,
+          "window_duration_s": 16.017,
+          "path_delay_ns": 81767,
+          "path_delay_dispersion_ns": 9421,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 400.255,
+          "window_start": 384.239,
+          "window_duration_s": 16.016,
+          "path_delay_ns": 79295,
+          "path_delay_dispersion_ns": 8892,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "triggers": 0,
+      "triggers_after_apply": 0,
+      "triggers_ambiguous": 0,
+      "detector_outcome": "NO_TRIGGER",
+      "detector_unknown_reason": null,
+      "trigger_packet_ts": [],
+      "apply_epoch_from_utc": 1789343790.0,
+      "counted_in_2x2": true
+    },
+    {
+      "run": "20260913_s15_j020_r2",
+      "condition": "j020",
+      "integrity_problems": [],
+      "apply_monotonic_s": 1025.609958,
+      "apply_begin_monotonic_s": 1025.604041,
+      "apply_upper_bound_s": 1025.609958,
+      "apply_basis": "bracketed interval",
+      "apply_uncertainty_s": 0.005917,
+      "apply_utc": "2026-09-14T00:08:15Z",
+      "phase_end_monotonic_s": 1106.135344,
+      "valid_window_count": 4,
+      "first_valid_window_dispersion_ns": 15822,
+      "receiver_entered_master": false,
+      "receiver_unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_BELOW_BOUNDARY",
+      "summary_windows": [
+        {
+          "summary_time": 1024.819,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 19505,
+          "path_delay_dispersion_ns": 6003,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 1040.841,
+          "window_start": 1024.819,
+          "window_duration_s": 16.022,
+          "path_delay_ns": 102933,
+          "path_delay_dispersion_ns": 31143,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "window start 1024.819 is not provably at or after the apply upper bound 1025.609958 (bracketed interval)"
+          ]
+        },
+        {
+          "summary_time": 1056.866,
+          "window_start": 1040.841,
+          "window_duration_s": 16.025,
+          "path_delay_ns": 117964,
+          "path_delay_dispersion_ns": 15822,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 1072.89,
+          "window_start": 1056.866,
+          "window_duration_s": 16.024,
+          "path_delay_ns": 111287,
+          "path_delay_dispersion_ns": 15471,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 1088.914,
+          "window_start": 1072.89,
+          "window_duration_s": 16.024,
+          "path_delay_ns": 110401,
+          "path_delay_dispersion_ns": 17872,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 1104.937,
+          "window_start": 1088.914,
+          "window_duration_s": 16.023,
+          "path_delay_ns": 112652,
+          "path_delay_dispersion_ns": 16824,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "triggers": 0,
+      "triggers_after_apply": 0,
+      "triggers_ambiguous": 0,
+      "detector_outcome": "NO_TRIGGER",
+      "detector_unknown_reason": null,
+      "trigger_packet_ts": [],
+      "apply_epoch_from_utc": 1789344495.0,
+      "counted_in_2x2": true
+    },
+    {
+      "run": "20260913_s15_j020_r3",
+      "condition": "j020",
+      "integrity_problems": [],
+      "apply_monotonic_s": 1430.952675,
+      "apply_begin_monotonic_s": 1430.948721,
+      "apply_upper_bound_s": 1430.952675,
+      "apply_basis": "bracketed interval",
+      "apply_uncertainty_s": 0.003954,
+      "apply_utc": "2026-09-14T00:15:00Z",
+      "phase_end_monotonic_s": 1511.482546,
+      "valid_window_count": 4,
+      "first_valid_window_dispersion_ns": 16008,
+      "receiver_entered_master": false,
+      "receiver_unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_BELOW_BOUNDARY",
+      "summary_windows": [
+        {
+          "summary_time": 1430.125,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 22754,
+          "path_delay_dispersion_ns": 6629,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 1446.145,
+          "window_start": 1430.125,
+          "window_duration_s": 16.02,
+          "path_delay_ns": 91809,
+          "path_delay_dispersion_ns": 29081,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "window start 1430.125 is not provably at or after the apply upper bound 1430.952675 (bracketed interval)"
+          ]
+        },
+        {
+          "summary_time": 1462.17,
+          "window_start": 1446.145,
+          "window_duration_s": 16.025,
+          "path_delay_ns": 112608,
+          "path_delay_dispersion_ns": 16008,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 1478.193,
+          "window_start": 1462.17,
+          "window_duration_s": 16.023,
+          "path_delay_ns": 110544,
+          "path_delay_dispersion_ns": 14848,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 1494.219,
+          "window_start": 1478.193,
+          "window_duration_s": 16.026,
+          "path_delay_ns": 115812,
+          "path_delay_dispersion_ns": 12663,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 1510.247,
+          "window_start": 1494.219,
+          "window_duration_s": 16.028,
+          "path_delay_ns": 115335,
+          "path_delay_dispersion_ns": 15638,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "triggers": 0,
+      "triggers_after_apply": 0,
+      "triggers_ambiguous": 0,
+      "detector_outcome": "NO_TRIGGER",
+      "detector_unknown_reason": null,
+      "trigger_packet_ts": [],
+      "apply_epoch_from_utc": 1789344900.0,
+      "counted_in_2x2": true
+    },
+    {
+      "run": "20260913_s15_j020_r4",
+      "condition": "j020",
+      "integrity_problems": [],
+      "apply_monotonic_s": 1633.938219,
+      "apply_begin_monotonic_s": 1633.930317,
+      "apply_upper_bound_s": 1633.938219,
+      "apply_basis": "bracketed interval",
+      "apply_uncertainty_s": 0.007902,
+      "apply_utc": "2026-09-14T00:18:23Z",
+      "phase_end_monotonic_s": 1714.476331,
+      "valid_window_count": 4,
+      "first_valid_window_dispersion_ns": 14620,
+      "receiver_entered_master": false,
+      "receiver_unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_BELOW_BOUNDARY",
+      "summary_windows": [
+        {
+          "summary_time": 1633.268,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 20759,
+          "path_delay_dispersion_ns": 5110,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 1649.29,
+          "window_start": 1633.268,
+          "window_duration_s": 16.022,
+          "path_delay_ns": 94879,
+          "path_delay_dispersion_ns": 28418,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "window start 1633.268 is not provably at or after the apply upper bound 1633.938219 (bracketed interval)"
+          ]
+        },
+        {
+          "summary_time": 1665.312,
+          "window_start": 1649.29,
+          "window_duration_s": 16.022,
+          "path_delay_ns": 104605,
+          "path_delay_dispersion_ns": 14620,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 1681.333,
+          "window_start": 1665.312,
+          "window_duration_s": 16.021,
+          "path_delay_ns": 100380,
+          "path_delay_dispersion_ns": 10246,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 1697.357,
+          "window_start": 1681.333,
+          "window_duration_s": 16.024,
+          "path_delay_ns": 106644,
+          "path_delay_dispersion_ns": 15273,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 1713.379,
+          "window_start": 1697.357,
+          "window_duration_s": 16.022,
+          "path_delay_ns": 109609,
+          "path_delay_dispersion_ns": 13188,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "triggers": 0,
+      "triggers_after_apply": 0,
+      "triggers_ambiguous": 0,
+      "detector_outcome": "NO_TRIGGER",
+      "detector_unknown_reason": null,
+      "trigger_packet_ts": [],
+      "apply_epoch_from_utc": 1789345103.0,
+      "counted_in_2x2": true
+    },
+    {
+      "run": "20260913_s15_j020_r5",
+      "condition": "j020",
+      "integrity_problems": [],
+      "apply_monotonic_s": 2239.973508,
+      "apply_begin_monotonic_s": 2239.969621,
+      "apply_upper_bound_s": 2239.973508,
+      "apply_basis": "bracketed interval",
+      "apply_uncertainty_s": 0.003887,
+      "apply_utc": "2026-09-14T00:28:29Z",
+      "phase_end_monotonic_s": 2320.205922,
+      "valid_window_count": 4,
+      "first_valid_window_dispersion_ns": 24405,
+      "receiver_entered_master": false,
+      "receiver_unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_BELOW_BOUNDARY",
+      "summary_windows": [
+        {
+          "summary_time": 2239.91,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 19190,
+          "path_delay_dispersion_ns": 7271,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 2255.909,
+          "window_start": 2239.91,
+          "window_duration_s": 15.999,
+          "path_delay_ns": 98873,
+          "path_delay_dispersion_ns": 27781,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "window start 2239.910 is not provably at or after the apply upper bound 2239.973508 (bracketed interval)"
+          ]
+        },
+        {
+          "summary_time": 2271.929,
+          "window_start": 2255.909,
+          "window_duration_s": 16.02,
+          "path_delay_ns": 102462,
+          "path_delay_dispersion_ns": 24405,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 2287.947,
+          "window_start": 2271.929,
+          "window_duration_s": 16.018,
+          "path_delay_ns": 91326,
+          "path_delay_dispersion_ns": 14339,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 2303.968,
+          "window_start": 2287.947,
+          "window_duration_s": 16.021,
+          "path_delay_ns": 102721,
+          "path_delay_dispersion_ns": 15107,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 2319.993,
+          "window_start": 2303.968,
+          "window_duration_s": 16.025,
+          "path_delay_ns": 114918,
+          "path_delay_dispersion_ns": 17478,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "triggers": 0,
+      "triggers_after_apply": 0,
+      "triggers_ambiguous": 0,
+      "detector_outcome": "NO_TRIGGER",
+      "detector_unknown_reason": null,
+      "trigger_packet_ts": [],
+      "apply_epoch_from_utc": 1789345709.0,
+      "counted_in_2x2": true
+    },
+    {
+      "run": "20260913_s15_j020_r6",
+      "condition": "j020",
+      "integrity_problems": [],
+      "apply_monotonic_s": 2845.188628,
+      "apply_begin_monotonic_s": 2845.186187,
+      "apply_upper_bound_s": 2845.188628,
+      "apply_basis": "bracketed interval",
+      "apply_uncertainty_s": 0.002441,
+      "apply_utc": "2026-09-14T00:38:35Z",
+      "phase_end_monotonic_s": 2925.587588,
+      "valid_window_count": 4,
+      "first_valid_window_dispersion_ns": 13464,
+      "receiver_entered_master": false,
+      "receiver_unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_BELOW_BOUNDARY",
+      "summary_windows": [
+        {
+          "summary_time": 2844.86,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 21049,
+          "path_delay_dispersion_ns": 3912,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 2860.884,
+          "window_start": 2844.86,
+          "window_duration_s": 16.024,
+          "path_delay_ns": 98795,
+          "path_delay_dispersion_ns": 28937,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "window start 2844.860 is not provably at or after the apply upper bound 2845.188628 (bracketed interval)"
+          ]
+        },
+        {
+          "summary_time": 2876.906,
+          "window_start": 2860.884,
+          "window_duration_s": 16.022,
+          "path_delay_ns": 97484,
+          "path_delay_dispersion_ns": 13464,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 2892.99,
+          "window_start": 2876.906,
+          "window_duration_s": 16.084,
+          "path_delay_ns": 110064,
+          "path_delay_dispersion_ns": 16326,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 2908.951,
+          "window_start": 2892.99,
+          "window_duration_s": 15.961,
+          "path_delay_ns": 106513,
+          "path_delay_dispersion_ns": 13302,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 2924.977,
+          "window_start": 2908.951,
+          "window_duration_s": 16.026,
+          "path_delay_ns": 108842,
+          "path_delay_dispersion_ns": 17878,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "triggers": 0,
+      "triggers_after_apply": 0,
+      "triggers_ambiguous": 0,
+      "detector_outcome": "NO_TRIGGER",
+      "detector_unknown_reason": null,
+      "trigger_packet_ts": [],
+      "apply_epoch_from_utc": 1789346315.0,
+      "counted_in_2x2": true
+    },
+    {
+      "run": "20260913_s15_j060_r1",
+      "condition": "j060",
+      "integrity_problems": [],
+      "apply_monotonic_s": 221.348708,
+      "apply_begin_monotonic_s": 221.347126,
+      "apply_upper_bound_s": 221.348708,
+      "apply_basis": "bracketed interval",
+      "apply_uncertainty_s": 0.001582,
+      "apply_utc": "2026-09-13T23:54:51Z",
+      "phase_end_monotonic_s": 301.521745,
+      "valid_window_count": 4,
+      "first_valid_window_dispersion_ns": 17033,
+      "receiver_entered_master": false,
+      "receiver_unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_BELOW_BOUNDARY",
+      "summary_windows": [
+        {
+          "summary_time": 221.476,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 13249,
+          "path_delay_dispersion_ns": 3342,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 237.493,
+          "window_start": 221.476,
+          "window_duration_s": 16.017,
+          "path_delay_ns": 67426,
+          "path_delay_dispersion_ns": 17033,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 253.514,
+          "window_start": 237.493,
+          "window_duration_s": 16.021,
+          "path_delay_ns": 90744,
+          "path_delay_dispersion_ns": 16011,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 269.532,
+          "window_start": 253.514,
+          "window_duration_s": 16.018,
+          "path_delay_ns": 84034,
+          "path_delay_dispersion_ns": 16407,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 285.552,
+          "window_start": 269.532,
+          "window_duration_s": 16.02,
+          "path_delay_ns": 76692,
+          "path_delay_dispersion_ns": 15430,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 301.57,
+          "window_start": 285.552,
+          "window_duration_s": 16.018,
+          "path_delay_ns": 88629,
+          "path_delay_dispersion_ns": 18893,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "window end is not provably at or before the declared phase end"
+          ]
+        }
+      ],
+      "triggers": 0,
+      "triggers_after_apply": 0,
+      "triggers_ambiguous": 0,
+      "detector_outcome": "NO_TRIGGER",
+      "detector_unknown_reason": null,
+      "trigger_packet_ts": [],
+      "apply_epoch_from_utc": 1789343691.0,
+      "counted_in_2x2": true
+    },
+    {
+      "run": "20260913_s15_j060_r2",
+      "condition": "j060",
+      "integrity_problems": [],
+      "apply_monotonic_s": 924.389836,
+      "apply_begin_monotonic_s": 924.386692,
+      "apply_upper_bound_s": 924.389836,
+      "apply_basis": "bracketed interval",
+      "apply_uncertainty_s": 0.003144,
+      "apply_utc": "2026-09-14T00:06:34Z",
+      "phase_end_monotonic_s": 1004.653513,
+      "valid_window_count": 4,
+      "first_valid_window_dispersion_ns": 13480,
+      "receiver_entered_master": false,
+      "receiver_unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_BELOW_BOUNDARY",
+      "summary_windows": [
+        {
+          "summary_time": 924.177,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 22717,
+          "path_delay_dispersion_ns": 6324,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 940.198,
+          "window_start": 924.177,
+          "window_duration_s": 16.021,
+          "path_delay_ns": 94237,
+          "path_delay_dispersion_ns": 25708,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "window start 924.177 is not provably at or after the apply upper bound 924.389836 (bracketed interval)"
+          ]
+        },
+        {
+          "summary_time": 956.225,
+          "window_start": 940.198,
+          "window_duration_s": 16.027,
+          "path_delay_ns": 100911,
+          "path_delay_dispersion_ns": 13480,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 972.251,
+          "window_start": 956.225,
+          "window_duration_s": 16.026,
+          "path_delay_ns": 111035,
+          "path_delay_dispersion_ns": 24636,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 988.281,
+          "window_start": 972.251,
+          "window_duration_s": 16.03,
+          "path_delay_ns": 124763,
+          "path_delay_dispersion_ns": 25165,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 1004.305,
+          "window_start": 988.281,
+          "window_duration_s": 16.024,
+          "path_delay_ns": 108997,
+          "path_delay_dispersion_ns": 22212,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "triggers": 1,
+      "triggers_after_apply": 1,
+      "triggers_ambiguous": 0,
+      "detector_outcome": "TRIGGER",
+      "detector_unknown_reason": null,
+      "trigger_packet_ts": [
+        1789344463.1493711
+      ],
+      "apply_epoch_from_utc": 1789344394.0,
+      "counted_in_2x2": true
+    },
+    {
+      "run": "20260913_s15_j060_r3",
+      "condition": "j060",
+      "integrity_problems": [],
+      "apply_monotonic_s": 1329.537445,
+      "apply_begin_monotonic_s": 1329.533584,
+      "apply_upper_bound_s": 1329.537445,
+      "apply_basis": "bracketed interval",
+      "apply_uncertainty_s": 0.003861,
+      "apply_utc": "2026-09-14T00:13:19Z",
+      "phase_end_monotonic_s": 1410.075245,
+      "valid_window_count": 4,
+      "first_valid_window_dispersion_ns": 27743,
+      "receiver_entered_master": false,
+      "receiver_unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_BELOW_BOUNDARY",
+      "summary_windows": [
+        {
+          "summary_time": 1329.123,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 22823,
+          "path_delay_dispersion_ns": 7272,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 1345.147,
+          "window_start": 1329.123,
+          "window_duration_s": 16.024,
+          "path_delay_ns": 95937,
+          "path_delay_dispersion_ns": 21612,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "window start 1329.123 is not provably at or after the apply upper bound 1329.537445 (bracketed interval)"
+          ]
+        },
+        {
+          "summary_time": 1361.169,
+          "window_start": 1345.147,
+          "window_duration_s": 16.022,
+          "path_delay_ns": 93932,
+          "path_delay_dispersion_ns": 27743,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 1377.196,
+          "window_start": 1361.169,
+          "window_duration_s": 16.027,
+          "path_delay_ns": 115888,
+          "path_delay_dispersion_ns": 20550,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 1393.216,
+          "window_start": 1377.196,
+          "window_duration_s": 16.02,
+          "path_delay_ns": 92471,
+          "path_delay_dispersion_ns": 15591,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 1409.283,
+          "window_start": 1393.216,
+          "window_duration_s": 16.067,
+          "path_delay_ns": 97613,
+          "path_delay_dispersion_ns": 24595,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "triggers": 1,
+      "triggers_after_apply": 1,
+      "triggers_ambiguous": 0,
+      "detector_outcome": "TRIGGER",
+      "detector_unknown_reason": null,
+      "trigger_packet_ts": [
+        1789344845.302885
+      ],
+      "apply_epoch_from_utc": 1789344799.0,
+      "counted_in_2x2": true
+    },
+    {
+      "run": "20260913_s15_j060_r4",
+      "condition": "j060",
+      "integrity_problems": [],
+      "apply_monotonic_s": 2037.990616,
+      "apply_begin_monotonic_s": 2037.984896,
+      "apply_upper_bound_s": 2037.990616,
+      "apply_basis": "bracketed interval",
+      "apply_uncertainty_s": 0.00572,
+      "apply_utc": "2026-09-14T00:25:07Z",
+      "phase_end_monotonic_s": 2118.371755,
+      "valid_window_count": 4,
+      "first_valid_window_dispersion_ns": 21673,
+      "receiver_entered_master": false,
+      "receiver_unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_BELOW_BOUNDARY",
+      "summary_windows": [
+        {
+          "summary_time": 2037.453,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 22366,
+          "path_delay_dispersion_ns": 7032,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 2053.477,
+          "window_start": 2037.453,
+          "window_duration_s": 16.024,
+          "path_delay_ns": 93242,
+          "path_delay_dispersion_ns": 31101,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "window start 2037.453 is not provably at or after the apply upper bound 2037.990616 (bracketed interval)"
+          ]
+        },
+        {
+          "summary_time": 2069.505,
+          "window_start": 2053.477,
+          "window_duration_s": 16.028,
+          "path_delay_ns": 112825,
+          "path_delay_dispersion_ns": 21673,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 2085.531,
+          "window_start": 2069.505,
+          "window_duration_s": 16.026,
+          "path_delay_ns": 106434,
+          "path_delay_dispersion_ns": 25952,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 2101.557,
+          "window_start": 2085.531,
+          "window_duration_s": 16.026,
+          "path_delay_ns": 101598,
+          "path_delay_dispersion_ns": 25115,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 2117.584,
+          "window_start": 2101.557,
+          "window_duration_s": 16.027,
+          "path_delay_ns": 104832,
+          "path_delay_dispersion_ns": 23775,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "triggers": 1,
+      "triggers_after_apply": 1,
+      "triggers_ambiguous": 0,
+      "detector_outcome": "TRIGGER",
+      "detector_unknown_reason": null,
+      "trigger_packet_ts": [
+        1789345538.8636703
+      ],
+      "apply_epoch_from_utc": 1789345507.0,
+      "counted_in_2x2": true
+    },
+    {
+      "run": "20260913_s15_j060_r5",
+      "condition": "j060",
+      "integrity_problems": [],
+      "apply_monotonic_s": 2138.490326,
+      "apply_begin_monotonic_s": 2138.487548,
+      "apply_upper_bound_s": 2138.490326,
+      "apply_basis": "bracketed interval",
+      "apply_uncertainty_s": 0.002778,
+      "apply_utc": "2026-09-14T00:26:48Z",
+      "phase_end_monotonic_s": 2218.747404,
+      "valid_window_count": 4,
+      "first_valid_window_dispersion_ns": 24560,
+      "receiver_entered_master": false,
+      "receiver_unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_BELOW_BOUNDARY",
+      "summary_windows": [
+        {
+          "summary_time": 2138.049,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 21787,
+          "path_delay_dispersion_ns": 5708,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 2154.071,
+          "window_start": 2138.049,
+          "window_duration_s": 16.022,
+          "path_delay_ns": 89597,
+          "path_delay_dispersion_ns": 21480,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "window start 2138.049 is not provably at or after the apply upper bound 2138.490326 (bracketed interval)"
+          ]
+        },
+        {
+          "summary_time": 2170.093,
+          "window_start": 2154.071,
+          "window_duration_s": 16.022,
+          "path_delay_ns": 113975,
+          "path_delay_dispersion_ns": 24560,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 2186.111,
+          "window_start": 2170.093,
+          "window_duration_s": 16.018,
+          "path_delay_ns": 91897,
+          "path_delay_dispersion_ns": 18555,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 2202.131,
+          "window_start": 2186.111,
+          "window_duration_s": 16.02,
+          "path_delay_ns": 98292,
+          "path_delay_dispersion_ns": 26053,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 2218.149,
+          "window_start": 2202.131,
+          "window_duration_s": 16.018,
+          "path_delay_ns": 97629,
+          "path_delay_dispersion_ns": 32762,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "triggers": 1,
+      "triggers_after_apply": 1,
+      "triggers_ambiguous": 0,
+      "detector_outcome": "TRIGGER",
+      "detector_unknown_reason": null,
+      "trigger_packet_ts": [
+        1789345635.0713866
+      ],
+      "apply_epoch_from_utc": 1789345608.0,
+      "counted_in_2x2": true
+    },
+    {
+      "run": "20260913_s15_j060_r6",
+      "condition": "j060",
+      "integrity_problems": [],
+      "apply_monotonic_s": 2642.640797,
+      "apply_begin_monotonic_s": 2642.636694,
+      "apply_upper_bound_s": 2642.640797,
+      "apply_basis": "bracketed interval",
+      "apply_uncertainty_s": 0.004103,
+      "apply_utc": "2026-09-14T00:35:12Z",
+      "phase_end_monotonic_s": 2722.935055,
+      "valid_window_count": 4,
+      "first_valid_window_dispersion_ns": 23840,
+      "receiver_entered_master": false,
+      "receiver_unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_BELOW_BOUNDARY",
+      "summary_windows": [
+        {
+          "summary_time": 2642.205,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 19754,
+          "path_delay_dispersion_ns": 5633,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 2658.228,
+          "window_start": 2642.205,
+          "window_duration_s": 16.023,
+          "path_delay_ns": 101260,
+          "path_delay_dispersion_ns": 26973,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "window start 2642.205 is not provably at or after the apply upper bound 2642.640797 (bracketed interval)"
+          ]
+        },
+        {
+          "summary_time": 2674.252,
+          "window_start": 2658.228,
+          "window_duration_s": 16.024,
+          "path_delay_ns": 110667,
+          "path_delay_dispersion_ns": 23840,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 2690.276,
+          "window_start": 2674.252,
+          "window_duration_s": 16.024,
+          "path_delay_ns": 92500,
+          "path_delay_dispersion_ns": 25965,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 2706.3,
+          "window_start": 2690.276,
+          "window_duration_s": 16.024,
+          "path_delay_ns": 106355,
+          "path_delay_dispersion_ns": 22396,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 2722.324,
+          "window_start": 2706.3,
+          "window_duration_s": 16.024,
+          "path_delay_ns": 108907,
+          "path_delay_dispersion_ns": 16166,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "triggers": 1,
+      "triggers_after_apply": 1,
+      "triggers_ambiguous": 0,
+      "detector_outcome": "TRIGGER",
+      "detector_unknown_reason": null,
+      "trigger_packet_ts": [
+        1789346122.8304124
+      ],
+      "apply_epoch_from_utc": 1789346112.0,
+      "counted_in_2x2": true
+    },
+    {
+      "run": "20260913_s15_j100_r1",
+      "condition": "j100",
+      "integrity_problems": [],
+      "apply_monotonic_s": 420.120501,
+      "apply_begin_monotonic_s": 420.118898,
+      "apply_upper_bound_s": 420.120501,
+      "apply_basis": "bracketed interval",
+      "apply_uncertainty_s": 0.001603,
+      "apply_utc": "2026-09-13T23:58:09Z",
+      "phase_end_monotonic_s": 500.316448,
+      "valid_window_count": 5,
+      "first_valid_window_dispersion_ns": 31629,
+      "receiver_entered_master": false,
+      "receiver_unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_ABOVE_BOUNDARY",
+      "summary_windows": [
+        {
+          "summary_time": 420.15,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 12929,
+          "path_delay_dispersion_ns": 3426,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 436.166,
+          "window_start": 420.15,
+          "window_duration_s": 16.016,
+          "path_delay_ns": 83169,
+          "path_delay_dispersion_ns": 31629,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 452.182,
+          "window_start": 436.166,
+          "window_duration_s": 16.016,
+          "path_delay_ns": 82066,
+          "path_delay_dispersion_ns": 35411,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 468.196,
+          "window_start": 452.182,
+          "window_duration_s": 16.014,
+          "path_delay_ns": 76852,
+          "path_delay_dispersion_ns": 17538,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 484.249,
+          "window_start": 468.196,
+          "window_duration_s": 16.053,
+          "path_delay_ns": 82201,
+          "path_delay_dispersion_ns": 26746,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 500.227,
+          "window_start": 484.249,
+          "window_duration_s": 15.978,
+          "path_delay_ns": 84928,
+          "path_delay_dispersion_ns": 32927,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "triggers": 0,
+      "triggers_after_apply": 0,
+      "triggers_ambiguous": 0,
+      "detector_outcome": "NO_TRIGGER",
+      "detector_unknown_reason": null,
+      "trigger_packet_ts": [],
+      "apply_epoch_from_utc": 1789343889.0,
+      "counted_in_2x2": true
+    },
+    {
+      "run": "20260913_s15_j100_r2",
+      "condition": "j100",
+      "integrity_problems": [],
+      "apply_monotonic_s": 620.323126,
+      "apply_begin_monotonic_s": 620.320545,
+      "apply_upper_bound_s": 620.323126,
+      "apply_basis": "bracketed interval",
+      "apply_uncertainty_s": 0.002581,
+      "apply_utc": "2026-09-14T00:01:30Z",
+      "phase_end_monotonic_s": 700.517089,
+      "valid_window_count": 5,
+      "first_valid_window_dispersion_ns": 25151,
+      "receiver_entered_master": false,
+      "receiver_unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_BELOW_BOUNDARY",
+      "summary_windows": [
+        {
+          "summary_time": 620.338,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 13289,
+          "path_delay_dispersion_ns": 2563,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 636.352,
+          "window_start": 620.338,
+          "window_duration_s": 16.014,
+          "path_delay_ns": 75073,
+          "path_delay_dispersion_ns": 25151,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 652.369,
+          "window_start": 636.352,
+          "window_duration_s": 16.017,
+          "path_delay_ns": 79871,
+          "path_delay_dispersion_ns": 30115,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 668.383,
+          "window_start": 652.369,
+          "window_duration_s": 16.014,
+          "path_delay_ns": 69101,
+          "path_delay_dispersion_ns": 23936,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 684.397,
+          "window_start": 668.383,
+          "window_duration_s": 16.014,
+          "path_delay_ns": 89413,
+          "path_delay_dispersion_ns": 32595,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 700.408,
+          "window_start": 684.397,
+          "window_duration_s": 16.011,
+          "path_delay_ns": 74646,
+          "path_delay_dispersion_ns": 22004,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "triggers": 0,
+      "triggers_after_apply": 0,
+      "triggers_ambiguous": 0,
+      "detector_outcome": "NO_TRIGGER",
+      "detector_unknown_reason": null,
+      "trigger_packet_ts": [],
+      "apply_epoch_from_utc": 1789344090.0,
+      "counted_in_2x2": true
+    },
+    {
+      "run": "20260913_s15_j100_r3",
+      "condition": "j100",
+      "integrity_problems": [],
+      "apply_monotonic_s": 1532.381771,
+      "apply_begin_monotonic_s": 1532.374072,
+      "apply_upper_bound_s": 1532.381771,
+      "apply_basis": "bracketed interval",
+      "apply_uncertainty_s": 0.007699,
+      "apply_utc": "2026-09-14T00:16:42Z",
+      "phase_end_monotonic_s": 1612.876631,
+      "valid_window_count": 4,
+      "first_valid_window_dispersion_ns": 28644,
+      "receiver_entered_master": false,
+      "receiver_unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_BELOW_BOUNDARY",
+      "summary_windows": [
+        {
+          "summary_time": 1532.056,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 21498,
+          "path_delay_dispersion_ns": 5690,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 1548.015,
+          "window_start": 1532.056,
+          "window_duration_s": 15.959,
+          "path_delay_ns": 96850,
+          "path_delay_dispersion_ns": 35025,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "window start 1532.056 is not provably at or after the apply upper bound 1532.381771 (bracketed interval)"
+          ]
+        },
+        {
+          "summary_time": 1564.041,
+          "window_start": 1548.015,
+          "window_duration_s": 16.026,
+          "path_delay_ns": 93503,
+          "path_delay_dispersion_ns": 28644,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 1580.065,
+          "window_start": 1564.041,
+          "window_duration_s": 16.024,
+          "path_delay_ns": 116066,
+          "path_delay_dispersion_ns": 51723,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 1596.153,
+          "window_start": 1580.065,
+          "window_duration_s": 16.088,
+          "path_delay_ns": 108261,
+          "path_delay_dispersion_ns": 26370,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 1612.109,
+          "window_start": 1596.153,
+          "window_duration_s": 15.956,
+          "path_delay_ns": 99869,
+          "path_delay_dispersion_ns": 35904,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "triggers": 1,
+      "triggers_after_apply": 1,
+      "triggers_ambiguous": 0,
+      "detector_outcome": "TRIGGER",
+      "detector_unknown_reason": null,
+      "trigger_packet_ts": [
+        1789345019.0019784
+      ],
+      "apply_epoch_from_utc": 1789345002.0,
+      "counted_in_2x2": true
+    },
+    {
+      "run": "20260913_s15_j100_r4",
+      "condition": "j100",
+      "integrity_problems": [],
+      "apply_monotonic_s": 1735.414275,
+      "apply_begin_monotonic_s": 1735.411894,
+      "apply_upper_bound_s": 1735.414275,
+      "apply_basis": "bracketed interval",
+      "apply_uncertainty_s": 0.002381,
+      "apply_utc": "2026-09-14T00:20:05Z",
+      "phase_end_monotonic_s": 1815.701022,
+      "valid_window_count": 4,
+      "first_valid_window_dispersion_ns": 38563,
+      "receiver_entered_master": false,
+      "receiver_unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_ABOVE_BOUNDARY",
+      "summary_windows": [
+        {
+          "summary_time": 1735.341,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 21510,
+          "path_delay_dispersion_ns": 6317,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 1751.364,
+          "window_start": 1735.341,
+          "window_duration_s": 16.023,
+          "path_delay_ns": 94297,
+          "path_delay_dispersion_ns": 34436,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "window start 1735.341 is not provably at or after the apply upper bound 1735.414275 (bracketed interval)"
+          ]
+        },
+        {
+          "summary_time": 1767.391,
+          "window_start": 1751.364,
+          "window_duration_s": 16.027,
+          "path_delay_ns": 106631,
+          "path_delay_dispersion_ns": 38563,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 1783.417,
+          "window_start": 1767.391,
+          "window_duration_s": 16.026,
+          "path_delay_ns": 115227,
+          "path_delay_dispersion_ns": 29090,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 1799.447,
+          "window_start": 1783.417,
+          "window_duration_s": 16.03,
+          "path_delay_ns": 104607,
+          "path_delay_dispersion_ns": 24282,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 1815.463,
+          "window_start": 1799.447,
+          "window_duration_s": 16.016,
+          "path_delay_ns": 108102,
+          "path_delay_dispersion_ns": 31031,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "triggers": 1,
+      "triggers_after_apply": 1,
+      "triggers_ambiguous": 0,
+      "detector_outcome": "TRIGGER",
+      "detector_unknown_reason": null,
+      "trigger_packet_ts": [
+        1789345212.2105567
+      ],
+      "apply_epoch_from_utc": 1789345205.0,
+      "counted_in_2x2": true
+    },
+    {
+      "run": "20260913_s15_j100_r5",
+      "condition": "j100",
+      "integrity_problems": [],
+      "apply_monotonic_s": 2340.567287,
+      "apply_begin_monotonic_s": 2340.565073,
+      "apply_upper_bound_s": 2340.567287,
+      "apply_basis": "bracketed interval",
+      "apply_uncertainty_s": 0.002214,
+      "apply_utc": "2026-09-14T00:30:10Z",
+      "phase_end_monotonic_s": 2420.836591,
+      "valid_window_count": 4,
+      "first_valid_window_dispersion_ns": 20564,
+      "receiver_entered_master": false,
+      "receiver_unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_BELOW_BOUNDARY",
+      "summary_windows": [
+        {
+          "summary_time": 2340.103,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 18990,
+          "path_delay_dispersion_ns": 4695,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 2356.123,
+          "window_start": 2340.103,
+          "window_duration_s": 16.02,
+          "path_delay_ns": 84695,
+          "path_delay_dispersion_ns": 34783,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "window start 2340.103 is not provably at or after the apply upper bound 2340.567287 (bracketed interval)"
+          ]
+        },
+        {
+          "summary_time": 2372.147,
+          "window_start": 2356.123,
+          "window_duration_s": 16.024,
+          "path_delay_ns": 112292,
+          "path_delay_dispersion_ns": 20564,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 2388.173,
+          "window_start": 2372.147,
+          "window_duration_s": 16.026,
+          "path_delay_ns": 108509,
+          "path_delay_dispersion_ns": 26684,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 2404.197,
+          "window_start": 2388.173,
+          "window_duration_s": 16.024,
+          "path_delay_ns": 101857,
+          "path_delay_dispersion_ns": 37092,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 2420.219,
+          "window_start": 2404.197,
+          "window_duration_s": 16.022,
+          "path_delay_ns": 118333,
+          "path_delay_dispersion_ns": 26948,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "triggers": 1,
+      "triggers_after_apply": 1,
+      "triggers_ambiguous": 0,
+      "detector_outcome": "TRIGGER",
+      "detector_unknown_reason": null,
+      "trigger_packet_ts": [
+        1789345843.2596402
+      ],
+      "apply_epoch_from_utc": 1789345810.0,
+      "counted_in_2x2": true
+    },
+    {
+      "run": "20260913_s15_j100_r6",
+      "condition": "j100",
+      "integrity_problems": [],
+      "apply_monotonic_s": 3047.962807,
+      "apply_begin_monotonic_s": 3047.959505,
+      "apply_upper_bound_s": 3047.962807,
+      "apply_basis": "bracketed interval",
+      "apply_uncertainty_s": 0.003302,
+      "apply_utc": "2026-09-14T00:41:57Z",
+      "phase_end_monotonic_s": 3128.46631,
+      "valid_window_count": 4,
+      "first_valid_window_dispersion_ns": 32961,
+      "receiver_entered_master": false,
+      "receiver_unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_ABOVE_BOUNDARY",
+      "summary_windows": [
+        {
+          "summary_time": 3047.53,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 21725,
+          "path_delay_dispersion_ns": 12566,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 3063.512,
+          "window_start": 3047.53,
+          "window_duration_s": 15.982,
+          "path_delay_ns": 88559,
+          "path_delay_dispersion_ns": 29614,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "window start 3047.530 is not provably at or after the apply upper bound 3047.962807 (bracketed interval)"
+          ]
+        },
+        {
+          "summary_time": 3079.534,
+          "window_start": 3063.512,
+          "window_duration_s": 16.022,
+          "path_delay_ns": 112037,
+          "path_delay_dispersion_ns": 32961,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 3095.556,
+          "window_start": 3079.534,
+          "window_duration_s": 16.022,
+          "path_delay_ns": 111093,
+          "path_delay_dispersion_ns": 30346,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 3111.58,
+          "window_start": 3095.556,
+          "window_duration_s": 16.024,
+          "path_delay_ns": 103598,
+          "path_delay_dispersion_ns": 27502,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 3127.605,
+          "window_start": 3111.58,
+          "window_duration_s": 16.025,
+          "path_delay_ns": 92385,
+          "path_delay_dispersion_ns": 24093,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "triggers": 1,
+      "triggers_after_apply": 1,
+      "triggers_ambiguous": 0,
+      "detector_outcome": "TRIGGER",
+      "detector_unknown_reason": null,
+      "trigger_packet_ts": [
+        1789346529.2410753
+      ],
+      "apply_epoch_from_utc": 1789346517.0,
+      "counted_in_2x2": true
+    },
+    {
+      "run": "20260913_s15_j140_r1",
+      "condition": "j140",
+      "integrity_problems": [],
+      "apply_monotonic_s": 520.069322,
+      "apply_begin_monotonic_s": 520.067622,
+      "apply_upper_bound_s": 520.069322,
+      "apply_basis": "bracketed interval",
+      "apply_uncertainty_s": 0.0017,
+      "apply_utc": "2026-09-13T23:59:49Z",
+      "phase_end_monotonic_s": 600.254872,
+      "valid_window_count": 4,
+      "first_valid_window_dispersion_ns": 34752,
+      "receiver_entered_master": false,
+      "receiver_unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_ABOVE_BOUNDARY",
+      "summary_windows": [
+        {
+          "summary_time": 520.231,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 12965,
+          "path_delay_dispersion_ns": 2168,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 536.242,
+          "window_start": 520.231,
+          "window_duration_s": 16.011,
+          "path_delay_ns": 85762,
+          "path_delay_dispersion_ns": 34752,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 552.257,
+          "window_start": 536.242,
+          "window_duration_s": 16.015,
+          "path_delay_ns": 88994,
+          "path_delay_dispersion_ns": 28545,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 568.272,
+          "window_start": 552.257,
+          "window_duration_s": 16.015,
+          "path_delay_ns": 77669,
+          "path_delay_dispersion_ns": 27429,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 584.289,
+          "window_start": 568.272,
+          "window_duration_s": 16.017,
+          "path_delay_ns": 93131,
+          "path_delay_dispersion_ns": 29856,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 600.306,
+          "window_start": 584.289,
+          "window_duration_s": 16.017,
+          "path_delay_ns": 76630,
+          "path_delay_dispersion_ns": 35490,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "window end is not provably at or before the declared phase end"
+          ]
+        }
+      ],
+      "triggers": 1,
+      "triggers_after_apply": 1,
+      "triggers_ambiguous": 0,
+      "detector_outcome": "TRIGGER",
+      "detector_unknown_reason": null,
+      "trigger_packet_ts": [
+        1789344060.5300295
+      ],
+      "apply_epoch_from_utc": 1789343989.0,
+      "counted_in_2x2": true
+    },
+    {
+      "run": "20260913_s15_j140_r2",
+      "condition": "j140",
+      "integrity_problems": [],
+      "apply_monotonic_s": 721.315527,
+      "apply_begin_monotonic_s": 721.313669,
+      "apply_upper_bound_s": 721.315527,
+      "apply_basis": "bracketed interval",
+      "apply_uncertainty_s": 0.001858,
+      "apply_utc": "2026-09-14T00:03:11Z",
+      "phase_end_monotonic_s": 801.751541,
+      "valid_window_count": 4,
+      "first_valid_window_dispersion_ns": 29031,
+      "receiver_entered_master": false,
+      "receiver_unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_ABOVE_BOUNDARY",
+      "summary_windows": [
+        {
+          "summary_time": 721.013,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 14235,
+          "path_delay_dispersion_ns": 2610,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 737.049,
+          "window_start": 721.013,
+          "window_duration_s": 16.036,
+          "path_delay_ns": 68874,
+          "path_delay_dispersion_ns": 36870,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "window start 721.013 is not provably at or after the apply upper bound 721.315527 (bracketed interval)"
+          ]
+        },
+        {
+          "summary_time": 753.041,
+          "window_start": 737.049,
+          "window_duration_s": 15.992,
+          "path_delay_ns": 72665,
+          "path_delay_dispersion_ns": 29031,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 769.055,
+          "window_start": 753.041,
+          "window_duration_s": 16.014,
+          "path_delay_ns": 75143,
+          "path_delay_dispersion_ns": 32107,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 785.073,
+          "window_start": 769.055,
+          "window_duration_s": 16.018,
+          "path_delay_ns": 83537,
+          "path_delay_dispersion_ns": 22482,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 801.098,
+          "window_start": 785.073,
+          "window_duration_s": 16.025,
+          "path_delay_ns": 95577,
+          "path_delay_dispersion_ns": 30952,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "triggers": 1,
+      "triggers_after_apply": 1,
+      "triggers_ambiguous": 0,
+      "detector_outcome": "TRIGGER",
+      "detector_unknown_reason": null,
+      "trigger_packet_ts": [
+        1789344258.3118176
+      ],
+      "apply_epoch_from_utc": 1789344191.0,
+      "counted_in_2x2": true
+    },
+    {
+      "run": "20260913_s15_j140_r3",
+      "condition": "j140",
+      "integrity_problems": [],
+      "apply_monotonic_s": 1127.394884,
+      "apply_begin_monotonic_s": 1127.38929,
+      "apply_upper_bound_s": 1127.394884,
+      "apply_basis": "bracketed interval",
+      "apply_uncertainty_s": 0.005594,
+      "apply_utc": "2026-09-14T00:09:57Z",
+      "phase_end_monotonic_s": 1207.955835,
+      "valid_window_count": 4,
+      "first_valid_window_dispersion_ns": 31635,
+      "receiver_entered_master": false,
+      "receiver_unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_ABOVE_BOUNDARY",
+      "summary_windows": [
+        {
+          "summary_time": 1126.217,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 20222,
+          "path_delay_dispersion_ns": 5478,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 1142.239,
+          "window_start": 1126.217,
+          "window_duration_s": 16.022,
+          "path_delay_ns": 76576,
+          "path_delay_dispersion_ns": 41090,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "window start 1126.217 is not provably at or after the apply upper bound 1127.394884 (bracketed interval)"
+          ]
+        },
+        {
+          "summary_time": 1158.263,
+          "window_start": 1142.239,
+          "window_duration_s": 16.024,
+          "path_delay_ns": 83994,
+          "path_delay_dispersion_ns": 31635,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 1174.286,
+          "window_start": 1158.263,
+          "window_duration_s": 16.023,
+          "path_delay_ns": 98709,
+          "path_delay_dispersion_ns": 43897,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 1190.311,
+          "window_start": 1174.286,
+          "window_duration_s": 16.025,
+          "path_delay_ns": 98262,
+          "path_delay_dispersion_ns": 37624,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 1206.337,
+          "window_start": 1190.311,
+          "window_duration_s": 16.026,
+          "path_delay_ns": 109795,
+          "path_delay_dispersion_ns": 51676,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "triggers": 1,
+      "triggers_after_apply": 1,
+      "triggers_ambiguous": 0,
+      "detector_outcome": "TRIGGER",
+      "detector_unknown_reason": null,
+      "trigger_packet_ts": [
+        1789344602.2104373
+      ],
+      "apply_epoch_from_utc": 1789344597.0,
+      "counted_in_2x2": true
+    },
+    {
+      "run": "20260913_s15_j140_r4",
+      "condition": "j140",
+      "integrity_problems": [],
+      "apply_monotonic_s": 1835.785258,
+      "apply_begin_monotonic_s": 1835.78193,
+      "apply_upper_bound_s": 1835.785258,
+      "apply_basis": "bracketed interval",
+      "apply_uncertainty_s": 0.003328,
+      "apply_utc": "2026-09-14T00:21:45Z",
+      "phase_end_monotonic_s": 1916.082623,
+      "valid_window_count": 5,
+      "first_valid_window_dispersion_ns": 36503,
+      "receiver_entered_master": false,
+      "receiver_unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_ABOVE_BOUNDARY",
+      "summary_windows": [
+        {
+          "summary_time": 1835.878,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 20092,
+          "path_delay_dispersion_ns": 6775,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 1851.899,
+          "window_start": 1835.878,
+          "window_duration_s": 16.021,
+          "path_delay_ns": 86847,
+          "path_delay_dispersion_ns": 36503,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 1867.918,
+          "window_start": 1851.899,
+          "window_duration_s": 16.019,
+          "path_delay_ns": 102660,
+          "path_delay_dispersion_ns": 35448,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 1883.942,
+          "window_start": 1867.918,
+          "window_duration_s": 16.024,
+          "path_delay_ns": 107589,
+          "path_delay_dispersion_ns": 34769,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 1899.967,
+          "window_start": 1883.942,
+          "window_duration_s": 16.025,
+          "path_delay_ns": 113188,
+          "path_delay_dispersion_ns": 43005,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 1915.974,
+          "window_start": 1899.967,
+          "window_duration_s": 16.007,
+          "path_delay_ns": 90594,
+          "path_delay_dispersion_ns": 29313,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "triggers": 1,
+      "triggers_after_apply": 1,
+      "triggers_ambiguous": 0,
+      "detector_outcome": "TRIGGER",
+      "detector_unknown_reason": null,
+      "trigger_packet_ts": [
+        1789345320.5062985
+      ],
+      "apply_epoch_from_utc": 1789345305.0,
+      "counted_in_2x2": true
+    },
+    {
+      "run": "20260913_s15_j140_r5",
+      "condition": "j140",
+      "integrity_problems": [],
+      "apply_monotonic_s": 2441.303909,
+      "apply_begin_monotonic_s": 2441.300995,
+      "apply_upper_bound_s": 2441.303909,
+      "apply_basis": "bracketed interval",
+      "apply_uncertainty_s": 0.002914,
+      "apply_utc": "2026-09-14T00:31:51Z",
+      "phase_end_monotonic_s": 2521.596924,
+      "valid_window_count": 4,
+      "first_valid_window_dispersion_ns": 40689,
+      "receiver_entered_master": false,
+      "receiver_unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_ABOVE_BOUNDARY",
+      "summary_windows": [
+        {
+          "summary_time": 2440.752,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 18498,
+          "path_delay_dispersion_ns": 6917,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 2456.771,
+          "window_start": 2440.752,
+          "window_duration_s": 16.019,
+          "path_delay_ns": 99867,
+          "path_delay_dispersion_ns": 38180,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "window start 2440.752 is not provably at or after the apply upper bound 2441.303909 (bracketed interval)"
+          ]
+        },
+        {
+          "summary_time": 2472.795,
+          "window_start": 2456.771,
+          "window_duration_s": 16.024,
+          "path_delay_ns": 94090,
+          "path_delay_dispersion_ns": 40689,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 2488.818,
+          "window_start": 2472.795,
+          "window_duration_s": 16.023,
+          "path_delay_ns": 99265,
+          "path_delay_dispersion_ns": 30368,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 2504.843,
+          "window_start": 2488.818,
+          "window_duration_s": 16.025,
+          "path_delay_ns": 108309,
+          "path_delay_dispersion_ns": 53783,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 2520.866,
+          "window_start": 2504.843,
+          "window_duration_s": 16.023,
+          "path_delay_ns": 112980,
+          "path_delay_dispersion_ns": 46242,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "triggers": 1,
+      "triggers_after_apply": 1,
+      "triggers_ambiguous": 0,
+      "detector_outcome": "TRIGGER",
+      "detector_unknown_reason": null,
+      "trigger_packet_ts": [
+        1789345924.2527788
+      ],
+      "apply_epoch_from_utc": 1789345911.0,
+      "counted_in_2x2": true
+    },
+    {
+      "run": "20260913_s15_j140_r6",
+      "condition": "j140",
+      "integrity_problems": [],
+      "apply_monotonic_s": 2947.424369,
+      "apply_begin_monotonic_s": 2947.420655,
+      "apply_upper_bound_s": 2947.424369,
+      "apply_basis": "bracketed interval",
+      "apply_uncertainty_s": 0.003714,
+      "apply_utc": "2026-09-14T00:40:17Z",
+      "phase_end_monotonic_s": 3027.751216,
+      "valid_window_count": 4,
+      "first_valid_window_dispersion_ns": 33153,
+      "receiver_entered_master": false,
+      "receiver_unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_ABOVE_BOUNDARY",
+      "summary_windows": [
+        {
+          "summary_time": 2946.852,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 22728,
+          "path_delay_dispersion_ns": 5939,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 2962.872,
+          "window_start": 2946.852,
+          "window_duration_s": 16.02,
+          "path_delay_ns": 94130,
+          "path_delay_dispersion_ns": 38315,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "window start 2946.852 is not provably at or after the apply upper bound 2947.424369 (bracketed interval)"
+          ]
+        },
+        {
+          "summary_time": 2978.897,
+          "window_start": 2962.872,
+          "window_duration_s": 16.025,
+          "path_delay_ns": 98657,
+          "path_delay_dispersion_ns": 33153,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 2994.921,
+          "window_start": 2978.897,
+          "window_duration_s": 16.024,
+          "path_delay_ns": 125607,
+          "path_delay_dispersion_ns": 43579,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 3010.944,
+          "window_start": 2994.921,
+          "window_duration_s": 16.023,
+          "path_delay_ns": 99715,
+          "path_delay_dispersion_ns": 35564,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 3026.967,
+          "window_start": 3010.944,
+          "window_duration_s": 16.023,
+          "path_delay_ns": 97069,
+          "path_delay_dispersion_ns": 44481,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "triggers": 1,
+      "triggers_after_apply": 1,
+      "triggers_ambiguous": 0,
+      "detector_outcome": "TRIGGER",
+      "detector_unknown_reason": null,
+      "trigger_packet_ts": [
+        1789346423.2225368
+      ],
+      "apply_epoch_from_utc": 1789346417.0,
+      "counted_in_2x2": true
+    },
+    {
+      "run": "20260913_s15_j200_r1",
+      "condition": "j200",
+      "integrity_problems": [],
+      "apply_monotonic_s": 122.299836,
+      "apply_begin_monotonic_s": 122.298091,
+      "apply_upper_bound_s": 122.299836,
+      "apply_basis": "bracketed interval",
+      "apply_uncertainty_s": 0.001745,
+      "apply_utc": "2026-09-13T23:53:12Z",
+      "phase_end_monotonic_s": 202.491022,
+      "valid_window_count": 4,
+      "first_valid_window_dispersion_ns": 47618,
+      "receiver_entered_master": false,
+      "receiver_unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_ABOVE_BOUNDARY",
+      "summary_windows": [
+        {
+          "summary_time": 122.237,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 13067,
+          "path_delay_dispersion_ns": 2147,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 138.252,
+          "window_start": 122.237,
+          "window_duration_s": 16.015,
+          "path_delay_ns": 69568,
+          "path_delay_dispersion_ns": 40389,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "window start 122.237 is not provably at or after the apply upper bound 122.299836 (bracketed interval)"
+          ]
+        },
+        {
+          "summary_time": 154.266,
+          "window_start": 138.252,
+          "window_duration_s": 16.014,
+          "path_delay_ns": 99853,
+          "path_delay_dispersion_ns": 47618,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 170.281,
+          "window_start": 154.266,
+          "window_duration_s": 16.015,
+          "path_delay_ns": 84034,
+          "path_delay_dispersion_ns": 40241,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 186.301,
+          "window_start": 170.281,
+          "window_duration_s": 16.02,
+          "path_delay_ns": 95477,
+          "path_delay_dispersion_ns": 48542,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 202.32,
+          "window_start": 186.301,
+          "window_duration_s": 16.019,
+          "path_delay_ns": 79398,
+          "path_delay_dispersion_ns": 42223,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "triggers": 1,
+      "triggers_after_apply": 1,
+      "triggers_ambiguous": 0,
+      "detector_outcome": "TRIGGER",
+      "detector_unknown_reason": null,
+      "trigger_packet_ts": [
+        1789343623.7500877
+      ],
+      "apply_epoch_from_utc": 1789343592.0,
+      "counted_in_2x2": true
+    },
+    {
+      "run": "20260913_s15_j200_r2",
+      "condition": "j200",
+      "integrity_problems": [],
+      "apply_monotonic_s": 822.574875,
+      "apply_begin_monotonic_s": 822.572669,
+      "apply_upper_bound_s": 822.574875,
+      "apply_basis": "bracketed interval",
+      "apply_uncertainty_s": 0.002206,
+      "apply_utc": "2026-09-14T00:04:52Z",
+      "phase_end_monotonic_s": 902.944322,
+      "valid_window_count": 4,
+      "first_valid_window_dispersion_ns": 63946,
+      "receiver_entered_master": false,
+      "receiver_unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_ABOVE_BOUNDARY",
+      "summary_windows": [
+        {
+          "summary_time": 821.863,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 23576,
+          "path_delay_dispersion_ns": 6350,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 837.885,
+          "window_start": 821.863,
+          "window_duration_s": 16.022,
+          "path_delay_ns": 113474,
+          "path_delay_dispersion_ns": 58107,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "window start 821.863 is not provably at or after the apply upper bound 822.574875 (bracketed interval)"
+          ]
+        },
+        {
+          "summary_time": 853.909,
+          "window_start": 837.885,
+          "window_duration_s": 16.024,
+          "path_delay_ns": 126575,
+          "path_delay_dispersion_ns": 63946,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 869.932,
+          "window_start": 853.909,
+          "window_duration_s": 16.023,
+          "path_delay_ns": 86716,
+          "path_delay_dispersion_ns": 53953,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 885.956,
+          "window_start": 869.932,
+          "window_duration_s": 16.024,
+          "path_delay_ns": 120767,
+          "path_delay_dispersion_ns": 57220,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 901.98,
+          "window_start": 885.956,
+          "window_duration_s": 16.024,
+          "path_delay_ns": 147445,
+          "path_delay_dispersion_ns": 45020,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "triggers": 1,
+      "triggers_after_apply": 1,
+      "triggers_ambiguous": 0,
+      "detector_outcome": "TRIGGER",
+      "detector_unknown_reason": null,
+      "trigger_packet_ts": [
+        1789344322.2664297
+      ],
+      "apply_epoch_from_utc": 1789344292.0,
+      "counted_in_2x2": true
+    },
+    {
+      "run": "20260913_s15_j200_r3",
+      "condition": "j200",
+      "integrity_problems": [],
+      "apply_monotonic_s": 1228.551117,
+      "apply_begin_monotonic_s": 1228.547828,
+      "apply_upper_bound_s": 1228.551117,
+      "apply_basis": "bracketed interval",
+      "apply_uncertainty_s": 0.003289,
+      "apply_utc": "2026-09-14T00:11:38Z",
+      "phase_end_monotonic_s": 1308.809105,
+      "valid_window_count": 4,
+      "first_valid_window_dispersion_ns": 38693,
+      "receiver_entered_master": false,
+      "receiver_unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_ABOVE_BOUNDARY",
+      "summary_windows": [
+        {
+          "summary_time": 1228.386,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 23393,
+          "path_delay_dispersion_ns": 7156,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 1244.401,
+          "window_start": 1228.386,
+          "window_duration_s": 16.015,
+          "path_delay_ns": 103738,
+          "path_delay_dispersion_ns": 62160,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "window start 1228.386 is not provably at or after the apply upper bound 1228.551117 (bracketed interval)"
+          ]
+        },
+        {
+          "summary_time": 1260.43,
+          "window_start": 1244.401,
+          "window_duration_s": 16.029,
+          "path_delay_ns": 85188,
+          "path_delay_dispersion_ns": 38693,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 1276.452,
+          "window_start": 1260.43,
+          "window_duration_s": 16.022,
+          "path_delay_ns": 116924,
+          "path_delay_dispersion_ns": 67795,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 1292.473,
+          "window_start": 1276.452,
+          "window_duration_s": 16.021,
+          "path_delay_ns": 83925,
+          "path_delay_dispersion_ns": 39896,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 1308.497,
+          "window_start": 1292.473,
+          "window_duration_s": 16.024,
+          "path_delay_ns": 120331,
+          "path_delay_dispersion_ns": 45605,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "triggers": 1,
+      "triggers_after_apply": 1,
+      "triggers_ambiguous": 0,
+      "detector_outcome": "TRIGGER",
+      "detector_unknown_reason": null,
+      "trigger_packet_ts": [
+        1789344701.8655834
+      ],
+      "apply_epoch_from_utc": 1789344698.0,
+      "counted_in_2x2": true
+    },
+    {
+      "run": "20260913_s15_j200_r4",
+      "condition": "j200",
+      "integrity_problems": [],
+      "apply_monotonic_s": 1936.50701,
+      "apply_begin_monotonic_s": 1936.503028,
+      "apply_upper_bound_s": 1936.50701,
+      "apply_basis": "bracketed interval",
+      "apply_uncertainty_s": 0.003982,
+      "apply_utc": "2026-09-14T00:23:26Z",
+      "phase_end_monotonic_s": 2017.026892,
+      "valid_window_count": 4,
+      "first_valid_window_dispersion_ns": 51777,
+      "receiver_entered_master": false,
+      "receiver_unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_ABOVE_BOUNDARY",
+      "summary_windows": [
+        {
+          "summary_time": 1936.165,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 17209,
+          "path_delay_dispersion_ns": 4762,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 1952.185,
+          "window_start": 1936.165,
+          "window_duration_s": 16.02,
+          "path_delay_ns": 101013,
+          "path_delay_dispersion_ns": 48219,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "window start 1936.165 is not provably at or after the apply upper bound 1936.507010 (bracketed interval)"
+          ]
+        },
+        {
+          "summary_time": 1968.206,
+          "window_start": 1952.185,
+          "window_duration_s": 16.021,
+          "path_delay_ns": 106406,
+          "path_delay_dispersion_ns": 51777,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 1984.227,
+          "window_start": 1968.206,
+          "window_duration_s": 16.021,
+          "path_delay_ns": 81898,
+          "path_delay_dispersion_ns": 48450,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 2000.302,
+          "window_start": 1984.227,
+          "window_duration_s": 16.075,
+          "path_delay_ns": 102291,
+          "path_delay_dispersion_ns": 40701,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 2016.282,
+          "window_start": 2000.302,
+          "window_duration_s": 15.98,
+          "path_delay_ns": 129070,
+          "path_delay_dispersion_ns": 57504,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "triggers": 1,
+      "triggers_after_apply": 1,
+      "triggers_ambiguous": 0,
+      "detector_outcome": "TRIGGER",
+      "detector_unknown_reason": null,
+      "trigger_packet_ts": [
+        1789345417.163906
+      ],
+      "apply_epoch_from_utc": 1789345406.0,
+      "counted_in_2x2": true
+    },
+    {
+      "run": "20260913_s15_j200_r5",
+      "condition": "j200",
+      "integrity_problems": [],
+      "apply_monotonic_s": 2541.660469,
+      "apply_begin_monotonic_s": 2541.657178,
+      "apply_upper_bound_s": 2541.660469,
+      "apply_basis": "bracketed interval",
+      "apply_uncertainty_s": 0.003291,
+      "apply_utc": "2026-09-14T00:33:31Z",
+      "phase_end_monotonic_s": 2622.098099,
+      "valid_window_count": 4,
+      "first_valid_window_dispersion_ns": 46562,
+      "receiver_entered_master": false,
+      "receiver_unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_ABOVE_BOUNDARY",
+      "summary_windows": [
+        {
+          "summary_time": 2541.435,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 23493,
+          "path_delay_dispersion_ns": 5399,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 2557.458,
+          "window_start": 2541.435,
+          "window_duration_s": 16.023,
+          "path_delay_ns": 110936,
+          "path_delay_dispersion_ns": 63712,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "window start 2541.435 is not provably at or after the apply upper bound 2541.660469 (bracketed interval)"
+          ]
+        },
+        {
+          "summary_time": 2573.484,
+          "window_start": 2557.458,
+          "window_duration_s": 16.026,
+          "path_delay_ns": 97804,
+          "path_delay_dispersion_ns": 46562,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 2589.506,
+          "window_start": 2573.484,
+          "window_duration_s": 16.022,
+          "path_delay_ns": 92116,
+          "path_delay_dispersion_ns": 64605,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 2605.526,
+          "window_start": 2589.506,
+          "window_duration_s": 16.02,
+          "path_delay_ns": 95002,
+          "path_delay_dispersion_ns": 38043,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 2621.551,
+          "window_start": 2605.526,
+          "window_duration_s": 16.025,
+          "path_delay_ns": 104296,
+          "path_delay_dispersion_ns": 34098,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "triggers": 1,
+      "triggers_after_apply": 1,
+      "triggers_ambiguous": 0,
+      "detector_outcome": "TRIGGER",
+      "detector_unknown_reason": null,
+      "trigger_packet_ts": [
+        1789346022.0590248
+      ],
+      "apply_epoch_from_utc": 1789346011.0,
+      "counted_in_2x2": true
+    },
+    {
+      "run": "20260913_s15_j200_r6",
+      "condition": "j200",
+      "integrity_problems": [],
+      "apply_monotonic_s": 2743.571942,
+      "apply_begin_monotonic_s": 2743.569004,
+      "apply_upper_bound_s": 2743.571942,
+      "apply_basis": "bracketed interval",
+      "apply_uncertainty_s": 0.002938,
+      "apply_utc": "2026-09-14T00:36:53Z",
+      "phase_end_monotonic_s": 2824.156796,
+      "valid_window_count": 4,
+      "first_valid_window_dispersion_ns": 47827,
+      "receiver_entered_master": false,
+      "receiver_unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_ABOVE_BOUNDARY",
+      "summary_windows": [
+        {
+          "summary_time": 2743.301,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 22143,
+          "path_delay_dispersion_ns": 5955,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 2759.322,
+          "window_start": 2743.301,
+          "window_duration_s": 16.021,
+          "path_delay_ns": 98225,
+          "path_delay_dispersion_ns": 58135,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "window start 2743.301 is not provably at or after the apply upper bound 2743.571942 (bracketed interval)"
+          ]
+        },
+        {
+          "summary_time": 2775.348,
+          "window_start": 2759.322,
+          "window_duration_s": 16.026,
+          "path_delay_ns": 101764,
+          "path_delay_dispersion_ns": 47827,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 2791.372,
+          "window_start": 2775.348,
+          "window_duration_s": 16.024,
+          "path_delay_ns": 123716,
+          "path_delay_dispersion_ns": 48194,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 2807.394,
+          "window_start": 2791.372,
+          "window_duration_s": 16.022,
+          "path_delay_ns": 107467,
+          "path_delay_dispersion_ns": 45979,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        },
+        {
+          "summary_time": 2823.416,
+          "window_start": 2807.394,
+          "window_duration_s": 16.022,
+          "path_delay_ns": 90732,
+          "path_delay_dispersion_ns": 43348,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "triggers": 1,
+      "triggers_after_apply": 1,
+      "triggers_ambiguous": 0,
+      "detector_outcome": "TRIGGER",
+      "detector_unknown_reason": null,
+      "trigger_packet_ts": [
+        1789346228.3055596
+      ],
+      "apply_epoch_from_utc": 1789346213.0,
+      "counted_in_2x2": true
+    }
+  ]
+}

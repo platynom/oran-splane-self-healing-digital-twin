@@ -1,0 +1,90 @@
+{
+  "title": "Coverage-gap closure - LIVE on-wire validation (reproducibility)",
+  "generated": "2026-09-20T09:12:34.236145Z",
+  "method": "Real linuxptp 4.0 G.8275.1 testbed in netns; faults on the wire (link blackhole / scapy injection; netem unavailable in kernel). NOT crafted CSVs. v2 is UNFROZEN dev.",
+  "frozen_sha256": "c362e11072344161437aaae33b2902caf9bca57dfc33f653a9c2184edae8a985",
+  "frozen_matches": true,
+  "linuxptp": "4.0",
+  "reps": [
+    {
+      "rep": 1,
+      "scenario": "baseline",
+      "truth": "BENIGN (control)",
+      "frozen": "BENIGN",
+      "v2": "BENIGN",
+      "capture_sha256": "4a051103643b0745f53ef90329ca63b78bf88bad0101050cd69eead30a087c83",
+      "frozen_as_expected": true,
+      "v2_as_expected": true
+    },
+    {
+      "rep": 1,
+      "scenario": "C1_removal",
+      "truth": "ATTACK item1 interception",
+      "frozen": "BENIGN",
+      "v2": "ATTACK",
+      "capture_sha256": "f3730878c6b295974b8b8499051bef138eb48311b96cfdf996e54b9a1da00c41",
+      "frozen_as_expected": true,
+      "v2_as_expected": true
+    },
+    {
+      "rep": 1,
+      "scenario": "C2_malformed",
+      "truth": "ATTACK item2 malformed",
+      "frozen": "BENIGN",
+      "v2": "ATTACK",
+      "capture_sha256": "74cdd44b7b9336099e4bce6748629bd00d28e5407aed93af69fe3de2e404141e",
+      "frozen_as_expected": true,
+      "v2_as_expected": true
+    },
+    {
+      "rep": 1,
+      "scenario": "C3_wholesecond",
+      "truth": "ATTACK item3 whole-second",
+      "frozen": "BENIGN",
+      "v2": "ATTACK",
+      "capture_sha256": "13b7c511205e2a4acff5dfa6f0ece878d2ddcd6617011c35bcfa3e50aac4827f",
+      "frozen_as_expected": true,
+      "v2_as_expected": true
+    },
+    {
+      "rep": 2,
+      "scenario": "baseline",
+      "truth": "BENIGN (control)",
+      "frozen": "BENIGN",
+      "v2": "BENIGN",
+      "capture_sha256": "3d2369ca6e5d627137f4cf658dbf00a13e7e9db0101820002623b302d5d12370",
+      "frozen_as_expected": true,
+      "v2_as_expected": true
+    },
+    {
+      "rep": 2,
+      "scenario": "C1_removal",
+      "truth": "ATTACK item1 interception",
+      "frozen": "BENIGN",
+      "v2": "ATTACK",
+      "capture_sha256": "6eee44401163ca6da23c05dac10f65d203ca05fefa050f7953bcaff4d6c94778",
+      "frozen_as_expected": true,
+      "v2_as_expected": true
+    },
+    {
+      "rep": 2,
+      "scenario": "C2_malformed",
+      "truth": "ATTACK item2 malformed",
+      "frozen": "BENIGN",
+      "v2": "ATTACK",
+      "capture_sha256": "ab0bf13efb98674c9a95001c2a74cfb5978bc988c2e53c08c0ee53223825d15a",
+      "frozen_as_expected": true,
+      "v2_as_expected": true
+    },
+    {
+      "rep": 2,
+      "scenario": "C3_wholesecond",
+      "truth": "ATTACK item3 whole-second",
+      "frozen": "BENIGN",
+      "v2": "ATTACK",
+      "capture_sha256": "abbdd443fa9c7942f264db726935092ac20442fa3683b4b713f5a705c1a72461",
+      "frozen_as_expected": true,
+      "v2_as_expected": true
+    }
+  ]
+}

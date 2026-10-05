@@ -1,0 +1,3 @@
+{"event": "stream_started", "utc": "2026-09-13T18:10:40Z", "monotonic_s": 297.771657, "arm": "no_action", "stream_id": "seg1-v0601", "pcap_magic": "0xa1b23c4d", "ts_divisor": 1000000000.0, "action_command": "ip netns exec s15v0601s ip link set s15v0601y1 down"}
+{"event": "stream_ended", "utc": "2026-09-13T18:12:15Z", "monotonic_s": 392.275061, "arm": "no_action", "frames": 3325}
+{"event": "detector_finished", "utc": "2026-09-13T18:12:15Z", "monotonic_s": 392.276478, "arm": "no_action", "frames": 3325, "triggered": false}

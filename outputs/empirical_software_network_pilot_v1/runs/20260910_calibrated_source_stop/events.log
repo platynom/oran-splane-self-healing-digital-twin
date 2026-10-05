@@ -1,0 +1,7 @@
+run_id=s3 phase=setup event=tcpdump_ready utc=2026-09-10T05:25:00Z monotonic_s=357.69 status=PASS
+run_id=s3 phase=setup event=master_a_ready utc=2026-09-10T05:25:00Z monotonic_s=357.70 status=PASS
+run_id=s3 phase=setup event=master_b_ready utc=2026-09-10T05:25:00Z monotonic_s=357.70 status=PASS
+run_id=s3 phase=setup event=slave_ready utc=2026-09-10T05:25:00Z monotonic_s=357.71 status=PASS
+run_id=s3 phase=authorized_source_change_intervention event=phase_started utc=2026-09-10T05:25:00Z monotonic_s=357.72 status=PASS
+run_id=s3 phase=authorized_source_change_intervention event=preferred_master_stop_confirmed utc=2026-09-10T05:25:12Z monotonic_s=369.76 status=PASS
+run_id=s3 phase=authorized_source_change_intervention event=phase_finished utc=2026-09-10T05:25:24Z monotonic_s=381.77 status=PASS

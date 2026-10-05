@@ -1,0 +1,12 @@
+{
+  "scenario": "C2_malformed",
+  "truth_class": "attack",
+  "truth_fault": "C2",
+  "verdict": "ATTACK",
+  "fault_hint": "A_malformed",
+  "reasons": [
+    "IEEE 1588-2019 field-legality violations in 252 frames: {'version!=2': 252, 'control>5': 252, 'msgtype_raw illegal': 252}",
+    "(v2 detector; frozen base said BENIGN)"
+  ],
+  "rule": "decision_rule_v3 (frozen v3)"
+}

@@ -1,0 +1,59 @@
+{
+  "scenario": "A1_rogue_master",
+  "truth_class": "attack",
+  "truth_fault": "A1",
+  "verdict": "ATTACK",
+  "fault_hint": "A3",
+  "reasons": [
+    "sequenceId regressions=1 (counter keyed per requesting port for Delay_Resp); a compliant sender is strictly increasing"
+  ],
+  "evidence": {
+    "n_packets": 8178,
+    "n_announce": 538,
+    "allowlist": [
+      "020000fffe000001",
+      "020000fffe00000a",
+      "020000fffe00000b"
+    ],
+    "illegal_clockclass_pkts": 0,
+    "nonconformant_priority1_pkts": 0,
+    "out_of_profile_domain_pkts": 0,
+    "wrong_multicast_pkts": 0,
+    "stepsRemoved_ge_255_pkts": 0,
+    "alternate_master_flag_pkts": 0,
+    "gm_identities": {
+      "020000fffe000001": 2,
+      "020000fffe00000a": 379,
+      "020000fffe000072": 157
+    },
+    "off_allowlist_sustained": {
+      "020000fffe000072": 157
+    },
+    "provisioned_gms_seen": [
+      "020000fffe00000a"
+    ],
+    "maintenance_window_open": false,
+    "ptp_sources": {
+      "020000fffe000001": 4169,
+      "020000fffe00000e": 769,
+      "020000fffe00000c": 750,
+      "020000fffe00000d": 751,
+      "020000fffe000072": 1739
+    },
+    "unknown_sources_sustained": {
+      "020000fffe000072": 1739
+    },
+    "announce_rate_self_inconsistent": {},
+    "capture_span_s": 47.525,
+    "unknown_relaying_sources": {},
+    "unknown_selfannouncing_sources": {
+      "020000fffe000072": {
+        "n": 157,
+        "self_announce_pkts": 157
+      }
+    },
+    "sequence_regressions": 1,
+    "nonconformant_sync_cadence_pkts": 0,
+    "nonconformant_announce_cadence_pkts": 0
+  }
+}

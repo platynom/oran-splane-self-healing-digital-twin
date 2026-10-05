@@ -1,0 +1,27 @@
+{
+  "frozen_utc": "2026-09-17T04:49:33Z",
+  "development_set": ["baseline","A1_rogue_master","B2_gm_failover","B3_pdv_congestion","A2_sync_spoof","A3_replay","A5_dos_flood","A8_rogue_bc","B7_topology_change"],
+  "development_reps": [1,2,3,4,5,6,7,10,11,12,13],
+  "development_set_note": "SESSION 2026-09-17: config corrected (dataset_comparison G.8275.x added -> real alternate BMCA; path_trace disabled -> removes PATH_TRACE provenance leak; per-node config generator added). Rule extended pre-freeze with stepsRemoved>=255 and alternateMasterFlag Class-A legality checks, both verified to fire on their own standards clause by run/conformance_neg.py (7/7). Scenarios randomised per replicate (run/randparams.py) and two critical benign gaps added (B_unplanned_failover, B_bc_replacement). All prior reps and the prior-session results are development data and are EXCLUDED. Validation = reps produced after this freeze only.",
+  "validation_rule": "Only runs created after frozen_utc, with all hashes matching, are admissible as evidence.",
+  "artifacts": {
+    "run/decision_rule.py": {"sha256":"c362e11072344161437aaae33b2902caf9bca57dfc33f653a9c2184edae8a985","bytes":16447},
+    "run/inject.py": {"sha256":"d86ca42a8d8ba991f56b47a11ed1cc8e02a9e2a49799b4a0ba445180bddf287a","bytes":1222},
+    "run/verify_frozen.sh": {"sha256":"c76f5739eec53507e1ea0ed112d68a17960410362b6da69f8ce481ca343d4fb1","bytes":570},
+    "run/scenarios.sh": {"sha256":"3d682520a43de9bbdbe2ba280f70fdbd7d860e474591c86a31dc8a55ed19900e","bytes":9180},
+    "run/topology.sh": {"sha256":"334f44f29bff8d5a2240df9242d28d6975f4b8bc2d92a068c2a67a19af9634c5","bytes":1625},
+    "run/start.sh": {"sha256":"cd736fbfbe38fa647a882cc13ce476ea116f0b79f3c485c946c008d720fe309b","bytes":1669},
+    "run/stop.sh": {"sha256":"e5f9bc4d324041d674cf1cd6e8aea6c37de26eb475f7c78dddd4f1d7b4743fa7","bytes":322},
+    "run/flood.py": {"sha256":"a9952fe6c77db075b9037fc5f20b195940c909985f4dd411a17f6a1871065e62","bytes":618},
+    "run/pmc_log.sh": {"sha256":"c872727a4f163c33a234a703488f9845a5196cbda608b93a1f337e1714694ab6","bytes":950},
+    "run/window_features.py": {"sha256":"46b2fefc3d41e7485254af2ed186e0ee2ff49906053e8a8b53d9585eef9c779d","bytes":7135},
+    "run/evaluate.py": {"sha256":"2115513690b26d58599bf46fc63da1b568f943a620b765bb29e58409d370b6fb","bytes":6493},
+    "run/baseline_floor.py": {"sha256":"b9c78c1cfd1670c885980d86f75831ab51c933ba11bb2298fdc275cb4f5d65c3","bytes":2843},
+    "run/randparams.py": {"sha256":"c0a2fe2d4ae92ec25e7036b770f91078c35ae6ed16097a07c422f4b5b6fb10f0","bytes":2973},
+    "run/mkcfg.sh": {"sha256":"89f232e740293238c8892a10ba1265df67f17ce2427ad320849f686f83229b7b","bytes":1729},
+    "run/conformance_neg.py": {"sha256":"8549ed9d5e562a9186d9ff10caaf35ce544c4c0b2cc7fec7722de5cdf1da5f28","bytes":4783},
+    "run/leak_check.py": {"sha256":"bd70b0af01e3dd35edf04cc30c2aac193f2f5d684d22623f2171f6fbf30259e5","bytes":3949},
+    "cfg/g87251.base": {"sha256":"c346618da31b6a871b2f4c21b50c4d7a079a4d9baae72fa31286354fae778755","bytes":2353},
+    "ptp_deep_extract.py": {"sha256":"3e0fa9e9ba3a34bb56f26189705d60758ced0a0994a8486cbfe0f933715db780","bytes":9135}
+  }
+}

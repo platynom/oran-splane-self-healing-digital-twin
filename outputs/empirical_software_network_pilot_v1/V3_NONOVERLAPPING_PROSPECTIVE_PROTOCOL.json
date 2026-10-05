@@ -1,0 +1,22 @@
+{
+  "schema_version": "v3-nonoverlapping-block-protocol-2026-09-13",
+  "status": "FROZEN_BEFORE_ANY_V3_CAPTURE",
+  "purpose": "Prospective isolated-software feasibility measurement of repeated non-overlapping packet-arrival dispersion blocks. It is not an attack, health, receiver-outage, or recovery detector.",
+  "supersedes": ["V3_PROSPECTIVE_PROTOCOL.json", "V3_WINDOWED_PROSPECTIVE_PROTOCOL.json"],
+  "frozen_inputs": {
+    "streaming_discriminator_v1.py_sha256": "1c1d7edfbcc38b6e0c950984eff72b58592160c71ad8e797ff719d4aee0b8d0e",
+    "streaming_discriminator_v3_nonoverlap.py_sha256": "ee328876367e6547878f85eed60405624f55bd21a03348f4d9527fd302250172",
+    "base_trailing_std_threshold_s": 0.00016,
+    "nonoverlapping_block_size": 8,
+    "high_dispersion_block_count": 2,
+    "high_dispersion_block_window_s": 3.0,
+    "state_scope": "capture_id + transportSpecific + version + domain + sourcePortIdentity",
+    "host_clock_protection": "free_running 1; no host-clock adjustment"
+  },
+  "semantics": "A Sync/Follow_Up gap enters one block only. On the eighth matched gap in a context, the block standard deviation is calculated and the block is cleared. A persistence observation requires two high-dispersion disjoint blocks whose final packets arrive within three seconds. Invalid, unmatched, reused-sequence, unsupported, and timestamp-regression results do not create a gap or default to healthy.",
+  "overlap_limit": "V2's rolling eight-pair windows overlap. One gap can therefore generate several V2 candidates. V3's two blocks are disjoint observations, but are still software packet-arrival measurements and are not independent disturbances or physical-clock measurements.",
+  "parameter_status": "All numeric values are provisional engineering parameters for this single prospective pilot. They are not calibrated deployment requirements, and V2/older data are development-only and excluded from V3 performance estimation.",
+  "fresh_conditions": {"baseline_control": 5, "netem_delay_jitter_loss": 5, "authorized_source_change_no_action_control": 5, "authorized_source_termination_observation": 5},
+  "run_level_feasibility_gates": {"required": ["Every capture passes structural validation and frozen inputs match before replay.", "The non-overlapping persistence observation occurs in at least 4 of 5 netem runs.", "It occurs in none of the 10 baseline and authorised-source-change no-action controls.", "Report every run, first observation time, and all unknown/invalid states."], "interpretation": "These are prospective feasibility decision gates only. Passing would not establish detector performance, deployment suitability, or recovery efficacy; failing will be reported without tuning against these trials."},
+  "prohibitions": ["No future/EOF packet, filename, scenario label, or supplied outcome label is a feature.", "No recovery action, physical timing, GNSS, SyncE, oscillator, attack, or receiver-outage claim follows from this observation."]
+}

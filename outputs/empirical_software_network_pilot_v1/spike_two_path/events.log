@@ -1,0 +1,10 @@
+run_id=spk1 phase=setup event=tcpdump_s1_ready utc=2026-09-13T04:21:02Z monotonic_s=357.72 status=PASS
+run_id=spk1 phase=setup event=tcpdump_s2_ready utc=2026-09-13T04:21:02Z monotonic_s=357.73 status=PASS
+run_id=spk1 phase=setup event=master_a_ready utc=2026-09-13T04:21:02Z monotonic_s=357.74 status=PASS
+run_id=spk1 phase=setup event=master_b_ready utc=2026-09-13T04:21:02Z monotonic_s=357.74 status=PASS
+run_id=spk1 phase=setup event=slave_ready utc=2026-09-13T04:21:02Z monotonic_s=357.75 status=PASS
+run_id=spk1 phase=spike event=phase_settle_started utc=2026-09-13T04:21:02Z monotonic_s=357.76 status=PASS
+run_id=spk1 phase=spike event=tc_counters_baseline_recorded utc=2026-09-13T04:21:10Z monotonic_s=365.79 status=PASS
+run_id=spk1 phase=spike event=v4_impairment_applied_s1 utc=2026-09-13T04:21:10Z monotonic_s=365.80 status=PASS
+run_id=spk1 phase=spike event=tc_counters_impaired_recorded utc=2026-09-13T04:21:22Z monotonic_s=377.83 status=PASS
+run_id=spk1 phase=spike event=phase_finished utc=2026-09-13T04:21:22Z monotonic_s=377.85 status=PASS

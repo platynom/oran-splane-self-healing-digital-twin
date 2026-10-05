@@ -1,0 +1,5 @@
+{"event": "stream_started", "utc": "2026-09-13T04:58:06Z", "monotonic_s": 399.607717, "arm": "no_action", "stream_id": "seg1-sn4", "pcap_magic": "0xa1b23c4d", "ts_divisor": 1000000000.0, "action_command": "ip netns exec s11sn4s ip link set s11sn4y1 down"}
+{"event": "detection_trigger", "utc": "2026-09-13T04:58:30Z", "monotonic_s": 423.447502, "arm": "no_action", "classification": "NONOVERLAPPING_BLOCK_PERSISTENCE_OBSERVED", "reason": "prospective_causal_nonoverlap_block_count", "packet_ts": 1789275510.6499233, "frames_consumed": 874}
+{"event": "action_withheld", "utc": "2026-09-13T04:58:30Z", "monotonic_s": 423.451606, "arm": "no_action", "detail": "no_action arm: matched control, nothing executed"}
+{"event": "stream_ended", "utc": "2026-09-13T04:58:51Z", "monotonic_s": 444.124232, "arm": "no_action", "frames": 1580}
+{"event": "detector_finished", "utc": "2026-09-13T04:58:51Z", "monotonic_s": 444.125443, "arm": "no_action", "frames": 1580, "triggered": true}

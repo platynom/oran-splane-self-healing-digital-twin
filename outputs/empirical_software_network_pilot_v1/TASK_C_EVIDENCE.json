@@ -1,0 +1,974 @@
+{
+  "b31": {
+    "token": "b31",
+    "dir": "20260911_set2_baseline_r1",
+    "type": "baseline",
+    "A_frame_count": 2037,
+    "B_slave_line": "ptp4l[6.152]: selected local clock e2fbfb.fffe.d4ade5 as best master",
+    "C_events_lines": [
+      "run_id=b31 phase=setup event=tcpdump_ready utc=2026-09-11T14:40:35Z monotonic_s=8.07 status=PASS",
+      "run_id=b31 phase=setup event=master_a_ready utc=2026-09-11T14:40:35Z monotonic_s=8.07 status=PASS",
+      "run_id=b31 phase=setup event=master_b_ready utc=2026-09-11T14:40:35Z monotonic_s=8.08 status=PASS",
+      "run_id=b31 phase=setup event=slave_ready utc=2026-09-11T14:40:35Z monotonic_s=8.09 status=PASS",
+      "run_id=b31 phase=baseline_control event=qdisc_baseline_observed utc=2026-09-11T14:40:35Z monotonic_s=8.12 status=PASS"
+    ],
+    "D_manifest_hashes": {
+      "capture.pcap": {
+        "recomputed": "d24f0f8b198c53965e6b800344818e1e2bebffaeaf2dee6d01d9fd8d78f59261",
+        "stored": "d24f0f8b198c53965e6b800344818e1e2bebffaeaf2dee6d01d9fd8d78f59261",
+        "match": true
+      },
+      "events.log": {
+        "recomputed": "384e4171274153512813940bc35978c1b2c30a21dc78277a5e353c830d46770c",
+        "stored": "384e4171274153512813940bc35978c1b2c30a21dc78277a5e353c830d46770c",
+        "match": true
+      },
+      "master_a.conf": {
+        "recomputed": "bfc93eadddeedf10fc04edf4f3ac8e2f429a8edac5ea60b601319f8b5c5d9cc0",
+        "stored": "bfc93eadddeedf10fc04edf4f3ac8e2f429a8edac5ea60b601319f8b5c5d9cc0",
+        "match": true
+      },
+      "master_a.log": {
+        "recomputed": "bfeea104c02c32395d12514cb004ec6c936579604e397e3747684675ad72c067",
+        "stored": "bfeea104c02c32395d12514cb004ec6c936579604e397e3747684675ad72c067",
+        "match": true
+      },
+      "master_b.conf": {
+        "recomputed": "e89ef0812e206696558c6cafd10b1f49676c4e92d2a9290de492a70d405e8591",
+        "stored": "e89ef0812e206696558c6cafd10b1f49676c4e92d2a9290de492a70d405e8591",
+        "match": true
+      },
+      "master_b.log": {
+        "recomputed": "0b7a74e75f41f418b48c837c96cdaa435f33ac88561c218a9385ac11a0dfd58c",
+        "stored": "0b7a74e75f41f418b48c837c96cdaa435f33ac88561c218a9385ac11a0dfd58c",
+        "match": true
+      },
+      "qdisc_before.txt": {
+        "recomputed": "718aa134d34bbc23b140512f3eeee8d13b50e6a5636b5905a88a15c3d8090b7e",
+        "stored": "718aa134d34bbc23b140512f3eeee8d13b50e6a5636b5905a88a15c3d8090b7e",
+        "match": true
+      },
+      "run_environment.txt": {
+        "recomputed": "6bf34eceeab5bec3c024d35218f9fe16a00729d140a9c6d430b2dbeb1c547d64",
+        "stored": "6bf34eceeab5bec3c024d35218f9fe16a00729d140a9c6d430b2dbeb1c547d64",
+        "match": true
+      },
+      "slave.conf": {
+        "recomputed": "98e951fa9a6e2e5f6914665f905f46a14a0b9f09f117dda3943c15c957ad640e",
+        "stored": "98e951fa9a6e2e5f6914665f905f46a14a0b9f09f117dda3943c15c957ad640e",
+        "match": true
+      },
+      "slave.log": {
+        "recomputed": "df28847caaa59f9c65510fee0fae2b389548c60bef905ea386fbda3cd53d13d5",
+        "stored": "df28847caaa59f9c65510fee0fae2b389548c60bef905ea386fbda3cd53d13d5",
+        "match": true
+      },
+      "tcpdump.log": {
+        "recomputed": "7af7d718152d0a57cebc546b609df32cd77593d0208d8c22e3eb137abe1bf4c0",
+        "stored": "7af7d718152d0a57cebc546b609df32cd77593d0208d8c22e3eb137abe1bf4c0",
+        "match": true
+      },
+      "validation.json": {
+        "recomputed": "90a70f06f207e4b2ef44bd433fd8dbc6dd3ae37f87885633d4270e9d285dc829",
+        "stored": "MISSING",
+        "match": false
+      }
+    },
+    "E_qdisc_after": "N/A",
+    "F_timeout_line": "N/A",
+    "F_first_master_line": "N/A",
+    "F_new_master_line": "N/A",
+    "F_identities_differ": "N/A"
+  },
+  "n41": {
+    "token": "n41",
+    "dir": "20260911_set2_netem_r1",
+    "type": "netem",
+    "A_frame_count": 2045,
+    "B_slave_line": "ptp4l[40.044]: selected local clock 8295b5.fffe.99bc8a as best master",
+    "C_events_lines": [
+      "run_id=n41 phase=setup event=tcpdump_ready utc=2026-09-11T14:41:09Z monotonic_s=42.15 status=PASS",
+      "run_id=n41 phase=setup event=master_a_ready utc=2026-09-11T14:41:09Z monotonic_s=42.16 status=PASS",
+      "run_id=n41 phase=setup event=master_b_ready utc=2026-09-11T14:41:09Z monotonic_s=42.18 status=PASS",
+      "run_id=n41 phase=setup event=slave_ready utc=2026-09-11T14:41:09Z monotonic_s=42.19 status=PASS",
+      "run_id=n41 phase=netem_delay_jitter_loss event=netem_command_confirmed utc=2026-09-11T14:41:09Z monotonic_s=42.24 status=PASS"
+    ],
+    "D_manifest_hashes": {
+      "capture.pcap": {
+        "recomputed": "d49ac1cd6e91dcb74a9cfcaf9b44e5336f1e49f3ea027bea8f55a11038324a59",
+        "stored": "d49ac1cd6e91dcb74a9cfcaf9b44e5336f1e49f3ea027bea8f55a11038324a59",
+        "match": true
+      },
+      "events.log": {
+        "recomputed": "3d929bffe3bd943ad327ad383b01fe6a59bff07253a4f19ae719e6e4ddc86c91",
+        "stored": "3d929bffe3bd943ad327ad383b01fe6a59bff07253a4f19ae719e6e4ddc86c91",
+        "match": true
+      },
+      "master_a.conf": {
+        "recomputed": "61621c0211bb248fd9ae0172de1b63c70c3574c283b01f2eba9a5e8cdaa2b834",
+        "stored": "61621c0211bb248fd9ae0172de1b63c70c3574c283b01f2eba9a5e8cdaa2b834",
+        "match": true
+      },
+      "master_a.log": {
+        "recomputed": "75f4f82fa3d22598d7b64be3eaab59899ec6c80ea1fa3bc8b7dd80f684de49c5",
+        "stored": "75f4f82fa3d22598d7b64be3eaab59899ec6c80ea1fa3bc8b7dd80f684de49c5",
+        "match": true
+      },
+      "master_b.conf": {
+        "recomputed": "e2711073bb5ad71e394d6b0d8313985015352389424d5723c7c721696d59bc59",
+        "stored": "e2711073bb5ad71e394d6b0d8313985015352389424d5723c7c721696d59bc59",
+        "match": true
+      },
+      "master_b.log": {
+        "recomputed": "39e5530149432bec69e08d46e877fdb00550897fbd10eae48adaeff4fef6b8cc",
+        "stored": "39e5530149432bec69e08d46e877fdb00550897fbd10eae48adaeff4fef6b8cc",
+        "match": true
+      },
+      "qdisc_after.txt": {
+        "recomputed": "c3a6ba33bee4ea404fbba2638ba654a530034447cf8b31194357eef456804c88",
+        "stored": "c3a6ba33bee4ea404fbba2638ba654a530034447cf8b31194357eef456804c88",
+        "match": true
+      },
+      "qdisc_before.txt": {
+        "recomputed": "718aa134d34bbc23b140512f3eeee8d13b50e6a5636b5905a88a15c3d8090b7e",
+        "stored": "718aa134d34bbc23b140512f3eeee8d13b50e6a5636b5905a88a15c3d8090b7e",
+        "match": true
+      },
+      "run_environment.txt": {
+        "recomputed": "cf3489a8e4f91ecc9370142490889c9b84f3f1600277e98090b11f1827244781",
+        "stored": "cf3489a8e4f91ecc9370142490889c9b84f3f1600277e98090b11f1827244781",
+        "match": true
+      },
+      "slave.conf": {
+        "recomputed": "a42f9c9f47c8e105cf1677d1ce6067af726dcb92ad0085ea69268c1766df3bca",
+        "stored": "a42f9c9f47c8e105cf1677d1ce6067af726dcb92ad0085ea69268c1766df3bca",
+        "match": true
+      },
+      "slave.log": {
+        "recomputed": "edae4097de64aa9195110306dd0b42320cb05550da1ec802c9179341a20710ea",
+        "stored": "edae4097de64aa9195110306dd0b42320cb05550da1ec802c9179341a20710ea",
+        "match": true
+      },
+      "tcpdump.log": {
+        "recomputed": "7c3061c210ed3f57bf72777993fbb331c0fa8e16cc715b17356327bea7a1505d",
+        "stored": "7c3061c210ed3f57bf72777993fbb331c0fa8e16cc715b17356327bea7a1505d",
+        "match": true
+      },
+      "validation.json": {
+        "recomputed": "033495f365fae2098f78e1f8cb23a4517d255bf19d5ef087829273dc5d5434aa",
+        "stored": "MISSING",
+        "match": false
+      }
+    },
+    "E_qdisc_after": "qdisc netem 8001: root refcnt 7 limit 1000 delay 1ms  200us loss 1%\n Sent 108026 bytes 1693 pkt (dropped 20, overlimits 0 requeues 0) \n backlog 0b 0p requeues 0",
+    "F_timeout_line": "N/A",
+    "F_first_master_line": "N/A",
+    "F_new_master_line": "N/A",
+    "F_identities_differ": "N/A"
+  },
+  "c31": {
+    "token": "c31",
+    "dir": "20260911_set2_control_r1",
+    "type": "control",
+    "A_frame_count": 2026,
+    "B_slave_line": "ptp4l[73.920]: selected local clock ae29a8.fffe.33bc95 as best master",
+    "C_events_lines": [
+      "run_id=c31 phase=setup event=tcpdump_ready utc=2026-09-11T14:41:43Z monotonic_s=76.02 status=PASS",
+      "run_id=c31 phase=setup event=master_a_ready utc=2026-09-11T14:41:43Z monotonic_s=76.02 status=PASS",
+      "run_id=c31 phase=setup event=master_b_ready utc=2026-09-11T14:41:43Z monotonic_s=76.03 status=PASS",
+      "run_id=c31 phase=setup event=slave_ready utc=2026-09-11T14:41:43Z monotonic_s=76.04 status=PASS",
+      "run_id=c31 phase=authorized_source_change_no_action_control event=qdisc_baseline_observed utc=2026-09-11T14:41:43Z monotonic_s=76.06 status=PASS"
+    ],
+    "D_manifest_hashes": {
+      "capture.pcap": {
+        "recomputed": "de2964835632c0d1582f270c237b3db0aa35ee176ca5f21c1932457d48a066dc",
+        "stored": "de2964835632c0d1582f270c237b3db0aa35ee176ca5f21c1932457d48a066dc",
+        "match": true
+      },
+      "events.log": {
+        "recomputed": "b2a65b4cd68d82faff344a80fa36cea3c71775744c6df4dc16d1144317244453",
+        "stored": "b2a65b4cd68d82faff344a80fa36cea3c71775744c6df4dc16d1144317244453",
+        "match": true
+      },
+      "master_a.conf": {
+        "recomputed": "e0d81641ead74bca38db0d5cfec6a65930df1c0452831a63db0aaec75fa87242",
+        "stored": "e0d81641ead74bca38db0d5cfec6a65930df1c0452831a63db0aaec75fa87242",
+        "match": true
+      },
+      "master_a.log": {
+        "recomputed": "b035f02ddcbea7b854711631d165f9cbe6fed6dc3e3cb947128729339a48ce8a",
+        "stored": "b035f02ddcbea7b854711631d165f9cbe6fed6dc3e3cb947128729339a48ce8a",
+        "match": true
+      },
+      "master_b.conf": {
+        "recomputed": "1aef8aac4512a6b7db2d0788a440bff11bff7e58e781f15009dd2333af6881a8",
+        "stored": "1aef8aac4512a6b7db2d0788a440bff11bff7e58e781f15009dd2333af6881a8",
+        "match": true
+      },
+      "master_b.log": {
+        "recomputed": "f094ade8c8c8de90c8fa6e8305024e647e71d229fad97d08ff1da9478694a787",
+        "stored": "f094ade8c8c8de90c8fa6e8305024e647e71d229fad97d08ff1da9478694a787",
+        "match": true
+      },
+      "qdisc_before.txt": {
+        "recomputed": "718aa134d34bbc23b140512f3eeee8d13b50e6a5636b5905a88a15c3d8090b7e",
+        "stored": "718aa134d34bbc23b140512f3eeee8d13b50e6a5636b5905a88a15c3d8090b7e",
+        "match": true
+      },
+      "run_environment.txt": {
+        "recomputed": "292cb6ff5a44582205722179efe7de338b64f4105111cd2ea6c61f2833570836",
+        "stored": "292cb6ff5a44582205722179efe7de338b64f4105111cd2ea6c61f2833570836",
+        "match": true
+      },
+      "slave.conf": {
+        "recomputed": "51b89623ed0ceb3736f99c1983509ecc73a0a26941bb2bc74640ff8e4f97a3a6",
+        "stored": "51b89623ed0ceb3736f99c1983509ecc73a0a26941bb2bc74640ff8e4f97a3a6",
+        "match": true
+      },
+      "slave.log": {
+        "recomputed": "434057a39650b4980a7839a50dff50bba835d5d1dfade625b581bd7f3b6f15d1",
+        "stored": "434057a39650b4980a7839a50dff50bba835d5d1dfade625b581bd7f3b6f15d1",
+        "match": true
+      },
+      "tcpdump.log": {
+        "recomputed": "5f5fc9b0dfe1f5b17f41689e02676d85b9ae1b37da88dece8ae54a81d5c2ebaf",
+        "stored": "5f5fc9b0dfe1f5b17f41689e02676d85b9ae1b37da88dece8ae54a81d5c2ebaf",
+        "match": true
+      },
+      "validation.json": {
+        "recomputed": "89d80af3d622533d9f598e12064a7520a3c17ae70ddc1c3502a8890fd4236a4b",
+        "stored": "MISSING",
+        "match": false
+      }
+    },
+    "E_qdisc_after": "N/A",
+    "F_timeout_line": "N/A",
+    "F_first_master_line": "N/A",
+    "F_new_master_line": "N/A",
+    "F_identities_differ": "N/A"
+  },
+  "s51": {
+    "token": "s51",
+    "dir": "20260911_set2_intervention_r1",
+    "type": "intervention",
+    "A_frame_count": 3114,
+    "B_slave_line": "ptp4l[107.680]: selected local clock f26ec9.fffe.382793 as best master",
+    "C_events_lines": [
+      "run_id=s51 phase=setup event=tcpdump_ready utc=2026-09-11T14:42:16Z monotonic_s=109.80 status=PASS",
+      "run_id=s51 phase=setup event=master_a_ready utc=2026-09-11T14:42:17Z monotonic_s=109.81 status=PASS",
+      "run_id=s51 phase=setup event=master_b_ready utc=2026-09-11T14:42:17Z monotonic_s=109.82 status=PASS",
+      "run_id=s51 phase=setup event=slave_ready utc=2026-09-11T14:42:17Z monotonic_s=109.82 status=PASS",
+      "run_id=s51 phase=authorized_source_change_intervention event=preferred_master_stop_confirmed utc=2026-09-11T14:42:47Z monotonic_s=139.84 status=PASS"
+    ],
+    "D_manifest_hashes": {
+      "capture.pcap": {
+        "recomputed": "240c463ad666301a687822c7c19b535310d73d46ec680c9415aad1b5af498ae4",
+        "stored": "240c463ad666301a687822c7c19b535310d73d46ec680c9415aad1b5af498ae4",
+        "match": true
+      },
+      "events.log": {
+        "recomputed": "84cb5eaa9641921c2ba743db6f0093d015b5f05f048150857f4ea87ff784ff5c",
+        "stored": "84cb5eaa9641921c2ba743db6f0093d015b5f05f048150857f4ea87ff784ff5c",
+        "match": true
+      },
+      "master_a.conf": {
+        "recomputed": "55ae57f93242c91842baef778080f1603788482543e2ffea8fa07df8528b6eb0",
+        "stored": "55ae57f93242c91842baef778080f1603788482543e2ffea8fa07df8528b6eb0",
+        "match": true
+      },
+      "master_a.log": {
+        "recomputed": "ea4d8198068c764ce41a46c86e1240dc1dc22c1003eae1a53bb165143113ffda",
+        "stored": "ea4d8198068c764ce41a46c86e1240dc1dc22c1003eae1a53bb165143113ffda",
+        "match": true
+      },
+      "master_b.conf": {
+        "recomputed": "834985f8fe74abc776e59112a629dfb59f5d755dfbfd012241e471bef5e38c1e",
+        "stored": "834985f8fe74abc776e59112a629dfb59f5d755dfbfd012241e471bef5e38c1e",
+        "match": true
+      },
+      "master_b.log": {
+        "recomputed": "ea90dcbbc95958655fdfde55719c5ed58456bd6b448e1a2e1a499b4713d5686c",
+        "stored": "ea90dcbbc95958655fdfde55719c5ed58456bd6b448e1a2e1a499b4713d5686c",
+        "match": true
+      },
+      "run_environment.txt": {
+        "recomputed": "600a36fe0d8ca2d0050b735335b6f0fb4cd1a1693ad5adbb10273796eb72a2e9",
+        "stored": "600a36fe0d8ca2d0050b735335b6f0fb4cd1a1693ad5adbb10273796eb72a2e9",
+        "match": true
+      },
+      "slave.conf": {
+        "recomputed": "edffeb123d71ecbe64904d1994a68cbcc94394bb33b5698deaf451dc66c890e5",
+        "stored": "edffeb123d71ecbe64904d1994a68cbcc94394bb33b5698deaf451dc66c890e5",
+        "match": true
+      },
+      "slave.log": {
+        "recomputed": "3ba0b966d47d7fb973256697bb3fd7555fb542791faed8c4ac4a1df720e356e3",
+        "stored": "3ba0b966d47d7fb973256697bb3fd7555fb542791faed8c4ac4a1df720e356e3",
+        "match": true
+      },
+      "tcpdump.log": {
+        "recomputed": "7b4df5546aa78938e86c1ce0f7bb906be020568146d49eeb63698825e4cf4aa7",
+        "stored": "7b4df5546aa78938e86c1ce0f7bb906be020568146d49eeb63698825e4cf4aa7",
+        "match": true
+      },
+      "validation.json": {
+        "recomputed": "073b29f8bf1060e8c244fec127c7a2280bb557bad56336f9d560fd016dff6330",
+        "stored": "MISSING",
+        "match": false
+      }
+    },
+    "E_qdisc_after": "N/A",
+    "F_timeout_line": "ptp4l[140.548]: port 1: UNCALIBRATED to LISTENING on ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES",
+    "F_first_master_line": "ptp4l[108.075]: selected best master clock feacbc.fffe.30a695",
+    "F_new_master_line": "ptp4l[140.552]: selected local clock f26ec9.fffe.382793 as best master",
+    "F_identities_differ": false
+  },
+  "b32": {
+    "token": "b32",
+    "dir": "20260911_set2_baseline_r2",
+    "type": "baseline",
+    "A_frame_count": 2020,
+    "B_slave_line": "ptp4l[171.540]: selected local clock da10fb.fffe.9f3d31 as best master",
+    "C_events_lines": [
+      "run_id=b32 phase=setup event=tcpdump_ready utc=2026-09-11T14:43:20Z monotonic_s=173.59 status=PASS",
+      "run_id=b32 phase=setup event=master_a_ready utc=2026-09-11T14:43:20Z monotonic_s=173.60 status=PASS",
+      "run_id=b32 phase=setup event=master_b_ready utc=2026-09-11T14:43:20Z monotonic_s=173.60 status=PASS",
+      "run_id=b32 phase=setup event=slave_ready utc=2026-09-11T14:43:20Z monotonic_s=173.61 status=PASS",
+      "run_id=b32 phase=baseline_control event=qdisc_baseline_observed utc=2026-09-11T14:43:20Z monotonic_s=173.64 status=PASS"
+    ],
+    "D_manifest_hashes": {
+      "capture.pcap": {
+        "recomputed": "dba5a32980a35047cf7ba1eecb82770579c6fdc1d380830b2c7955aaf9bae683",
+        "stored": "dba5a32980a35047cf7ba1eecb82770579c6fdc1d380830b2c7955aaf9bae683",
+        "match": true
+      },
+      "events.log": {
+        "recomputed": "59a3a28fb5838283960b1ce9734267062f5be70044d773c106916b2c49028c45",
+        "stored": "59a3a28fb5838283960b1ce9734267062f5be70044d773c106916b2c49028c45",
+        "match": true
+      },
+      "master_a.conf": {
+        "recomputed": "a5c33b1deaac04ea7e0bc933c12e8e0aabb992004941f5704c6871ffd0aebf79",
+        "stored": "a5c33b1deaac04ea7e0bc933c12e8e0aabb992004941f5704c6871ffd0aebf79",
+        "match": true
+      },
+      "master_a.log": {
+        "recomputed": "f3b1a9cd40da456712752a1e1ebd52b2034119771257d54719dd31c8538d5762",
+        "stored": "f3b1a9cd40da456712752a1e1ebd52b2034119771257d54719dd31c8538d5762",
+        "match": true
+      },
+      "master_b.conf": {
+        "recomputed": "5f3df9c759278a613cf4adc15f0a45be6f61a75f4200d94ec9cc5cf8bd187824",
+        "stored": "5f3df9c759278a613cf4adc15f0a45be6f61a75f4200d94ec9cc5cf8bd187824",
+        "match": true
+      },
+      "master_b.log": {
+        "recomputed": "27f879fe0f2fc0e84c9c05d51cb82037f00157a6192639a84306ee6a3db62b13",
+        "stored": "27f879fe0f2fc0e84c9c05d51cb82037f00157a6192639a84306ee6a3db62b13",
+        "match": true
+      },
+      "qdisc_before.txt": {
+        "recomputed": "718aa134d34bbc23b140512f3eeee8d13b50e6a5636b5905a88a15c3d8090b7e",
+        "stored": "718aa134d34bbc23b140512f3eeee8d13b50e6a5636b5905a88a15c3d8090b7e",
+        "match": true
+      },
+      "run_environment.txt": {
+        "recomputed": "c92f990c367df003067a4660c2a9bddf522731d74d162a96818d3dd48d60225c",
+        "stored": "c92f990c367df003067a4660c2a9bddf522731d74d162a96818d3dd48d60225c",
+        "match": true
+      },
+      "slave.conf": {
+        "recomputed": "e56da761ac78c95a0da39439a04a9bb6ddbb47145d67753abd6ac57f415651e5",
+        "stored": "e56da761ac78c95a0da39439a04a9bb6ddbb47145d67753abd6ac57f415651e5",
+        "match": true
+      },
+      "slave.log": {
+        "recomputed": "0188b3bab414f1c19e5944955f9832c2f92d649e9775d5a654c25bda9e3c1abc",
+        "stored": "0188b3bab414f1c19e5944955f9832c2f92d649e9775d5a654c25bda9e3c1abc",
+        "match": true
+      },
+      "tcpdump.log": {
+        "recomputed": "441b49f7a6c75cd2e89f652b99bb2c158b0c858e00e0dea8d2c176ed9ef1b631",
+        "stored": "441b49f7a6c75cd2e89f652b99bb2c158b0c858e00e0dea8d2c176ed9ef1b631",
+        "match": true
+      },
+      "validation.json": {
+        "recomputed": "4249707b8560ad5ac7df2ced153a13e3236383d16abe7a995b13fd7811ca5421",
+        "stored": "MISSING",
+        "match": false
+      }
+    },
+    "E_qdisc_after": "N/A",
+    "F_timeout_line": "N/A",
+    "F_first_master_line": "N/A",
+    "F_new_master_line": "N/A",
+    "F_identities_differ": "N/A"
+  },
+  "n42": {
+    "token": "n42",
+    "dir": "20260911_set2_netem_r2",
+    "type": "netem",
+    "A_frame_count": 2058,
+    "B_slave_line": "ptp4l[205.368]: selected local clock 7ecd23.fffe.9d2e3c as best master",
+    "C_events_lines": [
+      "run_id=n42 phase=setup event=tcpdump_ready utc=2026-09-11T14:43:54Z monotonic_s=207.33 status=PASS",
+      "run_id=n42 phase=setup event=master_a_ready utc=2026-09-11T14:43:54Z monotonic_s=207.34 status=PASS",
+      "run_id=n42 phase=setup event=master_b_ready utc=2026-09-11T14:43:54Z monotonic_s=207.34 status=PASS",
+      "run_id=n42 phase=setup event=slave_ready utc=2026-09-11T14:43:54Z monotonic_s=207.35 status=PASS",
+      "run_id=n42 phase=netem_delay_jitter_loss event=netem_command_confirmed utc=2026-09-11T14:43:54Z monotonic_s=207.37 status=PASS"
+    ],
+    "D_manifest_hashes": {
+      "capture.pcap": {
+        "recomputed": "91fb05877b18b7a6bad61243f123ff79fad29a2597b5274081fee4aa1c3221ef",
+        "stored": "91fb05877b18b7a6bad61243f123ff79fad29a2597b5274081fee4aa1c3221ef",
+        "match": true
+      },
+      "events.log": {
+        "recomputed": "851a4a8e4a06716035737fce2411d39022e3c7d12196fb609463a4c15cd01c1a",
+        "stored": "851a4a8e4a06716035737fce2411d39022e3c7d12196fb609463a4c15cd01c1a",
+        "match": true
+      },
+      "master_a.conf": {
+        "recomputed": "82618f37d025eeb40e2224b7a4266a0906193fba8fb66056e42332919df7fc60",
+        "stored": "82618f37d025eeb40e2224b7a4266a0906193fba8fb66056e42332919df7fc60",
+        "match": true
+      },
+      "master_a.log": {
+        "recomputed": "8712db0a653ee5b474852ddf9b837c1b698f8b094c26733abf7e2cfb4a376bd1",
+        "stored": "8712db0a653ee5b474852ddf9b837c1b698f8b094c26733abf7e2cfb4a376bd1",
+        "match": true
+      },
+      "master_b.conf": {
+        "recomputed": "e31232ea6a1c800585048341a3d8a717b1e6a1058d82d80817feb007873a14a8",
+        "stored": "e31232ea6a1c800585048341a3d8a717b1e6a1058d82d80817feb007873a14a8",
+        "match": true
+      },
+      "master_b.log": {
+        "recomputed": "02c749b0a10369d67e67a7cfc7eb4f8493940bbfd885647baa09bb1273289d0c",
+        "stored": "02c749b0a10369d67e67a7cfc7eb4f8493940bbfd885647baa09bb1273289d0c",
+        "match": true
+      },
+      "qdisc_after.txt": {
+        "recomputed": "485305815f6395a9e6e15f4e54b9f29dc3a91eff35cc6dc97c9ee83df010bdb1",
+        "stored": "485305815f6395a9e6e15f4e54b9f29dc3a91eff35cc6dc97c9ee83df010bdb1",
+        "match": true
+      },
+      "qdisc_before.txt": {
+        "recomputed": "718aa134d34bbc23b140512f3eeee8d13b50e6a5636b5905a88a15c3d8090b7e",
+        "stored": "718aa134d34bbc23b140512f3eeee8d13b50e6a5636b5905a88a15c3d8090b7e",
+        "match": true
+      },
+      "run_environment.txt": {
+        "recomputed": "10ed5d498b79574f33ea239de4910f78ed9a828e974c1cfd76905e4016958f1a",
+        "stored": "10ed5d498b79574f33ea239de4910f78ed9a828e974c1cfd76905e4016958f1a",
+        "match": true
+      },
+      "slave.conf": {
+        "recomputed": "0be10270c4b66827b11ea42003c8a340011eeaf21a8deac328b24369424b43e5",
+        "stored": "0be10270c4b66827b11ea42003c8a340011eeaf21a8deac328b24369424b43e5",
+        "match": true
+      },
+      "slave.log": {
+        "recomputed": "1671f0c76a940525451a927dae6888cb602ab80b37b18af57042f88c7a416cce",
+        "stored": "1671f0c76a940525451a927dae6888cb602ab80b37b18af57042f88c7a416cce",
+        "match": true
+      },
+      "tcpdump.log": {
+        "recomputed": "6ae020a17ffe3ff4e8b0ccd115a7302d1dbbb5e42975676ba2bc72210f4dda78",
+        "stored": "6ae020a17ffe3ff4e8b0ccd115a7302d1dbbb5e42975676ba2bc72210f4dda78",
+        "match": true
+      },
+      "validation.json": {
+        "recomputed": "2f488e94e335c684116d743c21bce2b2847680a30a90fa79d3267f2bd5faaf45",
+        "stored": "MISSING",
+        "match": false
+      }
+    },
+    "E_qdisc_after": "qdisc netem 8002: root refcnt 7 limit 1000 delay 1ms  200us loss 1%\n Sent 108316 bytes 1697 pkt (dropped 20, overlimits 0 requeues 0) \n backlog 0b 0p requeues 0",
+    "F_timeout_line": "N/A",
+    "F_first_master_line": "N/A",
+    "F_new_master_line": "N/A",
+    "F_identities_differ": "N/A"
+  },
+  "c32": {
+    "token": "c32",
+    "dir": "20260911_set2_control_r2",
+    "type": "control",
+    "A_frame_count": 2048,
+    "B_slave_line": "ptp4l[239.124]: selected local clock 66f542.fffe.006965 as best master",
+    "C_events_lines": [
+      "run_id=c32 phase=setup event=tcpdump_ready utc=2026-09-11T14:44:28Z monotonic_s=241.08 status=PASS",
+      "run_id=c32 phase=setup event=master_a_ready utc=2026-09-11T14:44:28Z monotonic_s=241.09 status=PASS",
+      "run_id=c32 phase=setup event=master_b_ready utc=2026-09-11T14:44:28Z monotonic_s=241.10 status=PASS",
+      "run_id=c32 phase=setup event=slave_ready utc=2026-09-11T14:44:28Z monotonic_s=241.11 status=PASS",
+      "run_id=c32 phase=authorized_source_change_no_action_control event=qdisc_baseline_observed utc=2026-09-11T14:44:28Z monotonic_s=241.13 status=PASS"
+    ],
+    "D_manifest_hashes": {
+      "capture.pcap": {
+        "recomputed": "4e76700907476d3aaba483cdce71ede720e668eb22c6768faf177e6500eca3b1",
+        "stored": "4e76700907476d3aaba483cdce71ede720e668eb22c6768faf177e6500eca3b1",
+        "match": true
+      },
+      "events.log": {
+        "recomputed": "35adb6907e5d6d9226b99f6791868e3850e06259307167edfddf61dd2008529d",
+        "stored": "35adb6907e5d6d9226b99f6791868e3850e06259307167edfddf61dd2008529d",
+        "match": true
+      },
+      "master_a.conf": {
+        "recomputed": "287c4ebc088e84f85ccb0293f57491c39ed082538b06c0c5bebbfeb645d7f6b9",
+        "stored": "287c4ebc088e84f85ccb0293f57491c39ed082538b06c0c5bebbfeb645d7f6b9",
+        "match": true
+      },
+      "master_a.log": {
+        "recomputed": "8f7d1947731f61cceeb9cea940c463337325a1fbec15d7cbd6a28ebdd246b645",
+        "stored": "8f7d1947731f61cceeb9cea940c463337325a1fbec15d7cbd6a28ebdd246b645",
+        "match": true
+      },
+      "master_b.conf": {
+        "recomputed": "a42b9a82c23ba4348f63a7809669117540f389ecef1a8859506a44f9ca3f18bc",
+        "stored": "a42b9a82c23ba4348f63a7809669117540f389ecef1a8859506a44f9ca3f18bc",
+        "match": true
+      },
+      "master_b.log": {
+        "recomputed": "e6fd3640c4fda10436d062b79840445faaf6a532c33b3430c985adfdb92766d4",
+        "stored": "e6fd3640c4fda10436d062b79840445faaf6a532c33b3430c985adfdb92766d4",
+        "match": true
+      },
+      "qdisc_before.txt": {
+        "recomputed": "718aa134d34bbc23b140512f3eeee8d13b50e6a5636b5905a88a15c3d8090b7e",
+        "stored": "718aa134d34bbc23b140512f3eeee8d13b50e6a5636b5905a88a15c3d8090b7e",
+        "match": true
+      },
+      "run_environment.txt": {
+        "recomputed": "6e3d361c04ecced5baa1c42c9804f1061e60f74105d140ba04ef7169b31bc189",
+        "stored": "6e3d361c04ecced5baa1c42c9804f1061e60f74105d140ba04ef7169b31bc189",
+        "match": true
+      },
+      "slave.conf": {
+        "recomputed": "9dfa9c32e2aad6ec8e95e1813374905934a14d8ef89787723d5637a19f8ce199",
+        "stored": "9dfa9c32e2aad6ec8e95e1813374905934a14d8ef89787723d5637a19f8ce199",
+        "match": true
+      },
+      "slave.log": {
+        "recomputed": "fd0cfbf1035753498d15a5942b077a63af533bc0c118c0a373468acbbd36a819",
+        "stored": "fd0cfbf1035753498d15a5942b077a63af533bc0c118c0a373468acbbd36a819",
+        "match": true
+      },
+      "tcpdump.log": {
+        "recomputed": "3deac98bad577b840956431ecf0e991525a149693c190bd9219d72fcf96af958",
+        "stored": "3deac98bad577b840956431ecf0e991525a149693c190bd9219d72fcf96af958",
+        "match": true
+      },
+      "validation.json": {
+        "recomputed": "101e668496481b59213f2346a476d6f74417e0a9a12776ac0611cfbb4b68f86d",
+        "stored": "MISSING",
+        "match": false
+      }
+    },
+    "E_qdisc_after": "N/A",
+    "F_timeout_line": "N/A",
+    "F_first_master_line": "N/A",
+    "F_new_master_line": "N/A",
+    "F_identities_differ": "N/A"
+  },
+  "s52": {
+    "token": "s52",
+    "dir": "20260911_set2_intervention_r2",
+    "type": "intervention",
+    "A_frame_count": 3244,
+    "B_slave_line": "ptp4l[272.908]: selected local clock ae98ac.fffe.4290ad as best master",
+    "C_events_lines": [
+      "run_id=s52 phase=setup event=tcpdump_ready utc=2026-09-11T14:45:02Z monotonic_s=274.83 status=PASS",
+      "run_id=s52 phase=setup event=master_a_ready utc=2026-09-11T14:45:02Z monotonic_s=274.84 status=PASS",
+      "run_id=s52 phase=setup event=master_b_ready utc=2026-09-11T14:45:02Z monotonic_s=274.84 status=PASS",
+      "run_id=s52 phase=setup event=slave_ready utc=2026-09-11T14:45:02Z monotonic_s=274.85 status=PASS",
+      "run_id=s52 phase=authorized_source_change_intervention event=preferred_master_stop_confirmed utc=2026-09-11T14:45:32Z monotonic_s=304.87 status=PASS"
+    ],
+    "D_manifest_hashes": {
+      "capture.pcap": {
+        "recomputed": "10e4be1f4a343cbf267db2e8f75e5718453a5e9c6e8af15203c42d8b6ec23d72",
+        "stored": "10e4be1f4a343cbf267db2e8f75e5718453a5e9c6e8af15203c42d8b6ec23d72",
+        "match": true
+      },
+      "events.log": {
+        "recomputed": "eabc0ef0b208201abe8b9f1aa6cabbcd4b185f5aac3bfea541dcbb34884f5dab",
+        "stored": "eabc0ef0b208201abe8b9f1aa6cabbcd4b185f5aac3bfea541dcbb34884f5dab",
+        "match": true
+      },
+      "master_a.conf": {
+        "recomputed": "6f12a4b21cae0d9380b397ced7615d216787f2eec163f96aaf5d88e47f71f8bb",
+        "stored": "6f12a4b21cae0d9380b397ced7615d216787f2eec163f96aaf5d88e47f71f8bb",
+        "match": true
+      },
+      "master_a.log": {
+        "recomputed": "3f360717c7b792d328e6ce54c193b2627a94fbb9fbce5919998c1f4fba61bf3f",
+        "stored": "3f360717c7b792d328e6ce54c193b2627a94fbb9fbce5919998c1f4fba61bf3f",
+        "match": true
+      },
+      "master_b.conf": {
+        "recomputed": "3acddaf6f6cb59b27a2e3c2d11abea88086bb62df44a2c2245d9cff4bc54a43d",
+        "stored": "3acddaf6f6cb59b27a2e3c2d11abea88086bb62df44a2c2245d9cff4bc54a43d",
+        "match": true
+      },
+      "master_b.log": {
+        "recomputed": "8373cbe9316b485e1f11d1f140954800f1c182e2792a29cfe20ab05c82ad49ee",
+        "stored": "8373cbe9316b485e1f11d1f140954800f1c182e2792a29cfe20ab05c82ad49ee",
+        "match": true
+      },
+      "run_environment.txt": {
+        "recomputed": "dcc3501e07dab9b660716782200f41548e233accb5617f9a2629acf3534564fb",
+        "stored": "dcc3501e07dab9b660716782200f41548e233accb5617f9a2629acf3534564fb",
+        "match": true
+      },
+      "slave.conf": {
+        "recomputed": "125d1b4ce9a4f16cb96c658c88e0be64ef9a4575228d8df11a739f5ff78d7d54",
+        "stored": "125d1b4ce9a4f16cb96c658c88e0be64ef9a4575228d8df11a739f5ff78d7d54",
+        "match": true
+      },
+      "slave.log": {
+        "recomputed": "2105548f99a5406c43b26ac10afec79285807fda57b1e6dec9deb322f478bb6e",
+        "stored": "2105548f99a5406c43b26ac10afec79285807fda57b1e6dec9deb322f478bb6e",
+        "match": true
+      },
+      "tcpdump.log": {
+        "recomputed": "aff1e80661ca1726e041063ace7a3aaa18b76243166981aa8fe00c51742833bb",
+        "stored": "aff1e80661ca1726e041063ace7a3aaa18b76243166981aa8fe00c51742833bb",
+        "match": true
+      },
+      "validation.json": {
+        "recomputed": "f1cbc085f26f69bc24442e9c06acf0588ef7abecab2a5c4e4321dd93bc9092d8",
+        "stored": "MISSING",
+        "match": false
+      }
+    },
+    "E_qdisc_after": "N/A",
+    "F_timeout_line": "ptp4l[305.588]: port 1: UNCALIBRATED to LISTENING on ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES",
+    "F_first_master_line": "ptp4l[273.275]: selected best master clock 569a19.fffe.3552ef",
+    "F_new_master_line": "ptp4l[305.588]: selected local clock ae98ac.fffe.4290ad as best master",
+    "F_identities_differ": false
+  },
+  "b33": {
+    "token": "b33",
+    "dir": "20260911_set2_baseline_r3",
+    "type": "baseline",
+    "A_frame_count": 2014,
+    "B_slave_line": "ptp4l[336.676]: selected local clock 3a9c72.fffe.74e10b as best master",
+    "C_events_lines": [
+      "run_id=b33 phase=setup event=tcpdump_ready utc=2026-09-11T14:46:05Z monotonic_s=338.60 status=PASS",
+      "run_id=b33 phase=setup event=master_a_ready utc=2026-09-11T14:46:05Z monotonic_s=338.61 status=PASS",
+      "run_id=b33 phase=setup event=master_b_ready utc=2026-09-11T14:46:05Z monotonic_s=338.61 status=PASS",
+      "run_id=b33 phase=setup event=slave_ready utc=2026-09-11T14:46:05Z monotonic_s=338.62 status=PASS",
+      "run_id=b33 phase=baseline_control event=qdisc_baseline_observed utc=2026-09-11T14:46:05Z monotonic_s=338.64 status=PASS"
+    ],
+    "D_manifest_hashes": {
+      "capture.pcap": {
+        "recomputed": "6403778a01afedfd76eddb475f82472b164d33e862e4056bb44fa1b6f4400bbe",
+        "stored": "6403778a01afedfd76eddb475f82472b164d33e862e4056bb44fa1b6f4400bbe",
+        "match": true
+      },
+      "events.log": {
+        "recomputed": "dec6f977529602cc8019a38f583296f11b4ed8f6d5f10e2b550db18b3ef9b362",
+        "stored": "dec6f977529602cc8019a38f583296f11b4ed8f6d5f10e2b550db18b3ef9b362",
+        "match": true
+      },
+      "master_a.conf": {
+        "recomputed": "eff66094160dee2d6537730fa92e58a0e3a6af7f55ec6f5f645387adae1de0ea",
+        "stored": "eff66094160dee2d6537730fa92e58a0e3a6af7f55ec6f5f645387adae1de0ea",
+        "match": true
+      },
+      "master_a.log": {
+        "recomputed": "18dce0e3bbd2f6e46fc8f98d8e9a82324460ef32827680c7ed7fd865849f85f2",
+        "stored": "18dce0e3bbd2f6e46fc8f98d8e9a82324460ef32827680c7ed7fd865849f85f2",
+        "match": true
+      },
+      "master_b.conf": {
+        "recomputed": "7cd80a854eae795724767684e5977f5a35c8de9ca6d1585906eed94e7a1b8c92",
+        "stored": "7cd80a854eae795724767684e5977f5a35c8de9ca6d1585906eed94e7a1b8c92",
+        "match": true
+      },
+      "master_b.log": {
+        "recomputed": "1a4b0ad06d0a7935351472dfa99e2a9643ae391c9cf5458b0ec49c26a697c646",
+        "stored": "1a4b0ad06d0a7935351472dfa99e2a9643ae391c9cf5458b0ec49c26a697c646",
+        "match": true
+      },
+      "qdisc_before.txt": {
+        "recomputed": "718aa134d34bbc23b140512f3eeee8d13b50e6a5636b5905a88a15c3d8090b7e",
+        "stored": "718aa134d34bbc23b140512f3eeee8d13b50e6a5636b5905a88a15c3d8090b7e",
+        "match": true
+      },
+      "run_environment.txt": {
+        "recomputed": "85c519953acc83c63915df72667ca6df27e5deac1a95f439bcb0a47250039fef",
+        "stored": "85c519953acc83c63915df72667ca6df27e5deac1a95f439bcb0a47250039fef",
+        "match": true
+      },
+      "slave.conf": {
+        "recomputed": "7462ba67446b1d64ec76cbc803128cf758809a93915df783414c8c9d08d01b4e",
+        "stored": "7462ba67446b1d64ec76cbc803128cf758809a93915df783414c8c9d08d01b4e",
+        "match": true
+      },
+      "slave.log": {
+        "recomputed": "e5f097f33c48d41c93fcdc173cd61253dcc9cc071ec76d050e088203628999a7",
+        "stored": "e5f097f33c48d41c93fcdc173cd61253dcc9cc071ec76d050e088203628999a7",
+        "match": true
+      },
+      "tcpdump.log": {
+        "recomputed": "539a2867f21d824ce3a535152650386857391564930e4e9c9d7cb3271aa5d3b1",
+        "stored": "539a2867f21d824ce3a535152650386857391564930e4e9c9d7cb3271aa5d3b1",
+        "match": true
+      },
+      "validation.json": {
+        "recomputed": "52d8245756161708c77383cee81b80d35e41a074dd36403e40246aa200194c5d",
+        "stored": "MISSING",
+        "match": false
+      }
+    },
+    "E_qdisc_after": "N/A",
+    "F_timeout_line": "N/A",
+    "F_first_master_line": "N/A",
+    "F_new_master_line": "N/A",
+    "F_identities_differ": "N/A"
+  },
+  "n43": {
+    "token": "n43",
+    "dir": "20260911_set2_netem_r3",
+    "type": "netem",
+    "A_frame_count": 2013,
+    "B_slave_line": "ptp4l[370.344]: selected local clock 2ed73c.fffe.27ebcc as best master",
+    "C_events_lines": [
+      "run_id=n43 phase=setup event=tcpdump_ready utc=2026-09-11T14:46:39Z monotonic_s=372.41 status=PASS",
+      "run_id=n43 phase=setup event=master_a_ready utc=2026-09-11T14:46:39Z monotonic_s=372.42 status=PASS",
+      "run_id=n43 phase=setup event=master_b_ready utc=2026-09-11T14:46:39Z monotonic_s=372.42 status=PASS",
+      "run_id=n43 phase=setup event=slave_ready utc=2026-09-11T14:46:39Z monotonic_s=372.43 status=PASS",
+      "run_id=n43 phase=netem_delay_jitter_loss event=netem_command_confirmed utc=2026-09-11T14:46:39Z monotonic_s=372.46 status=PASS"
+    ],
+    "D_manifest_hashes": {
+      "capture.pcap": {
+        "recomputed": "2ac43d3c3aee4b64402770dcc4675fe7f373f3e893993199137d2fea1fb450a0",
+        "stored": "2ac43d3c3aee4b64402770dcc4675fe7f373f3e893993199137d2fea1fb450a0",
+        "match": true
+      },
+      "events.log": {
+        "recomputed": "2234f0a0b9c088c1e1bd2b45ae6cc2aeb8343b587d1f4abb907e65f9274fe75f",
+        "stored": "2234f0a0b9c088c1e1bd2b45ae6cc2aeb8343b587d1f4abb907e65f9274fe75f",
+        "match": true
+      },
+      "master_a.conf": {
+        "recomputed": "3c50553b5fcb77bc9149c65028cbcaa68b930b2aa0692a68bcec1e559a7c5da3",
+        "stored": "3c50553b5fcb77bc9149c65028cbcaa68b930b2aa0692a68bcec1e559a7c5da3",
+        "match": true
+      },
+      "master_a.log": {
+        "recomputed": "d05b56f23fafcacf6910dda385cfcc1f036abe099d622ff457bd8c05a1eb6af6",
+        "stored": "d05b56f23fafcacf6910dda385cfcc1f036abe099d622ff457bd8c05a1eb6af6",
+        "match": true
+      },
+      "master_b.conf": {
+        "recomputed": "f58d14577151e100b73eb7d4fc5303e75b5e63905274920b1ea7fe27cb3ab1c4",
+        "stored": "f58d14577151e100b73eb7d4fc5303e75b5e63905274920b1ea7fe27cb3ab1c4",
+        "match": true
+      },
+      "master_b.log": {
+        "recomputed": "f2e67bba5b35b137c354d338da28b40a55c531dfa2b1a1cf71ee40a8743887e1",
+        "stored": "f2e67bba5b35b137c354d338da28b40a55c531dfa2b1a1cf71ee40a8743887e1",
+        "match": true
+      },
+      "qdisc_after.txt": {
+        "recomputed": "3d1063f7eaa3742445e0f7f7d06dedd7023cb7722ec187690a842e8f915daad0",
+        "stored": "3d1063f7eaa3742445e0f7f7d06dedd7023cb7722ec187690a842e8f915daad0",
+        "match": true
+      },
+      "qdisc_before.txt": {
+        "recomputed": "718aa134d34bbc23b140512f3eeee8d13b50e6a5636b5905a88a15c3d8090b7e",
+        "stored": "718aa134d34bbc23b140512f3eeee8d13b50e6a5636b5905a88a15c3d8090b7e",
+        "match": true
+      },
+      "run_environment.txt": {
+        "recomputed": "ed6ba2e57ccc77f7c38b4bd15fceca1e0bde7b0134f54e5221e0f2b8562212d9",
+        "stored": "ed6ba2e57ccc77f7c38b4bd15fceca1e0bde7b0134f54e5221e0f2b8562212d9",
+        "match": true
+      },
+      "slave.conf": {
+        "recomputed": "9e1ebd7d9bb5c53e736cbc5ebf3069dcb8b0f1a58cd4e36cb3f1c046d82f4f71",
+        "stored": "9e1ebd7d9bb5c53e736cbc5ebf3069dcb8b0f1a58cd4e36cb3f1c046d82f4f71",
+        "match": true
+      },
+      "slave.log": {
+        "recomputed": "76b8e3aca700894055532cd562f5f927d92908fe543d8f6d44f49caf9eb2fcb9",
+        "stored": "76b8e3aca700894055532cd562f5f927d92908fe543d8f6d44f49caf9eb2fcb9",
+        "match": true
+      },
+      "tcpdump.log": {
+        "recomputed": "75bea58e4527c4a7b0fcf69f30188fc31ab12c75e55dc298121c5a2308b8ed29",
+        "stored": "75bea58e4527c4a7b0fcf69f30188fc31ab12c75e55dc298121c5a2308b8ed29",
+        "match": true
+      },
+      "validation.json": {
+        "recomputed": "7e33a20dd19c7d4226e4d6bcdeae24142b5dcd77c5ad51f58bb0718ac520535a",
+        "stored": "MISSING",
+        "match": false
+      }
+    },
+    "E_qdisc_after": "qdisc netem 8003: root refcnt 7 limit 1000 delay 1ms  200us loss 1%\n Sent 106694 bytes 1674 pkt (dropped 19, overlimits 0 requeues 0) \n backlog 0b 0p requeues 0",
+    "F_timeout_line": "N/A",
+    "F_first_master_line": "N/A",
+    "F_new_master_line": "N/A",
+    "F_identities_differ": "N/A"
+  },
+  "c33": {
+    "token": "c33",
+    "dir": "20260911_set2_control_r3",
+    "type": "control",
+    "A_frame_count": 2017,
+    "B_slave_line": "ptp4l[404.244]: selected local clock d6e98e.fffe.28ca82 as best master",
+    "C_events_lines": [
+      "run_id=c33 phase=setup event=tcpdump_ready utc=2026-09-11T14:47:13Z monotonic_s=406.18 status=PASS",
+      "run_id=c33 phase=setup event=master_a_ready utc=2026-09-11T14:47:13Z monotonic_s=406.19 status=PASS",
+      "run_id=c33 phase=setup event=master_b_ready utc=2026-09-11T14:47:13Z monotonic_s=406.19 status=PASS",
+      "run_id=c33 phase=setup event=slave_ready utc=2026-09-11T14:47:13Z monotonic_s=406.20 status=PASS",
+      "run_id=c33 phase=authorized_source_change_no_action_control event=qdisc_baseline_observed utc=2026-09-11T14:47:13Z monotonic_s=406.22 status=PASS"
+    ],
+    "D_manifest_hashes": {
+      "capture.pcap": {
+        "recomputed": "2fee05ae00fb5534af48862780ad7ec05942759b882f6be7cbd2b0d2cad1c62c",
+        "stored": "2fee05ae00fb5534af48862780ad7ec05942759b882f6be7cbd2b0d2cad1c62c",
+        "match": true
+      },
+      "events.log": {
+        "recomputed": "73b96692950b209447c2ef8a96ad9fabc96abf5480114e5ba7177a52c7219218",
+        "stored": "73b96692950b209447c2ef8a96ad9fabc96abf5480114e5ba7177a52c7219218",
+        "match": true
+      },
+      "master_a.conf": {
+        "recomputed": "cf9e35c2480bc75527c705fe8777cdf2c47afcbff9117c20bb0170a45a5667d4",
+        "stored": "cf9e35c2480bc75527c705fe8777cdf2c47afcbff9117c20bb0170a45a5667d4",
+        "match": true
+      },
+      "master_a.log": {
+        "recomputed": "2d3469ffbaeba8ad75721d82d9f7c2043a2b68c38d01f267372f652ac4fda088",
+        "stored": "2d3469ffbaeba8ad75721d82d9f7c2043a2b68c38d01f267372f652ac4fda088",
+        "match": true
+      },
+      "master_b.conf": {
+        "recomputed": "753f6225c407e82aa93a424ca29dca3ca191c881ad6b3438fe1ec228d51d7e20",
+        "stored": "753f6225c407e82aa93a424ca29dca3ca191c881ad6b3438fe1ec228d51d7e20",
+        "match": true
+      },
+      "master_b.log": {
+        "recomputed": "bb78c1887fb6f6c724e7d0c25c25d22e82fa7ecb1bddd2355670b46398fbc986",
+        "stored": "bb78c1887fb6f6c724e7d0c25c25d22e82fa7ecb1bddd2355670b46398fbc986",
+        "match": true
+      },
+      "qdisc_before.txt": {
+        "recomputed": "718aa134d34bbc23b140512f3eeee8d13b50e6a5636b5905a88a15c3d8090b7e",
+        "stored": "718aa134d34bbc23b140512f3eeee8d13b50e6a5636b5905a88a15c3d8090b7e",
+        "match": true
+      },
+      "run_environment.txt": {
+        "recomputed": "459d327b7f15811022c9f19c37dfe5084b6a7b394ed1d7569111e09a5619fe8c",
+        "stored": "459d327b7f15811022c9f19c37dfe5084b6a7b394ed1d7569111e09a5619fe8c",
+        "match": true
+      },
+      "slave.conf": {
+        "recomputed": "b74fa6d025019d853341946f3b5d83db45e2f7e1ca3daad815e9e2cc38cfaa39",
+        "stored": "b74fa6d025019d853341946f3b5d83db45e2f7e1ca3daad815e9e2cc38cfaa39",
+        "match": true
+      },
+      "slave.log": {
+        "recomputed": "9875ffd085a4f6e832eca7beb59b28216487ba20dd8d82b57cbb1f3b78f2fb9a",
+        "stored": "9875ffd085a4f6e832eca7beb59b28216487ba20dd8d82b57cbb1f3b78f2fb9a",
+        "match": true
+      },
+      "tcpdump.log": {
+        "recomputed": "b72357259fb5fcba265ac4b1c4bcaa093102fe48eb2a456eb12d01615606674a",
+        "stored": "b72357259fb5fcba265ac4b1c4bcaa093102fe48eb2a456eb12d01615606674a",
+        "match": true
+      },
+      "validation.json": {
+        "recomputed": "399db0fa3029cce160ef10b2d4094754960be5746d4123b67c824a340c3306a6",
+        "stored": "MISSING",
+        "match": false
+      }
+    },
+    "E_qdisc_after": "N/A",
+    "F_timeout_line": "N/A",
+    "F_first_master_line": "N/A",
+    "F_new_master_line": "N/A",
+    "F_identities_differ": "N/A"
+  },
+  "s53": {
+    "token": "s53",
+    "dir": "20260911_set2_intervention_r3",
+    "type": "intervention",
+    "A_frame_count": 3130,
+    "B_slave_line": "ptp4l[438.080]: selected local clock ea1150.fffe.2e0501 as best master",
+    "C_events_lines": [
+      "run_id=s53 phase=setup event=tcpdump_ready utc=2026-09-11T14:47:47Z monotonic_s=440.03 status=PASS",
+      "run_id=s53 phase=setup event=master_a_ready utc=2026-09-11T14:47:47Z monotonic_s=440.03 status=PASS",
+      "run_id=s53 phase=setup event=master_b_ready utc=2026-09-11T14:47:47Z monotonic_s=440.04 status=PASS",
+      "run_id=s53 phase=setup event=slave_ready utc=2026-09-11T14:47:47Z monotonic_s=440.05 status=PASS",
+      "run_id=s53 phase=authorized_source_change_intervention event=preferred_master_stop_confirmed utc=2026-09-11T14:48:17Z monotonic_s=470.06 status=PASS"
+    ],
+    "D_manifest_hashes": {
+      "capture.pcap": {
+        "recomputed": "e6a1fbb3040eca36b2899ee3e8acfc0981965a1c1cd788a52ce0c44ddcaefa6f",
+        "stored": "e6a1fbb3040eca36b2899ee3e8acfc0981965a1c1cd788a52ce0c44ddcaefa6f",
+        "match": true
+      },
+      "events.log": {
+        "recomputed": "c9fc08f61514a04ca8bce1f83a61b38c8eea507c5e490b33b63acef62b07a437",
+        "stored": "c9fc08f61514a04ca8bce1f83a61b38c8eea507c5e490b33b63acef62b07a437",
+        "match": true
+      },
+      "master_a.conf": {
+        "recomputed": "2eb1921c98b82548898a24b8d55d21c0459739ed1a45e75e9b24ef5c256e7eba",
+        "stored": "2eb1921c98b82548898a24b8d55d21c0459739ed1a45e75e9b24ef5c256e7eba",
+        "match": true
+      },
+      "master_a.log": {
+        "recomputed": "6590e446605c1ab88e42eb87f86709d0aba74015a167e77298e6555fa06d4b11",
+        "stored": "6590e446605c1ab88e42eb87f86709d0aba74015a167e77298e6555fa06d4b11",
+        "match": true
+      },
+      "master_b.conf": {
+        "recomputed": "867eca30f94ff75af18f408a5367a022b26c8dec5f78b147c3f46f82fe3551f1",
+        "stored": "867eca30f94ff75af18f408a5367a022b26c8dec5f78b147c3f46f82fe3551f1",
+        "match": true
+      },
+      "master_b.log": {
+        "recomputed": "77210c3842d64727ca0ffb952f22d9adfa146d6f9efcaaa344643efe6b35ecd7",
+        "stored": "77210c3842d64727ca0ffb952f22d9adfa146d6f9efcaaa344643efe6b35ecd7",
+        "match": true
+      },
+      "run_environment.txt": {
+        "recomputed": "cc299cf144a680a46a8df6a28ab8c6ef27185d4e6e0375ae0e5a9a5f111cac71",
+        "stored": "cc299cf144a680a46a8df6a28ab8c6ef27185d4e6e0375ae0e5a9a5f111cac71",
+        "match": true
+      },
+      "slave.conf": {
+        "recomputed": "13351460a9df75b5a5b7785b45e4c085f36ff9780843a656ce039daf5fab2062",
+        "stored": "13351460a9df75b5a5b7785b45e4c085f36ff9780843a656ce039daf5fab2062",
+        "match": true
+      },
+      "slave.log": {
+        "recomputed": "bfd5becad633f3c398d09d814274dc1c61af327c23d20bcffa0a9c077dc8e6a4",
+        "stored": "bfd5becad633f3c398d09d814274dc1c61af327c23d20bcffa0a9c077dc8e6a4",
+        "match": true
+      },
+      "tcpdump.log": {
+        "recomputed": "a04c1151000af915ce085a4bab25e6e6e02cc8b3976eec845ff68ccc1e22abad",
+        "stored": "a04c1151000af915ce085a4bab25e6e6e02cc8b3976eec845ff68ccc1e22abad",
+        "match": true
+      },
+      "validation.json": {
+        "recomputed": "65ac430abb2bc35dfd176ced749f4421ad8ce3207e5d833633f8d02ba0da3e0a",
+        "stored": "MISSING",
+        "match": false
+      }
+    },
+    "E_qdisc_after": "N/A",
+    "F_timeout_line": "ptp4l[470.844]: port 1: UNCALIBRATED to LISTENING on ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES",
+    "F_first_master_line": "ptp4l[438.406]: selected best master clock c2c334.fffe.96025a",
+    "F_new_master_line": "ptp4l[470.847]: selected local clock ea1150.fffe.2e0501 as best master",
+    "F_identities_differ": false
+  }
+}

@@ -1,0 +1,23 @@
+sending: GET PORT_DATA_SET
+	621d5c.fffe.f32e39-1 seq 0 RESPONSE MANAGEMENT PORT_DATA_SET 
+		portIdentity            621d5c.fffe.f32e39-1
+		portState               FAULTY
+		logMinDelayReqInterval  -3
+		peerMeanPathDelay       0
+		logAnnounceInterval     -2
+		announceReceiptTimeout  3
+		logSyncInterval         -3
+		delayMechanism          1
+		logMinPdelayReqInterval 0
+		versionNumber           2
+	621d5c.fffe.f32e39-2 seq 0 RESPONSE MANAGEMENT PORT_DATA_SET 
+		portIdentity            621d5c.fffe.f32e39-2
+		portState               UNCALIBRATED
+		logMinDelayReqInterval  -3
+		peerMeanPathDelay       0
+		logAnnounceInterval     -2
+		announceReceiptTimeout  3
+		logSyncInterval         -3
+		delayMechanism          1
+		logMinPdelayReqInterval 0
+		versionNumber           2

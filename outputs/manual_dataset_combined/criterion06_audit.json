@@ -1,0 +1,189 @@
+{
+  "pcap_comparison": {
+    "announce_session_1_pcap_sha256": "d2c91b3e4f09a3ecaffc81b9fb5b45b874adf2946ed88fc3eccaeaf3a631983e",
+    "announce_session_2_pcap_sha256": "d2c91b3e4f09a3ecaffc81b9fb5b45b874adf2946ed88fc3eccaeaf3a631983e",
+    "pcaps_identical": true
+  },
+  "csv_comparison": {
+    "announce_session_1_labels_csv_sha256": "6a03a10bd9f4748031a7e8dc66305107d734db01079499fd7018661ba501046a",
+    "announce_session_2_labels_csv_sha256": "840769d5c5c54177dc3ee9ae1648f4edf36450b817c11b129c8e8973641fb689",
+    "row_count_csv1": 46998,
+    "row_count_csv2": 46998,
+    "nonlabel_columns_identical": true,
+    "labels_csv1_counts": {
+      "0": 42521,
+      "1": 4477
+    },
+    "labels_csv2_counts": {
+      "0": 37211,
+      "1": 9787
+    },
+    "conflicting_rows_count": 5312,
+    "conflict_breakdown": {
+      "conflicts_0_to_1": 5311,
+      "conflicts_1_to_0": 1
+    }
+  },
+  "frame_inventory": [
+    {
+      "source": "0",
+      "message_type": "0",
+      "frame_count": 10634
+    },
+    {
+      "source": "0",
+      "message_type": "11",
+      "frame_count": 5317
+    },
+    {
+      "source": "0",
+      "message_type": "9",
+      "frame_count": 12
+    },
+    {
+      "source": "1",
+      "message_type": "0",
+      "frame_count": 10618
+    },
+    {
+      "source": "1",
+      "message_type": "1",
+      "frame_count": 12
+    },
+    {
+      "source": "1",
+      "message_type": "11",
+      "frame_count": 9787
+    },
+    {
+      "source": "1",
+      "message_type": "8",
+      "frame_count": 10618
+    }
+  ],
+  "labels_file_1": {
+    "positives_by_source_and_type": [
+      {
+        "source": "1",
+        "message_type": "11",
+        "count": 4476
+      },
+      {
+        "source": "1",
+        "message_type": "8",
+        "count": 1
+      }
+    ],
+    "rule_scan": [
+      {
+        "source": "0",
+        "message_type": "0",
+        "rule_match_count": 10634,
+        "rows_agreeing_with_label": 31887,
+        "exact": false
+      },
+      {
+        "source": "0",
+        "message_type": "11",
+        "rule_match_count": 5317,
+        "rows_agreeing_with_label": 37204,
+        "exact": false
+      },
+      {
+        "source": "0",
+        "message_type": "9",
+        "rule_match_count": 12,
+        "rows_agreeing_with_label": 42509,
+        "exact": false
+      },
+      {
+        "source": "1",
+        "message_type": "0",
+        "rule_match_count": 10618,
+        "rows_agreeing_with_label": 31903,
+        "exact": false
+      },
+      {
+        "source": "1",
+        "message_type": "1",
+        "rule_match_count": 12,
+        "rows_agreeing_with_label": 42509,
+        "exact": false
+      },
+      {
+        "source": "1",
+        "message_type": "11",
+        "rule_match_count": 9787,
+        "rows_agreeing_with_label": 41686,
+        "exact": false
+      },
+      {
+        "source": "1",
+        "message_type": "8",
+        "rule_match_count": 10618,
+        "rows_agreeing_with_label": 31905,
+        "exact": false
+      }
+    ]
+  },
+  "labels_file_2": {
+    "positives_by_source_and_type": [
+      {
+        "source": "1",
+        "message_type": "11",
+        "count": 9787
+      }
+    ],
+    "rule_scan": [
+      {
+        "source": "0",
+        "message_type": "0",
+        "rule_match_count": 10634,
+        "rows_agreeing_with_label": 26577,
+        "exact": false
+      },
+      {
+        "source": "0",
+        "message_type": "11",
+        "rule_match_count": 5317,
+        "rows_agreeing_with_label": 31894,
+        "exact": false
+      },
+      {
+        "source": "0",
+        "message_type": "9",
+        "rule_match_count": 12,
+        "rows_agreeing_with_label": 37199,
+        "exact": false
+      },
+      {
+        "source": "1",
+        "message_type": "0",
+        "rule_match_count": 10618,
+        "rows_agreeing_with_label": 26593,
+        "exact": false
+      },
+      {
+        "source": "1",
+        "message_type": "1",
+        "rule_match_count": 12,
+        "rows_agreeing_with_label": 37199,
+        "exact": false
+      },
+      {
+        "source": "1",
+        "message_type": "11",
+        "rule_match_count": 9787,
+        "rows_agreeing_with_label": 46998,
+        "exact": true
+      },
+      {
+        "source": "1",
+        "message_type": "8",
+        "rule_match_count": 10618,
+        "rows_agreeing_with_label": 26593,
+        "exact": false
+      }
+    ]
+  }
+}

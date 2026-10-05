@@ -1,0 +1,289 @@
+{
+  "analysis_version": "pair-drift/1.0.0",
+  "analysis_sha256": "7518898ce878a7c4985506b229212b141f815103cd742c8393a4fa0fec573cb8",
+  "generated_utc": "2026-10-02T19:20:11.214923+00:00",
+  "fault_id": "B6",
+  "fault_name": "Oscillator drift / thermal",
+  "preregistration": {
+    "rtt_mad_k": 3.0,
+    "rtt_hard_s": 1.0,
+    "gap_factor": 1.5,
+    "suspend_divergence_s": 1.0,
+    "bootstrap_block_s": 300.0,
+    "bootstrap_n": 2000,
+    "min_retained": 600,
+    "min_overlap_min": 120.0,
+    "min_source_homogeneity": 0.95,
+    "max_ci_halfwidth_ppm": 1.0,
+    "rng_seed": 20261002
+  },
+  "arm_a": {
+    "label": "laptopA",
+    "session": "run2",
+    "csv": "laptopA_20261002-211329_92214ce7bb.csv",
+    "csv_sha256": "37efb32541b9b64b1d89777cae37f52337ebeb4d6e03ae0dacfb384c117429be",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "processor": "Intel64 Family 6 Model 165 Stepping 2, GenuineIntel",
+    "node_hash": "720bc97877cf",
+    "counter_resolution_s": 1e-07,
+    "rows_total": 1080,
+    "rows_ok": 1031,
+    "rows_retained": 906,
+    "duration_min": 179.8333396816665,
+    "modal_source": "ntp",
+    "source_homogeneity": 1.0,
+    "modal_server": "time.google.com",
+    "rtt_median_ms": 54.236411999999994,
+    "rtt_threshold_ms": 68.515779,
+    "rejections": [
+      {
+        "rule": "R3_rtt_outlier",
+        "dropped": 125,
+        "detail": "rtt > 68.5 ms (median 54.2 ms)"
+      }
+    ],
+    "gaps": [],
+    "crystal_ppm_vs_utc": {
+      "bootstrap": {
+        "ppm": -2.8774227411876296,
+        "ci95": [
+          -3.02948823211191,
+          -2.7359072156146746
+        ],
+        "halfwidth_ppm": 0.1467905082486176,
+        "block_len_samples": 30,
+        "draws": 2000
+      },
+      "ols": {
+        "ppm": -2.8774227411876296,
+        "ci95": [
+          -2.9406039560031516,
+          -2.814241518378502
+        ]
+      },
+      "theil_sen_ppm": -2.898491717973073
+    }
+  },
+  "arm_b": {
+    "label": "laptopB",
+    "session": "run2",
+    "csv": "laptopB_20261002-211401_5897fbe2bc.csv",
+    "csv_sha256": "68155ad5830dc43096bb026fae349069bb7560fbb38a6dca8e0c95736fbf332f",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "processor": "Intel64 Family 6 Model 186 Stepping 3, GenuineIntel",
+    "node_hash": "2101a6b98881",
+    "counter_resolution_s": 1e-07,
+    "rows_total": 1080,
+    "rows_ok": 1069,
+    "rows_retained": 846,
+    "duration_min": 179.83335702333326,
+    "modal_source": "ntp",
+    "source_homogeneity": 1.0,
+    "modal_server": "time.google.com",
+    "rtt_median_ms": 121.451139,
+    "rtt_threshold_ms": 185.031651,
+    "rejections": [
+      {
+        "rule": "R3_rtt_outlier",
+        "dropped": 223,
+        "detail": "rtt > 185.0 ms (median 121.5 ms)"
+      }
+    ],
+    "gaps": [],
+    "crystal_ppm_vs_utc": {
+      "bootstrap": {
+        "ppm": -23.890529688652684,
+        "ci95": [
+          -24.240058485031078,
+          -23.53161004879645
+        ],
+        "halfwidth_ppm": 0.35422421811731475,
+        "block_len_samples": 30,
+        "draws": 2000
+      },
+      "ols": {
+        "ppm": -23.890529688652684,
+        "ci95": [
+          -24.120595102039566,
+          -23.660464169461548
+        ]
+      },
+      "theil_sen_ppm": -23.898525422394457
+    }
+  },
+  "warnings": [],
+  "pairing": {
+    "overlap_min": 179.29438981612523,
+    "overlap_start_utc": "2026-10-02T15:44:02.282045+00:00",
+    "overlap_end_utc": "2026-10-02T18:43:19.945434+00:00",
+    "grid_s": 10.0,
+    "n_grid": 1076
+  },
+  "relative_frequency_offset_ppm": {
+    "ppm": 21.013106947465054,
+    "ci95": [
+      20.622886648614614,
+      21.402802744139805
+    ],
+    "halfwidth_ppm": 0.3899580477625957,
+    "method": "difference of per-arm moving-block bootstraps",
+    "draws": 2000,
+    "ppm_crosscheck_interpolated": 21.080583598065356,
+    "crosscheck_delta_ppm": 0.06747665060030172
+  },
+  "stability": {
+    "tau_s": [
+      10.0,
+      20.0,
+      30.0,
+      40.0,
+      60.0,
+      90.0,
+      130.0,
+      190.0,
+      280.0,
+      420.0,
+      630.0,
+      940.0,
+      1410.0,
+      2110.0,
+      3160.0,
+      4740.0
+    ],
+    "adev": [
+      0.0014990994064882105,
+      0.0008181701391609559,
+      0.0005907895928234471,
+      0.00043600774157137394,
+      0.0003127127660441561,
+      0.0002126362824271476,
+      0.00014199957518893277,
+      9.901710189023048e-05,
+      6.868858985165826e-05,
+      4.502571271039744e-05,
+      3.113263713983024e-05,
+      2.2983227309433815e-05,
+      1.5348885734334956e-05,
+      1.0433526196475098e-05,
+      7.20616565749669e-06,
+      6.883055192669286e-06
+    ],
+    "tdev_tau_s": [
+      10.0,
+      20.0,
+      30.0,
+      40.0,
+      60.0,
+      90.0,
+      130.0,
+      190.0,
+      280.0,
+      420.0,
+      630.0,
+      940.0,
+      1410.0,
+      2110.0,
+      3160.0
+    ],
+    "tdev_s": [
+      0.008655054458779766,
+      0.0069641557519184855,
+      0.006398323423276716,
+      0.006084293777185101,
+      0.005753696691339108,
+      0.004952620478011478,
+      0.004312415512791696,
+      0.0037044487213169406,
+      0.0032810363304964763,
+      0.0029387167562314,
+      0.003398358901312045,
+      0.004160441643520635,
+      0.004208371830040681,
+      0.003697566323527447,
+      0.004142093028735013
+    ],
+    "mtie_tau_s": [
+      10.0,
+      20.0,
+      30.0,
+      50.0,
+      80.0,
+      130.0,
+      210.0,
+      340.0,
+      550.0,
+      880.0,
+      1410.0,
+      2260.0,
+      3620.0,
+      5790.0,
+      9270.0
+    ],
+    "mtie_s": [
+      0.0543242767552853,
+      0.06472450232456536,
+      0.06472450232456536,
+      0.06472450232456536,
+      0.06472450232456536,
+      0.06472450232456536,
+      0.06875827255384091,
+      0.07945857122010197,
+      0.07945857122010197,
+      0.09429403778239237,
+      0.1019683602883327,
+      0.11877999260882456,
+      0.1443597035730597,
+      0.1927266715393961,
+      0.2426722248547963
+    ]
+  },
+  "instrument_floor": {
+    "short_tau_log_slope": -0.8778641842427894,
+    "floor_adev_at_tau0": 0.0014990994064882105,
+    "tau0_s": 10.0,
+    "crossover_tau_s": null,
+    "note": "slope near -1.0 confirms a white-phase-noise-limited floor"
+  },
+  "verdict": {
+    "criteria": [
+      {
+        "id": "C1",
+        "criterion": "each arm retains >= 600 samples",
+        "result": "PASS",
+        "detail": "A=906, B=846"
+      },
+      {
+        "id": "C2",
+        "criterion": "common overlap >= 120 min",
+        "result": "PASS",
+        "detail": "179.3 min"
+      },
+      {
+        "id": "C3",
+        "criterion": "no suspend/discontinuity in either retained series",
+        "result": "PASS",
+        "detail": "0 in A, 0 in B"
+      },
+      {
+        "id": "C4",
+        "criterion": "both arms on the same reference, >=95% homogeneous",
+        "result": "PASS",
+        "detail": "A=ntp@time.google.com (100.0%), B=ntp@time.google.com (100.0%)"
+      },
+      {
+        "id": "C5",
+        "criterion": "relative-offset 95% CI half-width < 1 ppm",
+        "result": "PASS",
+        "detail": "0.390 ppm"
+      }
+    ],
+    "overall": "ESTABLISHED",
+    "failed": []
+  },
+  "scope_limits": [
+    "Software timestamping over NTP/WiFi. The floor is milliseconds, roughly 10^5 above G.8273.2 cTE limits (50/20/10 ns). No ns-scale or mask-compliance claim is supported.",
+    "Both hosts carry uncompensated consumer-grade quartz (not OCXO/TCXO/Rb). The measured envelope is a worst-case consumer figure, not a telecom-class holdover curve.",
+    "No PTP ran between the two machines. This measures the physical premise of B6 (two crystals diverge, by how much, how steadily); it is NOT an end-to-end B6 detection test.",
+    "Temperature was not controlled. Without the temp log, the benign thermal-correlation discriminator in the Parameter Fault Matrix (L8 Oscillator: temperature) is not evaluated."
+  ]
+}

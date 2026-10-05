@@ -1,0 +1,45 @@
+ptp4l[3472.372]: port 1 (v-ru2): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[3472.372]: port 0 (/var/run/p.ru2): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[3472.372]: port 0 (/var/run/pr.ru2): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[3472.757]: selected local clock 020000.fffe.00000d as best master
+ptp4l[3472.811]: port 1 (v-ru2): new foreign master 020000.fffe.000001-2
+ptp4l[3473.061]: selected best master clock 020000.fffe.00000b
+ptp4l[3473.061]: foreign master not using PTP timescale
+ptp4l[3473.061]: port 1 (v-ru2): LISTENING to UNCALIBRATED on RS_SLAVE
+ptp4l[3473.186]: selected best master clock 020000.fffe.00000a
+ptp4l[3473.186]: foreign master not using PTP timescale
+ptp4l[3475.253]: master offset        978 s0 freq    -495 path delay      5434
+ptp4l[3477.255]: master offset      -1255 s0 freq    -818 path delay      6029
+ptp4l[3479.257]: master offset      -2164 s0 freq   -1365 path delay      4205
+ptp4l[3481.260]: master offset      -1696 s0 freq    +178 path delay      4094
+ptp4l[3483.262]: master offset        -82 s0 freq    +860 path delay      4201
+ptp4l[3485.265]: master offset        -75 s0 freq    -117 path delay      3960
+ptp4l[3487.267]: master offset       -902 s0 freq    -136 path delay      4515
+ptp4l[3489.269]: master offset       -527 s0 freq     +19 path delay      4179
+ptp4l[3491.271]: master offset      -1509 s0 freq    -746 path delay      3668
+ptp4l[3493.273]: master offset        753 s0 freq   +1244 path delay      3897
+ptp4l[3495.275]: master offset       2368 s0 freq   +1030 path delay      4344
+ptp4l[3497.277]: master offset        756 s0 freq    -417 path delay      5122
+ptp4l[3499.279]: master offset      -2472 s0 freq   -1992 path delay      4361
+ptp4l[3501.282]: master offset       2127 s0 freq   +2354 path delay      4476
+ptp4l[3502.848]: master offset 6055815414 s0 freq +5153226505 path delay 2017886994
+ptp4l[3503.854]: master offset 4039731344 s0 freq +4157272 path delay 4038150049
+ptp4l[3504.880]: master offset 6378401092 s0 freq +2280322426 path delay 4039737864
+ptp4l[3505.885]: master offset 5211884401 s0 freq +3533989 path delay 5209805192
+ptp4l[3506.889]: master offset 10425587656 s0 freq +3886015 path delay      6722
+ptp4l[3507.916]: master offset 12766346048 s0 freq +2279355274 path delay      5066
+ptp4l[3508.984]: master offset 6385539669 s0 freq +3671262 path delay 6384730562
+ptp4l[3510.010]: master offset 7555747690 s0 freq +2280108777 path delay 7554641870
+ptp4l[3511.015]: master offset 15114666071 s0 freq +4261571 path delay      7588
+ptp4l[3512.043]: master offset 17455883236 s0 freq +2278801860 path delay      5350
+ptp4l[3513.109]: master offset      -1820 s0 freq -16365257168 path delay      7463
+ptp4l[3514.110]: master offset -8730652257 s0 freq    +332 path delay 8730658232
+ptp4l[3515.112]: master offset -4950362965 s0 freq   -4685 path delay 4950364250
+ptp4l[3516.113]: master offset -9902856240 s0 freq   +2545 path delay 9902860073
+ptp4l[3517.114]: master offset        115 s0 freq   +1999 path delay      5719
+ptp4l[3518.115]: master offset      -1893 s0 freq   -1151 path delay      6575
+ptp4l[3519.178]: master offset -11076110515 s0 freq   +1799 path delay 11076117110
+ptp4l[3520.179]: master offset -6123335270 s0 freq   -1025 path delay 6123340839
+ptp4l[3521.180]: master offset -6124030303 s0 freq   -2859 path delay 6124033010
+ptp4l[3523.182]: master offset       3335 s0 freq   +2352 path delay      4082
+ptp4l[3525.185]: master offset       -129 s0 freq   -1608 path delay      4326

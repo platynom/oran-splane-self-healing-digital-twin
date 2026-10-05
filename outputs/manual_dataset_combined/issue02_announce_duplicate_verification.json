@@ -1,0 +1,108 @@
+{
+  "purpose": "Read-only duplicate and label-conflict audit. No label is promoted to ground truth.",
+  "file_facts": {
+    "raw_15min": {
+      "path": "dataset\\timesafe\\s-plane_security_repo\\DataCollectionPTP\\15min_announce_attack.csv",
+      "bytes": 3117547,
+      "sha256": "ecea55d2f857ae35a07d5228fe455dec7d7672a67a8ced58afaebffb81368733"
+    },
+    "raw_uedata": {
+      "path": "dataset\\timesafe\\s-plane_security_repo\\DataCollectionPTP\\2024-10-06-announce_attack_UEdata.csv",
+      "bytes": 3357075,
+      "sha256": "603a00c5f9f2b9995d5fd2e955af73e5c3c707906ffcd872d003baa2ab6f1892"
+    },
+    "pcap_15min": {
+      "path": "dataset\\timesafe\\s-plane_security_repo\\DataCollectionPTP\\15min_announce_attack.pcap",
+      "bytes": 3933172,
+      "sha256": "d2c91b3e4f09a3ecaffc81b9fb5b45b874adf2946ed88fc3eccaeaf3a631983e"
+    },
+    "pcap_uedata": {
+      "path": "dataset\\timesafe\\s-plane_security_repo\\DataCollectionPTP\\2024-10-06-announce_attack_UEdata.pcap",
+      "bytes": 3933172,
+      "sha256": "d2c91b3e4f09a3ecaffc81b9fb5b45b874adf2946ed88fc3eccaeaf3a631983e"
+    },
+    "session_1_pcap": {
+      "path": "dataset\\timesafe\\timesafe_multi_raw\\announce_session_1.pcap",
+      "bytes": 3933172,
+      "sha256": "d2c91b3e4f09a3ecaffc81b9fb5b45b874adf2946ed88fc3eccaeaf3a631983e"
+    },
+    "session_2_pcap": {
+      "path": "dataset\\timesafe\\timesafe_multi_raw\\announce_session_2.pcap",
+      "bytes": 3933172,
+      "sha256": "d2c91b3e4f09a3ecaffc81b9fb5b45b874adf2946ed88fc3eccaeaf3a631983e"
+    },
+    "session_1_labels": {
+      "path": "dataset\\timesafe\\timesafe_multi_raw\\announce_session_1_labels.csv",
+      "bytes": 1850844,
+      "sha256": "6a03a10bd9f4748031a7e8dc66305107d734db01079499fd7018661ba501046a"
+    },
+    "session_2_labels": {
+      "path": "dataset\\timesafe\\timesafe_multi_raw\\announce_session_2_labels.csv",
+      "bytes": 1850844,
+      "sha256": "840769d5c5c54177dc3ee9ae1648f4edf36450b817c11b129c8e8973641fb689"
+    }
+  },
+  "pcap_sha256_groups": {
+    "ecea55d2f857ae35a07d5228fe455dec7d7672a67a8ced58afaebffb81368733": [
+      "raw_15min"
+    ],
+    "603a00c5f9f2b9995d5fd2e955af73e5c3c707906ffcd872d003baa2ab6f1892": [
+      "raw_uedata"
+    ],
+    "d2c91b3e4f09a3ecaffc81b9fb5b45b874adf2946ed88fc3eccaeaf3a631983e": [
+      "pcap_15min",
+      "pcap_uedata",
+      "session_1_pcap",
+      "session_2_pcap"
+    ],
+    "6a03a10bd9f4748031a7e8dc66305107d734db01079499fd7018661ba501046a": [
+      "session_1_labels"
+    ],
+    "840769d5c5c54177dc3ee9ae1648f4edf36450b817c11b129c8e8973641fb689": [
+      "session_2_labels"
+    ]
+  },
+  "row_counts": {
+    "session_1_labels": 46998,
+    "session_2_labels": 46998,
+    "raw_15min_ptp": 46998,
+    "raw_uedata_ptp": 46998
+  },
+  "alignment": {
+    "session_1_matches_15min_after_ptp_filter_and_documented_encoding": true,
+    "session_2_matches_uedata_after_ptp_filter_and_documented_encoding": true,
+    "all_nonlabel_rows_identical_between_sessions": true
+  },
+  "labels": {
+    "session_1": {
+      "0": 42521,
+      "1": 4477
+    },
+    "session_2": {
+      "0": 37211,
+      "1": 9787
+    },
+    "conflicts": 5312,
+    "directions": {
+      "0->1": 5311,
+      "1->0": 1
+    },
+    "positive_packet_types_session_1": {
+      "1|11": 4476,
+      "1|8": 1
+    },
+    "positive_packet_types_session_2": {
+      "1|11": 9787
+    },
+    "session_1_source_6afa_announce_rule": {
+      "matches_saved_labels": false,
+      "false_positives": 5311,
+      "false_negatives": 1
+    },
+    "session_2_source_6afa_announce_rule": {
+      "matches_saved_labels": true,
+      "false_positives": 0,
+      "false_negatives": 0
+    }
+  }
+}

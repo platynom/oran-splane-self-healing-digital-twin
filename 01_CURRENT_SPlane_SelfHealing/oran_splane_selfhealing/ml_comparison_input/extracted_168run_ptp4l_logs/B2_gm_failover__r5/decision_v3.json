@@ -1,0 +1,11 @@
+{
+  "scenario": "B2_gm_failover",
+  "truth_class": "benign",
+  "truth_fault": "B2",
+  "verdict": "BENIGN",
+  "fault_hint": "B2",
+  "reasons": [
+    "Grandmaster changed to another PROVISIONED clock during an open maintenance window - planned failover"
+  ],
+  "rule": "decision_rule_v3 (frozen v3)"
+}

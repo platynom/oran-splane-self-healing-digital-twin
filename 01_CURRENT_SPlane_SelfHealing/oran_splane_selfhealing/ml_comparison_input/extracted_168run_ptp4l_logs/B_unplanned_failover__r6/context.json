@@ -1,0 +1,10 @@
+{ "scenario":"B_unplanned_failover", "class":"benign", "fault_id":"B_UNPLANNED",
+  "rep":6,
+  "gm_allowlist":["020000fffe00000a","020000fffe00000b"],
+  "provisioned_backup_gm":"020000fffe00000b",
+  "expected_bc_identity":"020000fffe000001",
+  "expected_client_identities":["020000fffe00000c","020000fffe00000d","020000fffe00000e"],
+  "expected_steps_removed_at_ru":1,
+  "maintenance_window_open":false,
+  "randomised_params_seed":6,
+  "description":"UNPLANNED: GM-A crashes, NO maintenance window; GM-B (provisioned) elected" }

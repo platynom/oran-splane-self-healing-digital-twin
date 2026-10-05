@@ -1,0 +1,923 @@
+{
+  "schema_version": "empirical-configured-impairment-discriminator-v2",
+  "evaluation_scope": {
+    "target": "CONFIGURED IMPAIRMENT",
+    "mandatory_disclaimer": "Detects a CONFIGURED IMPAIRMENT (netem delay/jitter/loss), NOT an attack.",
+    "unit_of_analysis": "1 run",
+    "positive_class": "netem_delay_jitter_loss",
+    "negative_class": [
+      "baseline_control",
+      "authorized_source_change_no_action_control"
+    ],
+    "excluded_conditions": {
+      "authorized_source_change_intervention": "Excluded because intervention is an intentional grandmaster termination / source change rather than an in-path link impairment."
+    },
+    "sample_counts": {
+      "total_runs_evaluated": 24,
+      "positive_runs": 8,
+      "negative_runs": 16,
+      "class_ratio_neg_to_pos": "16:8"
+    },
+    "anti_circularity_design": "Run class assignment is fixed by the experiment configuration and confirmed by physical qdisc counters, completely independent of packet timing features.",
+    "leakage_guard": "extract_features_from_pcap accepts an anonymous binary stream with assertions failing loudly if directory or scenario names are passed."
+  },
+  "feature_selection_provenance": {
+    "feature_set_status": "POST_SPECIFIED_SUBSTITUTION",
+    "features_originally_specified": [
+      "per-source Announce inter-arrival median, p95, max, and standard deviation",
+      "per-source missing sequence fraction by messageType",
+      "total frame count normalised by capture duration",
+      "Delay_Req inter-arrival median and p95"
+    ],
+    "features_explored_before_selection": [
+      "raw_all_source_sync_interarrival_std",
+      "slave_delay_req_outage_for_netem",
+      "sync_fu_paired_delay_std_s",
+      "sync_interarrival_jitter_s",
+      "missing_master_to_slave_seq_count"
+    ],
+    "selection_note": "The two detection features (sync_fu_paired_delay_std_s and sync_interarrival_jitter_s) were chosen after exploring candidate wire-level metrics and observing their empirical separation between impaired and unimpaired runs.",
+    "features_actually_evaluated": [
+      "missing_master_to_slave_seq_count (reclassified as MANIPULATION_CHECK)",
+      "sync_fu_paired_delay_std_s (DETECTION_FEATURE: paired transmit latency dispersion under two-step profile)",
+      "sync_interarrival_jitter_s (DETECTION_FEATURE: nominal 125 ms interval mean absolute deviation)"
+    ],
+    "substitution_rationale": "Historical session features relied on window-level packet projections that were circular with session labels. The empirical pilot provides an independent run-level ground truth (netem injection confirmed by qdisc drop telemetry). Features were designed directly from the physical IEEE 1588 protocol mechanics present on the wire (sequence ID increments, two-step Sync-Follow_Up pairing, and nominal 8 Hz message pacing).",
+    "features_tried_and_discarded": [
+      {
+        "feature": "raw_all_source_sync_interarrival_std",
+        "reason_discarded": "Aggregated Sync arrival timestamps across both Master A and Master B, conflating multi-source scheduling offsets with link jitter. Replaced by per-source deviation from the nominal 125 ms cadence (sync_interarrival_jitter_s)."
+      },
+      {
+        "feature": "slave_delay_req_outage_for_netem",
+        "reason_discarded": "Delay_Req frames traverse slave->bridge egress where netem was not configured. As established by netem direction-match, netem impairs only bridge->slave egress. Packet outage metrics are relevant to master termination (intervention), not link delay/loss impairment."
+      }
+    ]
+  },
+  "dataset_inventory": [
+    {
+      "run": "20260911_set2_baseline_r1",
+      "y": 0,
+      "condition": "baseline_control",
+      "features": {
+        "missing_master_to_slave_seq_count": 0,
+        "sync_fu_paired_delay_std_s": 5.888e-05,
+        "sync_interarrival_jitter_s": 0.00012596
+      }
+    },
+    {
+      "run": "20260911_set2_baseline_r2",
+      "y": 0,
+      "condition": "baseline_control",
+      "features": {
+        "missing_master_to_slave_seq_count": 0,
+        "sync_fu_paired_delay_std_s": 5.221e-05,
+        "sync_interarrival_jitter_s": 0.00011158
+      }
+    },
+    {
+      "run": "20260911_set2_baseline_r3",
+      "y": 0,
+      "condition": "baseline_control",
+      "features": {
+        "missing_master_to_slave_seq_count": 0,
+        "sync_fu_paired_delay_std_s": 6.582e-05,
+        "sync_interarrival_jitter_s": 0.00013486
+      }
+    },
+    {
+      "run": "20260911_set2_control_r1",
+      "y": 0,
+      "condition": "authorized_source_change_no_action_control",
+      "features": {
+        "missing_master_to_slave_seq_count": 0,
+        "sync_fu_paired_delay_std_s": 5.048e-05,
+        "sync_interarrival_jitter_s": 0.00013595
+      }
+    },
+    {
+      "run": "20260911_set2_control_r2",
+      "y": 0,
+      "condition": "authorized_source_change_no_action_control",
+      "features": {
+        "missing_master_to_slave_seq_count": 0,
+        "sync_fu_paired_delay_std_s": 7.222e-05,
+        "sync_interarrival_jitter_s": 0.00016039
+      }
+    },
+    {
+      "run": "20260911_set2_control_r3",
+      "y": 0,
+      "condition": "authorized_source_change_no_action_control",
+      "features": {
+        "missing_master_to_slave_seq_count": 0,
+        "sync_fu_paired_delay_std_s": 5.464e-05,
+        "sync_interarrival_jitter_s": 0.00011795
+      }
+    },
+    {
+      "run": "20260911_set2_netem_r1",
+      "y": 1,
+      "condition": "netem_delay_jitter_loss",
+      "features": {
+        "missing_master_to_slave_seq_count": 20,
+        "sync_fu_paired_delay_std_s": 0.00026055,
+        "sync_interarrival_jitter_s": 0.0002692
+      }
+    },
+    {
+      "run": "20260911_set2_netem_r2",
+      "y": 1,
+      "condition": "netem_delay_jitter_loss",
+      "features": {
+        "missing_master_to_slave_seq_count": 19,
+        "sync_fu_paired_delay_std_s": 0.00025951,
+        "sync_interarrival_jitter_s": 0.00024526
+      }
+    },
+    {
+      "run": "20260911_set2_netem_r3",
+      "y": 1,
+      "condition": "netem_delay_jitter_loss",
+      "features": {
+        "missing_master_to_slave_seq_count": 19,
+        "sync_fu_paired_delay_std_s": 0.00026686,
+        "sync_interarrival_jitter_s": 0.00026893
+      }
+    },
+    {
+      "run": "20260911_set3_baseline_r4",
+      "y": 0,
+      "condition": "baseline_control",
+      "features": {
+        "missing_master_to_slave_seq_count": 0,
+        "sync_fu_paired_delay_std_s": 4.817e-05,
+        "sync_interarrival_jitter_s": 0.0001442
+      }
+    },
+    {
+      "run": "20260911_set3_baseline_r5",
+      "y": 0,
+      "condition": "baseline_control",
+      "features": {
+        "missing_master_to_slave_seq_count": 0,
+        "sync_fu_paired_delay_std_s": 3.932e-05,
+        "sync_interarrival_jitter_s": 0.00015201
+      }
+    },
+    {
+      "run": "20260911_set3_baseline_r6",
+      "y": 0,
+      "condition": "baseline_control",
+      "features": {
+        "missing_master_to_slave_seq_count": 0,
+        "sync_fu_paired_delay_std_s": 2.6e-05,
+        "sync_interarrival_jitter_s": 0.00010026
+      }
+    },
+    {
+      "run": "20260911_set3_baseline_r7",
+      "y": 0,
+      "condition": "baseline_control",
+      "features": {
+        "missing_master_to_slave_seq_count": 0,
+        "sync_fu_paired_delay_std_s": 3.25e-05,
+        "sync_interarrival_jitter_s": 9.12e-05
+      }
+    },
+    {
+      "run": "20260911_set3_baseline_r8",
+      "y": 0,
+      "condition": "baseline_control",
+      "features": {
+        "missing_master_to_slave_seq_count": 0,
+        "sync_fu_paired_delay_std_s": 3.361e-05,
+        "sync_interarrival_jitter_s": 8.038e-05
+      }
+    },
+    {
+      "run": "20260911_set3_control_r4",
+      "y": 0,
+      "condition": "authorized_source_change_no_action_control",
+      "features": {
+        "missing_master_to_slave_seq_count": 0,
+        "sync_fu_paired_delay_std_s": 4.074e-05,
+        "sync_interarrival_jitter_s": 0.00015836
+      }
+    },
+    {
+      "run": "20260911_set3_control_r5",
+      "y": 0,
+      "condition": "authorized_source_change_no_action_control",
+      "features": {
+        "missing_master_to_slave_seq_count": 0,
+        "sync_fu_paired_delay_std_s": 3.843e-05,
+        "sync_interarrival_jitter_s": 0.0001544
+      }
+    },
+    {
+      "run": "20260911_set3_control_r6",
+      "y": 0,
+      "condition": "authorized_source_change_no_action_control",
+      "features": {
+        "missing_master_to_slave_seq_count": 0,
+        "sync_fu_paired_delay_std_s": 2.789e-05,
+        "sync_interarrival_jitter_s": 0.00011868
+      }
+    },
+    {
+      "run": "20260911_set3_control_r7",
+      "y": 0,
+      "condition": "authorized_source_change_no_action_control",
+      "features": {
+        "missing_master_to_slave_seq_count": 0,
+        "sync_fu_paired_delay_std_s": 2.364e-05,
+        "sync_interarrival_jitter_s": 9.997e-05
+      }
+    },
+    {
+      "run": "20260911_set3_control_r8",
+      "y": 0,
+      "condition": "authorized_source_change_no_action_control",
+      "features": {
+        "missing_master_to_slave_seq_count": 0,
+        "sync_fu_paired_delay_std_s": 1.833e-05,
+        "sync_interarrival_jitter_s": 8.644e-05
+      }
+    },
+    {
+      "run": "20260911_set3_netem_r4",
+      "y": 1,
+      "condition": "netem_delay_jitter_loss",
+      "features": {
+        "missing_master_to_slave_seq_count": 11,
+        "sync_fu_paired_delay_std_s": 0.00026216,
+        "sync_interarrival_jitter_s": 0.00026472
+      }
+    },
+    {
+      "run": "20260911_set3_netem_r5",
+      "y": 1,
+      "condition": "netem_delay_jitter_loss",
+      "features": {
+        "missing_master_to_slave_seq_count": 21,
+        "sync_fu_paired_delay_std_s": 0.00026534,
+        "sync_interarrival_jitter_s": 0.00025844
+      }
+    },
+    {
+      "run": "20260911_set3_netem_r6",
+      "y": 1,
+      "condition": "netem_delay_jitter_loss",
+      "features": {
+        "missing_master_to_slave_seq_count": 20,
+        "sync_fu_paired_delay_std_s": 0.00027006,
+        "sync_interarrival_jitter_s": 0.00025657
+      }
+    },
+    {
+      "run": "20260911_set3_netem_r7",
+      "y": 1,
+      "condition": "netem_delay_jitter_loss",
+      "features": {
+        "missing_master_to_slave_seq_count": 16,
+        "sync_fu_paired_delay_std_s": 0.00032772,
+        "sync_interarrival_jitter_s": 0.00030441
+      }
+    },
+    {
+      "run": "20260911_set3_netem_r8",
+      "y": 1,
+      "condition": "netem_delay_jitter_loss",
+      "features": {
+        "missing_master_to_slave_seq_count": 18,
+        "sync_fu_paired_delay_std_s": 0.00025548,
+        "sync_interarrival_jitter_s": 0.00023791
+      }
+    }
+  ],
+  "manipulation_check": {
+    "role": "MANIPULATION_CHECK",
+    "statement": "missing_master_to_slave_seq_count directly counts the frames the configured loss removed. It confirms the impairment was delivered to the bridge-to-slave queue. Separating runs by counting the packets the injection removed is a delivery validation, NOT evidence of a detection capability.",
+    "distribution_and_margins": {
+      "positive_class_netem": {
+        "n": 8,
+        "min": 11,
+        "median": 19.0,
+        "max": 21
+      },
+      "negative_class_unimpaired": {
+        "n": 16,
+        "min": 0,
+        "median": 0.0,
+        "max": 0
+      },
+      "separation_margin_lowest_pos_minus_highest_neg": 11,
+      "ratio_of_class_medians": 0.0
+    },
+    "leave_one_out": {
+      "feature": "missing_master_to_slave_seq_count",
+      "accuracy": 1.0,
+      "sensitivity": 1.0,
+      "specificity": 1.0,
+      "true_positives": 8,
+      "true_negatives": 16,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "predictions": [
+        {
+          "run": "20260911_set2_baseline_r1",
+          "actual": 0,
+          "predicted": 0,
+          "threshold_chosen_on_train": 5.5,
+          "test_feature_value": 0
+        },
+        {
+          "run": "20260911_set2_baseline_r2",
+          "actual": 0,
+          "predicted": 0,
+          "threshold_chosen_on_train": 5.5,
+          "test_feature_value": 0
+        },
+        {
+          "run": "20260911_set2_baseline_r3",
+          "actual": 0,
+          "predicted": 0,
+          "threshold_chosen_on_train": 5.5,
+          "test_feature_value": 0
+        },
+        {
+          "run": "20260911_set2_control_r1",
+          "actual": 0,
+          "predicted": 0,
+          "threshold_chosen_on_train": 5.5,
+          "test_feature_value": 0
+        },
+        {
+          "run": "20260911_set2_control_r2",
+          "actual": 0,
+          "predicted": 0,
+          "threshold_chosen_on_train": 5.5,
+          "test_feature_value": 0
+        },
+        {
+          "run": "20260911_set2_control_r3",
+          "actual": 0,
+          "predicted": 0,
+          "threshold_chosen_on_train": 5.5,
+          "test_feature_value": 0
+        },
+        {
+          "run": "20260911_set2_netem_r1",
+          "actual": 1,
+          "predicted": 1,
+          "threshold_chosen_on_train": 5.5,
+          "test_feature_value": 20
+        },
+        {
+          "run": "20260911_set2_netem_r2",
+          "actual": 1,
+          "predicted": 1,
+          "threshold_chosen_on_train": 5.5,
+          "test_feature_value": 19
+        },
+        {
+          "run": "20260911_set2_netem_r3",
+          "actual": 1,
+          "predicted": 1,
+          "threshold_chosen_on_train": 5.5,
+          "test_feature_value": 19
+        },
+        {
+          "run": "20260911_set3_baseline_r4",
+          "actual": 0,
+          "predicted": 0,
+          "threshold_chosen_on_train": 5.5,
+          "test_feature_value": 0
+        },
+        {
+          "run": "20260911_set3_baseline_r5",
+          "actual": 0,
+          "predicted": 0,
+          "threshold_chosen_on_train": 5.5,
+          "test_feature_value": 0
+        },
+        {
+          "run": "20260911_set3_baseline_r6",
+          "actual": 0,
+          "predicted": 0,
+          "threshold_chosen_on_train": 5.5,
+          "test_feature_value": 0
+        },
+        {
+          "run": "20260911_set3_baseline_r7",
+          "actual": 0,
+          "predicted": 0,
+          "threshold_chosen_on_train": 5.5,
+          "test_feature_value": 0
+        },
+        {
+          "run": "20260911_set3_baseline_r8",
+          "actual": 0,
+          "predicted": 0,
+          "threshold_chosen_on_train": 5.5,
+          "test_feature_value": 0
+        },
+        {
+          "run": "20260911_set3_control_r4",
+          "actual": 0,
+          "predicted": 0,
+          "threshold_chosen_on_train": 5.5,
+          "test_feature_value": 0
+        },
+        {
+          "run": "20260911_set3_control_r5",
+          "actual": 0,
+          "predicted": 0,
+          "threshold_chosen_on_train": 5.5,
+          "test_feature_value": 0
+        },
+        {
+          "run": "20260911_set3_control_r6",
+          "actual": 0,
+          "predicted": 0,
+          "threshold_chosen_on_train": 5.5,
+          "test_feature_value": 0
+        },
+        {
+          "run": "20260911_set3_control_r7",
+          "actual": 0,
+          "predicted": 0,
+          "threshold_chosen_on_train": 5.5,
+          "test_feature_value": 0
+        },
+        {
+          "run": "20260911_set3_control_r8",
+          "actual": 0,
+          "predicted": 0,
+          "threshold_chosen_on_train": 5.5,
+          "test_feature_value": 0
+        },
+        {
+          "run": "20260911_set3_netem_r4",
+          "actual": 1,
+          "predicted": 1,
+          "threshold_chosen_on_train": 8.0,
+          "test_feature_value": 11
+        },
+        {
+          "run": "20260911_set3_netem_r5",
+          "actual": 1,
+          "predicted": 1,
+          "threshold_chosen_on_train": 5.5,
+          "test_feature_value": 21
+        },
+        {
+          "run": "20260911_set3_netem_r6",
+          "actual": 1,
+          "predicted": 1,
+          "threshold_chosen_on_train": 5.5,
+          "test_feature_value": 20
+        },
+        {
+          "run": "20260911_set3_netem_r7",
+          "actual": 1,
+          "predicted": 1,
+          "threshold_chosen_on_train": 5.5,
+          "test_feature_value": 16
+        },
+        {
+          "run": "20260911_set3_netem_r8",
+          "actual": 1,
+          "predicted": 1,
+          "threshold_chosen_on_train": 5.5,
+          "test_feature_value": 18
+        }
+      ]
+    },
+    "permutation_control": {
+      "num_permutations": 1000,
+      "seed": 42,
+      "actual_accuracy": 1.0,
+      "permutation_p_value": 0.0,
+      "perm_accuracy_max": 0.833333,
+      "perm_accuracy_mean": 0.613542
+    }
+  },
+  "detection_features": {
+    "sync_fu_paired_delay_std_s": {
+      "role": "DETECTION_FEATURE",
+      "distribution_and_margins": {
+        "positive_class_netem": {
+          "n": 8,
+          "min": 0.00025548,
+          "median": 0.00026375,
+          "max": 0.00032772
+        },
+        "negative_class_unimpaired": {
+          "n": 16,
+          "min": 1.833e-05,
+          "median": 4.003e-05,
+          "max": 7.222e-05
+        },
+        "separation_margin_lowest_pos_minus_highest_neg": 0.00018326,
+        "ratio_of_class_medians": 6.588808
+      },
+      "leave_one_out": {
+        "feature": "sync_fu_paired_delay_std_s",
+        "accuracy": 1.0,
+        "sensitivity": 1.0,
+        "specificity": 1.0,
+        "true_positives": 8,
+        "true_negatives": 16,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "predictions": [
+          {
+            "run": "20260911_set2_baseline_r1",
+            "actual": 0,
+            "predicted": 0,
+            "threshold_chosen_on_train": 0.00016385,
+            "test_feature_value": 5.888e-05
+          },
+          {
+            "run": "20260911_set2_baseline_r2",
+            "actual": 0,
+            "predicted": 0,
+            "threshold_chosen_on_train": 0.00016385,
+            "test_feature_value": 5.221e-05
+          },
+          {
+            "run": "20260911_set2_baseline_r3",
+            "actual": 0,
+            "predicted": 0,
+            "threshold_chosen_on_train": 0.00016385,
+            "test_feature_value": 6.582e-05
+          },
+          {
+            "run": "20260911_set2_control_r1",
+            "actual": 0,
+            "predicted": 0,
+            "threshold_chosen_on_train": 0.00016385,
+            "test_feature_value": 5.048e-05
+          },
+          {
+            "run": "20260911_set2_control_r2",
+            "actual": 0,
+            "predicted": 0,
+            "threshold_chosen_on_train": 0.00016065,
+            "test_feature_value": 7.222e-05
+          },
+          {
+            "run": "20260911_set2_control_r3",
+            "actual": 0,
+            "predicted": 0,
+            "threshold_chosen_on_train": 0.00016385,
+            "test_feature_value": 5.464e-05
+          },
+          {
+            "run": "20260911_set2_netem_r1",
+            "actual": 1,
+            "predicted": 1,
+            "threshold_chosen_on_train": 0.00016385,
+            "test_feature_value": 0.00026055
+          },
+          {
+            "run": "20260911_set2_netem_r2",
+            "actual": 1,
+            "predicted": 1,
+            "threshold_chosen_on_train": 0.00016385,
+            "test_feature_value": 0.00025951
+          },
+          {
+            "run": "20260911_set2_netem_r3",
+            "actual": 1,
+            "predicted": 1,
+            "threshold_chosen_on_train": 0.00016385,
+            "test_feature_value": 0.00026686
+          },
+          {
+            "run": "20260911_set3_baseline_r4",
+            "actual": 0,
+            "predicted": 0,
+            "threshold_chosen_on_train": 0.00016385,
+            "test_feature_value": 4.817e-05
+          },
+          {
+            "run": "20260911_set3_baseline_r5",
+            "actual": 0,
+            "predicted": 0,
+            "threshold_chosen_on_train": 0.00016385,
+            "test_feature_value": 3.932e-05
+          },
+          {
+            "run": "20260911_set3_baseline_r6",
+            "actual": 0,
+            "predicted": 0,
+            "threshold_chosen_on_train": 0.00016385,
+            "test_feature_value": 2.6e-05
+          },
+          {
+            "run": "20260911_set3_baseline_r7",
+            "actual": 0,
+            "predicted": 0,
+            "threshold_chosen_on_train": 0.00016385,
+            "test_feature_value": 3.25e-05
+          },
+          {
+            "run": "20260911_set3_baseline_r8",
+            "actual": 0,
+            "predicted": 0,
+            "threshold_chosen_on_train": 0.00016385,
+            "test_feature_value": 3.361e-05
+          },
+          {
+            "run": "20260911_set3_control_r4",
+            "actual": 0,
+            "predicted": 0,
+            "threshold_chosen_on_train": 0.00016385,
+            "test_feature_value": 4.074e-05
+          },
+          {
+            "run": "20260911_set3_control_r5",
+            "actual": 0,
+            "predicted": 0,
+            "threshold_chosen_on_train": 0.00016385,
+            "test_feature_value": 3.843e-05
+          },
+          {
+            "run": "20260911_set3_control_r6",
+            "actual": 0,
+            "predicted": 0,
+            "threshold_chosen_on_train": 0.00016385,
+            "test_feature_value": 2.789e-05
+          },
+          {
+            "run": "20260911_set3_control_r7",
+            "actual": 0,
+            "predicted": 0,
+            "threshold_chosen_on_train": 0.00016385,
+            "test_feature_value": 2.364e-05
+          },
+          {
+            "run": "20260911_set3_control_r8",
+            "actual": 0,
+            "predicted": 0,
+            "threshold_chosen_on_train": 0.00016385,
+            "test_feature_value": 1.833e-05
+          },
+          {
+            "run": "20260911_set3_netem_r4",
+            "actual": 1,
+            "predicted": 1,
+            "threshold_chosen_on_train": 0.00016385,
+            "test_feature_value": 0.00026216
+          },
+          {
+            "run": "20260911_set3_netem_r5",
+            "actual": 1,
+            "predicted": 1,
+            "threshold_chosen_on_train": 0.00016385,
+            "test_feature_value": 0.00026534
+          },
+          {
+            "run": "20260911_set3_netem_r6",
+            "actual": 1,
+            "predicted": 1,
+            "threshold_chosen_on_train": 0.00016385,
+            "test_feature_value": 0.00027006
+          },
+          {
+            "run": "20260911_set3_netem_r7",
+            "actual": 1,
+            "predicted": 1,
+            "threshold_chosen_on_train": 0.00016385,
+            "test_feature_value": 0.00032772
+          },
+          {
+            "run": "20260911_set3_netem_r8",
+            "actual": 1,
+            "predicted": 1,
+            "threshold_chosen_on_train": 0.000165865,
+            "test_feature_value": 0.00025548
+          }
+        ]
+      },
+      "permutation_control": {
+        "num_permutations": 1000,
+        "seed": 42,
+        "actual_accuracy": 1.0,
+        "permutation_p_value": 0.0,
+        "perm_accuracy_max": 0.833333,
+        "perm_accuracy_mean": 0.604583
+      }
+    },
+    "sync_interarrival_jitter_s": {
+      "role": "DETECTION_FEATURE",
+      "distribution_and_margins": {
+        "positive_class_netem": {
+          "n": 8,
+          "min": 0.00023791,
+          "median": 0.00026158,
+          "max": 0.00030441
+        },
+        "negative_class_unimpaired": {
+          "n": 16,
+          "min": 8.038e-05,
+          "median": 0.00012232,
+          "max": 0.00016039
+        },
+        "separation_margin_lowest_pos_minus_highest_neg": 7.752e-05,
+        "ratio_of_class_medians": 2.138489
+      },
+      "leave_one_out": {
+        "feature": "sync_interarrival_jitter_s",
+        "accuracy": 1.0,
+        "sensitivity": 1.0,
+        "specificity": 1.0,
+        "true_positives": 8,
+        "true_negatives": 16,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "predictions": [
+          {
+            "run": "20260911_set2_baseline_r1",
+            "actual": 0,
+            "predicted": 0,
+            "threshold_chosen_on_train": 0.00019915,
+            "test_feature_value": 0.00012596
+          },
+          {
+            "run": "20260911_set2_baseline_r2",
+            "actual": 0,
+            "predicted": 0,
+            "threshold_chosen_on_train": 0.00019915,
+            "test_feature_value": 0.00011158
+          },
+          {
+            "run": "20260911_set2_baseline_r3",
+            "actual": 0,
+            "predicted": 0,
+            "threshold_chosen_on_train": 0.00019915,
+            "test_feature_value": 0.00013486
+          },
+          {
+            "run": "20260911_set2_control_r1",
+            "actual": 0,
+            "predicted": 0,
+            "threshold_chosen_on_train": 0.00019915,
+            "test_feature_value": 0.00013595
+          },
+          {
+            "run": "20260911_set2_control_r2",
+            "actual": 0,
+            "predicted": 0,
+            "threshold_chosen_on_train": 0.000198135,
+            "test_feature_value": 0.00016039
+          },
+          {
+            "run": "20260911_set2_control_r3",
+            "actual": 0,
+            "predicted": 0,
+            "threshold_chosen_on_train": 0.00019915,
+            "test_feature_value": 0.00011795
+          },
+          {
+            "run": "20260911_set2_netem_r1",
+            "actual": 1,
+            "predicted": 1,
+            "threshold_chosen_on_train": 0.00019915,
+            "test_feature_value": 0.0002692
+          },
+          {
+            "run": "20260911_set2_netem_r2",
+            "actual": 1,
+            "predicted": 1,
+            "threshold_chosen_on_train": 0.00019915,
+            "test_feature_value": 0.00024526
+          },
+          {
+            "run": "20260911_set2_netem_r3",
+            "actual": 1,
+            "predicted": 1,
+            "threshold_chosen_on_train": 0.00019915,
+            "test_feature_value": 0.00026893
+          },
+          {
+            "run": "20260911_set3_baseline_r4",
+            "actual": 0,
+            "predicted": 0,
+            "threshold_chosen_on_train": 0.00019915,
+            "test_feature_value": 0.0001442
+          },
+          {
+            "run": "20260911_set3_baseline_r5",
+            "actual": 0,
+            "predicted": 0,
+            "threshold_chosen_on_train": 0.00019915,
+            "test_feature_value": 0.00015201
+          },
+          {
+            "run": "20260911_set3_baseline_r6",
+            "actual": 0,
+            "predicted": 0,
+            "threshold_chosen_on_train": 0.00019915,
+            "test_feature_value": 0.00010026
+          },
+          {
+            "run": "20260911_set3_baseline_r7",
+            "actual": 0,
+            "predicted": 0,
+            "threshold_chosen_on_train": 0.00019915,
+            "test_feature_value": 9.12e-05
+          },
+          {
+            "run": "20260911_set3_baseline_r8",
+            "actual": 0,
+            "predicted": 0,
+            "threshold_chosen_on_train": 0.00019915,
+            "test_feature_value": 8.038e-05
+          },
+          {
+            "run": "20260911_set3_control_r4",
+            "actual": 0,
+            "predicted": 0,
+            "threshold_chosen_on_train": 0.00019915,
+            "test_feature_value": 0.00015836
+          },
+          {
+            "run": "20260911_set3_control_r5",
+            "actual": 0,
+            "predicted": 0,
+            "threshold_chosen_on_train": 0.00019915,
+            "test_feature_value": 0.0001544
+          },
+          {
+            "run": "20260911_set3_control_r6",
+            "actual": 0,
+            "predicted": 0,
+            "threshold_chosen_on_train": 0.00019915,
+            "test_feature_value": 0.00011868
+          },
+          {
+            "run": "20260911_set3_control_r7",
+            "actual": 0,
+            "predicted": 0,
+            "threshold_chosen_on_train": 0.00019915,
+            "test_feature_value": 9.997e-05
+          },
+          {
+            "run": "20260911_set3_control_r8",
+            "actual": 0,
+            "predicted": 0,
+            "threshold_chosen_on_train": 0.00019915,
+            "test_feature_value": 8.644e-05
+          },
+          {
+            "run": "20260911_set3_netem_r4",
+            "actual": 1,
+            "predicted": 1,
+            "threshold_chosen_on_train": 0.00019915,
+            "test_feature_value": 0.00026472
+          },
+          {
+            "run": "20260911_set3_netem_r5",
+            "actual": 1,
+            "predicted": 1,
+            "threshold_chosen_on_train": 0.00019915,
+            "test_feature_value": 0.00025844
+          },
+          {
+            "run": "20260911_set3_netem_r6",
+            "actual": 1,
+            "predicted": 1,
+            "threshold_chosen_on_train": 0.00019915,
+            "test_feature_value": 0.00025657
+          },
+          {
+            "run": "20260911_set3_netem_r7",
+            "actual": 1,
+            "predicted": 1,
+            "threshold_chosen_on_train": 0.00019915,
+            "test_feature_value": 0.00030441
+          },
+          {
+            "run": "20260911_set3_netem_r8",
+            "actual": 1,
+            "predicted": 1,
+            "threshold_chosen_on_train": 0.000202825,
+            "test_feature_value": 0.00023791
+          }
+        ]
+      },
+      "permutation_control": {
+        "num_permutations": 1000,
+        "seed": 42,
+        "actual_accuracy": 1.0,
+        "permutation_p_value": 0.0,
+        "perm_accuracy_max": 0.916667,
+        "perm_accuracy_mean": 0.605083
+      }
+    }
+  }
+}

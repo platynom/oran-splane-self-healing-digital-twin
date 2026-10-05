@@ -1,0 +1,20 @@
+{
+  "schema_version": "v2-repeated-evaluation-protocol-2026-09-13",
+  "status": "FROZEN_BEFORE_EXECUTION",
+  "frozen_inputs": {
+    "streaming_discriminator_v1.py_sha256": "1c1d7edfbcc38b6e0c950984eff72b58592160c71ad8e797ff719d4aee0b8d0e",
+    "STREAMING_PROTOCOL_V2.json_sha256": "fcb4c64836b13ac929aff38e7794494af6ae69dbb97139e599956ebf1d5cc40d",
+    "pilot_duration_seconds": 8,
+    "host_clock_protection": "free_running 1; no host-clock adjustment"
+  },
+  "development_exclusion": "Set2/3 and all 20260912 V1 captures are development/regression only and excluded from this V2 repeated evaluation.",
+  "planned_order": [
+    ["v2b1","baseline_control"],["v2n1","netem_delay_jitter_loss"],["v2c1","authorized_source_change_no_action_control"],["v2s1","authorized_source_change_intervention"],
+    ["v2b2","baseline_control"],["v2n2","netem_delay_jitter_loss"],["v2c2","authorized_source_change_no_action_control"],["v2s2","authorized_source_change_intervention"],
+    ["v2b3","baseline_control"],["v2n3","netem_delay_jitter_loss"],["v2c3","authorized_source_change_no_action_control"],["v2s3","authorized_source_change_intervention"]
+  ],
+  "labels": {"netem": "configured impairment", "source_stop": "authorised operator source termination", "prohibited": ["attack", "health", "receiver outage", "physical clock recovery"]},
+  "run_level_metrics": ["any_CONFIGURED_IMPAIRMENT_SUSPECT", "first_suspect_s", "any_SOURCE_ANNOUNCE_SILENCE_OBSERVED", "first_silence_s", "UNKNOWN/WARMUP/invalid state counts", "manifest/structural validation"],
+  "analysis": {"unit":"run","uncertainty":"two-sided Wilson 95% intervals by declared condition; descriptive only at n=3","no_packet_event_trials":true,"threshold_change_after_execution":"forbidden"},
+  "stage3_gate": "No closed-loop action or recovery integration unless every planned run validates, results are reported at run level, and a separate reviewer decision authorizes it."
+}

@@ -1,0 +1,18 @@
+ptp4l[280.224]: port 1: INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[280.264]: port 2: INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[280.265]: port 0: INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[281.084]: port 2: new foreign master 1a87f4.fffe.57c90d-1
+ptp4l[281.220]: selected local clock ca8d48.fffe.d72d25 as best master
+ptp4l[281.276]: selected local clock ca8d48.fffe.d72d25 as best master
+ptp4l[281.437]: port 1: new foreign master 228864.fffe.53b046-1
+ptp4l[281.584]: selected best master clock 1a87f4.fffe.57c90d
+ptp4l[281.585]: foreign master not using PTP timescale
+ptp4l[281.586]: port 2: LISTENING to UNCALIBRATED on RS_SLAVE
+ptp4l[281.937]: selected best master clock 228864.fffe.53b046
+ptp4l[281.938]: foreign master not using PTP timescale
+ptp4l[281.940]: port 1: LISTENING to UNCALIBRATED on RS_SLAVE
+ptp4l[281.941]: port 2: master state recommended in slave only mode
+ptp4l[281.942]: port 2: defaultDS.priority1 probably misconfigured
+ptp4l[281.943]: port 2: UNCALIBRATED to LISTENING on RS_MASTER
+ptp4l[282.976]: selected best master clock 228864.fffe.53b046
+ptp4l[282.978]: foreign master not using PTP timescale

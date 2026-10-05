@@ -1,0 +1,446 @@
+    O-RAN Open Fronthaul S-Plane — Software Testbed
+Configuration, Setup and Standards Reference · Revised 2026-09-17 (supersedes the prior 81-run revision)
+
+    Document scope. Every hardware and software configuration used by the testbed, each traced to the
+    standard or reference implementation that fixes it. No value is assumed — all were read back from the
+    running system or from the cited standard.
+
+    Telecom profile. ITU-T G.8275.1 — PTP telecom profile for phase/time distribution with full timing
+    support. Selected because O-RAN sync configs LLS-C1/C2/C3 distribute timing through the network, and
+    because the real TIMESAFE hardware captures used for comparison run domain 24 (G.8275.1) on all
+    344,630 PTP packets across the six captures.
+
+    Frozen state. 18 artefacts SHA-256 hashed; verify_frozen.sh refuses to run if any changed and was
+    passed before every admissible run.
+
+    Validation result (current). 132 admissible runs across 12 randomised replicates. Attack sensitivity 1.000
+    [0.940, 1.000] (n=60); benign specificity 0.800 [0.682, 0.882] (n=60) — 1.000 [0.926, 1.000] (n=48) once
+    the single known schema limitation B_bc_replacement is excluded, which accounts for all 12 false
+    positives; honest abstention 12/12; attack attribution 0.817 [0.701, 0.894]. Zero infrastructure failures.
+
+
+   Corrections in this revision (all pre-freeze, all verified). (1) Added dataset_comparison G.8275.x — it was
+   missing, so linuxptp had been running the IEEE-1588 default BMCA rather than the G.8275.1 alternate BMCA. A capture
+   cannot reveal this (the BMCA algorithm is not a wire field), so the earlier "verified by parsing its own capture" could not
+   have caught it. (2) Removed path_trace_enabled 1 — real TIMESAFE captures carry zero TLVs in all 344,630 PTP
+   packets of the six captures, so leaving PATH_TRACE on makes its presence a perfect testbed-vs-TIMESAFE separator (a
+   provenance leak). (3) Added a per-node config generator (run/mkcfg.sh); option scoping verified against linuxptp v4.0
+   config.c. (4) A 4th provenance leak was logged: minor_version_ptp (testbed 4.0 = 1, real = 0) — a compile-time
+   constant, apparatus-only, excluded from any join.
+
+
+  1 Hardware / platform (software testbed)
+                           Value
+                           (read                   How
+    Item                                                                    Consequence
+                           from the                verified
+                           system)
+
+
+                           Firecracke
+    Kernel                                         uname -r                 Monolithic build
+                           r microVM
+
+
+                           uid 0,                  id -u;
+    Privileges             CAP_NET                 capsh --                 Namespaces and bridges permitted
+                           _ADMIN                  print
+
+
+                           None
+                                                   modprobe
+    Loadable               (no
+                                                   ptp_mock                 No per-node mock PHC
+    modules                /lib/modul
+                                                   → not found
+                           es)
+
+
+    PTP                    None                    ls                       No hardware clock to discipline
+    hardware               (no                     /dev/ptp*
+ clock               /dev/ptp*)
+
+
+                                                               Microsecond noise floor vs a nanosecond
+                     software
+ veth                                                          target (measured: |master offset| median
+                     only;                ethtool
+ timestamp                                                     0.9 µs, p95 5.6 µs; path delay median 7.2
+                     PHC:                 -T
+ ing                                                           µs, p95 8.3 µs (792 samples from the 132-
+                     none
+                                                               run campaign's baseline runs))
+
+
+                     One
+                     shared               Architectura
+ Oscillator                                                    Clocks cannot drift apart; B1/B6 impossible
+                     kernel               l
+                     clock
+
+
+ A second physical machine would add a second crystal (makes oscillator drift B6 real); a hardware-
+ timestamping NIC + back-to-back cable drops the floor from µs to tens of ns (makes A4/B5 measurable).
+ Neither unlocks GNSS (A6/A7/B1) or SyncE (B4).
+
+
+
+2 G.8275.1 profile configuration (Class A — exact)
+ Contents of cfg/g87251.base, applied to every node. Cross-checked line-by-line against linuxptp v4.0's
+ own configs/G.8275.1.cfg and against the real TIMESAFE capture.
+
+
+                                  Valu                                                   Observed in
+ linuxptp key                                  Standard / basis
+                                  e                                                      real capture
+
+
+                                  G.82         G.8275.1 alternate BMCA                   algorithm, not a
+ dataset_comparison
+                                  75.x         (ADDED this revision)                     wire field
+
+
+                                                                                         24 on all
+                                               G.8275.1 — telecom range 24–
+ domainNumber                     24                                                     344,630 PTP
+                                               43
+                                                                                         pkts &check;
+
+
+                                  -4
+                                                                                         -4 on all Sync
+ logSyncInterval                  (16/s        G.8275.1 mandated Sync rate
+                                                                                         &check;
+                                  )
+
+
+                                                                                         -3 on all
+                                  -3           G.8275.1 mandated Announce
+ logAnnounceInterval                                                                     Announce
+                                  (8/s)        rate
+                                                                                         &check;
+
+
+                                  -4
+ logMinDelayReqInter
+                                  (16/s        G.8275.1                                  —
+ val
+                                  )
+
+
+ announceReceiptTim
+                                  3            G.8275.1 (375 ms at 8/s)                  —
+ eout
+
+
+ priority1                        128                                                    128 on
+                                               G.8275.1 fixes it and removes it
+                                                                                         legitimate clocks
+                                                 from BMCA compare                            &check;
+
+
+                                                                                              Delay_Req/
+ delay_mechanism                E2E              G.8275.1 requires end-to-end                 Delay_Resp
+                                                                                              present &check;
+
+
+                                                                                              EtherType
+ network_transport              L2               G.8275.1 — Ethernet, no IP
+                                                                                              0x88F7 &check;
+
+
+                                01:1
+                                                                                              100%
+                                B:19:
+ ptp_dst_mac                                     G.8275.1 forwardable multicast               conformant
+                                00:0
+                                                                                              &check;
+                                0:00
+
+
+                                                 REMOVED this revision —
+                                                                                              absent in real
+ path_trace_enabled             1                PATH_TRACE provenance leak
+                                                                                              capture
+                                                 (real capture has 0 TLVs)
+
+
+                                                 G.8275.1 alternate-BMCA
+ G.8275.*.localPriority         128                                                           —
+                                                 tiebreaker
+
+
+ maxStepsRemoved                255              IEEE 1588 / G.8275.1                         —
+
+
+ Why this matters most. The project's earlier netem runs used domain 0, logSync -3, logAnnounce +1
+ (one Announce per 2 s vs the standard's 125 ms — a 16× mismatch). Because benign data came from
+ that testbed and attack data from real G.8275.1 hardware, a classifier could have separated the two on
+ cadence alone. Aligning the testbed to G.8275.1 and adding the alternate-BMCA comparison removes
+ that confound.
+
+
+
+3 Declared deviations from a production deployment
+ Setting                              Why it differs                              What it costs
+
+
+                                      All namespaces share one                    Offsets are measured and
+                                      kernel clock; with the servo                logged but not applied.
+ free_running 1
+                                      active they would fight over the            Servo convergence
+                                      same clock.                                 dynamics absent.
+
+
+                                                                                  Microsecond floor. No
+ time_stamping                        veth exposes no PHC (ethtool
+                                                                                  G.8273.2 / G.8271.1
+ software                             -T).
+                                                                                  conformance claim.
+
+
+                                      An acceptance policy, not a
+                                                                                  No node given a fabricated
+                                      quality claim; the lab has no
+ clock_class_thresh                                                               clockClass 6; hierarchy
+                                      PRTC/GPS so every node
+ old 248                                                                          uses priority2 (an operator
+                                      truthfully advertises clockClass
+                                                                                  field by design).
+                                      248.
+4 Topology and node roles
+ Two Ethernet bridges separated by a Boundary Clock (models O-RAN LLS-C2/C3).
+
+
+
+ [gma p2=100] [gmb p2=110] --- brUP --- [bc: v-bc-up | v-bc-dn] --- brDN ---
+ [ru1] [ru2] [ru3]
+
+
+                                                 priori
+ Node           Role                                             Purpose
+                                                 ty2
+
+
+                Primary grandmaster              100
+ gma                                                             Wins BMCA normally
+                (T-GM)                           (best)
+
+
+ gmb            Provisioned backup GM            110             Enables B2 planned failover
+
+
+                                                                 stepsRemoved 0→1; enables A8
+ bc             Boundary clock (T-BC)            120
+                                                                 and B7
+
+
+ ru1/
+ ru2/           O-RU proxies (T-TSC)             128             Three clients = spatial axis
+ ru3
+
+
+
+5 Scenario configurations (11 — randomised per replicate)
+                                                                                                Cla
+ ID                    Scenario         How produced on the wire
+                                                                                                ss
+
+
+                                                                                                hea
+ —                     baseline         All nodes nominal, GM-A → BC → 3 RUs
+                                                                                                lthy
+
+
+                                        ptp4l instance, randomised off-allow-list identity,
+                       Rogue
+                                        randomised superior priority2 (1–90) and                atta
+ A1                    grandmas
+                                        clockClass (6/7/13), self-announcing on RU              ck
+                       ter
+                                        segment
+
+
+                                        scapy forged Sync (two-step flag set), randomised
+                       Sync                                                                     atta
+ A2                                     implausible originTimestamp and burst,
+                       spoof                                                                    ck
+                                        unprovisioned source; never Announce
+
+
+                                        Live slice captured, retransmitted with tcpreplay
+                                                                                                atta
+ A3                    Replay           (stale timestamps, reused sequenceId);
+                                                                                                ck
+                                        randomised slice size and loop count
+
+
+                       DoS /                                                                    atta
+ A5                                     scapy high-rate PTP flood (randomised burst/rate)
+                       flood                                                                    ck
+
+
+ A8                    Rogue            Two-port ptp4l (randomised priority2 105–118)
+                                                                                                atta
+                       boundary         slaving upstream, relaying downstream with
+                       clock               stepsRemoved incremented                                      ck
+
+
+                       Planned
+                                           GM-A withdrawn, GM-B (on allow-list) elected,                 ben
+ B2                    GM
+                                           maintenance window open                                       ign
+                       failover
+
+
+                       Unplanne            GM-A killed, NO maintenance window; GM-B
+ B_UNPLAN              d GM                elected. Packet-indistinguishable from a                      ben
+ NED                   crash               suppression attack → expected verdict                         ign
+                       (NEW)               UNKNOWN (honest abstention)
+
+
+                                           In-path BC swapped for a provisioned
+                       BC                  replacement during maintenance. The
+                       replacem            replacement id is provisioned                                 ben
+ B_BCREPL
+                       ent                 (expected_bc_identity_secondary), but the frozen              ign
+                       (NEW)               rule reads only one BC identity → flagged A8;
+                                           reported, not patched
+
+
+                       PDV /
+                                           netem normal-distribution delay (3/5/8 ms) ± jitter           ben
+ B3                    congestio
+                                           (2/3/4 ms) on RU links, randomised                            ign
+                       n
+
+
+                       Topology            RU3 link bounced and re-homed during                          ben
+ B7
+                       change              maintenance                                                   ign
+
+
+ A1 vs B2 is the decisive pair. Both present a new grandmaster identity; they are separated only by
+ provisioned context (allow-list + maintenance window). Without that context they are indistinguishable from
+ the packets alone.
+
+
+
+6 Faults deliberately out of scope (physical reason)
+                      Why not producible/measurable
+ Fault                                                              What would be required
+                      here
+
+
+ A6 GNSS              No GNSS receiver in software;
+                                                                    GNSS simulator + receiver + RF-
+ spoof / A7           faking a status enum is inventing
+                                                                    shielded chamber
+ jam                  evidence
+
+
+ B1 GNSS              No reference to lose, no                      GNSS timing receiver + independent
+ holdover             characterised oscillator                      oscillator
+
+
+ B4 SyncE /           Physical-layer function; veth has
+                                                                    SyncE-capable NIC + switch, synce4l
+ EEC                  no PHY
+
+
+ B6
+ Oscillator           All namespaces share one crystal              A second physical machine
+ drift
+
+
+ A4 Delay             Injectable, but a passive capture             Live per-client pmc telemetry or a
+                        yields only t1,t4 (t2,t3 never on the           redundant path; HW timestamping for
+ attack
+                        wire)                                           ns claims
+
+
+
+7 Validity controls
+ Control                  How enforced
+
+
+                          Every constant in the decision rule is a standard, a provisioned fact, or a structural
+                          definition. The one self-chosen definition is the 1% transient filter
+ No tunable
+                          (TRANSIENT_FRACTION = 0.01). Its standard replacement (IEEE 1588
+ parameters
+                          §9.3.2.4, FOREIGN_MASTER_THRESHOLD = 2 within 4 Announce intervals) has
+                          been identified but not adopted, because adopting it needs a re-freeze
+
+
+ Pre-                     freeze.sh SHA-256 hashes 18 artefacts; verify_frozen.sh passed before
+ registration             every admissible replicate
+
+
+ Development
+                          Reps that exposed defects are development data and are excluded; only post-
+ /validation
+                          freeze reps (30–41) are scored
+ split
+
+
+                          Per-rep attacker identities, priorities, timings and burst sizes
+ Randomisati
+                          (run/randparams.py, seeded by rep) — runs are genuinely independent, so
+ on
+                          CIs are honest not optimistic
+
+
+ Session-
+ disjoint                 Evaluation by run, never by window
+ splitting
+
+
+                          Missing/unreadable evidence → UNKNOWN, never BENIGN; infrastructure
+ Fail-closed
+                          failures retried once then discarded with disclosure
+
+
+                          run/leak_check.py checks every field for testbed-vs-real separability; 4 leaks
+                          found: 3 eliminated by the G.8275.1 testbed (16× cadence confound, synthetic
+ Leak audit
+                          offsetScaledLogVariance 4096-vs-65535, PATH_TRACE), and 1 that cannot be
+                          fixed by configuration (minor_version_ptp) excluded from any testbed+real join
+
+
+
+8 Validation result
+ Metric                                                         Value            95% Wilson CI               n
+
+
+ Sensitivity (attack recall)                                    1.000            [0.940, 1.000]              60
+
+
+ Specificity — all benign runs (TN 48, FP 12)                   0.800            [0.682, 0.882]              60
+
+
+ Specificity — excluding the known
+                                                                1.000            [0.926, 1.000]              48
+ B_bc_replacement schema limitation
+
+
+ Abstention correctness (ambiguous benign →                     1.000            [0.757, 1.000]              12
+     UNKNOWN)
+
+
+     Attack attribution (correct fault id)                            0.817                 [0.701, 0.894]         60
+
+
+     Binary attack detection 60/60 (TP=60, FN=0). All 12 specificity false positives are the single
+     B_bc_replacement schema limitation. Attribution confusion A1→A3 (×4) and A8→A3 (×7) is the
+     documented re-parenting effect (rogue master/BC insertion causes real sequenceId restarts, caught by
+     the A3 clause first); it does not change the binary ATTACK verdict. Cross-domain: the frozen rule, applied
+     unchanged to six real TIMESAFE hardware captures it never saw, classified 6 of 6 as ATTACK; 5 of 6 on
+     standards/protocol rules alone (3 by Announce-field legality, 2 by IEEE 1588 cl.11.3 sequenceId
+     monotonicity). The remaining one is a healthy-looking spoof with fully conformant fields and needs the
+     provisioned allow-list.
+
+
+Artefacts: results_2026-09-17/ (EVALUATION.json, TIMESAFE_CROSSVAL.json, FROZEN.json, SESSION_FINDINGS.md,
+g87251_testbed_v2.tgz, full 132-run raw archive). Prior 81-run revision retained in _pre_2026-09-17_doc_update/.
+

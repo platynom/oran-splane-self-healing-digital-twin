@@ -1,0 +1,12 @@
+run_id=sa3 arm=action phase=setup event=topology_created utc=2026-09-13T04:55:38Z monotonic_s=250.93 status=PASS
+run_id=sa3 arm=action phase=setup event=tcpdump_seg1_ready utc=2026-09-13T04:55:41Z monotonic_s=254.02 status=PASS
+run_id=sa3 arm=action phase=setup event=tcpdump_seg2_ready utc=2026-09-13T04:55:41Z monotonic_s=254.04 status=PASS
+run_id=sa3 arm=action phase=setup event=master_a_ready utc=2026-09-13T04:55:41Z monotonic_s=254.06 status=PASS
+run_id=sa3 arm=action phase=setup event=master_b_ready utc=2026-09-13T04:55:41Z monotonic_s=254.08 status=PASS
+run_id=sa3 arm=action phase=setup event=slave_ready utc=2026-09-13T04:55:41Z monotonic_s=254.10 status=PASS
+run_id=sa3 arm=action phase=setup event=live_detector_ready utc=2026-09-13T04:55:43Z monotonic_s=256.12 status=PASS
+run_id=sa3 arm=action phase=trial event=phase1_clean_started utc=2026-09-13T04:55:43Z monotonic_s=256.13 status=PASS
+run_id=sa3 arm=action phase=trial event=phase1_clean_recorded utc=2026-09-13T04:55:55Z monotonic_s=268.31 status=PASS
+run_id=sa3 arm=action phase=trial event=phase2_jitter_impairment_applied_seg1 utc=2026-09-13T04:55:55Z monotonic_s=268.35 status=PASS
+run_id=sa3 arm=action phase=trial event=phase2_end_recorded utc=2026-09-13T04:56:25Z monotonic_s=298.58 status=PASS
+run_id=sa3 arm=action phase=trial event=phase_finished utc=2026-09-13T04:56:25Z monotonic_s=298.61 status=PASS

@@ -1,0 +1,7 @@
+run_id=w4s5 phase=setup event=tcpdump_ready utc=2026-09-13T02:44:18Z monotonic_s=317.06 status=PASS
+run_id=w4s5 phase=setup event=master_a_ready utc=2026-09-13T02:44:18Z monotonic_s=317.07 status=PASS
+run_id=w4s5 phase=setup event=master_b_ready utc=2026-09-13T02:44:18Z monotonic_s=317.08 status=PASS
+run_id=w4s5 phase=setup event=slave_ready utc=2026-09-13T02:44:18Z monotonic_s=317.08 status=PASS
+run_id=w4s5 phase=authorized_source_change_intervention event=phase_started utc=2026-09-13T02:44:18Z monotonic_s=317.09 status=PASS
+run_id=w4s5 phase=authorized_source_change_intervention event=preferred_master_stop_confirmed utc=2026-09-13T02:44:26Z monotonic_s=325.10 status=PASS
+run_id=w4s5 phase=authorized_source_change_intervention event=phase_finished utc=2026-09-13T02:44:34Z monotonic_s=333.11 status=PASS

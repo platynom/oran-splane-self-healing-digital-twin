@@ -2,16 +2,17 @@ from __future__ import annotations
 
 """Ingest a PTP-over-Ethernet packet capture into canonical S-plane telemetry.
 
-Implements the IEEE-1588 end-to-end delay computation as a slave would:
+Uses a simplified end-to-end delay calculation on captured PTP exchanges:
 
     meanPathDelay = ((t2 - t1) + (t4 - t3)) / 2
     offsetFromMaster = (t2 - t1) - meanPathDelay
 
 where t1 = Sync/Follow_Up origin timestamp (master clock, from payload),
 t2 = Sync arrival (capture timestamp), t3 = Delay_Req send (capture timestamp),
-t4 = Delay_Req receipt at master (Delay_Resp payload timestamp). This is exactly
-how linuxptp derives 'master offset', so the same features apply to real traces
-(e.g. the released genesys-neu/s-plane or TIMESAFE captures).
+t4 = Delay_Req receipt at master (Delay_Resp payload timestamp). Capture
+timestamps are not necessarily the protected receiver's hardware timestamps.
+The approximation does not establish equivalence to a configured linuxptp
+receiver, calibrated path asymmetry, physical clock health, or attack impact.
 """
 
 from pathlib import Path
@@ -30,9 +31,9 @@ def pcap_to_telemetry(path: str | Path, scenario: str = "live", label: str = "un
     When ``tolerate_incomplete`` is True (default), captures where the Delay_Req/
     Delay_Resp exchange is missing or stale — e.g. a holdover / link-blackout with
     heavy loss — still yield rows, using the last-known path delay and marking
-    ``holdover=True``. This represents a timing OUTAGE as degraded telemetry (which
-    is exactly the fault condition the self-healing loop must react to) instead of
-    raising. Set it False for strict offset-only recovery.
+    ``holdover=True``. This flag describes the ingestion fallback, not verified
+    physical oscillator holdover or a proven outage. Set it False to require a
+    completed delay estimate before emission; stale estimates can still emit.
     """
     last_t1 = None            # master origin (ns) of most recent resolved Sync
     last_t2 = None            # slave arrival (ns) of most recent Sync

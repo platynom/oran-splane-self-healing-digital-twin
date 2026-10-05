@@ -1,0 +1,11 @@
+# Isolated software-network pilot: acceptance criteria
+
+Scope: a minimum reproducible *pilot*, not a deployment or physical-clock study. It is limited to isolated Linux network namespaces, veth links, `linuxptp` 3.1.1 software timestamps, PTP-over-Ethernet, and a packet capture. The runner must not alter the Windows host clock, a physical clock, a production interface, a route, or any pre-existing namespace.
+
+1. **Safety gate.** Execution requires root *inside the isolated Linux environment*, `ip`, `tc`, `ptp4l` 3.1.1, and `tcpdump`; it refuses a resource collision and deletes only resources it created. Evidence: preflight output and a clean post-run namespace/interface check.
+2. **Reproducible configuration.** Each run records configuration files, tool version, exact `tc` command/state, UTC event times, captured packets, process logs, and SHA-256 manifest. The duration and impairment are chosen pilot parameters, not standards requirements.
+3. **Minimum comparison.** Separate independent runs are required: baseline control, netem intervention, authorised-source-change no-action control, and preferred-master-stop intervention. The alternate master is already running. This is not an attacker exercise or demonstrated recovery.
+4. **Evidence separation.** Records separately state planned scenario, command-confirmed injection, observations, recovery action, and measured outcome. A command or filename cannot become an outcome label. Failed or missing observations remain explicit.
+5. **Bounded inference.** `free_running 1` prevents local clock adjustment. This is protocol observation in a shared-host software-clock environment, not closed-loop clock recovery. No result can establish independent oscillator behavior, GNSS, SyncE, physical timing accuracy, unauthorized takeover, or O-RAN deployment recovery.
+6. **Comparability.** Each output declares one `run_id`; future repeated trials must use different IDs and be split by run—not packet/window—before any training or evaluation. This first pilot is feasibility evidence, not statistical proof.
+7. **Completion condition.** A run is empirical only after artifacts and hashes exist and the validation script passes. If isolated execution is unavailable, the runner/configuration may be delivered but the dataset is explicitly `NOT_EXECUTED`.

@@ -1,0 +1,7 @@
+run_id=w4b1 phase=setup event=tcpdump_ready utc=2026-09-13T02:39:09Z monotonic_s=8.83 status=PASS
+run_id=w4b1 phase=setup event=master_a_ready utc=2026-09-13T02:39:09Z monotonic_s=8.84 status=PASS
+run_id=w4b1 phase=setup event=master_b_ready utc=2026-09-13T02:39:09Z monotonic_s=8.85 status=PASS
+run_id=w4b1 phase=setup event=slave_ready utc=2026-09-13T02:39:09Z monotonic_s=8.86 status=PASS
+run_id=w4b1 phase=baseline_control event=phase_started utc=2026-09-13T02:39:09Z monotonic_s=8.86 status=PASS
+run_id=w4b1 phase=baseline_control event=qdisc_baseline_observed utc=2026-09-13T02:39:09Z monotonic_s=8.88 status=PASS
+run_id=w4b1 phase=baseline_control event=phase_finished utc=2026-09-13T02:39:18Z monotonic_s=16.89 status=PASS

@@ -86,3 +86,14 @@ _report_tocmap.json
 **/evasion_handoff/STATE.json
 **/evasion_handoff/reports/
 **/evasion_handoff/reviews/
+
+# Files of 50 MB or more are kept out of git (GitHub hard limit 100 MB, warning at 50 MB).
+# They stay on the project machine; LARGE_FILES_NOT_IN_GIT.md lists them with sha256. Added 2026-10-05.
+outputs/manual_dataset_combined/ORAN_All_Current_Datasets_FINAL_PCAP_v2_CLASSIFIED.xlsx
+outputs/manual_dataset_combined/ORAN_All_Current_Datasets_FINAL_PCAP.xlsx
+outputs/empirical_software_network_pilot_v1/s14_dataset/s14_packets.csv
+outputs/manual_dataset_combined/ORAN_All_Current_Datasets_CORRECTED_PRE_WIDTHS.xlsx
+outputs/manual_dataset_combined/ORAN_All_Current_Datasets_CORRECTED.xlsx
+outputs/empirical_software_network_pilot_v1/s13_dataset/s13_packets.csv
+outputs/manual_dataset_combined/ORAN_All_Current_Datasets.xlsx
+outputs/empirical_software_network_pilot_v1/s14_dataset/S14_empirical_full_packet_streamed.xlsx

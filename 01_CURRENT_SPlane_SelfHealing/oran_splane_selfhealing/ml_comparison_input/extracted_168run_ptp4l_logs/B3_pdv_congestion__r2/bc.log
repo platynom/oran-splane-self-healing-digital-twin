@@ -1,0 +1,69 @@
+ptp4l[2979.848]: port 1 (v-bc-up): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[2979.884]: port 2 (v-bc-dn): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[2979.884]: port 0 (/var/run/p.bc): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[2979.884]: port 0 (/var/run/pr.bc): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[2980.235]: port 1 (v-bc-up): LISTENING to MASTER on ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES
+ptp4l[2980.235]: selected local clock 020000.fffe.000001 as best master
+ptp4l[2980.235]: port 1 (v-bc-up): assuming the grand master role
+ptp4l[2980.257]: port 1 (v-bc-up): new foreign master 020000.fffe.00000a-1
+ptp4l[2980.305]: port 1 (v-bc-up): new foreign master 020000.fffe.00000b-1
+ptp4l[2980.369]: port 2 (v-bc-dn): LISTENING to MASTER on ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES
+ptp4l[2980.369]: port 1 (v-bc-up): assuming the grand master role
+ptp4l[2980.369]: port 2 (v-bc-dn): assuming the grand master role
+ptp4l[2980.507]: selected best master clock 020000.fffe.00000a
+ptp4l[2980.507]: foreign master not using PTP timescale
+ptp4l[2980.507]: port 1 (v-bc-up): MASTER to UNCALIBRATED on RS_SLAVE
+ptp4l[2980.556]: foreign master not using PTP timescale
+ptp4l[2982.572]: master offset       1625 s0 freq    -756 path delay      4060
+ptp4l[2984.574]: master offset        782 s0 freq    -229 path delay      4445
+ptp4l[2986.576]: master offset      -1562 s0 freq   -1260 path delay      4267
+ptp4l[2988.578]: master offset       -848 s0 freq    +342 path delay      4237
+ptp4l[2990.581]: master offset       1131 s0 freq    +802 path delay      3865
+ptp4l[2992.583]: master offset        200 s0 freq    -686 path delay      3422
+ptp4l[2994.585]: master offset       -412 s0 freq    -165 path delay      3704
+ptp4l[2996.588]: master offset      -1394 s0 freq    -550 path delay      3585
+ptp4l[2998.590]: master offset        886 s0 freq   +1107 path delay      3522
+ptp4l[3000.612]: master offset       -318 s0 freq     -81 path delay      4563
+ptp4l[3001.524]: port 1 (v-bc-up): UNCALIBRATED to MASTER on ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES
+ptp4l[3001.593]: selected local clock 020000.fffe.000001 as best master
+ptp4l[3001.593]: port 1 (v-bc-up): assuming the grand master role
+ptp4l[3001.593]: port 2 (v-bc-dn): assuming the grand master role
+ptp4l[3005.268]: rtnl: recvmsg: No buffer space available
+ptp4l[3005.268]: port 1 (v-bc-up): error on fda[10]: No buffer space available
+ptp4l[3005.268]: port 1 (v-bc-up): MASTER to FAULTY on FAULT_DETECTED (FT_UNSPECIFIED)
+ptp4l[3006.087]: timed out while polling for tx timestamp
+ptp4l[3006.088]: increasing tx_timestamp_timeout may correct this issue, but it is likely caused by a driver bug
+ptp4l[3006.088]: port 2 (v-bc-dn): send sync failed
+ptp4l[3006.088]: port 2 (v-bc-dn): MASTER to FAULTY on FAULT_DETECTED (FT_UNSPECIFIED)
+ptp4l[3021.320]: port 1 (v-bc-up): FAULTY to LISTENING on INIT_COMPLETE
+ptp4l[3021.333]: port 1 (v-bc-up): new foreign master 020000.fffe.00000b-1
+ptp4l[3021.408]: port 1 (v-bc-up): new foreign master 020000.fffe.00000a-1
+ptp4l[3021.583]: selected best master clock 020000.fffe.00000b
+ptp4l[3021.583]: foreign master not using PTP timescale
+ptp4l[3021.583]: port 1 (v-bc-up): LISTENING to UNCALIBRATED on RS_SLAVE
+ptp4l[3021.658]: selected best master clock 020000.fffe.00000a
+ptp4l[3021.658]: foreign master not using PTP timescale
+ptp4l[3021.833]: foreign master not using PTP timescale
+ptp4l[3022.083]: foreign master not using PTP timescale
+ptp4l[3022.144]: port 2 (v-bc-dn): FAULTY to LISTENING on INIT_COMPLETE
+ptp4l[3022.333]: foreign master not using PTP timescale
+ptp4l[3022.534]: port 2 (v-bc-dn): LISTENING to MASTER on ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES
+ptp4l[3022.534]: foreign master not using PTP timescale
+ptp4l[3022.584]: foreign master not using PTP timescale
+ptp4l[3022.997]: port 1 (v-bc-up): UNCALIBRATED to MASTER on ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES
+ptp4l[3023.135]: selected local clock 020000.fffe.000001 as best master
+ptp4l[3023.135]: port 1 (v-bc-up): assuming the grand master role
+ptp4l[3023.135]: port 2 (v-bc-dn): assuming the grand master role
+ptp4l[3023.207]: selected best master clock 020000.fffe.00000b
+ptp4l[3023.207]: foreign master not using PTP timescale
+ptp4l[3023.207]: port 1 (v-bc-up): MASTER to UNCALIBRATED on RS_SLAVE
+ptp4l[3023.207]: selected best master clock 020000.fffe.00000a
+ptp4l[3023.207]: foreign master not using PTP timescale
+ptp4l[3023.207]: foreign master not using PTP timescale
+ptp4l[3023.334]: foreign master not using PTP timescale
+ptp4l[3023.584]: foreign master not using PTP timescale
+ptp4l[3023.834]: foreign master not using PTP timescale
+ptp4l[3024.084]: foreign master not using PTP timescale
+ptp4l[3024.335]: foreign master not using PTP timescale
+ptp4l[3024.585]: foreign master not using PTP timescale
+ptp4l[3024.835]: foreign master not using PTP timescale

@@ -1,0 +1,48 @@
+{
+  "scenario": "baseline",
+  "truth_class": "healthy",
+  "truth_fault": "none",
+  "verdict": "BENIGN",
+  "fault_hint": null,
+  "reasons": [
+    "Only provisioned clocks present; no protocol-legality violation"
+  ],
+  "evidence": {
+    "n_packets": 5948,
+    "n_announce": 356,
+    "allowlist": [
+      "020000fffe000001",
+      "020000fffe00000a",
+      "020000fffe00000b"
+    ],
+    "illegal_clockclass_pkts": 0,
+    "nonconformant_priority1_pkts": 0,
+    "out_of_profile_domain_pkts": 0,
+    "wrong_multicast_pkts": 0,
+    "stepsRemoved_ge_255_pkts": 0,
+    "alternate_master_flag_pkts": 0,
+    "gm_identities": {
+      "020000fffe000001": 2,
+      "020000fffe00000a": 354
+    },
+    "off_allowlist_sustained": {},
+    "provisioned_gms_seen": [
+      "020000fffe00000a"
+    ],
+    "maintenance_window_open": false,
+    "ptp_sources": {
+      "020000fffe000001": 3863,
+      "020000fffe00000c": 684,
+      "020000fffe00000e": 709,
+      "020000fffe00000d": 692
+    },
+    "unknown_sources_sustained": {},
+    "announce_rate_self_inconsistent": {},
+    "capture_span_s": 44.499,
+    "unknown_relaying_sources": {},
+    "unknown_selfannouncing_sources": {},
+    "sequence_regressions": 0,
+    "nonconformant_sync_cadence_pkts": 0,
+    "nonconformant_announce_cadence_pkts": 0
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "schema_version": "streaming-protocol-v1",
+  "status": "SUPERSEDED_BY_V2_AFTER_SILENCE_COMPOSITION_DEFECT",
+  "selection_provenance": "The rule and threshold were chosen after inspecting Set2/3 development captures. They are frozen now and require fresh run-level testing; they are not pre-registered or independent evidence.",
+  "input": "classic pcap frames in capture order only",
+  "state_key": ["capture_sha256", "transportSpecific", "versionPTP", "domainNumber", "sourcePortIdentity"],
+  "validity": {"invalid_or_truncated": "UNKNOWN", "first_valid_announce": "WARMUP", "unmatched_follow_up": "UNKNOWN", "no_default_zero": true},
+  "features": {
+    "sync_followup_gap_std_s": {"window_pairs": 8, "causal": true, "threshold_s": 0.00016, "output": "CONFIGURED_IMPAIRMENT_SUSPECT"},
+    "per_source_announce_silence_s": {"threshold_s": 0.75, "causal": true, "output": "SOURCE_ANNOUNCE_SILENCE_OBSERVED", "limit": "A configured expected interval in this pilot, not a deployment requirement or attack label."}
+  },
+  "evaluation_unit": "run",
+  "required_metrics": ["per-run any-suspect", "time-to-first-suspect from capture start", "valid/warmup/unknown counts", "false positives by fresh control run", "source-silence observations"],
+  "excluded": ["filename and scenario labels from feature computation", "EOF/trailing-silence features", "receiver-service-outage inference", "health, attack, or recovery labels"]
+}

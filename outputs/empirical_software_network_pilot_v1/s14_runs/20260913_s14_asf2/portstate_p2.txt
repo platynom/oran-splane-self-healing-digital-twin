@@ -1,0 +1,23 @@
+sending: GET PORT_DATA_SET
+	4aa743.fffe.abfa4d-1 seq 0 RESPONSE MANAGEMENT PORT_DATA_SET 
+		portIdentity            4aa743.fffe.abfa4d-1
+		portState               LISTENING
+		logMinDelayReqInterval  -3
+		peerMeanPathDelay       0
+		logAnnounceInterval     -2
+		announceReceiptTimeout  3
+		logSyncInterval         -3
+		delayMechanism          1
+		logMinPdelayReqInterval 0
+		versionNumber           2
+	4aa743.fffe.abfa4d-2 seq 0 RESPONSE MANAGEMENT PORT_DATA_SET 
+		portIdentity            4aa743.fffe.abfa4d-2
+		portState               UNCALIBRATED
+		logMinDelayReqInterval  -3
+		peerMeanPathDelay       0
+		logAnnounceInterval     -2
+		announceReceiptTimeout  3
+		logSyncInterval         -3
+		delayMechanism          1
+		logMinPdelayReqInterval 0
+		versionNumber           2

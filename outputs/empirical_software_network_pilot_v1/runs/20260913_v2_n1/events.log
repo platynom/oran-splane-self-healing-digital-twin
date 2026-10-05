@@ -1,0 +1,7 @@
+run_id=v2n1 phase=setup event=tcpdump_ready utc=2026-09-13T00:52:54Z monotonic_s=53.44 status=PASS
+run_id=v2n1 phase=setup event=master_a_ready utc=2026-09-13T00:52:54Z monotonic_s=53.46 status=PASS
+run_id=v2n1 phase=setup event=master_b_ready utc=2026-09-13T00:52:54Z monotonic_s=53.49 status=PASS
+run_id=v2n1 phase=setup event=slave_ready utc=2026-09-13T00:52:54Z monotonic_s=53.52 status=PASS
+run_id=v2n1 phase=netem_delay_jitter_loss event=phase_started utc=2026-09-13T00:52:55Z monotonic_s=53.55 status=PASS
+run_id=v2n1 phase=netem_delay_jitter_loss event=netem_command_confirmed utc=2026-09-13T00:52:55Z monotonic_s=53.61 status=PASS
+run_id=v2n1 phase=netem_delay_jitter_loss event=phase_finished utc=2026-09-13T00:53:03Z monotonic_s=61.67 status=PASS

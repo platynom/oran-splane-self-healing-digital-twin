@@ -1,0 +1,305 @@
+{
+  "analysis_version": "pair-drift/1.0.0",
+  "analysis_sha256": "7518898ce878a7c4985506b229212b141f815103cd742c8393a4fa0fec573cb8",
+  "generated_utc": "2026-10-02T15:03:47.754647+00:00",
+  "fault_id": "B6",
+  "fault_name": "Oscillator drift / thermal",
+  "preregistration": {
+    "rtt_mad_k": 3.0,
+    "rtt_hard_s": 1.0,
+    "gap_factor": 1.5,
+    "suspend_divergence_s": 1.0,
+    "bootstrap_block_s": 300.0,
+    "bootstrap_n": 2000,
+    "min_retained": 600,
+    "min_overlap_min": 120.0,
+    "min_source_homogeneity": 0.95,
+    "max_ci_halfwidth_ppm": 1.0,
+    "rng_seed": 20261002
+  },
+  "arm_a": {
+    "label": "laptopA",
+    "session": "run1",
+    "csv": "laptopA_20261002-175858_f0886ca920.csv",
+    "csv_sha256": "5443796d015ce5023789ceb7610fe9159cdc769677df424edd521f748fe26154",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "processor": "Intel64 Family 6 Model 165 Stepping 2, GenuineIntel",
+    "node_hash": "720bc97877cf",
+    "counter_resolution_s": 1e-07,
+    "rows_total": 900,
+    "rows_ok": 894,
+    "rows_retained": 348,
+    "duration_min": 149.83333898500035,
+    "modal_source": "ntp",
+    "source_homogeneity": 0.9630872483221476,
+    "modal_server": "time.google.com",
+    "rtt_median_ms": 54.531336,
+    "rtt_threshold_ms": 65.761923,
+    "rejections": [
+      {
+        "rule": "R1_source_switch",
+        "dropped": 33,
+        "detail": "kept source=np.str_('ntp')"
+      },
+      {
+        "rule": "R2_server_switch",
+        "dropped": 474,
+        "detail": "kept server=np.str_('time.google.com')"
+      },
+      {
+        "rule": "R3_rtt_outlier",
+        "dropped": 72,
+        "detail": "rtt > 65.8 ms (median 54.5 ms)"
+      }
+    ],
+    "gaps": [],
+    "crystal_ppm_vs_utc": {
+      "bootstrap": {
+        "ppm": -4.189402120213792,
+        "ci95": [
+          -4.305721243030858,
+          -4.085875350304247
+        ],
+        "halfwidth_ppm": 0.10992294636330557,
+        "block_len_samples": 30,
+        "draws": 2000
+      },
+      "ols": {
+        "ppm": -4.189402120213792,
+        "ci95": [
+          -4.273203589311159,
+          -4.105600637016593
+        ]
+      },
+      "theil_sen_ppm": -4.178229181639459
+    }
+  },
+  "arm_b": {
+    "label": "laptopB",
+    "session": "run1",
+    "csv": "laptopB_20261002-175545_b212d7a623.csv",
+    "csv_sha256": "71a34ccc5fe29fbfb25cc7fcd592487e4dbf2b60692bc0dafe9c8bbda43aaa38",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "processor": "Intel64 Family 6 Model 186 Stepping 3, GenuineIntel",
+    "node_hash": "2101a6b98881",
+    "counter_resolution_s": 1e-07,
+    "rows_total": 900,
+    "rows_ok": 900,
+    "rows_retained": 658,
+    "duration_min": 146.00001074500034,
+    "modal_source": "ntp",
+    "source_homogeneity": 0.9744444444444444,
+    "modal_server": "time.google.com",
+    "rtt_median_ms": 105.232358,
+    "rtt_threshold_ms": 150.01094299999997,
+    "rejections": [
+      {
+        "rule": "R1_source_switch",
+        "dropped": 23,
+        "detail": "kept source=np.str_('ntp')"
+      },
+      {
+        "rule": "R2_server_switch",
+        "dropped": 160,
+        "detail": "kept server=np.str_('time.google.com')"
+      },
+      {
+        "rule": "R3_rtt_outlier",
+        "dropped": 82,
+        "detail": "rtt > 150.0 ms (median 105.2 ms)"
+      }
+    ],
+    "gaps": [],
+    "crystal_ppm_vs_utc": {
+      "bootstrap": {
+        "ppm": -24.350708847986624,
+        "ci95": [
+          -25.134164065243603,
+          -23.565112677834122
+        ],
+        "halfwidth_ppm": 0.7845256937047402,
+        "block_len_samples": 30,
+        "draws": 2000
+      },
+      "ols": {
+        "ppm": -24.350708847986624,
+        "ci95": [
+          -24.65061788381462,
+          -24.0507996323025
+        ]
+      },
+      "theil_sen_ppm": -24.3712809504526
+    }
+  },
+  "warnings": [],
+  "pairing": {
+    "overlap_min": 142.80324842135113,
+    "overlap_start_utc": "2026-10-02T12:28:58.236036+00:00",
+    "overlap_end_utc": "2026-10-02T14:51:46.430941+00:00",
+    "grid_s": 10.0,
+    "n_grid": 857
+  },
+  "relative_frequency_offset_ppm": {
+    "ppm": 20.161306727772832,
+    "ci95": [
+      19.376361234717976,
+      20.96940489645027
+    ],
+    "halfwidth_ppm": 0.7965218308661477,
+    "method": "difference of per-arm moving-block bootstraps",
+    "draws": 2000,
+    "ppm_crosscheck_interpolated": 20.02738611949224,
+    "crosscheck_delta_ppm": -0.1339206082805937
+  },
+  "stability": {
+    "tau_s": [
+      10.0,
+      20.0,
+      30.0,
+      40.0,
+      60.0,
+      90.0,
+      130.0,
+      190.0,
+      280.0,
+      420.0,
+      630.0,
+      940.0,
+      1410.0,
+      2110.0,
+      3160.0
+    ],
+    "adev": [
+      0.0007802335841642672,
+      0.0004888397906337538,
+      0.0003516995363704378,
+      0.00028168150441193826,
+      0.00018821782337647084,
+      0.0001238567953375687,
+      9.76424450758138e-05,
+      6.663089004277268e-05,
+      4.79714953889147e-05,
+      3.410961188448186e-05,
+      2.3086300787354847e-05,
+      1.6036450926300555e-05,
+      1.1316235745337129e-05,
+      8.117027257464574e-06,
+      4.185302648152024e-06
+    ],
+    "tdev_tau_s": [
+      10.0,
+      20.0,
+      30.0,
+      40.0,
+      60.0,
+      90.0,
+      130.0,
+      190.0,
+      280.0,
+      420.0,
+      630.0,
+      940.0,
+      1410.0,
+      2110.0
+    ],
+    "tdev_s": [
+      0.004504680698480262,
+      0.004215818797920961,
+      0.004187300457773328,
+      0.004150245532541439,
+      0.003558298652118488,
+      0.0033043203795940944,
+      0.0034294488400680168,
+      0.0036394026818799305,
+      0.0036633105786409654,
+      0.0036929537542161146,
+      0.0038464016294851838,
+      0.003754993604345151,
+      0.003913881840827671,
+      0.0023254797071997537
+    ],
+    "mtie_tau_s": [
+      10.0,
+      20.0,
+      30.0,
+      50.0,
+      80.0,
+      130.0,
+      210.0,
+      340.0,
+      550.0,
+      880.0,
+      1410.0,
+      2260.0,
+      3620.0,
+      5790.0
+    ],
+    "mtie_s": [
+      0.03917727957366494,
+      0.03917727957366494,
+      0.03917727957366494,
+      0.03917727957366494,
+      0.05168445702162693,
+      0.05168445702162693,
+      0.05168445702162693,
+      0.05168445702162693,
+      0.05168445702162693,
+      0.062276133417082935,
+      0.07158601892372016,
+      0.09355158528372451,
+      0.10906777409135487,
+      0.16277720912226298
+    ]
+  },
+  "instrument_floor": {
+    "short_tau_log_slope": -0.7856728257754394,
+    "floor_adev_at_tau0": 0.0007802335841642672,
+    "tau0_s": 10.0,
+    "crossover_tau_s": null,
+    "note": "slope near -1.0 confirms a white-phase-noise-limited floor"
+  },
+  "verdict": {
+    "criteria": [
+      {
+        "id": "C1",
+        "criterion": "each arm retains >= 600 samples",
+        "result": "FAIL",
+        "detail": "A=348, B=658"
+      },
+      {
+        "id": "C2",
+        "criterion": "common overlap >= 120 min",
+        "result": "PASS",
+        "detail": "142.8 min"
+      },
+      {
+        "id": "C3",
+        "criterion": "no suspend/discontinuity in either retained series",
+        "result": "PASS",
+        "detail": "0 in A, 0 in B"
+      },
+      {
+        "id": "C4",
+        "criterion": "both arms on the same reference, >=95% homogeneous",
+        "result": "PASS",
+        "detail": "A=ntp@time.google.com (96.3%), B=ntp@time.google.com (97.4%)"
+      },
+      {
+        "id": "C5",
+        "criterion": "relative-offset 95% CI half-width < 1 ppm",
+        "result": "PASS",
+        "detail": "0.797 ppm"
+      }
+    ],
+    "overall": "NOT ESTABLISHED",
+    "failed": [
+      "C1"
+    ]
+  },
+  "scope_limits": [
+    "Software timestamping over NTP/WiFi. The floor is milliseconds, roughly 10^5 above G.8273.2 cTE limits (50/20/10 ns). No ns-scale or mask-compliance claim is supported.",
+    "Both hosts carry uncompensated consumer-grade quartz (not OCXO/TCXO/Rb). The measured envelope is a worst-case consumer figure, not a telecom-class holdover curve.",
+    "No PTP ran between the two machines. This measures the physical premise of B6 (two crystals diverge, by how much, how steadily); it is NOT an end-to-end B6 detection test.",
+    "Temperature was not controlled. Without the temp log, the benign thermal-correlation discriminator in the Parameter Fault Matrix (L8 Oscillator: temperature) is not evaluated."
+  ]
+}

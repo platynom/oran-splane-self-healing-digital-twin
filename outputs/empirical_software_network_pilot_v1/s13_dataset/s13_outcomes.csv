@@ -1,0 +1,11 @@
+run_id,arm,active_capture,active_path_evidence,valid_gap_observations_after_trigger,outcome_eligible,persistence_after_trigger,clean_after_trigger,measured_scope
+20260913_s11_act1,action,capture_seg2.pcap,S11 sealed port-2 takeover after port-1 fault,208,True,0,True,packet/protocol observation only; no physical recovery
+20260913_s11_act2,action,capture_seg2.pcap,S11 sealed port-2 takeover after port-1 fault,229,True,0,True,packet/protocol observation only; no physical recovery
+20260913_s11_act3,action,capture_seg2.pcap,S11 sealed port-2 takeover after port-1 fault,106,True,0,True,packet/protocol observation only; no physical recovery
+20260913_s11_act4,action,capture_seg2.pcap,S11 sealed port-2 takeover after port-1 fault,228,True,0,True,packet/protocol observation only; no physical recovery
+20260913_s11_act5,action,capture_seg2.pcap,S11 sealed port-2 takeover after port-1 fault,203,True,0,True,packet/protocol observation only; no physical recovery
+20260913_s11_noact1,no_action,capture_seg1.pcap,S11 sealed no-action record with no port-1 fault/takeover,114,True,4,False,packet/protocol observation only; no physical recovery
+20260913_s11_noact2,no_action,capture_seg1.pcap,S11 sealed no-action record with no port-1 fault/takeover,50,True,5,False,packet/protocol observation only; no physical recovery
+20260913_s11_noact3,no_action,capture_seg1.pcap,S11 sealed no-action record with no port-1 fault/takeover,105,True,7,False,packet/protocol observation only; no physical recovery
+20260913_s11_noact4,no_action,capture_seg1.pcap,S11 sealed no-action record with no port-1 fault/takeover,87,True,5,False,packet/protocol observation only; no physical recovery
+20260913_s11_noact5,no_action,capture_seg1.pcap,S11 sealed no-action record with no port-1 fault/takeover,125,True,6,False,packet/protocol observation only; no physical recovery

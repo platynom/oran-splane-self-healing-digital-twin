@@ -1,0 +1,11 @@
+{
+  "scenario": "baseline",
+  "truth_class": "healthy",
+  "truth_fault": "none",
+  "verdict": "BENIGN",
+  "fault_hint": null,
+  "reasons": [
+    "Only provisioned clocks present; no protocol-legality violation"
+  ],
+  "rule": "decision_rule_v3 (frozen v3)"
+}

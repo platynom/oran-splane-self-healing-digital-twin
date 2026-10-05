@@ -1,0 +1,97 @@
+{
+  "errors": [],
+  "events": [
+    {
+      "event": "tcpdump_ready",
+      "monotonic_s": "361.98",
+      "phase": "setup",
+      "run_id": "v2s3",
+      "status": "PASS",
+      "utc": "2026-09-13T00:58:03Z"
+    },
+    {
+      "event": "master_a_ready",
+      "monotonic_s": "361.99",
+      "phase": "setup",
+      "run_id": "v2s3",
+      "status": "PASS",
+      "utc": "2026-09-13T00:58:03Z"
+    },
+    {
+      "event": "master_b_ready",
+      "monotonic_s": "362.00",
+      "phase": "setup",
+      "run_id": "v2s3",
+      "status": "PASS",
+      "utc": "2026-09-13T00:58:03Z"
+    },
+    {
+      "event": "slave_ready",
+      "monotonic_s": "362.01",
+      "phase": "setup",
+      "run_id": "v2s3",
+      "status": "PASS",
+      "utc": "2026-09-13T00:58:03Z"
+    },
+    {
+      "event": "phase_started",
+      "monotonic_s": "362.02",
+      "phase": "authorized_source_change_intervention",
+      "run_id": "v2s3",
+      "status": "PASS",
+      "utc": "2026-09-13T00:58:03Z"
+    },
+    {
+      "event": "preferred_master_stop_confirmed",
+      "monotonic_s": "370.04",
+      "phase": "authorized_source_change_intervention",
+      "run_id": "v2s3",
+      "status": "PASS",
+      "utc": "2026-09-13T00:58:11Z"
+    },
+    {
+      "event": "phase_finished",
+      "monotonic_s": "378.08",
+      "phase": "authorized_source_change_intervention",
+      "run_id": "v2s3",
+      "status": "PASS",
+      "utc": "2026-09-13T00:58:19Z"
+    }
+  ],
+  "interpretation_limit": "This validates artifact integrity and documented process/qdisc commands only. free_running 1 means no closed-loop clock recovery or independent-clock claim.",
+  "log_bytes": {
+    "master_a.log": 530,
+    "master_b.log": 530,
+    "slave.log": 3305,
+    "tcpdump.log": 171
+  },
+  "manifest_hashes_match": {
+    "capture.pcap": true,
+    "events.log": true,
+    "master_a.conf": true,
+    "master_a.log": true,
+    "master_b.conf": true,
+    "master_b.log": true,
+    "run_environment.txt": true,
+    "slave.conf": true,
+    "slave.log": true,
+    "tcpdump.log": true
+  },
+  "missing_required_artifacts": [],
+  "outcome_label_policy": "NOT_ASSIGNED",
+  "pcap": {
+    "decoded_message_counts": {
+      "Announce": 112,
+      "Delay_Req": 131,
+      "Delay_Resp": 205,
+      "Follow_Up": 222,
+      "Sync": 222
+    },
+    "records": 892,
+    "undecoded_records": 0
+  },
+  "run_directory": "outputs\\empirical_software_network_pilot_v1\\runs\\20260913_v2_s3",
+  "scenario": "authorized_source_change_intervention",
+  "schema_version": "pilot-validation-v2",
+  "status": "STRUCTURALLY_COMPLETE"
+}

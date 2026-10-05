@@ -1,0 +1,58 @@
+ptp4l[3081.656]: port 1 (v-bc-up): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[3081.712]: port 2 (v-bc-dn): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[3081.712]: port 0 (/var/run/p.bc): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[3081.712]: port 0 (/var/run/pr.bc): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[3082.070]: port 1 (v-bc-up): LISTENING to MASTER on ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES
+ptp4l[3082.070]: selected local clock 020000.fffe.000001 as best master
+ptp4l[3082.070]: port 1 (v-bc-up): assuming the grand master role
+ptp4l[3082.079]: port 1 (v-bc-up): new foreign master 020000.fffe.00000a-1
+ptp4l[3082.088]: port 2 (v-bc-dn): LISTENING to MASTER on ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES
+ptp4l[3082.088]: port 1 (v-bc-up): assuming the grand master role
+ptp4l[3082.088]: port 2 (v-bc-dn): assuming the grand master role
+ptp4l[3082.115]: port 1 (v-bc-up): new foreign master 020000.fffe.00000b-1
+ptp4l[3082.329]: selected best master clock 020000.fffe.00000a
+ptp4l[3082.329]: foreign master not using PTP timescale
+ptp4l[3082.329]: port 1 (v-bc-up): MASTER to UNCALIBRATED on RS_SLAVE
+ptp4l[3082.365]: foreign master not using PTP timescale
+ptp4l[3084.393]: master offset       -708 s0 freq   -1030 path delay      3469
+ptp4l[3086.395]: master offset       2845 s0 freq   +1552 path delay      3023
+ptp4l[3088.397]: master offset       3156 s0 freq    +587 path delay      3887
+ptp4l[3090.399]: master offset        284 s0 freq   -1372 path delay      4012
+ptp4l[3092.401]: master offset        923 s0 freq    +274 path delay      3922
+ptp4l[3094.404]: master offset        519 s0 freq    -210 path delay      3906
+ptp4l[3096.406]: master offset       -510 s0 freq    -984 path delay      2965
+ptp4l[3098.408]: master offset       -349 s0 freq     -46 path delay      2711
+ptp4l[3100.410]: master offset       -954 s0 freq    +119 path delay      3555
+ptp4l[3102.412]: master offset        543 s0 freq    +450 path delay      2959
+ptp4l[3103.162]: selected best master clock 020000.fffe.00000b
+ptp4l[3103.162]: foreign master not using PTP timescale
+ptp4l[3103.439]: port 1 (v-bc-up): UNCALIBRATED to MASTER on ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES
+ptp4l[3103.577]: selected local clock 020000.fffe.000001 as best master
+ptp4l[3103.577]: port 1 (v-bc-up): assuming the grand master role
+ptp4l[3103.577]: port 2 (v-bc-dn): assuming the grand master role
+ptp4l[3105.017]: timed out while polling for tx timestamp
+ptp4l[3105.017]: increasing tx_timestamp_timeout may correct this issue, but it is likely caused by a driver bug
+ptp4l[3105.017]: port 2 (v-bc-dn): send sync failed
+ptp4l[3105.017]: port 2 (v-bc-dn): MASTER to FAULTY on FAULT_DETECTED (FT_UNSPECIFIED)
+ptp4l[3105.044]: selected best master clock 020000.fffe.00000b
+ptp4l[3105.044]: foreign master not using PTP timescale
+ptp4l[3105.044]: port 1 (v-bc-up): MASTER to UNCALIBRATED on RS_SLAVE
+ptp4l[3105.044]: selected best master clock 020000.fffe.00000a
+ptp4l[3105.044]: foreign master not using PTP timescale
+ptp4l[3107.104]: master offset      -1198 s0 freq    +220 path delay      3578
+ptp4l[3109.107]: master offset       1116 s0 freq    +823 path delay      2913
+ptp4l[3111.109]: master offset       -102 s0 freq    -249 path delay      3632
+ptp4l[3113.111]: master offset      -1320 s0 freq    -496 path delay      3857
+ptp4l[3115.113]: master offset        185 s0 freq    +760 path delay      3873
+ptp4l[3117.115]: master offset      -2148 s0 freq    -868 path delay      4468
+ptp4l[3119.118]: master offset      -1572 s0 freq    +271 path delay      4435
+ptp4l[3121.068]: port 2 (v-bc-dn): FAULTY to LISTENING on INIT_COMPLETE
+ptp4l[3121.122]: master offset      -1592 s0 freq    -323 path delay      3808
+ptp4l[3121.490]: port 2 (v-bc-dn): LISTENING to MASTER on ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES
+ptp4l[3121.490]: foreign master not using PTP timescale
+ptp4l[3121.753]: timed out while polling for tx timestamp
+ptp4l[3121.753]: increasing tx_timestamp_timeout may correct this issue, but it is likely caused by a driver bug
+ptp4l[3121.753]: port 2 (v-bc-dn): send sync failed
+ptp4l[3121.753]: port 2 (v-bc-dn): MASTER to FAULTY on FAULT_DETECTED (FT_UNSPECIFIED)
+ptp4l[3123.250]: master offset       -204 s0 freq    +879 path delay      4290
+ptp4l[3125.253]: master offset      -1844 s0 freq    -729 path delay      4469

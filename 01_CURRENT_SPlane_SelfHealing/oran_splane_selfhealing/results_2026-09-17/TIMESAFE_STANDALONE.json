@@ -1,0 +1,50 @@
+[
+  {
+    "capture": "2024-10-16-announce_attack",
+    "announce": 81969,
+    "allowlist_independent_detection": true,
+    "standards_clauses": [
+      "IEEE1588 Table5 clockClass<6 x24653",
+      "G.8275.1 priority1!=128 x24653"
+    ]
+  },
+  {
+    "capture": "15min_announce_attack",
+    "announce": 15104,
+    "allowlist_independent_detection": false,
+    "standards_clauses": []
+  },
+  {
+    "capture": "prod_successful_announce_attack_ptp",
+    "announce": 1964,
+    "allowlist_independent_detection": true,
+    "standards_clauses": [
+      "IEEE1588 Table5 clockClass<6 x39"
+    ]
+  },
+  {
+    "capture": "2024-10-08-announce_attack_1",
+    "announce": 1688,
+    "allowlist_independent_detection": true,
+    "standards_clauses": [
+      "IEEE1588 Table5 clockClass<6 x457",
+      "G.8275.1 priority1!=128 x457"
+    ]
+  },
+  {
+    "capture": "2024-10-08-sync_attack_1",
+    "announce": 622,
+    "allowlist_independent_detection": true,
+    "standards_clauses": [
+      "IEEE1588 sequenceId regression x2500"
+    ]
+  },
+  {
+    "capture": "2024-10-08-sync_attack_singlestep_1",
+    "announce": 730,
+    "allowlist_independent_detection": true,
+    "standards_clauses": [
+      "IEEE1588 sequenceId regression x2455"
+    ]
+  }
+]

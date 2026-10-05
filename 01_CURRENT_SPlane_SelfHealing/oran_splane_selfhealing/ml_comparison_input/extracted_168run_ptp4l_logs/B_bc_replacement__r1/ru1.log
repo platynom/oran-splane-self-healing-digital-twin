@@ -1,0 +1,36 @@
+ptp4l[1037.004]: port 1 (v-ru1): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[1037.004]: port 0 (/var/run/p.ru1): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[1037.004]: port 0 (/var/run/pr.ru1): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[1037.486]: selected local clock 020000.fffe.00000c as best master
+ptp4l[1037.500]: port 1 (v-ru1): new foreign master 020000.fffe.000001-2
+ptp4l[1037.748]: selected best master clock 020000.fffe.00000a
+ptp4l[1037.748]: foreign master not using PTP timescale
+ptp4l[1037.748]: port 1 (v-ru1): LISTENING to UNCALIBRATED on RS_SLAVE
+ptp4l[1039.814]: master offset       1042 s0 freq    +810 path delay      3692
+ptp4l[1041.816]: master offset       4298 s0 freq   +2049 path delay      4539
+ptp4l[1043.818]: master offset      -2191 s0 freq   -3065 path delay      4891
+ptp4l[1045.820]: master offset      -1109 s0 freq     -96 path delay      3616
+ptp4l[1047.822]: master offset      -2061 s0 freq    +368 path delay      5304
+ptp4l[1049.825]: master offset        361 s0 freq    +371 path delay      3626
+ptp4l[1051.827]: master offset      -1539 s0 freq    -736 path delay      4053
+ptp4l[1053.829]: master offset       2484 s0 freq   +2909 path delay      5854
+ptp4l[1055.831]: master offset       4811 s0 freq    +493 path delay      4515
+ptp4l[1057.833]: master offset        -23 s0 freq   -2464 path delay      4416
+ptp4l[1059.835]: master offset       -478 s0 freq    -560 path delay      3750
+ptp4l[1061.838]: master offset      -3913 s0 freq    -392 path delay      6400
+ptp4l[1063.840]: master offset      -1922 s0 freq    +272 path delay      4954
+ptp4l[1064.278]: port 1 (v-ru1): UNCALIBRATED to LISTENING on ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES
+ptp4l[1064.278]: selected local clock 020000.fffe.00000c as best master
+ptp4l[1064.565]: port 1 (v-ru1): new foreign master 020000.fffe.0000b1-2
+ptp4l[1064.815]: selected best master clock 020000.fffe.00000a
+ptp4l[1064.815]: foreign master not using PTP timescale
+ptp4l[1064.815]: port 1 (v-ru1): LISTENING to UNCALIBRATED on RS_SLAVE
+ptp4l[1066.878]: master offset       1065 s0 freq    +173 path delay      3438
+ptp4l[1068.881]: master offset      -1149 s0 freq    -731 path delay      4188
+ptp4l[1070.884]: master offset       -682 s0 freq    +281 path delay      4283
+ptp4l[1072.886]: master offset      -1246 s0 freq    -312 path delay      4223
+ptp4l[1074.888]: master offset       -369 s0 freq     -31 path delay      3284
+ptp4l[1076.890]: master offset        440 s0 freq    +359 path delay      3194
+ptp4l[1078.892]: master offset        832 s0 freq     +90 path delay      2982
+ptp4l[1080.894]: master offset       3216 s0 freq   +1254 path delay      3109
+ptp4l[1082.896]: master offset       1098 s0 freq    -843 path delay      3539

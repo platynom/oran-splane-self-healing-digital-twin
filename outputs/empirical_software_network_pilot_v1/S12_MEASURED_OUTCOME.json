@@ -1,0 +1,225 @@
+{
+  "schema_version": "s12-measured-outcome-v1",
+  "question": "In the capture-time suffix after the detector trigger, does the frozen detector observe dispersion persistence in the capture selected by sealed receiver-path evidence?",
+  "capture_selection_by_arm": {
+    "action": "segment 2, selected because sealed logs show port-2 takeover",
+    "no_action": "segment 1, selected because sealed logs show no retained path change"
+  },
+  "runs": {
+    "action": {
+      "20260913_s11_act1": {
+        "capture": "capture_seg2.pcap",
+        "capture_sha256": "95575d12bb12b57d9bafe6be14b53dbb1b7a3e49b966d5d4a52e0924bd05e90e",
+        "split_packet_ts": 1789275164.2239494,
+        "observation_window_after_trigger_s": 25.994,
+        "records_before": 407,
+        "records_after": 954,
+        "persistence_after_trigger": 0,
+        "persistence_offsets_after_trigger_s": [],
+        "valid_gap_observations_after_trigger": 208,
+        "outcome_eligible": true,
+        "clean_after_trigger": true,
+        "active_path_evidence": "S11 sealed port-2 takeover after port-1 fault",
+        "capture_timestamp_timebase": "absolute pcap timestamp; trigger packet timestamp from the detector stream"
+      },
+      "20260913_s11_act2": {
+        "capture": "capture_seg2.pcap",
+        "capture_sha256": "cf0413b1096fca26356e64361a77da0c839e1b67c50b0462c53339978b8b1c02",
+        "split_packet_ts": 1789275259.1617935,
+        "observation_window_after_trigger_s": 28.599,
+        "records_before": 346,
+        "records_after": 1016,
+        "persistence_after_trigger": 0,
+        "persistence_offsets_after_trigger_s": [],
+        "valid_gap_observations_after_trigger": 229,
+        "outcome_eligible": true,
+        "clean_after_trigger": true,
+        "active_path_evidence": "S11 sealed port-2 takeover after port-1 fault",
+        "capture_timestamp_timebase": "absolute pcap timestamp; trigger packet timestamp from the detector stream"
+      },
+      "20260913_s11_act3": {
+        "capture": "capture_seg2.pcap",
+        "capture_sha256": "e6de2fb0f36253985d3b165d18ad431b973fc89d59c93dbf813d9e835db2ddf8",
+        "split_packet_ts": 1789275372.1603498,
+        "observation_window_after_trigger_s": 13.161,
+        "records_before": 654,
+        "records_after": 472,
+        "persistence_after_trigger": 0,
+        "persistence_offsets_after_trigger_s": [],
+        "valid_gap_observations_after_trigger": 106,
+        "outcome_eligible": true,
+        "clean_after_trigger": true,
+        "active_path_evidence": "S11 sealed port-2 takeover after port-1 fault",
+        "capture_timestamp_timebase": "absolute pcap timestamp; trigger packet timestamp from the detector stream"
+      },
+      "20260913_s11_act4": {
+        "capture": "capture_seg2.pcap",
+        "capture_sha256": "690c09c19535bb7561befa991b147517057d39451c035c62fbb19f6321517cb1",
+        "split_packet_ts": 1789275453.7457502,
+        "observation_window_after_trigger_s": 28.43,
+        "records_before": 351,
+        "records_after": 1034,
+        "persistence_after_trigger": 0,
+        "persistence_offsets_after_trigger_s": [],
+        "valid_gap_observations_after_trigger": 228,
+        "outcome_eligible": true,
+        "clean_after_trigger": true,
+        "active_path_evidence": "S11 sealed port-2 takeover after port-1 fault",
+        "capture_timestamp_timebase": "absolute pcap timestamp; trigger packet timestamp from the detector stream"
+      },
+      "20260913_s11_act5": {
+        "capture": "capture_seg2.pcap",
+        "capture_sha256": "bff72d355d83f9049bc43fc39da5d246552a3be52aa8b249d1382731e7c9fd23",
+        "split_packet_ts": 1789275553.7955384,
+        "observation_window_after_trigger_s": 25.419,
+        "records_before": 411,
+        "records_after": 904,
+        "persistence_after_trigger": 0,
+        "persistence_offsets_after_trigger_s": [],
+        "valid_gap_observations_after_trigger": 203,
+        "outcome_eligible": true,
+        "clean_after_trigger": true,
+        "active_path_evidence": "S11 sealed port-2 takeover after port-1 fault",
+        "capture_timestamp_timebase": "absolute pcap timestamp; trigger packet timestamp from the detector stream"
+      }
+    },
+    "no_action": {
+      "20260913_s11_noact1": {
+        "capture": "capture_seg1.pcap",
+        "capture_sha256": "12a81bb0934b8e8b2c9a1df3188943a85d8fa1f65b684c3470d307659b649fbf",
+        "split_packet_ts": 1789275212.0459716,
+        "observation_window_after_trigger_s": 27.07,
+        "records_before": 678,
+        "records_after": 966,
+        "persistence_after_trigger": 4,
+        "persistence_offsets_after_trigger_s": [
+          4.630118,
+          19.65017,
+          24.780152,
+          26.656713
+        ],
+        "valid_gap_observations_after_trigger": 114,
+        "outcome_eligible": true,
+        "clean_after_trigger": false,
+        "active_path_evidence": "S11 sealed no-action record with no port-1 fault/takeover",
+        "capture_timestamp_timebase": "absolute pcap timestamp; trigger packet timestamp from the detector stream"
+      },
+      "20260913_s11_noact2": {
+        "capture": "capture_seg1.pcap",
+        "capture_sha256": "23f53c0bfd330a10ec63681b88f9ac57097c7c4f4173c5666346aa93d2407f00",
+        "split_packet_ts": 1789275324.3160796,
+        "observation_window_after_trigger_s": 11.896,
+        "records_before": 1195,
+        "records_after": 424,
+        "persistence_after_trigger": 5,
+        "persistence_offsets_after_trigger_s": [
+          1.00231,
+          2.881428,
+          4.133561,
+          6.638489,
+          8.265695
+        ],
+        "valid_gap_observations_after_trigger": 50,
+        "outcome_eligible": true,
+        "clean_after_trigger": false,
+        "active_path_evidence": "S11 sealed no-action record with no port-1 fault/takeover",
+        "capture_timestamp_timebase": "absolute pcap timestamp; trigger packet timestamp from the detector stream"
+      },
+      "20260913_s11_noact3": {
+        "capture": "capture_seg1.pcap",
+        "capture_sha256": "b26fec30a438405f00254899ea9c1855c4faece30b98dd764e3d8316445f79ce",
+        "split_packet_ts": 1789275411.2138414,
+        "observation_window_after_trigger_s": 22.542,
+        "records_before": 817,
+        "records_after": 834,
+        "persistence_after_trigger": 7,
+        "persistence_offsets_after_trigger_s": [
+          4.754858,
+          7.132914,
+          8.635226,
+          14.277275,
+          15.905653,
+          17.784379,
+          20.163637
+        ],
+        "valid_gap_observations_after_trigger": 105,
+        "outcome_eligible": true,
+        "clean_after_trigger": false,
+        "active_path_evidence": "S11 sealed no-action record with no port-1 fault/takeover",
+        "capture_timestamp_timebase": "absolute pcap timestamp; trigger packet timestamp from the detector stream"
+      },
+      "20260913_s11_noact4": {
+        "capture": "capture_seg1.pcap",
+        "capture_sha256": "208ad3001602cd7ab27a30d49ed7142da01111143ec6595766783756b11e6300",
+        "split_packet_ts": 1789275510.6499233,
+        "observation_window_after_trigger_s": 20.023,
+        "records_before": 939,
+        "records_after": 706,
+        "persistence_after_trigger": 5,
+        "persistence_offsets_after_trigger_s": [
+          1.501708,
+          2.752939,
+          13.764844,
+          16.267499,
+          18.521005
+        ],
+        "valid_gap_observations_after_trigger": 87,
+        "outcome_eligible": true,
+        "clean_after_trigger": false,
+        "active_path_evidence": "S11 sealed no-action record with no port-1 fault/takeover",
+        "capture_timestamp_timebase": "absolute pcap timestamp; trigger packet timestamp from the detector stream"
+      },
+      "20260913_s11_noact5": {
+        "capture": "capture_seg1.pcap",
+        "capture_sha256": "3fe325a043ca86f3ed1b301cf7858c470d21f066a0c57148c0e51d7ec04e00ac",
+        "split_packet_ts": 1789275601.9917743,
+        "observation_window_after_trigger_s": 26.285,
+        "records_before": 684,
+        "records_after": 945,
+        "persistence_after_trigger": 6,
+        "persistence_offsets_after_trigger_s": [
+          0.87582,
+          6.883992,
+          8.259634,
+          10.012525,
+          18.899269,
+          21.276819
+        ],
+        "valid_gap_observations_after_trigger": 125,
+        "outcome_eligible": true,
+        "clean_after_trigger": false,
+        "active_path_evidence": "S11 sealed no-action record with no port-1 fault/takeover",
+        "capture_timestamp_timebase": "absolute pcap timestamp; trigger packet timestamp from the detector stream"
+      }
+    }
+  },
+  "clean_active_path_after_trigger": {
+    "action": {
+      "k": 5,
+      "n": 5,
+      "proportion": 1.0,
+      "wilson95": [
+        0.5655175352168389,
+        1
+      ]
+    },
+    "no_action": {
+      "k": 0,
+      "n": 5,
+      "proportion": 0.0,
+      "wilson95": [
+        5.551115123125783e-17,
+        0.4344824647831612
+      ]
+    }
+  },
+  "verdict": "In the selected-capture suffix after the detector trigger, the observation is absent in every action run and present in every no-action run. This is not timed as post-takeover.",
+  "limits": [
+    "n=5 per arm; matched control on identical topology and identical impairment.",
+    "The impaired segment was never repaired and the netem qdisc was never removed. The action changes which segment the receiver uses.",
+    "This is a packet-observation outcome. It is NOT a clock-error, timing-quality, service-restoration or physical-recovery measurement.",
+    "Shared host software clock under free_running 1.",
+    "The post-trigger observation window differs per run; it is reported per run.",
+    "The capture-time trigger split is not a measured post-takeover or post-command interval: no cross-clock mapping to the ptp4l transition log was recorded."
+  ]
+}

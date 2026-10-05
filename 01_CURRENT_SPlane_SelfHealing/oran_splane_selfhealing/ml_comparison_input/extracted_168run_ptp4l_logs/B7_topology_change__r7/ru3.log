@@ -1,0 +1,44 @@
+ptp4l[4337.356]: port 1 (v-ru3): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[4337.356]: port 0 (/var/run/p.ru3): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[4337.356]: port 0 (/var/run/pr.ru3): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[4337.784]: port 1 (v-ru3): new foreign master 020000.fffe.000001-2
+ptp4l[4337.823]: selected local clock 020000.fffe.00000e as best master
+ptp4l[4338.034]: selected best master clock 020000.fffe.00000b
+ptp4l[4338.034]: foreign master not using PTP timescale
+ptp4l[4338.034]: port 1 (v-ru3): LISTENING to UNCALIBRATED on RS_SLAVE
+ptp4l[4338.159]: selected best master clock 020000.fffe.00000a
+ptp4l[4338.159]: foreign master not using PTP timescale
+ptp4l[4340.224]: master offset       2610 s0 freq   +1606 path delay      4520
+ptp4l[4342.228]: master offset      -3482 s0 freq   -2659 path delay      5284
+ptp4l[4344.230]: master offset        351 s0 freq   +2585 path delay      6626
+ptp4l[4346.232]: master offset       2771 s0 freq   +2021 path delay      8253
+ptp4l[4348.235]: master offset       -591 s0 freq   -2433 path delay      6742
+ptp4l[4350.238]: master offset       4279 s0 freq   +2731 path delay      7341
+ptp4l[4352.241]: master offset       1954 s0 freq    -964 path delay      7736
+ptp4l[4354.244]: master offset      -2899 s0 freq   -2644 path delay      7293
+ptp4l[4356.246]: master offset       6393 s0 freq   +3973 path delay      5956
+ptp4l[4358.249]: master offset        404 s0 freq   -2264 path delay      7411
+ptp4l[4360.251]: master offset        -82 s0 freq     -11 path delay      7875
+ptp4l[4362.254]: master offset       4646 s0 freq    +965 path delay      5079
+ptp4l[4364.256]: master offset       4756 s0 freq    -118 path delay      4732
+ptp4l[4365.325]: port 1 (v-ru3): error on fda[0]: Network is down
+ptp4l[4365.325]: port 1 (v-ru3): UNCALIBRATED to FAULTY on FAULT_DETECTED (FT_UNSPECIFIED)
+ptp4l[4365.348]: port 1 (v-ru3): link down
+ptp4l[4365.348]: selected local clock 020000.fffe.00000e as best master
+ptp4l[4365.348]: port 1 (v-ru3): assuming the grand master role
+ptp4l[4365.348]: port 1 (v-ru3): master state recommended in slave only mode
+ptp4l[4365.348]: port 1 (v-ru3): defaultDS.priority1 probably misconfigured
+ptp4l[4373.337]: port 1 (v-ru3): assuming the grand master role
+ptp4l[4373.337]: port 1 (v-ru3): master state recommended in slave only mode
+ptp4l[4373.337]: port 1 (v-ru3): defaultDS.priority1 probably misconfigured
+ptp4l[4373.337]: port 1 (v-ru3): link up
+ptp4l[4373.364]: port 1 (v-ru3): FAULTY to LISTENING on INIT_COMPLETE
+ptp4l[4373.433]: port 1 (v-ru3): new foreign master 020000.fffe.000001-2
+ptp4l[4373.683]: selected best master clock 020000.fffe.00000a
+ptp4l[4373.683]: foreign master not using PTP timescale
+ptp4l[4373.683]: port 1 (v-ru3): LISTENING to UNCALIBRATED on RS_SLAVE
+ptp4l[4375.707]: master offset      -1964 s0 freq    -999 path delay      5681
+ptp4l[4377.710]: master offset      -1000 s0 freq   +1659 path delay      8040
+ptp4l[4379.713]: master offset       3768 s0 freq    +712 path delay      4698
+ptp4l[4381.716]: master offset        677 s0 freq    +802 path delay      9395
+ptp4l[4383.719]: master offset      -1860 s0 freq   -3705 path delay      4511

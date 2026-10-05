@@ -1,0 +1,12 @@
+{
+  "scenario": "C3_wholesecond",
+  "truth_class": "attack",
+  "truth_fault": "C3",
+  "verdict": "ATTACK",
+  "fault_hint": "A_intercept",
+  "reasons": [
+    "Provisioned source delivering far below its own declared rate -> packet removal / selective interception: {'020000fffe00000a/Announce': {'observed_hz': 3.55, 'declared_hz': 8.0, 'n': 140}}",
+    "(v2 detector; frozen base said BENIGN)"
+  ],
+  "rule": "decision_rule_v3 (frozen v3)"
+}

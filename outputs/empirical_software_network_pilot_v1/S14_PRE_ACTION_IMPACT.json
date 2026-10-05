@@ -1,0 +1,880 @@
+{
+  "schema_version": "s14-pre-action-impact-v1",
+  "measurement": "ptp4l receiver-reported mean path delay and its dispersion, nanoseconds, from the receiver's own servo summary line.",
+  "independence": "Computed by ptp4l from its own Sync/Delay_Req exchange. Not produced by and not dependent on the packet detector.",
+  "timing_basis": "Servo lines and port-state transitions share the ptp4l log timebase, so pre-action ordering needs no cross-clock mapping. No numeric comparison is made against capture or detector clocks.",
+  "per_condition": {
+    "authorized_source_failover": {
+      "netem": "none (clean master A termination)",
+      "runs": 5,
+      "runs_usable_for_pre_action_impact": 5,
+      "excluded_reason": null,
+      "path_delay_ns": {
+        "n": 5,
+        "min": 20101,
+        "median": 23793,
+        "max": 25646
+      },
+      "path_delay_dispersion_ns": {
+        "n": 5,
+        "min": 6033,
+        "median": 6881,
+        "max": 7622
+      }
+    },
+    "baseline_clean": {
+      "netem": "none",
+      "runs": 5,
+      "runs_usable_for_pre_action_impact": 5,
+      "excluded_reason": null,
+      "path_delay_ns": {
+        "n": 5,
+        "min": 13533,
+        "median": 24267,
+        "max": 25584
+      },
+      "path_delay_dispersion_ns": {
+        "n": 5,
+        "min": 1883,
+        "median": 6522,
+        "max": 8524
+      }
+    },
+    "benign_delay_jitter": {
+      "netem": "delay 100us 20us distribution normal",
+      "runs": 5,
+      "runs_usable_for_pre_action_impact": 5,
+      "excluded_reason": null,
+      "path_delay_ns": {
+        "n": 5,
+        "min": 95500,
+        "median": 97517,
+        "max": 106610
+      },
+      "path_delay_dispersion_ns": {
+        "n": 5,
+        "min": 17673,
+        "median": 19493,
+        "max": 24615
+      }
+    },
+    "jitter_fault_action": {
+      "netem": "delay 100us 200us distribution normal",
+      "runs": 5,
+      "runs_usable_for_pre_action_impact": 1,
+      "excluded_reason": "later servo sample straddles the commanded link-down; cannot evidence the condition before the action",
+      "path_delay_ns": {
+        "n": 1,
+        "min": 77848,
+        "median": 77848,
+        "max": 77848
+      },
+      "path_delay_dispersion_ns": {
+        "n": 1,
+        "min": 62697,
+        "median": 62697,
+        "max": 62697
+      }
+    },
+    "jitter_fault_no_action": {
+      "netem": "delay 100us 200us distribution normal",
+      "runs": 5,
+      "runs_usable_for_pre_action_impact": 5,
+      "excluded_reason": null,
+      "path_delay_ns": {
+        "n": 5,
+        "min": 86913,
+        "median": 103484,
+        "max": 124255
+      },
+      "path_delay_dispersion_ns": {
+        "n": 5,
+        "min": 33330,
+        "median": 53777,
+        "max": 56199
+      }
+    }
+  },
+  "pairwise_separation": {
+    "baseline_clean__vs__benign_delay_jitter::path_delay_ns": {
+      "range_a": [
+        13533,
+        25584
+      ],
+      "range_b": [
+        95500,
+        106610
+      ],
+      "separable_without_overlap": true,
+      "margin_ns": 69916
+    },
+    "baseline_clean__vs__benign_delay_jitter::path_delay_dispersion_ns": {
+      "range_a": [
+        1883,
+        8524
+      ],
+      "range_b": [
+        17673,
+        24615
+      ],
+      "separable_without_overlap": true,
+      "margin_ns": 9149
+    },
+    "baseline_clean__vs__jitter_fault_no_action::path_delay_ns": {
+      "range_a": [
+        13533,
+        25584
+      ],
+      "range_b": [
+        86913,
+        124255
+      ],
+      "separable_without_overlap": true,
+      "margin_ns": 61329
+    },
+    "baseline_clean__vs__jitter_fault_no_action::path_delay_dispersion_ns": {
+      "range_a": [
+        1883,
+        8524
+      ],
+      "range_b": [
+        33330,
+        56199
+      ],
+      "separable_without_overlap": true,
+      "margin_ns": 24806
+    },
+    "benign_delay_jitter__vs__jitter_fault_no_action::path_delay_ns": {
+      "range_a": [
+        95500,
+        106610
+      ],
+      "range_b": [
+        86913,
+        124255
+      ],
+      "separable_without_overlap": false,
+      "margin_ns": null
+    },
+    "benign_delay_jitter__vs__jitter_fault_no_action::path_delay_dispersion_ns": {
+      "range_a": [
+        17673,
+        24615
+      ],
+      "range_b": [
+        33330,
+        56199
+      ],
+      "separable_without_overlap": true,
+      "margin_ns": 8715
+    },
+    "baseline_clean__vs__authorized_source_failover::path_delay_ns": {
+      "range_a": [
+        13533,
+        25584
+      ],
+      "range_b": [
+        20101,
+        25646
+      ],
+      "separable_without_overlap": false,
+      "margin_ns": null
+    },
+    "baseline_clean__vs__authorized_source_failover::path_delay_dispersion_ns": {
+      "range_a": [
+        1883,
+        8524
+      ],
+      "range_b": [
+        6033,
+        7622
+      ],
+      "separable_without_overlap": false,
+      "margin_ns": null
+    }
+  },
+  "runs": [
+    {
+      "run": "20260913_s14_asf1",
+      "condition": "authorized_source_failover",
+      "netem": "none (clean master A termination)",
+      "fault_transition_ptp4l_time": null,
+      "servo_samples": [
+        {
+          "ptp4l_log_time": 681.345,
+          "path_delay_ns": 21213,
+          "path_delay_dispersion_ns": 6394,
+          "strictly_before_any_fault": true
+        },
+        {
+          "ptp4l_log_time": 697.315,
+          "path_delay_ns": 20101,
+          "path_delay_dispersion_ns": 6881,
+          "strictly_before_any_fault": true
+        }
+      ],
+      "impaired_window_sample": {
+        "ptp4l_log_time": 697.315,
+        "path_delay_ns": 20101,
+        "path_delay_dispersion_ns": 6881,
+        "strictly_before_any_fault": true
+      },
+      "usable_as_pre_action_impact": true
+    },
+    {
+      "run": "20260913_s14_asf2",
+      "condition": "authorized_source_failover",
+      "netem": "none (clean master A termination)",
+      "fault_transition_ptp4l_time": null,
+      "servo_samples": [
+        {
+          "ptp4l_log_time": 930.71,
+          "path_delay_ns": 19516,
+          "path_delay_dispersion_ns": 6619,
+          "strictly_before_any_fault": true
+        },
+        {
+          "ptp4l_log_time": 946.735,
+          "path_delay_ns": 20738,
+          "path_delay_dispersion_ns": 6033,
+          "strictly_before_any_fault": true
+        }
+      ],
+      "impaired_window_sample": {
+        "ptp4l_log_time": 946.735,
+        "path_delay_ns": 20738,
+        "path_delay_dispersion_ns": 6033,
+        "strictly_before_any_fault": true
+      },
+      "usable_as_pre_action_impact": true
+    },
+    {
+      "run": "20260913_s14_asf3",
+      "condition": "authorized_source_failover",
+      "netem": "none (clean master A termination)",
+      "fault_transition_ptp4l_time": null,
+      "servo_samples": [
+        {
+          "ptp4l_log_time": 1178.326,
+          "path_delay_ns": 19454,
+          "path_delay_dispersion_ns": 6964,
+          "strictly_before_any_fault": true
+        },
+        {
+          "ptp4l_log_time": 1194.35,
+          "path_delay_ns": 23985,
+          "path_delay_dispersion_ns": 6885,
+          "strictly_before_any_fault": true
+        }
+      ],
+      "impaired_window_sample": {
+        "ptp4l_log_time": 1194.35,
+        "path_delay_ns": 23985,
+        "path_delay_dispersion_ns": 6885,
+        "strictly_before_any_fault": true
+      },
+      "usable_as_pre_action_impact": true
+    },
+    {
+      "run": "20260913_s14_asf4",
+      "condition": "authorized_source_failover",
+      "netem": "none (clean master A termination)",
+      "fault_transition_ptp4l_time": null,
+      "servo_samples": [
+        {
+          "ptp4l_log_time": 1425.442,
+          "path_delay_ns": 18478,
+          "path_delay_dispersion_ns": 9235,
+          "strictly_before_any_fault": true
+        },
+        {
+          "ptp4l_log_time": 1441.49,
+          "path_delay_ns": 25646,
+          "path_delay_dispersion_ns": 6088,
+          "strictly_before_any_fault": true
+        }
+      ],
+      "impaired_window_sample": {
+        "ptp4l_log_time": 1441.49,
+        "path_delay_ns": 25646,
+        "path_delay_dispersion_ns": 6088,
+        "strictly_before_any_fault": true
+      },
+      "usable_as_pre_action_impact": true
+    },
+    {
+      "run": "20260913_s14_asf5",
+      "condition": "authorized_source_failover",
+      "netem": "none (clean master A termination)",
+      "fault_transition_ptp4l_time": null,
+      "servo_samples": [
+        {
+          "ptp4l_log_time": 1673.428,
+          "path_delay_ns": 20544,
+          "path_delay_dispersion_ns": 6594,
+          "strictly_before_any_fault": true
+        },
+        {
+          "ptp4l_log_time": 1689.45,
+          "path_delay_ns": 23793,
+          "path_delay_dispersion_ns": 7622,
+          "strictly_before_any_fault": true
+        }
+      ],
+      "impaired_window_sample": {
+        "ptp4l_log_time": 1689.45,
+        "path_delay_ns": 23793,
+        "path_delay_dispersion_ns": 7622,
+        "strictly_before_any_fault": true
+      },
+      "usable_as_pre_action_impact": true
+    },
+    {
+      "run": "20260913_s14_base1",
+      "condition": "baseline_clean",
+      "netem": "none",
+      "fault_transition_ptp4l_time": null,
+      "servo_samples": [
+        {
+          "ptp4l_log_time": 481.511,
+          "path_delay_ns": 15654,
+          "path_delay_dispersion_ns": 4799,
+          "strictly_before_any_fault": true
+        },
+        {
+          "ptp4l_log_time": 497.524,
+          "path_delay_ns": 13533,
+          "path_delay_dispersion_ns": 1883,
+          "strictly_before_any_fault": true
+        }
+      ],
+      "impaired_window_sample": {
+        "ptp4l_log_time": 497.524,
+        "path_delay_ns": 13533,
+        "path_delay_dispersion_ns": 1883,
+        "strictly_before_any_fault": true
+      },
+      "usable_as_pre_action_impact": true
+    },
+    {
+      "run": "20260913_s14_base2",
+      "condition": "baseline_clean",
+      "netem": "none",
+      "fault_transition_ptp4l_time": null,
+      "servo_samples": [
+        {
+          "ptp4l_log_time": 728.568,
+          "path_delay_ns": 19001,
+          "path_delay_dispersion_ns": 5136,
+          "strictly_before_any_fault": true
+        },
+        {
+          "ptp4l_log_time": 744.588,
+          "path_delay_ns": 24762,
+          "path_delay_dispersion_ns": 8524,
+          "strictly_before_any_fault": true
+        }
+      ],
+      "impaired_window_sample": {
+        "ptp4l_log_time": 744.588,
+        "path_delay_ns": 24762,
+        "path_delay_dispersion_ns": 8524,
+        "strictly_before_any_fault": true
+      },
+      "usable_as_pre_action_impact": true
+    },
+    {
+      "run": "20260913_s14_base3",
+      "condition": "baseline_clean",
+      "netem": "none",
+      "fault_transition_ptp4l_time": null,
+      "servo_samples": [
+        {
+          "ptp4l_log_time": 977.262,
+          "path_delay_ns": 21176,
+          "path_delay_dispersion_ns": 5352,
+          "strictly_before_any_fault": true
+        },
+        {
+          "ptp4l_log_time": 993.281,
+          "path_delay_ns": 20171,
+          "path_delay_dispersion_ns": 5378,
+          "strictly_before_any_fault": true
+        }
+      ],
+      "impaired_window_sample": {
+        "ptp4l_log_time": 993.281,
+        "path_delay_ns": 20171,
+        "path_delay_dispersion_ns": 5378,
+        "strictly_before_any_fault": true
+      },
+      "usable_as_pre_action_impact": true
+    },
+    {
+      "run": "20260913_s14_base4",
+      "condition": "baseline_clean",
+      "netem": "none",
+      "fault_transition_ptp4l_time": null,
+      "servo_samples": [
+        {
+          "ptp4l_log_time": 1225.404,
+          "path_delay_ns": 20247,
+          "path_delay_dispersion_ns": 6077,
+          "strictly_before_any_fault": true
+        },
+        {
+          "ptp4l_log_time": 1241.426,
+          "path_delay_ns": 24267,
+          "path_delay_dispersion_ns": 6522,
+          "strictly_before_any_fault": true
+        }
+      ],
+      "impaired_window_sample": {
+        "ptp4l_log_time": 1241.426,
+        "path_delay_ns": 24267,
+        "path_delay_dispersion_ns": 6522,
+        "strictly_before_any_fault": true
+      },
+      "usable_as_pre_action_impact": true
+    },
+    {
+      "run": "20260913_s14_base5",
+      "condition": "baseline_clean",
+      "netem": "none",
+      "fault_transition_ptp4l_time": null,
+      "servo_samples": [
+        {
+          "ptp4l_log_time": 1472.88,
+          "path_delay_ns": 22389,
+          "path_delay_dispersion_ns": 7163,
+          "strictly_before_any_fault": true
+        },
+        {
+          "ptp4l_log_time": 1488.902,
+          "path_delay_ns": 25584,
+          "path_delay_dispersion_ns": 8406,
+          "strictly_before_any_fault": true
+        }
+      ],
+      "impaired_window_sample": {
+        "ptp4l_log_time": 1488.902,
+        "path_delay_ns": 25584,
+        "path_delay_dispersion_ns": 8406,
+        "strictly_before_any_fault": true
+      },
+      "usable_as_pre_action_impact": true
+    },
+    {
+      "run": "20260913_s14_bng1",
+      "condition": "benign_delay_jitter",
+      "netem": "delay 100us 20us distribution normal",
+      "fault_transition_ptp4l_time": null,
+      "servo_samples": [
+        {
+          "ptp4l_log_time": 530.481,
+          "path_delay_ns": 15331,
+          "path_delay_dispersion_ns": 2826,
+          "strictly_before_any_fault": true
+        },
+        {
+          "ptp4l_log_time": 546.5,
+          "path_delay_ns": 95500,
+          "path_delay_dispersion_ns": 20625,
+          "strictly_before_any_fault": true
+        }
+      ],
+      "impaired_window_sample": {
+        "ptp4l_log_time": 546.5,
+        "path_delay_ns": 95500,
+        "path_delay_dispersion_ns": 20625,
+        "strictly_before_any_fault": true
+      },
+      "usable_as_pre_action_impact": true
+    },
+    {
+      "run": "20260913_s14_bng2",
+      "condition": "benign_delay_jitter",
+      "netem": "delay 100us 20us distribution normal",
+      "fault_transition_ptp4l_time": null,
+      "servo_samples": [
+        {
+          "ptp4l_log_time": 778.977,
+          "path_delay_ns": 17383,
+          "path_delay_dispersion_ns": 5713,
+          "strictly_before_any_fault": true
+        },
+        {
+          "ptp4l_log_time": 795.0,
+          "path_delay_ns": 106610,
+          "path_delay_dispersion_ns": 24615,
+          "strictly_before_any_fault": true
+        }
+      ],
+      "impaired_window_sample": {
+        "ptp4l_log_time": 795.0,
+        "path_delay_ns": 106610,
+        "path_delay_dispersion_ns": 24615,
+        "strictly_before_any_fault": true
+      },
+      "usable_as_pre_action_impact": true
+    },
+    {
+      "run": "20260913_s14_bng3",
+      "condition": "benign_delay_jitter",
+      "netem": "delay 100us 20us distribution normal",
+      "fault_transition_ptp4l_time": null,
+      "servo_samples": [
+        {
+          "ptp4l_log_time": 1027.108,
+          "path_delay_ns": 22557,
+          "path_delay_dispersion_ns": 7041,
+          "strictly_before_any_fault": true
+        },
+        {
+          "ptp4l_log_time": 1043.134,
+          "path_delay_ns": 96875,
+          "path_delay_dispersion_ns": 17673,
+          "strictly_before_any_fault": true
+        }
+      ],
+      "impaired_window_sample": {
+        "ptp4l_log_time": 1043.134,
+        "path_delay_ns": 96875,
+        "path_delay_dispersion_ns": 17673,
+        "strictly_before_any_fault": true
+      },
+      "usable_as_pre_action_impact": true
+    },
+    {
+      "run": "20260913_s14_bng4",
+      "condition": "benign_delay_jitter",
+      "netem": "delay 100us 20us distribution normal",
+      "fault_transition_ptp4l_time": null,
+      "servo_samples": [
+        {
+          "ptp4l_log_time": 1274.693,
+          "path_delay_ns": 18869,
+          "path_delay_dispersion_ns": 4972,
+          "strictly_before_any_fault": true
+        },
+        {
+          "ptp4l_log_time": 1290.713,
+          "path_delay_ns": 100544,
+          "path_delay_dispersion_ns": 19319,
+          "strictly_before_any_fault": true
+        }
+      ],
+      "impaired_window_sample": {
+        "ptp4l_log_time": 1290.713,
+        "path_delay_ns": 100544,
+        "path_delay_dispersion_ns": 19319,
+        "strictly_before_any_fault": true
+      },
+      "usable_as_pre_action_impact": true
+    },
+    {
+      "run": "20260913_s14_bng5",
+      "condition": "benign_delay_jitter",
+      "netem": "delay 100us 20us distribution normal",
+      "fault_transition_ptp4l_time": null,
+      "servo_samples": [
+        {
+          "ptp4l_log_time": 1522.358,
+          "path_delay_ns": 17404,
+          "path_delay_dispersion_ns": 4740,
+          "strictly_before_any_fault": true
+        },
+        {
+          "ptp4l_log_time": 1538.378,
+          "path_delay_ns": 97517,
+          "path_delay_dispersion_ns": 19493,
+          "strictly_before_any_fault": true
+        }
+      ],
+      "impaired_window_sample": {
+        "ptp4l_log_time": 1538.378,
+        "path_delay_ns": 97517,
+        "path_delay_dispersion_ns": 19493,
+        "strictly_before_any_fault": true
+      },
+      "usable_as_pre_action_impact": true
+    },
+    {
+      "run": "20260913_s14_jact1",
+      "condition": "jitter_fault_action",
+      "netem": "delay 100us 200us distribution normal",
+      "fault_transition_ptp4l_time": 608.059,
+      "servo_samples": [
+        {
+          "ptp4l_log_time": 580.477,
+          "path_delay_ns": 14687,
+          "path_delay_dispersion_ns": 3463,
+          "strictly_before_any_fault": true
+        },
+        {
+          "ptp4l_log_time": 596.413,
+          "path_delay_ns": 77848,
+          "path_delay_dispersion_ns": 62697,
+          "strictly_before_any_fault": true
+        }
+      ],
+      "impaired_window_sample": {
+        "ptp4l_log_time": 596.413,
+        "path_delay_ns": 77848,
+        "path_delay_dispersion_ns": 62697,
+        "strictly_before_any_fault": true
+      },
+      "usable_as_pre_action_impact": true
+    },
+    {
+      "run": "20260913_s14_jact2",
+      "condition": "jitter_fault_action",
+      "netem": "delay 100us 200us distribution normal",
+      "fault_transition_ptp4l_time": 835.611,
+      "servo_samples": [
+        {
+          "ptp4l_log_time": 828.081,
+          "path_delay_ns": 20117,
+          "path_delay_dispersion_ns": 7447,
+          "strictly_before_any_fault": true
+        },
+        {
+          "ptp4l_log_time": 845.723,
+          "path_delay_ns": 25713,
+          "path_delay_dispersion_ns": 24122,
+          "strictly_before_any_fault": false
+        }
+      ],
+      "impaired_window_sample": {
+        "ptp4l_log_time": 845.723,
+        "path_delay_ns": 25713,
+        "path_delay_dispersion_ns": 24122,
+        "strictly_before_any_fault": false
+      },
+      "usable_as_pre_action_impact": false
+    },
+    {
+      "run": "20260913_s14_jact3",
+      "condition": "jitter_fault_action",
+      "netem": "delay 100us 200us distribution normal",
+      "fault_transition_ptp4l_time": 1089.168,
+      "servo_samples": [
+        {
+          "ptp4l_log_time": 1077.152,
+          "path_delay_ns": 23482,
+          "path_delay_dispersion_ns": 22857,
+          "strictly_before_any_fault": true
+        },
+        {
+          "ptp4l_log_time": 1093.273,
+          "path_delay_ns": 73387,
+          "path_delay_dispersion_ns": 55622,
+          "strictly_before_any_fault": false
+        }
+      ],
+      "impaired_window_sample": {
+        "ptp4l_log_time": 1093.273,
+        "path_delay_ns": 73387,
+        "path_delay_dispersion_ns": 55622,
+        "strictly_before_any_fault": false
+      },
+      "usable_as_pre_action_impact": false
+    },
+    {
+      "run": "20260913_s14_jact4",
+      "condition": "jitter_fault_action",
+      "netem": "delay 100us 200us distribution normal",
+      "fault_transition_ptp4l_time": 1337.543,
+      "servo_samples": [
+        {
+          "ptp4l_log_time": 1323.954,
+          "path_delay_ns": 17532,
+          "path_delay_dispersion_ns": 6918,
+          "strictly_before_any_fault": true
+        },
+        {
+          "ptp4l_log_time": 1341.943,
+          "path_delay_ns": 77290,
+          "path_delay_dispersion_ns": 49371,
+          "strictly_before_any_fault": false
+        }
+      ],
+      "impaired_window_sample": {
+        "ptp4l_log_time": 1341.943,
+        "path_delay_ns": 77290,
+        "path_delay_dispersion_ns": 49371,
+        "strictly_before_any_fault": false
+      },
+      "usable_as_pre_action_impact": false
+    },
+    {
+      "run": "20260913_s14_jact5",
+      "condition": "jitter_fault_action",
+      "netem": "delay 100us 200us distribution normal",
+      "fault_transition_ptp4l_time": 1580.134,
+      "servo_samples": [
+        {
+          "ptp4l_log_time": 1571.809,
+          "path_delay_ns": 20513,
+          "path_delay_dispersion_ns": 6143,
+          "strictly_before_any_fault": true
+        },
+        {
+          "ptp4l_log_time": 1588.502,
+          "path_delay_ns": 68408,
+          "path_delay_dispersion_ns": 54362,
+          "strictly_before_any_fault": false
+        }
+      ],
+      "impaired_window_sample": {
+        "ptp4l_log_time": 1588.502,
+        "path_delay_ns": 68408,
+        "path_delay_dispersion_ns": 54362,
+        "strictly_before_any_fault": false
+      },
+      "usable_as_pre_action_impact": false
+    },
+    {
+      "run": "20260913_s14_jnoact1",
+      "condition": "jitter_fault_no_action",
+      "netem": "delay 100us 200us distribution normal",
+      "fault_transition_ptp4l_time": null,
+      "servo_samples": [
+        {
+          "ptp4l_log_time": 629.576,
+          "path_delay_ns": 14225,
+          "path_delay_dispersion_ns": 2143,
+          "strictly_before_any_fault": true
+        },
+        {
+          "ptp4l_log_time": 645.597,
+          "path_delay_ns": 94609,
+          "path_delay_dispersion_ns": 48760,
+          "strictly_before_any_fault": true
+        }
+      ],
+      "impaired_window_sample": {
+        "ptp4l_log_time": 645.597,
+        "path_delay_ns": 94609,
+        "path_delay_dispersion_ns": 48760,
+        "strictly_before_any_fault": true
+      },
+      "usable_as_pre_action_impact": true
+    },
+    {
+      "run": "20260913_s14_jnoact2",
+      "condition": "jitter_fault_no_action",
+      "netem": "delay 100us 200us distribution normal",
+      "fault_transition_ptp4l_time": null,
+      "servo_samples": [
+        {
+          "ptp4l_log_time": 877.512,
+          "path_delay_ns": 19911,
+          "path_delay_dispersion_ns": 7250,
+          "strictly_before_any_fault": true
+        },
+        {
+          "ptp4l_log_time": 893.531,
+          "path_delay_ns": 103484,
+          "path_delay_dispersion_ns": 55226,
+          "strictly_before_any_fault": true
+        }
+      ],
+      "impaired_window_sample": {
+        "ptp4l_log_time": 893.531,
+        "path_delay_ns": 103484,
+        "path_delay_dispersion_ns": 55226,
+        "strictly_before_any_fault": true
+      },
+      "usable_as_pre_action_impact": true
+    },
+    {
+      "run": "20260913_s14_jnoact3",
+      "condition": "jitter_fault_no_action",
+      "netem": "delay 100us 200us distribution normal",
+      "fault_transition_ptp4l_time": null,
+      "servo_samples": [
+        {
+          "ptp4l_log_time": 1126.029,
+          "path_delay_ns": 21275,
+          "path_delay_dispersion_ns": 6293,
+          "strictly_before_any_fault": true
+        },
+        {
+          "ptp4l_log_time": 1142.053,
+          "path_delay_ns": 124255,
+          "path_delay_dispersion_ns": 53777,
+          "strictly_before_any_fault": true
+        }
+      ],
+      "impaired_window_sample": {
+        "ptp4l_log_time": 1142.053,
+        "path_delay_ns": 124255,
+        "path_delay_dispersion_ns": 53777,
+        "strictly_before_any_fault": true
+      },
+      "usable_as_pre_action_impact": true
+    },
+    {
+      "run": "20260913_s14_jnoact4",
+      "condition": "jitter_fault_no_action",
+      "netem": "delay 100us 200us distribution normal",
+      "fault_transition_ptp4l_time": null,
+      "servo_samples": [
+        {
+          "ptp4l_log_time": 1373.271,
+          "path_delay_ns": 21525,
+          "path_delay_dispersion_ns": 7876,
+          "strictly_before_any_fault": true
+        },
+        {
+          "ptp4l_log_time": 1389.293,
+          "path_delay_ns": 86913,
+          "path_delay_dispersion_ns": 33330,
+          "strictly_before_any_fault": true
+        }
+      ],
+      "impaired_window_sample": {
+        "ptp4l_log_time": 1389.293,
+        "path_delay_ns": 86913,
+        "path_delay_dispersion_ns": 33330,
+        "strictly_before_any_fault": true
+      },
+      "usable_as_pre_action_impact": true
+    },
+    {
+      "run": "20260913_s14_jnoact5",
+      "condition": "jitter_fault_no_action",
+      "netem": "delay 100us 200us distribution normal",
+      "fault_transition_ptp4l_time": null,
+      "servo_samples": [
+        {
+          "ptp4l_log_time": 1621.293,
+          "path_delay_ns": 20082,
+          "path_delay_dispersion_ns": 4943,
+          "strictly_before_any_fault": true
+        },
+        {
+          "ptp4l_log_time": 1637.317,
+          "path_delay_ns": 112647,
+          "path_delay_dispersion_ns": 56199,
+          "strictly_before_any_fault": true
+        }
+      ],
+      "impaired_window_sample": {
+        "ptp4l_log_time": 1637.317,
+        "path_delay_ns": 112647,
+        "path_delay_dispersion_ns": 56199,
+        "strictly_before_any_fault": true
+      },
+      "usable_as_pre_action_impact": true
+    }
+  ],
+  "interpretation_rules": [
+    "These are receiver-measured protocol observations. They are NOT harm labels.",
+    "Harmfulness remains UNKNOWN: no service requirement has been specified against which a path-delay dispersion could be judged harmful.",
+    "The action arm contributes no pre-action impact evidence and is excluded from it.",
+    "Under free_running with a shared host clock this is a protocol-level estimate over software timestamps, not a calibrated physical timing measurement.",
+    "One impaired-window sample per run; ptp4l emits this summary only periodically."
+  ]
+}

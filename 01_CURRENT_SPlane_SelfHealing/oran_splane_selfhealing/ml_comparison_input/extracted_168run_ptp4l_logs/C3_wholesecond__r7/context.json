@@ -1,0 +1,7 @@
+{ "scenario":"C3_wholesecond", "class":"attack", "fault_id":"C3", "rep":901,
+  "gm_allowlist":["020000fffe00000a","020000fffe00000b"],
+  "provisioned_backup_gm":"020000fffe00000b",
+  "expected_bc_identity":"020000fffe000001",
+  "expected_client_identities":["020000fffe00000c","020000fffe00000d","020000fffe00000e"],
+  "expected_steps_removed_at_ru":1, "maintenance_window_open":false, "leap_window_open":false,
+  "description":"Whole-second field abuse: forged Announce (spoofed GM id) leap61=1, currentUtcOffset=0 (true=37), timeTraceable/UTCvalid stripped - IEEE 1588-2019 7.2.4" }

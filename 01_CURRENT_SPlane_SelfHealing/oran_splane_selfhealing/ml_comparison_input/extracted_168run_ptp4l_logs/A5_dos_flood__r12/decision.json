@@ -1,0 +1,65 @@
+{
+  "scenario": "A5_dos_flood",
+  "truth_class": "attack",
+  "truth_fault": "A5",
+  "verdict": "ATTACK",
+  "fault_hint": "A5",
+  "reasons": [
+    "Source(s) transmitting Announce far above the rate they themselves declare (G.8275.1 mandates 8/s): {'0000000000000000': {'observed_hz': 759.81, 'declared_hz': 1.0, 'n': 36081}}"
+  ],
+  "evidence": {
+    "n_packets": 42357,
+    "n_announce": 36461,
+    "allowlist": [
+      "020000fffe000001",
+      "020000fffe00000a",
+      "020000fffe00000b"
+    ],
+    "illegal_clockclass_pkts": 36081,
+    "nonconformant_priority1_pkts": 36081,
+    "out_of_profile_domain_pkts": 36081,
+    "wrong_multicast_pkts": 0,
+    "stepsRemoved_ge_255_pkts": 0,
+    "alternate_master_flag_pkts": 0,
+    "gm_identities": {
+      "020000fffe000001": 2,
+      "020000fffe00000a": 378,
+      "0000000000000000": 36081
+    },
+    "off_allowlist_sustained": {
+      "0000000000000000": 36081
+    },
+    "provisioned_gms_seen": [
+      "020000fffe00000a"
+    ],
+    "maintenance_window_open": false,
+    "ptp_sources": {
+      "020000fffe000001": 4087,
+      "020000fffe00000e": 732,
+      "020000fffe00000d": 757,
+      "020000fffe00000c": 700,
+      "0000000000000000": 36081
+    },
+    "unknown_sources_sustained": {
+      "0000000000000000": 36081
+    },
+    "announce_rate_self_inconsistent": {
+      "0000000000000000": {
+        "observed_hz": 759.81,
+        "declared_hz": 1.0,
+        "n": 36081
+      }
+    },
+    "capture_span_s": 47.487,
+    "unknown_relaying_sources": {},
+    "unknown_selfannouncing_sources": {
+      "0000000000000000": {
+        "n": 36081,
+        "self_announce_pkts": 36081
+      }
+    },
+    "sequence_regressions": 0,
+    "nonconformant_sync_cadence_pkts": 0,
+    "nonconformant_announce_cadence_pkts": 36081
+  }
+}

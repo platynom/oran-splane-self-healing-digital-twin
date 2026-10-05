@@ -1,0 +1,12 @@
+run_id=sb3 arm=no_action condition=baseline_clean phase=setup event=topology_created utc=2026-09-13T17:10:12Z monotonic_s=959.50 status=PASS
+run_id=sb3 arm=no_action condition=baseline_clean phase=setup event=tcpdump_seg1_ready utc=2026-09-13T17:10:15Z monotonic_s=962.57 status=PASS
+run_id=sb3 arm=no_action condition=baseline_clean phase=setup event=tcpdump_seg2_ready utc=2026-09-13T17:10:15Z monotonic_s=962.58 status=PASS
+run_id=sb3 arm=no_action condition=baseline_clean phase=setup event=master_a_ready utc=2026-09-13T17:10:15Z monotonic_s=962.59 status=PASS
+run_id=sb3 arm=no_action condition=baseline_clean phase=setup event=master_b_ready utc=2026-09-13T17:10:15Z monotonic_s=962.60 status=PASS
+run_id=sb3 arm=no_action condition=baseline_clean phase=setup event=slave_ready utc=2026-09-13T17:10:15Z monotonic_s=962.61 status=PASS
+run_id=sb3 arm=no_action condition=baseline_clean phase=setup event=live_detector_ready utc=2026-09-13T17:10:17Z monotonic_s=964.63 status=PASS
+run_id=sb3 arm=no_action condition=baseline_clean phase=trial event=phase1_clean_started utc=2026-09-13T17:10:17Z monotonic_s=964.65 status=PASS
+run_id=sb3 arm=no_action condition=baseline_clean phase=trial event=phase1_clean_recorded utc=2026-09-13T17:10:29Z monotonic_s=976.86 status=PASS
+run_id=sb3 arm=no_action condition=baseline_clean phase=trial event=phase2_baseline_clean_continued utc=2026-09-13T17:10:29Z monotonic_s=976.87 status=PASS
+run_id=sb3 arm=no_action condition=baseline_clean phase=trial event=phase2_end_recorded utc=2026-09-13T17:10:59Z monotonic_s=1007.14 status=PASS
+run_id=sb3 arm=no_action condition=baseline_clean phase=trial event=phase_finished utc=2026-09-13T17:10:59Z monotonic_s=1007.16 status=PASS

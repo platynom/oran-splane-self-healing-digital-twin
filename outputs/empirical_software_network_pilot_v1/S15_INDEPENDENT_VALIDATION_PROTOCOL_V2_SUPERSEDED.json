@@ -1,0 +1,288 @@
+{
+ "schema_version": "s15-independent-validation-protocol-v2-2026-09-13",
+ "status": "FROZEN_BEFORE_ANY_S15_RUN",
+ "supersedes": "S15_INDEPENDENT_VALIDATION_PROTOCOL.json (v1). The v1 file is retained in place with status SUPERSEDED_BEFORE_ANY_RUN, and a byte-identical archive copy is kept as S15_INDEPENDENT_VALIDATION_PROTOCOL_V1_SUPERSEDED.json. No S15 run existed when v1 was superseded; the absence of any s15_runs directory was checked immediately before this file was written.",
+ "why_v2_exists": [
+  "v1 defined the receiver statistic as 'the maximum dispersion among servo samples recorded after the netem apply event'. The S14 development value was in fact a single summary window, not a maximum across several. A last summary and a maximum across several summaries are different measures, so v1 would have compared the detector against a statistic the boundary was never derived from. v2 uses one statistic for both: the dispersion of the FIRST valid wholly-in-phase summary window.",
+  "v1 did not state how a summary window is aligned to a phase. ptp4l summary windows are sample-count driven and a window that straddles the netem apply instant mixes two phases. v2 requires the whole window to lie inside the intended phase and declares a minimum window count.",
+  "v1 labels IMPACTED / NOT_IMPACTED read as harm claims. v2 uses RECEIVER_DISPERSION_ABOVE_BOUNDARY / BELOW_BOUNDARY, which name a measurement category only.",
+  "v1 ordered the five levels in fixed ascending sequence in every repetition, confounding level with position in the batch. v2 uses a counterbalanced randomised order fixed in advance from a recorded seed.",
+  "The impaired phase was lengthened from 50 s to 80 s so that at least two whole summary windows fall inside it."
+ ],
+ "purpose": "Test whether the packet detector's run-level decision agrees with an independently computed, receiver-side measurement label across a graded jitter sweep including levels between the two S14 settings. The measurement label is produced by ptp4l's servo, not by the detector.",
+ "development_exclusion": "The receiver statistic and its boundary were derived from S14 data. S14, S11, S12 and all V1-V5 runs are development data and are excluded from S15 estimation. S15 runs are the independent test set and must not be used to retune anything.",
+ "not_claimed": "S15 can establish only whether a packet-level decision agrees with a receiver-side path-delay dispersion measurement in this software testbed. It cannot establish harm, service impact, physical timing accuracy, attack detection, recovery benefit, or O-RAN conformance. Harmfulness remains UNKNOWN: no service requirement has been specified against which a path-delay dispersion could be judged harmful. S14's agreement between configured condition and measured dispersion is NOT validated harmful-versus-harmless classification.",
+ "frozen_rule": {
+  "v1_engine_sha256": "1c1d7edfbcc38b6e0c950984eff72b58592160c71ad8e797ff719d4aee0b8d0e",
+  "v3_nonoverlap_engine_sha256": "ee328876367e6547878f85eed60405624f55bd21a03348f4d9527fd302250172",
+  "live_detector_sha256": "897ed8833e5c5615acf2d725add0da0282a65ce9067a0793c1b9117077bcec84",
+  "s15_trial_runner_sha256": "72b2aed07e3186c3d176fd0c6b157b56fb21c99b6363b27e5f5b4c87ff2b6540",
+  "s15_batch_runner_sha256": "79387ad8045bbce8881ece30b47f031f58dd72c024f054a32fc40ffe185fe3f4",
+  "receiver_measurement_script_sha256": "93700f686381a4da447932b56959f2d421630e74ee9c87493c38691fa94bec5a",
+  "detector_standard_deviation_threshold_s": 0.00016,
+  "detector_block_size_matched_sync_followup_gap_samples": 8,
+  "detector_high_block_count": 2,
+  "detector_high_block_window_s": 3.0,
+  "detector_note": "Eight matched Sync/Follow_Up arrival-gap samples per block; two high, disjoint blocks within three seconds. Blocks need not be consecutive. 160 us is provisional engineering configuration, not a validated harm boundary.",
+  "hash_note": "The trial and batch runner hashes differ from v1 because the impaired phase was lengthened and the trial order was fixed. Both edits were made before any S15 run existed. v1's recorded hashes are preserved in the superseded file.",
+  "s15_evaluator_sha256": "10953a9b80e65eb88a7a03f3cccc1232c59bb4334edd0a285e96e3c2ed27c348",
+  "evaluator_note": "evaluate_s15.py executes this protocol and contains no tunable parameter. Its boundary, minimum window count and ambiguity band are quoted from this file. Any edit to the evaluator after the first S15 run invalidates the validation.",
+  "s15_smoke_runner_sha256": "e129309dc516e2a968f984d4bdc729bfe2dd0e8cb2c0415cf6dccc5aa5838d08",
+  "s15_smoke_checker_sha256": "6a3ff98f5e528a61b3be683351abdbcb45b6c6c69acba06a0b40412eab595874"
+ },
+ "topology": "Two independent L2 bridges, one master per segment, one slaveOnly ptp4l with a port on each. Identical to S14. A run whose receiver enters MASTER on either port is recorded UNKNOWN.",
+ "host_clock_protection": "ptp4l runs with free_running 1 on every instance. The host software clock is never disciplined and no host network outside the created namespaces is modified.",
+ "conditions": {
+  "j020": {
+   "n": 6,
+   "arm": "no_action",
+   "netem": "delay 100us 020us distribution normal"
+  },
+  "j060": {
+   "n": 6,
+   "arm": "no_action",
+   "netem": "delay 100us 060us distribution normal"
+  },
+  "j100": {
+   "n": 6,
+   "arm": "no_action",
+   "netem": "delay 100us 100us distribution normal"
+  },
+  "j140": {
+   "n": 6,
+   "arm": "no_action",
+   "netem": "delay 100us 140us distribution normal"
+  },
+  "j200": {
+   "n": 6,
+   "arm": "no_action",
+   "netem": "delay 100us 200us distribution normal"
+  }
+ },
+ "why_these_levels": "Mean delay is held at 100 us in every arm so it cannot separate conditions; only configured jitter varies. j020 and j200 reproduce the two S14 settings; j060, j100 and j140 lie between them so the decision boundary is not pre-baked into the design.",
+ "trial_ordering": {
+  "design": "Counterbalanced and randomised, fixed before any run. Repetitions 1-5 are the rows of a 5x5 cyclic Latin square whose level labels and row order were randomly permuted; repetition 6 is one additional randomly permuted sequence.",
+  "seed": 20260913,
+  "generator": "python random.Random(20260913): shuffle level labels, build cyclic square, shuffle rows, then shuffle one extra repetition",
+  "order": [
+   {
+    "repetition": 1,
+    "sequence": [
+     "j200",
+     "j060",
+     "j020",
+     "j100",
+     "j140"
+    ]
+   },
+   {
+    "repetition": 2,
+    "sequence": [
+     "j100",
+     "j140",
+     "j200",
+     "j060",
+     "j020"
+    ]
+   },
+   {
+    "repetition": 3,
+    "sequence": [
+     "j140",
+     "j200",
+     "j060",
+     "j020",
+     "j100"
+    ]
+   },
+   {
+    "repetition": 4,
+    "sequence": [
+     "j020",
+     "j100",
+     "j140",
+     "j200",
+     "j060"
+    ]
+   },
+   {
+    "repetition": 5,
+    "sequence": [
+     "j060",
+     "j020",
+     "j100",
+     "j140",
+     "j200"
+    ]
+   },
+   {
+    "repetition": 6,
+    "sequence": [
+     "j060",
+     "j200",
+     "j020",
+     "j140",
+     "j100"
+    ]
+   }
+  ],
+  "position_counts_slot1_to_slot5": {
+   "j020": [
+    1,
+    1,
+    2,
+    1,
+    1
+   ],
+   "j060": [
+    2,
+    1,
+    1,
+    1,
+    1
+   ],
+   "j100": [
+    1,
+    1,
+    1,
+    1,
+    2
+   ],
+   "j140": [
+    1,
+    1,
+    1,
+    2,
+    1
+   ],
+   "j200": [
+    1,
+    2,
+    1,
+    1,
+    1
+   ]
+  },
+  "balance_note": "Across repetitions 1-5 each level occupies each position exactly once. Repetition 6 adds one extra occurrence per level, so one position per level has count 2. Perfect balance is not attainable with six repetitions of five levels.",
+  "binding": "The same sequences are written literally into run_s15_validation_batch.sh, whose sha256 is recorded above. The script does not regenerate the order at run time."
+ },
+ "phases": {
+  "clean_settle_s": 12,
+  "impaired_s": 80,
+  "impaired_length_reason": "S14's impaired phase was 30 s and produced exactly one wholly-in-phase servo summary window per run, because ptp4l printed a summary about every 16.0 s under this configuration and the window straddling the apply instant is discarded. One window per run cannot satisfy the two-window minimum, so the S15 impaired phase is 80 s. At a 16 s cadence that yields about five printed summaries after the apply instant, of which about four lie wholly inside the phase. The lengthening was decided before any S15 run and affects only how many windows exist, not which window is used: the statistic remains the FIRST valid window.",
+  "s14_cadence_evidence": "20260913_s14_jnoact1: ptp4l start 617.11, apply 629.35, summaries at 629.576 (first after start, invalid) and 645.597 (window 629.576-645.597, duration 16.021 s, valid). Phase ended 659.58 before a third summary was printed."
+ },
+ "receiver_measurement": {
+  "source": "ptp4l receiver servo summary line in slave.log, field `delay <mean> +/- <dispersion>`, nanoseconds",
+  "semantics_provenance": "linuxptp clock.c: clock_stats_update prints on sample count reaching max_count; clock_stats_display then calls stats_reset on offset, freq and delay. Window = (previous summary, this summary]. Units nanoseconds per ptp4l(8).",
+  "documentation_provenance": "ptp4l(8) summary_interval: power of two in seconds, default 0 (1 second), units nanoseconds and ppb",
+  "statistic": "The dispersion of the FIRST valid wholly-in-phase summary window of the impaired phase. This is the same statistic used on the S14 development data that produced the boundary.",
+  "why_not_a_maximum": "A maximum over an unspecified number of windows depends on how many windows a run happens to produce, so it is not comparable between runs or between S14 and S15.",
+  "validity_rule": "A summary window is valid only if window_start >= the phase apply instant AND window_end < any port FAULTY transition. Window_start is the timestamp of the preceding printed summary because a printed summary aggregates the half-open interval (previous summary, this summary]. The first summary after ptp4l start is always invalid because its window has no recorded start.",
+  "minimum_valid_windows_per_run": 2,
+  "insufficient_windows_rule": "A run producing fewer than two valid wholly-in-phase windows is recorded UNKNOWN with reason insufficient_valid_windows. It is reported, never silently dropped.",
+  "phase_alignment": {
+   "apply_instant_source": "events.log event=phase2_graded_jitter_applied_seg1, field monotonic_s",
+   "comparison": "ptp4l printed log time versus the runner's host monotonic clock",
+   "evidence": [
+    {
+     "run": "20260913_s14_jact1",
+     "ptp4l_fault_time": 608.059,
+     "detector_monotonic": 608.059931,
+     "difference_s": -0.000931
+    },
+    {
+     "run": "20260913_s14_jact2",
+     "ptp4l_fault_time": 835.611,
+     "detector_monotonic": 835.611429,
+     "difference_s": -0.000429
+    },
+    {
+     "run": "20260913_s14_jact3",
+     "ptp4l_fault_time": 1089.168,
+     "detector_monotonic": 1089.168457,
+     "difference_s": -0.000457
+    },
+    {
+     "run": "20260913_s14_jact4",
+     "ptp4l_fault_time": 1337.543,
+     "detector_monotonic": 1337.54374,
+     "difference_s": -0.00074
+    },
+    {
+     "run": "20260913_s14_jact5",
+     "ptp4l_fault_time": 1580.134,
+     "detector_monotonic": 1580.133979,
+     "difference_s": 2.1e-05
+    }
+   ],
+   "n_anchors": 5,
+   "max_abs_difference_s": 0.000931,
+   "precision_claim": "The two timebases agree to within 0.93 ms over anchors spanning roughly 16 minutes of run time.",
+   "limitation": "The anchor is a command and its direct effect, so the difference also contains the true command-to-fault latency. It bounds the clock offset from above; it does not prove a zero offset.",
+   "consequence": "A window boundary within 1 ms of the apply instant cannot be resolved. Windows are about 16 s long, so a 1 ms ambiguity cannot move a window from wholly-in-phase to straddling in any realistic case; if a boundary does fall within 1 ms of the apply instant the window is treated as invalid."
+  },
+  "boundary_ns": 29000,
+  "boundary_provenance": "Midpoint of the S14 development separation under this same statistic: benign_delay_jitter maximum 24615 ns and jitter-fault minimum 33330 ns. Their midpoint is 28972.5 ns, rounded to 29000 ns for a readable frozen constant. The rounding moves the boundary 27.5 ns towards the fault side, which is 0.3 percent of the 8715 ns separation and cannot change any S14 development label. Derived from development data; S15 is its first independent test.",
+  "labels": {
+   "RECEIVER_DISPERSION_ABOVE_BOUNDARY": "first valid window dispersion >= 29000 ns",
+   "RECEIVER_DISPERSION_BELOW_BOUNDARY": "first valid window dispersion < 29000 ns"
+  },
+  "label_semantics": "RECEIVER_DISPERSION_ABOVE_BOUNDARY / BELOW_BOUNDARY are names for a measurement category only. They are NOT harm labels, NOT fault labels and NOT service-impact labels. Harmfulness remains UNKNOWN.",
+  "independence_caveat": "A separate receiver-computed channel, produced by ptp4l rather than the detector. NOT statistically independent of the packet observations: both arise from the same traffic.",
+  "unknown_rules": [
+   "fewer than two valid wholly-in-phase windows",
+   "no valid wholly-in-phase window at all",
+   "receiver entered MASTER on either port",
+   "run unsealed or any manifest hash mismatch",
+   "trial died before phase2_end_recorded",
+   "detector trigger timing unresolvable (see detector_decision)"
+  ]
+ },
+ "detector_decision": {
+  "quantity": "Per run: whether the live detector recorded a detection_trigger event attributable to the impaired phase. Nothing else.",
+  "observation_window_rule": "A detection_trigger counts only if the packet timestamp that produced it (packet_ts, pcap epoch seconds) is later than the apply instant. The apply instant in epoch terms is taken from the events.log utc field, which has 1 s resolution; the pcap epoch clock and the host monotonic clock are NOT assumed comparable and no duration is computed across them.",
+  "ambiguity_rule": "If a run's only detection_trigger has a packet_ts within +/- 1 s of the apply instant's recorded utc second, the run is recorded UNKNOWN with reason trigger_timing_unresolvable.",
+  "no_trigger": "A run with no qualifying detection_trigger is recorded as NO_TRIGGER, which is a definite outcome, not UNKNOWN."
+ },
+ "analysis": {
+  "unit": "run",
+  "primary": "2x2 agreement between the receiver measurement label and the detector decision, over all runs with a definite label and a definite detector outcome",
+  "report": [
+   "counts per condition",
+   "the 2x2 table",
+   "sensitivity and specificity with Wilson 95 percent intervals, where sensitivity is the trigger rate among ABOVE_BOUNDARY runs and specificity the no-trigger rate among BELOW_BOUNDARY runs",
+   "per-condition detector trigger rate and per-condition above-boundary rate",
+   "every UNKNOWN run with its reason",
+   "the first-valid-window dispersion of every run, including UNKNOWN runs where one exists",
+   "the number of valid windows found per run"
+  ],
+  "terminology": "Runs triggering without an above-boundary measurement are reported as trigger-without-above-boundary, and above-boundary runs without a trigger as missed-above-boundary. Neither is called a false positive or a miss with respect to harm, because harm is not measured here.",
+  "no_retuning": "No threshold, condition, statistic, label rule, ordering or exclusion may change after the first S15 run. If the result is poor, it is reported as poor."
+ },
+ "prespecified_interpretation": {
+  "sensitivity_and_specificity_both_at_least_0.8_with_lower_bounds_above_0.5": "the detector's run-level decision agrees with the receiver-side dispersion boundary across the sweep in this testbed",
+  "high_sensitivity_low_specificity": "the detector triggers at jitter levels the receiver measurement places below the boundary; report the levels where they diverge",
+  "low_sensitivity_high_specificity": "the detector fails to trigger on above-boundary runs; report the levels where it fails",
+  "agreement_no_better_than_the_majority_label": "the detector decision is not shown to track the receiver-side measurement",
+  "most_runs_UNKNOWN": "the measurement plan failed; report it as a failed validation attempt and do not substitute another label source",
+  "intermediate_levels_split_within_a_condition": "the boundary falls inside the swept range; report the crossing level and do not adjust the boundary"
+ },
+ "smoke_test": {
+  "requirement": "Exactly one isolated smoke run is executed before the batch, into a directory outside s15_runs, and is excluded from all S15 estimation.",
+  "checks": [
+   "written ptp4l configs contain free_running 1",
+   "host clock is not disciplined and no host-network change outside created namespaces",
+   "slave.log contains servo summary lines",
+   "at least two valid wholly-in-phase windows are found by the frozen measurement script",
+   "writers close gracefully and the run seals",
+   "every manifest hash verifies"
+  ],
+  "on_failure": "Fix and repeat the smoke test. The batch does not start until a smoke run passes. Failed smoke runs are preserved.",
+  "runner": "run_s15_smoke.sh writes to s15_smoke/<UTC stamp>/ and then runs check_s15_smoke.py, which exits non-zero if any check fails.",
+  "exclusion_mechanism": "Structural, not procedural: evaluate_s15.py reads only s15_runs/, and the smoke run is written to s15_smoke/. The smoke run cannot enter S15 estimation even by mistake."
+ },
+ "failure_and_exclusion_handling": "Preserve every attempt including failures. Never delete or rename a run directory. A trial that dies is retained with its reason and counted as UNKNOWN.",
+ "planned_runs": 30,
+ "s15_runs_present_at_freeze": false
+}

@@ -1,0 +1,361 @@
+
+=============== STAGE 0  preflight ===============
+ptp4l: 3.1.1
+started_utc=2026-09-13T23:51:14Z
+
+=============== STAGE 1  frozen-artifact integrity ===============
+OK    897ed8833e5c5615acf2d725add0da0282a65ce9067a0793c1b9117077bcec84 live_detect_and_act.py
+OK    1ca48e2605762c62c9f1e83d0a1182eaeb32cafb0636bf5e21a3bf04986ce07a run_s15_validation_trial.sh
+OK    6ff22f693419929adcf4659793cd18e2eca34122a7e4e7dcdb1a3d4a25cdc23e run_s15_validation_batch.sh
+OK    c6adc2be909ced7751b45c733295cb6ee99e5d10ce3b15688f3c500f7e9f7841 evaluate_s15.py
+OK    91693b87d51429c236d8997b650a32abdb239ed0610ff1971b7c21eef4bff01f run_s15_smoke.sh
+OK    0e0720663c8127ba0ea5b5c06d1e84b33e4201b5c1b5ac6adcd82fa9d3d77582 check_s15_smoke.py
+OK    7e32076d79018eb0234d8a65768e9b06c1e0878debb363fcfb3f6383063188b0 apply_impairment.py
+OK    1999e6c5fe13a182a31afefa16519c63523105627be377b93fe6ea725ddb54df run_s15_complete.sh
+OK    ecb8b2f890b17c486ca5218ec6ed364edf77392921667c440c819f17fa1480d0 prepare_s14_dataset.py
+OK    fdf6c6e87331373aba8a59f3fe46ac81932c5641247ec12909809eae677eb985 build_s14_packet_xlsx.py
+all frozen artifacts verify
+
+=============== STAGE 2  isolated smoke run (excluded from estimation by construction) ===============
+=== S15 smoke run -> /mnt/c/Users/Admin/Documents/AI-Native Self-Healing O-RAN Network using a Digital Twin/outputs/empirical_software_network_pilot_v1/s15_smoke/20260913T235114Z ===
+s15 trial complete: /mnt/c/Users/Admin/Documents/AI-Native Self-Healing O-RAN Network using a Digital Twin/outputs/empirical_software_network_pilot_v1/s15_smoke/20260913T235114Z condition=j100 arm=no_action
+{
+  "smoke_run": "/mnt/c/Users/Admin/Documents/AI-Native Self-Healing O-RAN Network using a Digital Twin/outputs/empirical_software_network_pilot_v1/s15_smoke/20260913T235114Z",
+  "checks": [
+    {
+      "check": "every written ptp4l config sets free_running 1",
+      "pass": true,
+      "detail": {
+        "configs": [
+          "master_a.conf",
+          "master_b.conf",
+          "slave.conf"
+        ],
+        "without_free_running": []
+      }
+    },
+    {
+      "check": "run environment records that host clock adjustment is disabled",
+      "pass": true,
+      "detail": {
+        "run_environment_present": true
+      }
+    },
+    {
+      "check": "receiver produced servo summary lines",
+      "pass": true,
+      "detail": {
+        "servo_summary_lines": 6
+      }
+    },
+    {
+      "check": "detector lifetime bound covers the declared observation period",
+      "pass": true,
+      "detail": {
+        "settle_s": 12.0,
+        "impair_s": 80.0,
+        "detector_max_seconds": 172.0,
+        "required_minimum": 92.0
+      }
+    },
+    {
+      "check": "detector observed the whole impaired phase and exited on stream close, not on its watchdog",
+      "pass": true,
+      "detail": {
+        "detector_finished_monotonic_s": 103.16975,
+        "phase2_end_recorded_monotonic_s": 103.044606,
+        "record_before_detector_finished": "stream_ended",
+        "detector_frames": 3388
+      }
+    },
+    {
+      "check": "the apply instant was recorded as a bracketed interval, not a single coarse timestamp",
+      "pass": true,
+      "detail": {
+        "apply_basis": "bracketed interval",
+        "apply_uncertainty_s": 0.005541,
+        "apply_begin_monotonic_s": 22.854428,
+        "apply_upper_bound_s": 22.859969
+      }
+    },
+    {
+      "check": "at least 2 wholly-in-phase summary windows",
+      "pass": true,
+      "detail": {
+        "valid_window_count": 4,
+        "first_valid_window_dispersion_ns": 29787,
+        "apply_monotonic_s": 22.859969,
+        "phase_end_monotonic_s": 103.044606,
+        "window_durations_s": [
+          null,
+          16.015,
+          16.012,
+          16.016,
+          16.017,
+          16.016
+        ],
+        "every_valid_window_inside_declared_phase": [
+          {
+            "start": 38.821,
+            "end": 54.833
+          },
+          {
+            "start": 54.833,
+            "end": 70.849
+          },
+          {
+            "start": 70.849,
+            "end": 86.866
+          },
+          {
+            "start": 86.866,
+            "end": 102.882
+          }
+        ]
+      }
+    },
+    {
+      "check": "all writers closed gracefully",
+      "pass": true,
+      "detail": {
+        "writer_exit_status_present": true,
+        "nonzero_lines": []
+      }
+    },
+    {
+      "check": "run is sealed and every manifest hash verifies",
+      "pass": true,
+      "detail": {
+        "problems": []
+      }
+    }
+  ],
+  "all_passed": true,
+  "observed_receiver_label": "RECEIVER_DISPERSION_ABOVE_BOUNDARY",
+  "observed_detector_outcome": "NO_TRIGGER",
+  "note": "This run is a configuration and integrity check only. Its label and detector outcome are NOT evidence for or against the hypothesis and are excluded from S15 estimation. It is stored under s15_smoke/, which evaluate_s15.py never reads."
+}
+
+=============== STAGE 3  the 30-trial batch ===============
+=== S15 batch started 2026-09-13T23:52:54Z ===
+=== S15 Repetition 1 / 6 : j200 j060 j020 j100 j140 ===
+s15 trial complete: /mnt/c/Users/Admin/Documents/AI-Native Self-Healing O-RAN Network using a Digital Twin/outputs/empirical_software_network_pilot_v1/s15_runs/20260913_s15_j200_r1 condition=j200 arm=no_action
+s15 trial complete: /mnt/c/Users/Admin/Documents/AI-Native Self-Healing O-RAN Network using a Digital Twin/outputs/empirical_software_network_pilot_v1/s15_runs/20260913_s15_j060_r1 condition=j060 arm=no_action
+s15 trial complete: /mnt/c/Users/Admin/Documents/AI-Native Self-Healing O-RAN Network using a Digital Twin/outputs/empirical_software_network_pilot_v1/s15_runs/20260913_s15_j020_r1 condition=j020 arm=no_action
+s15 trial complete: /mnt/c/Users/Admin/Documents/AI-Native Self-Healing O-RAN Network using a Digital Twin/outputs/empirical_software_network_pilot_v1/s15_runs/20260913_s15_j100_r1 condition=j100 arm=no_action
+s15 trial complete: /mnt/c/Users/Admin/Documents/AI-Native Self-Healing O-RAN Network using a Digital Twin/outputs/empirical_software_network_pilot_v1/s15_runs/20260913_s15_j140_r1 condition=j140 arm=no_action
+=== S15 Repetition 2 / 6 : j100 j140 j200 j060 j020 ===
+s15 trial complete: /mnt/c/Users/Admin/Documents/AI-Native Self-Healing O-RAN Network using a Digital Twin/outputs/empirical_software_network_pilot_v1/s15_runs/20260913_s15_j100_r2 condition=j100 arm=no_action
+s15 trial complete: /mnt/c/Users/Admin/Documents/AI-Native Self-Healing O-RAN Network using a Digital Twin/outputs/empirical_software_network_pilot_v1/s15_runs/20260913_s15_j140_r2 condition=j140 arm=no_action
+s15 trial complete: /mnt/c/Users/Admin/Documents/AI-Native Self-Healing O-RAN Network using a Digital Twin/outputs/empirical_software_network_pilot_v1/s15_runs/20260913_s15_j200_r2 condition=j200 arm=no_action
+s15 trial complete: /mnt/c/Users/Admin/Documents/AI-Native Self-Healing O-RAN Network using a Digital Twin/outputs/empirical_software_network_pilot_v1/s15_runs/20260913_s15_j060_r2 condition=j060 arm=no_action
+s15 trial complete: /mnt/c/Users/Admin/Documents/AI-Native Self-Healing O-RAN Network using a Digital Twin/outputs/empirical_software_network_pilot_v1/s15_runs/20260913_s15_j020_r2 condition=j020 arm=no_action
+=== S15 Repetition 3 / 6 : j140 j200 j060 j020 j100 ===
+s15 trial complete: /mnt/c/Users/Admin/Documents/AI-Native Self-Healing O-RAN Network using a Digital Twin/outputs/empirical_software_network_pilot_v1/s15_runs/20260913_s15_j140_r3 condition=j140 arm=no_action
+s15 trial complete: /mnt/c/Users/Admin/Documents/AI-Native Self-Healing O-RAN Network using a Digital Twin/outputs/empirical_software_network_pilot_v1/s15_runs/20260913_s15_j200_r3 condition=j200 arm=no_action
+s15 trial complete: /mnt/c/Users/Admin/Documents/AI-Native Self-Healing O-RAN Network using a Digital Twin/outputs/empirical_software_network_pilot_v1/s15_runs/20260913_s15_j060_r3 condition=j060 arm=no_action
+s15 trial complete: /mnt/c/Users/Admin/Documents/AI-Native Self-Healing O-RAN Network using a Digital Twin/outputs/empirical_software_network_pilot_v1/s15_runs/20260913_s15_j020_r3 condition=j020 arm=no_action
+s15 trial complete: /mnt/c/Users/Admin/Documents/AI-Native Self-Healing O-RAN Network using a Digital Twin/outputs/empirical_software_network_pilot_v1/s15_runs/20260913_s15_j100_r3 condition=j100 arm=no_action
+=== S15 Repetition 4 / 6 : j020 j100 j140 j200 j060 ===
+s15 trial complete: /mnt/c/Users/Admin/Documents/AI-Native Self-Healing O-RAN Network using a Digital Twin/outputs/empirical_software_network_pilot_v1/s15_runs/20260913_s15_j020_r4 condition=j020 arm=no_action
+s15 trial complete: /mnt/c/Users/Admin/Documents/AI-Native Self-Healing O-RAN Network using a Digital Twin/outputs/empirical_software_network_pilot_v1/s15_runs/20260913_s15_j100_r4 condition=j100 arm=no_action
+s15 trial complete: /mnt/c/Users/Admin/Documents/AI-Native Self-Healing O-RAN Network using a Digital Twin/outputs/empirical_software_network_pilot_v1/s15_runs/20260913_s15_j140_r4 condition=j140 arm=no_action
+s15 trial complete: /mnt/c/Users/Admin/Documents/AI-Native Self-Healing O-RAN Network using a Digital Twin/outputs/empirical_software_network_pilot_v1/s15_runs/20260913_s15_j200_r4 condition=j200 arm=no_action
+s15 trial complete: /mnt/c/Users/Admin/Documents/AI-Native Self-Healing O-RAN Network using a Digital Twin/outputs/empirical_software_network_pilot_v1/s15_runs/20260913_s15_j060_r4 condition=j060 arm=no_action
+=== S15 Repetition 5 / 6 : j060 j020 j100 j140 j200 ===
+s15 trial complete: /mnt/c/Users/Admin/Documents/AI-Native Self-Healing O-RAN Network using a Digital Twin/outputs/empirical_software_network_pilot_v1/s15_runs/20260913_s15_j060_r5 condition=j060 arm=no_action
+s15 trial complete: /mnt/c/Users/Admin/Documents/AI-Native Self-Healing O-RAN Network using a Digital Twin/outputs/empirical_software_network_pilot_v1/s15_runs/20260913_s15_j020_r5 condition=j020 arm=no_action
+s15 trial complete: /mnt/c/Users/Admin/Documents/AI-Native Self-Healing O-RAN Network using a Digital Twin/outputs/empirical_software_network_pilot_v1/s15_runs/20260913_s15_j100_r5 condition=j100 arm=no_action
+s15 trial complete: /mnt/c/Users/Admin/Documents/AI-Native Self-Healing O-RAN Network using a Digital Twin/outputs/empirical_software_network_pilot_v1/s15_runs/20260913_s15_j140_r5 condition=j140 arm=no_action
+s15 trial complete: /mnt/c/Users/Admin/Documents/AI-Native Self-Healing O-RAN Network using a Digital Twin/outputs/empirical_software_network_pilot_v1/s15_runs/20260913_s15_j200_r5 condition=j200 arm=no_action
+=== S15 Repetition 6 / 6 : j060 j200 j020 j140 j100 ===
+s15 trial complete: /mnt/c/Users/Admin/Documents/AI-Native Self-Healing O-RAN Network using a Digital Twin/outputs/empirical_software_network_pilot_v1/s15_runs/20260913_s15_j060_r6 condition=j060 arm=no_action
+s15 trial complete: /mnt/c/Users/Admin/Documents/AI-Native Self-Healing O-RAN Network using a Digital Twin/outputs/empirical_software_network_pilot_v1/s15_runs/20260913_s15_j200_r6 condition=j200 arm=no_action
+s15 trial complete: /mnt/c/Users/Admin/Documents/AI-Native Self-Healing O-RAN Network using a Digital Twin/outputs/empirical_software_network_pilot_v1/s15_runs/20260913_s15_j020_r6 condition=j020 arm=no_action
+s15 trial complete: /mnt/c/Users/Admin/Documents/AI-Native Self-Healing O-RAN Network using a Digital Twin/outputs/empirical_software_network_pilot_v1/s15_runs/20260913_s15_j140_r6 condition=j140 arm=no_action
+s15 trial complete: /mnt/c/Users/Admin/Documents/AI-Native Self-Healing O-RAN Network using a Digital Twin/outputs/empirical_software_network_pilot_v1/s15_runs/20260913_s15_j100_r6 condition=j100 arm=no_action
+S15 batch complete.
+
+=============== STAGE 4  inventory ===============
+run directories: 30
+20260913_s15_j020_r1
+20260913_s15_j020_r2
+20260913_s15_j020_r3
+20260913_s15_j020_r4
+20260913_s15_j020_r5
+20260913_s15_j020_r6
+20260913_s15_j060_r1
+20260913_s15_j060_r2
+20260913_s15_j060_r3
+20260913_s15_j060_r4
+20260913_s15_j060_r5
+20260913_s15_j060_r6
+20260913_s15_j100_r1
+20260913_s15_j100_r2
+20260913_s15_j100_r3
+20260913_s15_j100_r4
+20260913_s15_j100_r5
+20260913_s15_j100_r6
+20260913_s15_j140_r1
+20260913_s15_j140_r2
+20260913_s15_j140_r3
+20260913_s15_j140_r4
+20260913_s15_j140_r5
+20260913_s15_j140_r6
+20260913_s15_j200_r1
+20260913_s15_j200_r2
+20260913_s15_j200_r3
+20260913_s15_j200_r4
+20260913_s15_j200_r5
+20260913_s15_j200_r6
+unsealed run directories: 0
+
+=============== STAGE 5  frozen evaluation ===============
+{
+  "runs_found": 30,
+  "runs_counted": 30,
+  "runs_unknown": 0,
+  "two_by_two": {
+    "above_boundary_and_trigger": 14,
+    "above_boundary_and_no_trigger": 1,
+    "below_boundary_and_trigger": 7,
+    "below_boundary_and_no_trigger": 8,
+    "note": "Rows are the receiver-side dispersion label, columns the detector outcome. Below-boundary-and-trigger is a trigger-without-above-boundary, and above-boundary-and-no-trigger a missed-above-boundary. Neither is a false positive or a miss with respect to harm; harm is not measured here."
+  },
+  "sensitivity_trigger_rate_among_above_boundary": {
+    "point": 0.9333,
+    "low": 0.7018,
+    "high": 0.9881,
+    "n": 15,
+    "k": 14
+  },
+  "specificity_no_trigger_rate_among_below_boundary": {
+    "point": 0.5333,
+    "low": 0.3012,
+    "high": 0.7519,
+    "n": 15,
+    "k": 8
+  },
+  "overall_agreement": 0.7333,
+  "majority_label_rate": 0.5,
+  "prespecified_branch_reached": "the detector triggers at jitter levels the receiver measurement places below the boundary; see per-condition divergence",
+  "per_condition": {
+    "j020": {
+      "runs": 6,
+      "counted": 6,
+      "above_boundary": 0,
+      "below_boundary": 6,
+      "unknown": 0,
+      "triggered_among_counted": 0,
+      "trigger_rate_among_counted": {
+        "point": 0.0,
+        "low": 0.0,
+        "high": 0.3903,
+        "n": 6,
+        "k": 0
+      },
+      "above_boundary_rate_among_counted": {
+        "point": 0.0,
+        "low": 0.0,
+        "high": 0.3903,
+        "n": 6,
+        "k": 0
+      }
+    },
+    "j060": {
+      "runs": 6,
+      "counted": 6,
+      "above_boundary": 0,
+      "below_boundary": 6,
+      "unknown": 0,
+      "triggered_among_counted": 5,
+      "trigger_rate_among_counted": {
+        "point": 0.8333,
+        "low": 0.4365,
+        "high": 0.9699,
+        "n": 6,
+        "k": 5
+      },
+      "above_boundary_rate_among_counted": {
+        "point": 0.0,
+        "low": 0.0,
+        "high": 0.3903,
+        "n": 6,
+        "k": 0
+      }
+    },
+    "j100": {
+      "runs": 6,
+      "counted": 6,
+      "above_boundary": 3,
+      "below_boundary": 3,
+      "unknown": 0,
+      "triggered_among_counted": 4,
+      "trigger_rate_among_counted": {
+        "point": 0.6667,
+        "low": 0.3,
+        "high": 0.9032,
+        "n": 6,
+        "k": 4
+      },
+      "above_boundary_rate_among_counted": {
+        "point": 0.5,
+        "low": 0.1876,
+        "high": 0.8124,
+        "n": 6,
+        "k": 3
+      }
+    },
+    "j140": {
+      "runs": 6,
+      "counted": 6,
+      "above_boundary": 6,
+      "below_boundary": 0,
+      "unknown": 0,
+      "triggered_among_counted": 6,
+      "trigger_rate_among_counted": {
+        "point": 1.0,
+        "low": 0.6097,
+        "high": 1.0,
+        "n": 6,
+        "k": 6
+      },
+      "above_boundary_rate_among_counted": {
+        "point": 1.0,
+        "low": 0.6097,
+        "high": 1.0,
+        "n": 6,
+        "k": 6
+      }
+    },
+    "j200": {
+      "runs": 6,
+      "counted": 6,
+      "above_boundary": 6,
+      "below_boundary": 0,
+      "unknown": 0,
+      "triggered_among_counted": 6,
+      "trigger_rate_among_counted": {
+        "point": 1.0,
+        "low": 0.6097,
+        "high": 1.0,
+        "n": 6,
+        "k": 6
+      },
+      "above_boundary_rate_among_counted": {
+        "point": 1.0,
+        "low": 0.6097,
+        "high": 1.0,
+        "n": 6,
+        "k": 6
+      }
+    }
+  }
+}
+
+=============== STAGE 6  rebuild the complete dataset package (CSV sources, then workbook) ===============
+CSV_PREPARATION_PASS
+Traceback (most recent call last):
+  File "/mnt/c/Users/Admin/Documents/AI-Native Self-Healing O-RAN Network using a Digital Twin/outputs/empirical_software_network_pilot_v1/build_s14_packet_xlsx.py", line 5, in <module>
+    from openpyxl import Workbook
+ModuleNotFoundError: No module named 'openpyxl'

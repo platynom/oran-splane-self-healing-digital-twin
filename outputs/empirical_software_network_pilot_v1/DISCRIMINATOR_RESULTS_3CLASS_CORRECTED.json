@@ -1,0 +1,21 @@
+{
+  "schema_version": "exploratory-offline-correction-v1",
+  "supersedes_interpretation_of": "DISCRIMINATOR_RESULTS_3CLASS.json",
+  "scope": "Post-selection offline leave-one-run exploration on 32 existing Set2/3 runs; not live-loop performance and not a held-out final evaluation.",
+  "legacy_online_result": {"accuracy": 0.96875, "macro_f1": 0.967677},
+  "finite_monte_carlo_correction": {
+    "permutations": 1000,
+    "seed": 42,
+    "legacy_exceedances_reported": 0,
+    "estimator": "(b + 1) / (B + 1)",
+    "corrected_p_value": 0.000999000999000999,
+    "exchangeability": "run-level labels only; this null is descriptive because condition labels and features were selected/inspected in the same development corpus."
+  },
+  "forbidden_interpretations": [
+    "not a live streaming evaluation",
+    "not independent deployment evidence",
+    "not an attack, health, clock-quality, or recovery result",
+    "not evidence that authorised source loss is generally detectable"
+  ],
+  "next_valid_evaluation": "Freeze streaming feature/rule definitions before collecting new run-level control and condition captures; evaluate those fresh runs without changing the frozen configuration."
+}

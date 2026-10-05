@@ -1,0 +1,8 @@
+B3 bottleneck applied: tbf 1mbit limit 40000 on v-bc-dn; bg burst=6 gap=70ms
+/usr/lib/python3/dist-packages/scapy/layers/ipsec.py:512: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  cipher=algorithms.TripleDES,
+/usr/lib/python3/dist-packages/scapy/layers/ipsec.py:516: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  cipher=algorithms.TripleDES,
+qdisc tbf 8013: root refcnt 3 rate 1Mbit burst 3000b lat 296ms 
+ Sent 2196864 bytes 3654 pkt (dropped 0, overlimits 4885 requeues 0) 
+ backlog 0b 0p requeues 0

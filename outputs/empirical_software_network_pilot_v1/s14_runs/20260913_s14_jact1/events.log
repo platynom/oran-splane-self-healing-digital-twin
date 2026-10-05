@@ -1,0 +1,12 @@
+run_id=sja1 arm=action condition=jitter_fault_action phase=setup event=topology_created utc=2026-09-13T17:03:35Z monotonic_s=562.70 status=PASS
+run_id=sja1 arm=action condition=jitter_fault_action phase=setup event=tcpdump_seg1_ready utc=2026-09-13T17:03:38Z monotonic_s=565.81 status=PASS
+run_id=sja1 arm=action condition=jitter_fault_action phase=setup event=tcpdump_seg2_ready utc=2026-09-13T17:03:38Z monotonic_s=565.84 status=PASS
+run_id=sja1 arm=action condition=jitter_fault_action phase=setup event=master_a_ready utc=2026-09-13T17:03:38Z monotonic_s=565.88 status=PASS
+run_id=sja1 arm=action condition=jitter_fault_action phase=setup event=master_b_ready utc=2026-09-13T17:03:38Z monotonic_s=565.92 status=PASS
+run_id=sja1 arm=action condition=jitter_fault_action phase=setup event=slave_ready utc=2026-09-13T17:03:38Z monotonic_s=565.96 status=PASS
+run_id=sja1 arm=action condition=jitter_fault_action phase=setup event=live_detector_ready utc=2026-09-13T17:03:40Z monotonic_s=568.02 status=PASS
+run_id=sja1 arm=action condition=jitter_fault_action phase=trial event=phase1_clean_started utc=2026-09-13T17:03:40Z monotonic_s=568.04 status=PASS
+run_id=sja1 arm=action condition=jitter_fault_action phase=trial event=phase1_clean_recorded utc=2026-09-13T17:03:52Z monotonic_s=580.20 status=PASS
+run_id=sja1 arm=action condition=jitter_fault_action phase=trial event=phase2_jitter_impairment_applied_seg1 utc=2026-09-13T17:03:52Z monotonic_s=580.22 status=PASS
+run_id=sja1 arm=action condition=jitter_fault_action phase=trial event=phase2_end_recorded utc=2026-09-13T17:04:23Z monotonic_s=610.37 status=PASS
+run_id=sja1 arm=action condition=jitter_fault_action phase=trial event=phase_finished utc=2026-09-13T17:04:23Z monotonic_s=610.38 status=PASS

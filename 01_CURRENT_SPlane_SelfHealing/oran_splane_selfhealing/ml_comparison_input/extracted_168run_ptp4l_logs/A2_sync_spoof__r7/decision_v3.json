@@ -1,0 +1,11 @@
+{
+  "scenario": "A2_sync_spoof",
+  "truth_class": "attack",
+  "truth_fault": "A2",
+  "verdict": "ATTACK",
+  "fault_hint": "A2",
+  "reasons": [
+    "PTP transmitted by source(s) not in the provisioned inventory, sustained: ['020000fffe000046']"
+  ],
+  "rule": "decision_rule_v3 (frozen v3)"
+}

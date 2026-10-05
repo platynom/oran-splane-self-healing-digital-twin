@@ -1,0 +1,122 @@
+"""Smoke-run acceptance check required by S15_INDEPENDENT_VALIDATION_PROTOCOL_V5.json.
+
+Verifies the six protocol checks on one isolated run. Exits non-zero if any check fails, so the
+batch cannot be started from a failed smoke run. Reports findings; it does not fix anything.
+"""
+from __future__ import annotations
+import importlib.util, json, re, sys
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parent
+spec = importlib.util.spec_from_file_location("ev", HERE / "evaluate_s15.py")
+ev = importlib.util.module_from_spec(spec); spec.loader.exec_module(ev)
+
+
+def main() -> int:
+    d = Path(sys.argv[1]).resolve()
+    # Guard: never write into a sealed evidence directory. The smoke check writes a result file,
+    # and adding a file to a sealed run is a post-seal modification of raw evidence.
+    if (d / "source_manifest.sha256").is_file() and d.parent.name != "s15_smoke":
+        print(json.dumps({"error": "refusing to run: target is a sealed run directory outside "
+                                   "s15_smoke/. The smoke check writes SMOKE_CHECK.json and must "
+                                   "never add a file to sealed evidence.",
+                          "target": str(d)}, indent=2))
+        return 2
+    checks = []
+
+    def chk(name, ok, detail):
+        checks.append({"check": name, "pass": bool(ok), "detail": detail})
+
+    confs = sorted(d.glob("*.conf"))
+    missing_fr = [c.name for c in confs if "free_running 1" not in c.read_text(errors="replace")]
+    chk("every written ptp4l config sets free_running 1",
+        confs and not missing_fr,
+        {"configs": [c.name for c in confs], "without_free_running": missing_fr})
+
+    envt = (d / "run_environment.txt").read_text(errors="replace") if (d / "run_environment.txt").is_file() else ""
+    chk("run environment records that host clock adjustment is disabled",
+        "host_clock_adjustment=disabled_by_free_running_1" in envt,
+        {"run_environment_present": bool(envt)})
+
+    log = (d / "slave.log").read_text(errors="replace") if (d / "slave.log").is_file() else ""
+    servo = ev.SERVO.findall(log)
+    chk("receiver produced servo summary lines", len(servo) >= 2,
+        {"servo_summary_lines": len(servo)})
+
+    envmap = dict(re.findall(r"^(\w+)=(.*)$", envt, re.M))
+    settle = float(envmap.get("settle_s", "nan")) if envmap.get("settle_s") else None
+    impair = float(envmap.get("impair_s", "nan")) if envmap.get("impair_s") else None
+    detmax = float(envmap.get("detector_max_seconds", "nan")) if envmap.get("detector_max_seconds") else None
+    chk("detector lifetime bound covers the declared observation period",
+        None not in (settle, impair, detmax) and detmax >= settle + impair,
+        {"settle_s": settle, "impair_s": impair, "detector_max_seconds": detmax,
+         "required_minimum": (settle + impair) if None not in (settle, impair) else None})
+
+    recs = []
+    dl = d / "decision_log.jsonl"
+    if dl.is_file():
+        for line in dl.read_text(errors="replace").splitlines():
+            if line.strip():
+                try:
+                    recs.append(json.loads(line))
+                except json.JSONDecodeError:
+                    pass
+    fin = next((r for r in recs if r.get("event") == "detector_finished"), None)
+    closed_by_stream = bool(recs) and recs[-2:-1] and recs[-2].get("event") in ("stream_ended", "stream_truncated")
+    ev_txt = (d / "events.log").read_text(errors="replace")
+    pe = ev.PHASE_END.search(ev_txt)
+    phase_end = float(pe.group(2)) if pe else None
+    covered = (fin is not None and phase_end is not None and fin["monotonic_s"] >= phase_end)
+    chk("detector observed the whole impaired phase and exited on stream close, not on its watchdog",
+        covered and closed_by_stream,
+        {"detector_finished_monotonic_s": (fin or {}).get("monotonic_s"),
+         "phase2_end_recorded_monotonic_s": phase_end,
+         "record_before_detector_finished": (recs[-2].get("event") if len(recs) >= 2 else None),
+         "detector_frames": (fin or {}).get("frames")})
+
+    rm = ev.receiver_measurement(d)
+    chk("the apply instant was recorded as a bracketed interval, not a single coarse timestamp",
+        rm["apply_basis"] == "bracketed interval",
+        {"apply_basis": rm["apply_basis"], "apply_uncertainty_s": rm["apply_uncertainty_s"],
+         "apply_begin_monotonic_s": rm["apply_begin_monotonic_s"],
+         "apply_upper_bound_s": rm["apply_upper_bound_s"]})
+
+    chk(f"at least {ev.MIN_VALID_WINDOWS} wholly-in-phase summary windows",
+        rm["valid_window_count"] >= ev.MIN_VALID_WINDOWS,
+        {"valid_window_count": rm["valid_window_count"],
+         "first_valid_window_dispersion_ns": rm["first_valid_window_dispersion_ns"],
+         "apply_monotonic_s": rm["apply_monotonic_s"],
+         "phase_end_monotonic_s": rm["phase_end_monotonic_s"],
+         "window_durations_s": [w["window_duration_s"] for w in rm["summary_windows"]],
+         "every_valid_window_inside_declared_phase": [
+             {"start": w["window_start"], "end": w["summary_time"]}
+             for w in rm["summary_windows"] if w["wholly_in_phase"]]})
+
+    wx = d / "writer_exit_status.tsv"
+    bad = []
+    if wx.is_file():
+        for line in wx.read_text(errors="replace").splitlines():
+            f = line.split("\t")
+            if len(f) >= 2 and f[1].strip() not in ("0", "status", "exit_status"):
+                bad.append(line.strip())
+    chk("all writers closed gracefully", wx.is_file() and not bad,
+        {"writer_exit_status_present": wx.is_file(), "nonzero_lines": bad})
+
+    problems = ev.seal_check(d)
+    chk("run is sealed and every manifest hash verifies", not problems, {"problems": problems})
+
+    det = ev.detector_decision(d, rm["apply_utc"])
+    out = {"smoke_run": str(d), "checks": checks,
+           "all_passed": all(c["pass"] for c in checks),
+           "observed_receiver_label": rm["receiver_label"],
+           "observed_detector_outcome": det["detector_outcome"],
+           "note": ("This run is a configuration and integrity check only. Its label and detector "
+                    "outcome are NOT evidence for or against the hypothesis and are excluded from "
+                    "S15 estimation. It is stored under s15_smoke/, which evaluate_s15.py never reads.")}
+    (d / "SMOKE_CHECK.json").write_text(json.dumps(out, indent=2) + "\n")
+    print(json.dumps(out, indent=2))
+    return 0 if out["all_passed"] else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())

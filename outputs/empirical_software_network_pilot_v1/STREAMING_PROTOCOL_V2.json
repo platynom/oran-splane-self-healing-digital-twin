@@ -1,0 +1,12 @@
+{
+  "schema_version": "streaming-protocol-v2",
+  "status": "FROZEN_FOR_REPEATED_FRESH_RUNS",
+  "supersedes": "STREAMING_PROTOCOL_V1.json; V1 silence events were suppressed by output composition.",
+  "state_key": ["capture_sha256", "transportSpecific", "versionPTP", "domainNumber", "sourcePortIdentity"],
+  "validity_states": ["NOT_PTP", "TRUNCATED_HEADER", "INVALID_DECLARED_LENGTH", "UNSUPPORTED_VERSION", "UNSUPPORTED_MESSAGE", "TIMESTAMP_REGRESSION", "UNKNOWN", "WARMUP"],
+  "bounded_state": {"pending_sync_max_age_s": 1.0, "paired_gap_max_age_s": 2.0, "paired_gap_max_count": 8, "sequence_reuse_before_followup": "UNKNOWN"},
+  "event_composition": {"silence": "Independent event list, deduplicated until source Announce reappears.", "clock": "arrival-driven only; optional tick API may report elapsed silence without fabricating a packet."},
+  "frozen_development_rule": {"name": "sync_followup_trailing_std", "threshold_s": 0.00016, "window_pairs": 8, "output": "CONFIGURED_IMPAIRMENT_SUSPECT", "provenance": "post-selection Set2/3 development; requires repeated fresh-run evaluation."},
+  "source_silence": {"threshold_s": 0.75, "output": "SOURCE_ANNOUNCE_SILENCE_OBSERVED", "not": ["attack", "receiver outage", "health", "recovery"]},
+  "evaluation": {"unit": "run", "fresh_protocol": "repeat matched baseline/netem/no-action/source-stop runs after this file hash is recorded", "metrics": ["any suspect", "first suspect", "event counts", "validity exclusions", "run-level confidence intervals"]}
+}

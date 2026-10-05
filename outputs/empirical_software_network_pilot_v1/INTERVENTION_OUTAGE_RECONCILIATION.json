@@ -1,0 +1,101 @@
+{
+  "schema_version": "empirical-intervention-outage-reconciliation-v1",
+  "methodology_note": "Recomputation of packet-observable Delay_Req outage and Announce loss resumption across all n=8 intervention runs in Set 2 and Set 3 using the analyze_runs.py definition. Outage criteria evaluated: 5x median interval (strict statistical gap criterion) and 2.5x median interval (nominal threshold in analyze_runs.py).",
+  "summary": {
+    "total_intervention_runs": 8,
+    "runs_with_outage_detected_5x_criterion": 1,
+    "runs_with_no_outage_detected_5x_criterion": 7,
+    "runs_with_outage_detected_2_5x_criterion": 5,
+    "runs_with_no_outage_detected_2_5x_criterion": 3,
+    "observed_outages_2_5x_s": {
+      "values": [
+        0.486946,
+        0.466648,
+        0.656833,
+        0.350156,
+        0.341005
+      ],
+      "min": 0.341005,
+      "median": 0.466648,
+      "max": 0.656833
+    },
+    "observed_resumptions_s": {
+      "values": [
+        1.292393,
+        1.336006,
+        1.298468,
+        1.056135,
+        0.991612
+      ],
+      "min": 0.991612,
+      "median": 1.292393,
+      "max": 1.336006
+    }
+  },
+  "per_run_analysis": [
+    {
+      "run": "20260911_set2_intervention_r1",
+      "delay_req_outage_s": 0.486946,
+      "announce_loss_to_resumption_s": 1.292393,
+      "outage_above_5x_median_detected": false,
+      "outage_above_2_5x_median_detected": true,
+      "count_gaps_gt_5x": 0
+    },
+    {
+      "run": "20260911_set2_intervention_r2",
+      "delay_req_outage_s": 0.466648,
+      "announce_loss_to_resumption_s": 1.336006,
+      "outage_above_5x_median_detected": false,
+      "outage_above_2_5x_median_detected": true,
+      "count_gaps_gt_5x": 0
+    },
+    {
+      "run": "20260911_set2_intervention_r3",
+      "delay_req_outage_s": 0.656833,
+      "announce_loss_to_resumption_s": 1.298468,
+      "outage_above_5x_median_detected": true,
+      "outage_above_2_5x_median_detected": true,
+      "count_gaps_gt_5x": 1
+    },
+    {
+      "run": "20260911_set3_intervention_r4",
+      "delay_req_outage_s": null,
+      "announce_loss_to_resumption_s": null,
+      "outage_above_5x_median_detected": false,
+      "outage_above_2_5x_median_detected": false,
+      "count_gaps_gt_5x": 0
+    },
+    {
+      "run": "20260911_set3_intervention_r5",
+      "delay_req_outage_s": 0.350156,
+      "announce_loss_to_resumption_s": 1.056135,
+      "outage_above_5x_median_detected": false,
+      "outage_above_2_5x_median_detected": true,
+      "count_gaps_gt_5x": 0
+    },
+    {
+      "run": "20260911_set3_intervention_r6",
+      "delay_req_outage_s": null,
+      "announce_loss_to_resumption_s": null,
+      "outage_above_5x_median_detected": false,
+      "outage_above_2_5x_median_detected": false,
+      "count_gaps_gt_5x": 0
+    },
+    {
+      "run": "20260911_set3_intervention_r7",
+      "delay_req_outage_s": 0.341005,
+      "announce_loss_to_resumption_s": 0.991612,
+      "outage_above_5x_median_detected": false,
+      "outage_above_2_5x_median_detected": true,
+      "count_gaps_gt_5x": 0
+    },
+    {
+      "run": "20260911_set3_intervention_r8",
+      "delay_req_outage_s": null,
+      "announce_loss_to_resumption_s": null,
+      "outage_above_5x_median_detected": false,
+      "outage_above_2_5x_median_detected": false,
+      "count_gaps_gt_5x": 0
+    }
+  ]
+}

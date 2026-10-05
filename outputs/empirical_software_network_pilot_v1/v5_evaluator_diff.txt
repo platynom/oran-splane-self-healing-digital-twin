@@ -1,0 +1,75 @@
+--- evaluate_v4_broader.py
++++ evaluate_v5_single_variable.py
+@@ -1,7 +1,7 @@
+-"""One-pass, hash-bound run-level evaluation of the frozen V4 broader validation protocol.
++"""One-pass, hash-bound run-level evaluation of the frozen V5 single-variable protocol.
+ 
+-Faithful adaptation of evaluate_v3_nonoverlap.py: same frozen detector, same thresholds,
+-pointed at v4_runs with the five V4 conditions. No threshold or inclusion change.
++Faithful adaptation of evaluate_v4_broader.py: same frozen detector, same thresholds,
++pointed at v5_runs with the five V5 arms. No threshold or inclusion change.
+ """
+ from __future__ import annotations
+ 
+@@ -17,14 +17,14 @@
+ from validate_pilot import parse_manifest_text
+ 
+ HERE = Path(__file__).resolve().parent
+-RUNS = HERE / "v4_runs"
+-PROTOCOL = HERE / "V4_BROADER_VALIDATION_PROTOCOL.json"
++RUNS = HERE / "v5_runs"
++PROTOCOL = HERE / "V5_SINGLE_VARIABLE_PROTOCOL.json"
+ PLAN = {
+-    "baseline_control": [f"20260913_v4_b{i}" for i in range(1, 6)],
+-    "netem_delay_jitter_loss": [f"20260913_v4_n{i}" for i in range(1, 6)],
+-    "benign_delay_jitter_no_loss": [f"20260913_v4_d{i}" for i in range(1, 6)],
+-    "benign_authorized_source_change_no_action": [f"20260913_v4_c{i}" for i in range(1, 6)],
+-    "authorized_source_termination_observation": [f"20260913_v4_s{i}" for i in range(1, 6)],
++    "A_reference_benign": [f"20260913_v5_a{i}" for i in range(1, 6)],
++    "B_loss_only": [f"20260913_v5_b{i}" for i in range(1, 6)],
++    "C_jitter_only": [f"20260913_v5_c{i}" for i in range(1, 6)],
++    "D_delay_only": [f"20260913_v5_d{i}" for i in range(1, 6)],
++    "E_full_v4_impairment": [f"20260913_v5_e{i}" for i in range(1, 6)],
+ }
+ REQUIRED_MANIFEST_ENTRIES = {"capture.pcap", "events.log", "run_environment.txt", "master_a.conf",
+                              "master_b.conf", "slave.conf", "master_a.log", "master_b.log",
+@@ -45,8 +45,8 @@
+     actual = {
+         "v1_engine_sha256": sha256(HERE / "streaming_discriminator_v1.py"),
+         "v3_nonoverlap_engine_sha256": sha256(HERE / "streaming_discriminator_v3_nonoverlap.py"),
+-        "isolated_runner_sha256": sha256(app / "harness" / "run_empirical_software_pilot.sh"),
+-        "validator_sha256": sha256(HERE / "validate_pilot.py"),
++        "isolated_runner_sha256": sha256(app / "harness" / "run_empirical_software_pilot_v5.sh"),
++        "validator_sha256": sha256(HERE / "validate_pilot_v5.py"),
+     }
+     mismatch = {k: {"expected": frozen[k], "actual": v} for k, v in actual.items()
+                 if frozen[k].lower() != v.lower()}
+@@ -152,11 +152,11 @@
+     total_rehashed = sum(r["artifact_verification"]["manifest_entries_rehashed"]
+                          for c in runs.values() for r in c.values())
+     output = {
+-        "schema_version": "v4-broader-run-evaluation-v1",
+-        "protocol": "V4_BROADER_VALIDATION_PROTOCOL.json",
++        "schema_version": "v5-single-variable-evaluation-v1",
++        "protocol": "V5_SINGLE_VARIABLE_PROTOCOL.json",
+         "frozen_input_verification": verified,
+-        "scope": ("predeclared n=5 per condition across five conditions; isolated free-running "
+-                  "software feasibility; run level only. V1-V3 captures excluded."),
++        "scope": ("predeclared n=5 per condition across five arms; isolated free-running "
++                  "software feasibility; run level only. V1-V4 captures excluded."),
+         "runs": runs,
+         "run_level_summary": summary,
+         "aggregate_integrity": {"all_actual_manifest_hashes_match": aggregate_ok,
+@@ -169,10 +169,10 @@
+             "shared-host free_running software-clock observations; namespaces are not independent clocks",
+             "packet-arrival dispersion is not a referenced receiver clock-error measurement",
+             "no attack, health, receiver-selection, outage, physical timing, or recovery inference",
+-            "V4 determines only whether the packet-arrival observation repeats under its frozen conditions",
++            "V5 determines only whether the packet-arrival observation responds to specific netem parameters",
+         ],
+     }
+-    (HERE / "V4_BROADER_EVALUATION.json").write_text(json.dumps(output, indent=2) + "\n")
++    (HERE / "V5_SINGLE_VARIABLE_EVALUATION.json").write_text(json.dumps(output, indent=2) + "\n")
+     print(json.dumps({"summary": summary, "aggregate_integrity": output["aggregate_integrity"]}, indent=2))
+ 
+ 

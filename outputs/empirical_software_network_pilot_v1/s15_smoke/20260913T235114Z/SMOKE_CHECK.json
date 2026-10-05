@@ -1,0 +1,116 @@
+{
+  "smoke_run": "/mnt/c/Users/Admin/Documents/AI-Native Self-Healing O-RAN Network using a Digital Twin/outputs/empirical_software_network_pilot_v1/s15_smoke/20260913T235114Z",
+  "checks": [
+    {
+      "check": "every written ptp4l config sets free_running 1",
+      "pass": true,
+      "detail": {
+        "configs": [
+          "master_a.conf",
+          "master_b.conf",
+          "slave.conf"
+        ],
+        "without_free_running": []
+      }
+    },
+    {
+      "check": "run environment records that host clock adjustment is disabled",
+      "pass": true,
+      "detail": {
+        "run_environment_present": true
+      }
+    },
+    {
+      "check": "receiver produced servo summary lines",
+      "pass": true,
+      "detail": {
+        "servo_summary_lines": 6
+      }
+    },
+    {
+      "check": "detector lifetime bound covers the declared observation period",
+      "pass": true,
+      "detail": {
+        "settle_s": 12.0,
+        "impair_s": 80.0,
+        "detector_max_seconds": 172.0,
+        "required_minimum": 92.0
+      }
+    },
+    {
+      "check": "detector observed the whole impaired phase and exited on stream close, not on its watchdog",
+      "pass": true,
+      "detail": {
+        "detector_finished_monotonic_s": 103.16975,
+        "phase2_end_recorded_monotonic_s": 103.044606,
+        "record_before_detector_finished": "stream_ended",
+        "detector_frames": 3388
+      }
+    },
+    {
+      "check": "the apply instant was recorded as a bracketed interval, not a single coarse timestamp",
+      "pass": true,
+      "detail": {
+        "apply_basis": "bracketed interval",
+        "apply_uncertainty_s": 0.005541,
+        "apply_begin_monotonic_s": 22.854428,
+        "apply_upper_bound_s": 22.859969
+      }
+    },
+    {
+      "check": "at least 2 wholly-in-phase summary windows",
+      "pass": true,
+      "detail": {
+        "valid_window_count": 4,
+        "first_valid_window_dispersion_ns": 29787,
+        "apply_monotonic_s": 22.859969,
+        "phase_end_monotonic_s": 103.044606,
+        "window_durations_s": [
+          null,
+          16.015,
+          16.012,
+          16.016,
+          16.017,
+          16.016
+        ],
+        "every_valid_window_inside_declared_phase": [
+          {
+            "start": 38.821,
+            "end": 54.833
+          },
+          {
+            "start": 54.833,
+            "end": 70.849
+          },
+          {
+            "start": 70.849,
+            "end": 86.866
+          },
+          {
+            "start": 86.866,
+            "end": 102.882
+          }
+        ]
+      }
+    },
+    {
+      "check": "all writers closed gracefully",
+      "pass": true,
+      "detail": {
+        "writer_exit_status_present": true,
+        "nonzero_lines": []
+      }
+    },
+    {
+      "check": "run is sealed and every manifest hash verifies",
+      "pass": true,
+      "detail": {
+        "problems": []
+      }
+    }
+  ],
+  "all_passed": true,
+  "observed_receiver_label": "RECEIVER_DISPERSION_ABOVE_BOUNDARY",
+  "observed_detector_outcome": "NO_TRIGGER",
+  "note": "This run is a configuration and integrity check only. Its label and detector outcome are NOT evidence for or against the hypothesis and are excluded from S15 estimation. It is stored under s15_smoke/, which evaluate_s15.py never reads."
+}

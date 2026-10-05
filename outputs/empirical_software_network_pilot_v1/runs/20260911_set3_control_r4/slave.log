@@ -1,0 +1,11 @@
+ptp4l[125.976]: port 1: INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[125.977]: port 0: INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[126.804]: selected local clock 062afc.fffe.70f5cb as best master
+ptp4l[126.809]: port 1: new foreign master 6644cc.fffe.08c1fd-1
+ptp4l[127.033]: port 1: new foreign master d23c42.fffe.e14b3e-1
+ptp4l[127.309]: selected best master clock 6644cc.fffe.08c1fd
+ptp4l[127.310]: foreign master not using PTP timescale
+ptp4l[127.311]: port 1: LISTENING to UNCALIBRATED on RS_SLAVE
+ptp4l[127.534]: selected best master clock 6644cc.fffe.08c1fd
+ptp4l[127.534]: foreign master not using PTP timescale
+ptp4l[143.447]: rms 2748 max 5966 freq    -53 +/- 1215 delay 12024 +/- 1474

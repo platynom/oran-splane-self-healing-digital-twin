@@ -1,0 +1,13 @@
+run_id=v1402 arm=no_action condition=j140 phase=setup event=topology_created utc=2026-09-13T18:18:54Z monotonic_s=791.463149 status=PASS
+run_id=v1402 arm=no_action condition=j140 phase=setup event=tcpdump_seg1_ready utc=2026-09-13T18:18:57Z monotonic_s=794.535697 status=PASS
+run_id=v1402 arm=no_action condition=j140 phase=setup event=tcpdump_seg2_ready utc=2026-09-13T18:18:57Z monotonic_s=794.568376 status=PASS
+run_id=v1402 arm=no_action condition=j140 phase=setup event=master_a_ready utc=2026-09-13T18:18:57Z monotonic_s=794.600951 status=PASS
+run_id=v1402 arm=no_action condition=j140 phase=setup event=master_b_ready utc=2026-09-13T18:18:57Z monotonic_s=794.626688 status=PASS
+run_id=v1402 arm=no_action condition=j140 phase=setup event=slave_ready utc=2026-09-13T18:18:57Z monotonic_s=794.652183 status=PASS
+run_id=v1402 arm=no_action condition=j140 phase=setup event=live_detector_ready utc=2026-09-13T18:18:59Z monotonic_s=796.709468 status=PASS
+run_id=v1402 arm=no_action condition=j140 phase=trial event=phase1_clean_started utc=2026-09-13T18:18:59Z monotonic_s=796.755849 status=PASS
+run_id=v1402 arm=no_action condition=j140 phase=trial event=phase1_clean_recorded utc=2026-09-13T18:19:11Z monotonic_s=808.945674 status=PASS
+run_id=v1402 arm=no_action condition=j140 phase=trial event=phase2_apply_begin utc=2026-09-13T18:19:12Z monotonic_s=808.999939 status=PASS
+run_id=v1402 arm=no_action condition=j140 phase=trial event=phase2_graded_jitter_applied_seg1 utc=2026-09-13T18:19:12Z monotonic_s=809.061935 status=PASS
+run_id=v1402 arm=no_action condition=j140 phase=trial event=phase2_end_recorded utc=2026-09-13T18:20:32Z monotonic_s=889.243161 status=PASS
+run_id=v1402 arm=no_action condition=j140 phase=trial event=phase_finished utc=2026-09-13T18:20:32Z monotonic_s=889.293075 status=PASS

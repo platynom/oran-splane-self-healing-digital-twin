@@ -1,0 +1,48 @@
+A1	PASS	archive sha256 6149b4fb…	6149b4fb15940cda
+A2	PASS	archive has 1,096 entries	1096
+A3	PASS	168 run directories	168
+A4	PASS	1,451,909 packet records in deep extracts	1451909
+A5	PASS	no raw PCAPs in archive	0
+A6	PASS	no runtime .cfg in archive	0
+B1	PASS	v2 and v3 verdicts identical on all 168 runs	0 differ
+B2	PASS	v2 frozen 2026-09-20T11:41:31Z	2026-09-20T11:41:31.474500Z
+B3	PASS	campaign starts 11:43:15	[11:43:15] === campaign_v3 start: reps 1
+B4	PASS	macro sensitivity base 0.625 / v2 0.9896 / v3 0.9896	(0.625, 0.9896, 0.9896)
+B5	PASS	macro specificity 0.7833 (all rules)	0.7833
+B6	PASS	recomputed v3 sensitivity 0.9896 over 8 attack scenarios	0.98958
+B7	PASS	recomputed specificity 0.7833; excl. B_bc = 47/48	(0.7833, 47)
+B8	PASS	C1 11/12, B3 11/12, B_bc 0/12, B_unplanned 12/12 UNKNOWN	{'C1_removal': 11, 'B3_pdv_congestion': 11, 'B_bc_replacement': 0, 'B_unplanned_failover': 12}
+B9	PASS	attribution 84/96	(84, 96)
+B10	PASS	misattributions A1→A3 ×3, A8→A3 ×4, C3→intercept ×4	{('A1_rogue_master', 'A3'): 3, ('A8_rogue_bc', 'A3'): 4, ('C1_removal', None): 1, ('C3_wholesecond', 'A_intercept'): 4}
+C1	PASS	B_bc: secondary BC id provisioned in all 12 contexts	12
+C2	PASS	B_bc: all 12 v3 ATTACK via "Unauthorised clock inserted" (A8); base also ATTACK	
+C3	PASS	base rule never reads expected_bc_identity_secondary; v3 does	
+C4	PASS	v3 additive-only: returns base ATTACK unchanged	
+D1	PASS	C1 realised as ip link set v-bc-dn down	
+D2	PASS	C1 draws 75%x6,70%x3,65%x2,60%x1 (55% never)	{'75': 6, '65': 2, '60': 1, '70': 3}
+E1	PASS	free_running 1 in every testbed config	10/10
+F1	PASS	504 RU logs, servo s2 in none	(504, 0)
+F2	PASS	A1 36/36 RU logs selected non-provisioned best master	36
+F3	PASS	A8 36/36 saw rogue BC as new foreign master	36
+F4	PASS	C1 36/36 Announce timeout; B3 12/36; B_bc 36/36	(36, 12, 36)
+F5	PASS	servo lines per RU log: baseline 22.0, C1 7.8, C3 3.0	(22.0, 7.8, 3.0)
+F6	PASS	A2/A3/A5/C2/C3: no master change in any RU log	
+G1	PASS	pmc: 120 files, 48 runs without, 40,320 lines, 0 responses	(120, 40320, 0)
+G2	PASS	pmc_log.sh calls pmc without -d (domain)	
+G3	PASS	ptp4l domainNumber 24	24
+H1	PASS	S11: action 5/5, no_action 0/5	
+H2	PASS	S15 not established; 14/15 and 8/15 present	[]
+H3	PASS	S14: 232,403 packets, 25 prospective runs (START_HERE_FINAL)	
+H4	PASS	register still says S15 zero trials	
+I1	PASS	B6 run1 NOT ESTABLISHED; run2 ESTABLISHED +21.013 [20.623, 21.403]	
+I2	PASS	B6 arm A -4.189 (run1) vs -2.877 (run2)	
+J1	PASS	TIMESAFE data from github.com/genesys-neu/s-plane_security	
+J2	PASS	17 Sep walkthrough withdraws August figures (duplicates; 12 of 28 features)	
+K1	PASS	41 moves: every destination exists or was later deleted per DELETION_LOG; no source left	(41, [], 9)
+L1	PASS	presented copy byte-identical to Downloads v7_FINAL (08:37 save)	1cce8032ff01
+L2	PASS	v8 sha256 7e1e54ec… (slide 33 fix 5 Oct)	
+M1	PASS	only v7_FINAL_PRESENTED and v8 decks remain in the project	2
+M2	FAIL	Downloads keeps only ORAN_SPlane_PRISM_Review_v7_FINAL.pptx among O-RAN decks	['ORAN_SPlane_PRISM_Review_v7_FINAL.pptx', 'ORAN_SPlane_PRISM_Review_v8.pptx', '~$ORAN_SPlane_PRISM_Review_v8.pptx']
+M3	PASS	deletion log: 53 entries (9 Downloads, 44 AI-Native)	53
+K2	PASS	14 moves on 4 Oct, all destinations exist, no source left	14
+TOTAL 47 FAIL 1

@@ -1,0 +1,7 @@
+run_id=s56 phase=setup event=tcpdump_ready utc=2026-09-11T17:04:50Z monotonic_s=491.84 status=PASS
+run_id=s56 phase=setup event=master_a_ready utc=2026-09-11T17:04:50Z monotonic_s=491.85 status=PASS
+run_id=s56 phase=setup event=master_b_ready utc=2026-09-11T17:04:50Z monotonic_s=491.85 status=PASS
+run_id=s56 phase=setup event=slave_ready utc=2026-09-11T17:04:50Z monotonic_s=491.86 status=PASS
+run_id=s56 phase=authorized_source_change_intervention event=phase_started utc=2026-09-11T17:04:50Z monotonic_s=491.87 status=PASS
+run_id=s56 phase=authorized_source_change_intervention event=preferred_master_stop_confirmed utc=2026-09-11T17:05:20Z monotonic_s=521.88 status=PASS
+run_id=s56 phase=authorized_source_change_intervention event=phase_finished utc=2026-09-11T17:05:50Z monotonic_s=551.89 status=PASS

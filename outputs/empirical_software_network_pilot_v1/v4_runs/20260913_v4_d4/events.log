@@ -1,0 +1,7 @@
+run_id=w4d4 phase=setup event=tcpdump_ready utc=2026-09-13T02:42:49Z monotonic_s=228.53 status=PASS
+run_id=w4d4 phase=setup event=master_a_ready utc=2026-09-13T02:42:49Z monotonic_s=228.54 status=PASS
+run_id=w4d4 phase=setup event=master_b_ready utc=2026-09-13T02:42:49Z monotonic_s=228.55 status=PASS
+run_id=w4d4 phase=setup event=slave_ready utc=2026-09-13T02:42:49Z monotonic_s=228.55 status=PASS
+run_id=w4d4 phase=benign_delay_jitter_no_loss event=phase_started utc=2026-09-13T02:42:49Z monotonic_s=228.56 status=PASS
+run_id=w4d4 phase=benign_delay_jitter_no_loss event=benign_netem_command_confirmed utc=2026-09-13T02:42:49Z monotonic_s=228.57 status=PASS
+run_id=w4d4 phase=benign_delay_jitter_no_loss event=phase_finished utc=2026-09-13T02:42:57Z monotonic_s=236.58 status=PASS

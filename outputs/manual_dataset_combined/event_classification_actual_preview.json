@@ -1,0 +1,570 @@
+{
+  "classification": {
+    "rows": [
+      {
+        "r": "1",
+        "ht": "42",
+        "cells": [
+          {
+            "v": "Canonical capture SHA256",
+            "s": "5"
+          },
+          {
+            "v": "Origin",
+            "s": "5"
+          },
+          {
+            "v": "Disposition / quarantine",
+            "s": "5"
+          },
+          {
+            "v": "Packet ordinal",
+            "s": "5"
+          },
+          {
+            "v": "Capture timestamp ns",
+            "s": "5"
+          },
+          {
+            "v": "PTP message type",
+            "s": "5"
+          },
+          {
+            "v": "transportSpecific",
+            "s": "5"
+          },
+          {
+            "v": "PTP version",
+            "s": "5"
+          },
+          {
+            "v": "PTP domain",
+            "s": "5"
+          },
+          {
+            "v": "sourcePortIdentity",
+            "s": "5"
+          },
+          {
+            "v": "Previous comparable Announce ordinal",
+            "s": "5"
+          },
+          {
+            "v": "Previous grandmasterIdentity",
+            "s": "5"
+          },
+          {
+            "v": "Current grandmasterIdentity",
+            "s": "5"
+          },
+          {
+            "v": "Previous attributes tuple",
+            "s": "5"
+          },
+          {
+            "v": "Current attributes tuple",
+            "s": "5"
+          },
+          {
+            "v": "Observable class",
+            "s": "5"
+          },
+          {
+            "v": "Classification status",
+            "s": "5"
+          },
+          {
+            "v": "Rule reference",
+            "s": "5"
+          },
+          {
+            "v": "Supplied label handling",
+            "s": "5"
+          }
+        ]
+      },
+      {
+        "r": "2",
+        "ht": "30",
+        "cells": [
+          {
+            "v": "0092ac2ccd29576fcbf0dfeec263344750814c7526c6101a6ef4ac4d76e64c9a",
+            "s": "0"
+          },
+          {
+            "v": "Associated external TIMESAFE capture",
+            "s": "0"
+          },
+          {
+            "v": "Exact launch/collection linkage unavailable locally",
+            "s": "0"
+          },
+          {
+            "v": "1",
+            "s": "0"
+          },
+          {
+            "v": "1728362752579289000",
+            "s": "0"
+          },
+          {
+            "v": "Sync",
+            "s": "0"
+          },
+          {
+            "v": "0",
+            "s": "0"
+          },
+          {
+            "v": "2",
+            "s": "0"
+          },
+          {
+            "v": "24",
+            "s": "0"
+          },
+          {
+            "v": "c45ab1ffff806085000e",
+            "s": "0"
+          },
+          {
+            "v": "",
+            "s": "0"
+          },
+          {
+            "v": "",
+            "s": "0"
+          },
+          {
+            "v": "",
+            "s": "0"
+          },
+          {
+            "v": "",
+            "s": "0"
+          },
+          {
+            "v": "",
+            "s": "0"
+          },
+          {
+            "v": "NOT_APPLICABLE",
+            "s": "0"
+          },
+          {
+            "v": "NOT_APPLICABLE",
+            "s": "0"
+          },
+          {
+            "v": "NONE",
+            "s": "0"
+          },
+          {
+            "v": "No label transfer; supplied annotations remain in their source tabs.",
+            "s": "0"
+          }
+        ]
+      },
+      {
+        "r": "13003",
+        "ht": "30",
+        "cells": [
+          {
+            "v": "0690ed95ddc3134e0dbec8e0d7a79b65b379c9574542a7792c1ff2f5a1b20599",
+            "s": "0"
+          },
+          {
+            "v": "Associated external TIMESAFE capture",
+            "s": "0"
+          },
+          {
+            "v": "Exact launch/collection linkage unavailable locally",
+            "s": "0"
+          },
+          {
+            "v": "4362",
+            "s": "0"
+          },
+          {
+            "v": "1717708606123203000",
+            "s": "0"
+          },
+          {
+            "v": "Announce",
+            "s": "0"
+          },
+          {
+            "v": "0",
+            "s": "0"
+          },
+          {
+            "v": "2",
+            "s": "0"
+          },
+          {
+            "v": "24",
+            "s": "0"
+          },
+          {
+            "v": "c45ab1ffff3a1b05000e",
+            "s": "0"
+          },
+          {
+            "v": "4355",
+            "s": "0"
+          },
+          {
+            "v": "fcaf6afffe02babe",
+            "s": "0"
+          },
+          {
+            "v": "c45ab1ffff3a1b05",
+            "s": "0"
+          },
+          {
+            "v": "[128, 6, 33, 65535, 120, 1, 32]",
+            "s": "0"
+          },
+          {
+            "v": "[128, 1, 254, 65535, 128, 0, 160]",
+            "s": "0"
+          },
+          {
+            "v": "C3",
+            "s": "0"
+          },
+          {
+            "v": "VALID_COMPARABLE_ANNOUNCE",
+            "s": "0"
+          },
+          {
+            "v": "R-CLASS-C3: identity and attributes changed",
+            "s": "0"
+          },
+          {
+            "v": "No label transfer; supplied annotations remain in their source tabs.",
+            "s": "0"
+          }
+        ]
+      }
+    ],
+    "cols": [
+      {
+        "min": "1",
+        "max": "1",
+        "width": "62",
+        "customWidth": "1"
+      },
+      {
+        "min": "2",
+        "max": "2",
+        "width": "62",
+        "customWidth": "1"
+      },
+      {
+        "min": "3",
+        "max": "3",
+        "width": "62",
+        "customWidth": "1"
+      },
+      {
+        "min": "4",
+        "max": "4",
+        "width": "28",
+        "customWidth": "1"
+      },
+      {
+        "min": "5",
+        "max": "5",
+        "width": "28",
+        "customWidth": "1"
+      },
+      {
+        "min": "6",
+        "max": "6",
+        "width": "28",
+        "customWidth": "1"
+      },
+      {
+        "min": "7",
+        "max": "7",
+        "width": "28",
+        "customWidth": "1"
+      },
+      {
+        "min": "8",
+        "max": "8",
+        "width": "28",
+        "customWidth": "1"
+      },
+      {
+        "min": "9",
+        "max": "9",
+        "width": "28",
+        "customWidth": "1"
+      },
+      {
+        "min": "10",
+        "max": "10",
+        "width": "28",
+        "customWidth": "1"
+      },
+      {
+        "min": "11",
+        "max": "11",
+        "width": "28",
+        "customWidth": "1"
+      },
+      {
+        "min": "12",
+        "max": "12",
+        "width": "28",
+        "customWidth": "1"
+      },
+      {
+        "min": "13",
+        "max": "13",
+        "width": "28",
+        "customWidth": "1"
+      },
+      {
+        "min": "14",
+        "max": "14",
+        "width": "62",
+        "customWidth": "1"
+      },
+      {
+        "min": "15",
+        "max": "15",
+        "width": "62",
+        "customWidth": "1"
+      },
+      {
+        "min": "16",
+        "max": "16",
+        "width": "28",
+        "customWidth": "1"
+      },
+      {
+        "min": "17",
+        "max": "17",
+        "width": "28",
+        "customWidth": "1"
+      },
+      {
+        "min": "18",
+        "max": "18",
+        "width": "62",
+        "customWidth": "1"
+      },
+      {
+        "min": "19",
+        "max": "19",
+        "width": "62",
+        "customWidth": "1"
+      }
+    ]
+  },
+  "guide": {
+    "rows": [
+      {
+        "r": "1",
+        "ht": "90",
+        "cells": [
+          {
+            "v": "Scope",
+            "s": "10"
+          },
+          {
+            "v": "One output row per packet from 14 canonical PCAP hashes; aliases are not expanded.",
+            "s": "10"
+          }
+        ]
+      },
+      {
+        "r": "2",
+        "ht": "90",
+        "cells": [
+          {
+            "v": "Class legend",
+            "s": "10"
+          },
+          {
+            "v": "C0 same identity/tuple; C1 identity only; C2 attribute tuple only; C3 both.",
+            "s": "10"
+          }
+        ]
+      },
+      {
+        "r": "3",
+        "ht": "90",
+        "cells": [
+          {
+            "v": "Attribute tuple",
+            "s": "10"
+          },
+          {
+            "v": "priority1, clockClass, clockAccuracy, offsetScaledLogVariance, priority2, stepsRemoved, timeSource.",
+            "s": "10"
+          }
+        ]
+      },
+      {
+        "r": "4",
+        "ht": "90",
+        "cells": [
+          {
+            "v": "State",
+            "s": "10"
+          },
+          {
+            "v": "Separate per capture + transportSpecific/version/domain/sourcePortIdentity. Invalid Announce never updates baseline.",
+            "s": "10"
+          }
+        ]
+      },
+      {
+        "r": "5",
+        "ht": "90",
+        "cells": [
+          {
+            "v": "Limits",
+            "s": "10"
+          },
+          {
+            "v": "Advertisement only. Not maliciousness, healthy/fault, receiver selection, GNSS state, recovery or performed action.",
+            "s": "10"
+          }
+        ]
+      },
+      {
+        "r": "6",
+        "ht": "42",
+        "cells": [
+          {
+            "v": "Capture SHA256",
+            "s": "5"
+          },
+          {
+            "v": "Origin",
+            "s": "5"
+          },
+          {
+            "v": "Disposition / quarantine",
+            "s": "5"
+          },
+          {
+            "v": "Class",
+            "s": "5"
+          },
+          {
+            "v": "Status",
+            "s": "5"
+          },
+          {
+            "v": "Count",
+            "s": "5"
+          }
+        ]
+      },
+      {
+        "r": "7",
+        "ht": "90",
+        "cells": [
+          {
+            "v": "0092ac2ccd29576fcbf0dfeec263344750814c7526c6101a6ef4ac4d76e64c9a",
+            "s": "10"
+          },
+          {
+            "v": "Associated external TIMESAFE capture",
+            "s": "10"
+          },
+          {
+            "v": "Exact launch/collection linkage unavailable locally",
+            "s": "10"
+          },
+          {
+            "v": "C0",
+            "s": "10"
+          },
+          {
+            "v": "VALID_COMPARABLE_ANNOUNCE",
+            "s": "10"
+          },
+          {
+            "v": "621",
+            "s": "10"
+          }
+        ]
+      },
+      {
+        "r": "8",
+        "ht": "90",
+        "cells": [
+          {
+            "v": "0092ac2ccd29576fcbf0dfeec263344750814c7526c6101a6ef4ac4d76e64c9a",
+            "s": "10"
+          },
+          {
+            "v": "Associated external TIMESAFE capture",
+            "s": "10"
+          },
+          {
+            "v": "Exact launch/collection linkage unavailable locally",
+            "s": "10"
+          },
+          {
+            "v": "NOT_APPLICABLE",
+            "s": "10"
+          },
+          {
+            "v": "NOT_APPLICABLE",
+            "s": "10"
+          },
+          {
+            "v": "8018",
+            "s": "10"
+          }
+        ]
+      }
+    ],
+    "cols": [
+      {
+        "min": "1",
+        "max": "1",
+        "width": "72",
+        "customWidth": "1"
+      },
+      {
+        "min": "2",
+        "max": "2",
+        "width": "44",
+        "customWidth": "1"
+      },
+      {
+        "min": "3",
+        "max": "3",
+        "width": "68",
+        "customWidth": "1"
+      },
+      {
+        "min": "4",
+        "max": "4",
+        "width": "34",
+        "customWidth": "1"
+      },
+      {
+        "min": "5",
+        "max": "5",
+        "width": "42",
+        "customWidth": "1"
+      },
+      {
+        "min": "6",
+        "max": "6",
+        "width": "18",
+        "customWidth": "1"
+      }
+    ]
+  }
+}

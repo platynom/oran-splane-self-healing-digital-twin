@@ -1,0 +1,20 @@
+{
+  "fixture_notice": "Checked-in fixtures exercise mechanical gate behavior only; no scientific validation is claimed.",
+  "prior_bypasses": {
+    "unrelated_source_map_passes": false,
+    "undeclared_input_loads": false,
+    "filename_derived_label": false,
+    "conflicting_capture_loads": false,
+    "malformed_metadata_crashes": false
+  },
+  "regression_script": "test_evidence_gate_regressions.py",
+  "verified_results": {
+    "valid_fixture_loads": true,
+    "filename_does_not_relabel_h0": true,
+    "undeclared_input_rejected": true,
+    "modified_declared_input_rejected": true,
+    "quarantined_capture_id_rejected": true,
+    "malformed_metadata_rejected_without_crash": true
+  },
+  "scientific_limit": "A passing fixture verifies loader mechanics, not the authenticity or adequacy of scientific evidence."
+}

@@ -1,0 +1,20 @@
+ptp4l[1085.432]: port 1 (v-ru2): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[1085.432]: port 0 (/var/run/p.ru2): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[1085.432]: port 0 (/var/run/pr.ru2): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[1085.850]: selected local clock 020000.fffe.00000d as best master
+ptp4l[1085.943]: port 1 (v-ru2): new foreign master 020000.fffe.000001-2
+ptp4l[1086.193]: selected best master clock 020000.fffe.00000a
+ptp4l[1086.193]: foreign master not using PTP timescale
+ptp4l[1086.193]: port 1 (v-ru2): LISTENING to UNCALIBRATED on RS_SLAVE
+ptp4l[1088.258]: master offset       -225 s0 freq    -230 path delay      3248
+ptp4l[1090.259]: master offset       -971 s0 freq    -123 path delay      3748
+ptp4l[1092.261]: master offset        302 s0 freq    +391 path delay      3258
+ptp4l[1093.811]: port 1 (v-ru2): UNCALIBRATED to LISTENING on ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES
+ptp4l[1093.811]: selected local clock 020000.fffe.00000d as best master
+ptp4l[1120.970]: selected best master clock 020000.fffe.00000a
+ptp4l[1120.970]: foreign master not using PTP timescale
+ptp4l[1120.970]: port 1 (v-ru2): LISTENING to UNCALIBRATED on RS_SLAVE
+ptp4l[1123.034]: master offset       1365 s0 freq    -231 path delay      3756
+ptp4l[1125.036]: master offset       -518 s0 freq    -462 path delay      4714
+ptp4l[1127.038]: master offset       1666 s0 freq   +1960 path delay      6454
+ptp4l[1129.040]: master offset       2869 s0 freq    -929 path delay      3391

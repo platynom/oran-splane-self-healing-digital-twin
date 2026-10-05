@@ -1,0 +1,28 @@
+{
+  "method": "Exact AST-extracted gate/loader functions with actual coercion and windowing; not full module integration",
+  "fixtures": {
+    "valid": {
+      "windows": 1,
+      "labels": [
+        "H0"
+      ]
+    },
+    "undeclared": {
+      "windows": 0,
+      "labels": []
+    },
+    "changed": {
+      "windows": 0,
+      "labels": []
+    },
+    "quarantined": {
+      "windows": 0,
+      "labels": []
+    },
+    "malformed": {
+      "windows": 0,
+      "labels": []
+    }
+  },
+  "malformed_evidence_artifact": "TypeError: unsupported operand type(s) for /: 'WindowsPath' and 'list'"
+}

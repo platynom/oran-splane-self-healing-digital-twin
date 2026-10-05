@@ -1,0 +1,27 @@
+ptp4l[544.972]: port 1 (v-ru3): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[544.972]: port 0 (/var/run/p.ru3): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[544.972]: port 0 (/var/run/pr.ru3): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[545.372]: selected local clock 020000.fffe.00000e as best master
+ptp4l[545.514]: port 1 (v-ru3): new foreign master 020000.fffe.000001-2
+ptp4l[545.764]: selected best master clock 020000.fffe.00000a
+ptp4l[545.764]: foreign master not using PTP timescale
+ptp4l[545.764]: port 1 (v-ru3): LISTENING to UNCALIBRATED on RS_SLAVE
+ptp4l[547.828]: master offset       -239 s0 freq    +258 path delay      3935
+ptp4l[549.830]: master offset        -85 s0 freq     +66 path delay      3913
+ptp4l[551.832]: master offset       -539 s0 freq     +67 path delay      4502
+ptp4l[553.835]: master offset      -1166 s0 freq    +140 path delay      5410
+ptp4l[555.837]: master offset       -797 s0 freq    -579 path delay      3882
+ptp4l[557.839]: master offset        419 s0 freq    +468 path delay      3602
+ptp4l[559.841]: master offset       -929 s0 freq    -635 path delay      3679
+ptp4l[561.842]: master offset       -617 s0 freq     +69 path delay      3505
+ptp4l[563.844]: master offset       1089 s0 freq    +843 path delay      3486
+ptp4l[565.845]: master offset      -1228 s0 freq    -741 path delay      4319
+ptp4l[567.848]: master offset      41753 s0 freq  +21208 path delay      3800
+ptp4l[569.850]: master offset       3257 s0 freq  -19306 path delay      3644
+ptp4l[571.852]: master offset       1390 s0 freq    -375 path delay      4761
+ptp4l[573.855]: master offset        313 s0 freq    -951 path delay      3933
+ptp4l[575.857]: master offset       2927 s0 freq    +883 path delay      3086
+ptp4l[577.859]: master offset       -242 s0 freq   -1487 path delay      3279
+ptp4l[579.861]: master offset       -359 s0 freq    -199 path delay      2998
+ptp4l[581.865]: master offset      -1189 s0 freq     -56 path delay      3715
+ptp4l[583.866]: master offset        -27 s0 freq    +404 path delay      3361

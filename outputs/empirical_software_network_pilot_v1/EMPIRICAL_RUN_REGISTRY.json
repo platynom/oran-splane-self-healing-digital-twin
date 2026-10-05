@@ -1,0 +1,773 @@
+{
+  "schema_version": "empirical-software-pilot-run-registry-v1",
+  "measurement_mode": "free_running_protocol_observation",
+  "host_clock_adjustment": "disabled_by_free_running_1",
+  "analysis_split_key": "run_id",
+  "completed_calibrated_runs": [
+    {
+      "run_id": "b2",
+      "directory": "20260910_calibrated_baseline",
+      "scenario": "baseline_control",
+      "validation_status": "STRUCTURALLY_COMPLETE",
+      "packet_records": 899,
+      "message_counts": {
+        "Announce": 114,
+        "Delay_Req": 113,
+        "Delay_Resp": 226,
+        "Follow_Up": 223,
+        "Sync": 223
+      },
+      "capture_sha256": "230264cf12ba9c19ae62dbe6ddaccb0d78b3d2cdd3520f77309e0b3cabe0f380",
+      "planned_condition": "no qdisc impairment",
+      "command_confirmed": true,
+      "observed_impact": "UNKNOWN",
+      "measured_outcome": "PTP-timescale warning present; no calibrated timing or recovery outcome"
+    },
+    {
+      "run_id": "n2",
+      "directory": "20260910_calibrated_netem",
+      "scenario": "netem_delay_jitter_loss",
+      "validation_status": "UNVERIFIED - qdisc counters were sampled before the traffic window; the impairment was neither confirmed delivered nor shown absent",
+      "packet_records": 872,
+      "message_counts": {
+        "Announce": 114,
+        "Delay_Req": 105,
+        "Delay_Resp": 209,
+        "Follow_Up": 222,
+        "Sync": 222
+      },
+      "capture_sha256": "446a376f2eef33742996170d4c8f7ea7af2428c40e7b44f3bfafe5039d456ed1",
+      "planned_condition": "tc netem delay 1000us jitter 200us loss 1%",
+      "command_confirmed": true,
+      "observed_impact": "UNKNOWN",
+      "measured_outcome": "PTP-timescale warning present; no calibrated timing or recovery outcome"
+    },
+    {
+      "run_id": "c2",
+      "directory": "20260910_calibrated_source_control",
+      "scenario": "authorized_source_change_no_action_control",
+      "validation_status": "STRUCTURALLY_COMPLETE",
+      "packet_records": 904,
+      "message_counts": {
+        "Announce": 114,
+        "Delay_Req": 114,
+        "Delay_Resp": 228,
+        "Follow_Up": 224,
+        "Sync": 224
+      },
+      "capture_sha256": "b3132a7a0505809880cf8f068b06887093898fe8f93e6171057ff4794e45cd21",
+      "planned_condition": "two authorised masters remain running",
+      "command_confirmed": true,
+      "observed_impact": "UNKNOWN",
+      "measured_outcome": "PTP-timescale warning present; no calibrated timing or recovery outcome"
+    },
+    {
+      "run_id": "s4",
+      "directory": "20260910_calibrated_source_stop_retry2",
+      "scenario": "authorized_source_change_intervention",
+      "validation_status": "STRUCTURALLY_COMPLETE",
+      "packet_records": 1334,
+      "message_counts": {
+        "Announce": 162,
+        "Delay_Req": 210,
+        "Delay_Resp": 322,
+        "Follow_Up": 320,
+        "Sync": 320
+      },
+      "capture_sha256": "30cc892f289d5362ed3064580b7e9e1e43ee38271ea7f412c92fec3328df7c18",
+      "planned_condition": "stop preferred authorised master after 12 seconds",
+      "command_confirmed": true,
+      "observed_impact": "receiver log selected remaining advertised best-master identity after Announce timeout",
+      "measured_outcome": "PTP-timescale warning present; no calibrated timing or recovery outcome"
+    },
+    {
+      "run_id": "n3",
+      "directory": "20260911_calibrated_netem_v3",
+      "scenario": "netem_delay_jitter_loss",
+      "validation_status": "STRUCTURALLY_COMPLETE",
+      "packet_records": 2020,
+      "message_counts": {
+        "Announce": 255,
+        "Delay_Req": 254,
+        "Delay_Resp": 501,
+        "Follow_Up": 505,
+        "Sync": 505
+      },
+      "capture_sha256": "159614_bytes_pcap",
+      "planned_condition": "tc netem delay 1000us jitter 200us loss 1%",
+      "command_confirmed": true,
+      "observed_impact": "UNKNOWN",
+      "measured_outcome": "PTP-timescale warning present; qdisc_after confirmed 1671 pkts sent, 23 dropped"
+    },
+    {
+      "run_id": "b31",
+      "directory": "20260911_set2_baseline_r1",
+      "scenario": "baseline_control",
+      "validation_status": "STRUCTURALLY_COMPLETE",
+      "packet_records": 2037,
+      "message_counts": {
+        "Announce": 258,
+        "Sync": 513,
+        "Follow_Up": 513,
+        "Delay_Req": 251,
+        "Delay_Resp": 502
+      },
+      "planned_condition": "baseline_control",
+      "command_confirmed": true,
+      "observed_impact": "UNKNOWN",
+      "measured_outcome": "PTP-timescale warning present; free_running 1 protocol observation"
+    },
+    {
+      "run_id": "n41",
+      "directory": "20260911_set2_netem_r1",
+      "scenario": "netem_delay_jitter_loss",
+      "validation_status": "STRUCTURALLY_COMPLETE",
+      "packet_records": 2045,
+      "message_counts": {
+        "Announce": 253,
+        "Sync": 502,
+        "Follow_Up": 508,
+        "Delay_Req": 262,
+        "Delay_Resp": 520
+      },
+      "planned_condition": "netem_delay_jitter_loss",
+      "command_confirmed": true,
+      "observed_impact": "UNKNOWN",
+      "measured_outcome": "PTP-timescale warning present; free_running 1 protocol observation"
+    },
+    {
+      "run_id": "c31",
+      "directory": "20260911_set2_control_r1",
+      "scenario": "authorized_source_change_no_action_control",
+      "validation_status": "STRUCTURALLY_COMPLETE",
+      "packet_records": 2026,
+      "message_counts": {
+        "Announce": 257,
+        "Sync": 511,
+        "Follow_Up": 511,
+        "Delay_Req": 249,
+        "Delay_Resp": 498
+      },
+      "planned_condition": "authorized_source_change_no_action_control",
+      "command_confirmed": true,
+      "observed_impact": "UNKNOWN",
+      "measured_outcome": "PTP-timescale warning present; free_running 1 protocol observation"
+    },
+    {
+      "run_id": "s51",
+      "directory": "20260911_set2_intervention_r1",
+      "scenario": "authorized_source_change_intervention",
+      "validation_status": "STRUCTURALLY_COMPLETE",
+      "packet_records": 3114,
+      "message_counts": {
+        "Announce": 377,
+        "Sync": 752,
+        "Follow_Up": 752,
+        "Delay_Req": 496,
+        "Delay_Resp": 737
+      },
+      "planned_condition": "authorized_source_change_intervention",
+      "command_confirmed": true,
+      "observed_impact": "receiver log selected remaining advertised best-master identity after Announce timeout",
+      "measured_outcome": "PTP-timescale warning present; free_running 1 protocol observation"
+    },
+    {
+      "run_id": "b32",
+      "directory": "20260911_set2_baseline_r2",
+      "scenario": "baseline_control",
+      "validation_status": "STRUCTURALLY_COMPLETE",
+      "packet_records": 2020,
+      "message_counts": {
+        "Announce": 256,
+        "Sync": 510,
+        "Follow_Up": 510,
+        "Delay_Req": 248,
+        "Delay_Resp": 496
+      },
+      "planned_condition": "baseline_control",
+      "command_confirmed": true,
+      "observed_impact": "UNKNOWN",
+      "measured_outcome": "PTP-timescale warning present; free_running 1 protocol observation"
+    },
+    {
+      "run_id": "n42",
+      "directory": "20260911_set2_netem_r2",
+      "scenario": "netem_delay_jitter_loss",
+      "validation_status": "STRUCTURALLY_COMPLETE",
+      "packet_records": 2058,
+      "message_counts": {
+        "Announce": 257,
+        "Sync": 504,
+        "Follow_Up": 509,
+        "Delay_Req": 265,
+        "Delay_Resp": 523
+      },
+      "planned_condition": "netem_delay_jitter_loss",
+      "command_confirmed": true,
+      "observed_impact": "UNKNOWN",
+      "measured_outcome": "PTP-timescale warning present; free_running 1 protocol observation"
+    },
+    {
+      "run_id": "c32",
+      "directory": "20260911_set2_control_r2",
+      "scenario": "authorized_source_change_no_action_control",
+      "validation_status": "STRUCTURALLY_COMPLETE",
+      "packet_records": 2048,
+      "message_counts": {
+        "Announce": 258,
+        "Sync": 511,
+        "Follow_Up": 511,
+        "Delay_Req": 256,
+        "Delay_Resp": 512
+      },
+      "planned_condition": "authorized_source_change_no_action_control",
+      "command_confirmed": true,
+      "observed_impact": "UNKNOWN",
+      "measured_outcome": "PTP-timescale warning present; free_running 1 protocol observation"
+    },
+    {
+      "run_id": "s52",
+      "directory": "20260911_set2_intervention_r2",
+      "scenario": "authorized_source_change_intervention",
+      "validation_status": "STRUCTURALLY_COMPLETE",
+      "packet_records": 3244,
+      "message_counts": {
+        "Announce": 377,
+        "Sync": 750,
+        "Follow_Up": 750,
+        "Delay_Req": 535,
+        "Delay_Resp": 832
+      },
+      "planned_condition": "authorized_source_change_intervention",
+      "command_confirmed": true,
+      "observed_impact": "receiver log selected remaining advertised best-master identity after Announce timeout",
+      "measured_outcome": "PTP-timescale warning present; free_running 1 protocol observation"
+    },
+    {
+      "run_id": "b33",
+      "directory": "20260911_set2_baseline_r3",
+      "scenario": "baseline_control",
+      "validation_status": "STRUCTURALLY_COMPLETE",
+      "packet_records": 2014,
+      "message_counts": {
+        "Announce": 258,
+        "Sync": 512,
+        "Follow_Up": 512,
+        "Delay_Req": 244,
+        "Delay_Resp": 488
+      },
+      "planned_condition": "baseline_control",
+      "command_confirmed": true,
+      "observed_impact": "UNKNOWN",
+      "measured_outcome": "PTP-timescale warning present; free_running 1 protocol observation"
+    },
+    {
+      "run_id": "n43",
+      "directory": "20260911_set2_netem_r3",
+      "scenario": "netem_delay_jitter_loss",
+      "validation_status": "STRUCTURALLY_COMPLETE",
+      "packet_records": 2013,
+      "message_counts": {
+        "Announce": 250,
+        "Sync": 505,
+        "Follow_Up": 505,
+        "Delay_Req": 252,
+        "Delay_Resp": 501
+      },
+      "planned_condition": "netem_delay_jitter_loss",
+      "command_confirmed": true,
+      "observed_impact": "UNKNOWN",
+      "measured_outcome": "PTP-timescale warning present; free_running 1 protocol observation"
+    },
+    {
+      "run_id": "c33",
+      "directory": "20260911_set2_control_r3",
+      "scenario": "authorized_source_change_no_action_control",
+      "validation_status": "STRUCTURALLY_COMPLETE",
+      "packet_records": 2017,
+      "message_counts": {
+        "Announce": 257,
+        "Sync": 511,
+        "Follow_Up": 511,
+        "Delay_Req": 246,
+        "Delay_Resp": 492
+      },
+      "planned_condition": "authorized_source_change_no_action_control",
+      "command_confirmed": true,
+      "observed_impact": "UNKNOWN",
+      "measured_outcome": "PTP-timescale warning present; free_running 1 protocol observation"
+    },
+    {
+      "run_id": "s53",
+      "directory": "20260911_set2_intervention_r3",
+      "scenario": "authorized_source_change_intervention",
+      "validation_status": "STRUCTURALLY_COMPLETE",
+      "packet_records": 3130,
+      "message_counts": {
+        "Announce": 378,
+        "Sync": 752,
+        "Follow_Up": 752,
+        "Delay_Req": 496,
+        "Delay_Resp": 752
+      },
+      "planned_condition": "authorized_source_change_intervention",
+      "command_confirmed": true,
+      "observed_impact": "receiver log selected remaining advertised best-master identity after Announce timeout",
+      "measured_outcome": "PTP-timescale warning present; free_running 1 protocol observation"
+    },
+    {
+      "run_id": "b1",
+      "directory": "20260910_baseline",
+      "scenario": "baseline_control",
+      "validation_status": "STRUCTURALLY_COMPLETE",
+      "packet_records": 886,
+      "message_counts": {
+        "Announce": 113,
+        "Sync": 223,
+        "Follow_Up": 223,
+        "Delay_Req": 109,
+        "Delay_Resp": 218
+      },
+      "planned_condition": "baseline_control",
+      "command_confirmed": true
+    },
+    {
+      "run_id": "s3",
+      "directory": "20260910_calibrated_source_stop",
+      "scenario": "authorized_source_change_intervention",
+      "validation_status": "STRUCTURALLY_COMPLETE",
+      "packet_records": 1311,
+      "message_counts": {
+        "Announce": 161,
+        "Sync": 320,
+        "Follow_Up": 320,
+        "Delay_Req": 200,
+        "Delay_Resp": 310
+      },
+      "planned_condition": "authorized_source_change_intervention",
+      "command_confirmed": true
+    },
+    {
+      "run_id": "n1",
+      "directory": "20260910_netem",
+      "scenario": "netem_delay_jitter_loss",
+      "validation_status": "STRUCTURALLY_COMPLETE",
+      "packet_records": 862,
+      "message_counts": {
+        "Announce": 113,
+        "Sync": 223,
+        "Follow_Up": 220,
+        "Delay_Req": 104,
+        "Delay_Resp": 202
+      },
+      "planned_condition": "netem_delay_jitter_loss",
+      "command_confirmed": true
+    },
+    {
+      "run_id": "c1",
+      "directory": "20260910_source_control",
+      "scenario": "authorized_source_change_no_action_control",
+      "validation_status": "STRUCTURALLY_COMPLETE",
+      "packet_records": 870,
+      "message_counts": {
+        "Announce": 113,
+        "Sync": 224,
+        "Follow_Up": 224,
+        "Delay_Req": 103,
+        "Delay_Resp": 206
+      },
+      "planned_condition": "authorized_source_change_no_action_control",
+      "command_confirmed": true
+    },
+    {
+      "run_id": "s1",
+      "directory": "20260910_source_stop",
+      "scenario": "authorized_source_change_intervention",
+      "validation_status": "STRUCTURALLY_COMPLETE",
+      "packet_records": 1144,
+      "message_counts": {
+        "Announce": 162,
+        "Sync": 321,
+        "Follow_Up": 321,
+        "Delay_Req": 116,
+        "Delay_Resp": 224
+      },
+      "planned_condition": "authorized_source_change_intervention",
+      "command_confirmed": true
+    },
+    {
+      "run_id": "s2",
+      "directory": "20260910_source_stop_retry",
+      "scenario": "authorized_source_change_intervention",
+      "validation_status": "STRUCTURALLY_COMPLETE",
+      "packet_records": 1125,
+      "message_counts": {
+        "Announce": 161,
+        "Sync": 320,
+        "Follow_Up": 320,
+        "Delay_Req": 110,
+        "Delay_Resp": 214
+      },
+      "planned_condition": "authorized_source_change_intervention",
+      "command_confirmed": true
+    },
+    {
+      "run_id": "b34",
+      "directory": "20260911_set3_baseline_r4",
+      "scenario": "baseline_control",
+      "validation_status": "STRUCTURALLY_COMPLETE",
+      "packet_records": 2037,
+      "message_counts": {
+        "Announce": 257,
+        "Sync": 512,
+        "Follow_Up": 512,
+        "Delay_Req": 252,
+        "Delay_Resp": 504
+      },
+      "planned_condition": "baseline_control",
+      "command_confirmed": true
+    },
+    {
+      "run_id": "b35",
+      "directory": "20260911_set3_baseline_r5",
+      "scenario": "baseline_control",
+      "validation_status": "STRUCTURALLY_COMPLETE",
+      "packet_records": 2050,
+      "message_counts": {
+        "Announce": 257,
+        "Sync": 511,
+        "Follow_Up": 511,
+        "Delay_Req": 257,
+        "Delay_Resp": 514
+      },
+      "planned_condition": "baseline_control",
+      "command_confirmed": true
+    },
+    {
+      "run_id": "b36",
+      "directory": "20260911_set3_baseline_r6",
+      "scenario": "baseline_control",
+      "validation_status": "STRUCTURALLY_COMPLETE",
+      "packet_records": 2084,
+      "message_counts": {
+        "Announce": 258,
+        "Sync": 514,
+        "Follow_Up": 514,
+        "Delay_Req": 266,
+        "Delay_Resp": 532
+      },
+      "planned_condition": "baseline_control",
+      "command_confirmed": true
+    },
+    {
+      "run_id": "b37",
+      "directory": "20260911_set3_baseline_r7",
+      "scenario": "baseline_control",
+      "validation_status": "STRUCTURALLY_COMPLETE",
+      "packet_records": 2038,
+      "message_counts": {
+        "Announce": 257,
+        "Sync": 511,
+        "Follow_Up": 511,
+        "Delay_Req": 253,
+        "Delay_Resp": 506
+      },
+      "planned_condition": "baseline_control",
+      "command_confirmed": true
+    },
+    {
+      "run_id": "b38",
+      "directory": "20260911_set3_baseline_r8",
+      "scenario": "baseline_control",
+      "validation_status": "STRUCTURALLY_COMPLETE",
+      "packet_records": 2012,
+      "message_counts": {
+        "Announce": 257,
+        "Sync": 510,
+        "Follow_Up": 510,
+        "Delay_Req": 245,
+        "Delay_Resp": 490
+      },
+      "planned_condition": "baseline_control",
+      "command_confirmed": true
+    },
+    {
+      "run_id": "c34",
+      "directory": "20260911_set3_control_r4",
+      "scenario": "authorized_source_change_no_action_control",
+      "validation_status": "STRUCTURALLY_COMPLETE",
+      "packet_records": 2026,
+      "message_counts": {
+        "Announce": 258,
+        "Sync": 512,
+        "Follow_Up": 512,
+        "Delay_Req": 248,
+        "Delay_Resp": 496
+      },
+      "planned_condition": "authorized_source_change_no_action_control",
+      "command_confirmed": true
+    },
+    {
+      "run_id": "c35",
+      "directory": "20260911_set3_control_r5",
+      "scenario": "authorized_source_change_no_action_control",
+      "validation_status": "STRUCTURALLY_COMPLETE",
+      "packet_records": 2071,
+      "message_counts": {
+        "Announce": 258,
+        "Sync": 512,
+        "Follow_Up": 512,
+        "Delay_Req": 263,
+        "Delay_Resp": 526
+      },
+      "planned_condition": "authorized_source_change_no_action_control",
+      "command_confirmed": true
+    },
+    {
+      "run_id": "c36",
+      "directory": "20260911_set3_control_r6",
+      "scenario": "authorized_source_change_no_action_control",
+      "validation_status": "STRUCTURALLY_COMPLETE",
+      "packet_records": 2064,
+      "message_counts": {
+        "Announce": 258,
+        "Sync": 513,
+        "Follow_Up": 513,
+        "Delay_Req": 260,
+        "Delay_Resp": 520
+      },
+      "planned_condition": "authorized_source_change_no_action_control",
+      "command_confirmed": true
+    },
+    {
+      "run_id": "c37",
+      "directory": "20260911_set3_control_r7",
+      "scenario": "authorized_source_change_no_action_control",
+      "validation_status": "STRUCTURALLY_COMPLETE",
+      "packet_records": 2051,
+      "message_counts": {
+        "Announce": 258,
+        "Sync": 511,
+        "Follow_Up": 511,
+        "Delay_Req": 257,
+        "Delay_Resp": 514
+      },
+      "planned_condition": "authorized_source_change_no_action_control",
+      "command_confirmed": true
+    },
+    {
+      "run_id": "c38",
+      "directory": "20260911_set3_control_r8",
+      "scenario": "authorized_source_change_no_action_control",
+      "validation_status": "STRUCTURALLY_COMPLETE",
+      "packet_records": 2048,
+      "message_counts": {
+        "Announce": 258,
+        "Sync": 511,
+        "Follow_Up": 511,
+        "Delay_Req": 256,
+        "Delay_Resp": 512
+      },
+      "planned_condition": "authorized_source_change_no_action_control",
+      "command_confirmed": true
+    },
+    {
+      "run_id": "s54",
+      "directory": "20260911_set3_intervention_r4",
+      "scenario": "authorized_source_change_intervention",
+      "validation_status": "STRUCTURALLY_COMPLETE",
+      "packet_records": 3119,
+      "message_counts": {
+        "Announce": 378,
+        "Sync": 753,
+        "Follow_Up": 753,
+        "Delay_Req": 492,
+        "Delay_Resp": 743
+      },
+      "planned_condition": "authorized_source_change_intervention",
+      "command_confirmed": true
+    },
+    {
+      "run_id": "s55",
+      "directory": "20260911_set3_intervention_r5",
+      "scenario": "authorized_source_change_intervention",
+      "validation_status": "STRUCTURALLY_COMPLETE",
+      "packet_records": 3133,
+      "message_counts": {
+        "Announce": 377,
+        "Sync": 751,
+        "Follow_Up": 751,
+        "Delay_Req": 502,
+        "Delay_Resp": 752
+      },
+      "planned_condition": "authorized_source_change_intervention",
+      "command_confirmed": true
+    },
+    {
+      "run_id": "s56",
+      "directory": "20260911_set3_intervention_r6",
+      "scenario": "authorized_source_change_intervention",
+      "validation_status": "STRUCTURALLY_COMPLETE",
+      "packet_records": 3157,
+      "message_counts": {
+        "Announce": 377,
+        "Sync": 751,
+        "Follow_Up": 751,
+        "Delay_Req": 509,
+        "Delay_Resp": 769
+      },
+      "planned_condition": "authorized_source_change_intervention",
+      "command_confirmed": true
+    },
+    {
+      "run_id": "s57",
+      "directory": "20260911_set3_intervention_r7",
+      "scenario": "authorized_source_change_intervention",
+      "validation_status": "STRUCTURALLY_COMPLETE",
+      "packet_records": 3121,
+      "message_counts": {
+        "Announce": 378,
+        "Sync": 753,
+        "Follow_Up": 753,
+        "Delay_Req": 494,
+        "Delay_Resp": 743
+      },
+      "planned_condition": "authorized_source_change_intervention",
+      "command_confirmed": true
+    },
+    {
+      "run_id": "s58",
+      "directory": "20260911_set3_intervention_r8",
+      "scenario": "authorized_source_change_intervention",
+      "validation_status": "STRUCTURALLY_COMPLETE",
+      "packet_records": 3104,
+      "message_counts": {
+        "Announce": 378,
+        "Sync": 753,
+        "Follow_Up": 753,
+        "Delay_Req": 484,
+        "Delay_Resp": 736
+      },
+      "planned_condition": "authorized_source_change_intervention",
+      "command_confirmed": true
+    },
+    {
+      "run_id": "n44",
+      "directory": "20260911_set3_netem_r4",
+      "scenario": "netem_delay_jitter_loss",
+      "validation_status": "STRUCTURALLY_COMPLETE",
+      "packet_records": 2046,
+      "message_counts": {
+        "Announce": 257,
+        "Sync": 510,
+        "Follow_Up": 511,
+        "Delay_Req": 257,
+        "Delay_Resp": 511
+      },
+      "planned_condition": "netem_delay_jitter_loss",
+      "command_confirmed": true
+    },
+    {
+      "run_id": "n45",
+      "directory": "20260911_set3_netem_r5",
+      "scenario": "netem_delay_jitter_loss",
+      "validation_status": "STRUCTURALLY_COMPLETE",
+      "packet_records": 2026,
+      "message_counts": {
+        "Announce": 257,
+        "Sync": 504,
+        "Follow_Up": 507,
+        "Delay_Req": 255,
+        "Delay_Resp": 503
+      },
+      "planned_condition": "netem_delay_jitter_loss",
+      "command_confirmed": true
+    },
+    {
+      "run_id": "n46",
+      "directory": "20260911_set3_netem_r6",
+      "scenario": "netem_delay_jitter_loss",
+      "validation_status": "STRUCTURALLY_COMPLETE",
+      "packet_records": 1964,
+      "message_counts": {
+        "Announce": 254,
+        "Sync": 505,
+        "Follow_Up": 503,
+        "Delay_Req": 236,
+        "Delay_Resp": 466
+      },
+      "planned_condition": "netem_delay_jitter_loss",
+      "command_confirmed": true
+    },
+    {
+      "run_id": "n47",
+      "directory": "20260911_set3_netem_r7",
+      "scenario": "netem_delay_jitter_loss",
+      "validation_status": "STRUCTURALLY_COMPLETE",
+      "packet_records": 1992,
+      "message_counts": {
+        "Announce": 257,
+        "Sync": 507,
+        "Follow_Up": 507,
+        "Delay_Req": 242,
+        "Delay_Resp": 479
+      },
+      "planned_condition": "netem_delay_jitter_loss",
+      "command_confirmed": true
+    },
+    {
+      "run_id": "n48",
+      "directory": "20260911_set3_netem_r8",
+      "scenario": "netem_delay_jitter_loss",
+      "validation_status": "STRUCTURALLY_COMPLETE",
+      "packet_records": 1977,
+      "message_counts": {
+        "Announce": 252,
+        "Sync": 509,
+        "Follow_Up": 506,
+        "Delay_Req": 238,
+        "Delay_Resp": 472
+      },
+      "planned_condition": "netem_delay_jitter_loss",
+      "command_confirmed": true
+    }
+  ],
+  "retained_failed_or_superseded_runs": [
+    {
+      "directory": "20260910_source_stop",
+      "reason": "expected child termination status aborted finalization before manifest"
+    },
+    {
+      "directory": "20260910_source_stop_retry",
+      "reason": "same finalization path failure; retained"
+    },
+    {
+      "directory": "20260910_calibrated_source_stop",
+      "reason": "pre-finalization failure; retained"
+    },
+    {
+      "directories": [
+        "20260910_baseline",
+        "20260910_netem",
+        "20260910_source_control",
+        "20260910_source_stop_retry2"
+      ],
+      "reason": "pre-priority calibration set; retained for traceability, excluded from the calibrated comparison"
+    }
+  ],
+  "limits": [
+    "All endpoints share a host software clock.",
+    "free_running prevents closed-loop local-clock adjustment.",
+    "Packet/log observations do not establish physical timing, GNSS, SyncE, oscillator health, unauthorized takeover, or recovery success.",
+    "One run per condition is feasibility evidence, not a statistical comparison."
+  ],
+  "protocol_deviations": [
+    {
+      "action": "directory_deletion",
+      "deleted_path": "runs/20260911_set3_control_r7",
+      "timestamp_utc": "2026-09-11T17:16:13Z",
+      "rationale": "shutil.rmtree was executed on an incomplete run directory interrupted by server restart before manifest generation. Deletion of any run directory violates experiment provenance protocol.",
+      "evidence_status": "UNRECOVERABLE - primary evidence and incomplete runtime artifacts of that attempt cannot be reconstructed"
+    }
+  ]
+}

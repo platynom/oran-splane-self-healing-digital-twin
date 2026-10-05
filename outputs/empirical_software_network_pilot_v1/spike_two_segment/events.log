@@ -1,0 +1,13 @@
+run_id=s2p1 phase=setup event=topology_created utc=2026-09-13T04:29:34Z monotonic_s=18.19 status=PASS
+run_id=s2p1 phase=setup event=tcpdump_seg1_ready utc=2026-09-13T04:29:37Z monotonic_s=21.24 status=PASS
+run_id=s2p1 phase=setup event=tcpdump_seg2_ready utc=2026-09-13T04:29:37Z monotonic_s=21.24 status=PASS
+run_id=s2p1 phase=setup event=master_a_ready utc=2026-09-13T04:29:37Z monotonic_s=21.25 status=PASS
+run_id=s2p1 phase=setup event=master_b_ready utc=2026-09-13T04:29:37Z monotonic_s=21.26 status=PASS
+run_id=s2p1 phase=setup event=slave_ready utc=2026-09-13T04:29:37Z monotonic_s=21.26 status=PASS
+run_id=s2p1 phase=probe event=phase1_clean_started utc=2026-09-13T04:29:37Z monotonic_s=21.27 status=PASS
+run_id=s2p1 phase=probe event=phase1_clean_recorded utc=2026-09-13T04:29:49Z monotonic_s=33.42 status=PASS
+run_id=s2p1 phase=probe event=phase2_jitter_impairment_applied_seg1 utc=2026-09-13T04:29:49Z monotonic_s=33.43 status=PASS
+run_id=s2p1 phase=probe event=phase2_impaired_recorded utc=2026-09-13T04:30:01Z monotonic_s=45.56 status=PASS
+run_id=s2p1 phase=probe event=phase3_commanded_action_port_down utc=2026-09-13T04:30:01Z monotonic_s=45.57 status=PASS
+run_id=s2p1 phase=probe event=phase3_post_action_recorded utc=2026-09-13T04:30:13Z monotonic_s=57.73 status=PASS
+run_id=s2p1 phase=probe event=phase_finished utc=2026-09-13T04:30:13Z monotonic_s=57.74 status=PASS

@@ -1,0 +1,883 @@
+{
+  "schema_version": "v3-nonoverlap-run-evaluation-v1",
+  "protocol": "V3_NONOVERLAPPING_PROSPECTIVE_PROTOCOL.json",
+  "frozen_input_verification": {
+    "streaming_discriminator_v1.py_sha256": "1c1d7edfbcc38b6e0c950984eff72b58592160c71ad8e797ff719d4aee0b8d0e",
+    "streaming_discriminator_v3_nonoverlap.py_sha256": "ee328876367e6547878f85eed60405624f55bd21a03348f4d9527fd302250172"
+  },
+  "scope": "predeclared n=5 per condition, isolated free-running software feasibility; run level only",
+  "runs": {
+    "baseline_control": {
+      "20260913_v3_b1": {
+        "capture_sha256": "ed42048f05cf1b37cabcb4b93385eb6162c0d8c8b93a90b58820b84d2601ea88",
+        "packet_records": 615,
+        "classification_counts": {
+          "WARMUP": 161,
+          "OBSERVATION": 140,
+          "ANNOUNCE_OBSERVED": 79,
+          "NOT_APPLICABLE": 215,
+          "NONOVERLAPPING_BLOCK_OBSERVED": 19,
+          "UNKNOWN": 1
+        },
+        "validity_reason_counts": {
+          "VALID:first_valid_announce": 2,
+          "VALID:sync_waiting_for_followup": 159,
+          "VALID:causal_sync_followup_gap": 140,
+          "VALID:per_source_gap": 79,
+          "VALID:message_type_not_used": 215,
+          "VALID:bounded_block_below_dispersion_threshold": 19,
+          "TIMESTAMP_REGRESSION:arrival_order_regression": 1
+        },
+        "independent_event_counts": {},
+        "first_independent_event_s": {},
+        "first_classification_s": {
+          "WARMUP": 0.0,
+          "OBSERVATION": 0.12486434,
+          "ANNOUNCE_OBSERVED": 0.250381947,
+          "NOT_APPLICABLE": 0.60587883,
+          "NONOVERLAPPING_BLOCK_OBSERVED": 1.002645254,
+          "UNKNOWN": 8.342989206
+        },
+        "any_nonoverlap_persistence": false,
+        "artifact_verification": {
+          "cached_validation_status": "STRUCTURALLY_COMPLETE",
+          "manifest_entries_rehashed": 11,
+          "actual_manifest_hashes_match": true,
+          "source_manifest_sha256": "eab2c3f34adc9d344eaf722e972886a68fefd29d356c4ecbb33263c4a644d696"
+        }
+      },
+      "20260913_v3_b2": {
+        "capture_sha256": "8f5f11d84f5a3c2cb48880f4efbffce125ed50c68f38b0cfbe2d382ff5c10395",
+        "packet_records": 644,
+        "classification_counts": {
+          "WARMUP": 163,
+          "OBSERVATION": 141,
+          "ANNOUNCE_OBSERVED": 80,
+          "NOT_APPLICABLE": 238,
+          "NONOVERLAPPING_BLOCK_OBSERVED": 20,
+          "UNKNOWN": 2
+        },
+        "validity_reason_counts": {
+          "VALID:first_valid_announce": 2,
+          "VALID:sync_waiting_for_followup": 161,
+          "VALID:causal_sync_followup_gap": 141,
+          "VALID:per_source_gap": 80,
+          "VALID:message_type_not_used": 238,
+          "VALID:bounded_block_below_dispersion_threshold": 20,
+          "TIMESTAMP_REGRESSION:arrival_order_regression": 2
+        },
+        "independent_event_counts": {},
+        "first_independent_event_s": {},
+        "first_classification_s": {
+          "WARMUP": 0.0,
+          "OBSERVATION": 0.123651266,
+          "ANNOUNCE_OBSERVED": 0.250019073,
+          "NOT_APPLICABLE": 0.520068884,
+          "NONOVERLAPPING_BLOCK_OBSERVED": 0.999120712,
+          "UNKNOWN": 4.285403728
+        },
+        "any_nonoverlap_persistence": false,
+        "artifact_verification": {
+          "cached_validation_status": "STRUCTURALLY_COMPLETE",
+          "manifest_entries_rehashed": 11,
+          "actual_manifest_hashes_match": true,
+          "source_manifest_sha256": "4d7da8f5b768b6d597fbeffdfd55bfe521dc4929e276c037404b50ad1c491597"
+        }
+      },
+      "20260913_v3_b3": {
+        "capture_sha256": "2edb191b4449d0762b29964fb1b5ff72e5f77746799e32533cd7a3e07a6bc7db",
+        "packet_records": 641,
+        "classification_counts": {
+          "WARMUP": 163,
+          "OBSERVATION": 141,
+          "ANNOUNCE_OBSERVED": 80,
+          "NOT_APPLICABLE": 237,
+          "NONOVERLAPPING_BLOCK_OBSERVED": 20
+        },
+        "validity_reason_counts": {
+          "VALID:first_valid_announce": 2,
+          "VALID:sync_waiting_for_followup": 161,
+          "VALID:causal_sync_followup_gap": 141,
+          "VALID:per_source_gap": 80,
+          "VALID:message_type_not_used": 237,
+          "VALID:bounded_block_below_dispersion_threshold": 20
+        },
+        "independent_event_counts": {},
+        "first_independent_event_s": {},
+        "first_classification_s": {
+          "WARMUP": 0.0,
+          "OBSERVATION": 0.123537779,
+          "ANNOUNCE_OBSERVED": 0.250048876,
+          "NOT_APPLICABLE": 0.519418716,
+          "NONOVERLAPPING_BLOCK_OBSERVED": 0.999511003
+        },
+        "any_nonoverlap_persistence": false,
+        "artifact_verification": {
+          "cached_validation_status": "STRUCTURALLY_COMPLETE",
+          "manifest_entries_rehashed": 11,
+          "actual_manifest_hashes_match": true,
+          "source_manifest_sha256": "20527a4f46c33c8f64bd3257f48ebcea821566138c1315b268f78f5cb851b271"
+        }
+      },
+      "20260913_v3_b4": {
+        "capture_sha256": "a5df1f25d36671fad64c213cc53b2effb364943cada3c37b78ac883b8aa95057",
+        "packet_records": 600,
+        "classification_counts": {
+          "WARMUP": 162,
+          "OBSERVATION": 140,
+          "ANNOUNCE_OBSERVED": 80,
+          "NOT_APPLICABLE": 197,
+          "NONOVERLAPPING_BLOCK_OBSERVED": 20,
+          "UNKNOWN": 1
+        },
+        "validity_reason_counts": {
+          "VALID:first_valid_announce": 2,
+          "VALID:sync_waiting_for_followup": 160,
+          "VALID:causal_sync_followup_gap": 140,
+          "VALID:per_source_gap": 80,
+          "VALID:message_type_not_used": 197,
+          "VALID:bounded_block_below_dispersion_threshold": 20,
+          "TIMESTAMP_REGRESSION:arrival_order_regression": 1
+        },
+        "independent_event_counts": {},
+        "first_independent_event_s": {},
+        "first_classification_s": {
+          "WARMUP": 0.0,
+          "OBSERVATION": 0.124220371,
+          "ANNOUNCE_OBSERVED": 0.250056505,
+          "NOT_APPLICABLE": 0.592594385,
+          "NONOVERLAPPING_BLOCK_OBSERVED": 1.000203848,
+          "UNKNOWN": 6.196243048
+        },
+        "any_nonoverlap_persistence": false,
+        "artifact_verification": {
+          "cached_validation_status": "STRUCTURALLY_COMPLETE",
+          "manifest_entries_rehashed": 11,
+          "actual_manifest_hashes_match": true,
+          "source_manifest_sha256": "cdb5ca2e8d430b2e4da6fc81885e72f79b9f6155c52aa61e1a52d6eca096a709"
+        }
+      },
+      "20260913_v3_b5": {
+        "capture_sha256": "b1c0d3b57f075965ed072ea546e111045bc8a2e69b85ef1230cafa285a0eb169",
+        "packet_records": 641,
+        "classification_counts": {
+          "WARMUP": 162,
+          "OBSERVATION": 141,
+          "ANNOUNCE_OBSERVED": 79,
+          "NOT_APPLICABLE": 238,
+          "NONOVERLAPPING_BLOCK_OBSERVED": 19,
+          "UNKNOWN": 2
+        },
+        "validity_reason_counts": {
+          "VALID:first_valid_announce": 2,
+          "VALID:sync_waiting_for_followup": 160,
+          "VALID:causal_sync_followup_gap": 141,
+          "VALID:per_source_gap": 79,
+          "VALID:message_type_not_used": 238,
+          "VALID:bounded_block_below_dispersion_threshold": 19,
+          "TIMESTAMP_REGRESSION:arrival_order_regression": 2
+        },
+        "independent_event_counts": {},
+        "first_independent_event_s": {},
+        "first_classification_s": {
+          "WARMUP": 0.0,
+          "OBSERVATION": 0.123472452,
+          "ANNOUNCE_OBSERVED": 0.250035763,
+          "NOT_APPLICABLE": 0.538331032,
+          "NONOVERLAPPING_BLOCK_OBSERVED": 0.998966217,
+          "UNKNOWN": 6.872018099
+        },
+        "any_nonoverlap_persistence": false,
+        "artifact_verification": {
+          "cached_validation_status": "STRUCTURALLY_COMPLETE",
+          "manifest_entries_rehashed": 11,
+          "actual_manifest_hashes_match": true,
+          "source_manifest_sha256": "b44d45055cbd31fdb9855fd56b606f2f5098fa447f650ec59faa9a2f4528a892"
+        }
+      }
+    },
+    "netem_delay_jitter_loss": {
+      "20260913_v3_n1": {
+        "capture_sha256": "54b90fc66d6826cddfaf2eaa6dabc2dab44839590ab355109186931cb943e82f",
+        "packet_records": 625,
+        "classification_counts": {
+          "WARMUP": 162,
+          "OBSERVATION": 70,
+          "ANNOUNCE_OBSERVED": 80,
+          "NOT_APPLICABLE": 224,
+          "NONOVERLAPPING_BLOCK_OBSERVED": 10,
+          "UNKNOWN": 53,
+          "CONFIGURED_IMPAIRMENT_SUSPECT": 23,
+          "NONOVERLAPPING_HIGH_DISPERSION_BLOCK_OBSERVED": 2,
+          "NONOVERLAPPING_BLOCK_PERSISTENCE_OBSERVED": 1
+        },
+        "validity_reason_counts": {
+          "VALID:first_valid_announce": 2,
+          "VALID:sync_waiting_for_followup": 160,
+          "VALID:causal_sync_followup_gap": 70,
+          "VALID:per_source_gap": 80,
+          "VALID:message_type_not_used": 224,
+          "VALID:bounded_block_below_dispersion_threshold": 10,
+          "VALID:unmatched_or_expired_followup": 53,
+          "VALID:frozen_trailing_dispersion_rule": 23,
+          "VALID:below_prospective_high_block_count": 2,
+          "VALID:prospective_causal_nonoverlap_block_count": 1
+        },
+        "independent_event_counts": {},
+        "first_independent_event_s": {},
+        "first_classification_s": {
+          "WARMUP": 0.0,
+          "OBSERVATION": 0.12386632,
+          "ANNOUNCE_OBSERVED": 0.250040531,
+          "NOT_APPLICABLE": 0.600206137,
+          "NONOVERLAPPING_BLOCK_OBSERVED": 0.999787569,
+          "UNKNOWN": 2.251700878,
+          "CONFIGURED_IMPAIRMENT_SUSPECT": 3.253389359,
+          "NONOVERLAPPING_HIGH_DISPERSION_BLOCK_OBSERVED": 3.628052235,
+          "NONOVERLAPPING_BLOCK_PERSISTENCE_OBSERVED": 6.869492531
+        },
+        "any_nonoverlap_persistence": true,
+        "artifact_verification": {
+          "cached_validation_status": "STRUCTURALLY_COMPLETE",
+          "manifest_entries_rehashed": 12,
+          "actual_manifest_hashes_match": true,
+          "source_manifest_sha256": "cc736ab71a95147b969c37201ed8db3bbdae09c385229d539d05715793c4098a"
+        }
+      },
+      "20260913_v3_n2": {
+        "capture_sha256": "158980f2d38fc2a4051ebed24ae45298c8302192c7064cf5325e9959eb52ac99",
+        "packet_records": 608,
+        "classification_counts": {
+          "WARMUP": 161,
+          "OBSERVATION": 45,
+          "ANNOUNCE_OBSERVED": 79,
+          "NOT_APPLICABLE": 210,
+          "NONOVERLAPPING_BLOCK_OBSERVED": 5,
+          "UNKNOWN": 59,
+          "CONFIGURED_IMPAIRMENT_SUSPECT": 43,
+          "NONOVERLAPPING_HIGH_DISPERSION_BLOCK_OBSERVED": 2,
+          "NONOVERLAPPING_BLOCK_PERSISTENCE_OBSERVED": 4
+        },
+        "validity_reason_counts": {
+          "VALID:first_valid_announce": 2,
+          "VALID:sync_waiting_for_followup": 159,
+          "VALID:causal_sync_followup_gap": 45,
+          "VALID:per_source_gap": 79,
+          "VALID:message_type_not_used": 210,
+          "VALID:bounded_block_below_dispersion_threshold": 5,
+          "VALID:unmatched_or_expired_followup": 59,
+          "VALID:frozen_trailing_dispersion_rule": 43,
+          "VALID:below_prospective_high_block_count": 2,
+          "VALID:prospective_causal_nonoverlap_block_count": 4
+        },
+        "independent_event_counts": {},
+        "first_independent_event_s": {},
+        "first_classification_s": {
+          "WARMUP": 0.0,
+          "OBSERVATION": 0.124149323,
+          "ANNOUNCE_OBSERVED": 0.250020981,
+          "NOT_APPLICABLE": 0.67219615,
+          "NONOVERLAPPING_BLOCK_OBSERVED": 1.000751734,
+          "UNKNOWN": 2.243064165,
+          "CONFIGURED_IMPAIRMENT_SUSPECT": 3.003503323,
+          "NONOVERLAPPING_HIGH_DISPERSION_BLOCK_OBSERVED": 3.995364666,
+          "NONOVERLAPPING_BLOCK_PERSISTENCE_OBSERVED": 5.256212234
+        },
+        "any_nonoverlap_persistence": true,
+        "artifact_verification": {
+          "cached_validation_status": "STRUCTURALLY_COMPLETE",
+          "manifest_entries_rehashed": 12,
+          "actual_manifest_hashes_match": true,
+          "source_manifest_sha256": "f3a8bf1ecb04b840f6d66846fb87afed1bcd8d6751553ea2e83fc2b18e926432"
+        }
+      },
+      "20260913_v3_n3": {
+        "capture_sha256": "1187742cd74a36b530c879cf508ff1317101c1621f8075ab074929c717da3e2e",
+        "packet_records": 644,
+        "classification_counts": {
+          "WARMUP": 163,
+          "OBSERVATION": 70,
+          "ANNOUNCE_OBSERVED": 79,
+          "NOT_APPLICABLE": 242,
+          "NONOVERLAPPING_BLOCK_OBSERVED": 9,
+          "UNKNOWN": 49,
+          "NONOVERLAPPING_HIGH_DISPERSION_BLOCK_OBSERVED": 2,
+          "CONFIGURED_IMPAIRMENT_SUSPECT": 28,
+          "NONOVERLAPPING_BLOCK_PERSISTENCE_OBSERVED": 2
+        },
+        "validity_reason_counts": {
+          "VALID:first_valid_announce": 2,
+          "VALID:sync_waiting_for_followup": 161,
+          "VALID:causal_sync_followup_gap": 70,
+          "VALID:per_source_gap": 79,
+          "VALID:message_type_not_used": 242,
+          "VALID:bounded_block_below_dispersion_threshold": 9,
+          "VALID:unmatched_or_expired_followup": 49,
+          "VALID:below_prospective_high_block_count": 2,
+          "VALID:frozen_trailing_dispersion_rule": 28,
+          "VALID:prospective_causal_nonoverlap_block_count": 2
+        },
+        "independent_event_counts": {},
+        "first_independent_event_s": {},
+        "first_classification_s": {
+          "WARMUP": 0.0,
+          "OBSERVATION": 0.123973846,
+          "ANNOUNCE_OBSERVED": 0.25002265,
+          "NOT_APPLICABLE": 0.527687073,
+          "NONOVERLAPPING_BLOCK_OBSERVED": 0.999843121,
+          "UNKNOWN": 2.39084816,
+          "NONOVERLAPPING_HIGH_DISPERSION_BLOCK_OBSERVED": 3.64315176,
+          "CONFIGURED_IMPAIRMENT_SUSPECT": 3.89343214,
+          "NONOVERLAPPING_BLOCK_PERSISTENCE_OBSERVED": 5.52025938
+        },
+        "any_nonoverlap_persistence": true,
+        "artifact_verification": {
+          "cached_validation_status": "STRUCTURALLY_COMPLETE",
+          "manifest_entries_rehashed": 12,
+          "actual_manifest_hashes_match": true,
+          "source_manifest_sha256": "bdf62d20bb5abdfba6d7e350ec77e5512305d727d5d159add78133d2b4b5d5f4"
+        }
+      },
+      "20260913_v3_n4": {
+        "capture_sha256": "752b72c858c5caee298a1f514a292c98ed9378f30b31e612de1db85a1e69be67",
+        "packet_records": 616,
+        "classification_counts": {
+          "WARMUP": 161,
+          "OBSERVATION": 52,
+          "ANNOUNCE_OBSERVED": 80,
+          "NOT_APPLICABLE": 215,
+          "NONOVERLAPPING_BLOCK_OBSERVED": 6,
+          "UNKNOWN": 62,
+          "CONFIGURED_IMPAIRMENT_SUSPECT": 34,
+          "NONOVERLAPPING_HIGH_DISPERSION_BLOCK_OBSERVED": 2,
+          "NONOVERLAPPING_BLOCK_PERSISTENCE_OBSERVED": 4
+        },
+        "validity_reason_counts": {
+          "VALID:first_valid_announce": 2,
+          "VALID:sync_waiting_for_followup": 159,
+          "VALID:causal_sync_followup_gap": 52,
+          "VALID:per_source_gap": 80,
+          "VALID:message_type_not_used": 215,
+          "VALID:bounded_block_below_dispersion_threshold": 6,
+          "VALID:unmatched_or_expired_followup": 62,
+          "VALID:frozen_trailing_dispersion_rule": 34,
+          "VALID:below_prospective_high_block_count": 2,
+          "VALID:prospective_causal_nonoverlap_block_count": 4
+        },
+        "independent_event_counts": {},
+        "first_independent_event_s": {},
+        "first_classification_s": {
+          "WARMUP": 0.0,
+          "OBSERVATION": 0.123639107,
+          "ANNOUNCE_OBSERVED": 0.250026226,
+          "NOT_APPLICABLE": 0.597025633,
+          "NONOVERLAPPING_BLOCK_OBSERVED": 0.999382019,
+          "UNKNOWN": 2.206877232,
+          "CONFIGURED_IMPAIRMENT_SUSPECT": 4.458405018,
+          "NONOVERLAPPING_HIGH_DISPERSION_BLOCK_OBSERVED": 6.084156513,
+          "NONOVERLAPPING_BLOCK_PERSISTENCE_OBSERVED": 7.881785154
+        },
+        "any_nonoverlap_persistence": true,
+        "artifact_verification": {
+          "cached_validation_status": "STRUCTURALLY_COMPLETE",
+          "manifest_entries_rehashed": 12,
+          "actual_manifest_hashes_match": true,
+          "source_manifest_sha256": "c27588a750b51bc3b6880054fe88c399737203e413d2fdb84394dc0b05c11593"
+        }
+      },
+      "20260913_v3_n5": {
+        "capture_sha256": "c6e0d662a5cffa005c909a00cc24f7eb955572f0ec70e22a7950f26038dd4ddf",
+        "packet_records": 641,
+        "classification_counts": {
+          "WARMUP": 161,
+          "OBSERVATION": 44,
+          "ANNOUNCE_OBSERVED": 80,
+          "NOT_APPLICABLE": 240,
+          "NONOVERLAPPING_BLOCK_OBSERVED": 6,
+          "UNKNOWN": 54,
+          "CONFIGURED_IMPAIRMENT_SUSPECT": 50,
+          "NONOVERLAPPING_HIGH_DISPERSION_BLOCK_OBSERVED": 2,
+          "NONOVERLAPPING_BLOCK_PERSISTENCE_OBSERVED": 4
+        },
+        "validity_reason_counts": {
+          "VALID:first_valid_announce": 2,
+          "VALID:sync_waiting_for_followup": 159,
+          "VALID:causal_sync_followup_gap": 44,
+          "VALID:per_source_gap": 80,
+          "VALID:message_type_not_used": 240,
+          "VALID:bounded_block_below_dispersion_threshold": 6,
+          "VALID:unmatched_or_expired_followup": 54,
+          "VALID:frozen_trailing_dispersion_rule": 50,
+          "VALID:below_prospective_high_block_count": 2,
+          "VALID:prospective_causal_nonoverlap_block_count": 4
+        },
+        "independent_event_counts": {},
+        "first_independent_event_s": {},
+        "first_classification_s": {
+          "WARMUP": 0.0,
+          "OBSERVATION": 0.123900652,
+          "ANNOUNCE_OBSERVED": 0.250035524,
+          "NOT_APPLICABLE": 0.744807243,
+          "NONOVERLAPPING_BLOCK_OBSERVED": 1.000328779,
+          "UNKNOWN": 2.227499962,
+          "CONFIGURED_IMPAIRMENT_SUSPECT": 2.503304243,
+          "NONOVERLAPPING_HIGH_DISPERSION_BLOCK_OBSERVED": 3.379029989,
+          "NONOVERLAPPING_BLOCK_PERSISTENCE_OBSERVED": 5.481395483
+        },
+        "any_nonoverlap_persistence": true,
+        "artifact_verification": {
+          "cached_validation_status": "STRUCTURALLY_COMPLETE",
+          "manifest_entries_rehashed": 12,
+          "actual_manifest_hashes_match": true,
+          "source_manifest_sha256": "d64739c03845ad7c8ad146f4c88d0b6fadc4f7c0f5baaf12b09adc5e90ee3fae"
+        }
+      }
+    },
+    "authorized_source_change_no_action_control": {
+      "20260913_v3_c1": {
+        "capture_sha256": "e76fd8d0f1e4c3e6110ab2d31641903e84c5c72bb9a6f7a21b7a6bacec45aee8",
+        "packet_records": 624,
+        "classification_counts": {
+          "WARMUP": 161,
+          "OBSERVATION": 140,
+          "ANNOUNCE_OBSERVED": 79,
+          "NOT_APPLICABLE": 225,
+          "NONOVERLAPPING_BLOCK_OBSERVED": 19
+        },
+        "validity_reason_counts": {
+          "VALID:first_valid_announce": 2,
+          "VALID:sync_waiting_for_followup": 159,
+          "VALID:causal_sync_followup_gap": 140,
+          "VALID:per_source_gap": 79,
+          "VALID:message_type_not_used": 225,
+          "VALID:bounded_block_below_dispersion_threshold": 19
+        },
+        "independent_event_counts": {},
+        "first_independent_event_s": {},
+        "first_classification_s": {
+          "WARMUP": 0.0,
+          "OBSERVATION": 0.122179031,
+          "ANNOUNCE_OBSERVED": 0.250002384,
+          "NOT_APPLICABLE": 0.568368196,
+          "NONOVERLAPPING_BLOCK_OBSERVED": 0.997939825
+        },
+        "any_nonoverlap_persistence": false,
+        "artifact_verification": {
+          "cached_validation_status": "STRUCTURALLY_COMPLETE",
+          "manifest_entries_rehashed": 11,
+          "actual_manifest_hashes_match": true,
+          "source_manifest_sha256": "a6fafda9de9db1d3e0a2e33a4d5af348494a46d6db1aa9f4cc4638849d77b750"
+        }
+      },
+      "20260913_v3_c2": {
+        "capture_sha256": "21c56906577f457b654d203bc1a602383359ca5bd35b95fb8a8c9f507bf4fd00",
+        "packet_records": 644,
+        "classification_counts": {
+          "WARMUP": 163,
+          "OBSERVATION": 134,
+          "ANNOUNCE_OBSERVED": 80,
+          "NOT_APPLICABLE": 240,
+          "NONOVERLAPPING_BLOCK_OBSERVED": 19,
+          "CONFIGURED_IMPAIRMENT_SUSPECT": 7,
+          "NONOVERLAPPING_HIGH_DISPERSION_BLOCK_OBSERVED": 1
+        },
+        "validity_reason_counts": {
+          "VALID:first_valid_announce": 2,
+          "VALID:sync_waiting_for_followup": 161,
+          "VALID:causal_sync_followup_gap": 134,
+          "VALID:per_source_gap": 80,
+          "VALID:message_type_not_used": 240,
+          "VALID:bounded_block_below_dispersion_threshold": 19,
+          "VALID:frozen_trailing_dispersion_rule": 7,
+          "VALID:below_prospective_high_block_count": 1
+        },
+        "independent_event_counts": {},
+        "first_independent_event_s": {},
+        "first_classification_s": {
+          "WARMUP": 0.0,
+          "OBSERVATION": 0.124070168,
+          "ANNOUNCE_OBSERVED": 0.250190258,
+          "NOT_APPLICABLE": 0.503852129,
+          "NONOVERLAPPING_BLOCK_OBSERVED": 1.000191212,
+          "CONFIGURED_IMPAIRMENT_SUSPECT": 9.015868902,
+          "NONOVERLAPPING_HIGH_DISPERSION_BLOCK_OBSERVED": 9.140345573
+        },
+        "any_nonoverlap_persistence": false,
+        "artifact_verification": {
+          "cached_validation_status": "STRUCTURALLY_COMPLETE",
+          "manifest_entries_rehashed": 11,
+          "actual_manifest_hashes_match": true,
+          "source_manifest_sha256": "033f5e91d21f2a4a41792d979fe46e0b1f599bdafc6f5d0659cb136d93c9dfc5"
+        }
+      },
+      "20260913_v3_c3": {
+        "capture_sha256": "1ce374e38308f4050f60c6d785185940f57d69caebf05fbd3a72a9f61bbafbda",
+        "packet_records": 594,
+        "classification_counts": {
+          "WARMUP": 162,
+          "OBSERVATION": 140,
+          "ANNOUNCE_OBSERVED": 80,
+          "NOT_APPLICABLE": 191,
+          "NONOVERLAPPING_BLOCK_OBSERVED": 20,
+          "UNKNOWN": 1
+        },
+        "validity_reason_counts": {
+          "VALID:first_valid_announce": 2,
+          "VALID:sync_waiting_for_followup": 160,
+          "VALID:causal_sync_followup_gap": 140,
+          "VALID:per_source_gap": 80,
+          "VALID:message_type_not_used": 191,
+          "VALID:bounded_block_below_dispersion_threshold": 20,
+          "TIMESTAMP_REGRESSION:arrival_order_regression": 1
+        },
+        "independent_event_counts": {},
+        "first_independent_event_s": {},
+        "first_classification_s": {
+          "WARMUP": 0.0,
+          "OBSERVATION": 0.124424934,
+          "ANNOUNCE_OBSERVED": 0.250028849,
+          "NOT_APPLICABLE": 0.894049644,
+          "NONOVERLAPPING_BLOCK_OBSERVED": 1.001976967,
+          "UNKNOWN": 8.444649935
+        },
+        "any_nonoverlap_persistence": false,
+        "artifact_verification": {
+          "cached_validation_status": "STRUCTURALLY_COMPLETE",
+          "manifest_entries_rehashed": 11,
+          "actual_manifest_hashes_match": true,
+          "source_manifest_sha256": "07bec47d8e6a02504433e447a294981950e36a3069c676b5a9eacbf8e41c45af"
+        }
+      },
+      "20260913_v3_c4": {
+        "capture_sha256": "71c27f3b2ea00b554998fae0d72c3f9c10190a0d80f7ba7aaa46f3e79ae8aa2b",
+        "packet_records": 635,
+        "classification_counts": {
+          "WARMUP": 163,
+          "OBSERVATION": 141,
+          "ANNOUNCE_OBSERVED": 80,
+          "NOT_APPLICABLE": 229,
+          "UNKNOWN": 2,
+          "NONOVERLAPPING_BLOCK_OBSERVED": 20
+        },
+        "validity_reason_counts": {
+          "VALID:first_valid_announce": 2,
+          "VALID:sync_waiting_for_followup": 161,
+          "VALID:causal_sync_followup_gap": 141,
+          "VALID:per_source_gap": 80,
+          "VALID:message_type_not_used": 229,
+          "TIMESTAMP_REGRESSION:arrival_order_regression": 2,
+          "VALID:bounded_block_below_dispersion_threshold": 20
+        },
+        "independent_event_counts": {},
+        "first_independent_event_s": {},
+        "first_classification_s": {
+          "WARMUP": 0.0,
+          "OBSERVATION": 0.124529362,
+          "ANNOUNCE_OBSERVED": 0.25020504,
+          "NOT_APPLICABLE": 0.566700935,
+          "UNKNOWN": 0.566810608,
+          "NONOVERLAPPING_BLOCK_OBSERVED": 1.000259399
+        },
+        "any_nonoverlap_persistence": false,
+        "artifact_verification": {
+          "cached_validation_status": "STRUCTURALLY_COMPLETE",
+          "manifest_entries_rehashed": 11,
+          "actual_manifest_hashes_match": true,
+          "source_manifest_sha256": "919e6ccf7408838142a0d6e56910922923a56aa2fc2109011b96c2e13d261c11"
+        }
+      },
+      "20260913_v3_c5": {
+        "capture_sha256": "36ec6a6466670f7aa9cce750ac6aa2105a692999334385befed18d7c8838b7ee",
+        "packet_records": 639,
+        "classification_counts": {
+          "WARMUP": 161,
+          "OBSERVATION": 140,
+          "ANNOUNCE_OBSERVED": 79,
+          "NOT_APPLICABLE": 240,
+          "NONOVERLAPPING_BLOCK_OBSERVED": 19
+        },
+        "validity_reason_counts": {
+          "VALID:first_valid_announce": 2,
+          "VALID:sync_waiting_for_followup": 159,
+          "VALID:causal_sync_followup_gap": 140,
+          "VALID:per_source_gap": 79,
+          "VALID:message_type_not_used": 240,
+          "VALID:bounded_block_below_dispersion_threshold": 19
+        },
+        "independent_event_counts": {},
+        "first_independent_event_s": {},
+        "first_classification_s": {
+          "WARMUP": 0.0,
+          "OBSERVATION": 0.123757601,
+          "ANNOUNCE_OBSERVED": 0.250060797,
+          "NOT_APPLICABLE": 0.581595421,
+          "NONOVERLAPPING_BLOCK_OBSERVED": 0.999224663
+        },
+        "any_nonoverlap_persistence": false,
+        "artifact_verification": {
+          "cached_validation_status": "STRUCTURALLY_COMPLETE",
+          "manifest_entries_rehashed": 11,
+          "actual_manifest_hashes_match": true,
+          "source_manifest_sha256": "f3d866881c6da33d61aae0917823072370768dfffa987002c1c71debd3903fda"
+        }
+      }
+    },
+    "authorized_source_termination_observation": {
+      "20260913_v3_s1": {
+        "capture_sha256": "c6205db475cd172662c44b382d675ad6207f5a1f725fb202979258fd6824b243",
+        "packet_records": 910,
+        "classification_counts": {
+          "WARMUP": 228,
+          "OBSERVATION": 198,
+          "ANNOUNCE_OBSERVED": 112,
+          "NOT_APPLICABLE": 343,
+          "NONOVERLAPPING_BLOCK_OBSERVED": 28,
+          "UNKNOWN": 1
+        },
+        "validity_reason_counts": {
+          "VALID:first_valid_announce": 2,
+          "VALID:sync_waiting_for_followup": 226,
+          "VALID:causal_sync_followup_gap": 198,
+          "VALID:per_source_gap": 112,
+          "VALID:message_type_not_used": 343,
+          "VALID:bounded_block_below_dispersion_threshold": 28,
+          "TIMESTAMP_REGRESSION:arrival_order_regression": 1
+        },
+        "independent_event_counts": {
+          "SOURCE_ANNOUNCE_SILENCE_OBSERVED": 1
+        },
+        "first_independent_event_s": {
+          "SOURCE_ANNOUNCE_SILENCE_OBSERVED": 10.832329035
+        },
+        "first_classification_s": {
+          "WARMUP": 0.0,
+          "OBSERVATION": 0.121304989,
+          "ANNOUNCE_OBSERVED": 0.250020981,
+          "NOT_APPLICABLE": 0.561705112,
+          "NONOVERLAPPING_BLOCK_OBSERVED": 0.99864459,
+          "UNKNOWN": 9.066936255
+        },
+        "any_nonoverlap_persistence": false,
+        "artifact_verification": {
+          "cached_validation_status": "STRUCTURALLY_COMPLETE",
+          "manifest_entries_rehashed": 10,
+          "actual_manifest_hashes_match": true,
+          "source_manifest_sha256": "d3c175cb7b793778b71c1d95c6f93d12983e4869bbc2320effb957ebf873b625"
+        }
+      },
+      "20260913_v3_s2": {
+        "capture_sha256": "1674de560fa791c188b4b4a6e144fb598a3592d6b6247e4a0a04c0a4fd95e4a6",
+        "packet_records": 873,
+        "classification_counts": {
+          "WARMUP": 226,
+          "OBSERVATION": 196,
+          "ANNOUNCE_OBSERVED": 112,
+          "NOT_APPLICABLE": 311,
+          "NONOVERLAPPING_BLOCK_OBSERVED": 28
+        },
+        "validity_reason_counts": {
+          "VALID:first_valid_announce": 2,
+          "VALID:sync_waiting_for_followup": 224,
+          "VALID:causal_sync_followup_gap": 196,
+          "VALID:per_source_gap": 112,
+          "VALID:message_type_not_used": 311,
+          "VALID:bounded_block_below_dispersion_threshold": 28
+        },
+        "independent_event_counts": {
+          "SOURCE_ANNOUNCE_SILENCE_OBSERVED": 1
+        },
+        "first_independent_event_s": {
+          "SOURCE_ANNOUNCE_SILENCE_OBSERVED": 10.88714695
+        },
+        "first_classification_s": {
+          "WARMUP": 0.0,
+          "OBSERVATION": 0.123975754,
+          "ANNOUNCE_OBSERVED": 0.250321388,
+          "NOT_APPLICABLE": 0.63103056,
+          "NONOVERLAPPING_BLOCK_OBSERVED": 0.999430418
+        },
+        "any_nonoverlap_persistence": false,
+        "artifact_verification": {
+          "cached_validation_status": "STRUCTURALLY_COMPLETE",
+          "manifest_entries_rehashed": 10,
+          "actual_manifest_hashes_match": true,
+          "source_manifest_sha256": "49243a48f3a4b6decfbef31d94f061cd23796dbfc835ed2a9041d8101ba87dc1"
+        }
+      },
+      "20260913_v3_s3": {
+        "capture_sha256": "521ad89cce7e3937bc44059d6e05714f44836cf1784c3bf98ab333a60fe4ec88",
+        "packet_records": 890,
+        "classification_counts": {
+          "WARMUP": 227,
+          "OBSERVATION": 190,
+          "ANNOUNCE_OBSERVED": 112,
+          "NOT_APPLICABLE": 326,
+          "NONOVERLAPPING_BLOCK_OBSERVED": 27,
+          "CONFIGURED_IMPAIRMENT_SUSPECT": 7,
+          "NONOVERLAPPING_HIGH_DISPERSION_BLOCK_OBSERVED": 1
+        },
+        "validity_reason_counts": {
+          "VALID:first_valid_announce": 2,
+          "VALID:sync_waiting_for_followup": 225,
+          "VALID:causal_sync_followup_gap": 190,
+          "VALID:per_source_gap": 112,
+          "VALID:message_type_not_used": 326,
+          "VALID:bounded_block_below_dispersion_threshold": 27,
+          "VALID:frozen_trailing_dispersion_rule": 7,
+          "VALID:below_prospective_high_block_count": 1
+        },
+        "independent_event_counts": {
+          "SOURCE_ANNOUNCE_SILENCE_OBSERVED": 1
+        },
+        "first_independent_event_s": {
+          "SOURCE_ANNOUNCE_SILENCE_OBSERVED": 10.882218361
+        },
+        "first_classification_s": {
+          "WARMUP": 0.0,
+          "OBSERVATION": 0.123249292,
+          "ANNOUNCE_OBSERVED": 0.250017166,
+          "NOT_APPLICABLE": 0.543771744,
+          "NONOVERLAPPING_BLOCK_OBSERVED": 0.998819113,
+          "CONFIGURED_IMPAIRMENT_SUSPECT": 10.88280201,
+          "NONOVERLAPPING_HIGH_DISPERSION_BLOCK_OBSERVED": 11.007287264
+        },
+        "any_nonoverlap_persistence": false,
+        "artifact_verification": {
+          "cached_validation_status": "STRUCTURALLY_COMPLETE",
+          "manifest_entries_rehashed": 10,
+          "actual_manifest_hashes_match": true,
+          "source_manifest_sha256": "2988be0a33e16448919583c0e9268bf1adc88de4c0d3c50dcab5d8bfee9691aa"
+        }
+      },
+      "20260913_v3_s4": {
+        "capture_sha256": "8f4d172fc5f66434c6ecb21f3019538b079f99d74dc26fda343f929d4f771088",
+        "packet_records": 916,
+        "classification_counts": {
+          "WARMUP": 228,
+          "OBSERVATION": 198,
+          "ANNOUNCE_OBSERVED": 112,
+          "NOT_APPLICABLE": 350,
+          "NONOVERLAPPING_BLOCK_OBSERVED": 28
+        },
+        "validity_reason_counts": {
+          "VALID:first_valid_announce": 2,
+          "VALID:sync_waiting_for_followup": 226,
+          "VALID:causal_sync_followup_gap": 198,
+          "VALID:per_source_gap": 112,
+          "VALID:message_type_not_used": 350,
+          "VALID:bounded_block_below_dispersion_threshold": 28
+        },
+        "independent_event_counts": {
+          "SOURCE_ANNOUNCE_SILENCE_OBSERVED": 1
+        },
+        "first_independent_event_s": {
+          "SOURCE_ANNOUNCE_SILENCE_OBSERVED": 10.886103392
+        },
+        "first_classification_s": {
+          "WARMUP": 0.0,
+          "OBSERVATION": 0.12437439,
+          "ANNOUNCE_OBSERVED": 0.250028372,
+          "NOT_APPLICABLE": 0.706233501,
+          "NONOVERLAPPING_BLOCK_OBSERVED": 1.000981808
+        },
+        "any_nonoverlap_persistence": false,
+        "artifact_verification": {
+          "cached_validation_status": "STRUCTURALLY_COMPLETE",
+          "manifest_entries_rehashed": 10,
+          "actual_manifest_hashes_match": true,
+          "source_manifest_sha256": "7ca7bb80eb84db22de2e87473a0d698823fcdffb574cbc2fa12c5a7021f613d5"
+        }
+      },
+      "20260913_v3_s5": {
+        "capture_sha256": "a31c3d6a299dd8b7b482958813d5efec9033761d96c5d396467f5927a5333c7d",
+        "packet_records": 925,
+        "classification_counts": {
+          "WARMUP": 227,
+          "OBSERVATION": 197,
+          "ANNOUNCE_OBSERVED": 112,
+          "NOT_APPLICABLE": 361,
+          "NONOVERLAPPING_BLOCK_OBSERVED": 28
+        },
+        "validity_reason_counts": {
+          "VALID:first_valid_announce": 2,
+          "VALID:sync_waiting_for_followup": 225,
+          "VALID:causal_sync_followup_gap": 197,
+          "VALID:per_source_gap": 112,
+          "VALID:message_type_not_used": 361,
+          "VALID:bounded_block_below_dispersion_threshold": 28
+        },
+        "independent_event_counts": {
+          "SOURCE_ANNOUNCE_SILENCE_OBSERVED": 1
+        },
+        "first_independent_event_s": {
+          "SOURCE_ANNOUNCE_SILENCE_OBSERVED": 10.771647453
+        },
+        "first_classification_s": {
+          "WARMUP": 0.0,
+          "OBSERVATION": 0.123977661,
+          "ANNOUNCE_OBSERVED": 0.250214577,
+          "NOT_APPLICABLE": 0.53479743,
+          "NONOVERLAPPING_BLOCK_OBSERVED": 0.999458075
+        },
+        "any_nonoverlap_persistence": false,
+        "artifact_verification": {
+          "cached_validation_status": "STRUCTURALLY_COMPLETE",
+          "manifest_entries_rehashed": 10,
+          "actual_manifest_hashes_match": true,
+          "source_manifest_sha256": "cfc0694c302c88c53bcd15bfca9d8dd7de211756d2af878c51f8bb5592b3d818"
+        }
+      }
+    }
+  },
+  "run_level_summary": {
+    "baseline_control": {
+      "k": 0,
+      "n": 5,
+      "proportion": 0.0,
+      "wilson95": [
+        5.551115123125783e-17,
+        0.4344824647831612
+      ]
+    },
+    "netem_delay_jitter_loss": {
+      "k": 5,
+      "n": 5,
+      "proportion": 1.0,
+      "wilson95": [
+        0.5655175352168389,
+        1
+      ]
+    },
+    "authorized_source_change_no_action_control": {
+      "k": 0,
+      "n": 5,
+      "proportion": 0.0,
+      "wilson95": [
+        5.551115123125783e-17,
+        0.4344824647831612
+      ]
+    },
+    "authorized_source_termination_observation": {
+      "k": 0,
+      "n": 5,
+      "proportion": 0.0,
+      "wilson95": [
+        5.551115123125783e-17,
+        0.4344824647831612
+      ]
+    }
+  },
+  "prospective_feasibility_gates": {
+    "netem_at_least_4_of_5": true,
+    "baseline_plus_no_action_controls_zero_of_10": true,
+    "all_structural_and_manifest_valid": true,
+    "result": "PASS"
+  },
+  "excluded_runs": [],
+  "limits": [
+    "one prospective pilot; wide n=5 uncertainty",
+    "labels are evaluation metadata, never features",
+    "shared-host free_running software-clock observations",
+    "no attack, health, receiver-selection, outage, physical timing, or recovery inference"
+  ]
+}

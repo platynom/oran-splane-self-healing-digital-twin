@@ -1,0 +1,69 @@
+{
+  "conformance_negative_tests": [
+    {
+      "case": "NEG-5 wrong domain (0)",
+      "clause": "G.8275.1 domain 24-43 / UNH c.1.7",
+      "expected": "ATTACK",
+      "verdict": "ATTACK",
+      "fault_hint": "A5",
+      "pass_": true,
+      "reason": "Out-of-profile transport: domain=1 pkts, wrong multicast=0 pkts"
+    },
+    {
+      "case": "NEG-3 stepsRemoved 255",
+      "clause": "UNH PWR.c.2.4 (>=255 discard)",
+      "expected": "ATTACK",
+      "verdict": "ATTACK",
+      "fault_hint": "A4",
+      "pass_": true,
+      "reason": "UNH PWR.c.2.4 / G.8275.1: stepsRemoved>=255 (must be discarded) in 1 Announce"
+    },
+    {
+      "case": "NEG-15 priority1 != 128",
+      "clause": "G.8275.1 priority1 fixed 128",
+      "expected": "ATTACK",
+      "verdict": "ATTACK",
+      "fault_hint": "A1",
+      "pass_": true,
+      "reason": "G.8275.1 fixes priority1=128; 1 Announce violate it"
+    },
+    {
+      "case": "NEG-1 illegal clockClass 0",
+      "clause": "IEEE 1588-2019 Table 5 (0-5 reserved)",
+      "expected": "ATTACK",
+      "verdict": "ATTACK",
+      "fault_hint": "A1",
+      "pass_": true,
+      "reason": "IEEE 1588-2019 Table 5: clockClass < 6 (RESERVED/illegal) in 1 Announce messages"
+    },
+    {
+      "case": "NEG-11 wrong multicast",
+      "clause": "G.8275.1 multicast group",
+      "expected": "ATTACK",
+      "verdict": "ATTACK",
+      "fault_hint": "A5",
+      "pass_": true,
+      "reason": "Out-of-profile transport: domain=0 pkts, wrong multicast=1 pkts"
+    },
+    {
+      "case": "NEG-2 alternateMasterFlag",
+      "clause": "UNH PWR.c.2.5 (alternateMasterFlag discard)",
+      "expected": "ATTACK",
+      "verdict": "ATTACK",
+      "fault_hint": "A8",
+      "pass_": true,
+      "reason": "UNH PWR.c.2.5: alternateMasterFlag=TRUE in 1 Announce (must be discarded)"
+    },
+    {
+      "case": "CONTROL all-legit",
+      "clause": "(no violation)",
+      "expected": "BENIGN",
+      "verdict": "BENIGN",
+      "fault_hint": null,
+      "pass_": true,
+      "reason": "Only provisioned clocks present; no protocol-legality violation"
+    }
+  ],
+  "passed": 7,
+  "total": 7
+}

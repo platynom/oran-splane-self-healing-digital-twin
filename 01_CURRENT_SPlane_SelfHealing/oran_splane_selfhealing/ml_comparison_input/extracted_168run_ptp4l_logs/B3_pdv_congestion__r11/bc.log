@@ -1,0 +1,55 @@
+ptp4l[3435.576]: port 1 (v-bc-up): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[3435.620]: port 2 (v-bc-dn): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[3435.620]: port 0 (/var/run/p.bc): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[3435.620]: port 0 (/var/run/pr.bc): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[3435.971]: port 1 (v-bc-up): new foreign master 020000.fffe.00000a-1
+ptp4l[3436.008]: port 1 (v-bc-up): LISTENING to MASTER on ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES
+ptp4l[3436.008]: selected local clock 020000.fffe.000001 as best master
+ptp4l[3436.008]: port 1 (v-bc-up): assuming the grand master role
+ptp4l[3436.030]: port 2 (v-bc-dn): LISTENING to MASTER on ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES
+ptp4l[3436.030]: port 1 (v-bc-up): assuming the grand master role
+ptp4l[3436.030]: port 2 (v-bc-dn): assuming the grand master role
+ptp4l[3436.048]: port 1 (v-bc-up): new foreign master 020000.fffe.00000b-1
+ptp4l[3436.221]: selected best master clock 020000.fffe.00000a
+ptp4l[3436.221]: foreign master not using PTP timescale
+ptp4l[3436.221]: port 1 (v-bc-up): MASTER to UNCALIBRATED on RS_SLAVE
+ptp4l[3436.298]: foreign master not using PTP timescale
+ptp4l[3438.285]: master offset       -770 s0 freq    -569 path delay      4712
+ptp4l[3440.287]: master offset       -148 s0 freq    +158 path delay      4407
+ptp4l[3442.289]: master offset       -492 s0 freq    -411 path delay      3929
+ptp4l[3444.290]: master offset        -50 s0 freq    +289 path delay      4066
+ptp4l[3446.292]: master offset      -1432 s0 freq    -748 path delay      3950
+ptp4l[3448.294]: master offset       -812 s0 freq    -141 path delay      3048
+ptp4l[3450.296]: master offset       5660 s0 freq   +3558 path delay      3699
+ptp4l[3452.298]: master offset       -276 s0 freq   -2356 path delay      4919
+ptp4l[3454.239]: port 1 (v-bc-up): UNCALIBRATED to MASTER on ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES
+ptp4l[3454.309]: selected local clock 020000.fffe.000001 as best master
+ptp4l[3454.309]: port 1 (v-bc-up): assuming the grand master role
+ptp4l[3454.309]: port 2 (v-bc-dn): assuming the grand master role
+ptp4l[3456.649]: timed out while polling for tx timestamp
+ptp4l[3456.649]: increasing tx_timestamp_timeout may correct this issue, but it is likely caused by a driver bug
+ptp4l[3456.649]: port 2 (v-bc-dn): send sync failed
+ptp4l[3456.649]: port 2 (v-bc-dn): MASTER to FAULTY on FAULT_DETECTED (FT_UNSPECIFIED)
+ptp4l[3456.676]: selected best master clock 020000.fffe.00000a
+ptp4l[3456.676]: foreign master not using PTP timescale
+ptp4l[3456.676]: port 1 (v-bc-up): MASTER to UNCALIBRATED on RS_SLAVE
+ptp4l[3456.676]: foreign master not using PTP timescale
+ptp4l[3458.684]: master offset      -1588 s0 freq     +38 path delay      5434
+ptp4l[3460.687]: master offset       -104 s0 freq    +383 path delay      4717
+ptp4l[3462.689]: master offset      -1105 s0 freq   -1142 path delay      3432
+ptp4l[3464.690]: master offset      -1150 s0 freq     -45 path delay      3386
+ptp4l[3466.692]: master offset       -429 s0 freq    +449 path delay      3564
+ptp4l[3468.694]: master offset      -1161 s0 freq    -348 path delay      3600
+ptp4l[3470.696]: master offset      -1419 s0 freq    -238 path delay      3382
+ptp4l[3472.704]: port 2 (v-bc-dn): FAULTY to LISTENING on INIT_COMPLETE
+ptp4l[3472.704]: master offset       -547 s0 freq    +589 path delay      3690
+ptp4l[3473.202]: port 2 (v-bc-dn): LISTENING to MASTER on ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES
+ptp4l[3473.202]: foreign master not using PTP timescale
+ptp4l[3474.122]: port 1 (v-bc-up): UNCALIBRATED to MASTER on ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES
+ptp4l[3474.191]: selected local clock 020000.fffe.000001 as best master
+ptp4l[3474.191]: port 1 (v-bc-up): assuming the grand master role
+ptp4l[3474.191]: port 2 (v-bc-dn): assuming the grand master role
+ptp4l[3475.865]: selected best master clock 020000.fffe.00000a
+ptp4l[3475.865]: foreign master not using PTP timescale
+ptp4l[3475.865]: port 1 (v-bc-up): MASTER to UNCALIBRATED on RS_SLAVE
+ptp4l[3475.865]: foreign master not using PTP timescale

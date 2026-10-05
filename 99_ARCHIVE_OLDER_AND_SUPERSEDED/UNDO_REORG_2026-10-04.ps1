@@ -1,0 +1,16 @@
+# Restores every move made on 2026-10-04. Run: powershell -ExecutionPolicy Bypass -File .\99_ARCHIVE_OLDER_AND_SUPERSEDED\UNDO_REORG_2026-10-04.ps1
+Set-Location (Split-Path -Parent $PSScriptRoot)
+Move-Item -LiteralPath '99_ARCHIVE_OLDER_AND_SUPERSEDED\build_scratch\code_tree_test_temp\pytest-cache-files-gvoeij5t' -Destination '01_CURRENT_SPlane_SelfHealing\oran_splane_selfhealing\pytest-cache-files-gvoeij5t'
+Move-Item -LiteralPath '99_ARCHIVE_OLDER_AND_SUPERSEDED\build_scratch\code_tree_test_temp\pytest-cache-files-b853r43e' -Destination '01_CURRENT_SPlane_SelfHealing\oran_splane_selfhealing\pytest-cache-files-b853r43e'
+Move-Item -LiteralPath '99_ARCHIVE_OLDER_AND_SUPERSEDED\build_scratch\code_tree_test_temp\pytest_step1_precreated2' -Destination '01_CURRENT_SPlane_SelfHealing\oran_splane_selfhealing\.pytest_step1_precreated2'
+Move-Item -LiteralPath '99_ARCHIVE_OLDER_AND_SUPERSEDED\build_scratch\code_tree_test_temp\pytest_step1_phase1_unsandboxed' -Destination '01_CURRENT_SPlane_SelfHealing\oran_splane_selfhealing\.pytest_step1_phase1_unsandboxed'
+Move-Item -LiteralPath '99_ARCHIVE_OLDER_AND_SUPERSEDED\build_scratch\code_tree_test_temp\pytest_step1_phase1_fix_unit' -Destination '01_CURRENT_SPlane_SelfHealing\oran_splane_selfhealing\.pytest_step1_phase1_fix_unit'
+Move-Item -LiteralPath '99_ARCHIVE_OLDER_AND_SUPERSEDED\build_scratch\code_tree_test_temp\pytest_step1_phase1_fix_full' -Destination '01_CURRENT_SPlane_SelfHealing\oran_splane_selfhealing\.pytest_step1_phase1_fix_full'
+Move-Item -LiteralPath '99_ARCHIVE_OLDER_AND_SUPERSEDED\build_scratch\code_tree_test_temp\pytest_step1_modefix3' -Destination '01_CURRENT_SPlane_SelfHealing\oran_splane_selfhealing\.pytest_step1_modefix3'
+Move-Item -LiteralPath '99_ARCHIVE_OLDER_AND_SUPERSEDED\build_scratch\code_tree_test_temp\pytest_step1_harness_20260816' -Destination '01_CURRENT_SPlane_SelfHealing\oran_splane_selfhealing\.pytest_step1_harness_20260816'
+Move-Item -LiteralPath '99_ARCHIVE_OLDER_AND_SUPERSEDED\build_scratch\code_tree_test_temp\pytest_step1_20260816' -Destination '01_CURRENT_SPlane_SelfHealing\oran_splane_selfhealing\.pytest_step1_20260816'
+Move-Item -LiteralPath '99_ARCHIVE_OLDER_AND_SUPERSEDED\build_scratch\code_tree_test_temp\pytest_ml_vs_rule_20260921' -Destination '01_CURRENT_SPlane_SelfHealing\oran_splane_selfhealing\.pytest_ml_vs_rule_20260921'
+Move-Item -LiteralPath '99_ARCHIVE_OLDER_AND_SUPERSEDED\build_scratch\code_tree_test_temp\pytest_basetemp_direct_1' -Destination '01_CURRENT_SPlane_SelfHealing\oran_splane_selfhealing\.pytest_basetemp_direct_1'
+Move-Item -LiteralPath '99_ARCHIVE_OLDER_AND_SUPERSEDED\build_scratch\code_tree_test_temp\codex_tmp_consistency' -Destination '01_CURRENT_SPlane_SelfHealing\oran_splane_selfhealing\.codex_tmp_consistency'
+Move-Item -LiteralPath '99_ARCHIVE_OLDER_AND_SUPERSEDED\build_scratch\code_tree_test_temp\codex_tmp' -Destination '01_CURRENT_SPlane_SelfHealing\oran_splane_selfhealing\.codex_tmp'
+Move-Item -LiteralPath '99_ARCHIVE_OLDER_AND_SUPERSEDED\decks_superseded\july_2026_proposal_era_deliverables' -Destination '01_CURRENT_SPlane_SelfHealing\deliverables'

@@ -2,6 +2,8 @@ from __future__ import annotations
 
 """Leakage-resistant global-vs-group open-set evaluation."""
 
+import json
+import hashlib
 from pathlib import Path
 
 import numpy as np
@@ -27,13 +29,15 @@ _FAMILY = {
     "gnss_spoof_single_source": "gnss_spoof_single_source",
     "gnss_spoof_all_sources": "gnss_spoof_all_sources",
 }
-_PRE_BMCA = {
-    ("simulated", "spoof"): (0.8938547486033519, 0.553072625698324, 0.9720670391061452, 0.02100840336134454),
-    ("simulated", "replay"): (0.4301675977653631, 0.2122905027932961, 0.5251396648044693, 0.01680672268907563),
-    ("simulated", "dos"): (0.0, 0.9441340782122905, 0.9441340782122905, 0.01680672268907563),
-    ("timesafe_real", "announce"): (0.23796522488863342, 0.0011495904583991954, 0.238540020117833, 0.022388059701492536),
-    ("timesafe_real", "sync_follow_up"): (1.0, 0.0, 1.0, 0.0),
-    ("timesafe_real", "sync_single_step"): (1.0, 1.0, 1.0, 0.019230769230769232),
+ROOT = Path(__file__).resolve().parents[1]
+QUARANTINED_CAPTURE_IDS = {"announce_session_1", "announce_session_2"}
+# Full derived-session hashes for the known conflicting Announce capture. A
+# renamed byte-identical copy must not evade the canonical-capture quarantine.
+QUARANTINED_INPUT_HASHES = {
+    "f46dd57f4014b53d5ab6ead7cd699a3921f1152525c43826049bc2827ee47ef5",
+    "9acc52c25bfc75a3b45e5817acc5cf72664843b27393f80deec87cab6130a510",
+    "15502b1211f86aab2d048fc81b4733e0015a08284d4e3da1c3bb42c7371731f8",
+    "3412791daa9e6659874670268c9325571d0a1030ded74371930d893b3a75a865",
 }
 
 
@@ -116,24 +120,6 @@ def _prediction_trace(
     return trace[["domain", "attack_family", "kind", "stream_id", "window_start_s", "raw_h1", "raw_novel"]]
 
 
-def _pre_row(domain: str, held_out: str, family: str, attack_n: int, benign_n: int) -> dict:
-    rf, novelty, combined, benign_fp = _PRE_BMCA.get(
-        (domain, family), (np.nan, np.nan, np.nan, np.nan)
-    )
-    return {
-        "domain": domain,
-        "mode": "pre_bmca",
-        "held_out_attack": held_out,
-        "attack_family": family,
-        "attack_windows": attack_n,
-        "rf_only_attack_recall": rf,
-        "novelty_flag_rate": novelty,
-        "combined_protective_rate": combined,
-        "benign_windows": benign_n,
-        "benign_novelty_false_alarm_rate": benign_fp,
-    }
-
-
 def _threshold_rows(domain: str, family: str, mode: str, detector: NoveltyDetector) -> list[dict]:
     return [
         {
@@ -180,7 +166,6 @@ def evaluate_simulated(config: dict, windows: pd.DataFrame | None = None) -> pd.
         calibration_known = fit_known[fit_known["label"] == "H0"]
         benign_test = known[(known["run_id"] % 3 == 2) & (known["label"] == "H0")]
         rf = _fit_rf(known, int(config["seed"]), features)
-        rows.append(_pre_row("simulated", held, family, len(attack), len(benign_test)))
         for mode in ("global", "group"):
             detector = _detector(config, mode, fit_known, features, calibration_known)
             rows.append(_metric_row("simulated", f"bmca_{mode}", held, family, attack, benign_test, rf, detector, features))
@@ -197,26 +182,155 @@ def evaluate_simulated(config: dict, windows: pd.DataFrame | None = None) -> pd.
 
 
 def _load_real_sessions(session_dir: Path, config: dict) -> pd.DataFrame:
+    metadata_path = session_dir / "TIMESAFE_SESSION_METADATA.json"
+    if not metadata_path.exists():
+        # Existing session CSVs may have projected H0/H1 labels.  Missing
+        # provenance is not evidence that they are clock-health ground truth.
+        return pd.DataFrame()
+    try:
+        metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return pd.DataFrame()
+    if not _has_independent_clock_health_evidence(metadata):
+        return pd.DataFrame()
+    declared = _declared_session_inputs(metadata, session_dir)
+    if declared is None:
+        return pd.DataFrame()
     rows = []
-    for path in sorted(session_dir.glob("*.csv")):
-        if "__" not in path.stem:
-            continue
-        capture_id, family = path.stem.rsplit("__", 1)
-        label = "H0" if family == "benign" else "H1"
+    for path, declaration in declared:
         telemetry = coerce_telemetry(pd.read_csv(path))
+        capture_id = declaration["capture_id"]
         telemetry["scenario"] = capture_id
-        telemetry["run_id"] = 0
-        telemetry["label"] = label
+        telemetry["run_id"] = int(declaration.get("run_id", 0))
         features = window_features(
             telemetry,
             float(config["dataset"]["window_s"]),
             float(config["dataset"]["step_s"]),
         )
         features["capture_id"] = capture_id
-        features["attack_family"] = "none" if label == "H0" else family
-        features["label"] = label
+        features["attack_family"] = declaration["attack_family"]
         rows.append(features)
     return pd.concat(rows, ignore_index=True) if rows else pd.DataFrame()
+
+
+def _is_nonempty_string(value: object) -> bool:
+    return isinstance(value, str) and bool(value.strip())
+
+
+def _is_sha256(value: object) -> bool:
+    return (
+        isinstance(value, str)
+        and len(value) == 64
+        and all(character in "0123456789abcdef" for character in value.lower())
+    )
+
+
+def _has_independent_clock_health_evidence(metadata: object) -> bool:
+    """Require traceable evidence, not a metadata assertion, before real evaluation."""
+    if not isinstance(metadata, dict):
+        return False
+    required_text = ("validation_method", "evidence_artifact", "evidence_sha256", "reviewer", "review_date")
+    if metadata.get("validation_status") != "independently_validated":
+        return False
+    if metadata.get("label_semantics") != "measured_clock_health":
+        return False
+    if metadata.get("evidence_type") not in ("receiver_measurement", "controlled_experiment_log"):
+        return False
+    if not all(_is_nonempty_string(metadata.get(key)) for key in required_text):
+        return False
+    if not _is_sha256(metadata["evidence_sha256"]):
+        return False
+    if not isinstance(metadata.get("inputs"), list) or not metadata["inputs"]:
+        return False
+    if not _source_hashes_match(metadata.get("source_sha256")):
+        return False
+    evidence = (ROOT / str(metadata["evidence_artifact"])).resolve()
+    try:
+        evidence.relative_to(ROOT.resolve())
+    except ValueError:
+        return False
+    if not evidence.is_file():
+        return False
+    digest = hashlib.sha256(evidence.read_bytes()).hexdigest()
+    # The evidence artifact cannot be an upstream source or an evaluated input;
+    # either would merely rebrand data under evaluation as its validation.
+    input_hashes = {
+        entry.get("sha256")
+        for entry in metadata["inputs"]
+        if isinstance(entry, dict) and _is_sha256(entry.get("sha256"))
+    }
+    return (
+        digest == metadata["evidence_sha256"]
+        and digest not in metadata["source_sha256"].values()
+        and digest not in input_hashes
+    )
+
+
+def _declared_session_inputs(metadata: dict, session_dir: Path) -> list[tuple[Path, dict]] | None:
+    """Bind every loaded CSV, its labels, and canonical identity to the manifest."""
+    inputs = metadata.get("inputs")
+    if not isinstance(inputs, list) or not inputs:
+        return None
+    actual = {path.name: path for path in session_dir.glob("*.csv")}
+    declared_names: set[str] = set()
+    validated: list[tuple[Path, dict]] = []
+    for entry in inputs:
+        required = {"path", "sha256", "capture_id", "attack_family", "allowed_labels", "source_paths"}
+        if not isinstance(entry, dict) or not required.issubset(entry):
+            return None
+        name = entry["path"]
+        if not isinstance(name, str) or Path(name).name != name or name in declared_names:
+            return None
+        path = actual.get(name)
+        if path is None or not _is_sha256(entry["sha256"]) or hashlib.sha256(path.read_bytes()).hexdigest() != entry["sha256"]:
+            return None
+        if not _is_nonempty_string(entry["capture_id"]) or not _is_nonempty_string(entry["attack_family"]):
+            return None
+        if not isinstance(entry.get("run_id", 0), int) or isinstance(entry.get("run_id", 0), bool):
+            return None
+        source_paths = entry["source_paths"]
+        declared_sources = metadata.get("source_sha256")
+        if (not isinstance(source_paths, list) or not source_paths
+                or not all(isinstance(item, str) and item in declared_sources for item in source_paths)):
+            return None
+        if entry["capture_id"] in QUARANTINED_CAPTURE_IDS or entry["sha256"] in QUARANTINED_INPUT_HASHES:
+            return None
+        if entry.get("label_semantics", "measured_clock_health") != "measured_clock_health":
+            return None
+        allowed = entry["allowed_labels"]
+        if not isinstance(allowed, list) or not allowed or not all(isinstance(value, str) for value in allowed):
+            return None
+        try:
+            recorded_labels = pd.read_csv(path, usecols=["label"])["label"]
+            if recorded_labels.isna().any():
+                return None
+            observed = set(recorded_labels.astype(str))
+        except (OSError, ValueError):
+            return None
+        if not observed or not observed.issubset(set(allowed)):
+            return None
+        declared_names.add(name)
+        validated.append((path, entry))
+    if set(actual) != declared_names:
+        return None
+    return validated
+
+
+def _source_hashes_match(declared: object) -> bool:
+    """Bind evidence to existing project files; never trust hashes as prose."""
+    if not isinstance(declared, dict) or not declared:
+        return False
+    for rel, expected in declared.items():
+        if not isinstance(rel, str) or not _is_sha256(expected):
+            return False
+        candidate = (ROOT / rel).resolve()
+        try:
+            candidate.relative_to(ROOT.resolve())
+        except ValueError:
+            return False
+        if not candidate.is_file() or hashlib.sha256(candidate.read_bytes()).hexdigest() != expected:
+            return False
+    return True
 
 
 def evaluate_real(config: dict, session_dir: Path, features: list[str] | None = None) -> pd.DataFrame:
@@ -237,7 +351,6 @@ def evaluate_real(config: dict, session_dir: Path, features: list[str] | None = 
         benign_counts = train.loc[train["label"] == "H0", "capture_id"].value_counts()
         calibration_capture = str(benign_counts.index[0])
         novelty_calibration = train[(train["capture_id"] == calibration_capture) & (train["label"] == "H0")]
-        rows.append(_pre_row("timesafe_real", family, family, len(attack), len(benign_test)))
         for mode in ("global", "group"):
             detector = _detector(config, mode, train, features, novelty_calibration)
             rows.append(_metric_row("timesafe_real", f"bmca_{mode}", family, family, attack, benign_test, rf, detector, features))
@@ -250,7 +363,7 @@ def evaluate_real(config: dict, session_dir: Path, features: list[str] | None = 
     result = pd.DataFrame(rows)
     result.attrs["thresholds"] = pd.DataFrame(thresholds)
     result.attrs["windows"] = real
-    result.attrs["persistence_traces"] = pd.concat(traces, ignore_index=True)
+    result.attrs["persistence_traces"] = pd.concat(traces, ignore_index=True) if traces else pd.DataFrame()
     return result
 
 
@@ -276,6 +389,8 @@ def evaluate_planned_failover(config: dict, windows: pd.DataFrame) -> pd.DataFra
 def evaluate_identity_ablation(config: dict, session_dir: Path) -> pd.DataFrame:
     configured = configured_feature_columns(config)
     real = _load_real_sessions(session_dir, config)
+    if real.empty:
+        return pd.DataFrame()
     held_sessions = set(real.loc[(real["label"] == "H1") & (real["attack_family"] == "announce"), "capture_id"])
     train = real[~real["capture_id"].isin(held_sessions)]
     attack = real[(real["label"] == "H1") & (real["attack_family"] == "announce")]

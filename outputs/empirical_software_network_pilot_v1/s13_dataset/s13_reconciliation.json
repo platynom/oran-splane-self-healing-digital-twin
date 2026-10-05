@@ -1,0 +1,25 @@
+{
+  "rows_written": 143,
+  "columns": 24,
+  "run_directories_on_disk": 143,
+  "run_ids_in_dataset": 143,
+  "on_disk_not_in_dataset": [],
+  "in_dataset_not_on_disk": [],
+  "rows_by_batch": {
+    "legacy_set1_set2_set3": 43,
+    "preserved_attempts": 4,
+    "s11_closed_loop": 10,
+    "v1_streamtest": 4,
+    "v2_repeated": 12,
+    "v3": 20,
+    "v4": 25,
+    "v5": 25
+  },
+  "rows_by_data_class": {
+    "EMPIRICAL_SOFTWARE_TESTBED": 143
+  },
+  "simulated_rows": 0,
+  "csv_sha256": "e8f45d5593ee20d15e1c9f0cfe186447b38f48cad51eb43e5cda610141d23df7",
+  "no_row_omitted": true,
+  "xlsx_sha256": "852ab3efe392cbbb45e93002da95fa0e13282af877c20ddb6c0b3c81add4eeee"
+}

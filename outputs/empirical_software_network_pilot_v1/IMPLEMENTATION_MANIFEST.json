@@ -1,0 +1,27 @@
+{
+  "schema_version": "empirical-software-pilot-implementation-v2",
+  "status": "EXECUTED_BOUNDED_PROTOCOL_OBSERVATION",
+  "generated_utc": "2026-09-10",
+  "execution_context": {
+    "preflight": "PASS under scoped elevation: uid=0, ip/tc/ptp4l/tcpdump available, ptp4l -v=3.1.1, no pre-existing pilot namespace/bridge.",
+    "isolation": "Disposable WSL network namespaces, veth interfaces, and bridge were created and cleaned by ownership-specific logic.",
+    "clock_safety": "All ptp4l configurations use free_running 1. This records protocol behavior without local clock adjustment."
+  },
+  "implemented_files": {
+    "01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/harness/run_empirical_software_pilot.sh": "a0c9042ac03bc17a2069abc82b76759d73c3420b06dec8facedebdab21a92d57",
+    "01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/tests/test_empirical_software_pilot.py": "d7d1554bd6e5e02e25d98c967a674441c48b608d19a5d9564f20ad66f1ae71ed",
+    "outputs/empirical_software_network_pilot_v1/validate_pilot.py": "3c2079588dac6d9ecc5cae5fc88e4a47ba3cf6c8e1bdca5120037f7f2c36dc5f",
+    "outputs/empirical_software_network_pilot_v1/ACCEPTANCE_CRITERIA.md": "b1a1530bd1c2134833c7f792374c7d2134bda73b541fc1a3ddb707d8dc73825e",
+    "outputs/empirical_software_network_pilot_v1/README.md": "e0a4a6f4f81c04c852bc873cac05e9457c9cf140a694b67f7337bc84545bdf95",
+    "outputs/empirical_software_network_pilot_v1/METHODOLOGY_AND_LIMITATIONS.md": "737e51b0374cf4aae8068c73686d75256562c0b20f4ee8c946afc47f084b4707",
+    "outputs/empirical_software_network_pilot_v1/ORIGINAL_GOALS_ACCEPTANCE_AUDIT.md": "9a6c49cb267fbed785fa8b71d4d62d811ba67de7a687c5d51749dbbb21b8d050"
+  },
+  "verification": {
+    "python_compile": "PASS: validate_pilot.py compiled under local Python 3.14",
+    "focused_test": "PASS: 3 focused in-memory/static tests cover manifest parsing, empty/error evidence rejection, resource-name uniqueness, version-correct options, free-running mode, orderly stop before hashing, and independent no-action control declaration.",
+    "runtime_preflight": "PASS under scoped elevation; exact output was uid=0 and ptp4l version 3.1.1.",
+    "empirical_artifact_validation": "PASS: four calibrated run directories passed pilot-validation-v2. See EMPIRICAL_RUN_REGISTRY.json.",
+    "retained_failures": "Three source-stop finalization attempts are retained, excluded from calibrated comparison, and documented in EMPIRICAL_RUN_REGISTRY.json."
+  },
+  "interpretation": "The recorded pilot is free-running protocol observation, not closed-loop clock recovery. Structural validation and command evidence do not establish physical timing quality, independent clocks, attack diagnosis, or recovery effectiveness."
+}

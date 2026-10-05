@@ -1,0 +1,143 @@
+ptp4l[1037.364]: port 1 (v-ru1): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[1037.364]: port 0 (/var/run/p.ru1): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[1037.364]: port 0 (/var/run/pr.ru1): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[1037.758]: selected local clock 020000.fffe.00000c as best master
+ptp4l[1037.789]: port 1 (v-ru1): new foreign master 020000.fffe.000001-2
+ptp4l[1038.039]: selected best master clock 020000.fffe.000001
+ptp4l[1038.039]: foreign master not using PTP timescale
+ptp4l[1038.039]: port 1 (v-ru1): LISTENING to UNCALIBRATED on RS_SLAVE
+ptp4l[1038.164]: selected best master clock 020000.fffe.00000a
+ptp4l[1038.164]: foreign master not using PTP timescale
+ptp4l[1040.228]: master offset       2170 s0 freq   +1696 path delay      3675
+ptp4l[1042.230]: master offset        146 s0 freq    -658 path delay      4381
+ptp4l[1044.232]: master offset       -729 s0 freq    -532 path delay      4190
+ptp4l[1045.576]: port 1 (v-ru1): new foreign master 020000.fffe.00000a-2
+ptp4l[1045.828]: selected best master clock 020000.fffe.00000a
+ptp4l[1045.828]: running in a temporal vortex
+ptp4l[1045.828]: updating time properties to insert leap second
+ptp4l[1046.043]: running in a temporal vortex
+ptp4l[1046.293]: running in a temporal vortex
+ptp4l[1046.543]: running in a temporal vortex
+ptp4l[1046.794]: running in a temporal vortex
+ptp4l[1047.044]: running in a temporal vortex
+ptp4l[1047.294]: running in a temporal vortex
+ptp4l[1047.544]: running in a temporal vortex
+ptp4l[1047.794]: running in a temporal vortex
+ptp4l[1048.044]: running in a temporal vortex
+ptp4l[1048.294]: running in a temporal vortex
+ptp4l[1048.544]: running in a temporal vortex
+ptp4l[1048.795]: running in a temporal vortex
+ptp4l[1049.045]: running in a temporal vortex
+ptp4l[1049.295]: running in a temporal vortex
+ptp4l[1049.545]: running in a temporal vortex
+ptp4l[1049.795]: running in a temporal vortex
+ptp4l[1050.045]: running in a temporal vortex
+ptp4l[1050.295]: running in a temporal vortex
+ptp4l[1050.545]: running in a temporal vortex
+ptp4l[1050.795]: running in a temporal vortex
+ptp4l[1051.046]: running in a temporal vortex
+ptp4l[1051.296]: running in a temporal vortex
+ptp4l[1051.547]: running in a temporal vortex
+ptp4l[1051.797]: running in a temporal vortex
+ptp4l[1052.047]: running in a temporal vortex
+ptp4l[1052.298]: running in a temporal vortex
+ptp4l[1052.547]: running in a temporal vortex
+ptp4l[1052.799]: running in a temporal vortex
+ptp4l[1053.049]: running in a temporal vortex
+ptp4l[1053.299]: running in a temporal vortex
+ptp4l[1053.551]: running in a temporal vortex
+ptp4l[1053.801]: running in a temporal vortex
+ptp4l[1054.051]: running in a temporal vortex
+ptp4l[1054.301]: running in a temporal vortex
+ptp4l[1054.551]: running in a temporal vortex
+ptp4l[1054.801]: running in a temporal vortex
+ptp4l[1055.052]: running in a temporal vortex
+ptp4l[1055.302]: running in a temporal vortex
+ptp4l[1055.552]: running in a temporal vortex
+ptp4l[1055.802]: running in a temporal vortex
+ptp4l[1056.052]: running in a temporal vortex
+ptp4l[1056.302]: running in a temporal vortex
+ptp4l[1056.552]: running in a temporal vortex
+ptp4l[1056.802]: running in a temporal vortex
+ptp4l[1057.052]: running in a temporal vortex
+ptp4l[1057.303]: running in a temporal vortex
+ptp4l[1057.553]: running in a temporal vortex
+ptp4l[1057.803]: running in a temporal vortex
+ptp4l[1058.053]: running in a temporal vortex
+ptp4l[1058.303]: running in a temporal vortex
+ptp4l[1058.553]: running in a temporal vortex
+ptp4l[1058.803]: running in a temporal vortex
+ptp4l[1059.054]: running in a temporal vortex
+ptp4l[1059.304]: running in a temporal vortex
+ptp4l[1059.554]: running in a temporal vortex
+ptp4l[1059.804]: running in a temporal vortex
+ptp4l[1060.054]: running in a temporal vortex
+ptp4l[1060.304]: running in a temporal vortex
+ptp4l[1060.554]: running in a temporal vortex
+ptp4l[1060.804]: running in a temporal vortex
+ptp4l[1061.054]: running in a temporal vortex
+ptp4l[1061.304]: running in a temporal vortex
+ptp4l[1061.555]: running in a temporal vortex
+ptp4l[1061.805]: running in a temporal vortex
+ptp4l[1062.055]: running in a temporal vortex
+ptp4l[1062.305]: running in a temporal vortex
+ptp4l[1062.555]: running in a temporal vortex
+ptp4l[1062.805]: running in a temporal vortex
+ptp4l[1063.055]: running in a temporal vortex
+ptp4l[1063.305]: running in a temporal vortex
+ptp4l[1063.556]: running in a temporal vortex
+ptp4l[1063.806]: running in a temporal vortex
+ptp4l[1064.056]: running in a temporal vortex
+ptp4l[1064.306]: running in a temporal vortex
+ptp4l[1064.556]: running in a temporal vortex
+ptp4l[1064.806]: running in a temporal vortex
+ptp4l[1065.056]: running in a temporal vortex
+ptp4l[1065.306]: running in a temporal vortex
+ptp4l[1065.557]: running in a temporal vortex
+ptp4l[1065.807]: running in a temporal vortex
+ptp4l[1066.057]: running in a temporal vortex
+ptp4l[1066.307]: running in a temporal vortex
+ptp4l[1066.557]: running in a temporal vortex
+ptp4l[1066.807]: running in a temporal vortex
+ptp4l[1067.057]: running in a temporal vortex
+ptp4l[1067.307]: running in a temporal vortex
+ptp4l[1067.558]: running in a temporal vortex
+ptp4l[1067.808]: running in a temporal vortex
+ptp4l[1068.058]: running in a temporal vortex
+ptp4l[1068.308]: running in a temporal vortex
+ptp4l[1068.558]: running in a temporal vortex
+ptp4l[1068.808]: running in a temporal vortex
+ptp4l[1069.058]: running in a temporal vortex
+ptp4l[1069.309]: running in a temporal vortex
+ptp4l[1069.559]: running in a temporal vortex
+ptp4l[1069.810]: running in a temporal vortex
+ptp4l[1070.061]: running in a temporal vortex
+ptp4l[1070.311]: running in a temporal vortex
+ptp4l[1070.561]: running in a temporal vortex
+ptp4l[1070.811]: running in a temporal vortex
+ptp4l[1071.062]: running in a temporal vortex
+ptp4l[1071.312]: running in a temporal vortex
+ptp4l[1071.562]: running in a temporal vortex
+ptp4l[1071.812]: running in a temporal vortex
+ptp4l[1072.062]: running in a temporal vortex
+ptp4l[1072.312]: running in a temporal vortex
+ptp4l[1072.562]: running in a temporal vortex
+ptp4l[1072.812]: running in a temporal vortex
+ptp4l[1073.063]: running in a temporal vortex
+ptp4l[1073.313]: running in a temporal vortex
+ptp4l[1073.563]: running in a temporal vortex
+ptp4l[1073.813]: running in a temporal vortex
+ptp4l[1074.063]: running in a temporal vortex
+ptp4l[1074.313]: running in a temporal vortex
+ptp4l[1074.563]: running in a temporal vortex
+ptp4l[1074.813]: running in a temporal vortex
+ptp4l[1075.064]: running in a temporal vortex
+ptp4l[1075.314]: running in a temporal vortex
+ptp4l[1075.564]: running in a temporal vortex
+ptp4l[1075.814]: running in a temporal vortex
+ptp4l[1076.064]: running in a temporal vortex
+ptp4l[1076.314]: running in a temporal vortex
+ptp4l[1076.564]: running in a temporal vortex
+ptp4l[1076.815]: running in a temporal vortex
+ptp4l[1077.065]: running in a temporal vortex
+ptp4l[1077.315]: running in a temporal vortex

@@ -1,0 +1,10 @@
+{ "scenario":"baseline", "class":"healthy", "fault_id":"none",
+  "rep":11,
+  "gm_allowlist":["020000fffe00000a","020000fffe00000b"],
+  "provisioned_backup_gm":"020000fffe00000b",
+  "expected_bc_identity":"020000fffe000001",
+  "expected_client_identities":["020000fffe00000c","020000fffe00000d","020000fffe00000e"],
+  "expected_steps_removed_at_ru":1,
+  "maintenance_window_open":false,
+  "randomised_params_seed":11,
+  "description":"All nodes nominal, GM-A grandmaster via BC to RUs" }

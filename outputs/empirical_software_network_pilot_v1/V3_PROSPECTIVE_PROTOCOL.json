@@ -1,0 +1,36 @@
+{
+  "schema_version": "v3-prospective-persistence-protocol-2026-09-13",
+  "status": "SUPERSEDED_BEFORE_ANY_V3_CAPTURE",
+  "superseded_reason": "The original implementation accumulated candidate observations for the entire capture and therefore did not implement bounded persistence. It must not be used for V3 execution or evaluation. The replacement is V3_WINDOWED_PROSPECTIVE_PROTOCOL.json.",
+  "purpose": "Prospective isolated-software feasibility test of a causal packet-arrival persistence observation, not attack, health, receiver-outage, or recovery detection.",
+  "frozen_inputs": {
+    "streaming_discriminator_v1.py_sha256": "1c1d7edfbcc38b6e0c950984eff72b58592160c71ad8e797ff719d4aee0b8d0e",
+    "streaming_discriminator_v3.py_sha256": "2efef806f304440bd3c877f856a719c9c37aec2aa8239152c80148cb9637128d",
+    "base_trailing_std_threshold_s": 0.00016,
+    "base_trailing_window_pairs": 8,
+    "persistence_count": 16,
+    "state_scope": "capture_id + transportSpecific + version + domain + sourcePortIdentity",
+    "host_clock_protection": "free_running 1; no host-clock adjustment"
+  },
+  "selection_provenance": "The count 16 was selected once after read-only diagnosis of V2 development captures: all netem runs had 52-57 candidate trailing-dispersion observations; the largest control count was 8. Therefore every V2 and older capture is development-only and excluded from V3 performance estimation.",
+  "fresh_conditions": {
+    "baseline_control": 5,
+    "netem_delay_jitter_loss": 5,
+    "authorized_source_change_no_action_control": 5,
+    "authorized_source_termination_observation": 5
+  },
+  "run_level_acceptance_for_feasibility_only": {
+    "required": [
+      "Every capture must pass structural validation and frozen input hashes must match before replay.",
+      "The persistence observation must occur in at least 4 of 5 netem runs.",
+      "It must occur in none of the 10 baseline and authorised-source-change no-action control runs.",
+      "Unknown, malformed, unsupported, and timestamp-order states must be retained and counted rather than defaulted."
+    ],
+    "interpretation": "These are prospective pilot gates, not deployment specifications or proof of generalization. Wilson intervals and each run's first observation time will be reported."
+  },
+  "prohibitions": [
+    "No feature may include file name, scenario label, future/EOF data, or an externally supplied outcome label.",
+    "No V3 recovery action or physical timing inference is authorized by this protocol.",
+    "Authorised source termination is a packet-stream condition, not an attack or demonstrated receiver outage."
+  ]
+}

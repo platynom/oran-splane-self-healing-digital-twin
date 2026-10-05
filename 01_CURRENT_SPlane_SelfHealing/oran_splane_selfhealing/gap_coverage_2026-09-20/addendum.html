@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>
+body{font-family:'Liberation Sans',Arial,sans-serif;font-size:10.5pt;color:#1a1a1a;margin:26pt 30pt;line-height:1.4}
+h1{font-size:16pt;margin:0 0 2pt} h2{font-size:12pt;margin:14pt 0 4pt;border-bottom:1.5px solid #333;padding-bottom:2pt}
+.sub{color:#555;font-size:9pt;margin-bottom:10pt}
+table{border-collapse:collapse;width:100%;margin:6pt 0;font-size:9.2pt}
+th,td{border:1px solid #b0b0b0;padding:4pt 5pt;text-align:left;vertical-align:top}
+th{background:#2f4a6b;color:#fff;font-weight:bold}
+.miss{background:#fbe3e3} .ok{background:#e3f2e3}
+.tag{display:inline-block;background:#8a1f1f;color:#fff;font-size:8pt;padding:1pt 5pt;border-radius:3px}
+.tagdev{display:inline-block;background:#7a5c00;color:#fff;font-size:8pt;padding:1pt 5pt;border-radius:3px}
+code{font-family:'Liberation Mono',monospace;font-size:8.6pt;background:#f0f0f0;padding:0 2px}
+.note{font-size:9pt;color:#333;background:#f6f6f6;border-left:3px solid #7a5c00;padding:6pt 8pt;margin:8pt 0}
+ul{margin:4pt 0 4pt 16pt} li{margin:2pt 0}
+</style></head><body>
+
+<h1>S-Plane Master Test Catalogue &mdash; Addendum</h1>
+<div class="sub">Coverage-gap closure (development) &nbsp;&middot;&nbsp; 2026-09-20 &nbsp;&middot;&nbsp;
+Companion to <b>ORAN_SPlane_Master_Test_Catalogue.pdf</b> &nbsp;&middot;&nbsp;
+Frozen rule <code>decision_rule.py</code> sha256 <code>c362e11&hellip;</code> (unchanged, hash-verified)</div>
+
+<div class="note"><b>What this addendum is.</b> A controlled test of three catalogue items previously
+marked &ldquo;not run,&rdquo; plus a development detector set that closes them. It is <b>not</b> a live
+on-wire result and <b>not</b> a new frozen artefact. No live execution environment was available this
+session (device VM unprivileged &mdash; network-namespace creation denied, no <code>ptp4l</code>/<code>scapy</code>;
+cloud shell blocked), so each item was tested by feeding the <b>frozen rule</b> crafted deep-CSV inputs
+that differ from a G.8275.1-conformant baseline by exactly one injected signature &mdash; the same
+detection-logic method as <code>conformance_neg.py</code>.</div>
+
+<h2>Result 1 &mdash; the three gaps are real (frozen rule, hash-verified)</h2>
+<table>
+<tr><th style="width:6%">Item</th><th style="width:34%">Class (standard)</th><th style="width:26%">Crafted input (only delta from baseline)</th><th style="width:12%">Truth</th><th style="width:22%">Frozen verdict</th></tr>
+<tr><td>&mdash;</td><td>Conformant control</td><td><code>synth_base</code></td><td>BENIGN</td><td class="ok">BENIGN &mdash; control passes</td></tr>
+<tr class="miss"><td>1</td><td>Packet removal / selective interception (O-RAN WG11 11.1.5.3.1)</td><td>70% of Sync/Follow_Up/Delay_Resp dropped</td><td>ATTACK</td><td><span class="tag">MISS</span> BENIGN</td></tr>
+<tr class="miss"><td>2</td><td>Malformed / fuzzed frames (O-RAN WG11 24.2.1.2)</td><td>200 GM frames: version&ne;2, length&lt;min, control&gt;5</td><td>ATTACK</td><td><span class="tag">MISS</span> BENIGN</td></tr>
+<tr class="miss"><td>3</td><td>Whole-second field abuse (IEEE 1588-2019 &sect;7.2.4)</td><td>leap61=1, currentUtcOffset 37&rarr;0, traceability stripped</td><td>ATTACK</td><td><span class="tag">MISS</span> BENIGN</td></tr>
+</table>
+<p style="font-size:9pt">Control passing while all three attacks pass as BENIGN isolates the blindness to the injected class:
+the frozen rule inspects none of observed-vs-declared rate, frame legality (version/length/control), or
+timescale metadata (leap/UTC/traceability).</p>
+
+<h2>Result 2 &mdash; <code>decision_rule_v2</code> closes them <span class="tagdev">UNFROZEN / development</span></h2>
+<p style="font-size:9pt">Three standards-grounded detectors, each fixed by a standard or <b>self-referential</b>
+(compared to what the sender itself declares &mdash; no constant fitted to the crafted inputs). Runs the
+frozen rule first and <b>never turns a frozen ATTACK into BENIGN</b>; it only escalates BENIGN/UNKNOWN when a
+new detector fires.</p>
+<table>
+<tr><th style="width:6%">Item</th><th style="width:22%">Detector</th><th style="width:40%">Basis</th><th style="width:16%">v2 verdict</th><th style="width:16%">Real-data FP</th></tr>
+<tr class="ok"><td>1</td><td>D1 rate starvation</td><td>Provisioned source below 0.5&times; the rate <i>it itself declares</i> (logSync/logAnnounce)</td><td>ATTACK &checkmark;</td><td>quiet</td></tr>
+<tr class="ok"><td>2</td><td>D2 malformed</td><td>IEEE 1588-2019 field legality: versionPTP=2, control 0&ndash;5, legal messageType, length &ge; per-type min</td><td>ATTACK &checkmark;</td><td>quiet</td></tr>
+<tr class="ok"><td>3</td><td>D3 whole-second</td><td>leap w/o provisioned window; UTCoffset non-constant or &ne;true while valid; clockClass&le;6 yet traceability deasserted</td><td>ATTACK &checkmark;</td><td>quiet</td></tr>
+<tr><td colspan="3"><code>synth_base</code> (conformant control under full v2)</td><td>BENIGN &checkmark; (unchanged)</td><td>&mdash;</td></tr>
+</table>
+<p style="font-size:9pt"><b>Real-data false-positive check:</b> D1/D2/D3 run directly on both real healthy
+hardware captures (<code>netem_baseline</code>, <code>netem_pdv</code>) stay <b>quiet on both</b>. Additive-only
+property also verified: on those captures the frozen base returns ATTACK (domain-0, out-of-profile by design)
+and v2 returns the <b>same</b> ATTACK &mdash; never softened.</p>
+
+<h2>Honest constraints carried forward</h2>
+<ul>
+<li><b>v2 is not frozen and not campaign-validated.</b> Putting D1&ndash;D3 into any headline metric requires
+re-freeze + a fresh randomized campaign on the live testbed.</li>
+<li><b>No live on-wire validation this session</b> (no privileged execution environment).</li>
+<li><code>netem_baseline</code>/<code>netem_pdv</code> are <b>domain-0</b> real captures &mdash; valid as
+new-detector FP controls, <b>not</b> as G.8275.1 benign-classification controls (the frozen base flags them A5
+on domain, by design).</li>
+<li>Hardware-only items remain isolated and out of scope: GNSS spoof/jam, holdover, SyncE/EEC, oscillator
+drift, delay-attack measurement.</li>
+</ul>
+<p style="font-size:8.5pt;color:#666">Artefacts: <code>gap_coverage_2026-09-20/</code> &mdash; GAP_COVERAGE.json,
+GAP_COVERAGE_FINDINGS.md, gen_gapcheck.py (seed 1588), synth_*.deep.csv, decision_rule_v2.py,
+decision_rule_FROZEN_reference.py. Every verdict reproducible from these files.</p>
+</body></html>

@@ -1,0 +1,12 @@
+run_id=sg1 arm=no_action condition=benign_delay_jitter phase=setup event=topology_created utc=2026-09-13T17:02:45Z monotonic_s=512.83 status=PASS
+run_id=sg1 arm=no_action condition=benign_delay_jitter phase=setup event=tcpdump_seg1_ready utc=2026-09-13T17:02:48Z monotonic_s=515.90 status=PASS
+run_id=sg1 arm=no_action condition=benign_delay_jitter phase=setup event=tcpdump_seg2_ready utc=2026-09-13T17:02:48Z monotonic_s=515.91 status=PASS
+run_id=sg1 arm=no_action condition=benign_delay_jitter phase=setup event=master_a_ready utc=2026-09-13T17:02:48Z monotonic_s=515.93 status=PASS
+run_id=sg1 arm=no_action condition=benign_delay_jitter phase=setup event=master_b_ready utc=2026-09-13T17:02:48Z monotonic_s=515.94 status=PASS
+run_id=sg1 arm=no_action condition=benign_delay_jitter phase=setup event=slave_ready utc=2026-09-13T17:02:48Z monotonic_s=515.96 status=PASS
+run_id=sg1 arm=no_action condition=benign_delay_jitter phase=setup event=live_detector_ready utc=2026-09-13T17:02:50Z monotonic_s=517.99 status=PASS
+run_id=sg1 arm=no_action condition=benign_delay_jitter phase=trial event=phase1_clean_started utc=2026-09-13T17:02:50Z monotonic_s=518.01 status=PASS
+run_id=sg1 arm=no_action condition=benign_delay_jitter phase=trial event=phase1_clean_recorded utc=2026-09-13T17:03:02Z monotonic_s=530.17 status=PASS
+run_id=sg1 arm=no_action condition=benign_delay_jitter phase=trial event=phase2_benign_delay_jitter_applied_seg1 utc=2026-09-13T17:03:02Z monotonic_s=530.18 status=PASS
+run_id=sg1 arm=no_action condition=benign_delay_jitter phase=trial event=phase2_end_recorded utc=2026-09-13T17:03:33Z monotonic_s=560.34 status=PASS
+run_id=sg1 arm=no_action condition=benign_delay_jitter phase=trial event=phase_finished utc=2026-09-13T17:03:33Z monotonic_s=560.35 status=PASS

@@ -1,0 +1,11 @@
+{
+  "scenario": "B_unplanned_failover",
+  "truth_class": "benign",
+  "truth_fault": "B_UNPLANNED",
+  "verdict": "UNKNOWN",
+  "fault_hint": "B2?",
+  "reasons": [
+    "Grandmaster changed between provisioned clocks with NO maintenance window open - cannot attribute intent"
+  ],
+  "rule": "decision_rule_v3 (frozen v3)"
+}

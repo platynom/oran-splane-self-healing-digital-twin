@@ -1,0 +1,9 @@
+ptp4l[1089.864]: port 1 (v-gmb): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[1089.864]: port 0 (/var/run/p.gmb): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[1089.864]: port 0 (/var/run/pr.gmb): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[1090.260]: port 1 (v-gmb): LISTENING to MASTER on ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES
+ptp4l[1090.260]: selected local clock 020000.fffe.00000b as best master
+ptp4l[1090.260]: port 1 (v-gmb): assuming the grand master role
+ptp4l[1090.322]: port 1 (v-gmb): new foreign master 020000.fffe.00000a-1
+ptp4l[1090.336]: port 1 (v-gmb): new foreign master 020000.fffe.000001-1
+ptp4l[1090.572]: port 1 (v-gmb): assuming the grand master role

@@ -1,0 +1,1154 @@
+{
+  "schema_version": "receiver-dispersion-measurement-v2",
+  "supersedes": "measure_s14_pre_action_impact.py / S14_PRE_ACTION_IMPACT.json (v1, exploratory)",
+  "measurement_semantics_source": "linuxptp clock.c: clock_stats_update prints on sample count reaching max_count; clock_stats_display then calls stats_reset on offset, freq and delay. Window = (previous summary, this summary]. Units nanoseconds per ptp4l(8).",
+  "documentation_source": "ptp4l(8) summary_interval: power of two in seconds, default 0 (1 second), units nanoseconds and ppb",
+  "clock_alignment_evidence": {
+    "anchor_pairs": [
+      {
+        "run": "20260913_s14_jact1",
+        "ptp4l_fault_time": 608.059,
+        "detector_monotonic": 608.059931,
+        "difference_s": -0.000931
+      },
+      {
+        "run": "20260913_s14_jact2",
+        "ptp4l_fault_time": 835.611,
+        "detector_monotonic": 835.611429,
+        "difference_s": -0.000429
+      },
+      {
+        "run": "20260913_s14_jact3",
+        "ptp4l_fault_time": 1089.168,
+        "detector_monotonic": 1089.168457,
+        "difference_s": -0.000457
+      },
+      {
+        "run": "20260913_s14_jact4",
+        "ptp4l_fault_time": 1337.543,
+        "detector_monotonic": 1337.54374,
+        "difference_s": -0.00074
+      },
+      {
+        "run": "20260913_s14_jact5",
+        "ptp4l_fault_time": 1580.134,
+        "detector_monotonic": 1580.133979,
+        "difference_s": 2.1e-05
+      }
+    ],
+    "n": 5,
+    "max_abs_difference_s": 0.000931,
+    "conclusion": "ptp4l log time and the detector monotonic clock share a basis to within the stated maximum difference",
+    "caveat": "The anchor is a command and its direct effect, so the difference also contains the true command-to-fault latency. It bounds the clock offset from above; it does not prove a zero offset."
+  },
+  "validity_rule": "window start >= phase apply time AND window end < any fault transition; the first summary after process start is always invalid",
+  "statistic": "dispersion of the FIRST valid wholly-in-phase window",
+  "boundary_ns": 29000,
+  "label_semantics": "RECEIVER_DISPERSION_ABOVE_BOUNDARY / BELOW_BOUNDARY are names for a measurement category only. They are NOT harm labels, NOT fault labels and NOT service-impact labels. Harmfulness remains UNKNOWN.",
+  "independence_caveat": "A separate receiver-computed channel, produced by ptp4l rather than the detector. NOT statistically independent of the packet observations: both arise from the same traffic.",
+  "per_condition": {
+    "asf": {
+      "runs": 5,
+      "usable": 5,
+      "unknown_reasons": [],
+      "dispersion_ns": {
+        "min": 6033,
+        "median": 6881,
+        "max": 7622
+      },
+      "path_delay_ns": {
+        "min": 20101,
+        "median": 23793,
+        "max": 25646
+      },
+      "labels": {
+        "RECEIVER_DISPERSION_ABOVE_BOUNDARY": 0,
+        "RECEIVER_DISPERSION_BELOW_BOUNDARY": 5
+      }
+    },
+    "base": {
+      "runs": 5,
+      "usable": 5,
+      "unknown_reasons": [],
+      "dispersion_ns": {
+        "min": 1883,
+        "median": 6522,
+        "max": 8524
+      },
+      "path_delay_ns": {
+        "min": 13533,
+        "median": 24267,
+        "max": 25584
+      },
+      "labels": {
+        "RECEIVER_DISPERSION_ABOVE_BOUNDARY": 0,
+        "RECEIVER_DISPERSION_BELOW_BOUNDARY": 5
+      }
+    },
+    "bng": {
+      "runs": 5,
+      "usable": 5,
+      "unknown_reasons": [],
+      "dispersion_ns": {
+        "min": 17673,
+        "median": 19493,
+        "max": 24615
+      },
+      "path_delay_ns": {
+        "min": 95500,
+        "median": 97517,
+        "max": 106610
+      },
+      "labels": {
+        "RECEIVER_DISPERSION_ABOVE_BOUNDARY": 0,
+        "RECEIVER_DISPERSION_BELOW_BOUNDARY": 5
+      }
+    },
+    "jact": {
+      "runs": 5,
+      "usable": 1,
+      "unknown_reasons": [
+        "no wholly-in-phase measurement window",
+        "no wholly-in-phase measurement window",
+        "no wholly-in-phase measurement window",
+        "no wholly-in-phase measurement window"
+      ],
+      "dispersion_ns": {
+        "min": 62697,
+        "median": 62697,
+        "max": 62697
+      },
+      "path_delay_ns": {
+        "min": 77848,
+        "median": 77848,
+        "max": 77848
+      },
+      "labels": {
+        "RECEIVER_DISPERSION_ABOVE_BOUNDARY": 1,
+        "RECEIVER_DISPERSION_BELOW_BOUNDARY": 0
+      }
+    },
+    "jnoact": {
+      "runs": 5,
+      "usable": 5,
+      "unknown_reasons": [],
+      "dispersion_ns": {
+        "min": 33330,
+        "median": 53777,
+        "max": 56199
+      },
+      "path_delay_ns": {
+        "min": 86913,
+        "median": 103484,
+        "max": 124255
+      },
+      "labels": {
+        "RECEIVER_DISPERSION_ABOVE_BOUNDARY": 5,
+        "RECEIVER_DISPERSION_BELOW_BOUNDARY": 0
+      }
+    }
+  },
+  "runs": [
+    {
+      "run": "20260913_s14_asf1",
+      "condition_key": "asf",
+      "phase_apply_time": 678.69,
+      "fault_transition_time": null,
+      "receiver_entered_master": false,
+      "summary_windows": [
+        {
+          "summary_time": 681.345,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 21213,
+          "path_delay_dispersion_ns": 6394,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 697.315,
+          "window_start": 681.345,
+          "window_duration_s": 15.97,
+          "path_delay_ns": 20101,
+          "path_delay_dispersion_ns": 6881,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "valid_window_count": 1,
+      "statistic_first_valid_window": {
+        "summary_time": 697.315,
+        "window_start": 681.345,
+        "window_duration_s": 15.97,
+        "path_delay_ns": 20101,
+        "path_delay_dispersion_ns": 6881,
+        "wholly_in_phase": true,
+        "invalid_reasons": []
+      },
+      "unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_BELOW_BOUNDARY"
+    },
+    {
+      "run": "20260913_s14_asf2",
+      "condition_key": "asf",
+      "phase_apply_time": 927.53,
+      "fault_transition_time": null,
+      "receiver_entered_master": false,
+      "summary_windows": [
+        {
+          "summary_time": 930.71,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 19516,
+          "path_delay_dispersion_ns": 6619,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 946.735,
+          "window_start": 930.71,
+          "window_duration_s": 16.025,
+          "path_delay_ns": 20738,
+          "path_delay_dispersion_ns": 6033,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "valid_window_count": 1,
+      "statistic_first_valid_window": {
+        "summary_time": 946.735,
+        "window_start": 930.71,
+        "window_duration_s": 16.025,
+        "path_delay_ns": 20738,
+        "path_delay_dispersion_ns": 6033,
+        "wholly_in_phase": true,
+        "invalid_reasons": []
+      },
+      "unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_BELOW_BOUNDARY"
+    },
+    {
+      "run": "20260913_s14_asf3",
+      "condition_key": "asf",
+      "phase_apply_time": 1175.64,
+      "fault_transition_time": null,
+      "receiver_entered_master": false,
+      "summary_windows": [
+        {
+          "summary_time": 1178.326,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 19454,
+          "path_delay_dispersion_ns": 6964,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 1194.35,
+          "window_start": 1178.326,
+          "window_duration_s": 16.024,
+          "path_delay_ns": 23985,
+          "path_delay_dispersion_ns": 6885,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "valid_window_count": 1,
+      "statistic_first_valid_window": {
+        "summary_time": 1194.35,
+        "window_start": 1178.326,
+        "window_duration_s": 16.024,
+        "path_delay_ns": 23985,
+        "path_delay_dispersion_ns": 6885,
+        "wholly_in_phase": true,
+        "invalid_reasons": []
+      },
+      "unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_BELOW_BOUNDARY"
+    },
+    {
+      "run": "20260913_s14_asf4",
+      "condition_key": "asf",
+      "phase_apply_time": 1422.84,
+      "fault_transition_time": null,
+      "receiver_entered_master": false,
+      "summary_windows": [
+        {
+          "summary_time": 1425.442,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 18478,
+          "path_delay_dispersion_ns": 9235,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 1441.49,
+          "window_start": 1425.442,
+          "window_duration_s": 16.048,
+          "path_delay_ns": 25646,
+          "path_delay_dispersion_ns": 6088,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "valid_window_count": 1,
+      "statistic_first_valid_window": {
+        "summary_time": 1441.49,
+        "window_start": 1425.442,
+        "window_duration_s": 16.048,
+        "path_delay_ns": 25646,
+        "path_delay_dispersion_ns": 6088,
+        "wholly_in_phase": true,
+        "invalid_reasons": []
+      },
+      "unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_BELOW_BOUNDARY"
+    },
+    {
+      "run": "20260913_s14_asf5",
+      "condition_key": "asf",
+      "phase_apply_time": 1670.76,
+      "fault_transition_time": null,
+      "receiver_entered_master": false,
+      "summary_windows": [
+        {
+          "summary_time": 1673.428,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 20544,
+          "path_delay_dispersion_ns": 6594,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 1689.45,
+          "window_start": 1673.428,
+          "window_duration_s": 16.022,
+          "path_delay_ns": 23793,
+          "path_delay_dispersion_ns": 7622,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "valid_window_count": 1,
+      "statistic_first_valid_window": {
+        "summary_time": 1689.45,
+        "window_start": 1673.428,
+        "window_duration_s": 16.022,
+        "path_delay_ns": 23793,
+        "path_delay_dispersion_ns": 7622,
+        "wholly_in_phase": true,
+        "invalid_reasons": []
+      },
+      "unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_BELOW_BOUNDARY"
+    },
+    {
+      "run": "20260913_s14_base1",
+      "condition_key": "base",
+      "phase_apply_time": 481.26,
+      "fault_transition_time": null,
+      "receiver_entered_master": false,
+      "summary_windows": [
+        {
+          "summary_time": 481.511,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 15654,
+          "path_delay_dispersion_ns": 4799,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 497.524,
+          "window_start": 481.511,
+          "window_duration_s": 16.013,
+          "path_delay_ns": 13533,
+          "path_delay_dispersion_ns": 1883,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "valid_window_count": 1,
+      "statistic_first_valid_window": {
+        "summary_time": 497.524,
+        "window_start": 481.511,
+        "window_duration_s": 16.013,
+        "path_delay_ns": 13533,
+        "path_delay_dispersion_ns": 1883,
+        "wholly_in_phase": true,
+        "invalid_reasons": []
+      },
+      "unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_BELOW_BOUNDARY"
+    },
+    {
+      "run": "20260913_s14_base2",
+      "condition_key": "base",
+      "phase_apply_time": 728.26,
+      "fault_transition_time": null,
+      "receiver_entered_master": false,
+      "summary_windows": [
+        {
+          "summary_time": 728.568,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 19001,
+          "path_delay_dispersion_ns": 5136,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 744.588,
+          "window_start": 728.568,
+          "window_duration_s": 16.02,
+          "path_delay_ns": 24762,
+          "path_delay_dispersion_ns": 8524,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "valid_window_count": 1,
+      "statistic_first_valid_window": {
+        "summary_time": 744.588,
+        "window_start": 728.568,
+        "window_duration_s": 16.02,
+        "path_delay_ns": 24762,
+        "path_delay_dispersion_ns": 8524,
+        "wholly_in_phase": true,
+        "invalid_reasons": []
+      },
+      "unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_BELOW_BOUNDARY"
+    },
+    {
+      "run": "20260913_s14_base3",
+      "condition_key": "base",
+      "phase_apply_time": 976.87,
+      "fault_transition_time": null,
+      "receiver_entered_master": false,
+      "summary_windows": [
+        {
+          "summary_time": 977.262,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 21176,
+          "path_delay_dispersion_ns": 5352,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 993.281,
+          "window_start": 977.262,
+          "window_duration_s": 16.019,
+          "path_delay_ns": 20171,
+          "path_delay_dispersion_ns": 5378,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "valid_window_count": 1,
+      "statistic_first_valid_window": {
+        "summary_time": 993.281,
+        "window_start": 977.262,
+        "window_duration_s": 16.019,
+        "path_delay_ns": 20171,
+        "path_delay_dispersion_ns": 5378,
+        "wholly_in_phase": true,
+        "invalid_reasons": []
+      },
+      "unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_BELOW_BOUNDARY"
+    },
+    {
+      "run": "20260913_s14_base4",
+      "condition_key": "base",
+      "phase_apply_time": 1225.17,
+      "fault_transition_time": null,
+      "receiver_entered_master": false,
+      "summary_windows": [
+        {
+          "summary_time": 1225.404,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 20247,
+          "path_delay_dispersion_ns": 6077,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 1241.426,
+          "window_start": 1225.404,
+          "window_duration_s": 16.022,
+          "path_delay_ns": 24267,
+          "path_delay_dispersion_ns": 6522,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "valid_window_count": 1,
+      "statistic_first_valid_window": {
+        "summary_time": 1241.426,
+        "window_start": 1225.404,
+        "window_duration_s": 16.022,
+        "path_delay_ns": 24267,
+        "path_delay_dispersion_ns": 6522,
+        "wholly_in_phase": true,
+        "invalid_reasons": []
+      },
+      "unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_BELOW_BOUNDARY"
+    },
+    {
+      "run": "20260913_s14_base5",
+      "condition_key": "base",
+      "phase_apply_time": 1472.65,
+      "fault_transition_time": null,
+      "receiver_entered_master": false,
+      "summary_windows": [
+        {
+          "summary_time": 1472.88,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 22389,
+          "path_delay_dispersion_ns": 7163,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 1488.902,
+          "window_start": 1472.88,
+          "window_duration_s": 16.022,
+          "path_delay_ns": 25584,
+          "path_delay_dispersion_ns": 8406,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "valid_window_count": 1,
+      "statistic_first_valid_window": {
+        "summary_time": 1488.902,
+        "window_start": 1472.88,
+        "window_duration_s": 16.022,
+        "path_delay_ns": 25584,
+        "path_delay_dispersion_ns": 8406,
+        "wholly_in_phase": true,
+        "invalid_reasons": []
+      },
+      "unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_BELOW_BOUNDARY"
+    },
+    {
+      "run": "20260913_s14_bng1",
+      "condition_key": "bng",
+      "phase_apply_time": 530.18,
+      "fault_transition_time": null,
+      "receiver_entered_master": false,
+      "summary_windows": [
+        {
+          "summary_time": 530.481,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 15331,
+          "path_delay_dispersion_ns": 2826,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 546.5,
+          "window_start": 530.481,
+          "window_duration_s": 16.019,
+          "path_delay_ns": 95500,
+          "path_delay_dispersion_ns": 20625,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "valid_window_count": 1,
+      "statistic_first_valid_window": {
+        "summary_time": 546.5,
+        "window_start": 530.481,
+        "window_duration_s": 16.019,
+        "path_delay_ns": 95500,
+        "path_delay_dispersion_ns": 20625,
+        "wholly_in_phase": true,
+        "invalid_reasons": []
+      },
+      "unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_BELOW_BOUNDARY"
+    },
+    {
+      "run": "20260913_s14_bng2",
+      "condition_key": "bng",
+      "phase_apply_time": 778.51,
+      "fault_transition_time": null,
+      "receiver_entered_master": false,
+      "summary_windows": [
+        {
+          "summary_time": 778.977,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 17383,
+          "path_delay_dispersion_ns": 5713,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 795.0,
+          "window_start": 778.977,
+          "window_duration_s": 16.023,
+          "path_delay_ns": 106610,
+          "path_delay_dispersion_ns": 24615,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "valid_window_count": 1,
+      "statistic_first_valid_window": {
+        "summary_time": 795.0,
+        "window_start": 778.977,
+        "window_duration_s": 16.023,
+        "path_delay_ns": 106610,
+        "path_delay_dispersion_ns": 24615,
+        "wholly_in_phase": true,
+        "invalid_reasons": []
+      },
+      "unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_BELOW_BOUNDARY"
+    },
+    {
+      "run": "20260913_s14_bng3",
+      "condition_key": "bng",
+      "phase_apply_time": 1026.89,
+      "fault_transition_time": null,
+      "receiver_entered_master": false,
+      "summary_windows": [
+        {
+          "summary_time": 1027.108,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 22557,
+          "path_delay_dispersion_ns": 7041,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 1043.134,
+          "window_start": 1027.108,
+          "window_duration_s": 16.026,
+          "path_delay_ns": 96875,
+          "path_delay_dispersion_ns": 17673,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "valid_window_count": 1,
+      "statistic_first_valid_window": {
+        "summary_time": 1043.134,
+        "window_start": 1027.108,
+        "window_duration_s": 16.026,
+        "path_delay_ns": 96875,
+        "path_delay_dispersion_ns": 17673,
+        "wholly_in_phase": true,
+        "invalid_reasons": []
+      },
+      "unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_BELOW_BOUNDARY"
+    },
+    {
+      "run": "20260913_s14_bng4",
+      "condition_key": "bng",
+      "phase_apply_time": 1274.48,
+      "fault_transition_time": null,
+      "receiver_entered_master": false,
+      "summary_windows": [
+        {
+          "summary_time": 1274.693,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 18869,
+          "path_delay_dispersion_ns": 4972,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 1290.713,
+          "window_start": 1274.693,
+          "window_duration_s": 16.02,
+          "path_delay_ns": 100544,
+          "path_delay_dispersion_ns": 19319,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "valid_window_count": 1,
+      "statistic_first_valid_window": {
+        "summary_time": 1290.713,
+        "window_start": 1274.693,
+        "window_duration_s": 16.02,
+        "path_delay_ns": 100544,
+        "path_delay_dispersion_ns": 19319,
+        "wholly_in_phase": true,
+        "invalid_reasons": []
+      },
+      "unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_BELOW_BOUNDARY"
+    },
+    {
+      "run": "20260913_s14_bng5",
+      "condition_key": "bng",
+      "phase_apply_time": 1522.0,
+      "fault_transition_time": null,
+      "receiver_entered_master": false,
+      "summary_windows": [
+        {
+          "summary_time": 1522.358,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 17404,
+          "path_delay_dispersion_ns": 4740,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 1538.378,
+          "window_start": 1522.358,
+          "window_duration_s": 16.02,
+          "path_delay_ns": 97517,
+          "path_delay_dispersion_ns": 19493,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "valid_window_count": 1,
+      "statistic_first_valid_window": {
+        "summary_time": 1538.378,
+        "window_start": 1522.358,
+        "window_duration_s": 16.02,
+        "path_delay_ns": 97517,
+        "path_delay_dispersion_ns": 19493,
+        "wholly_in_phase": true,
+        "invalid_reasons": []
+      },
+      "unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_BELOW_BOUNDARY"
+    },
+    {
+      "run": "20260913_s14_jact1",
+      "condition_key": "jact",
+      "phase_apply_time": 580.22,
+      "fault_transition_time": 608.059,
+      "receiver_entered_master": false,
+      "summary_windows": [
+        {
+          "summary_time": 580.477,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 14687,
+          "path_delay_dispersion_ns": 3463,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 596.413,
+          "window_start": 580.477,
+          "window_duration_s": 15.936,
+          "path_delay_ns": 77848,
+          "path_delay_dispersion_ns": 62697,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "valid_window_count": 1,
+      "statistic_first_valid_window": {
+        "summary_time": 596.413,
+        "window_start": 580.477,
+        "window_duration_s": 15.936,
+        "path_delay_ns": 77848,
+        "path_delay_dispersion_ns": 62697,
+        "wholly_in_phase": true,
+        "invalid_reasons": []
+      },
+      "unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_ABOVE_BOUNDARY"
+    },
+    {
+      "run": "20260913_s14_jact2",
+      "condition_key": "jact",
+      "phase_apply_time": 827.88,
+      "fault_transition_time": 835.611,
+      "receiver_entered_master": false,
+      "summary_windows": [
+        {
+          "summary_time": 828.081,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 20117,
+          "path_delay_dispersion_ns": 7447,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 845.723,
+          "window_start": 828.081,
+          "window_duration_s": 17.642,
+          "path_delay_ns": 25713,
+          "path_delay_dispersion_ns": 24122,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "window ends at or after a fault transition (action effect)"
+          ]
+        }
+      ],
+      "valid_window_count": 0,
+      "statistic_first_valid_window": null,
+      "unknown_reason": "no wholly-in-phase measurement window",
+      "receiver_label": "UNKNOWN"
+    },
+    {
+      "run": "20260913_s14_jact3",
+      "condition_key": "jact",
+      "phase_apply_time": 1076.38,
+      "fault_transition_time": 1089.168,
+      "receiver_entered_master": false,
+      "summary_windows": [
+        {
+          "summary_time": 1077.152,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 23482,
+          "path_delay_dispersion_ns": 22857,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 1093.273,
+          "window_start": 1077.152,
+          "window_duration_s": 16.121,
+          "path_delay_ns": 73387,
+          "path_delay_dispersion_ns": 55622,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "window ends at or after a fault transition (action effect)"
+          ]
+        }
+      ],
+      "valid_window_count": 0,
+      "statistic_first_valid_window": null,
+      "unknown_reason": "no wholly-in-phase measurement window",
+      "receiver_label": "UNKNOWN"
+    },
+    {
+      "run": "20260913_s14_jact4",
+      "condition_key": "jact",
+      "phase_apply_time": 1323.8,
+      "fault_transition_time": 1337.543,
+      "receiver_entered_master": false,
+      "summary_windows": [
+        {
+          "summary_time": 1323.954,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 17532,
+          "path_delay_dispersion_ns": 6918,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 1341.943,
+          "window_start": 1323.954,
+          "window_duration_s": 17.989,
+          "path_delay_ns": 77290,
+          "path_delay_dispersion_ns": 49371,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "window ends at or after a fault transition (action effect)"
+          ]
+        }
+      ],
+      "valid_window_count": 0,
+      "statistic_first_valid_window": null,
+      "unknown_reason": "no wholly-in-phase measurement window",
+      "receiver_label": "UNKNOWN"
+    },
+    {
+      "run": "20260913_s14_jact5",
+      "condition_key": "jact",
+      "phase_apply_time": 1571.35,
+      "fault_transition_time": 1580.134,
+      "receiver_entered_master": false,
+      "summary_windows": [
+        {
+          "summary_time": 1571.809,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 20513,
+          "path_delay_dispersion_ns": 6143,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 1588.502,
+          "window_start": 1571.809,
+          "window_duration_s": 16.693,
+          "path_delay_ns": 68408,
+          "path_delay_dispersion_ns": 54362,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "window ends at or after a fault transition (action effect)"
+          ]
+        }
+      ],
+      "valid_window_count": 0,
+      "statistic_first_valid_window": null,
+      "unknown_reason": "no wholly-in-phase measurement window",
+      "receiver_label": "UNKNOWN"
+    },
+    {
+      "run": "20260913_s14_jnoact1",
+      "condition_key": "jnoact",
+      "phase_apply_time": 629.35,
+      "fault_transition_time": null,
+      "receiver_entered_master": false,
+      "summary_windows": [
+        {
+          "summary_time": 629.576,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 14225,
+          "path_delay_dispersion_ns": 2143,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 645.597,
+          "window_start": 629.576,
+          "window_duration_s": 16.021,
+          "path_delay_ns": 94609,
+          "path_delay_dispersion_ns": 48760,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "valid_window_count": 1,
+      "statistic_first_valid_window": {
+        "summary_time": 645.597,
+        "window_start": 629.576,
+        "window_duration_s": 16.021,
+        "path_delay_ns": 94609,
+        "path_delay_dispersion_ns": 48760,
+        "wholly_in_phase": true,
+        "invalid_reasons": []
+      },
+      "unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_ABOVE_BOUNDARY"
+    },
+    {
+      "run": "20260913_s14_jnoact2",
+      "condition_key": "jnoact",
+      "phase_apply_time": 877.19,
+      "fault_transition_time": null,
+      "receiver_entered_master": false,
+      "summary_windows": [
+        {
+          "summary_time": 877.512,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 19911,
+          "path_delay_dispersion_ns": 7250,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 893.531,
+          "window_start": 877.512,
+          "window_duration_s": 16.019,
+          "path_delay_ns": 103484,
+          "path_delay_dispersion_ns": 55226,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "valid_window_count": 1,
+      "statistic_first_valid_window": {
+        "summary_time": 893.531,
+        "window_start": 877.512,
+        "window_duration_s": 16.019,
+        "path_delay_ns": 103484,
+        "path_delay_dispersion_ns": 55226,
+        "wholly_in_phase": true,
+        "invalid_reasons": []
+      },
+      "unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_ABOVE_BOUNDARY"
+    },
+    {
+      "run": "20260913_s14_jnoact3",
+      "condition_key": "jnoact",
+      "phase_apply_time": 1125.7,
+      "fault_transition_time": null,
+      "receiver_entered_master": false,
+      "summary_windows": [
+        {
+          "summary_time": 1126.029,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 21275,
+          "path_delay_dispersion_ns": 6293,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 1142.053,
+          "window_start": 1126.029,
+          "window_duration_s": 16.024,
+          "path_delay_ns": 124255,
+          "path_delay_dispersion_ns": 53777,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "valid_window_count": 1,
+      "statistic_first_valid_window": {
+        "summary_time": 1142.053,
+        "window_start": 1126.029,
+        "window_duration_s": 16.024,
+        "path_delay_ns": 124255,
+        "path_delay_dispersion_ns": 53777,
+        "wholly_in_phase": true,
+        "invalid_reasons": []
+      },
+      "unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_ABOVE_BOUNDARY"
+    },
+    {
+      "run": "20260913_s14_jnoact4",
+      "condition_key": "jnoact",
+      "phase_apply_time": 1373.01,
+      "fault_transition_time": null,
+      "receiver_entered_master": false,
+      "summary_windows": [
+        {
+          "summary_time": 1373.271,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 21525,
+          "path_delay_dispersion_ns": 7876,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 1389.293,
+          "window_start": 1373.271,
+          "window_duration_s": 16.022,
+          "path_delay_ns": 86913,
+          "path_delay_dispersion_ns": 33330,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "valid_window_count": 1,
+      "statistic_first_valid_window": {
+        "summary_time": 1389.293,
+        "window_start": 1373.271,
+        "window_duration_s": 16.022,
+        "path_delay_ns": 86913,
+        "path_delay_dispersion_ns": 33330,
+        "wholly_in_phase": true,
+        "invalid_reasons": []
+      },
+      "unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_ABOVE_BOUNDARY"
+    },
+    {
+      "run": "20260913_s14_jnoact5",
+      "condition_key": "jnoact",
+      "phase_apply_time": 1621.1,
+      "fault_transition_time": null,
+      "receiver_entered_master": false,
+      "summary_windows": [
+        {
+          "summary_time": 1621.293,
+          "window_start": null,
+          "window_duration_s": null,
+          "path_delay_ns": 20082,
+          "path_delay_dispersion_ns": 4943,
+          "wholly_in_phase": false,
+          "invalid_reasons": [
+            "first summary after process start; window start unrecorded"
+          ]
+        },
+        {
+          "summary_time": 1637.317,
+          "window_start": 1621.293,
+          "window_duration_s": 16.024,
+          "path_delay_ns": 112647,
+          "path_delay_dispersion_ns": 56199,
+          "wholly_in_phase": true,
+          "invalid_reasons": []
+        }
+      ],
+      "valid_window_count": 1,
+      "statistic_first_valid_window": {
+        "summary_time": 1637.317,
+        "window_start": 1621.293,
+        "window_duration_s": 16.024,
+        "path_delay_ns": 112647,
+        "path_delay_dispersion_ns": 56199,
+        "wholly_in_phase": true,
+        "invalid_reasons": []
+      },
+      "unknown_reason": null,
+      "receiver_label": "RECEIVER_DISPERSION_ABOVE_BOUNDARY"
+    }
+  ]
+}

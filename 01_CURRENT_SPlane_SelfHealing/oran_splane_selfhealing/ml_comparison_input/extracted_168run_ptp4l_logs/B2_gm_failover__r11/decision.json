@@ -1,0 +1,50 @@
+{
+  "scenario": "B2_gm_failover",
+  "truth_class": "benign",
+  "truth_fault": "B2",
+  "verdict": "BENIGN",
+  "fault_hint": "B2",
+  "reasons": [
+    "Grandmaster changed to another PROVISIONED clock during an open maintenance window - planned failover"
+  ],
+  "evidence": {
+    "n_packets": 5577,
+    "n_announce": 333,
+    "allowlist": [
+      "020000fffe000001",
+      "020000fffe00000a",
+      "020000fffe00000b"
+    ],
+    "illegal_clockclass_pkts": 0,
+    "nonconformant_priority1_pkts": 0,
+    "out_of_profile_domain_pkts": 0,
+    "wrong_multicast_pkts": 0,
+    "stepsRemoved_ge_255_pkts": 0,
+    "alternate_master_flag_pkts": 0,
+    "gm_identities": {
+      "020000fffe000001": 2,
+      "020000fffe00000a": 214,
+      "020000fffe00000b": 117
+    },
+    "off_allowlist_sustained": {},
+    "provisioned_gms_seen": [
+      "020000fffe00000a",
+      "020000fffe00000b"
+    ],
+    "maintenance_window_open": true,
+    "ptp_sources": {
+      "020000fffe000001": 3618,
+      "020000fffe00000c": 651,
+      "020000fffe00000e": 669,
+      "020000fffe00000d": 639
+    },
+    "unknown_sources_sustained": {},
+    "announce_rate_self_inconsistent": {},
+    "capture_span_s": 41.527,
+    "unknown_relaying_sources": {},
+    "unknown_selfannouncing_sources": {},
+    "sequence_regressions": 0,
+    "nonconformant_sync_cadence_pkts": 0,
+    "nonconformant_announce_cadence_pkts": 0
+  }
+}

@@ -1,0 +1,489 @@
+{
+  "schema_version": "empirical-software-pilot-execution-order-v1",
+  "interleave_as_specified": true,
+  "condition_time_blocks": {
+    "baseline": [
+      1,
+      6,
+      12,
+      16,
+      20,
+      24,
+      28,
+      32,
+      36,
+      40
+    ],
+    "netem": [
+      2,
+      7,
+      11,
+      13,
+      17,
+      21,
+      25,
+      29,
+      33,
+      37,
+      41
+    ],
+    "control": [
+      3,
+      8,
+      14,
+      18,
+      22,
+      26,
+      30,
+      34,
+      38,
+      42
+    ],
+    "intervention": [
+      4,
+      5,
+      9,
+      10,
+      15,
+      19,
+      23,
+      27,
+      31,
+      35,
+      39,
+      43
+    ]
+  },
+  "ordered_runs": [
+    {
+      "directory": "20260910_baseline",
+      "run_id": "b1",
+      "scenario": "baseline_control",
+      "condition": "baseline",
+      "first_frame_epoch_s": 1789017614.489969,
+      "last_frame_epoch_s": 1789017628.504902,
+      "duration_s": 14.014933,
+      "ordinal_position": 1
+    },
+    {
+      "directory": "20260910_netem",
+      "run_id": "n1",
+      "scenario": "netem_delay_jitter_loss",
+      "condition": "netem",
+      "first_frame_epoch_s": 1789017662.175271,
+      "last_frame_epoch_s": 1789017676.190737,
+      "duration_s": 14.015466,
+      "ordinal_position": 2
+    },
+    {
+      "directory": "20260910_source_control",
+      "run_id": "c1",
+      "scenario": "authorized_source_change_no_action_control",
+      "condition": "control",
+      "first_frame_epoch_s": 1789017677.526011,
+      "last_frame_epoch_s": 1789017691.707164,
+      "duration_s": 14.181153,
+      "ordinal_position": 3
+    },
+    {
+      "directory": "20260910_source_stop",
+      "run_id": "s1",
+      "scenario": "authorized_source_change_intervention",
+      "condition": "intervention",
+      "first_frame_epoch_s": 1789017693.2925,
+      "last_frame_epoch_s": 1789017719.319613,
+      "duration_s": 26.027113,
+      "ordinal_position": 4
+    },
+    {
+      "directory": "20260910_source_stop_retry",
+      "run_id": "s2",
+      "scenario": "authorized_source_change_intervention",
+      "condition": "intervention",
+      "first_frame_epoch_s": 1789017742.541133,
+      "last_frame_epoch_s": 1789017768.580234,
+      "duration_s": 26.039101,
+      "ordinal_position": 5
+    },
+    {
+      "directory": "20260910_calibrated_baseline",
+      "run_id": "b2",
+      "scenario": "baseline_control",
+      "condition": "baseline",
+      "first_frame_epoch_s": 1789017820.590434,
+      "last_frame_epoch_s": 1789017834.631303,
+      "duration_s": 14.040869,
+      "ordinal_position": 6
+    },
+    {
+      "directory": "20260910_calibrated_netem",
+      "run_id": "n2",
+      "scenario": "netem_delay_jitter_loss",
+      "condition": "netem",
+      "first_frame_epoch_s": 1789017867.027036,
+      "last_frame_epoch_s": 1789017881.05394,
+      "duration_s": 14.026904,
+      "ordinal_position": 7
+    },
+    {
+      "directory": "20260910_calibrated_source_control",
+      "run_id": "c2",
+      "scenario": "authorized_source_change_no_action_control",
+      "condition": "control",
+      "first_frame_epoch_s": 1789017882.544237,
+      "last_frame_epoch_s": 1789017896.603118,
+      "duration_s": 14.058881,
+      "ordinal_position": 8
+    },
+    {
+      "directory": "20260910_calibrated_source_stop",
+      "run_id": "s3",
+      "scenario": "authorized_source_change_intervention",
+      "condition": "intervention",
+      "first_frame_epoch_s": 1789017897.937112,
+      "last_frame_epoch_s": 1789017924.076362,
+      "duration_s": 26.13925,
+      "ordinal_position": 9
+    },
+    {
+      "directory": "20260910_calibrated_source_stop_retry2",
+      "run_id": "s4",
+      "scenario": "authorized_source_change_intervention",
+      "condition": "intervention",
+      "first_frame_epoch_s": 1789017951.17102,
+      "last_frame_epoch_s": 1789017977.277034,
+      "duration_s": 26.106014,
+      "ordinal_position": 10
+    },
+    {
+      "directory": "20260911_calibrated_netem_v3",
+      "run_id": "n3",
+      "scenario": "netem_delay_jitter_loss",
+      "condition": "netem",
+      "first_frame_epoch_s": 1789136640.27989,
+      "last_frame_epoch_s": 1789136672.44874,
+      "duration_s": 32.16885,
+      "ordinal_position": 11
+    },
+    {
+      "directory": "20260911_set2_baseline_r1",
+      "run_id": "b31",
+      "scenario": "baseline_control",
+      "condition": "baseline",
+      "first_frame_epoch_s": 1789137633.034369,
+      "last_frame_epoch_s": 1789137665.237964,
+      "duration_s": 32.203595,
+      "ordinal_position": 12
+    },
+    {
+      "directory": "20260911_set2_netem_r1",
+      "run_id": "n41",
+      "scenario": "netem_delay_jitter_loss",
+      "condition": "netem",
+      "first_frame_epoch_s": 1789137667.277708,
+      "last_frame_epoch_s": 1789137699.309559,
+      "duration_s": 32.031851,
+      "ordinal_position": 13
+    },
+    {
+      "directory": "20260911_set2_control_r1",
+      "run_id": "c31",
+      "scenario": "authorized_source_change_no_action_control",
+      "condition": "control",
+      "first_frame_epoch_s": 1789137701.075353,
+      "last_frame_epoch_s": 1789137733.212959,
+      "duration_s": 32.137606,
+      "ordinal_position": 14
+    },
+    {
+      "directory": "20260911_set2_intervention_r1",
+      "run_id": "s51",
+      "scenario": "authorized_source_change_intervention",
+      "condition": "intervention",
+      "first_frame_epoch_s": 1789137734.77126,
+      "last_frame_epoch_s": 1789137796.955224,
+      "duration_s": 62.183964,
+      "ordinal_position": 15
+    },
+    {
+      "directory": "20260911_set2_baseline_r2",
+      "run_id": "b32",
+      "scenario": "baseline_control",
+      "condition": "baseline",
+      "first_frame_epoch_s": 1789137798.775206,
+      "last_frame_epoch_s": 1789137830.731744,
+      "duration_s": 31.956538,
+      "ordinal_position": 16
+    },
+    {
+      "directory": "20260911_set2_netem_r2",
+      "run_id": "n42",
+      "scenario": "netem_delay_jitter_loss",
+      "condition": "netem",
+      "first_frame_epoch_s": 1789137832.33064,
+      "last_frame_epoch_s": 1789137864.524434,
+      "duration_s": 32.193794,
+      "ordinal_position": 17
+    },
+    {
+      "directory": "20260911_set2_control_r2",
+      "run_id": "c32",
+      "scenario": "authorized_source_change_no_action_control",
+      "condition": "control",
+      "first_frame_epoch_s": 1789137866.156032,
+      "last_frame_epoch_s": 1789137898.275358,
+      "duration_s": 32.119326,
+      "ordinal_position": 18
+    },
+    {
+      "directory": "20260911_set2_intervention_r2",
+      "run_id": "s52",
+      "scenario": "authorized_source_change_intervention",
+      "condition": "intervention",
+      "first_frame_epoch_s": 1789137899.971277,
+      "last_frame_epoch_s": 1789137962.011615,
+      "duration_s": 62.040338,
+      "ordinal_position": 19
+    },
+    {
+      "directory": "20260911_set2_baseline_r3",
+      "run_id": "b33",
+      "scenario": "baseline_control",
+      "condition": "baseline",
+      "first_frame_epoch_s": 1789137963.672185,
+      "last_frame_epoch_s": 1789137995.71445,
+      "duration_s": 32.042265,
+      "ordinal_position": 20
+    },
+    {
+      "directory": "20260911_set2_netem_r3",
+      "run_id": "n43",
+      "scenario": "netem_delay_jitter_loss",
+      "condition": "netem",
+      "first_frame_epoch_s": 1789137997.59288,
+      "last_frame_epoch_s": 1789138029.540592,
+      "duration_s": 31.947712,
+      "ordinal_position": 21
+    },
+    {
+      "directory": "20260911_set2_control_r3",
+      "run_id": "c33",
+      "scenario": "authorized_source_change_no_action_control",
+      "condition": "control",
+      "first_frame_epoch_s": 1789138031.312306,
+      "last_frame_epoch_s": 1789138063.33922,
+      "duration_s": 32.026914,
+      "ordinal_position": 22
+    },
+    {
+      "directory": "20260911_set2_intervention_r3",
+      "run_id": "s53",
+      "scenario": "authorized_source_change_intervention",
+      "condition": "intervention",
+      "first_frame_epoch_s": 1789138065.10201,
+      "last_frame_epoch_s": 1789138127.160243,
+      "duration_s": 62.058233,
+      "ordinal_position": 23
+    },
+    {
+      "directory": "20260911_set3_baseline_r4",
+      "run_id": "b34",
+      "scenario": "baseline_control",
+      "condition": "baseline",
+      "first_frame_epoch_s": 1789145805.333825,
+      "last_frame_epoch_s": 1789145837.523113,
+      "duration_s": 32.189288,
+      "ordinal_position": 24
+    },
+    {
+      "directory": "20260911_set3_netem_r4",
+      "run_id": "n44",
+      "scenario": "netem_delay_jitter_loss",
+      "condition": "netem",
+      "first_frame_epoch_s": 1789145891.681568,
+      "last_frame_epoch_s": 1789145923.849072,
+      "duration_s": 32.167504,
+      "ordinal_position": 25
+    },
+    {
+      "directory": "20260911_set3_control_r4",
+      "run_id": "c34",
+      "scenario": "authorized_source_change_no_action_control",
+      "condition": "control",
+      "first_frame_epoch_s": 1789145925.397073,
+      "last_frame_epoch_s": 1789145957.455692,
+      "duration_s": 32.058619,
+      "ordinal_position": 26
+    },
+    {
+      "directory": "20260911_set3_intervention_r4",
+      "run_id": "s54",
+      "scenario": "authorized_source_change_intervention",
+      "condition": "intervention",
+      "first_frame_epoch_s": 1789145959.038762,
+      "last_frame_epoch_s": 1789146021.15172,
+      "duration_s": 62.112958,
+      "ordinal_position": 27
+    },
+    {
+      "directory": "20260911_set3_baseline_r5",
+      "run_id": "b35",
+      "scenario": "baseline_control",
+      "condition": "baseline",
+      "first_frame_epoch_s": 1789146022.811086,
+      "last_frame_epoch_s": 1789146054.842136,
+      "duration_s": 32.03105,
+      "ordinal_position": 28
+    },
+    {
+      "directory": "20260911_set3_netem_r5",
+      "run_id": "n45",
+      "scenario": "netem_delay_jitter_loss",
+      "condition": "netem",
+      "first_frame_epoch_s": 1789146056.383442,
+      "last_frame_epoch_s": 1789146088.480452,
+      "duration_s": 32.09701,
+      "ordinal_position": 29
+    },
+    {
+      "directory": "20260911_set3_control_r5",
+      "run_id": "c35",
+      "scenario": "authorized_source_change_no_action_control",
+      "condition": "control",
+      "first_frame_epoch_s": 1789146089.980324,
+      "last_frame_epoch_s": 1789146122.145877,
+      "duration_s": 32.165553,
+      "ordinal_position": 30
+    },
+    {
+      "directory": "20260911_set3_intervention_r5",
+      "run_id": "s55",
+      "scenario": "authorized_source_change_intervention",
+      "condition": "intervention",
+      "first_frame_epoch_s": 1789146123.680059,
+      "last_frame_epoch_s": 1789146185.755503,
+      "duration_s": 62.075444,
+      "ordinal_position": 31
+    },
+    {
+      "directory": "20260911_set3_baseline_r6",
+      "run_id": "b36",
+      "scenario": "baseline_control",
+      "condition": "baseline",
+      "first_frame_epoch_s": 1789146187.252333,
+      "last_frame_epoch_s": 1789146219.402145,
+      "duration_s": 32.149812,
+      "ordinal_position": 32
+    },
+    {
+      "directory": "20260911_set3_netem_r6",
+      "run_id": "n46",
+      "scenario": "netem_delay_jitter_loss",
+      "condition": "netem",
+      "first_frame_epoch_s": 1789146221.164847,
+      "last_frame_epoch_s": 1789146253.151081,
+      "duration_s": 31.986234,
+      "ordinal_position": 33
+    },
+    {
+      "directory": "20260911_set3_control_r6",
+      "run_id": "c36",
+      "scenario": "authorized_source_change_no_action_control",
+      "condition": "control",
+      "first_frame_epoch_s": 1789146254.661782,
+      "last_frame_epoch_s": 1789146286.810184,
+      "duration_s": 32.148402,
+      "ordinal_position": 34
+    },
+    {
+      "directory": "20260911_set3_intervention_r6",
+      "run_id": "s56",
+      "scenario": "authorized_source_change_intervention",
+      "condition": "intervention",
+      "first_frame_epoch_s": 1789146288.443078,
+      "last_frame_epoch_s": 1789146350.381441,
+      "duration_s": 61.938363,
+      "ordinal_position": 35
+    },
+    {
+      "directory": "20260911_set3_baseline_r7",
+      "run_id": "b37",
+      "scenario": "baseline_control",
+      "condition": "baseline",
+      "first_frame_epoch_s": 1789146351.967336,
+      "last_frame_epoch_s": 1789146384.07486,
+      "duration_s": 32.107524,
+      "ordinal_position": 36
+    },
+    {
+      "directory": "20260911_set3_netem_r7",
+      "run_id": "n47",
+      "scenario": "netem_delay_jitter_loss",
+      "condition": "netem",
+      "first_frame_epoch_s": 1789146385.68172,
+      "last_frame_epoch_s": 1789146417.706584,
+      "duration_s": 32.024864,
+      "ordinal_position": 37
+    },
+    {
+      "directory": "20260911_set3_control_r7",
+      "run_id": "c37",
+      "scenario": "authorized_source_change_no_action_control",
+      "condition": "control",
+      "first_frame_epoch_s": 1789146982.981538,
+      "last_frame_epoch_s": 1789147015.066298,
+      "duration_s": 32.08476,
+      "ordinal_position": 38
+    },
+    {
+      "directory": "20260911_set3_intervention_r7",
+      "run_id": "s57",
+      "scenario": "authorized_source_change_intervention",
+      "condition": "intervention",
+      "first_frame_epoch_s": 1789147016.55897,
+      "last_frame_epoch_s": 1789147078.722049,
+      "duration_s": 62.163079,
+      "ordinal_position": 39
+    },
+    {
+      "directory": "20260911_set3_baseline_r8",
+      "run_id": "b38",
+      "scenario": "baseline_control",
+      "condition": "baseline",
+      "first_frame_epoch_s": 1789147080.358076,
+      "last_frame_epoch_s": 1789147112.370368,
+      "duration_s": 32.012292,
+      "ordinal_position": 40
+    },
+    {
+      "directory": "20260911_set3_netem_r8",
+      "run_id": "n48",
+      "scenario": "netem_delay_jitter_loss",
+      "condition": "netem",
+      "first_frame_epoch_s": 1789147113.853994,
+      "last_frame_epoch_s": 1789147146.006004,
+      "duration_s": 32.15201,
+      "ordinal_position": 41
+    },
+    {
+      "directory": "20260911_set3_control_r8",
+      "run_id": "c38",
+      "scenario": "authorized_source_change_no_action_control",
+      "condition": "control",
+      "first_frame_epoch_s": 1789147147.58475,
+      "last_frame_epoch_s": 1789147179.657112,
+      "duration_s": 32.072362,
+      "ordinal_position": 42
+    },
+    {
+      "directory": "20260911_set3_intervention_r8",
+      "run_id": "s58",
+      "scenario": "authorized_source_change_intervention",
+      "condition": "intervention",
+      "first_frame_epoch_s": 1789147181.168614,
+      "last_frame_epoch_s": 1789147243.245922,
+      "duration_s": 62.077308,
+      "ordinal_position": 43
+    }
+  ]
+}

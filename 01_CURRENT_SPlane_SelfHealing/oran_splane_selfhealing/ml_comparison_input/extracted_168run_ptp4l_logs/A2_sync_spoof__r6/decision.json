@@ -1,0 +1,52 @@
+{
+  "scenario": "A2_sync_spoof",
+  "truth_class": "attack",
+  "truth_fault": "A2",
+  "verdict": "ATTACK",
+  "fault_hint": "A2",
+  "reasons": [
+    "PTP transmitted by source(s) not in the provisioned inventory, sustained: ['020000fffe0000b2']"
+  ],
+  "evidence": {
+    "n_packets": 7149,
+    "n_announce": 373,
+    "allowlist": [
+      "020000fffe000001",
+      "020000fffe00000a",
+      "020000fffe00000b"
+    ],
+    "illegal_clockclass_pkts": 0,
+    "nonconformant_priority1_pkts": 0,
+    "out_of_profile_domain_pkts": 0,
+    "wrong_multicast_pkts": 0,
+    "stepsRemoved_ge_255_pkts": 0,
+    "alternate_master_flag_pkts": 0,
+    "gm_identities": {
+      "020000fffe000001": 2,
+      "020000fffe00000b": 1,
+      "020000fffe00000a": 370
+    },
+    "off_allowlist_sustained": {},
+    "provisioned_gms_seen": [
+      "020000fffe00000a"
+    ],
+    "maintenance_window_open": false,
+    "ptp_sources": {
+      "020000fffe000001": 4052,
+      "020000fffe00000e": 711,
+      "020000fffe00000d": 737,
+      "020000fffe00000c": 745,
+      "020000fffe0000b2": 904
+    },
+    "unknown_sources_sustained": {
+      "020000fffe0000b2": 904
+    },
+    "announce_rate_self_inconsistent": {},
+    "capture_span_s": 46.555,
+    "unknown_relaying_sources": {},
+    "unknown_selfannouncing_sources": {},
+    "sequence_regressions": 0,
+    "nonconformant_sync_cadence_pkts": 0,
+    "nonconformant_announce_cadence_pkts": 0
+  }
+}
