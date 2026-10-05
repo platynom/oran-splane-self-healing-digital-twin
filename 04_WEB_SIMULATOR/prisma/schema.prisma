@@ -175,6 +175,65 @@ model CampaignRun {
   v3Reason    String?
 
   scenario Scenario @relation(fields: [scenarioId], references: [id])
+  evidence CampaignEvidence?
+}
+
+// Per-run evidence of the 168-run detector campaign: decision.json evidence block + counts computed from the run's deep CSV.
+model CampaignEvidence {
+  runId           String  @id
+  csvRows         Int // rows in the deep CSV = PTP frames captured
+  nPacketsClaimed Int? // evidence.n_packets in decision.json (checked equal to csvRows at extraction)
+  nAnnounce       Int?
+  captureSpanS    Float?
+  msgTypeCounts   Json // message_type -> frames
+  senderCounts    Json // eth_src (no colons) -> frames
+  gmIdentities    Json // advertised grandmaster identity -> Announce count
+  evidence        Json
+  reasons         String[]
+  description     String?
+
+  run CampaignRun @relation(fields: [runId], references: [id], onDelete: Cascade)
+}
+
+// 13 Sep pilot (software testbed): S11 closed-loop trials and S15 independent-validation trials.
+model PilotRun {
+  id             String   @id
+  milestone      String // S11 | S15
+  grp            String // S11: action | no_action; S15: jitter condition
+  label          String? // S15: receiver dispersion label; S11: arm
+  triggered      Boolean?
+  actionExecuted Boolean?
+  outcome        Boolean? // S11: receiver moved to the clean segment
+  data           Json
+
+  @@index([milestone])
+}
+
+model PilotSummary {
+  id         String @id // S11 | S15
+  status     String // PRESPECIFIED_BRANCH_MET | NOT_ESTABLISHED
+  statement  String
+  limits     Json
+  data       Json
+  sourcePath String
+}
+
+// B6 oscillator drift, two-laptop measurement (derived analysis output; raw per-sample CSVs are not in the repository).
+model B6Measurement {
+  id           String   @id // run1 | run2
+  verdict      String // ESTABLISHED | NOT_ESTABLISHED
+  relativePpm  Float
+  ci95         Float[]
+  halfwidthPpm Float
+  armA         Json
+  armB         Json
+  stability    Json
+  criteria     Json
+  pairing      Json
+  scopeLimits  Json
+  rawCsvPresent Boolean
+  sourcePath   String
+  sourceSha256 String
 }
 
 model Fault {
