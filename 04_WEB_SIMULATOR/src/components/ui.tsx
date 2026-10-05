@@ -55,3 +55,19 @@ export function Stat({ label, value, sub }: { label: string; value: React.ReactN
     </div>
   );
 }
+
+/** Per-element provenance badge for animated or explanatory content (simulator brief: MEASURED vs ILLUSTRATIVE on every animated element). */
+export function KindBadge({ kind, title }: { kind: "MEASURED" | "CONFIGURED" | "ILLUSTRATIVE" | "UNKNOWN" | "REFERENCE"; title?: string }) {
+  const cls = {
+    MEASURED: "border-ok text-ok",
+    CONFIGURED: "border-accent text-ink",
+    ILLUSTRATIVE: "border-dashed border-warn text-warn",
+    UNKNOWN: "border-line text-muted",
+    REFERENCE: "border-line text-muted",
+  }[kind];
+  return (
+    <span title={title} data-kind-badge={kind} className={clsx("inline-flex items-center rounded border px-1.5 py-0 text-[10px] font-bold uppercase tracking-wide", cls)}>
+      {kind}
+    </span>
+  );
+}

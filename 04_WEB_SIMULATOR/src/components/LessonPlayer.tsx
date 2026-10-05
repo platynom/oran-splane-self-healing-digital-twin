@@ -1,11 +1,10 @@
 "use client";
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import clsx from "clsx";
 import type { LookAlike } from "@prisma/client";
 import type { Lesson } from "@/lib/lessons";
-import { useProgress } from "@/lib/useProgress";
 import { Widget } from "./lesson/Widgets";
 import type { ScenarioOpt } from "./ReplayViewer";
 
@@ -27,54 +26,44 @@ export interface LessonData {
   a8?: { id: string; onBc: number; total: number }[];
 }
 
-export function LessonPlayer({ lesson, data, next }: { lesson: Lesson; data: LessonData; next: { id: string; title: string } | null }) {
-  const { record, progress, loaded } = useProgress();
+/** No sign-in, no XP: progress lives only in this component's state (simulator brief: no gamification). */
+export function LessonPlayer({ lesson, data, next, hrefTemplate = "/?panel=__PANEL__", embedded = false }: {
+  lesson: Lesson;
+  data: LessonData;
+  next: { id: string; title: string } | null;
+  /** URL with __PANEL__ where the panel id goes (a string, so a server component can pass it). */
+  hrefTemplate?: string;
+  embedded?: boolean;
+}) {
+  const hrefFor = (id: string | null) => hrefTemplate.replace("__PANEL__", id ? `lesson:${id}` : "lessons");
   const reduce = useReducedMotion();
   const total = lesson.steps.length + 1; // + quiz
   const [idx, setIdx] = useState(0);
   const [doneSteps, setDoneSteps] = useState<Set<string>>(new Set());
-  const [gain, setGain] = useState<number | null>(null);
-  const [completedNow, setCompletedNow] = useState(false);
-  const prior = progress.find((p) => p.lessonId === lesson.id);
-
-  useEffect(() => {
-    if (loaded && prior) setDoneSteps(new Set(prior.stepsCompleted));
-    // only on first load
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loaded]);
 
   const step = idx < lesson.steps.length ? lesson.steps[idx] : null;
   const [widgetDone, setWidgetDone] = useState(false);
   useEffect(() => setWidgetDone(false), [idx]);
 
-  const flash = (g: number | undefined) => {
-    if (g && g > 0) {
-      setGain(g);
-      setTimeout(() => setGain(null), 2200);
-    }
-  };
-
-  const onContinue = useCallback(async () => {
+  const onContinue = useCallback(() => {
     if (!step) return;
     setDoneSteps((s) => new Set(s).add(step.id));
-    const r = await record({ lessonId: lesson.id, stepId: step.id });
-    flash(r?.gained);
     setIdx((i) => i + 1);
-    if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
-  }, [step, record, lesson.id, reduce]);
+    if (!embedded && typeof window !== "undefined") window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+  }, [step, reduce, embedded]);
 
   const canContinue = widgetDone || (step ? doneSteps.has(step.id) : false);
 
   return (
-    <div className="mx-auto max-w-5xl">
+    <div className={embedded ? "" : "mx-auto max-w-5xl"}>
       <div className="mb-4 flex flex-wrap items-center gap-3">
-        <Link href="/learn" className="text-sm text-muted underline">
-          Learning path
+        <Link href={hrefFor(null)} className="text-sm text-muted underline">
+          Lessons
         </Link>
         <span className="text-sm text-muted">/</span>
         <span className="text-sm font-semibold">Lesson {lesson.n}</span>
       </div>
-      <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">{lesson.title}</h1>
+      <h2 className="text-2xl font-semibold tracking-tight">{lesson.title}</h2>
       <div className="mt-4 flex items-center gap-3">
         <div className="h-3 flex-1 rounded-full bg-surface-2" role="progressbar" aria-label="Lesson progress" aria-valuemin={0} aria-valuemax={total} aria-valuenow={Math.min(idx, total)}>
           <motion.div className="h-3 rounded-full bg-accent" animate={{ width: `${(Math.min(idx, total) / total) * 100}%` }} transition={{ duration: reduce ? 0 : 0.4 }} />
@@ -103,19 +92,6 @@ export function LessonPlayer({ lesson, data, next }: { lesson: Lesson; data: Les
         </li>
       </ol>
 
-      <AnimatePresence>
-        {gain !== null && (
-          <motion.div
-            role="status"
-            initial={{ opacity: 0, y: reduce ? 0 : -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0 }}
-            className="fixed right-4 top-20 z-50 rounded-lg border border-ok bg-ok-soft px-4 py-2 font-semibold text-ok shadow"
-          >
-            +{gain} XP
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       <div className="mt-6">
         {step ? (
@@ -148,14 +124,9 @@ export function LessonPlayer({ lesson, data, next }: { lesson: Lesson; data: Les
         ) : (
           <Quiz
             lesson={lesson}
-            onFinish={async (score) => {
-              const r = await record({ lessonId: lesson.id, quizScore: score });
-              flash(r?.gained);
-              if (r?.lessonCompletedNow) setCompletedNow(true);
-            }}
-            completedNow={completedNow}
             allStepsDone={lesson.steps.every((s) => doneSteps.has(s.id))}
             next={next}
+            hrefFor={hrefFor}
           />
         )}
       </div>
@@ -163,12 +134,11 @@ export function LessonPlayer({ lesson, data, next }: { lesson: Lesson; data: Les
   );
 }
 
-function Quiz({ lesson, onFinish, completedNow, allStepsDone, next }: {
+function Quiz({ lesson, allStepsDone, next, hrefFor }: {
   lesson: Lesson;
-  onFinish: (score: number) => Promise<void>;
-  completedNow: boolean;
   allStepsDone: boolean;
   next: { id: string; title: string } | null;
+  hrefFor: (lessonId: string | null) => string;
 }) {
   const [qi, setQi] = useState(0);
   const [picked, setPicked] = useState<number | null>(null);
@@ -188,10 +158,10 @@ function Quiz({ lesson, onFinish, completedNow, allStepsDone, next }: {
         </p>
         {perfect && allStepsDone && (
           <p className="mt-2 font-semibold text-ok" data-testid="lesson-complete">
-            Lesson {lesson.n} complete{completedNow ? " · +20 XP bonus" : ""}.
+            Lesson {lesson.n} complete.
           </p>
         )}
-        {!perfect && <p className="mt-2 text-muted">A lesson is complete when every step is done and the check is 3/3. Your best score is kept.</p>}
+        {!perfect && <p className="mt-2 text-muted">A lesson is complete when every step is done and the check is 3/3.</p>}
         <div className="mt-4 flex flex-wrap gap-3">
           {!perfect && (
             <button
@@ -208,11 +178,11 @@ function Quiz({ lesson, onFinish, completedNow, allStepsDone, next }: {
             </button>
           )}
           {next && (
-            <Link href={`/learn/${next.id}`} className="rounded-md bg-accent px-4 py-2 font-semibold text-accent-ink">
+            <Link href={hrefFor(next.id)} className="rounded-md bg-accent px-4 py-2 font-semibold text-accent-ink">
               Next: {next.title}
             </Link>
           )}
-          <Link href="/learn" className="rounded-md border border-line px-4 py-2 font-semibold hover:bg-surface-2">
+          <Link href={hrefFor(null)} className="rounded-md border border-line px-4 py-2 font-semibold hover:bg-surface-2">
             Learning path
           </Link>
         </div>
@@ -269,13 +239,12 @@ function Quiz({ lesson, onFinish, completedNow, allStepsDone, next }: {
       <button
         type="button"
         disabled={!answered}
-        onClick={async () => {
+        onClick={() => {
           if (qi + 1 < lesson.quiz.length) {
             setQi(qi + 1);
             setPicked(null);
           } else {
             setFinished(true);
-            await onFinish(score);
           }
         }}
         className="mt-4 rounded-md bg-accent px-5 py-2.5 font-semibold text-accent-ink disabled:opacity-50"

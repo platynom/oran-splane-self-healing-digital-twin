@@ -23,29 +23,56 @@
   color-scheme: light;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0b1220;
-    --surface: #111a2b;
-    --surface-2: #17233a;
-    --ink: #e6edf7;
-    --muted: #a6b3c7;
-    --line: #2a3a55;
-    --accent: #5cc8cf;
-    --accent-ink: #062a2d;
-    --accent-soft: #10343a;
-    --danger: #ff9a8f;
-    --danger-soft: #3a1714;
-    --warn: #f4c063;
-    --warn-soft: #3a2a0c;
-    --ok: #7fd89a;
-    --ok-soft: #0f3320;
-    --sync: #7fb0ff;
-    --announce: #b9a2ff;
-    --delay: #a9b4c6;
-    --other: #f5a65b;
-    color-scheme: dark;
-  }
+:root[data-theme="dark"] {
+  --bg: #0b1220;
+  --surface: #111a2b;
+  --surface-2: #17233a;
+  --ink: #e6edf7;
+  --muted: #a6b3c7;
+  --line: #2a3a55;
+  --accent: #5cc8cf;
+  --accent-ink: #062a2d;
+  --accent-soft: #10343a;
+  --danger: #ff9a8f;
+  --danger-soft: #3a1714;
+  --warn: #f4c063;
+  --warn-soft: #3a2a0c;
+  --ok: #7fd89a;
+  --ok-soft: #0f3320;
+  --sync: #7fb0ff;
+  --announce: #b9a2ff;
+  --delay: #a9b4c6;
+  --other: #f5a65b;
+  color-scheme: dark;
+}
+
+/* Projector: high contrast for washed-out projected images (toggle P). */
+:root[data-theme="projector"] {
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #f0f0f0;
+  --ink: #000000;
+  --muted: #262626;
+  --line: #000000;
+  --accent: #003d80;
+  --accent-ink: #ffffff;
+  --accent-soft: #dbe9ff;
+  --danger: #a30000;
+  --danger-soft: #ffe0e0;
+  --warn: #6b3d00;
+  --warn-soft: #fff0d6;
+  --ok: #0a5a1f;
+  --ok-soft: #dcf5e3;
+  --sync: #0039a6;
+  --announce: #5a1fa8;
+  --delay: #333333;
+  --other: #8a3b00;
+  color-scheme: light;
+}
+
+/* Large text (toggle L). */
+:root[data-text="large"] {
+  font-size: 125%;
 }
 
 @theme inline {
@@ -111,4 +138,64 @@ body {
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* ---- simulator diagram ---- */
+.sim-node rect {
+  fill: var(--surface-2);
+  stroke: var(--line);
+  stroke-width: 1.5;
+}
+.sim-node-t1 rect {
+  stroke: var(--accent);
+  stroke-width: 3;
+}
+.sim-node-t2 rect {
+  stroke: var(--muted);
+  stroke-width: 1.5;
+}
+.sim-node-t3 rect {
+  stroke: var(--muted);
+  stroke-dasharray: 5 4;
+  fill: var(--surface);
+}
+.sim-node-dim {
+  opacity: 0.4;
+}
+.sim-node-dim rect {
+  stroke-dasharray: 2 3;
+}
+.sim-node-sel rect {
+  stroke: var(--warn);
+  stroke-width: 4;
+}
+.sim-node:focus-visible {
+  outline: none;
+}
+.sim-node:focus-visible rect {
+  stroke: var(--warn);
+  stroke-width: 4;
+}
+.sim-node[role="button"]:hover rect {
+  fill: var(--accent-soft);
+}
+.sim-sub {
+  fill: var(--surface);
+  stroke: var(--accent);
+  stroke-width: 1.5;
+}
+.sim-label {
+  fill: var(--ink);
+  font-size: 14px;
+  font-weight: 600;
+}
+.sim-sublabel {
+  fill: var(--muted);
+  font-size: 11px;
+}
+.sim-tag {
+  fill: var(--muted);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
