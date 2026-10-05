@@ -1,0 +1,90 @@
+{
+ "tool": "lighthouse 12.8.2 (headless Chromium 141), production build (next start) on localhost, default mobile emulation",
+ "date": "2026-10-05",
+ "pages": {
+  "catalogue": {
+   "url": "http://localhost:3000/catalogue",
+   "scores": {
+    "performance": 98,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "LCP": "2.1\u00a0s",
+   "CLS": "0",
+   "TBT": "140\u00a0ms",
+   "console_errors": 0,
+   "failing_a11y": []
+  },
+  "dashboard": {
+   "url": "http://localhost:3000/dashboard",
+   "scores": {
+    "performance": 98,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "LCP": "2.0\u00a0s",
+   "CLS": "0",
+   "TBT": "140\u00a0ms",
+   "console_errors": 0,
+   "failing_a11y": []
+  },
+  "home": {
+   "url": "http://localhost:3000/",
+   "scores": {
+    "performance": 98,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "LCP": "2.0\u00a0s",
+   "CLS": "0",
+   "TBT": "120\u00a0ms",
+   "console_errors": 0,
+   "failing_a11y": []
+  },
+  "learn": {
+   "url": "http://localhost:3000/learn/oran-splane",
+   "scores": {
+    "performance": 98,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "LCP": "2.1\u00a0s",
+   "CLS": "0",
+   "TBT": "140\u00a0ms",
+   "console_errors": 0,
+   "failing_a11y": []
+  },
+  "replay": {
+   "url": "http://localhost:3000/replay?scenario=A1_rogue_master&rep=13",
+   "scores": {
+    "performance": 92,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "LCP": "2.1\u00a0s",
+   "CLS": "0",
+   "TBT": "300\u00a0ms",
+   "console_errors": 0,
+   "failing_a11y": []
+  },
+  "sandbox": {
+   "url": "http://localhost:3000/sandbox",
+   "scores": {
+    "performance": 99,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "LCP": "1.6\u00a0s",
+   "CLS": "0",
+   "TBT": "100\u00a0ms",
+   "console_errors": 0,
+   "failing_a11y": []
+  }
+ }
+}
