@@ -11,9 +11,10 @@ function collectErrors(page: Page) {
   return errors;
 }
 
-test("home loads with live hypothesis verdicts and headline numbers", async ({ page }) => {
+// Phase 1: "/" is now the 3D explorer (see e2e/explorer.spec.ts); the previous 2D home page lives at /overview.
+test("2D overview (previous home) loads with live hypothesis verdicts and headline numbers", async ({ page }) => {
   const errors = collectErrors(page);
-  await page.goto("/", { waitUntil: "networkidle" });
+  await page.goto("/overview", { waitUntil: "networkidle" });
   await expect(page.getByRole("heading", { level: 1 })).toContainText("Timing security");
   await expect(page.getByText("H3 FAIL")).toBeVisible();
   for (const t of ["A1 · Rogue grandmaster", "C1 · Interception", "C3 · Whole-second"]) await expect(page.getByText(t)).toBeVisible();
@@ -137,7 +138,7 @@ test("live mode explains why it is disabled when no service is configured", asyn
   await expect(page.getByTestId("live-disabled")).toBeVisible();
 });
 
-const PAGES = ["/", "/learn", "/learn/oran-splane", "/learn/ptp", "/learn/bmca", "/learn/attack-vs-benign", "/learn/attacks", "/learn/benign", "/learn/loop-limits", "/replay", "/sandbox", "/dashboard", "/catalogue", "/live", "/about", "/signin"];
+const PAGES = ["/", "/overview", "/learn", "/learn/oran-splane", "/learn/ptp", "/learn/bmca", "/learn/attack-vs-benign", "/learn/attacks", "/learn/benign", "/learn/loop-limits", "/replay", "/sandbox", "/dashboard", "/catalogue", "/live", "/about", "/signin"];
 
 test("no console errors on any page", async ({ page }) => {
   const errors = collectErrors(page);
@@ -151,7 +152,7 @@ test("no console errors on any page", async ({ page }) => {
 test("responsive down to 390 px: no horizontal scrolling", async ({ browser }) => {
   const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
   const page = await ctx.newPage();
-  for (const p of ["/", "/learn", "/learn/bmca", "/replay", "/sandbox", "/dashboard", "/catalogue", "/about"]) {
+  for (const p of ["/", "/overview", "/learn", "/learn/bmca", "/replay", "/sandbox", "/dashboard", "/catalogue", "/about"]) {
     await page.goto(p, { waitUntil: "networkidle" });
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
     expect(overflow, p).toBeLessThanOrEqual(1);
@@ -188,7 +189,7 @@ test("keyboard: skip link and replay controls are reachable", async ({ page }) =
 });
 
 test("accessibility: no serious or critical axe violations (WCAG 2.1 AA, incl. contrast)", async ({ page }) => {
-  for (const p of ["/", "/learn", "/learn/oran-splane", "/replay", "/sandbox", "/dashboard", "/catalogue", "/about"]) {
+  for (const p of ["/", "/overview", "/learn", "/learn/oran-splane", "/replay", "/sandbox", "/dashboard", "/catalogue", "/about"]) {
     await page.goto(p, { waitUntil: "networkidle" });
     const r = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"]).analyze();
     const bad = r.violations.filter((v) => v.impact === "serious" || v.impact === "critical");

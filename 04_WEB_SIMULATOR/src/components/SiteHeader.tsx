@@ -5,12 +5,14 @@ import { useState } from "react";
 import { UserMenu } from "./UserMenu";
 
 const NAV = [
+  { href: "/", label: "3D explorer" },
   { href: "/learn", label: "Learn" },
   { href: "/replay", label: "Replay" },
   { href: "/sandbox", label: "Sandbox" },
   { href: "/dashboard", label: "Dashboard" },
   { href: "/catalogue", label: "Fault catalogue" },
   { href: "/live", label: "Live" },
+  { href: "/overview", label: "Overview (2D)" },
   { href: "/about", label: "About & limits" },
 ];
 

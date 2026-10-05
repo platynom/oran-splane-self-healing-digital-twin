@@ -5,6 +5,7 @@ import { getAggregates, getHypotheses, getScenarios } from "@/lib/data";
 import { LESSONS } from "@/lib/lessons";
 
 export const dynamic = "force-dynamic";
+export const metadata = { title: "Overview (2D)" };
 
 export default async function Home() {
   const [aggs, hyps, scenarios] = await Promise.all([getAggregates(), getHypotheses(), getScenarios()]);

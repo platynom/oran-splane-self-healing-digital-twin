@@ -112,3 +112,47 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+/* ---- 3D explorer themes (set on <html> by useExplorerSettings; the explorer is dark by default) ---- */
+:root[data-theme="dark"] {
+  --bg: #070d18;
+  --surface: #0f1a2c;
+  --surface-2: #16243b;
+  --ink: #e6edf7;
+  --muted: #b2bfd3;
+  --line: #2b3e5e;
+  --accent: #5cc8cf;
+  --accent-ink: #062a2d;
+  --accent-soft: #10343a;
+  --danger: #ff9a8f;
+  --danger-soft: #3a1714;
+  --warn: #f4c063;
+  --warn-soft: #3a2a0c;
+  --ok: #7fd89a;
+  --ok-soft: #0f3320;
+  color-scheme: dark;
+}
+:root[data-theme="projector"] {
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #eef1f5;
+  --ink: #000000;
+  --muted: #1f2937;
+  --line: #000000;
+  --accent: #004f4b;
+  --accent-ink: #ffffff;
+  --accent-soft: #d6f1ef;
+  --danger: #8a0018;
+  --danger-soft: #fde3e7;
+  --warn: #6b3a00;
+  --warn-soft: #fff1d6;
+  --ok: #005a21;
+  --ok-soft: #dcf5e4;
+  color-scheme: light;
+}
+:root[data-theme="projector"] :focus-visible {
+  outline: 4px solid #000;
+}
+:root[data-text="large"] {
+  font-size: 125%;
+}
