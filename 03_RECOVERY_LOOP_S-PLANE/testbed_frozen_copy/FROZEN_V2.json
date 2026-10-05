@@ -1,0 +1,18 @@
+{
+  "artifact": "run/decision_rule_v2.py",
+  "sha256": "e32eb65bc7c04c3b9483dfa5ec9d4f646932dcf869ea387ba99e20b3a261d657",
+  "frozen_at": "2026-09-20T11:41:31.474500Z",
+  "status": "FROZEN development extension (pre-registered before campaign_v3)",
+  "base_rule": {
+    "file": "run/decision_rule.py",
+    "sha256": "c362e11072344161437aaae33b2902caf9bca57dfc33f653a9c2184edae8a985"
+  },
+  "contract": [
+    "Additive-only over the frozen base rule: never turns a frozen ATTACK into BENIGN.",
+    "Adds detectors D1 (rate starvation), D2 (frame legality), D3 (whole-second) for classes the frozen rule was shown to miss.",
+    "Every constant is fixed by a standard or self-referential (compared to what the sender declares). None fitted to data.",
+    "This hash is recorded BEFORE campaign_v3 runs; verdicts in that campaign are validation, not tuning.",
+    "Frozen base decision_rule.py is imported UNCHANGED and hash-checked."
+  ],
+  "pre_registered_expect": "C1_removal/C2_malformed/C3_wholesecond -> ATTACK; existing scenarios per FROZEN evaluate.py EXPECT map"
+}

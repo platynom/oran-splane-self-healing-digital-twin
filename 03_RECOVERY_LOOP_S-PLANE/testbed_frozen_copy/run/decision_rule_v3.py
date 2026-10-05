@@ -1,0 +1,179 @@
+#!/usr/bin/env python3
+"""
+decision_rule_v3 -- defect-fix revision of decision_rule_v2.
+===========================================================================
+This file is NOT decision_rule.py and does NOT replace it. The frozen rule
+(sha256 c362e11072344161437aaae33b2902caf9bca57dfc33f653a9c2184edae8a985) is
+imported UNCHANGED and used as the base layer. v2 only ADDS three detectors
+for classes the frozen rule was shown to miss:
+    D1  packet removal / selective interception   (O-RAN WG11 11.1.5.3.1)
+    D2  malformed / fuzzed PTP frames             (O-RAN WG11 24.2.1.2)
+    D3  whole-second field abuse (leap/UTC/trace) (IEEE 1588-2019 7.2.4)
+
+Design contract:
+  * ADDITIVE ONLY. v2 never turns a frozen ATTACK into BENIGN. It escalates a
+    frozen BENIGN/UNKNOWN to ATTACK only when a new detector fires.
+  * Every new constant is fixed by a standard (cited) or self-referential
+    (compared to what the sender itself declares) -- nothing fitted to inputs.
+  * Validated by detection-logic + false-positive checks. NOT frozen. Using it
+    in a reported metric requires re-freeze + a fresh randomized campaign.
+"""
+from __future__ import annotations
+import csv, collections, os, importlib.util, hashlib, json, sys
+
+_HERE = os.path.dirname(os.path.abspath(__file__))
+_spec = importlib.util.spec_from_file_location("frozen_dr", os.path.join(_HERE,"decision_rule.py"))
+frozen = importlib.util.module_from_spec(_spec); _spec.loader.exec_module(frozen)
+
+VERDICT_ATTACK, VERDICT_BENIGN, VERDICT_UNKNOWN = "ATTACK","BENIGN","UNKNOWN"
+
+PTP_VERSION            = 2       # IEEE 1588-2019: versionPTP field value 2
+CONTROL_FIELD_MAX      = 5       # IEEE 1588 Table 23: legal control values 0..5
+LEGAL_MSGTYPE_RAW      = {"0","1","2","3","8","9","10","11","12","13"}  # 1588-2019 Table 5
+MIN_LEN = {"Announce":64,"Sync":44,"Follow_Up":44,"Delay_Req":44,"Delay_Resp":54,
+           "Pdelay_Req":54,"Pdelay_Resp":54}
+RATE_STARVE_FRACTION   = 0.5
+D1_MIN_FRAMES          = 10    # structural floor: below this there is no "rate" to judge
+D1_MIN_ACTIVE_FRACTION = 0.5   # source must be present across >=half the window to be "persistent"
+TRUE_TAI_UTC_OFFSET    = 37
+MALFORMED_MIN_COUNT    = 10
+
+def _to_int(x):
+    try: return int(x)
+    except Exception: return None
+
+def detect_removal(rows, ctx, ev):
+    ts=[int(r["capture_ts_ns"]) for r in rows if r.get("capture_ts_ns")]
+    if len(ts)<2: return None
+    span=(max(ts)-min(ts))/1e9
+    if span<=2.0: return None
+    known = set(ctx.get("gm_allowlist",[])) | {ctx.get("expected_bc_identity")} \
+            | set(ctx.get("expected_client_identities",[]))
+    # DEFECT FIX (v3): a provisioned REPLACEMENT boundary clock is also a known source.
+    # Omitting it made D1 skip it entirely - silently hiding, rather than avoiding, a verdict.
+    if ctx.get("expected_bc_identity_secondary"):
+        known |= {ctx["expected_bc_identity_secondary"]}
+    findings={}
+    for mtype in ("Sync","Announce"):
+        per=collections.defaultdict(list)
+        for r in rows:
+            if r.get("message_type")==mtype and r.get("source_clock_identity"):
+                per[r["source_clock_identity"]].append(r)
+        for sid,frames in per.items():
+            if sid not in known: continue
+            # DEFECT FIX (v3): D1 previously had NO minimum-sample and NO transient guard, so a
+            # source that merely APPEARED BRIEFLY (e.g. a boundary clock emitting 3 Announce during
+            # BMCA start-up before going SLAVE) was read as "starved" and escalated to ATTACK.
+            # Verified on upstream captures: it turned B2_gm_failover BENIGN->ATTACK and destroyed
+            # the B_unplanned_failover UNKNOWN abstention. The frozen base rule already learned this
+            # lesson (TRANSIENT_FRACTION); v2 reintroduced it. Rate-starvation is only meaningful
+            # for a source that is PERSISTENT across the observation window, so require that the
+            # source's own active span covers at least half the capture and that it contributed a
+            # minimum number of messages. Both are structural definitions of "persistent", not
+            # values fitted to any observation.
+            if len(frames) < D1_MIN_FRAMES: continue
+            fts=[int(f["capture_ts_ns"]) for f in frames if f.get("capture_ts_ns")]
+            if len(fts) < 2: continue
+            active_span=(max(fts)-min(fts))/1e9
+            if active_span < D1_MIN_ACTIVE_FRACTION*span: continue
+            decl=[_to_int(f.get("log_message_interval")) for f in frames]
+            decl=[d for d in decl if d is not None]
+            if not decl: continue
+            declared_hz=2.0**(-sorted(decl)[len(decl)//2])
+            obs_hz=len(frames)/span
+            if declared_hz>0 and obs_hz < RATE_STARVE_FRACTION*declared_hz:
+                findings[f"{sid}/{mtype}"]=dict(observed_hz=round(obs_hz,2),
+                    declared_hz=round(declared_hz,2), n=len(frames))
+    ev["D1_rate_starvation"]=findings
+    if findings:
+        return ("A_intercept", f"Provisioned source delivering far below its own declared "
+                f"rate -> packet removal / selective interception: {findings}")
+    return None
+
+def detect_malformed(rows, ev):
+    bad=collections.Counter()
+    for r in rows:
+        reasons=[]
+        v=_to_int(r.get("version_ptp"))
+        if v is not None and v!=PTP_VERSION: reasons.append("version!=2")
+        cf=_to_int(r.get("control_field"))
+        if cf is not None and cf>CONTROL_FIELD_MAX: reasons.append("control>5")
+        mtr=r.get("message_type_raw")
+        if mtr not in ("",None) and mtr not in LEGAL_MSGTYPE_RAW: reasons.append("msgtype_raw illegal")
+        ml=_to_int(r.get("message_length")); mt=r.get("message_type")
+        if ml is not None and mt in MIN_LEN and ml<MIN_LEN[mt]: reasons.append("length<min")
+        for x in reasons: bad[x]+=1
+    total=len(rows) or 1
+    n_bad=sum(1 for r in rows if any([
+        (_to_int(r.get("version_ptp")) not in (None,PTP_VERSION)),
+        (_to_int(r.get("control_field")) is not None and _to_int(r.get("control_field"))>CONTROL_FIELD_MAX),
+        (r.get("message_type_raw") not in ("",None) and r.get("message_type_raw") not in LEGAL_MSGTYPE_RAW),
+        (_to_int(r.get("message_length")) is not None and r.get("message_type") in MIN_LEN
+             and _to_int(r.get("message_length"))<MIN_LEN[r.get("message_type")]),
+    ]))
+    ev["D2_malformed_reasons"]=dict(bad); ev["D2_malformed_frames"]=n_bad
+    if n_bad>=MALFORMED_MIN_COUNT or n_bad>0.005*total:
+        return ("A_malformed", f"IEEE 1588-2019 field-legality violations in {n_bad} frames: {dict(bad)}")
+    return None
+
+def detect_wholesecond(rows, ctx, ev):
+    ann=[r for r in rows if r.get("message_type")=="Announce"]
+    if not ann: return None
+    leap_ok = bool(ctx.get("leap_window_open", False))
+    true_utc = ctx.get("true_utc_offset", TRUE_TAI_UTC_OFFSET)
+    findings=[]
+    leap=[r for r in ann if r.get("flag_leap61")=="1" or r.get("flag_leap59")=="1"]
+    if leap and not leap_ok:
+        findings.append(f"leap61/59 asserted in {len(leap)} Announce with no leap window open")
+    per=collections.defaultdict(set); wrong_valid=0
+    for r in ann:
+        u=_to_int(r.get("current_utc_offset"))
+        if u is None: continue
+        per[r.get("source_clock_identity")].add(u)
+        if r.get("flag_currentUtcOffsetValid")=="1" and u!=true_utc: wrong_valid+=1
+    # DEFECT FIX (v3): require a SUSTAINED offset change, mirroring the frozen rule's transient
+    # filter. A single stray Announce must not escalate to ATTACK.
+    stepped={}
+    for sid,vals in per.items():
+        if len(vals)<=1: continue
+        cnt=collections.Counter(_to_int(r.get("current_utc_offset")) for r in ann
+                                if r.get("source_clock_identity")==sid
+                                and _to_int(r.get("current_utc_offset")) is not None)
+        tot=sum(cnt.values()) or 1
+        sustained=[u for u,c in cnt.items() if c > 0.01*tot]
+        if len(sustained)>1: stepped[sid]=sorted(sustained)
+    if stepped: findings.append(f"currentUtcOffset not constant per source: {stepped}")
+    if wrong_valid: findings.append(f"{wrong_valid} Announce assert UTCOffsetValid but offset!={true_utc}")
+    incon=[r for r in ann if (_to_int(r.get("gm_clock_class")) is not None
+           and _to_int(r.get("gm_clock_class"))<=6
+           and (r.get("flag_timeTraceable")=="0" or r.get("flag_currentUtcOffsetValid")=="0"))]
+    if incon: findings.append(f"{len(incon)} Announce claim traceable clockClass<=6 but deassert "
+                              f"timeTraceable/currentUtcOffsetValid")
+    ev["D3_wholesecond"]=findings
+    if findings:
+        return ("A_wholesecond", "Timescale/whole-second metadata abuse: " + "; ".join(findings))
+    return None
+
+def decide_v2(deep_csv, ctx):
+    v,hint,why,ev = frozen.decide(deep_csv, ctx)
+    ev["v2_base_verdict"]=v
+    if v==VERDICT_ATTACK:
+        return v,hint,why,ev
+    try:
+        rows=list(csv.DictReader(open(deep_csv)))
+    except Exception:
+        return v,hint,why,ev
+    for det in (lambda: detect_removal(rows,ctx,ev),
+                lambda: detect_malformed(rows,ev),
+                lambda: detect_wholesecond(rows,ctx,ev)):
+        hit=det()
+        if hit:
+            new_hint,reason=hit
+            return VERDICT_ATTACK, new_hint, [reason]+["(v2 detector; frozen base said "+v+")"], ev
+    return v,hint,why,ev
+
+if __name__=="__main__":
+    run_dir=sys.argv[1]; deep=sys.argv[2]
+    ctx=json.load(open(os.path.join(run_dir,"context.json")))
+    v,hint,why,ev=decide_v2(deep,ctx)
+    print(json.dumps(dict(verdict=v,hint=hint,reasons=why),indent=2))

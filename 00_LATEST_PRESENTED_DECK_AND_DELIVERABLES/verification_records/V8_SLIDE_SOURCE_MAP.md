@@ -1,5 +1,7 @@
 # v8 deck — slide-by-slide source map
 
+> **Update 5 Oct 2026.** The 29 Sep documents cited below now live in `99_ARCHIVE_OLDER_AND_SUPERSEDED/documents_2026-09-29_superseded_by_10-05/`; their `*_2026-10-05` successors in `00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/` are identical except for four added columns. Slide 12 (A8 and C3 rows) was corrected on 5 Oct from the pmc measurement in `03_RECOVERY_LOOP_S-PLANE/RESULTS_2026-10-05.md` §4.
+
 Deck: `00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8.pptx` (42 slides).
 The presented deck `ORAN_SPlane_PRISM_Review_v7_FINAL_PRESENTED_2026-09-29.pptx` is v8 slides 1, 2, 4, 7, 8, 13–19, 22, 24–39, 41
 (v7 slide n → v8 slide: 1→1, 2→2, 3→4, 4→7, 5→8, 6→13, 7→14, 8→15, 9→16, 10→17, 11→18, 12→19, 13→22, 14→24, 15→25, 16→26,

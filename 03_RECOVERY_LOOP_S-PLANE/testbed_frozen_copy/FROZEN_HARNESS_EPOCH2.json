@@ -1,0 +1,65 @@
+{
+  "epoch": "HARNESS EPOCH 2 (2026-09-20)",
+  "generated": "2026-09-20T21:08:02.530881Z",
+  "purpose": "Records, transparently, every experiment-apparatus file changed after the original 2026-09-17 freeze, and why. The DECISION RULES - the artefacts that determine verdicts - are unchanged and still match their original hashes.",
+  "decision_rules_unchanged": {
+    "base": {
+      "file": "run/decision_rule.py",
+      "sha256": "c362e11072344161437aaae33b2902caf9bca57dfc33f653a9c2184edae8a985",
+      "verified": true
+    },
+    "v2": {
+      "file": "run/decision_rule_v2.py",
+      "sha256": "e32eb65bc7c04c3b9483dfa5ec9d4f646932dcf869ea387ba99e20b3a261d657"
+    },
+    "v3": {
+      "file": "run/decision_rule_v3.py",
+      "sha256": "aa9417b701cc09dcf242a814cc136ce2acd561269389b7553618205997b7f330"
+    }
+  },
+  "manifest_violations_disclosed": [
+    {
+      "artifact": "run/scenarios.sh",
+      "manifest_sha256": "3d682520a43de9bbdbe2ba280f70fdbd7d860e474591c86a31dc8a55ed19900e",
+      "current_sha256": "e6b4c748dbc3cee6ef69e1b5fd086034b770926286636ab85f864655e4abfed4"
+    },
+    {
+      "artifact": "run/randparams.py",
+      "manifest_sha256": "c0a2fe2d4ae92ec25e7036b770f91078c35ae6ed16097a07c422f4b5b6fb10f0",
+      "current_sha256": "7c8a4322cf7ec71e8a4754ec2b58326b717a6553f2174bb41d1d9f48d16f9078"
+    }
+  ],
+  "changes_and_reasons": [
+    {
+      "file": "run/randparams.py",
+      "change": "Added c1_down_pct / c2_gap_ms / c3_gap_ms draws.",
+      "reason": "The three new coverage scenarios needed per-rep randomisation. This breaks the original manifest hash and is disclosed here rather than concealed; verify_frozen.sh will flag it.",
+      "affects_verdicts": false
+    },
+    {
+      "file": "run/scenarios.sh",
+      "change": "B3_pdv_congestion rewritten: tc netem -> tbf bottleneck + competing non-PTP background traffic; impairment failure is now fatal and logged.",
+      "reason": "DEFECT. This kernel has no sch_netem; the old line swallowed the failure with 2>/dev/null||true, so B3 injected NOTHING and was a mislabelled baseline for the ENTIRE prior campaign. Verified: its PDV was identical to baseline (sd 36.0ms vs 35.5ms). After the fix, Sync PDV rises from 0.07ms to 5.6-857ms.",
+      "affects_verdicts": true,
+      "affects_prior_results": true
+    },
+    {
+      "file": "run/run_gap.sh",
+      "change": "chmod 755; added per-rep randomisation.",
+      "reason": "DEFECT. Created mode 644 but invoked as ./run/run_gap.sh, returning exit 126 (Permission denied) silenced by >/dev/null. The packet guard then accepted a STALE capture and copied it into all 12 replicate folders - 1 run counted 12 times.",
+      "affects_verdicts": true,
+      "affects_prior_results": true
+    },
+    {
+      "file": "run/campaign_v3.sh",
+      "change": "Invoke via bash; check runner exit code; purge working dir before each run.",
+      "reason": "Hardening so the stale-capture failure class cannot recur silently.",
+      "affects_verdicts": false
+    }
+  ],
+  "evaluator": {
+    "file": "run/evaluate_v4.py",
+    "supersedes": "run/evaluate_v3.py",
+    "reason": "v3 pooled run-count-dependent metrics, compared additive-only by scalar, credited abstention on error paths, had no rep whitelist, and dropped attribution scoring."
+  }
+}

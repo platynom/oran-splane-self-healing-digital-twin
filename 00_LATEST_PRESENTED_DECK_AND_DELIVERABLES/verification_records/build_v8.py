@@ -364,10 +364,10 @@ sl = frame("THREAT MODEL · IMPACT", "Which Component Each Attack Affects, and W
 cols = [(0.73, 0.55), (1.32, 2.6), (4.0, 1.75), (5.85, 3.55), (9.5, 3.2)]
 rows = [
  ["A1", "All RU slave clocks on the segment", "False time", "36/36 RU logs selected the rogue as best master", "TIMESAFE: O-RU crash ≈2 s after spoofing, cell drop, manual reboot"],
- ["A8", "All RUs behind the inserted clock", "False time", "36/36 RU logs took the rogue BC as a new master", "T-SPLANE-03: slaves given inaccurate time"],
+ ["A8", "All RUs behind the inserted clock", "False time", "36/36 RU logs recorded the rogue BC as a foreign master; parent unchanged (5/5 pmc runs, 5 Oct)", "T-SPLANE-03: slaves given inaccurate time"],
  ["C1", "RUs downstream of the BC port", "Accuracy loss, DoS", "36/36 RU ports lost master on Announce timeout; servo reports 7.8 vs 22 per log", "T-SPLANE-04: degradation or free-running"],
- ["C3", "RU time-properties (UTC offset)", "False time", "No master change; servo reports 3.0 vs 22 per log", "Spoofing class: false time"],
- ["A2 A3 A5 C2", "RU receive path", "False time / DoS", "No master change in any RU log; visible only in packet evidence", "A5: T-SPLANE-01 clock service interrupted; A3: TIMESAFE replay"],
+ ["C3", "RU parent and time properties", "False time", "RUs re-parented to the forger under GM-A's identity (5/5 pmc runs, 5 Oct); servo reports 3.0 vs 22 per log", "Spoofing class: false time"],
+ ["A2 A3 A5 C2", "RU receive path", "False time / DoS", "No master change in any RU log or pmc run; visible only in packet evidence", "A5: T-SPLANE-01 clock service interrupted; A3: TIMESAFE replay"],
 ]
 yb = table(sl, cols, ["ID", "AFFECTED COMPONENT", "IMPACT CLASS", "MEASURED IN OUR RUNS", "REPORTED IN LITERATURE"], rows, row_h=[0.6, 0.5, 0.6, 0.5, 0.6], size=10.8, first_size=13.5, gap=0.04,
            colors=[None, NAVY, GREY, NAVY, GREY])
@@ -381,6 +381,7 @@ notes(sl, [
  "Answers reviewer questions: what are the impacts; which module will these attacks affect.",
  "Measured counts computed on 2026-10-03 from ml_comparison_input/extracted_168run_ptp4l_logs (RU1-RU3 logs, 12 replicates per scenario): A1 36/36 logs contain 'selected best master clock 020000.fffe.0000xx' with a non-provisioned identity; A8 36/36 contain 'new foreign master' with the rogue BC identity; C1 36/36 contain ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES. Mean servo report lines per RU log: baseline 22.0, C1 7.8, C3 3.0.",
  "Benign comparison from the same logs: B3 congestion 12/36 RU logs hit the Announce timeout; B_bc_replacement 36/36 during the planned swap. A timeout alone therefore does not prove an attack.",
+ "Correction 5 Oct 2026: earlier v8 text said A8 '36/36 RU logs took the rogue BC as a new master' and C3 'No master change'. The logs show 36/36 'new foreign master' lines for the rogue BC, which is a BMCA candidate, not a selection. pmc PARENT_DATA_SET measured with -d 24 in the 5 Oct recovery-loop evaluation (03_RECOVERY_LOOP_S-PLANE, control arm, replicates 13-17, same injection mechanisms) shows: A8 - RU1/RU2 parent stayed the real BC in 5/5 runs (same GM on both paths, BMCA prefers fewer stepsRemoved); C3 - RU1/RU2 re-parented to the forger, which uses GM-A's clockIdentity, in 5/5 runs, invisible in the ptp4l selected-best-master line because the identity is spoofed; A2/A3/A5/C2 - no parent change in 5/5 runs each.",
  "All daemon configs set free_running 1 (cfg/g87251.base); servo state is s0 in every RU log. No RU clock was steered, so false-time impact was not realised physically here.",
  "Literature (TIMESAFE, arXiv 2412.13049v3, verified verbatim 4 Oct): production network is O-RAN LLS-C3; with all ports PTP dynamic: 'Approximately 2 seconds after the attack begins, the RU crashes, stopping its operations, causing the 5G cell to drop and the UE to lose connection'; in a separate run 'around second 440 there is a 50% drop in throughput, progressing to a 75% drop by second 510, and ultimately causing the base station to crash at around second 580'; another run reports a 50% drop about 380 s after attack start. ETSI TR 104 106 impact texts quoted for T-SPLANE-01, -03, -04. RFC 7384 Table 1 impact columns: false time, accuracy degradation, DoS.",
  "Service limits: 3GPP TS 38.133 as quoted by Ruffini (ATIS 2018, slide 6); TS 38.104 Rel-19 clause 9.6.3.2."])

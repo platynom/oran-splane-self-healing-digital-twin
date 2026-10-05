@@ -1,0 +1,56 @@
+{
+  "_comment": "Operator inventory for the S-plane recovery loop. This is configuration (what the operator has provisioned), not measurement. Identities are IEEE 1588 clockIdentity values derived by linuxptp from each node's first interface MAC (EUI-48 -> EUI-64 with fffe insertion).",
+  "segment": "brDN",
+  "gm_allowlist": [
+    "020000fffe00000a",
+    "020000fffe00000b"
+  ],
+  "provisioned_backup_gm": "020000fffe00000b",
+  "expected_bc_identity": "020000fffe000001",
+  "standby_bc_identity": "020000fffe0000c5",
+  "expected_client_identities": [
+    "020000fffe00000c",
+    "020000fffe00000d",
+    "020000fffe00000e"
+  ],
+  "expected_steps_removed_at_ru": 1,
+  "port_inventory": {
+    "p-v-bc-dn": {
+      "device": "BC (primary boundary clock, downstream port)",
+      "role": "master",
+      "identities": [
+        "020000fffe000001"
+      ]
+    },
+    "p-bcs-dn": {
+      "device": "BC-S (cold-standby boundary clock, downstream port)",
+      "role": "master",
+      "identities": [
+        "020000fffe0000c5"
+      ]
+    },
+    "p-v-ru1": {
+      "device": "RU1 (O-RU timing client)",
+      "role": "client",
+      "identities": [
+        "020000fffe00000c"
+      ]
+    },
+    "p-v-ru2": {
+      "device": "RU2 (O-RU timing client)",
+      "role": "client",
+      "identities": [
+        "020000fffe00000d"
+      ]
+    },
+    "p-v-ru3": {
+      "device": "RU3 (O-RU timing client)",
+      "role": "client",
+      "identities": [
+        "020000fffe00000e"
+      ]
+    }
+  },
+  "_operator_state_comment": "Per-run operator state (maintenance window open, planned replacement BC ticket) is supplied separately in state.json by the scenario driver, exactly as context.json supplied it in the 168-run campaign.",
+  "_port_naming": "Bridge-port names are the root-namespace ends of each veth: topology.sh names them p-<ifname> (p-v-bc-dn, p-v-ru1..3); devices added by run_one.py are named p-<ifname without 'v-'> (p-bcs-dn, p-bc2-dn, p-rogue, p-rbc-dn)."
+}

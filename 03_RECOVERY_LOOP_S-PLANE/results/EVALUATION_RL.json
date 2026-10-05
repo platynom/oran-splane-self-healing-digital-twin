@@ -1,0 +1,5389 @@
+{
+ "runs": [
+  {
+   "run": "A1_rogue_master__r13__control",
+   "scenario": "A1_rogue_master",
+   "cls": "attack",
+   "rep": 13,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 38.51,
+   "rogue_parent_s": 38.51,
+   "ru3_unhealthy_s": 38.51,
+   "first_unhealthy_s": 1.0399999999999636,
+   "outage_s": null,
+   "restored_at_end": false,
+   "first_attack_verdict_s": 1.08,
+   "first_action_s": 2.08,
+   "actions": [
+    {
+     "t": 2.08,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-rogue",
+     "kind": "would_act"
+    }
+   ],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A1_rogue_master__r13__loop",
+   "scenario": "A1_rogue_master",
+   "cls": "attack",
+   "rep": 13,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 2.0,
+   "rogue_parent_s": 1.5,
+   "ru3_unhealthy_s": 1.5,
+   "first_unhealthy_s": 1.043999999999869,
+   "outage_s": 2.0,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.07,
+   "first_action_s": 2.08,
+   "actions": [
+    {
+     "t": 2.08,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-rogue",
+     "kind": "act"
+    }
+   ],
+   "verifies": [
+    {
+     "t": 3.21,
+     "ok": true,
+     "action": "ISOLATE_PTP_AT_PORT"
+    }
+   ],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A1_rogue_master__r14__control",
+   "scenario": "A1_rogue_master",
+   "cls": "attack",
+   "rep": 14,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 38.51,
+   "rogue_parent_s": 38.51,
+   "ru3_unhealthy_s": 38.51,
+   "first_unhealthy_s": 1.0649999999995998,
+   "outage_s": null,
+   "restored_at_end": false,
+   "first_attack_verdict_s": 1.09,
+   "first_action_s": 2.09,
+   "actions": [
+    {
+     "t": 2.09,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-rogue",
+     "kind": "would_act"
+    }
+   ],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A1_rogue_master__r14__loop",
+   "scenario": "A1_rogue_master",
+   "cls": "attack",
+   "rep": 14,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 2.0,
+   "rogue_parent_s": 1.5,
+   "ru3_unhealthy_s": 2.0,
+   "first_unhealthy_s": 1.0450000000000728,
+   "outage_s": 2.0,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.09,
+   "first_action_s": 2.1,
+   "actions": [
+    {
+     "t": 2.1,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-rogue",
+     "kind": "act"
+    }
+   ],
+   "verifies": [
+    {
+     "t": 3.22,
+     "ok": true,
+     "action": "ISOLATE_PTP_AT_PORT"
+    }
+   ],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A1_rogue_master__r15__control",
+   "scenario": "A1_rogue_master",
+   "cls": "attack",
+   "rep": 15,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 38.52,
+   "rogue_parent_s": 38.52,
+   "ru3_unhealthy_s": 38.52,
+   "first_unhealthy_s": 1.043999999999869,
+   "outage_s": null,
+   "restored_at_end": false,
+   "first_attack_verdict_s": 1.07,
+   "first_action_s": 2.08,
+   "actions": [
+    {
+     "t": 2.08,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-rogue",
+     "kind": "would_act"
+    }
+   ],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A1_rogue_master__r15__loop",
+   "scenario": "A1_rogue_master",
+   "cls": "attack",
+   "rep": 15,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 2.0,
+   "rogue_parent_s": 1.5,
+   "ru3_unhealthy_s": 1.5,
+   "first_unhealthy_s": 1.0410000000001673,
+   "outage_s": 2.0,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.07,
+   "first_action_s": 2.08,
+   "actions": [
+    {
+     "t": 2.08,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-rogue",
+     "kind": "act"
+    }
+   ],
+   "verifies": [
+    {
+     "t": 3.22,
+     "ok": true,
+     "action": "ISOLATE_PTP_AT_PORT"
+    }
+   ],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A1_rogue_master__r16__control",
+   "scenario": "A1_rogue_master",
+   "cls": "attack",
+   "rep": 16,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 38.53,
+   "rogue_parent_s": 38.53,
+   "ru3_unhealthy_s": 39.03,
+   "first_unhealthy_s": 1.0529999999998836,
+   "outage_s": null,
+   "restored_at_end": false,
+   "first_attack_verdict_s": 1.08,
+   "first_action_s": 2.09,
+   "actions": [
+    {
+     "t": 2.09,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-rogue",
+     "kind": "would_act"
+    }
+   ],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A1_rogue_master__r16__loop",
+   "scenario": "A1_rogue_master",
+   "cls": "attack",
+   "rep": 16,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 1.5,
+   "rogue_parent_s": 1.5,
+   "ru3_unhealthy_s": 1.5,
+   "first_unhealthy_s": 1.0409999999992579,
+   "outage_s": 1.5,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.08,
+   "first_action_s": 2.09,
+   "actions": [
+    {
+     "t": 2.09,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-rogue",
+     "kind": "act"
+    }
+   ],
+   "verifies": [
+    {
+     "t": 3.23,
+     "ok": true,
+     "action": "ISOLATE_PTP_AT_PORT"
+    }
+   ],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A1_rogue_master__r17__control",
+   "scenario": "A1_rogue_master",
+   "cls": "attack",
+   "rep": 17,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 38.52,
+   "rogue_parent_s": 38.52,
+   "ru3_unhealthy_s": 38.52,
+   "first_unhealthy_s": 1.0730000000003201,
+   "outage_s": null,
+   "restored_at_end": false,
+   "first_attack_verdict_s": 1.11,
+   "first_action_s": 2.11,
+   "actions": [
+    {
+     "t": 2.11,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-rogue",
+     "kind": "would_act"
+    }
+   ],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A1_rogue_master__r17__loop",
+   "scenario": "A1_rogue_master",
+   "cls": "attack",
+   "rep": 17,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 2.0,
+   "rogue_parent_s": 1.5,
+   "ru3_unhealthy_s": 1.5,
+   "first_unhealthy_s": 1.055000000000291,
+   "outage_s": 2.0,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.1,
+   "first_action_s": 2.12,
+   "actions": [
+    {
+     "t": 2.12,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-rogue",
+     "kind": "act"
+    }
+   ],
+   "verifies": [
+    {
+     "t": 3.26,
+     "ok": true,
+     "action": "ISOLATE_PTP_AT_PORT"
+    }
+   ],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A2_sync_spoof__r13__control",
+   "scenario": "A2_sync_spoof",
+   "cls": "attack",
+   "rep": 13,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.07,
+   "first_action_s": 2.07,
+   "actions": [
+    {
+     "t": 2.07,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "would_act"
+    }
+   ],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A2_sync_spoof__r13__loop",
+   "scenario": "A2_sync_spoof",
+   "cls": "attack",
+   "rep": 13,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.07,
+   "first_action_s": 2.12,
+   "actions": [
+    {
+     "t": 2.12,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "act"
+    }
+   ],
+   "verifies": [
+    {
+     "t": 2.33,
+     "ok": true,
+     "action": "ISOLATE_PTP_AT_PORT"
+    }
+   ],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A2_sync_spoof__r14__control",
+   "scenario": "A2_sync_spoof",
+   "cls": "attack",
+   "rep": 14,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.09,
+   "first_action_s": 2.08,
+   "actions": [
+    {
+     "t": 2.08,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "would_act"
+    }
+   ],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A2_sync_spoof__r14__loop",
+   "scenario": "A2_sync_spoof",
+   "cls": "attack",
+   "rep": 14,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.07,
+   "first_action_s": 2.08,
+   "actions": [
+    {
+     "t": 2.08,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "act"
+    }
+   ],
+   "verifies": [
+    {
+     "t": 2.29,
+     "ok": true,
+     "action": "ISOLATE_PTP_AT_PORT"
+    }
+   ],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A2_sync_spoof__r15__control",
+   "scenario": "A2_sync_spoof",
+   "cls": "attack",
+   "rep": 15,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.08,
+   "first_action_s": 2.08,
+   "actions": [
+    {
+     "t": 2.08,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "would_act"
+    }
+   ],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A2_sync_spoof__r15__loop",
+   "scenario": "A2_sync_spoof",
+   "cls": "attack",
+   "rep": 15,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.08,
+   "first_action_s": 2.09,
+   "actions": [
+    {
+     "t": 2.09,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "act"
+    }
+   ],
+   "verifies": [
+    {
+     "t": 2.3,
+     "ok": true,
+     "action": "ISOLATE_PTP_AT_PORT"
+    }
+   ],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A2_sync_spoof__r16__control",
+   "scenario": "A2_sync_spoof",
+   "cls": "attack",
+   "rep": 16,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.09,
+   "first_action_s": 2.13,
+   "actions": [
+    {
+     "t": 2.13,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "would_act"
+    }
+   ],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A2_sync_spoof__r16__loop",
+   "scenario": "A2_sync_spoof",
+   "cls": "attack",
+   "rep": 16,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.09,
+   "first_action_s": 2.09,
+   "actions": [
+    {
+     "t": 2.09,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "act"
+    }
+   ],
+   "verifies": [
+    {
+     "t": 2.3,
+     "ok": true,
+     "action": "ISOLATE_PTP_AT_PORT"
+    }
+   ],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A2_sync_spoof__r17__control",
+   "scenario": "A2_sync_spoof",
+   "cls": "attack",
+   "rep": 17,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.08,
+   "first_action_s": 2.09,
+   "actions": [
+    {
+     "t": 2.09,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "would_act"
+    }
+   ],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A2_sync_spoof__r17__loop",
+   "scenario": "A2_sync_spoof",
+   "cls": "attack",
+   "rep": 17,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.06,
+   "first_action_s": 2.08,
+   "actions": [
+    {
+     "t": 2.08,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "act"
+    }
+   ],
+   "verifies": [
+    {
+     "t": 2.29,
+     "ok": true,
+     "action": "ISOLATE_PTP_AT_PORT"
+    }
+   ],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A3_replay__r13__control",
+   "scenario": "A3_replay",
+   "cls": "attack",
+   "rep": 13,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 0.07,
+   "first_action_s": 1.07,
+   "actions": [
+    {
+     "t": 1.07,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "would_act"
+    }
+   ],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A3_replay__r13__loop",
+   "scenario": "A3_replay",
+   "cls": "attack",
+   "rep": 13,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 0.09,
+   "first_action_s": 1.11,
+   "actions": [
+    {
+     "t": 1.11,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "act"
+    }
+   ],
+   "verifies": [
+    {
+     "t": 1.32,
+     "ok": true,
+     "action": "ISOLATE_PTP_AT_PORT"
+    }
+   ],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A3_replay__r14__control",
+   "scenario": "A3_replay",
+   "cls": "attack",
+   "rep": 14,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.08,
+   "first_action_s": 2.08,
+   "actions": [
+    {
+     "t": 2.08,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "would_act"
+    }
+   ],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A3_replay__r14__loop",
+   "scenario": "A3_replay",
+   "cls": "attack",
+   "rep": 14,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.1,
+   "first_action_s": 2.09,
+   "actions": [
+    {
+     "t": 2.09,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "act"
+    }
+   ],
+   "verifies": [
+    {
+     "t": 2.3,
+     "ok": true,
+     "action": "ISOLATE_PTP_AT_PORT"
+    }
+   ],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A3_replay__r15__control",
+   "scenario": "A3_replay",
+   "cls": "attack",
+   "rep": 15,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 0.08,
+   "first_action_s": 1.09,
+   "actions": [
+    {
+     "t": 1.09,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "would_act"
+    }
+   ],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A3_replay__r15__loop",
+   "scenario": "A3_replay",
+   "cls": "attack",
+   "rep": 15,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.07,
+   "first_action_s": 2.09,
+   "actions": [
+    {
+     "t": 2.09,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "act"
+    }
+   ],
+   "verifies": [
+    {
+     "t": 2.3,
+     "ok": true,
+     "action": "ISOLATE_PTP_AT_PORT"
+    }
+   ],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A3_replay__r16__control",
+   "scenario": "A3_replay",
+   "cls": "attack",
+   "rep": 16,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 0.1,
+   "first_action_s": 1.1,
+   "actions": [
+    {
+     "t": 1.1,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "would_act"
+    }
+   ],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A3_replay__r16__loop",
+   "scenario": "A3_replay",
+   "cls": "attack",
+   "rep": 16,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.1,
+   "first_action_s": 2.12,
+   "actions": [
+    {
+     "t": 2.12,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "act"
+    }
+   ],
+   "verifies": [
+    {
+     "t": 2.34,
+     "ok": true,
+     "action": "ISOLATE_PTP_AT_PORT"
+    }
+   ],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A3_replay__r17__control",
+   "scenario": "A3_replay",
+   "cls": "attack",
+   "rep": 17,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.07,
+   "first_action_s": 2.08,
+   "actions": [
+    {
+     "t": 2.08,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "would_act"
+    }
+   ],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A3_replay__r17__loop",
+   "scenario": "A3_replay",
+   "cls": "attack",
+   "rep": 17,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.08,
+   "first_action_s": 2.11,
+   "actions": [
+    {
+     "t": 2.11,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "act"
+    }
+   ],
+   "verifies": [
+    {
+     "t": 2.32,
+     "ok": true,
+     "action": "ISOLATE_PTP_AT_PORT"
+    }
+   ],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A5_dos_flood__r13__control",
+   "scenario": "A5_dos_flood",
+   "cls": "attack",
+   "rep": 13,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.1,
+   "first_action_s": 2.15,
+   "actions": [
+    {
+     "t": 2.15,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "would_act"
+    }
+   ],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A5_dos_flood__r13__loop",
+   "scenario": "A5_dos_flood",
+   "cls": "attack",
+   "rep": 13,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.11,
+   "first_action_s": 2.16,
+   "actions": [
+    {
+     "t": 2.16,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "act"
+    }
+   ],
+   "verifies": [
+    {
+     "t": 2.37,
+     "ok": true,
+     "action": "ISOLATE_PTP_AT_PORT"
+    }
+   ],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A5_dos_flood__r14__control",
+   "scenario": "A5_dos_flood",
+   "cls": "attack",
+   "rep": 14,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.08,
+   "first_action_s": 2.11,
+   "actions": [
+    {
+     "t": 2.11,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "would_act"
+    }
+   ],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A5_dos_flood__r14__loop",
+   "scenario": "A5_dos_flood",
+   "cls": "attack",
+   "rep": 14,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.08,
+   "first_action_s": 2.12,
+   "actions": [
+    {
+     "t": 2.12,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "act"
+    }
+   ],
+   "verifies": [
+    {
+     "t": 2.33,
+     "ok": true,
+     "action": "ISOLATE_PTP_AT_PORT"
+    }
+   ],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A5_dos_flood__r15__control",
+   "scenario": "A5_dos_flood",
+   "cls": "attack",
+   "rep": 15,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.09,
+   "first_action_s": 2.12,
+   "actions": [
+    {
+     "t": 2.12,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "would_act"
+    }
+   ],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A5_dos_flood__r15__loop",
+   "scenario": "A5_dos_flood",
+   "cls": "attack",
+   "rep": 15,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.09,
+   "first_action_s": 2.13,
+   "actions": [
+    {
+     "t": 2.13,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "act"
+    }
+   ],
+   "verifies": [
+    {
+     "t": 2.34,
+     "ok": true,
+     "action": "ISOLATE_PTP_AT_PORT"
+    }
+   ],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A5_dos_flood__r16__control",
+   "scenario": "A5_dos_flood",
+   "cls": "attack",
+   "rep": 16,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.13,
+   "first_action_s": 2.15,
+   "actions": [
+    {
+     "t": 2.15,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "would_act"
+    }
+   ],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A5_dos_flood__r16__loop",
+   "scenario": "A5_dos_flood",
+   "cls": "attack",
+   "rep": 16,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.11,
+   "first_action_s": 2.2,
+   "actions": [
+    {
+     "t": 2.2,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "act"
+    }
+   ],
+   "verifies": [
+    {
+     "t": 2.41,
+     "ok": true,
+     "action": "ISOLATE_PTP_AT_PORT"
+    }
+   ],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A5_dos_flood__r17__control",
+   "scenario": "A5_dos_flood",
+   "cls": "attack",
+   "rep": 17,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.12,
+   "first_action_s": 2.14,
+   "actions": [
+    {
+     "t": 2.14,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "would_act"
+    }
+   ],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A5_dos_flood__r17__loop",
+   "scenario": "A5_dos_flood",
+   "cls": "attack",
+   "rep": 17,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.12,
+   "first_action_s": 2.16,
+   "actions": [
+    {
+     "t": 2.16,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "act"
+    }
+   ],
+   "verifies": [
+    {
+     "t": 2.37,
+     "ok": true,
+     "action": "ISOLATE_PTP_AT_PORT"
+    }
+   ],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A8_rogue_bc__r13__control",
+   "scenario": "A8_rogue_bc",
+   "cls": "attack",
+   "rep": 13,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.07,
+   "first_action_s": 2.07,
+   "actions": [
+    {
+     "t": 2.07,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-rbc-dn",
+     "kind": "would_act"
+    }
+   ],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A8_rogue_bc__r13__loop",
+   "scenario": "A8_rogue_bc",
+   "cls": "attack",
+   "rep": 13,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.07,
+   "first_action_s": 2.08,
+   "actions": [
+    {
+     "t": 2.08,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-rbc-dn",
+     "kind": "act"
+    }
+   ],
+   "verifies": [
+    {
+     "t": 2.4,
+     "ok": true,
+     "action": "ISOLATE_PTP_AT_PORT"
+    }
+   ],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A8_rogue_bc__r14__control",
+   "scenario": "A8_rogue_bc",
+   "cls": "attack",
+   "rep": 14,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.07,
+   "first_action_s": 2.07,
+   "actions": [
+    {
+     "t": 2.07,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-rbc-dn",
+     "kind": "would_act"
+    }
+   ],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A8_rogue_bc__r14__loop",
+   "scenario": "A8_rogue_bc",
+   "cls": "attack",
+   "rep": 14,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.06,
+   "first_action_s": 2.08,
+   "actions": [
+    {
+     "t": 2.08,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-rbc-dn",
+     "kind": "act"
+    }
+   ],
+   "verifies": [
+    {
+     "t": 2.4,
+     "ok": true,
+     "action": "ISOLATE_PTP_AT_PORT"
+    }
+   ],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A8_rogue_bc__r15__control",
+   "scenario": "A8_rogue_bc",
+   "cls": "attack",
+   "rep": 15,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.07,
+   "first_action_s": 2.07,
+   "actions": [
+    {
+     "t": 2.07,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-rbc-dn",
+     "kind": "would_act"
+    }
+   ],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A8_rogue_bc__r15__loop",
+   "scenario": "A8_rogue_bc",
+   "cls": "attack",
+   "rep": 15,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.1,
+   "first_action_s": 2.12,
+   "actions": [
+    {
+     "t": 2.12,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-rbc-dn",
+     "kind": "act"
+    }
+   ],
+   "verifies": [
+    {
+     "t": 2.43,
+     "ok": true,
+     "action": "ISOLATE_PTP_AT_PORT"
+    }
+   ],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A8_rogue_bc__r16__control",
+   "scenario": "A8_rogue_bc",
+   "cls": "attack",
+   "rep": 16,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.08,
+   "first_action_s": 2.09,
+   "actions": [
+    {
+     "t": 2.09,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-rbc-dn",
+     "kind": "would_act"
+    }
+   ],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A8_rogue_bc__r16__loop",
+   "scenario": "A8_rogue_bc",
+   "cls": "attack",
+   "rep": 16,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.1,
+   "first_action_s": 2.1,
+   "actions": [
+    {
+     "t": 2.1,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-rbc-dn",
+     "kind": "act"
+    }
+   ],
+   "verifies": [
+    {
+     "t": 2.44,
+     "ok": true,
+     "action": "ISOLATE_PTP_AT_PORT"
+    }
+   ],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A8_rogue_bc__r17__control",
+   "scenario": "A8_rogue_bc",
+   "cls": "attack",
+   "rep": 17,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.08,
+   "first_action_s": 2.09,
+   "actions": [
+    {
+     "t": 2.09,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-rbc-dn",
+     "kind": "would_act"
+    }
+   ],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "A8_rogue_bc__r17__loop",
+   "scenario": "A8_rogue_bc",
+   "cls": "attack",
+   "rep": 17,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.08,
+   "first_action_s": 2.09,
+   "actions": [
+    {
+     "t": 2.09,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-rbc-dn",
+     "kind": "act"
+    }
+   ],
+   "verifies": [
+    {
+     "t": 2.41,
+     "ok": true,
+     "action": "ISOLATE_PTP_AT_PORT"
+    }
+   ],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B2_gm_failover__r13__control",
+   "scenario": "B2_gm_failover",
+   "cls": "benign",
+   "rep": 13,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.5,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": 0.5419999999994616,
+   "outage_s": 0.5,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B2_gm_failover__r13__loop",
+   "scenario": "B2_gm_failover",
+   "cls": "benign",
+   "rep": 13,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B2_gm_failover__r14__control",
+   "scenario": "B2_gm_failover",
+   "cls": "benign",
+   "rep": 14,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.5,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": 0.5609999999996944,
+   "outage_s": 0.5,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B2_gm_failover__r14__loop",
+   "scenario": "B2_gm_failover",
+   "cls": "benign",
+   "rep": 14,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.5,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": 0.5549999999993815,
+   "outage_s": 0.5,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B2_gm_failover__r15__control",
+   "scenario": "B2_gm_failover",
+   "cls": "benign",
+   "rep": 15,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.5,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": 0.5370000000002619,
+   "outage_s": 0.5,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B2_gm_failover__r15__loop",
+   "scenario": "B2_gm_failover",
+   "cls": "benign",
+   "rep": 15,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B2_gm_failover__r16__control",
+   "scenario": "B2_gm_failover",
+   "cls": "benign",
+   "rep": 16,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B2_gm_failover__r16__loop",
+   "scenario": "B2_gm_failover",
+   "cls": "benign",
+   "rep": 16,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B2_gm_failover__r17__control",
+   "scenario": "B2_gm_failover",
+   "cls": "benign",
+   "rep": 17,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B2_gm_failover__r17__loop",
+   "scenario": "B2_gm_failover",
+   "cls": "benign",
+   "rep": 17,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B3_pdv_congestion__r13__control",
+   "scenario": "B3_pdv_congestion",
+   "cls": "benign",
+   "rep": 13,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B3_pdv_congestion__r13__loop",
+   "scenario": "B3_pdv_congestion",
+   "cls": "benign",
+   "rep": 13,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B3_pdv_congestion__r14__control",
+   "scenario": "B3_pdv_congestion",
+   "cls": "benign",
+   "rep": 14,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B3_pdv_congestion__r14__loop",
+   "scenario": "B3_pdv_congestion",
+   "cls": "benign",
+   "rep": 14,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B3_pdv_congestion__r15__control",
+   "scenario": "B3_pdv_congestion",
+   "cls": "benign",
+   "rep": 15,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B3_pdv_congestion__r15__loop",
+   "scenario": "B3_pdv_congestion",
+   "cls": "benign",
+   "rep": 15,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B3_pdv_congestion__r16__control",
+   "scenario": "B3_pdv_congestion",
+   "cls": "benign",
+   "rep": 16,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B3_pdv_congestion__r16__loop",
+   "scenario": "B3_pdv_congestion",
+   "cls": "benign",
+   "rep": 16,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B3_pdv_congestion__r17__control",
+   "scenario": "B3_pdv_congestion",
+   "cls": "benign",
+   "rep": 17,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 16.51,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 16.51,
+   "first_unhealthy_s": 2.5430000000014843,
+   "outage_s": 16.51,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": 5.07,
+   "actions": [
+    {
+     "t": 5.07,
+     "action": "ACTIVATE_STANDBY_BC",
+     "target": "bcs",
+     "kind": "would_act"
+    }
+   ],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B3_pdv_congestion__r17__loop",
+   "scenario": "B3_pdv_congestion",
+   "cls": "benign",
+   "rep": 17,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 3.5,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 3.5,
+   "first_unhealthy_s": 2.555000000000291,
+   "outage_s": 3.5,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 6.22,
+   "first_action_s": 5.07,
+   "actions": [
+    {
+     "t": 5.07,
+     "action": "ACTIVATE_STANDBY_BC",
+     "target": "bcs",
+     "kind": "act"
+    }
+   ],
+   "verifies": [
+    {
+     "t": 6.22,
+     "ok": true,
+     "action": "ACTIVATE_STANDBY_BC"
+    }
+   ],
+   "escalations": [
+    {
+     "t": 7.07,
+     "reason": "ATTACK (A8) with no isolatable violating port"
+    },
+    {
+     "t": 34.08,
+     "reason": "ATTACK (A3) with no isolatable violating port"
+    }
+   ],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B7_topology_change__r13__control",
+   "scenario": "B7_topology_change",
+   "cls": "benign",
+   "rep": 13,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 8.5,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B7_topology_change__r13__loop",
+   "scenario": "B7_topology_change",
+   "cls": "benign",
+   "rep": 13,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 8.5,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B7_topology_change__r14__control",
+   "scenario": "B7_topology_change",
+   "cls": "benign",
+   "rep": 14,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 8.5,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B7_topology_change__r14__loop",
+   "scenario": "B7_topology_change",
+   "cls": "benign",
+   "rep": 14,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 8.5,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B7_topology_change__r15__control",
+   "scenario": "B7_topology_change",
+   "cls": "benign",
+   "rep": 15,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 8.5,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B7_topology_change__r15__loop",
+   "scenario": "B7_topology_change",
+   "cls": "benign",
+   "rep": 15,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 8.5,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B7_topology_change__r16__control",
+   "scenario": "B7_topology_change",
+   "cls": "benign",
+   "rep": 16,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 8.5,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B7_topology_change__r16__loop",
+   "scenario": "B7_topology_change",
+   "cls": "benign",
+   "rep": 16,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 8.5,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B7_topology_change__r17__control",
+   "scenario": "B7_topology_change",
+   "cls": "benign",
+   "rep": 17,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 8.5,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B7_topology_change__r17__loop",
+   "scenario": "B7_topology_change",
+   "cls": "benign",
+   "rep": 17,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 8.5,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B_bc_replacement__r13__control",
+   "scenario": "B_bc_replacement",
+   "cls": "benign",
+   "rep": 13,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.5,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.5,
+   "first_unhealthy_s": 0.5900000000001455,
+   "outage_s": 0.5,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.07,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [
+    {
+     "t": 2.07,
+     "reason": "ATTACK (A8) with no isolatable violating port"
+    }
+   ],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B_bc_replacement__r13__loop",
+   "scenario": "B_bc_replacement",
+   "cls": "benign",
+   "rep": 13,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.5,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.5,
+   "first_unhealthy_s": 0.5389999999997599,
+   "outage_s": 0.5,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.07,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [
+    {
+     "t": 2.08,
+     "reason": "ATTACK (A8) with no isolatable violating port"
+    }
+   ],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B_bc_replacement__r14__control",
+   "scenario": "B_bc_replacement",
+   "cls": "benign",
+   "rep": 14,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.5,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.5,
+   "first_unhealthy_s": 0.5389999999997599,
+   "outage_s": 0.5,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.08,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [
+    {
+     "t": 2.07,
+     "reason": "ATTACK (A8) with no isolatable violating port"
+    }
+   ],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B_bc_replacement__r14__loop",
+   "scenario": "B_bc_replacement",
+   "cls": "benign",
+   "rep": 14,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.5,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.5,
+   "first_unhealthy_s": 0.5399999999999636,
+   "outage_s": 0.5,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.07,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [
+    {
+     "t": 2.07,
+     "reason": "ATTACK (A8) with no isolatable violating port"
+    }
+   ],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B_bc_replacement__r15__control",
+   "scenario": "B_bc_replacement",
+   "cls": "benign",
+   "rep": 15,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.5,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.5,
+   "first_unhealthy_s": 0.5720000000001164,
+   "outage_s": 0.5,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.1,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [
+    {
+     "t": 2.09,
+     "reason": "ATTACK (A8) with no isolatable violating port"
+    }
+   ],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B_bc_replacement__r15__loop",
+   "scenario": "B_bc_replacement",
+   "cls": "benign",
+   "rep": 15,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.5,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.5,
+   "first_unhealthy_s": 0.5409999999992579,
+   "outage_s": 0.5,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.07,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [
+    {
+     "t": 2.07,
+     "reason": "ATTACK (A8) with no isolatable violating port"
+    }
+   ],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B_bc_replacement__r16__control",
+   "scenario": "B_bc_replacement",
+   "cls": "benign",
+   "rep": 16,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.5,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.5,
+   "first_unhealthy_s": 0.5450000000000728,
+   "outage_s": 0.5,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.07,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [
+    {
+     "t": 2.07,
+     "reason": "ATTACK (A8) with no isolatable violating port"
+    }
+   ],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B_bc_replacement__r16__loop",
+   "scenario": "B_bc_replacement",
+   "cls": "benign",
+   "rep": 16,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.5,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.5,
+   "first_unhealthy_s": 0.5399999999990541,
+   "outage_s": 0.5,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.07,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [
+    {
+     "t": 2.08,
+     "reason": "ATTACK (A8) with no isolatable violating port"
+    }
+   ],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B_bc_replacement__r17__control",
+   "scenario": "B_bc_replacement",
+   "cls": "benign",
+   "rep": 17,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.5,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.5,
+   "first_unhealthy_s": 0.5460000000002765,
+   "outage_s": 0.5,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.08,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [
+    {
+     "t": 2.08,
+     "reason": "ATTACK (A8) with no isolatable violating port"
+    }
+   ],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B_bc_replacement__r17__loop",
+   "scenario": "B_bc_replacement",
+   "cls": "benign",
+   "rep": 17,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.5,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.5,
+   "first_unhealthy_s": 0.5399999999990541,
+   "outage_s": 0.5,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.07,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [
+    {
+     "t": 2.07,
+     "reason": "ATTACK (A8) with no isolatable violating port"
+    }
+   ],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B_unplanned_failover__r13__control",
+   "scenario": "B_unplanned_failover",
+   "cls": "benign",
+   "rep": 13,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.5,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": 0.5430000000005748,
+   "outage_s": 0.5,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [
+    {
+     "t": 1.07,
+     "reason": "UNKNOWN: Grandmaster changed between provisioned clocks with NO maintenance window open - cannot attribute intent"
+    }
+   ],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B_unplanned_failover__r13__loop",
+   "scenario": "B_unplanned_failover",
+   "cls": "benign",
+   "rep": 13,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [
+    {
+     "t": 1.09,
+     "reason": "UNKNOWN: Grandmaster changed between provisioned clocks with NO maintenance window open - cannot attribute intent"
+    }
+   ],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B_unplanned_failover__r14__control",
+   "scenario": "B_unplanned_failover",
+   "cls": "benign",
+   "rep": 14,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.5,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": 0.545999999999367,
+   "outage_s": 0.5,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [
+    {
+     "t": 1.07,
+     "reason": "UNKNOWN: Grandmaster changed between provisioned clocks with NO maintenance window open - cannot attribute intent"
+    }
+   ],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B_unplanned_failover__r14__loop",
+   "scenario": "B_unplanned_failover",
+   "cls": "benign",
+   "rep": 14,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [
+    {
+     "t": 1.07,
+     "reason": "UNKNOWN: Grandmaster changed between provisioned clocks with NO maintenance window open - cannot attribute intent"
+    }
+   ],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B_unplanned_failover__r15__control",
+   "scenario": "B_unplanned_failover",
+   "cls": "benign",
+   "rep": 15,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [
+    {
+     "t": 1.09,
+     "reason": "UNKNOWN: Grandmaster changed between provisioned clocks with NO maintenance window open - cannot attribute intent"
+    }
+   ],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B_unplanned_failover__r15__loop",
+   "scenario": "B_unplanned_failover",
+   "cls": "benign",
+   "rep": 15,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [
+    {
+     "t": 1.1,
+     "reason": "UNKNOWN: Grandmaster changed between provisioned clocks with NO maintenance window open - cannot attribute intent"
+    }
+   ],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B_unplanned_failover__r16__control",
+   "scenario": "B_unplanned_failover",
+   "cls": "benign",
+   "rep": 16,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [
+    {
+     "t": 1.15,
+     "reason": "UNKNOWN: Grandmaster changed between provisioned clocks with NO maintenance window open - cannot attribute intent"
+    }
+   ],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B_unplanned_failover__r16__loop",
+   "scenario": "B_unplanned_failover",
+   "cls": "benign",
+   "rep": 16,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [
+    {
+     "t": 1.09,
+     "reason": "UNKNOWN: Grandmaster changed between provisioned clocks with NO maintenance window open - cannot attribute intent"
+    }
+   ],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B_unplanned_failover__r17__control",
+   "scenario": "B_unplanned_failover",
+   "cls": "benign",
+   "rep": 17,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [
+    {
+     "t": 1.1,
+     "reason": "UNKNOWN: Grandmaster changed between provisioned clocks with NO maintenance window open - cannot attribute intent"
+    }
+   ],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "B_unplanned_failover__r17__loop",
+   "scenario": "B_unplanned_failover",
+   "cls": "benign",
+   "rep": 17,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.5,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": 0.5640000000003056,
+   "outage_s": 0.5,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [
+    {
+     "t": 1.08,
+     "reason": "UNKNOWN: Grandmaster changed between provisioned clocks with NO maintenance window open - cannot attribute intent"
+    }
+   ],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "C1_removal__r13__control",
+   "scenario": "C1_removal",
+   "cls": "attack",
+   "rep": 13,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 39.01,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 39.01,
+   "first_unhealthy_s": 0.5429999999996653,
+   "outage_s": null,
+   "restored_at_end": false,
+   "first_attack_verdict_s": null,
+   "first_action_s": 2.07,
+   "actions": [
+    {
+     "t": 2.07,
+     "action": "ACTIVATE_STANDBY_BC",
+     "target": "bcs",
+     "kind": "would_act"
+    }
+   ],
+   "verifies": [],
+   "escalations": [
+    {
+     "t": 6.05,
+     "reason": "UNKNOWN: no Announce messages - cannot assess BMCA"
+    }
+   ],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "C1_removal__r13__loop",
+   "scenario": "C1_removal",
+   "cls": "attack",
+   "rep": 13,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 2.5,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 2.5,
+   "first_unhealthy_s": 0.5360000000000582,
+   "outage_s": 2.5,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 3.2,
+   "first_action_s": 2.07,
+   "actions": [
+    {
+     "t": 2.07,
+     "action": "ACTIVATE_STANDBY_BC",
+     "target": "bcs",
+     "kind": "act"
+    }
+   ],
+   "verifies": [
+    {
+     "t": 3.2,
+     "ok": true,
+     "action": "ACTIVATE_STANDBY_BC"
+    }
+   ],
+   "escalations": [
+    {
+     "t": 4.06,
+     "reason": "ATTACK (A8) with no isolatable violating port"
+    }
+   ],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "C1_removal__r14__control",
+   "scenario": "C1_removal",
+   "cls": "attack",
+   "rep": 14,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 39.01,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 39.01,
+   "first_unhealthy_s": 0.5489999999999782,
+   "outage_s": null,
+   "restored_at_end": false,
+   "first_attack_verdict_s": null,
+   "first_action_s": 2.08,
+   "actions": [
+    {
+     "t": 2.08,
+     "action": "ACTIVATE_STANDBY_BC",
+     "target": "bcs",
+     "kind": "would_act"
+    }
+   ],
+   "verifies": [],
+   "escalations": [
+    {
+     "t": 6.07,
+     "reason": "UNKNOWN: no Announce messages - cannot assess BMCA"
+    }
+   ],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "C1_removal__r14__loop",
+   "scenario": "C1_removal",
+   "cls": "attack",
+   "rep": 14,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 2.5,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 2.0,
+   "first_unhealthy_s": 0.5399999999999636,
+   "outage_s": 2.5,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 3.21,
+   "first_action_s": 2.07,
+   "actions": [
+    {
+     "t": 2.07,
+     "action": "ACTIVATE_STANDBY_BC",
+     "target": "bcs",
+     "kind": "act"
+    }
+   ],
+   "verifies": [
+    {
+     "t": 3.2,
+     "ok": true,
+     "action": "ACTIVATE_STANDBY_BC"
+    }
+   ],
+   "escalations": [
+    {
+     "t": 4.06,
+     "reason": "ATTACK (A8) with no isolatable violating port"
+    }
+   ],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "C1_removal__r15__control",
+   "scenario": "C1_removal",
+   "cls": "attack",
+   "rep": 15,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 39.03,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 39.03,
+   "first_unhealthy_s": 0.5409999999992579,
+   "outage_s": null,
+   "restored_at_end": false,
+   "first_attack_verdict_s": null,
+   "first_action_s": 2.08,
+   "actions": [
+    {
+     "t": 2.08,
+     "action": "ACTIVATE_STANDBY_BC",
+     "target": "bcs",
+     "kind": "would_act"
+    }
+   ],
+   "verifies": [],
+   "escalations": [
+    {
+     "t": 6.06,
+     "reason": "UNKNOWN: no Announce messages - cannot assess BMCA"
+    }
+   ],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "C1_removal__r15__loop",
+   "scenario": "C1_removal",
+   "cls": "attack",
+   "rep": 15,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 2.5,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 2.5,
+   "first_unhealthy_s": 0.5529999999998836,
+   "outage_s": 2.5,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 3.21,
+   "first_action_s": 2.07,
+   "actions": [
+    {
+     "t": 2.07,
+     "action": "ACTIVATE_STANDBY_BC",
+     "target": "bcs",
+     "kind": "act"
+    }
+   ],
+   "verifies": [
+    {
+     "t": 3.2,
+     "ok": true,
+     "action": "ACTIVATE_STANDBY_BC"
+    }
+   ],
+   "escalations": [
+    {
+     "t": 4.06,
+     "reason": "ATTACK (A8) with no isolatable violating port"
+    }
+   ],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "C1_removal__r16__control",
+   "scenario": "C1_removal",
+   "cls": "attack",
+   "rep": 16,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 39.04,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 39.04,
+   "first_unhealthy_s": 0.602999999999156,
+   "outage_s": null,
+   "restored_at_end": false,
+   "first_attack_verdict_s": null,
+   "first_action_s": 2.11,
+   "actions": [
+    {
+     "t": 2.11,
+     "action": "ACTIVATE_STANDBY_BC",
+     "target": "bcs",
+     "kind": "would_act"
+    }
+   ],
+   "verifies": [],
+   "escalations": [
+    {
+     "t": 6.1,
+     "reason": "UNKNOWN: no Announce messages - cannot assess BMCA"
+    }
+   ],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "C1_removal__r16__loop",
+   "scenario": "C1_removal",
+   "cls": "attack",
+   "rep": 16,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 2.5,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 2.5,
+   "first_unhealthy_s": 0.5379999999986467,
+   "outage_s": 2.5,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 3.23,
+   "first_action_s": 2.09,
+   "actions": [
+    {
+     "t": 2.09,
+     "action": "ACTIVATE_STANDBY_BC",
+     "target": "bcs",
+     "kind": "act"
+    }
+   ],
+   "verifies": [
+    {
+     "t": 3.22,
+     "ok": true,
+     "action": "ACTIVATE_STANDBY_BC"
+    }
+   ],
+   "escalations": [
+    {
+     "t": 4.09,
+     "reason": "ATTACK (A8) with no isolatable violating port"
+    }
+   ],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "C1_removal__r17__control",
+   "scenario": "C1_removal",
+   "cls": "attack",
+   "rep": 17,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 39.01,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 39.01,
+   "first_unhealthy_s": 0.5509999999994761,
+   "outage_s": null,
+   "restored_at_end": false,
+   "first_attack_verdict_s": null,
+   "first_action_s": 2.09,
+   "actions": [
+    {
+     "t": 2.09,
+     "action": "ACTIVATE_STANDBY_BC",
+     "target": "bcs",
+     "kind": "would_act"
+    }
+   ],
+   "verifies": [],
+   "escalations": [
+    {
+     "t": 6.07,
+     "reason": "UNKNOWN: no Announce messages - cannot assess BMCA"
+    }
+   ],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "C1_removal__r17__loop",
+   "scenario": "C1_removal",
+   "cls": "attack",
+   "rep": 17,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 2.5,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 2.5,
+   "first_unhealthy_s": 0.5409999999992579,
+   "outage_s": 2.5,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 3.22,
+   "first_action_s": 2.09,
+   "actions": [
+    {
+     "t": 2.09,
+     "action": "ACTIVATE_STANDBY_BC",
+     "target": "bcs",
+     "kind": "act"
+    }
+   ],
+   "verifies": [
+    {
+     "t": 3.21,
+     "ok": true,
+     "action": "ACTIVATE_STANDBY_BC"
+    }
+   ],
+   "escalations": [
+    {
+     "t": 4.08,
+     "reason": "ATTACK (A8) with no isolatable violating port"
+    }
+   ],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "C2_malformed__r13__control",
+   "scenario": "C2_malformed",
+   "cls": "attack",
+   "rep": 13,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 2.08,
+   "first_action_s": 3.08,
+   "actions": [
+    {
+     "t": 3.08,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "would_act"
+    }
+   ],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "C2_malformed__r13__loop",
+   "scenario": "C2_malformed",
+   "cls": "attack",
+   "rep": 13,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 2.08,
+   "first_action_s": 3.09,
+   "actions": [
+    {
+     "t": 3.09,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "act"
+    }
+   ],
+   "verifies": [
+    {
+     "t": 3.3,
+     "ok": true,
+     "action": "ISOLATE_PTP_AT_PORT"
+    }
+   ],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "C2_malformed__r14__control",
+   "scenario": "C2_malformed",
+   "cls": "attack",
+   "rep": 14,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 2.07,
+   "first_action_s": 3.08,
+   "actions": [
+    {
+     "t": 3.08,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "would_act"
+    }
+   ],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "C2_malformed__r14__loop",
+   "scenario": "C2_malformed",
+   "cls": "attack",
+   "rep": 14,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.1,
+   "first_action_s": 2.11,
+   "actions": [
+    {
+     "t": 2.11,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "act"
+    }
+   ],
+   "verifies": [
+    {
+     "t": 2.32,
+     "ok": true,
+     "action": "ISOLATE_PTP_AT_PORT"
+    }
+   ],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "C2_malformed__r15__control",
+   "scenario": "C2_malformed",
+   "cls": "attack",
+   "rep": 15,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 2.09,
+   "first_action_s": 3.09,
+   "actions": [
+    {
+     "t": 3.09,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "would_act"
+    }
+   ],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "C2_malformed__r15__loop",
+   "scenario": "C2_malformed",
+   "cls": "attack",
+   "rep": 15,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 2.07,
+   "first_action_s": 3.08,
+   "actions": [
+    {
+     "t": 3.08,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "act"
+    }
+   ],
+   "verifies": [
+    {
+     "t": 3.29,
+     "ok": true,
+     "action": "ISOLATE_PTP_AT_PORT"
+    }
+   ],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "C2_malformed__r16__control",
+   "scenario": "C2_malformed",
+   "cls": "attack",
+   "rep": 16,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 2.09,
+   "first_action_s": 3.1,
+   "actions": [
+    {
+     "t": 3.1,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "would_act"
+    }
+   ],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "C2_malformed__r16__loop",
+   "scenario": "C2_malformed",
+   "cls": "attack",
+   "rep": 16,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 2.1,
+   "first_action_s": 3.13,
+   "actions": [
+    {
+     "t": 3.13,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "act"
+    }
+   ],
+   "verifies": [
+    {
+     "t": 3.34,
+     "ok": true,
+     "action": "ISOLATE_PTP_AT_PORT"
+    }
+   ],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "C2_malformed__r17__control",
+   "scenario": "C2_malformed",
+   "cls": "attack",
+   "rep": 17,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 2.08,
+   "first_action_s": 3.08,
+   "actions": [
+    {
+     "t": 3.08,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "would_act"
+    }
+   ],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "C2_malformed__r17__loop",
+   "scenario": "C2_malformed",
+   "cls": "attack",
+   "rep": 17,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.09,
+   "first_action_s": 2.1,
+   "actions": [
+    {
+     "t": 2.1,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "act"
+    }
+   ],
+   "verifies": [
+    {
+     "t": 2.31,
+     "ok": true,
+     "action": "ISOLATE_PTP_AT_PORT"
+    }
+   ],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "C3_wholesecond__r13__control",
+   "scenario": "C3_wholesecond",
+   "cls": "attack",
+   "rep": 13,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 38.51,
+   "rogue_parent_s": 38.51,
+   "ru3_unhealthy_s": 38.51,
+   "first_unhealthy_s": 1.0479999999997744,
+   "outage_s": null,
+   "restored_at_end": false,
+   "first_attack_verdict_s": 1.07,
+   "first_action_s": 2.09,
+   "actions": [
+    {
+     "t": 2.09,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "would_act"
+    }
+   ],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "C3_wholesecond__r13__loop",
+   "scenario": "C3_wholesecond",
+   "cls": "attack",
+   "rep": 13,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 1.5,
+   "rogue_parent_s": 1.5,
+   "ru3_unhealthy_s": 38.51,
+   "first_unhealthy_s": 1.0509999999994761,
+   "outage_s": 1.5,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.1,
+   "first_action_s": 2.11,
+   "actions": [
+    {
+     "t": 2.11,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "act"
+    }
+   ],
+   "verifies": [
+    {
+     "t": 3.02,
+     "ok": true,
+     "action": "ISOLATE_PTP_AT_PORT"
+    }
+   ],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "C3_wholesecond__r14__control",
+   "scenario": "C3_wholesecond",
+   "cls": "attack",
+   "rep": 14,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 38.51,
+   "rogue_parent_s": 38.51,
+   "ru3_unhealthy_s": 38.51,
+   "first_unhealthy_s": 1.0590000000001965,
+   "outage_s": null,
+   "restored_at_end": false,
+   "first_attack_verdict_s": 1.08,
+   "first_action_s": 2.08,
+   "actions": [
+    {
+     "t": 2.08,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "would_act"
+    }
+   ],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "C3_wholesecond__r14__loop",
+   "scenario": "C3_wholesecond",
+   "cls": "attack",
+   "rep": 14,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 1.5,
+   "rogue_parent_s": 1.5,
+   "ru3_unhealthy_s": 38.51,
+   "first_unhealthy_s": 1.0649999999995998,
+   "outage_s": 1.5,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.09,
+   "first_action_s": 2.1,
+   "actions": [
+    {
+     "t": 2.1,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "act"
+    }
+   ],
+   "verifies": [
+    {
+     "t": 3.02,
+     "ok": true,
+     "action": "ISOLATE_PTP_AT_PORT"
+    }
+   ],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "C3_wholesecond__r15__control",
+   "scenario": "C3_wholesecond",
+   "cls": "attack",
+   "rep": 15,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 38.51,
+   "rogue_parent_s": 38.51,
+   "ru3_unhealthy_s": 38.51,
+   "first_unhealthy_s": 1.0519999999996799,
+   "outage_s": null,
+   "restored_at_end": false,
+   "first_attack_verdict_s": 1.08,
+   "first_action_s": 2.08,
+   "actions": [
+    {
+     "t": 2.08,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "would_act"
+    }
+   ],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "C3_wholesecond__r15__loop",
+   "scenario": "C3_wholesecond",
+   "cls": "attack",
+   "rep": 15,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 2.0,
+   "rogue_parent_s": 1.5,
+   "ru3_unhealthy_s": 38.53,
+   "first_unhealthy_s": 1.0459999999984575,
+   "outage_s": 2.0,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.1,
+   "first_action_s": 2.11,
+   "actions": [
+    {
+     "t": 2.11,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "act"
+    }
+   ],
+   "verifies": [
+    {
+     "t": 3.03,
+     "ok": true,
+     "action": "ISOLATE_PTP_AT_PORT"
+    }
+   ],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "C3_wholesecond__r16__control",
+   "scenario": "C3_wholesecond",
+   "cls": "attack",
+   "rep": 16,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 38.52,
+   "rogue_parent_s": 38.52,
+   "ru3_unhealthy_s": 38.52,
+   "first_unhealthy_s": 1.0519999999996799,
+   "outage_s": null,
+   "restored_at_end": false,
+   "first_attack_verdict_s": 1.1,
+   "first_action_s": 2.09,
+   "actions": [
+    {
+     "t": 2.09,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "would_act"
+    }
+   ],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "C3_wholesecond__r16__loop",
+   "scenario": "C3_wholesecond",
+   "cls": "attack",
+   "rep": 16,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 2.0,
+   "rogue_parent_s": 1.5,
+   "ru3_unhealthy_s": 38.53,
+   "first_unhealthy_s": 1.0489999999990687,
+   "outage_s": 2.0,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.1,
+   "first_action_s": 2.11,
+   "actions": [
+    {
+     "t": 2.11,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "act"
+    }
+   ],
+   "verifies": [
+    {
+     "t": 3.04,
+     "ok": true,
+     "action": "ISOLATE_PTP_AT_PORT"
+    }
+   ],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "C3_wholesecond__r17__control",
+   "scenario": "C3_wholesecond",
+   "cls": "attack",
+   "rep": 17,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 38.51,
+   "rogue_parent_s": 38.51,
+   "ru3_unhealthy_s": 38.51,
+   "first_unhealthy_s": 1.0390000000006694,
+   "outage_s": null,
+   "restored_at_end": false,
+   "first_attack_verdict_s": 1.1,
+   "first_action_s": 2.09,
+   "actions": [
+    {
+     "t": 2.09,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "would_act"
+    }
+   ],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "C3_wholesecond__r17__loop",
+   "scenario": "C3_wholesecond",
+   "cls": "attack",
+   "rep": 17,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 2.0,
+   "rogue_parent_s": 1.5,
+   "ru3_unhealthy_s": 38.52,
+   "first_unhealthy_s": 1.058999999999287,
+   "outage_s": 2.0,
+   "restored_at_end": true,
+   "first_attack_verdict_s": 1.09,
+   "first_action_s": 2.09,
+   "actions": [
+    {
+     "t": 2.09,
+     "action": "ISOLATE_PTP_AT_PORT",
+     "target": "p-v-ru3",
+     "kind": "act"
+    }
+   ],
+   "verifies": [
+    {
+     "t": 3.01,
+     "ok": true,
+     "action": "ISOLATE_PTP_AT_PORT"
+    }
+   ],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "baseline__r13__control",
+   "scenario": "baseline",
+   "cls": "healthy",
+   "rep": 13,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "baseline__r13__loop",
+   "scenario": "baseline",
+   "cls": "healthy",
+   "rep": 13,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "baseline__r14__control",
+   "scenario": "baseline",
+   "cls": "healthy",
+   "rep": 14,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "baseline__r14__loop",
+   "scenario": "baseline",
+   "cls": "healthy",
+   "rep": 14,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "baseline__r15__control",
+   "scenario": "baseline",
+   "cls": "healthy",
+   "rep": 15,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "baseline__r15__loop",
+   "scenario": "baseline",
+   "cls": "healthy",
+   "rep": 15,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "baseline__r16__control",
+   "scenario": "baseline",
+   "cls": "healthy",
+   "rep": 16,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "baseline__r16__loop",
+   "scenario": "baseline",
+   "cls": "healthy",
+   "rep": 16,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "baseline__r17__control",
+   "scenario": "baseline",
+   "cls": "healthy",
+   "rep": 17,
+   "arm": "control",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  },
+  {
+   "run": "baseline__r17__loop",
+   "scenario": "baseline",
+   "cls": "healthy",
+   "rep": 17,
+   "arm": "loop",
+   "pre_t0_service_ok_fraction": 1.0,
+   "unhealthy_s": 0.0,
+   "rogue_parent_s": 0.0,
+   "ru3_unhealthy_s": 0.0,
+   "first_unhealthy_s": null,
+   "outage_s": null,
+   "restored_at_end": true,
+   "first_attack_verdict_s": null,
+   "first_action_s": null,
+   "actions": [],
+   "verifies": [],
+   "escalations": [],
+   "pre_t0_actions": []
+  }
+ ],
+ "summary": {
+  "A1_rogue_master": {
+   "control": {
+    "n": 5,
+    "unhealthy_s_median": 38.52,
+    "unhealthy_s_each": [
+     38.51,
+     38.51,
+     38.52,
+     38.53,
+     38.52
+    ],
+    "restored_at_end": 0,
+    "outage_s_each": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "rogue_parent_s_each": [
+     38.51,
+     38.51,
+     38.52,
+     38.53,
+     38.52
+    ],
+    "ru3_unhealthy_s_each": [
+     38.51,
+     38.51,
+     38.52,
+     39.03,
+     38.52
+    ],
+    "first_attack_verdict_s_each": [
+     1.08,
+     1.09,
+     1.07,
+     1.08,
+     1.11
+    ],
+    "first_action_s_each": [
+     2.08,
+     2.09,
+     2.08,
+     2.09,
+     2.11
+    ],
+    "disruptive_actions": 5,
+    "action_kinds": [
+     "ISOLATE_PTP_AT_PORT:p-rogue"
+    ],
+    "verify_ok": 0,
+    "verify_total": 0,
+    "rollbacks": 0,
+    "runs_with_escalation": 0,
+    "pre_t0_actions": 0,
+    "pre_t0_service_ok_min": 1.0
+   },
+   "loop": {
+    "n": 5,
+    "unhealthy_s_median": 2.0,
+    "unhealthy_s_each": [
+     2.0,
+     2.0,
+     2.0,
+     1.5,
+     2.0
+    ],
+    "restored_at_end": 5,
+    "outage_s_each": [
+     2.0,
+     2.0,
+     2.0,
+     1.5,
+     2.0
+    ],
+    "rogue_parent_s_each": [
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5
+    ],
+    "ru3_unhealthy_s_each": [
+     1.5,
+     2.0,
+     1.5,
+     1.5,
+     1.5
+    ],
+    "first_attack_verdict_s_each": [
+     1.07,
+     1.09,
+     1.07,
+     1.08,
+     1.1
+    ],
+    "first_action_s_each": [
+     2.08,
+     2.1,
+     2.08,
+     2.09,
+     2.12
+    ],
+    "disruptive_actions": 5,
+    "action_kinds": [
+     "ISOLATE_PTP_AT_PORT:p-rogue"
+    ],
+    "verify_ok": 5,
+    "verify_total": 5,
+    "rollbacks": 0,
+    "runs_with_escalation": 0,
+    "pre_t0_actions": 0,
+    "pre_t0_service_ok_min": 1.0
+   }
+  },
+  "A2_sync_spoof": {
+   "control": {
+    "n": 5,
+    "unhealthy_s_median": 0.0,
+    "unhealthy_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "restored_at_end": 5,
+    "outage_s_each": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "rogue_parent_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "ru3_unhealthy_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "first_attack_verdict_s_each": [
+     1.07,
+     1.09,
+     1.08,
+     1.09,
+     1.08
+    ],
+    "first_action_s_each": [
+     2.07,
+     2.08,
+     2.08,
+     2.13,
+     2.09
+    ],
+    "disruptive_actions": 5,
+    "action_kinds": [
+     "ISOLATE_PTP_AT_PORT:p-v-ru3"
+    ],
+    "verify_ok": 0,
+    "verify_total": 0,
+    "rollbacks": 0,
+    "runs_with_escalation": 0,
+    "pre_t0_actions": 0,
+    "pre_t0_service_ok_min": 1.0
+   },
+   "loop": {
+    "n": 5,
+    "unhealthy_s_median": 0.0,
+    "unhealthy_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "restored_at_end": 5,
+    "outage_s_each": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "rogue_parent_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "ru3_unhealthy_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "first_attack_verdict_s_each": [
+     1.07,
+     1.07,
+     1.08,
+     1.09,
+     1.06
+    ],
+    "first_action_s_each": [
+     2.12,
+     2.08,
+     2.09,
+     2.09,
+     2.08
+    ],
+    "disruptive_actions": 5,
+    "action_kinds": [
+     "ISOLATE_PTP_AT_PORT:p-v-ru3"
+    ],
+    "verify_ok": 5,
+    "verify_total": 5,
+    "rollbacks": 0,
+    "runs_with_escalation": 0,
+    "pre_t0_actions": 0,
+    "pre_t0_service_ok_min": 1.0
+   }
+  },
+  "A3_replay": {
+   "control": {
+    "n": 5,
+    "unhealthy_s_median": 0.0,
+    "unhealthy_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "restored_at_end": 5,
+    "outage_s_each": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "rogue_parent_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "ru3_unhealthy_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "first_attack_verdict_s_each": [
+     0.07,
+     1.08,
+     0.08,
+     0.1,
+     1.07
+    ],
+    "first_action_s_each": [
+     1.07,
+     2.08,
+     1.09,
+     1.1,
+     2.08
+    ],
+    "disruptive_actions": 5,
+    "action_kinds": [
+     "ISOLATE_PTP_AT_PORT:p-v-ru3"
+    ],
+    "verify_ok": 0,
+    "verify_total": 0,
+    "rollbacks": 0,
+    "runs_with_escalation": 0,
+    "pre_t0_actions": 0,
+    "pre_t0_service_ok_min": 1.0
+   },
+   "loop": {
+    "n": 5,
+    "unhealthy_s_median": 0.0,
+    "unhealthy_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "restored_at_end": 5,
+    "outage_s_each": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "rogue_parent_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "ru3_unhealthy_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "first_attack_verdict_s_each": [
+     0.09,
+     1.1,
+     1.07,
+     1.1,
+     1.08
+    ],
+    "first_action_s_each": [
+     1.11,
+     2.09,
+     2.09,
+     2.12,
+     2.11
+    ],
+    "disruptive_actions": 5,
+    "action_kinds": [
+     "ISOLATE_PTP_AT_PORT:p-v-ru3"
+    ],
+    "verify_ok": 5,
+    "verify_total": 5,
+    "rollbacks": 0,
+    "runs_with_escalation": 0,
+    "pre_t0_actions": 0,
+    "pre_t0_service_ok_min": 1.0
+   }
+  },
+  "A5_dos_flood": {
+   "control": {
+    "n": 5,
+    "unhealthy_s_median": 0.0,
+    "unhealthy_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "restored_at_end": 5,
+    "outage_s_each": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "rogue_parent_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "ru3_unhealthy_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "first_attack_verdict_s_each": [
+     1.1,
+     1.08,
+     1.09,
+     1.13,
+     1.12
+    ],
+    "first_action_s_each": [
+     2.15,
+     2.11,
+     2.12,
+     2.15,
+     2.14
+    ],
+    "disruptive_actions": 5,
+    "action_kinds": [
+     "ISOLATE_PTP_AT_PORT:p-v-ru3"
+    ],
+    "verify_ok": 0,
+    "verify_total": 0,
+    "rollbacks": 0,
+    "runs_with_escalation": 0,
+    "pre_t0_actions": 0,
+    "pre_t0_service_ok_min": 1.0
+   },
+   "loop": {
+    "n": 5,
+    "unhealthy_s_median": 0.0,
+    "unhealthy_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "restored_at_end": 5,
+    "outage_s_each": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "rogue_parent_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "ru3_unhealthy_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "first_attack_verdict_s_each": [
+     1.11,
+     1.08,
+     1.09,
+     1.11,
+     1.12
+    ],
+    "first_action_s_each": [
+     2.16,
+     2.12,
+     2.13,
+     2.2,
+     2.16
+    ],
+    "disruptive_actions": 5,
+    "action_kinds": [
+     "ISOLATE_PTP_AT_PORT:p-v-ru3"
+    ],
+    "verify_ok": 5,
+    "verify_total": 5,
+    "rollbacks": 0,
+    "runs_with_escalation": 0,
+    "pre_t0_actions": 0,
+    "pre_t0_service_ok_min": 1.0
+   }
+  },
+  "A8_rogue_bc": {
+   "control": {
+    "n": 5,
+    "unhealthy_s_median": 0.0,
+    "unhealthy_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "restored_at_end": 5,
+    "outage_s_each": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "rogue_parent_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "ru3_unhealthy_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "first_attack_verdict_s_each": [
+     1.07,
+     1.07,
+     1.07,
+     1.08,
+     1.08
+    ],
+    "first_action_s_each": [
+     2.07,
+     2.07,
+     2.07,
+     2.09,
+     2.09
+    ],
+    "disruptive_actions": 5,
+    "action_kinds": [
+     "ISOLATE_PTP_AT_PORT:p-rbc-dn"
+    ],
+    "verify_ok": 0,
+    "verify_total": 0,
+    "rollbacks": 0,
+    "runs_with_escalation": 0,
+    "pre_t0_actions": 0,
+    "pre_t0_service_ok_min": 1.0
+   },
+   "loop": {
+    "n": 5,
+    "unhealthy_s_median": 0.0,
+    "unhealthy_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "restored_at_end": 5,
+    "outage_s_each": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "rogue_parent_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "ru3_unhealthy_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "first_attack_verdict_s_each": [
+     1.07,
+     1.06,
+     1.1,
+     1.1,
+     1.08
+    ],
+    "first_action_s_each": [
+     2.08,
+     2.08,
+     2.12,
+     2.1,
+     2.09
+    ],
+    "disruptive_actions": 5,
+    "action_kinds": [
+     "ISOLATE_PTP_AT_PORT:p-rbc-dn"
+    ],
+    "verify_ok": 5,
+    "verify_total": 5,
+    "rollbacks": 0,
+    "runs_with_escalation": 0,
+    "pre_t0_actions": 0,
+    "pre_t0_service_ok_min": 1.0
+   }
+  },
+  "B2_gm_failover": {
+   "control": {
+    "n": 5,
+    "unhealthy_s_median": 0.5,
+    "unhealthy_s_each": [
+     0.5,
+     0.5,
+     0.5,
+     0.0,
+     0.0
+    ],
+    "restored_at_end": 5,
+    "outage_s_each": [
+     0.5,
+     0.5,
+     0.5,
+     null,
+     null
+    ],
+    "rogue_parent_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "ru3_unhealthy_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "first_attack_verdict_s_each": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "first_action_s_each": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "disruptive_actions": 0,
+    "action_kinds": [],
+    "verify_ok": 0,
+    "verify_total": 0,
+    "rollbacks": 0,
+    "runs_with_escalation": 0,
+    "pre_t0_actions": 0,
+    "pre_t0_service_ok_min": 1.0
+   },
+   "loop": {
+    "n": 5,
+    "unhealthy_s_median": 0.0,
+    "unhealthy_s_each": [
+     0.0,
+     0.5,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "restored_at_end": 5,
+    "outage_s_each": [
+     null,
+     0.5,
+     null,
+     null,
+     null
+    ],
+    "rogue_parent_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "ru3_unhealthy_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "first_attack_verdict_s_each": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "first_action_s_each": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "disruptive_actions": 0,
+    "action_kinds": [],
+    "verify_ok": 0,
+    "verify_total": 0,
+    "rollbacks": 0,
+    "runs_with_escalation": 0,
+    "pre_t0_actions": 0,
+    "pre_t0_service_ok_min": 1.0
+   }
+  },
+  "B3_pdv_congestion": {
+   "control": {
+    "n": 5,
+    "unhealthy_s_median": 0.0,
+    "unhealthy_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     16.51
+    ],
+    "restored_at_end": 5,
+    "outage_s_each": [
+     null,
+     null,
+     null,
+     null,
+     16.51
+    ],
+    "rogue_parent_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "ru3_unhealthy_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     16.51
+    ],
+    "first_attack_verdict_s_each": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "first_action_s_each": [
+     null,
+     null,
+     null,
+     null,
+     5.07
+    ],
+    "disruptive_actions": 1,
+    "action_kinds": [
+     "ACTIVATE_STANDBY_BC:bcs"
+    ],
+    "verify_ok": 0,
+    "verify_total": 0,
+    "rollbacks": 0,
+    "runs_with_escalation": 0,
+    "pre_t0_actions": 0,
+    "pre_t0_service_ok_min": 1.0
+   },
+   "loop": {
+    "n": 5,
+    "unhealthy_s_median": 0.0,
+    "unhealthy_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     3.5
+    ],
+    "restored_at_end": 5,
+    "outage_s_each": [
+     null,
+     null,
+     null,
+     null,
+     3.5
+    ],
+    "rogue_parent_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "ru3_unhealthy_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     3.5
+    ],
+    "first_attack_verdict_s_each": [
+     null,
+     null,
+     null,
+     null,
+     6.22
+    ],
+    "first_action_s_each": [
+     null,
+     null,
+     null,
+     null,
+     5.07
+    ],
+    "disruptive_actions": 1,
+    "action_kinds": [
+     "ACTIVATE_STANDBY_BC:bcs"
+    ],
+    "verify_ok": 1,
+    "verify_total": 1,
+    "rollbacks": 0,
+    "runs_with_escalation": 1,
+    "pre_t0_actions": 0,
+    "pre_t0_service_ok_min": 1.0
+   }
+  },
+  "B7_topology_change": {
+   "control": {
+    "n": 5,
+    "unhealthy_s_median": 0.0,
+    "unhealthy_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "restored_at_end": 5,
+    "outage_s_each": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "rogue_parent_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "ru3_unhealthy_s_each": [
+     8.5,
+     8.5,
+     8.5,
+     8.5,
+     8.5
+    ],
+    "first_attack_verdict_s_each": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "first_action_s_each": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "disruptive_actions": 0,
+    "action_kinds": [],
+    "verify_ok": 0,
+    "verify_total": 0,
+    "rollbacks": 0,
+    "runs_with_escalation": 0,
+    "pre_t0_actions": 0,
+    "pre_t0_service_ok_min": 1.0
+   },
+   "loop": {
+    "n": 5,
+    "unhealthy_s_median": 0.0,
+    "unhealthy_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "restored_at_end": 5,
+    "outage_s_each": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "rogue_parent_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "ru3_unhealthy_s_each": [
+     8.5,
+     8.5,
+     8.5,
+     8.5,
+     8.5
+    ],
+    "first_attack_verdict_s_each": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "first_action_s_each": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "disruptive_actions": 0,
+    "action_kinds": [],
+    "verify_ok": 0,
+    "verify_total": 0,
+    "rollbacks": 0,
+    "runs_with_escalation": 0,
+    "pre_t0_actions": 0,
+    "pre_t0_service_ok_min": 1.0
+   }
+  },
+  "B_bc_replacement": {
+   "control": {
+    "n": 5,
+    "unhealthy_s_median": 0.5,
+    "unhealthy_s_each": [
+     0.5,
+     0.5,
+     0.5,
+     0.5,
+     0.5
+    ],
+    "restored_at_end": 5,
+    "outage_s_each": [
+     0.5,
+     0.5,
+     0.5,
+     0.5,
+     0.5
+    ],
+    "rogue_parent_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "ru3_unhealthy_s_each": [
+     0.5,
+     0.5,
+     0.5,
+     0.5,
+     0.5
+    ],
+    "first_attack_verdict_s_each": [
+     1.07,
+     1.08,
+     1.1,
+     1.07,
+     1.08
+    ],
+    "first_action_s_each": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "disruptive_actions": 0,
+    "action_kinds": [],
+    "verify_ok": 0,
+    "verify_total": 0,
+    "rollbacks": 0,
+    "runs_with_escalation": 5,
+    "pre_t0_actions": 0,
+    "pre_t0_service_ok_min": 1.0
+   },
+   "loop": {
+    "n": 5,
+    "unhealthy_s_median": 0.5,
+    "unhealthy_s_each": [
+     0.5,
+     0.5,
+     0.5,
+     0.5,
+     0.5
+    ],
+    "restored_at_end": 5,
+    "outage_s_each": [
+     0.5,
+     0.5,
+     0.5,
+     0.5,
+     0.5
+    ],
+    "rogue_parent_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "ru3_unhealthy_s_each": [
+     0.5,
+     0.5,
+     0.5,
+     0.5,
+     0.5
+    ],
+    "first_attack_verdict_s_each": [
+     1.07,
+     1.07,
+     1.07,
+     1.07,
+     1.07
+    ],
+    "first_action_s_each": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "disruptive_actions": 0,
+    "action_kinds": [],
+    "verify_ok": 0,
+    "verify_total": 0,
+    "rollbacks": 0,
+    "runs_with_escalation": 5,
+    "pre_t0_actions": 0,
+    "pre_t0_service_ok_min": 1.0
+   }
+  },
+  "B_unplanned_failover": {
+   "control": {
+    "n": 5,
+    "unhealthy_s_median": 0.0,
+    "unhealthy_s_each": [
+     0.5,
+     0.5,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "restored_at_end": 5,
+    "outage_s_each": [
+     0.5,
+     0.5,
+     null,
+     null,
+     null
+    ],
+    "rogue_parent_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "ru3_unhealthy_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "first_attack_verdict_s_each": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "first_action_s_each": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "disruptive_actions": 0,
+    "action_kinds": [],
+    "verify_ok": 0,
+    "verify_total": 0,
+    "rollbacks": 0,
+    "runs_with_escalation": 5,
+    "pre_t0_actions": 0,
+    "pre_t0_service_ok_min": 1.0
+   },
+   "loop": {
+    "n": 5,
+    "unhealthy_s_median": 0.0,
+    "unhealthy_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.5
+    ],
+    "restored_at_end": 5,
+    "outage_s_each": [
+     null,
+     null,
+     null,
+     null,
+     0.5
+    ],
+    "rogue_parent_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "ru3_unhealthy_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "first_attack_verdict_s_each": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "first_action_s_each": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "disruptive_actions": 0,
+    "action_kinds": [],
+    "verify_ok": 0,
+    "verify_total": 0,
+    "rollbacks": 0,
+    "runs_with_escalation": 5,
+    "pre_t0_actions": 0,
+    "pre_t0_service_ok_min": 1.0
+   }
+  },
+  "C1_removal": {
+   "control": {
+    "n": 5,
+    "unhealthy_s_median": 39.01,
+    "unhealthy_s_each": [
+     39.01,
+     39.01,
+     39.03,
+     39.04,
+     39.01
+    ],
+    "restored_at_end": 0,
+    "outage_s_each": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "rogue_parent_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "ru3_unhealthy_s_each": [
+     39.01,
+     39.01,
+     39.03,
+     39.04,
+     39.01
+    ],
+    "first_attack_verdict_s_each": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "first_action_s_each": [
+     2.07,
+     2.08,
+     2.08,
+     2.11,
+     2.09
+    ],
+    "disruptive_actions": 5,
+    "action_kinds": [
+     "ACTIVATE_STANDBY_BC:bcs"
+    ],
+    "verify_ok": 0,
+    "verify_total": 0,
+    "rollbacks": 0,
+    "runs_with_escalation": 5,
+    "pre_t0_actions": 0,
+    "pre_t0_service_ok_min": 1.0
+   },
+   "loop": {
+    "n": 5,
+    "unhealthy_s_median": 2.5,
+    "unhealthy_s_each": [
+     2.5,
+     2.5,
+     2.5,
+     2.5,
+     2.5
+    ],
+    "restored_at_end": 5,
+    "outage_s_each": [
+     2.5,
+     2.5,
+     2.5,
+     2.5,
+     2.5
+    ],
+    "rogue_parent_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "ru3_unhealthy_s_each": [
+     2.5,
+     2.0,
+     2.5,
+     2.5,
+     2.5
+    ],
+    "first_attack_verdict_s_each": [
+     3.2,
+     3.21,
+     3.21,
+     3.23,
+     3.22
+    ],
+    "first_action_s_each": [
+     2.07,
+     2.07,
+     2.07,
+     2.09,
+     2.09
+    ],
+    "disruptive_actions": 5,
+    "action_kinds": [
+     "ACTIVATE_STANDBY_BC:bcs"
+    ],
+    "verify_ok": 5,
+    "verify_total": 5,
+    "rollbacks": 0,
+    "runs_with_escalation": 5,
+    "pre_t0_actions": 0,
+    "pre_t0_service_ok_min": 1.0
+   }
+  },
+  "C2_malformed": {
+   "control": {
+    "n": 5,
+    "unhealthy_s_median": 0.0,
+    "unhealthy_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "restored_at_end": 5,
+    "outage_s_each": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "rogue_parent_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "ru3_unhealthy_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "first_attack_verdict_s_each": [
+     2.08,
+     2.07,
+     2.09,
+     2.09,
+     2.08
+    ],
+    "first_action_s_each": [
+     3.08,
+     3.08,
+     3.09,
+     3.1,
+     3.08
+    ],
+    "disruptive_actions": 5,
+    "action_kinds": [
+     "ISOLATE_PTP_AT_PORT:p-v-ru3"
+    ],
+    "verify_ok": 0,
+    "verify_total": 0,
+    "rollbacks": 0,
+    "runs_with_escalation": 0,
+    "pre_t0_actions": 0,
+    "pre_t0_service_ok_min": 1.0
+   },
+   "loop": {
+    "n": 5,
+    "unhealthy_s_median": 0.0,
+    "unhealthy_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "restored_at_end": 5,
+    "outage_s_each": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "rogue_parent_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "ru3_unhealthy_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "first_attack_verdict_s_each": [
+     2.08,
+     1.1,
+     2.07,
+     2.1,
+     1.09
+    ],
+    "first_action_s_each": [
+     3.09,
+     2.11,
+     3.08,
+     3.13,
+     2.1
+    ],
+    "disruptive_actions": 5,
+    "action_kinds": [
+     "ISOLATE_PTP_AT_PORT:p-v-ru3"
+    ],
+    "verify_ok": 5,
+    "verify_total": 5,
+    "rollbacks": 0,
+    "runs_with_escalation": 0,
+    "pre_t0_actions": 0,
+    "pre_t0_service_ok_min": 1.0
+   }
+  },
+  "C3_wholesecond": {
+   "control": {
+    "n": 5,
+    "unhealthy_s_median": 38.51,
+    "unhealthy_s_each": [
+     38.51,
+     38.51,
+     38.51,
+     38.52,
+     38.51
+    ],
+    "restored_at_end": 0,
+    "outage_s_each": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "rogue_parent_s_each": [
+     38.51,
+     38.51,
+     38.51,
+     38.52,
+     38.51
+    ],
+    "ru3_unhealthy_s_each": [
+     38.51,
+     38.51,
+     38.51,
+     38.52,
+     38.51
+    ],
+    "first_attack_verdict_s_each": [
+     1.07,
+     1.08,
+     1.08,
+     1.1,
+     1.1
+    ],
+    "first_action_s_each": [
+     2.09,
+     2.08,
+     2.08,
+     2.09,
+     2.09
+    ],
+    "disruptive_actions": 5,
+    "action_kinds": [
+     "ISOLATE_PTP_AT_PORT:p-v-ru3"
+    ],
+    "verify_ok": 0,
+    "verify_total": 0,
+    "rollbacks": 0,
+    "runs_with_escalation": 0,
+    "pre_t0_actions": 0,
+    "pre_t0_service_ok_min": 1.0
+   },
+   "loop": {
+    "n": 5,
+    "unhealthy_s_median": 2.0,
+    "unhealthy_s_each": [
+     1.5,
+     1.5,
+     2.0,
+     2.0,
+     2.0
+    ],
+    "restored_at_end": 5,
+    "outage_s_each": [
+     1.5,
+     1.5,
+     2.0,
+     2.0,
+     2.0
+    ],
+    "rogue_parent_s_each": [
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5
+    ],
+    "ru3_unhealthy_s_each": [
+     38.51,
+     38.51,
+     38.53,
+     38.53,
+     38.52
+    ],
+    "first_attack_verdict_s_each": [
+     1.1,
+     1.09,
+     1.1,
+     1.1,
+     1.09
+    ],
+    "first_action_s_each": [
+     2.11,
+     2.1,
+     2.11,
+     2.11,
+     2.09
+    ],
+    "disruptive_actions": 5,
+    "action_kinds": [
+     "ISOLATE_PTP_AT_PORT:p-v-ru3"
+    ],
+    "verify_ok": 5,
+    "verify_total": 5,
+    "rollbacks": 0,
+    "runs_with_escalation": 0,
+    "pre_t0_actions": 0,
+    "pre_t0_service_ok_min": 1.0
+   }
+  },
+  "baseline": {
+   "control": {
+    "n": 5,
+    "unhealthy_s_median": 0.0,
+    "unhealthy_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "restored_at_end": 5,
+    "outage_s_each": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "rogue_parent_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "ru3_unhealthy_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "first_attack_verdict_s_each": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "first_action_s_each": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "disruptive_actions": 0,
+    "action_kinds": [],
+    "verify_ok": 0,
+    "verify_total": 0,
+    "rollbacks": 0,
+    "runs_with_escalation": 0,
+    "pre_t0_actions": 0,
+    "pre_t0_service_ok_min": 1.0
+   },
+   "loop": {
+    "n": 5,
+    "unhealthy_s_median": 0.0,
+    "unhealthy_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "restored_at_end": 5,
+    "outage_s_each": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "rogue_parent_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "ru3_unhealthy_s_each": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "first_attack_verdict_s_each": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "first_action_s_each": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "disruptive_actions": 0,
+    "action_kinds": [],
+    "verify_ok": 0,
+    "verify_total": 0,
+    "rollbacks": 0,
+    "runs_with_escalation": 0,
+    "pre_t0_actions": 0,
+    "pre_t0_service_ok_min": 1.0
+   }
+  }
+ }
+}

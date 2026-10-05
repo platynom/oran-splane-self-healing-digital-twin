@@ -142,7 +142,7 @@ h=lambda p: hashlib.sha256(open(p,'rb').read()).hexdigest()
 L=PR+'/00_LATEST_PRESENTED_DECK_AND_DELIVERABLES'
 dl=os.path.expanduser('~/mnt/Downloads/ORAN_SPlane_PRISM_Review_v7_FINAL.pptx')
 chk('L1','presented copy byte-identical to Downloads v7_FINAL (08:37 save)',h(L+'/ORAN_SPlane_PRISM_Review_v7_FINAL_PRESENTED_2026-09-29.pptx')==h(dl),h(dl)[:12])
-chk('L2','v8 sha256 7e1e54ec… (slide 33 fix 5 Oct)',h(L+'/ORAN_SPlane_PRISM_Review_v8.pptx').startswith('7e1e54ec'),'')
+chk('L2','v8 sha256 afd35ba8… (slide 12 A8/C3 correction 5 Oct)',h(L+'/ORAN_SPlane_PRISM_Review_v8.pptx').startswith('afd35ba8'),'')
 decks=[os.path.join(dp,f) for dp,dn,fn in os.walk(PR) if '/.git' not in dp and 'node_modules' not in dp and '/.venv' not in dp for f in fn if f.lower().endswith(('.pptx','.ppt'))]
 chk('M1','only v7_FINAL_PRESENTED and v8 decks remain in the project',sorted(os.path.basename(x) for x in decks)==['ORAN_SPlane_PRISM_Review_v7_FINAL_PRESENTED_2026-09-29.pptx','ORAN_SPlane_PRISM_Review_v8.pptx'],len(decks))
 dl_or=[f for f in os.listdir(os.path.expanduser('~/mnt/Downloads')) if f.lower().endswith('.pptx') and 'ORAN' in f.upper()]

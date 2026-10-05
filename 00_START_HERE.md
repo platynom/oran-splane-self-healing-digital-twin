@@ -2,8 +2,8 @@
 
 Samsung PRISM worklet. Team: Tanmaya Kumar, Raghu Ram K, Munipalle Jaswanth Kumar.
 Mentors: Bikas Singh (NovaThink Tech), Navin Kumar (Amrita Vishwa Vidyapeetham).
-Folder organised on 2026-10-03 and 2026-10-04 (two move lists, both reversible). Full record of that work: `00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/verification_records/SESSION_RECORD_2026-10-03.md`. Nothing was deleted; every move is listed in
-`99_ARCHIVE_OLDER_AND_SUPERSEDED/MOVE_MANIFEST_2026-10-03.csv` and `MOVE_MANIFEST_2026-10-04.csv`, each reversible with
+Folder organised on 2026-10-03, 2026-10-04 and 2026-10-05 (three move lists, all reversible). Full record of that work: `00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/verification_records/SESSION_RECORD_2026-10-03.md`. Nothing was deleted; every move is listed in
+`99_ARCHIVE_OLDER_AND_SUPERSEDED/MOVE_MANIFEST_2026-10-03.csv` and `MOVE_MANIFEST_2026-10-04.csv`, `MOVE_MANIFEST_2026-10-05.csv`, each reversible with
 the matching `UNDO_REORG_*.ps1` in the same folder.
 
 ## What the project is, in one paragraph
@@ -20,8 +20,10 @@ with a standards-based decision rule, compared against a machine-learning model.
    — the current 42-slide deck: the presented deck with corrections, plus 12 slides answering the
    reviewer's questions (slide 3 maps each question to its slide). Not yet presented.
    The deck that was presented is `ORAN_SPlane_PRISM_Review_v7_FINAL_PRESENTED_2026-09-29_view.pdf` (2026-09-29 is its last-save date; the presentation date itself is not recorded).
-2. Open `00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_Packets_to_Classification_2026-09-29.xlsx`
+2. Open `00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_Packets_to_Classification_2026-10-05.xlsx`
    — every one of the 168 runs, what was injected, and what the rule decided.
+3. For the automated recovery loop built on 5 Oct, open `03_RECOVERY_LOOP_S-PLANE/README.md`, then `RESULTS_2026-10-05.md`.
+4. Plain-language guide to the whole project: `00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf`.
 
 ## Where each slide's evidence lives
 
@@ -35,7 +37,8 @@ Only two decks remain in the project: v7_FINAL_PRESENTED and v8 (all other decks
 | Folder / file | What it is | Status |
 |---|---|---|
 | `00_START_HERE.md` | This guide | current |
-| `00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/` | v8 deck (current), v7 presented deck, the 29 Sep document set (4 xlsx, 3 pdf), and `verification_records/` (deck fact-checks, v8 build script, session record, claim-verification script and its output) | **CURRENT — use these** |
+| `00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/` | v8 deck (current), v7 presented deck, the 5 Oct document set (4 xlsx, 3 pdf: the 29 Sep set plus four new columns — Source, Destination, Attack devices, Consequence; 29 Sep originals in `99_ARCHIVE_OLDER_AND_SUPERSEDED/documents_2026-09-29_superseded_by_10-05/`), the story guide PDF, and `verification_records/` (deck fact-checks, v8 build script, session record, claim-verification script and its output) | **CURRENT — use these** |
+| `03_RECOVERY_LOOP_S-PLANE/` | Automated recovery loop (detect → localise → decide → act → verify → rollback) on the same software testbed, built and evaluated 5 Oct: 140 pre-registered runs, loop vs matched no-action control | current — separate from the deck and campaign evidence |
 | `01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/` | All code, the testbed harness, tests, and the evidence of the 168-run campaign | current (code + evidence) |
 | `01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/gap_coverage_2026-09-20/corrected_final/` | **The authoritative campaign archive** `splane_campaign_CORRECTED_2026-09-20.tgz` (sha256 6149b4fb…), `EVALUATION_V4.json`, audit | current — source of every headline number |
 | `01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/ml_comparison_output/` | Rule vs machine-learning comparison on 56 held-out runs (21 Sep) | current |
@@ -67,16 +70,23 @@ Fault prediction; digital-twin validation of actions; MTTR / availability measur
 classes (GNSS spoof/jam, holdover, SyncE, oscillator drift on telecom hardware). A corrective action
 (port failover) was executed only in the 13 Sep pilot, not in the 168-run campaign.
 
+Update 5 Oct: automated corrective action is now built and evaluated in `03_RECOVERY_LOOP_S-PLANE/` (software testbed only):
+rogue grandmaster, interception and whole-second abuse left the radio units off a legitimate parent for ~38.5–39 s of 40 without
+action and ~2–2.5 s with the loop (5/5 each); 0 actions on 24 of 25 benign runs and on the ambiguous case. One benign run (B3 r17)
+triggered a standby failover during a genuine 16.5 s outage — the pre-registered no-harm hypothesis is therefore reported as FAILED.
+The deck was not extended with these results.
+
 ## Facts to know before quoting any result (re-verified 5 Oct 2026: 47/47 checks pass)
 
 - Every ptp4l daemon ran with `free_running 1`: offsets were measured, clocks were never steered.
-- pmc management telemetry returned no data in any of the 168 runs.
+- pmc management telemetry returned no data in any of the 168 runs (cause confirmed 5 Oct: pmc needs `-d 24`).
+- Corrected 5 Oct by pmc measurement: in A8 the rogue BC was only a BMCA candidate (RU parent unchanged); in C3 the RUs did re-parent to the forger. v8 slide 12 updated.
 - Raw PCAPs and runtime configs are not in the campaign archive (configs are in `results_2026-09-17/g87251_testbed_v2.tgz`).
 - C1 interception was a port blackhole that removed every frame.
 - Rule v2, frozen before the campaign began, gives the same verdicts as v3 on all 168 runs.
 - August ML figures were withdrawn as evidence on 17 Sep; do not quote them.
 
-## Still wrong in the 29 Sep documents (fixed in v8 deck, not yet in these files)
+## Still wrong in the 29 Sep documents and their 5 Oct versions (fixed in v8 deck, not yet in these files; the 5 Oct versions only add four columns)
 
 - `Attack_vs_Benign_Classification_v2026-09-29.xlsx` says interception "evades below ~62%"; correct figure ≈60.5%.
 - The audit PDF, Fault Detectability and Parameter Matrix say "one capture copied 12 times"; it was three captures each copied 12 times.
@@ -84,3 +94,8 @@ classes (GNSS spoof/jam, holdover, SyncE, oscillator drift on telecom hardware).
 - `verification_records/V5_*.md` map A4 to "T-SPLANE-05", which does not exist.
 
 The full findings list (17 items) and open actions are in the session record.
+
+## GitHub
+
+The full project is on GitHub: `platynom/oran-splane-self-healing-digital-twin`, branch `full-project-2026-10-05`.
+Files of 50 MB or more are not in git; `LARGE_FILES_NOT_IN_GIT.md` lists them with sha256.

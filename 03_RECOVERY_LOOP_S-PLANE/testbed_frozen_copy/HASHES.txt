@@ -1,0 +1,37 @@
+# Copies of the 168-run campaign harness, byte-identical to the sources below. Used unchanged by the recovery loop.
+# run/* from splane_campaign_CORRECTED_2026-09-20.tgz (sha256 6149b4fb...) except inject.py, flood.py, pmc_log.sh from g87251_testbed_v2.tgz (17 Sep); cfg/* and ptp_deep_extract.py from g87251_testbed_v2.tgz.
+790d8191e6f5a18820daf649ed259ffed988e446dde09c1d2b5a711d22755bf2  ./FROZEN.json
+a29b2a7e225a0680efe8df5ea2f9e08f6a64e0c69e5852f93b6a0cf18e84870e  ./FROZEN_HARNESS_EPOCH2.json
+a71d17df2a279e2ac97377eabcd719198a75c9d4e9b4ed29b75d3688f1d2744c  ./FROZEN_V2.json
+135295a3ffb24c507f4d447d866823898e1ee2ae9ce91125c836ca29f8fbef05  ./FROZEN_V3.json
+aff1fdb439e64072a6bfbb2916a16a767cdcf487410847cfa4470f5ef58c3260  ./cfg/bc.cfg
+cfed1955b3722cf8b48b6e6dfd1cb7fe97addfe7d255dccb604f4351705594b9  ./cfg/bc2.cfg
+c346618da31b6a871b2f4c21b50c4d7a079a4d9baae72fa31286354fae778755  ./cfg/g87251.base
+2df7c16e4e222bee81a386fd577243be28190162fc64cb747fd7431db48d1c0c  ./cfg/gma.cfg
+99033c8eeb0ac7f50b84809160ee3a393cede135d1302668c134d1e6376ce0c4  ./cfg/gmb.cfg
+cb7517cac7660fce3ef918eaf810ec74f0ee49bde387903517a3ab4d358254c0  ./cfg/rbc.cfg
+79cd3a14458938e4b9fcea0ec5cb757fb3d9b5e082badd613f18a67309e750ea  ./cfg/rogue.cfg
+452bf73004705771e701d0857cd8e8877a2be15f900a9b104aa724de5ed81a7a  ./cfg/ru1.cfg
+19c8046b66a52cc316ab660137a4a2fac5359fc3ead702a40c2d6cf1dc8a5419  ./cfg/ru2.cfg
+739449e9d22f45c96776ebe1ab54343854182684b48d63c7d0922eb57337f5fb  ./cfg/ru3.cfg
+3e0fa9e9ba3a34bb56f26189705d60758ced0a0994a8486cbfe0f933715db780  ./ptp_deep_extract.py
+f5fc068cc27acf0eda1ac3b9c5433ff56dafbeea78b0b8954fdf6e565f831b89  ./run/bg_traffic.py
+ca822846350b877510ecabe2bd3f02cc0210e9ebacddf02644d4dffbd4a0ddfa  ./run/campaign_v3.sh
+a9dae2ee4052bab6b7f28dbbd99757ac7099bf7ae13840a2c391d326637d5fdf  ./run/clean_all.sh
+c362e11072344161437aaae33b2902caf9bca57dfc33f653a9c2184edae8a985  ./run/decision_rule.py
+e32eb65bc7c04c3b9483dfa5ec9d4f646932dcf869ea387ba99e20b3a261d657  ./run/decision_rule_v2.py
+aa9417b701cc09dcf242a814cc136ce2acd561269389b7553618205997b7f330  ./run/decision_rule_v3.py
+eb0b907b00d69c94c60cc861c5c188c380f3c1cce31bda0acbb39876da172f6b  ./run/evaluate_v4.py
+a9952fe6c77db075b9037fc5f20b195940c909985f4dd411a17f6a1871065e62  ./run/flood.py
+d86ca42a8d8ba991f56b47a11ed1cc8e02a9e2a49799b4a0ba445180bddf287a  ./run/inject.py
+a22015d116668db511e77050ab80f9e338080d15b2f98011cbd38afd0cd027ab  ./run/inject_malformed.py
+52918dba5e2157fabdcf44b56e95b3395d8e30628f8a0bbd28ce6f668f51ec4d  ./run/inject_wholesecond.py
+c872727a4f163c33a234a703488f9845a5196cbda608b93a1f337e1714694ab6  ./run/pmc_log.sh
+7c8a4322cf7ec71e8a4754ec2b58326b717a6553f2174bb41d1d9f48d16f9078  ./run/randparams.py
+40172879ff047b3310c91f7ba97115eac57386e37a0b6c1140514832d9f85785  ./run/run_gap.sh
+e6b4c748dbc3cee6ef69e1b5fd086034b770926286636ab85f864655e4abfed4  ./run/scenarios.sh
+7bdb6ad27fc978e0b4001cf2e919aa7f4e845388d5d1ed4e1ae2264501a8fd2e  ./run/score_v2.py
+cdca064721ca03c14208f733d3a4d9e80eb59efe652417bf347fbfe38617e676  ./run/score_v3.py
+cd736fbfbe38fa647a882cc13ce476ea116f0b79f3c485c946c008d720fe309b  ./run/start.sh
+e5f9bc4d324041d674cf1cd6e8aea6c37de26eb475f7c78dddd4f1d7b4743fa7  ./run/stop.sh
+334f44f29bff8d5a2240df9242d28d6975f4b8bc2d92a068c2a67a19af9634c5  ./run/topology.sh

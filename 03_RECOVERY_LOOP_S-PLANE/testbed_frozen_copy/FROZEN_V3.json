@@ -1,0 +1,34 @@
+{
+  "artifact": "run/decision_rule_v3.py",
+  "sha256": "aa9417b701cc09dcf242a814cc136ce2acd561269389b7553618205997b7f330",
+  "frozen_at": "2026-09-20T21:02:15.517088Z",
+  "status": "FROZEN defect-fix revision of decision_rule_v2",
+  "base_rule": {
+    "file": "run/decision_rule.py",
+    "sha256": "c362e11072344161437aaae33b2902caf9bca57dfc33f653a9c2184edae8a985"
+  },
+  "supersedes": {
+    "file": "run/decision_rule_v2.py",
+    "sha256": "e32eb65bc7c04c3b9483dfa5ec9d4f646932dcf869ea387ba99e20b3a261d657"
+  },
+  "provenance_disclosure": [
+    "v3 was created AFTER observing v2 false-positives, and this is stated plainly rather than hidden.",
+    "Trigger: on UPSTREAM (GM-segment) captures, v2's D1 turned B2_gm_failover BENIGN->ATTACK and destroyed the B_unplanned_failover UNKNOWN abstention, because a boundary clock emitting only 3-5 frames during BMCA start-up was read as 'rate starved'.",
+    "v2 results are NOT discarded; both are reported side by side."
+  ],
+  "changes": [
+    "D1: added a minimum-frame floor (10) and a persistence requirement (source active span >= 50% of the capture). Rate-starvation is only meaningful for a persistent source. Mirrors the frozen base rule's own TRANSIENT_FRACTION design, which already solved this exact failure.",
+    "D1: include expected_bc_identity_secondary in the known-source set; omitting it made D1 silently skip a provisioned replacement boundary clock.",
+    "D3 clause (b): a currentUtcOffset change must be SUSTAINED (>1% of that source's Announce) rather than a single stray frame."
+  ],
+  "validation": [
+    "Fixes both upstream false positives (verified).",
+    "Verdicts IDENTICAL to v2 on every downstream capture in the scored set (verified) - the fix removes false positives without altering any true positive.",
+    "Known sensitivity limit, measured not assumed: D1 detects sustained interception blackholing >=65% of the window (ratio<=0.462) and MISSES at 60% (ratio 0.505 vs 0.500 threshold)."
+  ],
+  "known_limitations_not_fixed": [
+    "D3 clause (c) flags clockClass<=6 with traceability deasserted; clockClass 6 with timeTraceable=0 is normal for some real PRTC deployments, so this clause is expected to false-positive on production hardware. Not exercised in this software testbed (GMs advertise 248).",
+    "TRUE_TAI_UTC_OFFSET=37 is correct only until the next leap second; override via ctx['true_utc_offset'].",
+    "D1 measures the mean rate over the observation window, so short or bursty interception averages out and evades."
+  ]
+}
