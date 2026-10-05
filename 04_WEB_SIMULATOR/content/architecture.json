@@ -1,0 +1,1571 @@
+{
+ "schema_version": 1,
+ "generated": "2026-10-05",
+ "status_note": "Every citation status is UNVERIFIED (written in this session, not yet checked by a person) or SOURCE_NEEDED (no openable source). The UI renders UNVERIFIED sentences with an UNVERIFIED tag and never renders SOURCE_NEEDED sentences. Citations point at repository documents that can be opened; where a standard is cited the clause is the one relayed by that repository document, because the standards themselves were not reachable from this environment (network egress blocked) or are paywalled.",
+ "kinds": {
+  "MEASURED": "from recorded data",
+  "CONFIGURED": "from the testbed configuration or provisioning",
+  "ILLUSTRATIVE": "teaching mapping or animation, not data",
+  "UNKNOWN": "explicitly not measured or not decided",
+  "REFERENCE": "what a standard or project document says (addition to the four evidence kinds)"
+ },
+ "sources": [
+  {
+   "id": "GUIDE",
+   "title": "SPlane_Project_Story_Guide.pdf",
+   "path_or_url": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
+   "openable_in_this_session": true,
+   "note": "project narrative; cites the standards it relays"
+  },
+  {
+   "id": "V8",
+   "title": "v8 deck (PDF view)",
+   "path_or_url": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
+   "openable_in_this_session": true,
+   "note": "slide numbers as in V8_SLIDE_SOURCE_MAP.md"
+  },
+  {
+   "id": "TBREF",
+   "title": "Testbed Configuration Reference 2026-10-05",
+   "path_or_url": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_Testbed_Configuration_Reference_v2026-10-05.pdf",
+   "openable_in_this_session": true,
+   "note": ""
+  },
+  {
+   "id": "SRCMAP",
+   "title": "V8_SLIDE_SOURCE_MAP.md",
+   "path_or_url": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/verification_records/V8_SLIDE_SOURCE_MAP.md",
+   "openable_in_this_session": true,
+   "note": ""
+  },
+  {
+   "id": "V5LOG",
+   "title": "V5_VERIFICATION_LOG.md",
+   "path_or_url": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/verification_records/V5_VERIFICATION_LOG.md",
+   "openable_in_this_session": true,
+   "note": "claim-by-claim verification log"
+  },
+  {
+   "id": "V5DIS",
+   "title": "V5_DISAGREEMENTS.md",
+   "path_or_url": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/verification_records/V5_DISAGREEMENTS.md",
+   "openable_in_this_session": true,
+   "note": ""
+  },
+  {
+   "id": "RESULTS",
+   "title": "RESULTS_2026-10-05.md",
+   "path_or_url": "03_RECOVERY_LOOP_S-PLANE/RESULTS_2026-10-05.md",
+   "openable_in_this_session": true,
+   "note": ""
+  },
+  {
+   "id": "PREREG",
+   "title": "PREREGISTRATION.md",
+   "path_or_url": "03_RECOVERY_LOOP_S-PLANE/PREREGISTRATION.md",
+   "openable_in_this_session": true,
+   "note": ""
+  },
+  {
+   "id": "DESIGN",
+   "title": "RECOVERY_LOOP_DESIGN.md",
+   "path_or_url": "03_RECOVERY_LOOP_S-PLANE/RECOVERY_LOOP_DESIGN.md",
+   "openable_in_this_session": true,
+   "note": ""
+  },
+  {
+   "id": "STDEV",
+   "title": "STANDARDS_EVIDENCE.md",
+   "path_or_url": "03_RECOVERY_LOOP_S-PLANE/STANDARDS_EVIDENCE.md",
+   "openable_in_this_session": true,
+   "note": "quotes with verification levels V1/V2/NV as recorded 5 Oct 2026"
+  },
+  {
+   "id": "CFG",
+   "title": "testbed_frozen_copy/cfg/*.cfg",
+   "path_or_url": "03_RECOVERY_LOOP_S-PLANE/testbed_frozen_copy/cfg/",
+   "openable_in_this_session": true,
+   "note": "ptp4l configuration files used by the runs"
+  },
+  {
+   "id": "PROV",
+   "title": "provisioning.json",
+   "path_or_url": "03_RECOVERY_LOOP_S-PLANE/code/provisioning.json",
+   "openable_in_this_session": true,
+   "note": "operator inventory (configuration, not measurement)"
+  },
+  {
+   "id": "FAULTX",
+   "title": "ORAN_Fault_Detectability_v2026-10-05.xlsx",
+   "path_or_url": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_Fault_Detectability_v2026-10-05.xlsx",
+   "openable_in_this_session": true,
+   "note": "Source / Destination / Attack devices / Consequence columns"
+  },
+  {
+   "id": "MATRIX",
+   "title": "ORAN_SPlane_Parameter_Fault_Matrix_v2026-10-05.xlsx",
+   "path_or_url": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_Parameter_Fault_Matrix_v2026-10-05.xlsx",
+   "openable_in_this_session": true,
+   "note": "FAULT KEY sheet: WG11 threat IDs"
+  },
+  {
+   "id": "EVAL4",
+   "title": "EVALUATION_V4.json",
+   "path_or_url": "01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/gap_coverage_2026-09-20/corrected_final/EVALUATION_V4.json",
+   "openable_in_this_session": true,
+   "note": "168-run campaign"
+  },
+  {
+   "id": "SYNCPY",
+   "title": "ingest/sync_status.py",
+   "path_or_url": "01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/ingest/sync_status.py",
+   "openable_in_this_session": true,
+   "note": "project code; fixture-tested parser, not a standard"
+  },
+  {
+   "id": "SURVEY",
+   "title": "AI-Native_ORAN_Digital_Twin_Architecture.md",
+   "path_or_url": "01_CURRENT_SPlane_SelfHealing/literature-survey/AI-Native_ORAN_Digital_Twin_Architecture.md",
+   "openable_in_this_session": true,
+   "note": "project literature-survey note; not a standard"
+  },
+  {
+   "id": "B6",
+   "title": "B6 DRIFT_REPORT_run2.md",
+   "path_or_url": "outputs/B6_two_machine_2026-10-02/run2/DRIFT_REPORT_run2.md",
+   "openable_in_this_session": true,
+   "note": "raw per-sample CSVs are not in the repository"
+  },
+  {
+   "id": "PILOT",
+   "title": "13 Sep pilot START_HERE_FINAL.md",
+   "path_or_url": "outputs/empirical_software_network_pilot_v1/START_HERE_FINAL.md",
+   "openable_in_this_session": true,
+   "note": ""
+  },
+  {
+   "id": "RESEARCH",
+   "title": "research/CATALOGUE_conformance_robustness_tests.md",
+   "path_or_url": "research/CATALOGUE_conformance_robustness_tests.md",
+   "openable_in_this_session": true,
+   "note": "pasted AI transcript, unreviewed (00_START_HERE.md)"
+  },
+  {
+   "id": "ETSI_TS103982",
+   "title": "ETSI TS 103 982 V8.0.0 (O-RAN architecture description)",
+   "path_or_url": "https://www.etsi.org/deliver/etsi_ts/103900_103999/103982/08.00.00_60/ts_103982v080000p.pdf",
+   "openable_in_this_session": false,
+   "note": "listed locally in SRCMAP but the PDF is not in the repository; egress blocked here"
+  },
+  {
+   "id": "ORAN_CUS",
+   "title": "O-RAN.WG4.CUS.0 (via Armstrong, ATIS WSTS 2023)",
+   "path_or_url": "https://wsts.atis.org/wp-content/uploads/2023/02/Greg-Armstrong_ORAN-Fundamentals.pdf",
+   "openable_in_this_session": false,
+   "note": "egress blocked; only as quoted in V8 slide 6"
+  },
+  {
+   "id": "G8271",
+   "title": "ITU-T G.8271.1",
+   "path_or_url": "https://www.itu.int/rec/T-REC-G.8271.1/",
+   "openable_in_this_session": false,
+   "note": "paywalled; not opened"
+  },
+  {
+   "id": "RFC7384",
+   "title": "IETF RFC 7384",
+   "path_or_url": "https://www.rfc-editor.org/rfc/rfc7384.html",
+   "openable_in_this_session": false,
+   "note": "egress blocked here; quotes relayed by STDEV (V1 there)"
+  },
+  {
+   "id": "TR104106",
+   "title": "ETSI TR 104 106 V3.0.0",
+   "path_or_url": "https://www.etsi.org/deliver/etsi_tr/104100_104199/104106/03.00.00_60/tr_104106v030000p.pdf",
+   "openable_in_this_session": false,
+   "note": "egress blocked here; IDs relayed by V8 / MATRIX"
+  }
+ ],
+ "checks": [
+  {
+   "id": "lls-mapping",
+   "question": "Which LLS configuration does the testbed map to?",
+   "result": "LLS-C3 structure (supported); one document says LLS-C2/C3 (unresolved)",
+   "finding": "The v8 deck (slide 6) and the story guide (chapter 1) say the testbed has the LLS-C3 structure: grandmaster, boundary clock, radio units, no O-DU in the timing chain. The Testbed Configuration Reference (§4) says the topology 'models O-RAN LLS-C2/C3'. LLS-C2 puts the O-DU in the sync chain, which the testbed does not have. The app lights LLS-C3 as 'configured' and records the disagreement on the LLS-C2 card.",
+   "evidence": [
+    "V8 slide 6",
+    "GUIDE chapter 1",
+    "TBREF §4"
+   ],
+   "element_ids": [
+    "lls-c2",
+    "lls-c3"
+   ]
+  },
+  {
+   "id": "odu-timing-role",
+   "question": "What is the O-DU's timing role in LLS-C1/C2?",
+   "result": "partly verified: chain membership only",
+   "finding": "The project documents quote O-RAN.WG4.CUS.0 (via Armstrong) as: the O-DU is part of the synchronization chain and network timing is distributed from O-DU to O-RU. A web-search snippet (page not opened) adds that the O-DU receives network time from a PRTC/T-GM, co-located or remote. No openable source states which PTP clock type (T-BC or T-GM) the O-DU implements, so that sentence is SOURCE_NEEDED and hidden.",
+   "evidence": [
+    "V8 slide 6",
+    "search snippet (analogictips.com, not opened)"
+   ],
+   "element_ids": [
+    "o-du"
+   ]
+  },
+  {
+   "id": "mplane-yang",
+   "question": "What is the M-plane sync YANG model name?",
+   "result": "SOURCE_NEEDED",
+   "finding": "The name 'o-ran-sync' appears in a comment in the project's own ingest/sync_status.py. Fetching the O-RAN YANG repository or specification was not possible (egress blocked / URL not found) and a web search did not return a page that confirms the module or its leaves. The sentence naming the module is SOURCE_NEEDED and hidden.",
+   "evidence": [
+    "SYNCPY line 64"
+   ],
+   "element_ids": [
+    "fh-mplane"
+   ]
+  },
+  {
+   "id": "g8271-budget",
+   "question": "Is the G.8271 TDD ±1.5 µs budget stated correctly?",
+   "result": "partly verified: ±1.5 µs at reference point E; 'TDD' framing not verified",
+   "finding": "The project's verification (V5_VERIFICATION_LOG item 32, V5_DISAGREEMENTS item 6) supports ±1.5 µs as an absolute time-error limit at reference point E / the end application relative to a common recognised time standard (ITU-T G.8271.1), and removes the 'O-RU to PRTC' wording. The deck separately cites a TDD cell phase synchronization of better than 3 µs (3GPP TS 38.133). No project document states how 1.5 µs and 3 µs relate or calls ±1.5 µs a 'TDD' budget, so the app does not use the word 'TDD' with 1.5 µs.",
+   "evidence": [
+    "V5LOG item 32",
+    "V5DIS item 6",
+    "V8 slide 12"
+   ],
+   "element_ids": [
+    "fh-splane",
+    "air-interface"
+   ]
+  },
+  {
+   "id": "wg11-threats",
+   "question": "Which WG11 S-plane threat references does the project use?",
+   "result": "relayed by project documents; ETSI TR 104 106 not opened",
+   "finding": "V8 slides 10-12 and the Parameter Fault Matrix (FAULT KEY) map: A1 to T-SPLANE-02/03 (rogue PTP instance), A5 to T-SPLANE-01 (clock service interrupted), A8 to T-SPLANE-03 (slaves given inaccurate time), C1 to T-SPLANE-04 (degradation or free-running), and T-FRHAUL-01 (compromised O-DU or link) and T-FRHAUL-02 (access paths). ETSI TR 104 106 itself could not be opened here. The title of T-SPLANE-02 is not stated in the repository.",
+   "evidence": [
+    "V8 slides 10-12",
+    "MATRIX FAULT KEY",
+    "SRCMAP §3 [2]"
+   ],
+   "element_ids": [
+    "injector",
+    "lls-c1"
+   ]
+  }
+ ],
+ "tier_log": [
+  {
+   "element": "gm-a, gm-b",
+   "requested": 1,
+   "final": 1,
+   "result": "supported",
+   "basis": "TBREF §4 roles; cfg priority2 100/110 and serverOnly 1"
+  },
+  {
+   "element": "bc, bc-standby",
+   "requested": 1,
+   "final": 1,
+   "result": "supported",
+   "basis": "TBREF §4; PREREG §2-3; DESIGN"
+  },
+  {
+   "element": "o-ru",
+   "requested": 1,
+   "final": 1,
+   "result": "supported; 'T-TSC' label kept as CONFIGURED",
+   "basis": "TBREF §4 calls the radio units 'O-RU proxies (T-TSC)' and the configs set clientOnly 1; the term T-TSC otherwise appears only in the unreviewed research catalogue, so no sentence depends on it beyond the TBREF label"
+  },
+  {
+   "element": "fh-splane",
+   "requested": 1,
+   "final": 1,
+   "result": "supported",
+   "basis": "GUIDE ch.1 and ch.3; V8 slide 17-18"
+  },
+  {
+   "element": "injector",
+   "requested": 1,
+   "final": 1,
+   "result": "supported",
+   "basis": "GUIDE ch.7 caption; V8 slide 10; RESULTS §6"
+  },
+  {
+   "element": "o-du",
+   "requested": 2,
+   "final": 2,
+   "result": "supported (chain membership); clock-type sentence hidden",
+   "basis": "V8 slide 5-6"
+  },
+  {
+   "element": "fh-mplane",
+   "requested": 2,
+   "final": 2,
+   "result": "supported as a plane; sync-state/YANG claim hidden",
+   "basis": "GUIDE ch.1; the o-ran-sync name has no openable source"
+  },
+  {
+   "element": "fh-cplane, fh-uplane",
+   "requested": 2,
+   "final": 3,
+   "result": "DEMOTED to tier 3 (consequence card only)",
+   "basis": "The mapping 'what stops when timing is lost' has no openable source: the testbed has no O-DU or radio stack, so nothing about C/U-plane behaviour under timing loss was measured. The cards say UNKNOWN; the unsupported sentences are SOURCE_NEEDED and hidden."
+  },
+  {
+   "element": "smo-nonrt",
+   "requested": 2,
+   "final": 2,
+   "result": "supported at project-survey level; labelled",
+   "basis": "SURVEY §9 (typical loop above 1 s); the closed-loop mapping is marked ILLUSTRATIVE and 'not implemented there'"
+  },
+  {
+   "element": "gnss-time, synce",
+   "requested": 2,
+   "final": 2,
+   "result": "supported as context; both marked not measured",
+   "basis": "V8 slides 6, 16, 18, 39; GUIDE ch.8"
+  },
+  {
+   "element": "osc-drift",
+   "requested": "n/a (added)",
+   "final": 2,
+   "result": "added as tier 2 data element for the B6 measurement",
+   "basis": "B6 DRIFT_REPORT_run2.md; raw CSVs absent"
+  },
+  {
+   "element": "air-interface, ue",
+   "requested": 3,
+   "final": 3,
+   "result": "supported as consequence context",
+   "basis": "GUIDE ch.2; V8 slide 12; RESULTS §6 says no service impact was measured"
+  },
+  {
+   "element": "near-rt-ric, o-cu, core-5g, o-cloud",
+   "requested": "dimmed",
+   "final": "dimmed",
+   "result": "supported as 'outside this project'",
+   "basis": "GUIDE ch.1; SURVEY tables; V8 slide 4"
+  }
+ ],
+ "elements": [
+  {
+   "id": "gm-a",
+   "tier": 1,
+   "levels": [
+    1,
+    2,
+    3
+   ],
+   "name": "GM-A: primary grandmaster (PRTC/T-GM role)",
+   "role": "Primary time source of the testbed; wins the Best Master Clock election in normal operation.",
+   "sentences": [
+    {
+     "id": "gm-a.s1",
+     "kind": "CONFIGURED",
+     "text": "In the testbed GM-A is the primary grandmaster (T-GM) with priority2 100, so it wins the Best Master Clock election in normal operation.",
+     "citation": {
+      "source": "Testbed Configuration Reference 2026-10-05",
+      "source_id": "TBREF",
+      "clause": "§4 Topology and node roles",
+      "locator": "node table, row gma",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_Testbed_Configuration_Reference_v2026-10-05.pdf",
+      "status": "UNVERIFIED"
+     }
+    },
+    {
+     "id": "gm-a.s2",
+     "kind": "CONFIGURED",
+     "text": "GM-A runs with serverOnly 1, so it serves time and never takes time from another clock.",
+     "citation": {
+      "source": "testbed_frozen_copy/cfg/*.cfg",
+      "source_id": "CFG",
+      "clause": "gma.cfg",
+      "locator": "[v-gma] serverOnly 1",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/testbed_frozen_copy/cfg/",
+      "status": "UNVERIFIED"
+     }
+    },
+    {
+     "id": "gm-a.s3",
+     "kind": "CONFIGURED",
+     "text": "GM-A's clockIdentity 020000fffe00000a is on the operator's allow-list; the allow-list is what lets the rule tell a planned changeover from a rogue grandmaster.",
+     "citation": {
+      "source": "provisioning.json",
+      "source_id": "PROV",
+      "clause": "gm_allowlist",
+      "locator": "provisioning.json",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/code/provisioning.json",
+      "status": "UNVERIFIED"
+     }
+    },
+    {
+     "id": "gm-a.s4",
+     "kind": "UNKNOWN",
+     "text": "No GNSS receiver exists in the testbed: GM-A is a ptp4l process on a free-running clock that stands in for the PRTC/T-GM role, so GNSS-locked behaviour, holdover and spoofing are not measured.",
+     "citation": {
+      "source": "v8 deck (PDF view)",
+      "source_id": "V8",
+      "clause": "slide 18, platform limits",
+      "locator": "'No GNSS receiver' note",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
+      "status": "UNVERIFIED"
+     }
+    }
+   ]
+  },
+  {
+   "id": "gm-b",
+   "tier": 1,
+   "levels": [
+    1,
+    2,
+    3
+   ],
+   "name": "GM-B: provisioned backup grandmaster",
+   "role": "Allow-listed backup source that takes over in a planned or unplanned grandmaster change.",
+   "sentences": [
+    {
+     "id": "gm-b.s1",
+     "kind": "CONFIGURED",
+     "text": "GM-B is the provisioned backup grandmaster with priority2 110; it enables the planned changeover scenario B2.",
+     "citation": {
+      "source": "Testbed Configuration Reference 2026-10-05",
+      "source_id": "TBREF",
+      "clause": "§4 Topology and node roles",
+      "locator": "node table, row gmb",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_Testbed_Configuration_Reference_v2026-10-05.pdf",
+      "status": "UNVERIFIED"
+     }
+    },
+    {
+     "id": "gm-b.s2",
+     "kind": "MEASURED",
+     "text": "When GM-A fails with no maintenance window open and GM-B takes over, the frozen rule returned UNKNOWN in 12 of 12 campaign runs, because packets alone cannot tell a real failure from an attack that knocked GM-A out.",
+     "citation": {
+      "source": "EVALUATION_V4.json",
+      "source_id": "EVAL4",
+      "clause": "abstention 12/12",
+      "locator": "frozen / v3 'abstention' field",
+      "url_or_repo_path": "01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/gap_coverage_2026-09-20/corrected_final/EVALUATION_V4.json",
+      "status": "UNVERIFIED"
+     }
+    },
+    {
+     "id": "gm-b.s3",
+     "kind": "MEASURED",
+     "text": "In the 5 recovery-loop runs of that case the loop took no disruptive action and escalated to an operator.",
+     "citation": {
+      "source": "RESULTS_2026-10-05.md",
+      "source_id": "RESULTS",
+      "clause": "§2 H4",
+      "locator": "hypothesis table",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/RESULTS_2026-10-05.md",
+      "status": "UNVERIFIED"
+     }
+    }
+   ]
+  },
+  {
+   "id": "bc",
+   "tier": 1,
+   "levels": [
+    1,
+    2,
+    3
+   ],
+   "name": "Boundary clock (T-BC)",
+   "role": "Re-serves grandmaster time to the radio-unit segment; slave upstream, master downstream.",
+   "sentences": [
+    {
+     "id": "bc.s1",
+     "kind": "CONFIGURED",
+     "text": "The boundary clock is a slave on the grandmaster segment (brUP) and a master on the radio-unit segment (brDN), with priority2 120, so radio units see stepsRemoved 1.",
+     "citation": {
+      "source": "Testbed Configuration Reference 2026-10-05",
+      "source_id": "TBREF",
+      "clause": "§4 Topology and node roles",
+      "locator": "row bc: stepsRemoved 0→1",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_Testbed_Configuration_Reference_v2026-10-05.pdf",
+      "status": "UNVERIFIED"
+     }
+    },
+    {
+     "id": "bc.s2",
+     "kind": "CONFIGURED",
+     "text": "The recovery loop never isolates a port provisioned in the master role, because isolating the boundary clock would itself remove timing; such cases are escalated instead.",
+     "citation": {
+      "source": "RECOVERY_LOOP_DESIGN.md",
+      "source_id": "DESIGN",
+      "clause": "Policy table, safety guard",
+      "locator": "row 'ATTACK … only provisioned master-role ports'",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/RECOVERY_LOOP_DESIGN.md",
+      "status": "UNVERIFIED"
+     }
+    },
+    {
+     "id": "bc.s3",
+     "kind": "MEASURED",
+     "text": "In interception scenario C1 the boundary clock's downstream port was blackholed and never restored: RU1/RU2 spent a median 39.0 s of 40 s without a master when nothing was done, and 2.5 s with the recovery loop (5 of 5 restored).",
+     "citation": {
+      "source": "RESULTS_2026-10-05.md",
+      "source_id": "RESULTS",
+      "clause": "§1 headline table",
+      "locator": "row C1",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/RESULTS_2026-10-05.md",
+      "status": "UNVERIFIED"
+     }
+    }
+   ]
+  },
+  {
+   "id": "bc-standby",
+   "tier": 1,
+   "levels": [
+    2,
+    3
+   ],
+   "name": "Standby boundary clock",
+   "role": "Cold-standby T-BC cabled to both bridges; its daemon starts only if the loop fails over.",
+   "sentences": [
+    {
+     "id": "bc-standby.s1",
+     "kind": "CONFIGURED",
+     "text": "A cold-standby boundary clock with identity 020000fffe0000c5 is cabled to both bridges in every run of both arms, and its daemon starts only if the loop executes a failover.",
+     "citation": {
+      "source": "PREREGISTRATION.md",
+      "source_id": "PREREG",
+      "clause": "§2 Apparatus",
+      "locator": "'Addition in every run of both arms'",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/PREREGISTRATION.md",
+      "status": "UNVERIFIED"
+     }
+    },
+    {
+     "id": "bc-standby.s2",
+     "kind": "CONFIGURED",
+     "text": "The loop activates it when no Announce arrives from any provisioned master port for more than 2 s (10 s while a maintenance window is open).",
+     "citation": {
+      "source": "PREREGISTRATION.md",
+      "source_id": "PREREG",
+      "clause": "§3 Loop parameters",
+      "locator": "service-loss trigger row",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/PREREGISTRATION.md",
+      "status": "UNVERIFIED"
+     }
+    },
+    {
+     "id": "bc-standby.s3",
+     "kind": "MEASURED",
+     "text": "Failover was executed and verified in 5 of 5 C1 runs; the same trigger fired once in a benign run (B3 replicate 17) during a real 16.5 s outage, which is why hypothesis H3 is reported as failed.",
+     "citation": {
+      "source": "RESULTS_2026-10-05.md",
+      "source_id": "RESULTS",
+      "clause": "§2 H2 and §3",
+      "locator": "H3 failure explanation",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/RESULTS_2026-10-05.md",
+      "status": "UNVERIFIED"
+     }
+    }
+   ]
+  },
+  {
+   "id": "o-ru",
+   "tier": 1,
+   "levels": [
+    1,
+    2,
+    3
+   ],
+   "name": "O-RU (radio units RU1–RU3)",
+   "role": "Radio unit at the antenna; receives time over the Open Fronthaul S-plane.",
+   "sentences": [
+    {
+     "id": "o-ru.s1",
+     "kind": "REFERENCE",
+     "text": "In the O-RAN split the O-RU hosts Low-PHY and RF processing; radio requirements are measured at the antenna side, which in O-RAN is the O-RU.",
+     "citation": {
+      "source": "v8 deck (PDF view)",
+      "source_id": "V8",
+      "clause": "slide 5",
+      "locator": "functional-split figure and 'WHY THE O-RU' note",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
+      "status": "UNVERIFIED"
+     }
+    },
+    {
+     "id": "o-ru.s2",
+     "kind": "CONFIGURED",
+     "text": "The testbed's three radio units are ptp4l daemons with clientOnly 1 (they only take time); the Testbed Configuration Reference labels them 'O-RU proxies (T-TSC)'.",
+     "citation": {
+      "source": "Testbed Configuration Reference 2026-10-05",
+      "source_id": "TBREF",
+      "clause": "§4 Topology and node roles",
+      "locator": "row ru1/ru2/ru3",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_Testbed_Configuration_Reference_v2026-10-05.pdf",
+      "status": "UNVERIFIED"
+     }
+    },
+    {
+     "id": "o-ru.s3",
+     "kind": "CONFIGURED",
+     "text": "A radio unit counts as healthy when its parent is a provisioned boundary clock, its grandmaster is on the allow-list and its port state is SLAVE or UNCALIBRATED; the evaluation scores who the radio units follow, not nanosecond time error.",
+     "citation": {
+      "source": "PREREGISTRATION.md",
+      "source_id": "PREREG",
+      "clause": "§4 Outcome measurement",
+      "locator": "'An RU is healthy when …'",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/PREREGISTRATION.md",
+      "status": "UNVERIFIED"
+     }
+    },
+    {
+     "id": "o-ru.s4",
+     "kind": "REFERENCE",
+     "text": "130 ns is scoped by the project's verification to the relative time-alignment error for intra-band contiguous carrier aggregation, Timing Category A, not presented as a universal O-RAN limit.",
+     "citation": {
+      "source": "V5_DISAGREEMENTS.md",
+      "source_id": "V5DIS",
+      "clause": "item 5",
+      "locator": "'130 ns scope'",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/verification_records/V5_DISAGREEMENTS.md",
+      "status": "UNVERIFIED"
+     }
+    }
+   ],
+   "sub_elements": [
+    "ru1",
+    "ru2",
+    "ru3"
+   ]
+  },
+  {
+   "id": "fh-splane",
+   "tier": 1,
+   "levels": [
+    1,
+    2,
+    3
+   ],
+   "name": "Open Fronthaul S-plane (PTP / SyncE)",
+   "role": "Carries time and frequency to the O-RU; the plane this project studies.",
+   "sentences": [
+    {
+     "id": "fh-splane.s1",
+     "kind": "REFERENCE",
+     "text": "The Open Fronthaul carries four planes: control, user, synchronization and management; the S-plane delivers time and frequency.",
+     "citation": {
+      "source": "SPlane_Project_Story_Guide.pdf",
+      "source_id": "GUIDE",
+      "clause": "Chapter 1",
+      "locator": "'Four kinds of traffic share this link'",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
+      "status": "UNVERIFIED"
+     }
+    },
+    {
+     "id": "fh-splane.s2",
+     "kind": "CONFIGURED",
+     "text": "The testbed runs the ITU-T G.8275.1 profile settings read back from the running system: domain 24, priority1 128, Sync 16 per second, Announce 8 per second, L2 multicast 01-1B-19-00-00-00, software timestamping.",
+     "citation": {
+      "source": "SPlane_Project_Story_Guide.pdf",
+      "source_id": "GUIDE",
+      "clause": "Chapter 3, 'The telecom rules'",
+      "locator": "configuration strip",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
+      "status": "UNVERIFIED"
+     }
+    },
+    {
+     "id": "fh-splane.s3",
+     "kind": "REFERENCE",
+     "text": "ITU-T G.8271.1 frames ±1.5 µs as the maximum absolute time error at reference point E (the end application) relative to a common recognised time standard; the network's share at reference point C is 1100 ns.",
+     "citation": {
+      "source": "V5_VERIFICATION_LOG.md",
+      "source_id": "V5LOG",
+      "clause": "item 32",
+      "locator": "scoping correction of '±1.5 µs'",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/verification_records/V5_VERIFICATION_LOG.md",
+      "status": "UNVERIFIED"
+     }
+    },
+    {
+     "id": "fh-splane.s4",
+     "kind": "UNKNOWN",
+     "text": "SyncE is a physical-layer function and was not implemented in the testbed, so frequency synchronisation is not measured here.",
+     "citation": {
+      "source": "v8 deck (PDF view)",
+      "source_id": "V8",
+      "clause": "slide 16 scope disclosure",
+      "locator": "'SyncE … was not implemented'",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
+      "status": "UNVERIFIED"
+     }
+    }
+   ]
+  },
+  {
+   "id": "injector",
+   "tier": 1,
+   "levels": [
+    1,
+    2,
+    3
+   ],
+   "name": "Attacker entry points (injector)",
+   "role": "Where forged or removed PTP traffic enters the testbed.",
+   "sentences": [
+    {
+     "id": "injector.s1",
+     "kind": "CONFIGURED",
+     "text": "In the testbed an injector runs inside RU3's namespace on the radio-unit bridge for A1-style spoofing, replay, flooding, malformed frames and whole-second abuse; a rogue boundary clock bridges both segments (A8); and interception blackholes the boundary clock's downstream port (C1).",
+     "citation": {
+      "source": "SPlane_Project_Story_Guide.pdf",
+      "source_id": "GUIDE",
+      "clause": "Chapter 7 figure caption",
+      "locator": "'Position 1 … position 2 is A8; position 3 is C1'",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
+      "status": "UNVERIFIED"
+     }
+    },
+    {
+     "id": "injector.s2",
+     "kind": "REFERENCE",
+     "text": "The standards describe attackers by capability and position (internal, external, man-in-the-middle, injector), not by name.",
+     "citation": {
+      "source": "SPlane_Project_Story_Guide.pdf",
+      "source_id": "GUIDE",
+      "clause": "Chapter 5",
+      "locator": "RFC 7384 cl. 3.1 attacker classes, as relayed",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
+      "status": "UNVERIFIED"
+     }
+    },
+    {
+     "id": "injector.s3",
+     "kind": "REFERENCE",
+     "text": "Access paths named for the fronthaul are remote access widened by multi-vendor equipment, physical access to cell sites, supply-chain backdoors, and unauthorised access to the Open Fronthaul Ethernet interface.",
+     "citation": {
+      "source": "SPlane_Project_Story_Guide.pdf",
+      "source_id": "GUIDE",
+      "clause": "Chapter 5",
+      "locator": "TIMESAFE §4 / T-FRHAUL-02, as relayed",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
+      "status": "UNVERIFIED"
+     }
+    },
+    {
+     "id": "injector.s4",
+     "kind": "MEASURED",
+     "text": "Where the injector shares RU3's port (A2, A3, A5, C2, C3), isolating that port also stops RU3's own Delay_Req, so RU3's timing is reported separately.",
+     "citation": {
+      "source": "RESULTS_2026-10-05.md",
+      "source_id": "RESULTS",
+      "clause": "§6 Limits",
+      "locator": "'Collateral on RU3'",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/RESULTS_2026-10-05.md",
+      "status": "UNVERIFIED"
+     }
+    }
+   ]
+  },
+  {
+   "id": "o-du",
+   "tier": 2,
+   "levels": [
+    1,
+    2
+   ],
+   "name": "O-DU (distributed unit)",
+   "role": "Hosts RLC, MAC and High-PHY; the timing source for the O-RU in LLS-C1 and LLS-C2.",
+   "sentences": [
+    {
+     "id": "o-du.s1",
+     "kind": "REFERENCE",
+     "text": "The O-DU hosts RLC, MAC and High-PHY and is joined to the O-RU by the Open Fronthaul (split 7-2x).",
+     "citation": {
+      "source": "SPlane_Project_Story_Guide.pdf",
+      "source_id": "GUIDE",
+      "clause": "Chapter 1",
+      "locator": "functional-split figure",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
+      "status": "UNVERIFIED"
+     }
+    },
+    {
+     "id": "o-du.s2",
+     "kind": "REFERENCE",
+     "text": "In LLS-C1 and LLS-C2 the O-DU is part of the synchronization chain towards the O-RU; in LLS-C3 it is not.",
+     "citation": {
+      "source": "v8 deck (PDF view)",
+      "source_id": "V8",
+      "clause": "slide 6",
+      "locator": "LLS table, as quoted from O-RAN.WG4.CUS.0 via Armstrong",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
+      "status": "UNVERIFIED"
+     }
+    },
+    {
+     "id": "o-du.s3",
+     "kind": "CONFIGURED",
+     "text": "The testbed has no O-DU: its timing chain is grandmaster to boundary clock to radio units, and the O-DU is not emulated.",
+     "citation": {
+      "source": "v8 deck (PDF view)",
+      "source_id": "V8",
+      "clause": "slide 6",
+      "locator": "'OUR TESTBED' box",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
+      "status": "UNVERIFIED"
+     }
+    },
+    {
+     "id": "o-du.s4",
+     "kind": "REFERENCE",
+     "text": "The E2 interface ends at the O-CU-CP, O-CU-UP and O-DU and does not reach the O-RU.",
+     "citation": {
+      "source": "SPlane_Project_Story_Guide.pdf",
+      "source_id": "GUIDE",
+      "clause": "Chapter 1",
+      "locator": "'A detail reviewers like to test'",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
+      "status": "UNVERIFIED"
+     }
+    },
+    {
+     "id": "o-du.s5",
+     "kind": "REFERENCE",
+     "text": "In LLS-C1 and LLS-C2 the O-DU implements a specific PTP clock type (T-BC or T-GM) towards the O-RU.",
+     "citation": {
+      "source": null,
+      "source_id": null,
+      "clause": null,
+      "locator": "No openable source states the O-DU's PTP clock type; the project documents say only that the O-DU is in the synchronization chain.",
+      "url_or_repo_path": null,
+      "status": "SOURCE_NEEDED"
+     }
+    }
+   ]
+  },
+  {
+   "id": "fh-mplane",
+   "tier": 2,
+   "levels": [
+    1,
+    2
+   ],
+   "name": "Open Fronthaul M-plane (management)",
+   "role": "Configures and monitors the O-RU; the channel through which O-RU sync state would be read.",
+   "sentences": [
+    {
+     "id": "fh-mplane.s1",
+     "kind": "REFERENCE",
+     "text": "The M-plane carries configuration and monitoring of the radio unit.",
+     "citation": {
+      "source": "SPlane_Project_Story_Guide.pdf",
+      "source_id": "GUIDE",
+      "clause": "Chapter 1",
+      "locator": "plane list",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
+      "status": "UNVERIFIED"
+     }
+    },
+    {
+     "id": "fh-mplane.s2",
+     "kind": "CONFIGURED",
+     "text": "The project wrote a fixture-tested parser for O-RU M-plane NETCONF/YANG synchronization telemetry; it was never run against real O-RU hardware.",
+     "citation": {
+      "source": "ingest/sync_status.py",
+      "source_id": "SYNCPY",
+      "clause": "module docstring",
+      "locator": "lines 1-10; CHANGES.md 2026-08-05 'fixture-testable'",
+      "url_or_repo_path": "01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/ingest/sync_status.py",
+      "status": "UNVERIFIED"
+     }
+    },
+    {
+     "id": "fh-mplane.s3",
+     "kind": "MEASURED",
+     "text": "The testbed has no M-plane; management queries were made with pmc, and pmc returns nothing unless it is called with -d 24.",
+     "citation": {
+      "source": "RESULTS_2026-10-05.md",
+      "source_id": "RESULTS",
+      "clause": "§4 table row 3",
+      "locator": "pmc corrected measurement",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/RESULTS_2026-10-05.md",
+      "status": "UNVERIFIED"
+     }
+    },
+    {
+     "id": "fh-mplane.s4",
+     "kind": "REFERENCE",
+     "text": "The O-RAN M-plane YANG model that exposes O-RU synchronization state is named o-ran-sync.",
+     "citation": {
+      "source": null,
+      "source_id": null,
+      "clause": null,
+      "locator": "Name appears only in a code comment (ingest/sync_status.py); not confirmed against the O-RAN WG4 M-plane specification or YANG file (egress blocked).",
+      "url_or_repo_path": null,
+      "status": "SOURCE_NEEDED"
+     }
+    }
+   ]
+  },
+  {
+   "id": "smo-nonrt",
+   "tier": 2,
+   "levels": [
+    1
+   ],
+   "name": "SMO / Non-RT RIC",
+   "role": "Where a closed loop like ours maps in O-RAN; not implemented there.",
+   "sentences": [
+    {
+     "id": "smo-nonrt.s1",
+     "kind": "REFERENCE",
+     "text": "In the project's architecture figure the Service Management and Orchestration layer with the Non-RT RIC sits above the RICs, O-CU, O-DU and O-RU.",
+     "citation": {
+      "source": "SPlane_Project_Story_Guide.pdf",
+      "source_id": "GUIDE",
+      "clause": "Part II, slide 4 entry",
+      "locator": "'SHOWS The full O-RAN picture (SMO, RICs, O-CU, O-DU, O-RU, core)'",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
+      "status": "UNVERIFIED"
+     }
+    },
+    {
+     "id": "smo-nonrt.s2",
+     "kind": "REFERENCE",
+     "text": "The project's architecture survey describes the SMO and Non-RT RIC as performing non-real-time optimisation and policy generation with a typical control loop above 1 s.",
+     "citation": {
+      "source": "AI-Native_ORAN_Digital_Twin_Architecture.md",
+      "source_id": "SURVEY",
+      "clause": "§9 SMO + Non-RT RIC",
+      "locator": "Role line",
+      "url_or_repo_path": "01_CURRENT_SPlane_SelfHealing/literature-survey/AI-Native_ORAN_Digital_Twin_Architecture.md",
+      "status": "UNVERIFIED"
+     }
+    },
+    {
+     "id": "smo-nonrt.s3",
+     "kind": "ILLUSTRATIVE",
+     "text": "A detect, decide, act and verify loop like this project's is the kind of function the survey places in that management domain; it is not implemented there, and the recovery loop here runs beside the testbed as a standalone process.",
+     "citation": {
+      "source": "RECOVERY_LOOP_DESIGN.md",
+      "source_id": "DESIGN",
+      "clause": "opening paragraph",
+      "locator": "'It does not change any frozen artefact'; runs beside the testbed",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/RECOVERY_LOOP_DESIGN.md",
+      "status": "UNVERIFIED"
+     }
+    },
+    {
+     "id": "smo-nonrt.s4",
+     "kind": "UNKNOWN",
+     "text": "Whether such a loop would be an rApp, an SMO function or something else was not decided or evaluated, and no digital twin rehearses the action before it is taken.",
+     "citation": {
+      "source": "RESULTS_2026-10-05.md",
+      "source_id": "RESULTS",
+      "clause": "§6 Limits",
+      "locator": "'No digital twin'",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/RESULTS_2026-10-05.md",
+      "status": "UNVERIFIED"
+     }
+    }
+   ]
+  },
+  {
+   "id": "gnss-time",
+   "tier": 2,
+   "levels": [
+    1,
+    2
+   ],
+   "name": "GNSS / time source (PRTC)",
+   "role": "Root time reference of the network; local GNSS receiver in LLS-C4.",
+   "sentences": [
+    {
+     "id": "gnss-time.s1",
+     "kind": "REFERENCE",
+     "text": "In LLS-C4 the synchronization reference reaches the O-RU with no involvement of the transport network, typically from a local GNSS receiver, so the exposure is GNSS jamming or spoofing rather than PTP.",
+     "citation": {
+      "source": "v8 deck (PDF view)",
+      "source_id": "V8",
+      "clause": "slide 6",
+      "locator": "LLS-C4 row",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
+      "status": "UNVERIFIED"
+     }
+    },
+    {
+     "id": "gnss-time.s2",
+     "kind": "UNKNOWN",
+     "text": "GNSS spoofing, GNSS jamming and honest GNSS holdover need a GNSS receiver and cannot be produced in the software testbed; they are shown as requiring hardware and are not measured.",
+     "citation": {
+      "source": "SPlane_Project_Story_Guide.pdf",
+      "source_id": "GUIDE",
+      "clause": "Chapter 8 note",
+      "locator": "'Five need hardware and could not be produced'",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
+      "status": "UNVERIFIED"
+     }
+    }
+   ]
+  },
+  {
+   "id": "synce",
+   "tier": 2,
+   "levels": [
+    1,
+    2
+   ],
+   "name": "SyncE (frequency)",
+   "role": "Physical-layer frequency reference alongside PTP time.",
+   "sentences": [
+    {
+     "id": "synce.s1",
+     "kind": "REFERENCE",
+     "text": "ITU-T G.8262 (SyncE) is context only for this project: it is a physical-layer function.",
+     "citation": {
+      "source": "v8 deck (PDF view)",
+      "source_id": "V8",
+      "clause": "slide 16",
+      "locator": "'Frequency synchronization context: ITU-T G.8262 (SyncE, not implemented here)'",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
+      "status": "UNVERIFIED"
+     }
+    },
+    {
+     "id": "synce.s2",
+     "kind": "UNKNOWN",
+     "text": "SyncE and equipment-clock degradation (B4) need a SyncE-capable PHY and are not measured.",
+     "citation": {
+      "source": "v8 deck (PDF view)",
+      "source_id": "V8",
+      "clause": "slide 39 remaining work",
+      "locator": "'SyncE-capable PHY … unlocks B4'",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
+      "status": "UNVERIFIED"
+     }
+    }
+   ]
+  },
+  {
+   "id": "osc-drift",
+   "tier": 2,
+   "levels": [
+    1,
+    2
+   ],
+   "name": "Oscillator drift (B6, two-laptop measurement)",
+   "role": "Free-running crystal offset between two physical machines; software-only measurement.",
+   "sentences": [
+    {
+     "id": "osc-drift.s1",
+     "kind": "MEASURED",
+     "text": "Run 2 measured a relative crystal offset of +21.013 ppm (95 % interval +20.623 to +21.403 ppm) between two laptops against the same NTP reference, and the pre-registered criteria were met (ESTABLISHED).",
+     "citation": {
+      "source": "B6 DRIFT_REPORT_run2.md",
+      "source_id": "B6",
+      "clause": "Headline",
+      "locator": "DRIFT_REPORT_run2.md",
+      "url_or_repo_path": "outputs/B6_two_machine_2026-10-02/run2/DRIFT_REPORT_run2.md",
+      "status": "UNVERIFIED"
+     }
+    },
+    {
+     "id": "osc-drift.s2",
+     "kind": "MEASURED",
+     "text": "Run 1 gave +20.161 ppm but failed a pre-registered criterion (retained samples), so it is reported as NOT ESTABLISHED.",
+     "citation": {
+      "source": "B6 DRIFT_REPORT_run2.md",
+      "source_id": "B6",
+      "clause": "Verdict C1",
+      "locator": "run 1 DRIFT_REPORT.md",
+      "url_or_repo_path": "outputs/B6_two_machine_2026-10-02/run2/DRIFT_REPORT_run2.md",
+      "status": "UNVERIFIED"
+     }
+    },
+    {
+     "id": "osc-drift.s3",
+     "kind": "UNKNOWN",
+     "text": "These are consumer laptop crystals measured against NTP, not telecom-class oscillators, and the raw per-sample files are not in the repository, so only the derived figures can be shown.",
+     "citation": {
+      "source": "RECOVERY_LOOP_DESIGN.md",
+      "source_id": "DESIGN",
+      "clause": "Oscillator drift (B6)",
+      "locator": "last paragraph",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/RECOVERY_LOOP_DESIGN.md",
+      "status": "UNVERIFIED"
+     }
+    }
+   ]
+  },
+  {
+   "id": "fh-cplane",
+   "tier": 3,
+   "levels": [
+    1
+   ],
+   "name": "C-plane (control)",
+   "role": "Scheduling and beamforming commands to the O-RU; influenced if timing is lost.",
+   "sentences": [
+    {
+     "id": "fh-cplane.s1",
+     "kind": "REFERENCE",
+     "text": "The C-plane tells the radio unit what to do with the next slots.",
+     "citation": {
+      "source": "SPlane_Project_Story_Guide.pdf",
+      "source_id": "GUIDE",
+      "clause": "Chapter 1",
+      "locator": "plane list",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
+      "status": "UNVERIFIED"
+     }
+    },
+    {
+     "id": "fh-cplane.s2",
+     "kind": "UNKNOWN",
+     "text": "What happens to C-plane traffic when S-plane timing is lost was not measured: the testbed has no O-DU or radio stack.",
+     "citation": {
+      "source": "v8 deck (PDF view)",
+      "source_id": "V8",
+      "clause": "slide 6",
+      "locator": "'The O-DU itself is not emulated'",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
+      "status": "UNVERIFIED"
+     }
+    },
+    {
+     "id": "fh-cplane.s3",
+     "kind": "REFERENCE",
+     "text": "C-plane processing stops or is misaligned when the O-RU loses synchronization.",
+     "citation": {
+      "source": null,
+      "source_id": null,
+      "clause": null,
+      "locator": "No openable source states this; demoted from tier 2 (see tier_log).",
+      "url_or_repo_path": null,
+      "status": "SOURCE_NEEDED"
+     }
+    }
+   ],
+   "consequence_card": true
+  },
+  {
+   "id": "fh-uplane",
+   "tier": 3,
+   "levels": [
+    1
+   ],
+   "name": "U-plane (user)",
+   "role": "Radio samples, i.e. user data; influenced if timing is lost.",
+   "sentences": [
+    {
+     "id": "fh-uplane.s1",
+     "kind": "REFERENCE",
+     "text": "The U-plane carries the radio samples, meaning the users' data.",
+     "citation": {
+      "source": "SPlane_Project_Story_Guide.pdf",
+      "source_id": "GUIDE",
+      "clause": "Chapter 1",
+      "locator": "plane list",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
+      "status": "UNVERIFIED"
+     }
+    },
+    {
+     "id": "fh-uplane.s2",
+     "kind": "UNKNOWN",
+     "text": "U-plane behaviour under timing loss was not measured in this project.",
+     "citation": {
+      "source": "v8 deck (PDF view)",
+      "source_id": "V8",
+      "clause": "slide 6",
+      "locator": "'The O-DU itself is not emulated'",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
+      "status": "UNVERIFIED"
+     }
+    },
+    {
+     "id": "fh-uplane.s3",
+     "kind": "REFERENCE",
+     "text": "U-plane traffic stops when the O-RU loses synchronization.",
+     "citation": {
+      "source": null,
+      "source_id": null,
+      "clause": null,
+      "locator": "No openable source states this; demoted from tier 2 (see tier_log).",
+      "url_or_repo_path": null,
+      "status": "SOURCE_NEEDED"
+     }
+    }
+   ],
+   "consequence_card": true
+  },
+  {
+   "id": "air-interface",
+   "tier": 3,
+   "levels": [
+    1
+   ],
+   "name": "Air interface",
+   "role": "Radio link whose phase and time alignment depend on S-plane timing.",
+   "sentences": [
+    {
+     "id": "air-interface.s1",
+     "kind": "REFERENCE",
+     "text": "Cooperating radio units must transmit at the same instant for MIMO and carrier aggregation to work.",
+     "citation": {
+      "source": "SPlane_Project_Story_Guide.pdf",
+      "source_id": "GUIDE",
+      "clause": "Chapter 2",
+      "locator": "opening paragraph",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
+      "status": "UNVERIFIED"
+     }
+    },
+    {
+     "id": "air-interface.s2",
+     "kind": "REFERENCE",
+     "text": "The cited 3GPP limits are cell phase synchronization better than 3 µs (TS 38.133) and time-alignment error of 65 ns for MIMO and 260 ns for intra-band contiguous carrier aggregation (TS 38.104, clause 9.6.3.2).",
+     "citation": {
+      "source": "v8 deck (PDF view)",
+      "source_id": "V8",
+      "clause": "slide 12 'Service limits at stake'",
+      "locator": "as relayed from ATIS and itecspec",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
+      "status": "UNVERIFIED"
+     }
+    }
+   ],
+   "consequence_card": true
+  },
+  {
+   "id": "ue",
+   "tier": 3,
+   "levels": [
+    1
+   ],
+   "name": "UE (user equipment)",
+   "role": "Phone or device served by the cell; the end of the consequence chain.",
+   "sentences": [
+    {
+     "id": "ue.s1",
+     "kind": "REFERENCE",
+     "text": "In one published experiment with switch PTP ports in dynamic role, the O-RU crashed about 2 s after a spoofing attack began, the 5G cell dropped and the radio needed a manual reboot; this is a measurement in that study, not a standard.",
+     "citation": {
+      "source": "SPlane_Project_Story_Guide.pdf",
+      "source_id": "GUIDE",
+      "clause": "Chapter 2",
+      "locator": "TIMESAFE, ACM TOPS 2025, as relayed",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
+      "status": "UNVERIFIED"
+     }
+    },
+    {
+     "id": "ue.s2",
+     "kind": "UNKNOWN",
+     "text": "This project did not measure any service impact on user equipment.",
+     "citation": {
+      "source": "RESULTS_2026-10-05.md",
+      "source_id": "RESULTS",
+      "clause": "§6 Limits",
+      "locator": "'Nanosecond time error is not measured'",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/RESULTS_2026-10-05.md",
+      "status": "UNVERIFIED"
+     }
+    }
+   ],
+   "consequence_card": true
+  },
+  {
+   "id": "near-rt-ric",
+   "tier": "dimmed",
+   "levels": [
+    1
+   ],
+   "name": "Near-RT RIC and xApps",
+   "role": "Near-real-time RAN control over E2.",
+   "sentences": [
+    {
+     "id": "near-rt-ric.s1",
+     "kind": "REFERENCE",
+     "text": "E2 connects the RIC to the O-CU-CP, O-CU-UP and O-DU and does not reach the O-RU, so RIC KPIs over E2 do not exist at the S-plane boundary.",
+     "citation": {
+      "source": "SPlane_Project_Story_Guide.pdf",
+      "source_id": "GUIDE",
+      "clause": "Chapter 1",
+      "locator": "E2 note",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
+      "status": "UNVERIFIED"
+     }
+    }
+   ],
+   "outside_project": true
+  },
+  {
+   "id": "o-cu",
+   "tier": "dimmed",
+   "levels": [
+    1
+   ],
+   "name": "O-CU (CP and UP)",
+   "role": "Central unit: RRC, PDCP (control) and SDAP, PDCP (user).",
+   "sentences": [
+    {
+     "id": "o-cu.s1",
+     "kind": "REFERENCE",
+     "text": "The O-CU-CP hosts RRC and PDCP for the control plane; the O-CU-UP hosts SDAP and PDCP for the user plane.",
+     "citation": {
+      "source": "SPlane_Project_Story_Guide.pdf",
+      "source_id": "GUIDE",
+      "clause": "Chapter 1",
+      "locator": "functional-split figure",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
+      "status": "UNVERIFIED"
+     }
+    }
+   ],
+   "outside_project": true
+  },
+  {
+   "id": "core-5g",
+   "tier": "dimmed",
+   "levels": [
+    1
+   ],
+   "name": "5G Core",
+   "role": "Core network reached over N2 and N3.",
+   "sentences": [
+    {
+     "id": "core-5g.s1",
+     "kind": "REFERENCE",
+     "text": "The project's architecture survey lists N2 control-plane to the AMF and N3 user-plane to the UPF as the core interfaces of the gNB.",
+     "citation": {
+      "source": "AI-Native_ORAN_Digital_Twin_Architecture.md",
+      "source_id": "SURVEY",
+      "clause": "§ O-CU entries",
+      "locator": "'N2 control-plane to AMF, N3 user-plane to UPF'",
+      "url_or_repo_path": "01_CURRENT_SPlane_SelfHealing/literature-survey/AI-Native_ORAN_Digital_Twin_Architecture.md",
+      "status": "UNVERIFIED"
+     }
+    }
+   ],
+   "outside_project": true
+  },
+  {
+   "id": "o-cloud",
+   "tier": "dimmed",
+   "levels": [
+    1
+   ],
+   "name": "O-Cloud",
+   "role": "Cloud infrastructure that hosts virtualised O-RAN functions, managed over O2.",
+   "sentences": [
+    {
+     "id": "o-cloud.s1",
+     "kind": "REFERENCE",
+     "text": "The project's architecture survey lists O2 as the SMO interface to the O-Cloud for resource inventory, deployment and lifecycle.",
+     "citation": {
+      "source": "AI-Native_ORAN_Digital_Twin_Architecture.md",
+      "source_id": "SURVEY",
+      "clause": "interface table",
+      "locator": "row 'SMO to O-Cloud'",
+      "url_or_repo_path": "01_CURRENT_SPlane_SelfHealing/literature-survey/AI-Native_ORAN_Digital_Twin_Architecture.md",
+      "status": "UNVERIFIED"
+     }
+    }
+   ],
+   "outside_project": true
+  },
+  {
+   "id": "lls-c1",
+   "tier": 2,
+   "levels": [
+    2
+   ],
+   "name": "LLS-C1",
+   "role": "O-DU is in the sync chain; direct link to the O-RU.",
+   "sentences": [
+    {
+     "id": "lls-c1.s1",
+     "kind": "REFERENCE",
+     "text": "In LLS-C1 the O-DU is part of the synchronization chain and network timing is distributed from O-DU to O-RU over a direct connection.",
+     "citation": {
+      "source": "v8 deck (PDF view)",
+      "source_id": "V8",
+      "clause": "slide 6",
+      "locator": "LLS-C1 row, as quoted from O-RAN.WG4.CUS.0 via Armstrong",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
+      "status": "UNVERIFIED"
+     }
+    },
+    {
+     "id": "lls-c1.s2",
+     "kind": "REFERENCE",
+     "text": "A compromised O-DU or the O-DU–O-RU link controls the O-RU's time (T-FRHAUL-01).",
+     "citation": {
+      "source": "v8 deck (PDF view)",
+      "source_id": "V8",
+      "clause": "slide 6",
+      "locator": "exposure column; relays ETSI TR 104 106",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
+      "status": "UNVERIFIED"
+     }
+    },
+    {
+     "id": "lls-c1.s3",
+     "kind": "UNKNOWN",
+     "text": "Not the testbed's configuration: the testbed has no O-DU in its timing chain.",
+     "citation": {
+      "source": "v8 deck (PDF view)",
+      "source_id": "V8",
+      "clause": "slide 6",
+      "locator": "'OUR TESTBED' box",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
+      "status": "UNVERIFIED"
+     }
+    }
+   ],
+   "lls": {
+    "testbed": false
+   }
+  },
+  {
+   "id": "lls-c2",
+   "tier": 2,
+   "levels": [
+    2
+   ],
+   "name": "LLS-C2",
+   "role": "O-DU is in the sync chain; one or more Ethernet switches allowed.",
+   "sentences": [
+    {
+     "id": "lls-c2.s1",
+     "kind": "REFERENCE",
+     "text": "In LLS-C2 the O-DU is part of the synchronization chain and one or more Ethernet switches are allowed in the fronthaul network.",
+     "citation": {
+      "source": "v8 deck (PDF view)",
+      "source_id": "V8",
+      "clause": "slide 6",
+      "locator": "LLS-C2 row",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
+      "status": "UNVERIFIED"
+     }
+    },
+    {
+     "id": "lls-c2.s2",
+     "kind": "UNKNOWN",
+     "text": "The Testbed Configuration Reference says the testbed 'models O-RAN LLS-C2/C3', while the v8 deck and story guide map it to LLS-C3 only; this app follows the latter because the testbed has no O-DU, and records the disagreement as unresolved.",
+     "citation": {
+      "source": "Testbed Configuration Reference 2026-10-05",
+      "source_id": "TBREF",
+      "clause": "§4 Topology and node roles",
+      "locator": "line 'models O-RAN LLS-C2/C3'",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_Testbed_Configuration_Reference_v2026-10-05.pdf",
+      "status": "UNVERIFIED"
+     }
+    }
+   ],
+   "lls": {
+    "testbed": false
+   }
+  },
+  {
+   "id": "lls-c3",
+   "tier": 2,
+   "levels": [
+    2
+   ],
+   "name": "LLS-C3 (the testbed's configuration)",
+   "role": "O-DU not in the sync chain; PRTC/T-GM to O-RU through the network.",
+   "sentences": [
+    {
+     "id": "lls-c3.s1",
+     "kind": "REFERENCE",
+     "text": "In LLS-C3 the O-DU is not part of the synchronization chain and timing is distributed from a PRTC/T-GM to the O-RU, typically from central or aggregation sites.",
+     "citation": {
+      "source": "v8 deck (PDF view)",
+      "source_id": "V8",
+      "clause": "slide 6",
+      "locator": "LLS-C3 row",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
+      "status": "UNVERIFIED"
+     }
+    },
+    {
+     "id": "lls-c3.s2",
+     "kind": "CONFIGURED",
+     "text": "The testbed has the LLS-C3 structure: grandmaster to boundary clock to radio units, with no O-DU in the timing chain.",
+     "citation": {
+      "source": "SPlane_Project_Story_Guide.pdf",
+      "source_id": "GUIDE",
+      "clause": "Chapter 1",
+      "locator": "'Our testbed has the LLS-C3 shape'",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
+      "status": "UNVERIFIED"
+     }
+    },
+    {
+     "id": "lls-c3.s3",
+     "kind": "REFERENCE",
+     "text": "TIMESAFE's real production-style test also used LLS-C3.",
+     "citation": {
+      "source": "v8 deck (PDF view)",
+      "source_id": "V8",
+      "clause": "slide 6",
+      "locator": "exposure column",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
+      "status": "UNVERIFIED"
+     }
+    }
+   ],
+   "lls": {
+    "testbed": true
+   }
+  },
+  {
+   "id": "lls-c4",
+   "tier": 2,
+   "levels": [
+    2
+   ],
+   "name": "LLS-C4",
+   "role": "Local GNSS receiver at the O-RU; no network timing.",
+   "sentences": [
+    {
+     "id": "lls-c4.s1",
+     "kind": "REFERENCE",
+     "text": "In LLS-C4 the reference is provided to the O-RU with no involvement of the transport network, typically by a local GNSS receiver.",
+     "citation": {
+      "source": "v8 deck (PDF view)",
+      "source_id": "V8",
+      "clause": "slide 6",
+      "locator": "LLS-C4 row",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
+      "status": "UNVERIFIED"
+     }
+    },
+    {
+     "id": "lls-c4.s2",
+     "kind": "UNKNOWN",
+     "text": "Not the testbed's configuration, and GNSS effects are not measurable in it.",
+     "citation": {
+      "source": "v8 deck (PDF view)",
+      "source_id": "V8",
+      "clause": "slide 18",
+      "locator": "'No GNSS receiver'",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
+      "status": "UNVERIFIED"
+     }
+    }
+   ],
+   "lls": {
+    "testbed": false
+   }
+  }
+ ]
+}
