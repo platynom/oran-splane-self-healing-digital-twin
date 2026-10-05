@@ -67,7 +67,7 @@ export async function DatasetsPanel() {
               <tr key={b.id} className="border-b border-line" data-testid={`ds-row-b6-${b.id}`}>
                 <td className="py-2"><KindBadge kind="MEASURED" /> B6 two-laptop oscillator drift, {b.id}</td>
                 <td className="num">
-                  <span data-testid={`ds-b6-${b.id}-ppm`}>{b.relativePpm}</span> ppm (95% CI {b.ci95.join(" to ")})
+                  <span data-testid={`ds-b6-${b.id}-ppm`}>{b.relativePpm.toFixed(3)}</span> ppm (95% CI <span data-testid={`ds-b6-${b.id}-ci`}>{b.ci95.map((x) => x.toFixed(3)).join(" to ")}</span>)
                 </td>
                 <td>{b.verdict.toLowerCase().replace("_", " ")}; raw per-sample files: {b.rawCsvPresent ? "present" : "data not in repo"}</td>
               </tr>

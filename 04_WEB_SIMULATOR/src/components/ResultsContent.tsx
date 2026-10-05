@@ -112,11 +112,11 @@ export async function ResultsContent() {
                   <dt className="text-muted">Loop median (exact)</dt>
                   <dd className="num font-mono" data-testid={`agg-${s.id}-loop-median`}>{l.unhealthyMedian.toFixed(2)} s</dd>
                   <dt className="text-muted">Restored at end</dt>
-                  <dd className="num">control {c.restoredAtEnd}/{c.n} · loop {l.restoredAtEnd}/{l.n}</dd>
+                  <dd className="num" data-testid={`agg-${s.id}-restored`}>control {c.restoredAtEnd}/{c.n} · loop {l.restoredAtEnd}/{l.n}</dd>
                   <dt className="text-muted">Executed actions (loop)</dt>
                   <dd className="num" data-testid={`agg-${s.id}-loop-actions`}>{l.disruptiveExecuted}{l.actionKinds.length ? ` · ${l.actionKinds.join(", ")}` : ""}</dd>
                   <dt className="text-muted">Verified</dt>
-                  <dd className="num">{l.verifyTotal ? `${l.verifyOk}/${l.verifyTotal}` : "–"}</dd>
+                  <dd className="num" data-testid={`agg-${s.id}-verified`}>{l.verifyTotal ? `${l.verifyOk}/${l.verifyTotal}` : "–"}</dd>
                   <dt className="text-muted">Would-act logged (control)</dt>
                   <dd className="num">{c.disruptiveWouldAct}</dd>
                   <dt className="text-muted">Runs with escalation (loop)</dt>
