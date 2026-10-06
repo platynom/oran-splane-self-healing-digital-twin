@@ -2,7 +2,8 @@
  * Architecture content (content/architecture.json) and its rendering rules.
  *
  * Rule 1: a sentence is rendered only if its citation is complete and its status is not SOURCE_NEEDED.
- * Rule 2: UNVERIFIED sentences are rendered with an UNVERIFIED tag; nothing is ever shown as VERIFIED by this code.
+ * Rule 2: UNVERIFIED sentences are rendered with an UNVERIFIED tag. VERIFIED is shown only for sentences that carry an
+ *         independent auditor's verbatim quote of the cited source ("verification"); validateArchitecture enforces it.
  * Rule 3: kinds (MEASURED / CONFIGURED / ILLUSTRATIVE / UNKNOWN / REFERENCE) are always shown next to the sentence.
  */
 import raw from "../../content/architecture.json";
@@ -19,11 +20,17 @@ export interface Citation {
   url_or_repo_path: string | null;
   status: CitationStatus;
 }
+export interface Verification {
+  by: string;
+  quote: string;
+  where: string;
+}
 export interface Sentence {
   id: string;
   kind: Kind;
   text: string;
   citation: Citation;
+  verification?: Verification;
 }
 export interface Element {
   id: string;
@@ -66,6 +73,7 @@ export interface Architecture {
 export const architecture = raw as unknown as Architecture;
 
 export const REPO_BLOB = "https://github.com/platynom/oran-splane-self-healing-digital-twin/blob/full-project-2026-10-05/";
+export const APP_BLOB = "https://github.com/platynom/oran-splane-self-healing-digital-twin/blob/webapp-sim/";
 
 export function isRenderable(s: Sentence): boolean {
   const c = s.citation;
@@ -100,7 +108,10 @@ export function isClickable(el: Element): boolean {
 export function referenceUrl(c: Citation): string | null {
   const p = c.url_or_repo_path;
   if (!p) return null;
-  return /^https?:\/\//.test(p) ? p : REPO_BLOB + p.split("/").map(encodeURIComponent).join("/");
+  if (/^https?:\/\//.test(p)) return p;
+  // this app's own files exist only on the webapp branches, not on the project snapshot branch
+  const base = p.startsWith("04_WEB_SIMULATOR/") ? APP_BLOB : REPO_BLOB;
+  return base + p.split("/").map(encodeURIComponent).join("/");
 }
 
 export function contentStats(arch: Architecture = architecture) {
@@ -128,9 +139,10 @@ export function validateArchitecture(arch: Architecture = architecture): string[
     if (!e.sentences.length) errs.push(`${e.id}: no sentences`);
     for (const s of e.sentences) {
       if (!s.citation) errs.push(`${s.id}: missing citation`);
-      if (s.citation.status === "VERIFIED") errs.push(`${s.id}: VERIFIED is not allowed in this session's content`);
-      if (s.citation.status === "UNVERIFIED") {
-        for (const f of ["source", "source_id", "clause", "locator", "url_or_repo_path"] as const) if (!s.citation[f]) errs.push(`${s.id}: UNVERIFIED citation lacks ${f}`);
+      if (s.citation.status === "VERIFIED" && !(s.verification?.quote?.trim() && s.verification.where?.trim() && s.verification.by?.trim()))
+        errs.push(`${s.id}: VERIFIED without an auditor's quote and location`);
+      if (s.citation.status === "UNVERIFIED" || s.citation.status === "VERIFIED") {
+        for (const f of ["source", "source_id", "clause", "locator", "url_or_repo_path"] as const) if (!s.citation[f]) errs.push(`${s.id}: ${s.citation.status} citation lacks ${f}`);
         if (s.citation.source_id && !srcIds.has(s.citation.source_id)) errs.push(`${s.id}: unknown source ${s.citation.source_id}`);
       }
       if (!["MEASURED", "CONFIGURED", "ILLUSTRATIVE", "UNKNOWN", "REFERENCE"].includes(s.kind)) errs.push(`${s.id}: bad kind ${s.kind}`);

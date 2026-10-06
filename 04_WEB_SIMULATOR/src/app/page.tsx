@@ -71,7 +71,13 @@ export default async function Home({ searchParams }: { searchParams: Promise<SP>
   const st = parseState(await searchParams);
   const scenarios = (await getScenarios()).map(({ id, code, title, cls }) => ({ id, code, title, cls }));
   if (!scenarios.some((s) => s.id === st.scenario)) st.scenario = DEFAULT_STATE.scenario;
-  const hw = await prisma.fault.findMany({ where: { testbedRequired: { startsWith: "HARDWARE" } }, select: { id: true, name: true }, orderBy: { id: "asc" } });
+  const hwAll = await prisma.fault.findMany({ where: { testbedRequired: { startsWith: "HARDWARE" } }, select: { id: true, name: true }, orderBy: { id: "asc" } });
+  // B6's physical premise was measured off the testbed on two laptops (outputs/B6_two_machine_2026-10-02). The workbook's
+  // "HARDWARE required" describes detection on the testbed and is unchanged by that run (B6 record §7), so B6 is shown
+  // as measured-elsewhere instead of "not measured", and only while its measurement rows are loaded.
+  const b6 = await prisma.b6Measurement.findMany({ select: { id: true, verdict: true }, orderBy: { id: "asc" } });
+  const b6Fault = b6.length ? hwAll.find((f) => f.id === "B6") : undefined;
+  const hw = hwAll.filter((f) => f !== b6Fault);
   return (
     <Simulator
       scenarios={scenarios}
@@ -79,6 +85,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<SP>
       results={st.results ? <ResultsContent /> : null}
       panel={await renderPanel(st, scenarios)}
       hwFaults={hw}
+      b6Measured={b6Fault ? { id: b6Fault.id, name: b6Fault.name, runs: b6 } : null}
     />
   );
 }

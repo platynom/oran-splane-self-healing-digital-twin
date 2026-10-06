@@ -18,6 +18,9 @@ test("home renders the O-RAN diagram with tiered elements", async ({ page }) => 
   for (const id of ["o-du", "fh-mplane", "smo-nonrt", "gnss-time", "synce"]) await expect(page.getByTestId(`node-${id}`)).toHaveAttribute("data-tier", "2");
   await expect(page.getByTestId("node-smo-nonrt")).toContainText("not implemented there");
   await expect(page.getByTestId("node-o-ru")).toContainText("RU3");
+  await expect(page.getByTestId("node-gm-a")).not.toContainText("PRTC");
+  await expect(page.getByTestId("node-fh-splane")).not.toContainText("SyncE");
+  await expect(page.getByTestId("content-counts")).toContainText("VERIFIED by an independent audit");
   expect(errors).toEqual([]);
 });
 
@@ -40,9 +43,11 @@ test("clicking a tier-1 element zooms in; Esc returns", async ({ page }) => {
   await expect(sim(page)).toHaveAttribute("data-level", "2");
   await expect(page.getByTestId("sim-diagram")).toHaveAttribute("data-zoom", "l2");
   await expect(page.getByTestId("crumb-2")).toHaveAttribute("aria-current", "location");
-  await expect(page.getByTestId("side-title")).toHaveText("Open Fronthaul S-plane (PTP / SyncE)");
+  await expect(page.getByTestId("side-title")).toHaveText("Open Fronthaul S-plane (PTP in the testbed)");
   await expect(page).toHaveURL(/level=2/);
   await expect(page.getByTestId("lls-overlay")).toHaveAttribute("data-testbed", "true");
+  await expect(page.getByTestId("lls-c3")).toHaveText("LLS-C3 · closest match (reference doc says C2/C3)");
+  await expect(page.getByTestId("lls-overlay")).toContainText("closest match to the testbed");
   await page.getByTestId("lls-c1").click();
   await expect(page.getByTestId("lls-overlay")).toHaveAttribute("data-testbed", "false");
   await expect(page.getByTestId("side-title")).toHaveText("LLS-C1");
@@ -181,4 +186,22 @@ test("accessibility in the dark and projector themes (WCAG 2.1 AA, serious/criti
       expect(bad.map((v) => `${theme} ${u}: ${v.id} (${v.nodes.length}) ${v.nodes[0]?.target}`)).toEqual([]);
     }
   }
+});
+
+test("B6 is shown as measured on two laptops, not in the hardware-only list", async ({ page, request }) => {
+  const b6 = (await (await request.get("/api/scene/b6")).json()).measurements as { id: string; verdict: string }[];
+  expect(b6.map((m) => `${m.id}:${m.verdict}`)).toEqual(["run1:NOT_ESTABLISHED", "run2:ESTABLISHED"]);
+  await page.goto("/?level=3", { waitUntil: "networkidle" });
+  const strip = page.getByTestId("hw-faults");
+  for (const id of ["A6", "A7", "B1", "B4"]) await expect(page.getByTestId(`hw-${id}`)).toContainText("requires hardware, not measured");
+  await expect(page.getByTestId("hw-B6")).toHaveCount(0);
+  await expect(strip.locator("li", { hasText: "Oscillator" })).toHaveCount(0);
+  const b = page.getByTestId("hw-B6-measured");
+  await expect(b).toContainText("measured on two laptops (software timestamping)");
+  await expect(b).not.toContainText("not measured");
+  await expect(page.getByTestId("hw-B6-run1")).toHaveText("run1 not established");
+  await expect(page.getByTestId("hw-B6-run2")).toContainText("run2 established");
+  await expect(b).toContainText("not an end-to-end detection test");
+  await page.getByTestId("hw-B6-open").click();
+  await expect(page.getByTestId("side-title")).toHaveText("Oscillator drift (B6, two-laptop measurement)");
 });

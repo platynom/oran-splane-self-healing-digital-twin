@@ -3,13 +3,16 @@ import { useCallback, useEffect, useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { useReducedMotion } from "framer-motion";
 import clsx from "clsx";
-import { architecture, getElement } from "@/lib/architecture";
+import { contentStats, getElement } from "@/lib/architecture";
+
+const stats = contentStats();
 import { LEVEL_NAME, parseState, select, serializeState, up, ZOOM_TARGET, type Level, type Lls, type SimState } from "@/lib/sim/state";
 import { ReplayViewer, type ReplayView, type ScenarioOpt } from "../ReplayViewer";
 import { Diagram } from "./Diagram";
 import { LoopStages } from "./LoopStages";
 import { PacketInspector } from "./PacketInspector";
 import { Sentences } from "./Sentences";
+import { KindBadge } from "../ui";
 
 export interface HwFault {
   id: string;
@@ -58,12 +61,14 @@ function writePref(k: string, v: string) {
   }
 }
 
-export function Simulator({ scenarios, initial, results, panel, hwFaults }: {
+export function Simulator({ scenarios, initial, results, panel, hwFaults, b6Measured = null }: {
   scenarios: ScenarioOpt[];
   initial: SimState;
   results: React.ReactNode; // server-rendered when ?results=1
   panel: React.ReactNode; // server-rendered for ?panel=...
   hwFaults: HwFault[];
+  /** B6 is measured off the testbed (two laptops); shown apart from the hardware-only faults. */
+  b6Measured?: { id: string; name: string; runs: { id: string; verdict: string }[] } | null;
 }) {
   const router = useRouter();
   const reduce = !!useReducedMotion();
@@ -225,7 +230,7 @@ export function Simulator({ scenarios, initial, results, panel, hwFaults }: {
                         data-testid={`lls-${l}`}
                       >
                         LLS-{l.toUpperCase()}
-                        {el.lls?.testbed ? " · testbed" : ""}
+                        {el.lls?.testbed ? " · closest match (reference doc says C2/C3)" : ""}
                       </button>
                     );
                   })}
@@ -278,6 +283,21 @@ export function Simulator({ scenarios, initial, results, panel, hwFaults }: {
                       </li>
                     ))}
                   </ul>
+                  {b6Measured && (
+                    <p className="mt-3" data-testid="hw-B6-measured">
+                      <KindBadge kind="MEASURED" /> {b6Measured.id} · {b6Measured.name}: measured on two laptops (software timestamping):{" "}
+                      {b6Measured.runs.map((r, i) => (
+                        <span key={r.id} data-testid={`hw-B6-${r.id}`}>
+                          {i > 0 && "; "}
+                          {r.id} {r.verdict.toLowerCase().replace("_", " ")}
+                        </span>
+                      ))}
+                      . Physical premise only (relative crystal offset between the laptops); not an end-to-end detection test on the testbed.{" "}
+                      <button type="button" className="underline" onClick={() => onSelect("osc-drift")} data-testid="hw-B6-open">
+                        Open the B6 measurement
+                      </button>
+                    </p>
+                  )}
                 </section>
               )}
             </>
@@ -339,7 +359,7 @@ export function Simulator({ scenarios, initial, results, panel, hwFaults }: {
       )}
       <p className="text-xs text-muted">
         Keys: Space play/pause · ←/→ previous/next recorded event · Esc up a level · R results · P projector · L large text. Every view has its own URL.
-        Content: {architecture.elements.length} elements; every sentence is cited and marked UNVERIFIED.
+        Content: {stats.elements} elements, {stats.sentences} cited sentences: <span data-testid="content-counts">{stats.verified} VERIFIED by an independent audit, {stats.unverified} UNVERIFIED, {stats.sourceNeeded} hidden (source needed)</span>.
       </p>
     </div>
   );

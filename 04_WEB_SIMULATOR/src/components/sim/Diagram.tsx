@@ -144,7 +144,7 @@ export function Diagram({ level, lls, focus, zoom, onSelect }: {
                   </g>
                 ))}
               {el.id === "o-ru" && (
-                <text x={c.x} y={b.y + 112} textAnchor="middle" className="sim-sublabel">T-TSC (telecom time slave)</text>
+                <text x={c.x} y={b.y + 112} textAnchor="middle" className="sim-sublabel">T-TSC (ptp4l clients)</text>
               )}
               {el.tier === 3 && (
                 <text x={b.x + b.w - 6} y={b.y + 11} textAnchor="end" className="sim-tag">consequence</text>
@@ -171,8 +171,8 @@ export function Diagram({ level, lls, focus, zoom, onSelect }: {
 
 function shortName(el: Element) {
   const map: Record<string, string> = {
-    "gm-a": "GM-A (PRTC/T-GM)", "gm-b": "GM-B (backup GM)", bc: "T-BC", "bc-standby": "Standby T-BC", "o-ru": "O-RU",
-    "fh-splane": "S-plane (PTP / SyncE)", "fh-mplane": "M-plane", "fh-cplane": "C-plane", "fh-uplane": "U-plane", injector: "Injector (attacks)",
+    "gm-a": "GM-A (T-GM)", "gm-b": "GM-B (backup T-GM)", bc: "T-BC", "bc-standby": "Standby T-BC", "o-ru": "O-RU proxies",
+    "fh-splane": "S-plane (PTP)", "fh-mplane": "M-plane", "fh-cplane": "C-plane", "fh-uplane": "U-plane", injector: "Injector (attacks)",
     "o-du": "O-DU", "smo-nonrt": "SMO / Non-RT RIC", "gnss-time": "GNSS / time source", synce: "SyncE (frequency)", "osc-drift": "Oscillator drift (B6)",
     "air-interface": "Air interface", ue: "UE", "near-rt-ric": "Near-RT RIC + xApps", "o-cu": "O-CU", "core-5g": "5G Core", "o-cloud": "O-Cloud",
   };
@@ -192,7 +192,7 @@ function LlsOverlay({ lls }: { lls: Lls }) {
         </g>
       )}
       <text x={280} y={410} className="sim-sublabel">
-        {`Timing path in LLS-${lls.toUpperCase()}${testbed ? " (the testbed's configuration)" : " (not the testbed's configuration)"}`}
+        {`Timing path in LLS-${lls.toUpperCase()}${testbed ? " (closest match to the testbed: no O-DU in the timing chain; the lab has no PRTC)" : " (not the testbed's structure)"}`}
       </text>
     </g>
   );

@@ -20,6 +20,12 @@ import { pyRound } from "../src/lib/metrics";
 const BASE = process.env.BASE ?? "http://localhost:3000";
 const ROOT = path.join(__dirname, "..", "..");
 const json = (p: string) => JSON.parse(readFileSync(path.join(ROOT, p), "utf8"));
+// Load .env explicitly: Prisma's own lookup depends on whether .env existed when `prisma generate` ran (fails in a fresh clone).
+try {
+  process.loadEnvFile(path.join(__dirname, "..", ".env"));
+} catch {
+  /* no .env: DATABASE_URL must come from the shell */
+}
 const prisma = new PrismaClient();
 const results: { check: string; rendered: string; expected: string; ok: boolean }[] = [];
 const cmp = (check: string, rendered: string | undefined, expected: string) =>

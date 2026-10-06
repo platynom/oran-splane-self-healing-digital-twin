@@ -4,8 +4,8 @@ import { KindBadge } from "../ui";
 
 /**
  * Explanatory text of one architecture element. Only sentences with a complete citation are rendered;
- * SOURCE_NEEDED sentences are hidden and counted. Every rendered sentence carries its kind and an
- * UNVERIFIED citation chip (source, clause, locator, link).
+ * SOURCE_NEEDED sentences are hidden and counted. Every rendered sentence carries its kind and a
+ * citation chip (source, clause, locator, link, status). A VERIFIED chip carries the auditor's quote as its tooltip.
  */
 export function Sentences({ id, compact = false }: { id: string; compact?: boolean }) {
   const el = getElement(id);
@@ -25,7 +25,7 @@ export function Sentences({ id, compact = false }: { id: string; compact?: boole
                 target="_blank"
                 rel="noreferrer"
                 className="ml-1 inline-flex items-center gap-1 rounded border border-line px-1.5 text-[11px] text-muted hover:text-ink"
-                title={`${s.citation.source}, ${s.citation.clause}, ${s.citation.locator} (${s.citation.url_or_repo_path})`}
+                title={`${s.citation.source}, ${s.citation.clause}, ${s.citation.locator} (${s.citation.url_or_repo_path})${s.verification ? `\nVerified (${s.verification.by}): "${s.verification.quote}" at ${s.verification.where}` : ""}`}
                 data-testid="cite-chip"
               >
                 {s.citation.source_id} · {s.citation.clause} · <span className="font-semibold">{s.citation.status}</span>

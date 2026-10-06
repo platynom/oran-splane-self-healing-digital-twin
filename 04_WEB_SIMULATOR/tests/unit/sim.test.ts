@@ -1,11 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { gunzipSync } from "node:zlib";
 import path from "node:path";
 import { DEFAULT_STATE, parseState, select, serializeState, up, type SimState } from "@/lib/sim/state";
 import { keyEvents, nextEventTime, prevEventTime, stagesAt, stagesInRun } from "@/lib/sim/events";
 import {
-  architecture, contentStats, getElement, hiddenSentenceCount, isClickable, isRenderable, renderableSentences, validateArchitecture,
+  APP_BLOB, REPO_BLOB, referenceUrl, architecture, contentStats, getElement, hiddenSentenceCount, isClickable, isRenderable, renderableSentences, validateArchitecture,
   type Sentence,
 } from "@/lib/architecture";
 import type { ReplayRun } from "@/lib/replay";
@@ -122,7 +122,11 @@ describe("architecture content: citation hiding", () => {
     const s = contentStats();
     expect(s.rendered + s.hidden).toBe(s.sentences);
     expect(s.hidden).toBeGreaterThanOrEqual(s.sourceNeeded);
-    expect(s.verified).toBe(0);
+    // VERIFIED only with an independent auditor's verbatim quote and location
+    for (const el of architecture.elements) for (const x of el.sentences) if (x.citation.status === "VERIFIED") {
+      expect(x.verification?.quote?.length, x.id).toBeGreaterThan(0);
+      expect(x.verification?.where?.length, x.id).toBeGreaterThan(0);
+    }
     for (const el of architecture.elements) {
       expect(renderableSentences(el).every((x) => x.citation.status !== "SOURCE_NEEDED")).toBe(true);
       expect(hiddenSentenceCount(el)).toBe(el.sentences.filter((x) => x.citation.status === "SOURCE_NEEDED").length);
@@ -139,5 +143,35 @@ describe("architecture content: citation hiding", () => {
   });
   it("only LLS-C3 is marked as the testbed configuration", () => {
     expect(architecture.elements.filter((e) => e.lls?.testbed).map((e) => e.id)).toEqual(["lls-c3"]);
+  });
+});
+
+describe("architecture content: audit fixes (2026-10-06)", () => {
+  const root = path.join(__dirname, "../../..");
+  it("every cited repository path exists in this checkout", () => {
+    const missing = architecture.elements.flatMap((e) => e.sentences)
+      .map((x) => x.citation.url_or_repo_path)
+      .filter((p): p is string => !!p && !/^https?:/.test(p))
+      .filter((p) => !existsSync(path.join(root, p)));
+    expect(missing).toEqual([]);
+  });
+  it("app-code citations link to the webapp-sim branch, project files to the snapshot branch", () => {
+    const c = { source: "s", source_id: "S", clause: "c", locator: "l", status: "UNVERIFIED" as const };
+    expect(referenceUrl({ ...c, url_or_repo_path: "04_WEB_SIMULATOR/ingest/extract.py" })).toBe(APP_BLOB + "04_WEB_SIMULATOR/ingest/extract.py");
+    expect(referenceUrl({ ...c, url_or_repo_path: "03_RECOVERY_LOOP_S-PLANE/PREREGISTRATION.md" })).toBe(REPO_BLOB + "03_RECOVERY_LOOP_S-PLANE/PREREGISTRATION.md");
+  });
+  it("labels do not overclaim: no PRTC on GM-A, PTP-only S-plane, O-RU proxies, LLS-C3 as closest match", () => {
+    expect(getElement("gm-a")!.name).not.toMatch(/PRTC/);
+    expect(getElement("fh-splane")!.name).not.toMatch(/SyncE/);
+    expect(getElement("o-ru")!.name).toMatch(/proxies/);
+    expect(getElement("lls-c3")!.name).toMatch(/closest match/);
+  });
+  it("the A1 rogue is not placed in RU3's namespace by any rendered sentence", () => {
+    const bad = architecture.elements.flatMap((e) => renderableSentences(e)).filter((x) => /A1[^.;]*RU3's namespace|RU3's namespace[^.;]*A1\b/.test(x.text));
+    expect(bad.map((x) => x.id)).toEqual([]);
+  });
+  it("tier 1 elements on the level-1 diagram are only those the testbed built", () => {
+    const t1 = architecture.elements.filter((e) => e.tier === 1 && e.levels.includes(1) && !e.id.startsWith("ds-")).map((e) => e.id).sort();
+    expect(t1).toEqual(["bc", "fh-splane", "gm-a", "gm-b", "injector", "o-ru"]);
   });
 });
