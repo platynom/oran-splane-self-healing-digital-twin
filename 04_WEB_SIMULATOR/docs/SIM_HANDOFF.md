@@ -1,5 +1,7 @@
 # 2D architecture simulator: handoff (branch `webapp-sim`, 2026-10-05)
 
+> **Superseded in part by the independent audit of 2026-10-06: see [`SIM_AUDIT.md`](SIM_AUDIT.md).** The content counts, tier table, LLS label, hardware strip and B6 statements below were updated after the audit; test counts in the verification table are those of the original build (the audit re-ran everything: unit 68/68, Playwright 24/24, fidelity 787/0).
+
 Branch `webapp-sim` was created from `webapp`, and the backend and content work from `webapp-3d` was carried over.
 No other branch was modified.
 
@@ -90,8 +92,8 @@ The clean clone here was a Linux checkout with 0 CRs in `scripts/*.sh`.
 
 | Tier | Styling | Elements |
 |---|---|---|
-| 1 | Bright, thick accent | GM-A, GM-B, T-BC, standby T-BC, O-RU (RU1–3 as T-TSC), S-plane (PTP / SyncE), injector |
-| 2 | Normal | O-DU, M-plane, SMO / Non-RT RIC (labelled with its role: "Where a closed loop like ours maps in O-RAN; not implemented there."), GNSS / time source, SyncE, B6 oscillator drift |
+| 1 | Bright, thick accent | GM-A (T-GM; the lab has no PRTC), GM-B, T-BC, standby T-BC, O-RU proxies (RU1–3 as T-TSC), S-plane (PTP only), injector |
+| 2 | Normal | O-DU, M-plane, SMO / Non-RT RIC (labelled "Project framing: where a closed loop like ours would sit in O-RAN; not implemented there."), GNSS / time source, SyncE, B6 oscillator drift |
 | 3 | Dashed "consequence" cards | C-plane, U-plane (both demoted, see the tier log), air interface, UE |
 | Dimmed | Opacity 0.4, `role="img"`, not clickable; hover / focus tooltip with name, role and "Outside this project." | Near-RT RIC + xApps, O-CU, 5G Core, O-Cloud |
 
@@ -101,8 +103,8 @@ The clean clone here was a Linux checkout with 0 CRs in `scripts/*.sh`.
 - A breadcrumb is shown, and a Back button / Esc goes up one level.
 - **L1:** the whole O-RAN diagram.
 - **L2:** the open fronthaul, with an LLS-C1 … C4 switch.
-  - C3 is the testbed's configuration: it is drawn as a solid accent path and labelled "testbed".
-  - The others are drawn as dashed warn paths, labelled "not the testbed's configuration".
+  - C3 is the closest match to the testbed: it is drawn as a solid accent path and labelled "closest match (reference doc says C2/C3)". C2 does not fit the quoted definition (O-DU in the sync chain); see SIM_AUDIT.md §LLS.
+  - The others are drawn as dashed warn paths, labelled "not the testbed's structure".
   - Their explanations come from the `lls-c*` content sentences.
 - **L3:** the S-plane testbed.
   - It reuses `ReplayViewer` / `Topology`, extended with 0.25× speed, previous / next recorded event, presenter hotkeys, an initial t / view, a state callback, and an `extra` render slot.
@@ -111,7 +113,9 @@ The clean clone here was a Linux checkout with 0 CRs in `scripts/*.sh`.
     - Announce / BMCA: the compared fields in order, plus measured Announce counts per sender in the current bin.
     - attack packets: the port the loop localised the violation to (from `loop.jsonl`), plus frames from attacker senders in the current bin.
     - recorded per-sender × message-type counts on brDN and brUP.
-  - Faults that need hardware (A6, A7, B1, B4, B6, selected by the workbook field `testbedRequired = HARDWARE required`) are listed greyed as "requires hardware, not measured".
+  - Faults that need hardware (A6, A7, B1, B4, selected by the workbook field `testbedRequired = HARDWARE required`) are listed greyed as "requires hardware, not measured".
+  - B6 is listed separately as "measured on two laptops (software timestamping)" with its run1 / run2 verdicts from the database, and the scope "physical premise only; not an end-to-end detection test on the testbed".
+  - **Workbook field for B6:** `ORAN_Fault_Detectability` still says `HARDWARE required` for B6, and the workbook was not altered. The B6 record (§7) says that row describes detectability on the software testbed and is not changed by the two-laptop run, so the field is consistent with its source. What was wrong was this app's "not measured" label, now fixed.
 - **L4:** recovery-loop stages detect / localise / decide / act / verify / rollback (`LoopStages.tsx`).
   - Each stage lights at the recorded time from `src/lib/sim/events.ts`:
     - **detect** = first ATTACK eval at or after T0;
@@ -217,21 +221,21 @@ Behaviour:
 
 ## Content (`content/architecture.json`)
 
-- **Totals:** 41 elements, 98 sentences, 28 sources (23 openable in this session).
-- **Status:** **94 UNVERIFIED, 4 SOURCE_NEEDED, 0 VERIFIED.**
+- **Totals (after the 2026-10-06 audit):** 41 elements, 111 sentences, 33 sources.
+- **Status:** **107 VERIFIED** (independent auditor quote stored per sentence), **0 UNVERIFIED, 4 SOURCE_NEEDED** (hidden). Before the audit: 94 UNVERIFIED, 4 SOURCE_NEEDED, 0 VERIFIED, 98 sentences.
 - **SOURCE_NEEDED sentences:** the UI hides all 4 and shows only a count ("1 sentence hidden: source needed"):
   - `o-du.s5`: PTP clock type of the O-DU in LLS-C1 / C2;
   - `fh-mplane.s4`: the `o-ran-sync` YANG name;
   - `fh-cplane.s3`: C-plane behaviour under timing loss;
   - `fh-uplane.s3`: U-plane behaviour under timing loss.
-- **Sentence kinds:** REFERENCE 36, CONFIGURED 24, MEASURED 21, UNKNOWN 16, ILLUSTRATIVE 1.
+- **Sentence kinds:** REFERENCE 38, CONFIGURED 34, MEASURED 22, UNKNOWN 17 (before the audit: REFERENCE 36, CONFIGURED 24, MEASURED 21, UNKNOWN 16, ILLUSTRATIVE 1).
 
 The five recorded checks:
 
-1. **LLS mapping.** The v8 deck and the story guide say LLS-C3. The Testbed Configuration Reference §4 says "models O-RAN LLS-C2/C3". This is **unresolved**; the app treats C3 as the testbed's configuration.
+1. **LLS mapping.** Resolved by the audit: LLS-C3 is the closest match; LLS-C2 is not defensible (its quoted definition puts the O-DU in the sync chain; the testbed has none). TBREF §4's "LLS-C2/C3" is shown as the reference doc's wording.
 2. **O-DU timing role in LLS-C1 / C2.** Partly verified: the O-DU's membership in the sync chain is verified. Its clock type is SOURCE_NEEDED.
 3. **M-plane sync YANG name.** SOURCE_NEEDED. "o-ran-sync" appears only in a project comment, and the O-RAN YANG repository was not reachable.
-4. **G.8271 ±1.5 µs.** Supported as an absolute limit at reference point E (G.8271.1). The "TDD" framing is not verified.
+4. **G.8271 ±1.5 µs.** Supported as an absolute limit at reference point E (G.8271.1). No source ties it to TDD; "TDD" applies only to the separate 3 µs TS 38.133 limit.
 5. **WG11 S-plane threats.** The mapping is relayed by project documents (v8 slides 10–12, the Fault Matrix). ETSI TR 104 106 itself was not opened.
 
 Tier log:

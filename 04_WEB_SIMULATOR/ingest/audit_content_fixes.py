@@ -178,7 +178,7 @@ def fix(sid, why, text=None, kind=None, citation=None):
     old = s_["text"]
     if text: s_["text"] = text
     if kind: s_["kind"] = kind
-    if citation: s_["citation"] = citation
+    if citation: s_["citation"] = dict(citation)  # copy: one citation dict must never be shared by two sentences
     log.append(dict(sentence=sid, action="pass-2 fix", old=old, new=s_["text"], why=why))
 
 T3 = cite("TBREF", "§3 Declared deviations from a production deployment", "p.4, clock_class_threshold 248 row")

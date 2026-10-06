@@ -556,7 +556,12 @@
       "clause": "§3 Declared deviations from a production deployment",
       "locator": "p.4, clock_class_threshold 248 row",
       "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_Testbed_Configuration_Reference_v2026-10-05.pdf",
-      "status": "UNVERIFIED"
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 3, 2026-10-06",
+      "quote": "clock_class_threshold 248 | An acceptance policy, not a quality claim; the lab has no PRTC/GPS so every node truthfully advertises clockClass 248.",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_Testbed_Configuration_Reference_v2026-10-05.pdf p.4, §3 Declared deviations, clock_class_threshold 248 row"
      }
     }
    ]
@@ -600,7 +605,12 @@
       "clause": "frozen.per_scenario.B_unplanned_failover",
       "locator": "correct 12 / n 12, expect UNKNOWN",
       "url_or_repo_path": "01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/gap_coverage_2026-09-20/corrected_final/EVALUATION_V4.json",
-      "status": "UNVERIFIED"
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 3, 2026-10-06",
+      "quote": "frozen (label 'FROZEN rule c362e11').per_scenario.B_unplanned_failover = {\"correct\": 12, \"n\": 12, \"expect\": \"UNKNOWN\"}",
+      "where": "01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/gap_coverage_2026-09-20/corrected_final/EVALUATION_V4.json, frozen.per_scenario.B_unplanned_failover"
      }
     },
     {
@@ -631,7 +641,12 @@
       "clause": "case B_unplanned_failover",
       "locator": "lines 94-101",
       "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/testbed_frozen_copy/run/scenarios.sh",
-      "status": "UNVERIFIED"
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 3, 2026-10-06",
+      "quote": "# CRITICAL BENIGN GAP #1: GM-A dies with NO maintenance window. Provisioned GM-B takes over. From packets alone this is INDISTINGUISHABLE from an attack that suppressed GM-A; ... manifest benign B_UNPLANNED false \"UNPLANNED: GM-A crashes, NO maintenance window; GM-B (provisioned) elected\" ... kill -9 $(cat $OUT/gma.pid)",
+      "where": "03_RECOVERY_LOOP_S-PLANE/testbed_frozen_copy/run/scenarios.sh lines 94-101"
      }
     }
    ]
@@ -657,7 +672,12 @@
       "clause": "§4 Topology and node roles",
       "locator": "topology line and node table, row bc",
       "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_Testbed_Configuration_Reference_v2026-10-05.pdf",
-      "status": "UNVERIFIED"
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 3, 2026-10-06",
+      "quote": "[gma p2=100] [gmb p2=110] --- brUP --- [bc: v-bc-up | v-bc-dn] --- brDN --- [ru1] [ru2] [ru3] ... bc | Boundary clock (T-BC) | 120 | stepsRemoved 0→1; enables A8 and B7",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_Testbed_Configuration_Reference_v2026-10-05.pdf p.4, §4 Topology and node roles, topology line and node table row bc"
      }
     },
     {
@@ -965,7 +985,12 @@
       "clause": "slide 7",
       "locator": "budget column: 'Total budget at reference point E; the network limit at reference point C is 1100 ns'",
       "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
-      "status": "UNVERIFIED"
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 3, 2026-10-06",
+      "quote": "±1.5 µs  Absolute time error at reference point E, common time standard  Total budget at reference point E; the network limit at reference point C is 1100 ns",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf page/slide 7, middle (budget) column"
      }
     }
    ]
@@ -1304,7 +1329,12 @@
       "clause": "opening paragraph",
       "locator": "and architecture diagram",
       "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/RECOVERY_LOOP_DESIGN.md",
-      "status": "UNVERIFIED"
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 3, 2026-10-06",
+      "quote": "It runs on the same software testbed and uses the same frozen detector. It does not change any frozen artefact. ... [diagram] recovery loop (root namespace)",
+      "where": "03_RECOVERY_LOOP_S-PLANE/RECOVERY_LOOP_DESIGN.md lines 3-6 (opening paragraph and diagram header)"
      }
     },
     {
@@ -1562,7 +1592,12 @@
       "clause": "slide 6",
       "locator": "OUR TESTBED box: 'The O-DU itself is not emulated.'",
       "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
-      "status": "UNVERIFIED"
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 3, 2026-10-06",
+      "quote": "OUR TESTBED  Grandmaster → boundary clock → three radio units over bridged segments, with no O-DU in the timing chain: the LLS-C3 structure. The O-DU itself is not emulated.",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf page/slide 6, OUR TESTBED box"
      }
     },
     {
@@ -1618,7 +1653,12 @@
       "clause": "slide 6",
       "locator": "OUR TESTBED box: 'The O-DU itself is not emulated.'",
       "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
-      "status": "UNVERIFIED"
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 3, 2026-10-06",
+      "quote": "OUR TESTBED  Grandmaster → boundary clock → three radio units over bridged segments, with no O-DU in the timing chain: the LLS-C3 structure. The O-DU itself is not emulated.",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf page/slide 6, OUR TESTBED box"
      }
     },
     {
@@ -2062,7 +2102,12 @@
       "clause": "§3 Declared deviations from a production deployment",
       "locator": "p.4, clock_class_threshold 248 row",
       "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_Testbed_Configuration_Reference_v2026-10-05.pdf",
-      "status": "UNVERIFIED"
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 3, 2026-10-06",
+      "quote": "clock_class_threshold 248 | An acceptance policy, not a quality claim; the lab has no PRTC/GPS so every node truthfully advertises clockClass 248.",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_Testbed_Configuration_Reference_v2026-10-05.pdf p.4, §3 Declared deviations, clock_class_threshold 248 row"
      }
     }
    ],
@@ -2305,7 +2350,12 @@
       "clause": "Chapters 7-8",
       "locator": "p.12 figure caption (positions) and p.13 'Eight attacks' table (classes)",
       "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
-      "status": "UNVERIFIED"
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 3, 2026-10-06",
+      "quote": "p.12 caption: 'Red markers show where attacks enter. Position 1 covers A1, A2, A3, A5, C2 and C3; position 2 is A8; position 3 is C1.' Figure labels: '1 injector on RU segment' (brDN · radio-unit bridge), '2 rogue relay across both bridges (A8)', '3 BC downstream port blackholed (C1)'. p.13 table: A2 Sync spoofing, A3 Replay, A5 Flooding, C1 Interception 'Shut the boundary clock's downstream port', C2 Malformed frames, C3 Whole-second abuse.",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf pp.12-13 (Ch.7 figure + caption, Ch.8 'Eight attacks' table)"
      }
     },
     {
@@ -2336,7 +2386,12 @@
       "clause": "per-run dn.pcap.gz, counted by 04_WEB_SIMULATOR/ingest/extract.py",
       "locator": "loop vs control, t ≥ act + 1 s",
       "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/results/recovery_eval_runs_r13-r17.tgz",
-      "status": "UNVERIFIED"
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 3, 2026-10-06",
+      "quote": "Own count from the archive (pcap parse of dn.pcap.gz, EtherType 0x88F7, t >= t_act + 1 s to capture end): ISOLATE_PTP_AT_PORT acts in A1x5 (p-rogue), A2x5, A5x5, C2x5, C3x5 (p-v-ru3), A8x5 (p-rbc-dn) = 30 (plus 5 in A3). Attacker frames in all 30 loop runs = 0. Matching control runs: A1 3435-3469, A2 1264-4832, A5 48478-79597, A8 3450-3514, C2 220-374, C3 225-315 (min 220 > 200). A3 (loop and control, all 10 runs): brDN sources only 02:00:00:00:00:02/0c/0d/0e; zero frames from unprovisioned or GM MACs.",
+      "where": "03_RECOVERY_LOOP_S-PLANE/results/recovery_eval_runs_r13-r17.tgz, per-run loop.jsonl, timeline.json, context.json, bc.log, dn.pcap.gz. Alignment: wall = mono + (first Announce from 02:00:00:00:00:02 on brDN − bc.log 'v-bc-dn ... to MASTER' mono time); cross-check against rogue.log MASTER vs first rogue Announce in the 10 A1 runs gives residuals within ±1 ms. Control threshold uses the loop run's t_act relative to the control run's own t0."
      }
     }
    ]
@@ -2378,7 +2433,12 @@
       "clause": "Localisation: provisioned port roles",
       "locator": "and capture diagram",
       "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/RECOVERY_LOOP_DESIGN.md",
-      "status": "UNVERIFIED"
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 3, 2026-10-06",
+      "quote": "[diagram] recovery loop (root namespace) ... every PTP frame, tagged with its ingress port ... 1 CAPTURE   AF_PACKET per bridge port, ingress only, parse_frame() from frozen extractor",
+      "where": "03_RECOVERY_LOOP_S-PLANE/RECOVERY_LOOP_DESIGN.md lines 6-10 (capture diagram); the §'Localisation: provisioned port roles' text (line 32ff) covers per-port provisioning"
      }
     },
     {
@@ -2391,7 +2451,12 @@
       "clause": "packets block",
       "locator": "lines 243-283",
       "url_or_repo_path": "04_WEB_SIMULATOR/ingest/extract.py",
-      "status": "UNVERIFIED"
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 3, 2026-10-06",
+      "quote": "dev = macmap.get(m_, \"unknown\"); if ctx[\"scenario\"] in (\"A2_sync_spoof\", \"A3_replay\", \"C2_malformed\", \"C3_wholesecond\", \"A5_dos_flood\") and (dev in (\"unknown\", \"flooder\") or (dev == \"ru3\" and ty in MASTER_TYPES) or (seg == \"dn\" and dev in (\"gma\", \"gmb\"))): dev = \"injector\"; A1: macmap[mac(P_[\"rogue_mac\"])] = \"rogue\"; A8: macmap[mac(P_[\"rbc_dn_mac\"])] = \"rbc\"; macmap[mac(P_[\"rbc_up_mac\"])] = \"rbc\"",
+      "where": "04_WEB_SIMULATOR/ingest/extract.py lines 243-283 (macmap 245-252; injector attribution 273-279)"
      }
     }
    ]
@@ -2538,7 +2603,12 @@
       "clause": "§3 Loop parameters",
       "locator": "Persistence, Service-loss trigger, Safety guard rows",
       "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/PREREGISTRATION.md",
-      "status": "UNVERIFIED"
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 3, 2026-10-06",
+      "quote": "| Persistence | ≥ 2 of the last 3 evaluations ATTACK | Single-window transients cannot trigger an action | ... | Service-loss trigger | no Announce from any provisioned master port for 2 s; 10 s while a maintenance window is open | ... | Safety guard | a master-role provisioned port (primary BC, standby BC, planned replacement BC) is never isolated automatically |",
+      "where": "03_RECOVERY_LOOP_S-PLANE/PREREGISTRATION.md §3 Loop parameters table (lines 27-35)"
      }
     }
    ]
@@ -3580,6 +3650,76 @@
   {
    "sentence": "ds-raw-missing.s2",
    "action": "pass 2",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "gm-a.s5",
+   "action": "pass 3",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "gm-b.s2",
+   "action": "pass 3",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "gm-b.s4",
+   "action": "pass 3",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "bc.s1",
+   "action": "pass 3",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "fh-splane.s5",
+   "action": "pass 3",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "smo-nonrt.s3",
+   "action": "pass 3",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "fh-cplane.s2",
+   "action": "pass 3",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "fh-uplane.s2",
+   "action": "pass 3",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "lls-c3.s4",
+   "action": "pass 3",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "attack-packets.s2",
+   "action": "pass 3",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "attack-packets.s4",
+   "action": "pass 3",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "port-counts.s2",
+   "action": "pass 3",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "port-counts.s3",
+   "action": "pass 3",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "loop-decide.s1",
+   "action": "pass 3",
    "verdict": "VERIFIED"
   }
  ]
