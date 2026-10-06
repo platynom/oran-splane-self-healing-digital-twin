@@ -7,6 +7,8 @@ from __future__ import annotations
 import hashlib, sys
 from pathlib import Path
 
+import pytest
+
 HERE = Path(__file__).resolve()
 ROOT = HERE.parents[3]
 PILOT = ROOT / "outputs" / "empirical_software_network_pilot_v1"
@@ -21,6 +23,8 @@ CAPTURES = [PILOT / "v4_runs" / f"20260913_v4_{t}" / "capture.pcap" for t in ("n
 
 
 def _frames(path: Path):
+    if not path.is_file():
+        pytest.skip(f"external packet-capture fixture is not present: {path}")
     return [(ts / 1e9, fr) for ts, fr in read_pcap(str(path))]
 
 
