@@ -11,6 +11,7 @@ import { PrismaClient, Prisma } from "@prisma/client";
 import { existsSync, readFileSync } from "node:fs";
 import { gunzipSync } from "node:zlib";
 import path from "node:path";
+import { ingestExtra } from "./ingest-extra";
 import { computeRunMetrics, DISRUPTIVE, legitParentsFor, median } from "../src/lib/metrics";
 
 const prisma = new PrismaClient();
@@ -34,6 +35,7 @@ async function main() {
   const provenance = JSON.parse(readFileSync(path.join(DIR, "provenance.json"), "utf8"));
 
   if (process.argv.includes("--if-empty") && (await prisma.run.count()) > 0) {
+    if ((await prisma.campaignEvidence.count()) === 0) await ingestExtra(prisma); // database created by an older version
     console.log("evidence tables already loaded (--if-empty): skipping ingest");
     return;
   }
@@ -173,6 +175,7 @@ async function main() {
   }
   await prisma.datasetInfo.create({ data: { id: 1, provenance } });
   const counts = await Promise.all([prisma.run.count(), prisma.sample.count(), prisma.event.count(), prisma.campaignRun.count(), prisma.fault.count()]);
+  await ingestExtra(prisma);
   console.log(`done: runs=${counts[0]} samples=${counts[1]} events=${counts[2]} campaign=${counts[3]} faults=${counts[4]}`);
 }
 

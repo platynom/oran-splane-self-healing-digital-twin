@@ -1,0 +1,442 @@
+{
+ "generated": "2026-10-06T03:11:33.900519+00:00",
+ "sentences": [
+  {
+   "id": "gm-a.s3",
+   "text": "The operator's allow-list holds GM-A and GM-B (identities …00000a and …00000b).",
+   "verdict": "VERIFIED",
+   "quote": "The operator's allow-list is …00000a and …00000b (GM-A and GM-B), and no maintenance window is open.",
+   "where_found": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf p.14, Chapter 9, \"A real example: A1, replicate 1\"",
+   "correct_clause": "",
+   "correct_locator": "",
+   "problem": ""
+  },
+  {
+   "id": "gm-a.s4",
+   "text": "No GNSS receiver exists in the testbed, so GNSS spoofing and jamming cannot be produced; all namespaces share the host clock, with free_running 1 set.",
+   "verdict": "VERIFIED",
+   "quote": "No GNSS receiver: GNSS spoofing and jamming cannot be produced at all. ... One shared oscillator: All namespaces share the host clock, and free_running 1 is set: offset is measured, never steered.",
+   "where_found": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf slide 18, VERIFIED PLATFORM CONSTRAINTS column",
+   "correct_clause": "",
+   "correct_locator": "",
+   "problem": ""
+  },
+  {
+   "id": "gm-a.s5",
+   "text": "The lab has no PRTC/GPS, so every node truthfully advertises clockClass 248.",
+   "verdict": "WRONG_CLAUSE",
+   "quote": "clock_class_threshold 248 | An acceptance policy, not a quality claim; the lab has no PRTC/GPS so every node truthfully advertises clockClass 248. | No node given a fabricated clockClass 6; hierarchy uses priority2",
+   "where_found": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_Testbed_Configuration_Reference_v2026-10-05.pdf p.4, §3 \"Declared deviations from a production deployment\", clock_class_threshold 248 row",
+   "correct_clause": "§3 Declared deviations from a production deployment",
+   "correct_locator": "p.4, clock_class_threshold 248 row",
+   "problem": "The row is in §3 Declared deviations, not §2 G.8275.1 profile configuration (§2 ends with maxStepsRemoved 255)."
+  },
+  {
+   "id": "gm-b.s2",
+   "text": "When GM-A fails with no maintenance window open and GM-B takes over, the frozen rule returned UNKNOWN in 12 of 12 campaign runs.",
+   "verdict": "UNSUPPORTED",
+   "quote": "frozen.per_scenario.B_unplanned_failover = {\"correct\": 12, \"n\": 12, \"expect\": \"UNKNOWN\", \"est\": [1.0, 0.7575, 1.0]}",
+   "where_found": "01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/gap_coverage_2026-09-20/corrected_final/EVALUATION_V4.json, frozen.per_scenario.B_unplanned_failover",
+   "correct_clause": "",
+   "correct_locator": "",
+   "problem": "The 12/12 UNKNOWN part is supported. The scenario description ('GM-A fails with no maintenance window open and GM-B takes over') is not in EVALUATION_V4.json, which only carries the scenario key B_unplanned_failover (no description, no 'maintenance' or 'GM-B' text anywhere in the file). That description is in scenarios.sh lines 94-101, not in the cited source."
+  },
+  {
+   "id": "bc.s1",
+   "text": "The boundary clock (T-BC, priority2 120) connects the grandmaster bridge brUP and the radio-unit bridge brDN; the Testbed Configuration Reference lists its role as 'stepsRemoved 0→1'.",
+   "verdict": "UNSUPPORTED",
+   "quote": "[gma p2=100] [gmb p2=110] --- brUP --- [bc: v-bc-up | v-bc-dn] --- brDN --- [ru1] [ru2] [ru3] ... bc | Boundary clock (T-BC) | 120 | stepsRemoved 0→1; enables A8 and B7",
+   "where_found": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_Testbed_Configuration_Reference_v2026-10-05.pdf p.4, §4 Topology and node roles, topology line and node table row bc",
+   "correct_clause": "",
+   "correct_locator": "",
+   "problem": "Topology, T-BC and priority2 120 match. But the table's Role column for bc is 'Boundary clock (T-BC)'; 'stepsRemoved 0→1' is in the Purpose column (full text 'stepsRemoved 0→1; enables A8 and B7'). The sentence says the reference lists it as the 'role'. Supported if 'role' is changed to 'purpose'."
+  },
+  {
+   "id": "o-ru.s2",
+   "text": "The Testbed Configuration Reference labels the three radio units 'O-RU proxies (T-TSC)', each with priority2 128.",
+   "verdict": "VERIFIED",
+   "quote": "ru1/ ru2/ ru3 | O-RU proxies (T-TSC) | 128 | Three clients = spatial axis",
+   "where_found": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_Testbed_Configuration_Reference_v2026-10-05.pdf p.4, §4 Topology and node roles, node table rows ru1/ru2/ru3 (columns Role, priority2, Purpose)",
+   "correct_clause": "",
+   "correct_locator": "",
+   "problem": ""
+  },
+  {
+   "id": "o-ru.s4",
+   "text": "130 ns is scoped by the project's verification to the relative time-alignment error for 5G FR2 intra-band contiguous carrier aggregation, Timing Category A, not presented as a universal O-RAN limit.",
+   "verdict": "VERIFIED",
+   "quote": "130 ns scope: ... The authoritative ETSI/O-RAN table scopes 130 ns specifically to 5G FR2 intraband-contiguous carrier aggregation relative TAE, Timing Category A. V5 does not present it as a universal O-RAN limit",
+   "where_found": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/verification_records/V5_DISAGREEMENTS.md line 16, item 5",
+   "correct_clause": "",
+   "correct_locator": "",
+   "problem": ""
+  },
+  {
+   "id": "o-ru.s5",
+   "text": "The radio units' ptp4l configurations set clientOnly 1, so they only take time.",
+   "verdict": "VERIFIED",
+   "quote": "priority2 128 / clientOnly 1 / [v-ru1]  (identical in ru2.cfg [v-ru2] and ru3.cfg [v-ru3])",
+   "where_found": "03_RECOVERY_LOOP_S-PLANE/testbed_frozen_copy/cfg/ru1.cfg line 49 (ru2.cfg and ru3.cfg line 49)",
+   "correct_clause": "",
+   "correct_locator": "",
+   "problem": "'so they only take time' is a plain-language gloss of clientOnly; the cfg itself does not explain the parameter."
+  },
+  {
+   "id": "fh-splane.s3",
+   "text": "ITU-T G.8271.1 frames ±1.5 µs as an end-application, reference-point-E absolute time-error limit relative to a common recognised time standard.",
+   "verdict": "VERIFIED",
+   "quote": "| 32 | FAIL | ITU-T G.8271.1 supports ±1.5 μs as an end-application/reference-point-E absolute time-error limit relative to a common recognized time standard.",
+   "where_found": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/verification_records/V5_VERIFICATION_LOG.md line 62, item 32",
+   "correct_clause": "",
+   "correct_locator": "",
+   "problem": ""
+  },
+  {
+   "id": "fh-splane.s4",
+   "text": "SyncE is a physical-layer function and was not implemented in the testbed, which exercised PTP only.",
+   "verdict": "VERIFIED",
+   "quote": "Scope disclosure: The testbed exercised PTP only; SyncE is a physical-layer function and was not implemented.",
+   "where_found": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf slide 16, Scope disclosure footer",
+   "correct_clause": "",
+   "correct_locator": "",
+   "problem": ""
+  },
+  {
+   "id": "fh-splane.s5",
+   "text": "The project's deck gives the total budget at reference point E and the network limit at reference point C as 1100 ns.",
+   "verdict": "UNSUPPORTED",
+   "quote": "±1.5 µs / Absolute time error at reference point E, common time standard / Total budget at reference point E; the network limit at reference point C is 1100 ns",
+   "where_found": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf slide 7, middle column",
+   "correct_clause": "",
+   "correct_locator": "",
+   "problem": "The deck gives the total budget at reference point E as ±1.5 µs and only the network limit at reference point C as 1100 ns. The sentence reads as giving both values as 1100 ns, and it omits ±1.5 µs."
+  },
+  {
+   "id": "injector.s1",
+   "text": "Attacks enter on the radio-unit segment (A1, A2, A3, A5, C2, C3), across both bridges for the rogue relay (A8), and by blackholing the boundary clock's downstream port (C1).",
+   "verdict": "VERIFIED",
+   "quote": "Six real ptp4l daemons on two bridges. Red markers show where attacks enter. Position 1 covers A1, A2, A3, A5, C2 and C3; position 2 is A8; position 3 is C1. (figure labels: 1 = \"injector on RU segment\", 2 = \"rogue relay across both bridges (A8)\", 3 = \"BC downstream port blackholed (C1)\")",
+   "where_found": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf p.12, Chapter 7 figure and caption",
+   "correct_clause": "",
+   "correct_locator": "",
+   "problem": ""
+  },
+  {
+   "id": "injector.s4",
+   "text": "Where the injector shares RU3's port (A2, A3, A5, C2, C3), isolating that port also stops RU3's own Delay_Req.",
+   "verdict": "VERIFIED",
+   "quote": "Collateral on RU3: where the injector shares RU3's port (A2, A3, A5, C2, C3), isolation also stops RU3's own Delay_Req.",
+   "where_found": "03_RECOVERY_LOOP_S-PLANE/RESULTS_2026-10-05.md line 64, §6 Limits",
+   "correct_clause": "",
+   "correct_locator": "",
+   "problem": ""
+  },
+  {
+   "id": "injector.s5",
+   "text": "The A1 rogue grandmaster is a separate ptp4l in its own network namespace 'rogue', attached to the radio-unit bridge brDN through port p-rogue.",
+   "verdict": "VERIFIED",
+   "quote": "A1_rogue_master) ... ip netns add rogue ... ip link add v-rogue type veth peer name p-rogue; ip link set p-rogue master brDN ... ip netns exec rogue ptp4l -f /opt/sptb/cfg/rogue.cfg -i v-rogue",
+   "where_found": "03_RECOVERY_LOOP_S-PLANE/testbed_frozen_copy/run/scenarios.sh lines 40-51",
+   "correct_clause": "",
+   "correct_locator": "",
+   "problem": ""
+  },
+  {
+   "id": "fh-mplane.s2",
+   "text": "The project wrote fixture-testable parsers for pmc and synce4l synchronization status text; the code names O-RU M-plane NETCONF/YANG synchronization telemetry as the authoritative production equivalent but does not implement it.",
+   "verdict": "VERIFIED",
+   "quote": "\"\"\"Parse live Linux PTP/SyncE status text without requiring running daemons. Production collection should use ptp4l SUBSCRIBE_EVENTS_NP notifications rather than polling. On a real O-RAN deployment, the authoritative equivalent is O-RU M-plane NETCONF/YANG synchronization telemetry.\"\"\"  (functions parse_pmc_output, parse_synce4l_ql; no NETCONF client in the file)",
+   "where_found": "01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/ingest/sync_status.py lines 3-8, 59, 89",
+   "correct_clause": "",
+   "correct_locator": "",
+   "problem": "'fixture-testable' paraphrases 'without requiring running daemons'."
+  },
+  {
+   "id": "fh-mplane.s3",
+   "text": "Management queries in the testbed were made with pmc; on this testbed pmc without -d 24 returns no data, and with -d 24 it returns PARENT_DATA_SET and PORT_DATA_SET.",
+   "verdict": "VERIFIED",
+   "quote": "| pmc returned nothing in the campaign (cause \"probable\") | `pmc` without `-d 24` returns no data; with `-d 24` it returns PARENT_DATA_SET and PORT_DATA_SET on the same testbed. | Cause confirmed. |",
+   "where_found": "03_RECOVERY_LOOP_S-PLANE/RESULTS_2026-10-05.md line 49, §4 table row 3",
+   "correct_clause": "",
+   "correct_locator": "",
+   "problem": ""
+  },
+  {
+   "id": "smo-nonrt.s1",
+   "text": "In the project's architecture figure (v8 slide 4) the SMO / Non-RT RIC box ('policy and lifecycle') sits beside the Near-RT RIC, above the O-RU, O-DU, O-CU and 5G Core.",
+   "verdict": "VERIFIED",
+   "quote": "Rendered slide: top row boxes \"SMO / Non-RT RIC  policy and lifecycle\" -- A1 -- \"Near-RT RIC  xApps and E2 control\" .... \"O-Cloud\"; the row below holds UE, O-RU, O-DU, O-CU-CP / O-CU-UP, 5G Core, Data network.",
+   "where_found": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf slide 4 (rendered PNG at 80 dpi)",
+   "correct_clause": "",
+   "correct_locator": "",
+   "problem": ""
+  },
+  {
+   "id": "smo-nonrt.s3",
+   "text": "The recovery loop runs as a standalone process in the testbed's root namespace, on the same software testbed and frozen detector, and does not change any frozen artefact.",
+   "verdict": "UNSUPPORTED",
+   "quote": "It runs on the same software testbed and uses the same frozen detector. It does not change any frozen artefact. ... diagram: \"recovery loop (root namespace)\"",
+   "where_found": "03_RECOVERY_LOOP_S-PLANE/RECOVERY_LOOP_DESIGN.md line 3 and diagram line 6",
+   "correct_clause": "",
+   "correct_locator": "",
+   "problem": "Root namespace, same testbed, frozen detector and no change to frozen artefacts are supported. 'standalone process' is not stated in the cited document."
+  },
+  {
+   "id": "smo-nonrt.s4",
+   "text": "No digital twin rehearses the action before it is taken; actions are verified after execution.",
+   "verdict": "VERIFIED",
+   "quote": "No digital twin: actions are verified after execution, not rehearsed.",
+   "where_found": "03_RECOVERY_LOOP_S-PLANE/RESULTS_2026-10-05.md line 68, §6 Limits",
+   "correct_clause": "",
+   "correct_locator": "",
+   "problem": ""
+  },
+  {
+   "id": "osc-drift.s2",
+   "text": "Run 1 gave +20.161 ppm but failed a pre-registered criterion (retained samples), so it is reported as NOT ESTABLISHED.",
+   "verdict": "VERIFIED",
+   "quote": "| C1 | each arm retains >= 600 samples | FAIL | A=348, B=658 | ... Overall: NOT ESTABLISHED (failed: C1) ... Relative frequency offset computes to +20.161 ppm [+19.376, +20.969], but a pre-registered criterion failed",
+   "where_found": "outputs/B6_two_machine_2026-10-02/DRIFT_REPORT.md lines 11, 17, 21",
+   "correct_clause": "",
+   "correct_locator": "",
+   "problem": ""
+  },
+  {
+   "id": "osc-drift.s3",
+   "text": "These are consumer laptop crystals measured against NTP, not telecom-class oscillators.",
+   "verdict": "VERIFIED",
+   "quote": "These are consumer laptop crystals measured against NTP, not telecom-class oscillators.",
+   "where_found": "03_RECOVERY_LOOP_S-PLANE/RECOVERY_LOOP_DESIGN.md line 60, Oscillator drift (B6)",
+   "correct_clause": "",
+   "correct_locator": "",
+   "problem": ""
+  },
+  {
+   "id": "osc-drift.s4",
+   "text": "The two-laptop run measures B6's physical premise; it is not an end-to-end B6 detection test, because no PTP ran between the two machines.",
+   "verdict": "VERIFIED",
+   "quote": "1. Not an end-to-end B6 detection test. No PTP ran between the two machines, so the detector never saw this drift. This measures B6's physical premise",
+   "where_found": "outputs/B6_two_machine_2026-10-02/B6_MEASUREMENT_RECORD_2026-10-02.md §7 item 1 (lines 119-121)",
+   "correct_clause": "",
+   "correct_locator": "",
+   "problem": ""
+  },
+  {
+   "id": "osc-drift.s5",
+   "text": "The B6 record states that the Fault Detectability workbook row B6 is not changed by this run, because that row describes detectability on the software testbed.",
+   "verdict": "VERIFIED",
+   "quote": "`ORAN_Fault_Detectability_v2026-09-29.xlsx` row B6 is not changed by this run. That row describes detectability on the software testbed, which is unaffected.",
+   "where_found": "outputs/B6_two_machine_2026-10-02/B6_MEASUREMENT_RECORD_2026-10-02.md §7 closing paragraph (lines 129-130)",
+   "correct_clause": "",
+   "correct_locator": "",
+   "problem": "The record names the 2026-09-29 version of the workbook."
+  },
+  {
+   "id": "fh-cplane.s2",
+   "text": "The testbed does not emulate the O-DU, so it carries no C-plane traffic to observe.",
+   "verdict": "UNSUPPORTED",
+   "quote": "OUR TESTBED: Grandmaster → boundary clock → three radio units over bridged segments, with no O-DU in the timing chain: the LLS-C3 structure. The O-DU itself is not emulated.",
+   "where_found": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf slide 6, OUR TESTBED box",
+   "correct_clause": "",
+   "correct_locator": "",
+   "problem": "'The O-DU itself is not emulated' is supported. The consequence 'so it carries no C-plane traffic to observe' is not stated on slide 6 (the deck mentions C-plane only as a label on slide 4)."
+  },
+  {
+   "id": "fh-uplane.s2",
+   "text": "The testbed does not emulate the O-DU, so no U-plane traffic was present to measure.",
+   "verdict": "UNSUPPORTED",
+   "quote": "OUR TESTBED: ... The O-DU itself is not emulated.",
+   "where_found": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf slide 6, OUR TESTBED box",
+   "correct_clause": "",
+   "correct_locator": "",
+   "problem": "'The O-DU itself is not emulated' is supported. The consequence 'so no U-plane traffic was present to measure' is not stated on slide 6."
+  },
+  {
+   "id": "air-interface.s2",
+   "text": "The cited 3GPP limits are TDD cell phase synchronization better than 3 µs (TS 38.133) and time-alignment error of at most 65 ns for MIMO and 260 ns for intra-band contiguous carrier aggregation (TS 38.104, clause 9.6.3.2).",
+   "verdict": "VERIFIED",
+   "quote": "Service limits at stake: TDD cell phase sync better than 3 µs (3GPP TS 38.133 [8]) · TAE ≤ 65 ns for MIMO, ≤ 260 ns intra-band contiguous CA (3GPP TS 38.104 §9.6.3.2 [9])",
+   "where_found": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf slide 12, footer",
+   "correct_clause": "",
+   "correct_locator": "",
+   "problem": ""
+  },
+  {
+   "id": "ue.s2",
+   "text": "Measured impact in this project is protocol-level; time-error and service impact come from the cited literature.",
+   "verdict": "VERIFIED",
+   "quote": "LIMIT: Every daemon ran with free_running 1: offsets were measured, never steered. Measured impact is protocol-level; time-error and service impact come from the cited literature.",
+   "where_found": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf slide 12, LIMIT footer",
+   "correct_clause": "",
+   "correct_locator": "",
+   "problem": ""
+  },
+  {
+   "id": "lls-c2.s2",
+   "text": "The Testbed Configuration Reference says the testbed 'models O-RAN LLS-C2/C3'.",
+   "verdict": "VERIFIED",
+   "quote": "4 Topology and node roles / Two Ethernet bridges separated by a Boundary Clock (models O-RAN LLS-C2/C3).",
+   "where_found": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_Testbed_Configuration_Reference_v2026-10-05.pdf p.4, §4 subtitle",
+   "correct_clause": "",
+   "correct_locator": "",
+   "problem": ""
+  },
+  {
+   "id": "lls-c2.s3",
+   "text": "The deck's quoted LLS-C2 definition puts the O-DU in the synchronization chain, while the deck describes the testbed as having no O-DU in the timing chain.",
+   "verdict": "VERIFIED",
+   "quote": "LLS-C2 | O-DU is part of the synchronization chain. Timing goes from O-DU to O-RU; one or more Ethernet switches are allowed ... OUR TESTBED: ... with no O-DU in the timing chain: the LLS-C3 structure.",
+   "where_found": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf slide 6, LLS-C2 row and OUR TESTBED box",
+   "correct_clause": "",
+   "correct_locator": "",
+   "problem": ""
+  },
+  {
+   "id": "lls-c3.s4",
+   "text": "The lab has no PRTC/GPS, so every node truthfully advertises clockClass 248.",
+   "verdict": "WRONG_CLAUSE",
+   "quote": "clock_class_threshold 248 | An acceptance policy, not a quality claim; the lab has no PRTC/GPS so every node truthfully advertises clockClass 248. | No node given a fabricated clockClass 6; hierarchy uses priority2",
+   "where_found": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_Testbed_Configuration_Reference_v2026-10-05.pdf p.4, §3 \"Declared deviations from a production deployment\", clock_class_threshold 248 row",
+   "correct_clause": "§3 Declared deviations from a production deployment",
+   "correct_locator": "p.4, clock_class_threshold 248 row",
+   "problem": "The row is in §3 Declared deviations, not §2 G.8275.1 profile configuration."
+  },
+  {
+   "id": "lls-c4.s2",
+   "text": "The testbed has no GNSS receiver, so GNSS spoofing and jamming cannot be produced in it.",
+   "verdict": "VERIFIED",
+   "quote": "No GNSS receiver: GNSS spoofing and jamming cannot be produced at all.",
+   "where_found": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf slide 18, VERIFIED PLATFORM CONSTRAINTS",
+   "correct_clause": "",
+   "correct_locator": "",
+   "problem": ""
+  },
+  {
+   "id": "bmca-contest.s2",
+   "text": "The testbed sets priority1 128, domain 24 and the alternate BMCA (dataset_comparison G.8275.x).",
+   "verdict": "VERIFIED",
+   "quote": "[global] / dataset_comparison G.8275.x / domainNumber 24 / priority1 128",
+   "where_found": "03_RECOVERY_LOOP_S-PLANE/testbed_frozen_copy/cfg/g87251.base lines 21-24",
+   "correct_clause": "",
+   "correct_locator": "",
+   "problem": ""
+  },
+  {
+   "id": "attack-packets.s1",
+   "text": "In the loop arm the isolation target was p-rogue in A1, p-rbc-dn in A8 and p-v-ru3 in A2, A3, A5, C2 and C3.",
+   "verdict": "VERIFIED",
+   "quote": "summary.A1_rogue_master.loop.action_kinds = [\"ISOLATE_PTP_AT_PORT:p-rogue\"]; A8_rogue_bc = [\"ISOLATE_PTP_AT_PORT:p-rbc-dn\"]; A2_sync_spoof, A3_replay, A5_dos_flood, C2_malformed, C3_wholesecond = [\"ISOLATE_PTP_AT_PORT:p-v-ru3\"]",
+   "where_found": "03_RECOVERY_LOOP_S-PLANE/results/EVALUATION_RL.json, summary.<scenario>.loop.action_kinds",
+   "correct_clause": "",
+   "correct_locator": "",
+   "problem": ""
+  },
+  {
+   "id": "attack-packets.s2",
+   "text": "Spoofing, replay, flooding, malformed-frame and whole-second-abuse injectors run on the radio-unit segment; the rogue boundary clock spans both bridges; interception blackholes the boundary clock's downstream port.",
+   "verdict": "WRONG_CLAUSE",
+   "quote": "p.12: \"Position 1 covers A1, A2, A3, A5, C2 and C3; position 2 is A8; position 3 is C1.\" (1 = injector on RU segment; 2 = rogue relay across both bridges; 3 = BC downstream port blackholed). p.13: \"A2 Sync spoofing ... A3 Replay ... A5 Flooding ... C2 Malformed frames ... C3 Whole-second abuse ... C1 Interception: Shut the boundary clock's downstream port\"",
+   "where_found": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf p.12 Chapter 7 caption + p.13 Chapter 8 \"Eight attacks\" table",
+   "correct_clause": "Chapter 7 figure caption (p.12) together with Chapter 8 \"Eight attacks\" table",
+   "correct_locator": "p.12 caption; p.13 table rows A2, A3, A5, C1, C2, C3",
+   "problem": "The p.12 caption gives only positions and IDs; the attack-class names (spoofing, replay, flooding, malformed frame, whole-second abuse, interception) come from the Chapter 8 table on p.13. Both pages together support the sentence."
+  },
+  {
+   "id": "attack-packets.s3",
+   "text": "In the loop arm the nft bridge rule drops PTP at the isolated port; the final ruleset shows the rule in 35 of 35 isolations.",
+   "verdict": "VERIFIED",
+   "quote": "§5: \"35/35 isolations present in the final nft ruleset\"; §6: \"Isolation mechanism: an nftables bridge filter stands in for a switch-port PTP filter.\"",
+   "where_found": "03_RECOVERY_LOOP_S-PLANE/RESULTS_2026-10-05.md line 55 (§5) and line 65 (§6)",
+   "correct_clause": "",
+   "correct_locator": "",
+   "problem": "'drops PTP at the isolated port' comes from §6 (PTP filter), not §5; §5 gives only the 35/35 count."
+  },
+  {
+   "id": "attack-packets.s4",
+   "text": "From 1 s after the isolation, the attacker sender had 0 frames on brDN in all 30 loop-arm isolations with a distinct attacker MAC (A1, A2, A5, A8, C2, C3; 5 each), while the matching control runs kept 216 to 78,218 frames; A3 replays carry the boundary clock's MAC and cannot be separated.",
+   "verdict": "UNSUPPORTED",
+   "quote": "Own count (python gzip+struct, no 04_WEB_SIMULATOR code). Isolations: 30 loop runs (A1,A2,A5,A8,C2,C3 x r13-r17) each with exactly 1 act ISOLATE_PTP_AT_PORT (t_act 2.08-3.13 s after T0). Attacker PTP frames on brDN at t >= t_act+1 s, loop arm: 0 in all 30 (last attacker frame 2-137 ms BEFORE t_act in every run). Matching control runs, same window, no upper bound: min 220 (C2 r15), max 79597 (A5 r16). With the control's own would_act+1 s: 220 to 79,605. Bounded to t <= T0+40 s: 205 to 73,436; t < T0+42.5 s: 219 to 78,815. A3: 0 frames from unprovisioned or GM MACs in all 10 A3 runs; replayed frames reuse provisioned MACs (BC 02:..:02 and RU MACs), so A3 cannot be separated.",
+   "where_found": "03_RECOVERY_LOOP_S-PLANE/results/recovery_eval_runs_r13-r17.tgz, unpacked to /tmp/claude-0/audit/reverify_tmp; per-run numbers in /tmp/claude-0/audit/attack_counts_pass2.json",
+   "correct_clause": "",
+   "correct_locator": "",
+   "problem": "The loop-arm zeros, the 30 isolations, the 5-per-scenario split and A3 not being separable all agree. The control range '216 to 78,218' is not reproduced: my counts are 220 to 79,597 (no upper bound). No window bound I tried (T0+40, T0+42.5, would_act-based) gives 216 or 78,218, and the maximum exceeds 78,218. Time alignment: no wall-clock/monotonic anchor exists in the run directories (timeline.json holds monotonic times only; start.log has one line). I used the first BC Announce on brDN (pcap wall time) against bc.log 'v-bc-dn ... to MASTER' (monotonic). Cross-check against the rogue/rbc's own MASTER transition vs its first Announce: residual within ±1 ms in all 10 A1/A8 loop runs. Note: the citation says the counts were made by 04_WEB_SIMULATOR/ingest/extract.py; this check did not use that code."
+  },
+  {
+   "id": "port-counts.s2",
+   "text": "The live loop tags every PTP frame with its bridge ingress port (AF_PACKET per port, ingress only); the archived dn/up captures are bridge-level captures.",
+   "verdict": "UNSUPPORTED",
+   "quote": "diagram: \"every PTP frame, tagged with its ingress port\" -> \"1 CAPTURE  AF_PACKET per bridge port, ingress only, parse_frame()\"",
+   "where_found": "03_RECOVERY_LOOP_S-PLANE/RECOVERY_LOOP_DESIGN.md diagram lines 8-10 and §Localisation",
+   "correct_clause": "",
+   "correct_locator": "",
+   "problem": "The live-loop part is supported. 'the archived dn/up captures are bridge-level captures' is not in RECOVERY_LOOP_DESIGN.md, which does not mention the dn/up pcaps."
+  },
+  {
+   "id": "port-counts.s3",
+   "text": "In this app's replay, capture frames are attributed to senders by source MAC address, not by bridge ingress port; frames from unprovisioned MACs, GM MACs on brDN and master-role frames from RU3's MAC are counted as the injector.",
+   "verdict": "UNSUPPORTED",
+   "quote": "macmap = {\"020000000002\": \"bc\", ... \"0200000000b1\": \"bc2\"} ... dev = macmap.get(m_, \"unknown\"); if ctx[\"scenario\"] in (\"A2_sync_spoof\", \"A3_replay\", \"C2_malformed\", \"C3_wholesecond\", \"A5_dos_flood\") and (dev in (\"unknown\", \"flooder\") or (dev == \"ru3\" and ty in MASTER_TYPES) or (seg == \"dn\" and dev in (\"gma\", \"gmb\"))): ... dev = \"injector\"",
+   "where_found": "04_WEB_SIMULATOR/ingest/extract.py lines 244-285 (macmap at 245-252; injector rule at 276-285)",
+   "correct_clause": "",
+   "correct_locator": "",
+   "problem": "MAC-based attribution (no ingress port) and the three injector criteria match the code. But the code applies the injector relabelling only in A2, A3, A5, C2 and C3. In other scenarios, unprovisioned MACs stay 'unknown' or map to 'rogue'/'rbc' (A1, A8). The sentence states the rule without that scenario condition."
+  },
+  {
+   "id": "hw-faults.s3",
+   "text": "The B6 two-laptop run does not unlock B1, B4, A6 or A7, and adds no hardware timestamping.",
+   "verdict": "VERIFIED",
+   "quote": "5. Does not unlock B1, B4, A6 or A7, and adds no hardware timestamping.",
+   "where_found": "outputs/B6_two_machine_2026-10-02/B6_MEASUREMENT_RECORD_2026-10-02.md §7 item 5 (line 127)",
+   "correct_clause": "",
+   "correct_locator": "",
+   "problem": ""
+  },
+  {
+   "id": "loop-decide.s1",
+   "text": "The loop acts only when at least 2 of the last 3 evaluations say ATTACK, never automatically isolates a provisioned master-role port, and fails over when no Announce arrives from any provisioned master port for 2 s (10 s while a maintenance window is open).",
+   "verdict": "UNSUPPORTED",
+   "quote": "| Persistence | ≥ 2 of the last 3 evaluations ATTACK | ... | Service-loss trigger | no Announce from any provisioned master port for 2 s; 10 s while a maintenance window is open | ... | Safety guard | a master-role provisioned port (primary BC, standby BC, planned replacement BC) is never isolated automatically |",
+   "where_found": "03_RECOVERY_LOOP_S-PLANE/PREREGISTRATION.md §3 table lines 30, 32, 35",
+   "correct_clause": "",
+   "correct_locator": "",
+   "problem": "The three values are supported. But the §3 rows do not say that the service-loss trigger causes a failover; the action (ACTIVATE STANDBY BC) is in RECOVERY_LOOP_DESIGN.md's policy table, not in PREREGISTRATION §3. Also 'acts only when at least 2 of the last 3 evaluations say ATTACK' contradicts the service-loss failover, which acts without an ATTACK verdict."
+  },
+  {
+   "id": "loop-act.s1",
+   "text": "Isolation is an nftables bridge rule dropping ethertype 0x88F7 at the offending port; failover starts the cold-standby boundary clock.",
+   "verdict": "VERIFIED",
+   "quote": "ISOLATE: nft bridge prerouting `iifname <port> ether type 0x88f7 drop` ... | Service loss > 2 s (10 s if a maintenance window is open) | — | ACTIVATE STANDBY BC |; diagram: \"standby BC (bcs) ─ cabled, daemon off\" ... \"5 ACT  nft bridge drop / start bcs\"",
+   "where_found": "03_RECOVERY_LOOP_S-PLANE/RECOVERY_LOOP_DESIGN.md Policy table lines 44 and 46; diagram lines 13, 17",
+   "correct_clause": "",
+   "correct_locator": "",
+   "problem": ""
+  },
+  {
+   "id": "loop-act.s2",
+   "text": "In the control arm the identical loop runs in observe-only mode: it detects, decides and logs would_act, and executes nothing.",
+   "verdict": "VERIFIED",
+   "quote": "`control`: the identical loop in observe-only mode. It detects, decides and logs `would_act`, and executes nothing.",
+   "where_found": "03_RECOVERY_LOOP_S-PLANE/PREREGISTRATION.md §2 line 20",
+   "correct_clause": "",
+   "correct_locator": "",
+   "problem": ""
+  },
+  {
+   "id": "ds-raw-missing.s2",
+   "text": "The raw per-sample CSVs of the B6 two-laptop measurement are named, with their sha256, in the analysis output.",
+   "verdict": "VERIFIED",
+   "quote": "## Provenance - laptopA: `laptopA_20261002-211329_92214ce7bb.csv` sha256 `37efb32541b9b64b...` - laptopB: `laptopB_20261002-211401_5897fbe2bc.csv` sha256 `68155ad5830dc430...`",
+   "where_found": "outputs/B6_two_machine_2026-10-02/run2/DRIFT_REPORT_run2.md lines 69-72",
+   "correct_clause": "",
+   "correct_locator": "",
+   "problem": "Note: the sha256 values are truncated to 16 hex digits + '...', not the full hashes."
+  }
+ ],
+ "counts": {
+  "total": 43,
+  "VERIFIED": 30,
+  "WRONG_CLAUSE": 3,
+  "UNSUPPORTED": 10,
+  "SOURCE_NEEDED": 0
+ }
+}

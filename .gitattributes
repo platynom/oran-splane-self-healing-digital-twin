@@ -11,3 +11,8 @@
 *.pptx binary
 *.xlsx binary
 *.zip  binary
+
+# Shell scripts and Dockerfiles must stay LF even on Windows checkouts: a CRLF docker-entrypoint.sh fails in the
+# Linux container with "set: line 3: illegal option -".
+*.sh text eol=lf
+Dockerfile text eol=lf

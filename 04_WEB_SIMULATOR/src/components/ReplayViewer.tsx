@@ -3,7 +3,8 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import clsx from "clsx";
 import { Topology } from "./Topology";
-import { Badge, MeasuredLabel } from "./ui";
+import { Badge, KindBadge, MeasuredLabel } from "./ui";
+import { keyEvents, nextEventTime, prevEventTime } from "@/lib/sim/events";
 import {
   actionLabel, DEVICE_LABEL, hintLabel, markers, packetsAt, stateAt, type Device, type ReplayEvent, type ReplayRun, type ReplayState,
 } from "@/lib/replay";
@@ -18,7 +19,7 @@ export interface ScenarioOpt {
 const T_MIN = -20;
 const T_MAX = 41;
 const T_DEFAULT = -3;
-const SPEEDS = [0.5, 1, 2, 4];
+const SPEEDS = [0.25, 0.5, 1, 2, 4];
 const REPS = [13, 14, 15, 16, 17];
 
 const cache = new Map<string, Promise<ReplayRun>>();
@@ -37,8 +38,18 @@ function fetchRun(id: string): Promise<ReplayRun> {
 
 const fmtT = (t: number) => `T0 ${t >= 0 ? "+" : "−"} ${Math.abs(t).toFixed(1)} s`;
 
+export type ReplayView = "side" | "control" | "loop";
+export interface ReplayContext {
+  run?: ReplayRun;
+  runs: { control?: ReplayRun; loop?: ReplayRun };
+  arm: "control" | "loop";
+  t: number;
+  playing: boolean;
+}
+
 export function ReplayViewer({
   scenarios, initialScenario, initialRep = 13, lockRep = false, syncUrl = false, compact = false, onEnded, idPrefix = "rp",
+  initialT = T_DEFAULT, initialView = "side", hotkeys = false, onChange, extra,
 }: {
   scenarios: ScenarioOpt[];
   initialScenario: string;
@@ -48,14 +59,23 @@ export function ReplayViewer({
   compact?: boolean;
   onEnded?: () => void;
   idPrefix?: string;
+  initialT?: number;
+  initialView?: ReplayView;
+  /** Space play/pause, Left/Right previous/next recorded event (ignored while a form control has focus). */
+  hotkeys?: boolean;
+  /** Reported when paused (not every animation frame), for deep links. */
+  onChange?: (s: { scenario: string; rep: number; view: ReplayView; t: number }) => void;
+  /** Rendered between the transport and the arm panels (packet inspector, loop stages). */
+  extra?: (ctx: ReplayContext) => React.ReactNode;
 }) {
   const router = useRouter();
   const [scenario, setScenario] = useState(initialScenario);
   const [rep, setRep] = useState(initialRep);
-  const [view, setView] = useState<"side" | "control" | "loop">("side");
+  const [view, setView] = useState<ReplayView>(initialView);
   const [runs, setRuns] = useState<{ control?: ReplayRun; loop?: ReplayRun }>({});
   const [error, setError] = useState<string | null>(null);
-  const [t, setT] = useState(T_DEFAULT);
+  const [t, setT] = useState(initialT);
+  const firstLoad = useRef(true);
   const [playing, setPlaying] = useState(false);
   const [speed, setSpeed] = useState(2);
   const [ended, setEnded] = useState(false);
@@ -68,7 +88,8 @@ export function ReplayViewer({
     setError(null);
     setPlaying(false);
     setEnded(false);
-    setT(T_DEFAULT);
+    if (!firstLoad.current) setT(T_DEFAULT);
+    firstLoad.current = false;
     Promise.all([fetchRun(`${scenario}__r${rep}__control`), fetchRun(`${scenario}__r${rep}__loop`)])
       .then(([c, l]) => alive && setRuns({ control: c, loop: l }))
       .catch((e) => alive && setError(String(e)));
@@ -109,6 +130,41 @@ export function ReplayViewer({
     }
     setPlaying((p) => !p);
   }, [ready]);
+
+  const focusArm: "control" | "loop" = view === "control" ? "control" : "loop";
+  const evs = useMemo(() => (runs[focusArm] ? keyEvents(runs[focusArm]!) : []), [runs, focusArm]);
+  const step = useCallback((dir: 1 | -1) => {
+    const nt = dir > 0 ? nextEventTime(evs, tRef.current) : prevEventTime(evs, tRef.current);
+    if (nt === null) return;
+    setPlaying(false);
+    setEnded(false);
+    setT(nt);
+  }, [evs]);
+
+  useEffect(() => {
+    if (!playing) onChange?.({ scenario, rep, view, t });
+  }, [playing, scenario, rep, view, t, onChange]);
+
+  useEffect(() => {
+    if (!hotkeys) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      const el = e.target as HTMLElement | null;
+      if (el && el.closest("input, select, textarea, [contenteditable=true]")) return;
+      if (e.key === " " && !(el && el.closest("button, a"))) {
+        e.preventDefault();
+        togglePlay();
+      } else if (e.key === "ArrowRight") {
+        e.preventDefault();
+        step(1);
+      } else if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        step(-1);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [hotkeys, togglePlay, step]);
 
   const bin = Math.floor(t / 0.5);
   const arms = view === "side" ? (["control", "loop"] as const) : ([view] as const);
@@ -192,6 +248,14 @@ export function ReplayViewer({
               </button>
             ))}
           </div>
+          <div className="flex items-center gap-1 text-sm" role="group" aria-label="Step between recorded events">
+            <button type="button" onClick={() => step(-1)} disabled={!ready} className="rounded-md border border-line px-2 py-1 disabled:opacity-50" data-testid={`${idPrefix}-prev-event`} title="Previous recorded event (Left arrow)">
+              ◀ Event
+            </button>
+            <button type="button" onClick={() => step(1)} disabled={!ready} className="rounded-md border border-line px-2 py-1 disabled:opacity-50" data-testid={`${idPrefix}-next-event`} title="Next recorded event (Right arrow)">
+              Event ▶
+            </button>
+          </div>
           <output className="num ml-auto font-mono text-sm font-semibold" data-testid={`${idPrefix}-time`} aria-live="off">
             {fmtT(t)}
           </output>
@@ -203,6 +267,8 @@ export function ReplayViewer({
         </div>
         <Scrubber t={t} setT={(v) => { setT(v); setEnded(false); }} loopMarkers={loopMarkers} ctrlMarkers={ctrlMarkers} idPrefix={idPrefix} />
       </div>
+
+      {extra?.({ run: runs[focusArm], runs, arm: focusArm, t, playing })}
 
       <div className={clsx("grid gap-4", arms.length === 2 && "xl:grid-cols-2")}>
         {arms.map((arm) => (
@@ -340,6 +406,8 @@ function ArmPanel({ arm, run, t, bin, playing, speed, scenarioTitle, compact, id
       <header className="mb-2 flex flex-wrap items-center gap-2">
         <h2 className="text-base font-semibold">{arm === "control" ? "No action (control)" : "Recovery loop"}</h2>
         {run && <span className="font-mono text-xs text-muted">{run.id}</span>}
+        <KindBadge kind="MEASURED" title="RU port states and parents (pmc observer), loop verdicts and actions (loop.jsonl), ptp4l events and per-0.5 s frame counts per sender" />
+        <KindBadge kind="ILLUSTRATIVE" title="Packet dot paths, spacing and speed are drawn for legibility; only the per-bin counts are recorded" />
         {state?.verdict && (
           <Badge tone={state.verdict === "ATTACK" ? "danger" : state.verdict === "UNKNOWN" ? "warn" : "neutral"}>
             Rule: {state.verdict}
@@ -413,7 +481,7 @@ function ArmPanel({ arm, run, t, bin, playing, speed, scenarioTitle, compact, id
             </div>
             <div>
               <h3 className="text-xs font-semibold uppercase tracking-wide text-muted">Event log (loop.jsonl and ptp4l, up to now)</h3>
-              <ol className={clsx("mt-1 space-y-1 overflow-y-auto pr-1 text-xs", compact ? "max-h-40" : "max-h-56")} data-testid={`${idPrefix}-log-${arm}`} aria-live="polite">
+              <ol className={clsx("mt-1 space-y-1 overflow-y-auto pr-1 text-xs", compact ? "max-h-40" : "max-h-56")} data-testid={`${idPrefix}-log-${arm}`} aria-live="polite" tabIndex={0} aria-label="Event log">
                 {log.length === 0 && <li className="text-muted">No events yet.</li>}
                 {log.slice(0, 60).map((e, i) => (
                   <li

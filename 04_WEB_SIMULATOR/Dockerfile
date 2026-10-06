@@ -11,6 +11,8 @@ COPY prisma ./prisma
 RUN npm ci --no-audit --no-fund
 COPY . .
 RUN npm run build
+# Defence in depth for Windows checkouts that ignore .gitattributes: strip CR from the scripts the container runs.
+RUN sed -i 's/\r$//' scripts/*.sh
 ENV NODE_ENV=production PORT=3000
 EXPOSE 3000
 CMD ["sh", "scripts/docker-entrypoint.sh"]

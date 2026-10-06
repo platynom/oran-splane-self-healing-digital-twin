@@ -1,0 +1,4005 @@
+{
+ "schema_version": 1,
+ "generated": "2026-10-05",
+ "status_note": "Every sentence cites a source. VERIFIED means an auditor opened the cited source and stored a supporting quote. External-standard claims also carry citation.primary with CONFIRMED or NOT_ACCESSIBLE. No sentences remain hidden.",
+ "kinds": {
+  "MEASURED": "from recorded data",
+  "CONFIGURED": "from the testbed configuration or provisioning",
+  "ILLUSTRATIVE": "teaching mapping or animation, not data",
+  "UNKNOWN": "explicitly not measured or not decided",
+  "REFERENCE": "what a standard or project document says (addition to the four evidence kinds)"
+ },
+ "sources": [
+  {
+   "id": "GUIDE",
+   "title": "SPlane_Project_Story_Guide.pdf",
+   "path_or_url": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
+   "openable_in_this_session": true,
+   "note": "project narrative; cites the standards it relays"
+  },
+  {
+   "id": "V8",
+   "title": "v8 deck (PDF view)",
+   "path_or_url": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
+   "openable_in_this_session": true,
+   "note": "slide numbers as in V8_SLIDE_SOURCE_MAP.md"
+  },
+  {
+   "id": "TBREF",
+   "title": "Testbed Configuration Reference 2026-10-05",
+   "path_or_url": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_Testbed_Configuration_Reference_v2026-10-05.pdf",
+   "openable_in_this_session": true,
+   "note": ""
+  },
+  {
+   "id": "SRCMAP",
+   "title": "V8_SLIDE_SOURCE_MAP.md",
+   "path_or_url": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/verification_records/V8_SLIDE_SOURCE_MAP.md",
+   "openable_in_this_session": true,
+   "note": ""
+  },
+  {
+   "id": "V5LOG",
+   "title": "V5_VERIFICATION_LOG.md",
+   "path_or_url": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/verification_records/V5_VERIFICATION_LOG.md",
+   "openable_in_this_session": true,
+   "note": "claim-by-claim verification log"
+  },
+  {
+   "id": "V5DIS",
+   "title": "V5_DISAGREEMENTS.md",
+   "path_or_url": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/verification_records/V5_DISAGREEMENTS.md",
+   "openable_in_this_session": true,
+   "note": ""
+  },
+  {
+   "id": "RESULTS",
+   "title": "RESULTS_2026-10-05.md",
+   "path_or_url": "03_RECOVERY_LOOP_S-PLANE/RESULTS_2026-10-05.md",
+   "openable_in_this_session": true,
+   "note": ""
+  },
+  {
+   "id": "PREREG",
+   "title": "PREREGISTRATION.md",
+   "path_or_url": "03_RECOVERY_LOOP_S-PLANE/PREREGISTRATION.md",
+   "openable_in_this_session": true,
+   "note": ""
+  },
+  {
+   "id": "DESIGN",
+   "title": "RECOVERY_LOOP_DESIGN.md",
+   "path_or_url": "03_RECOVERY_LOOP_S-PLANE/RECOVERY_LOOP_DESIGN.md",
+   "openable_in_this_session": true,
+   "note": ""
+  },
+  {
+   "id": "STDEV",
+   "title": "STANDARDS_EVIDENCE.md",
+   "path_or_url": "03_RECOVERY_LOOP_S-PLANE/STANDARDS_EVIDENCE.md",
+   "openable_in_this_session": true,
+   "note": "quotes with verification levels V1/V2/NV as recorded 5 Oct 2026"
+  },
+  {
+   "id": "CFG",
+   "title": "testbed_frozen_copy/cfg/*.cfg",
+   "path_or_url": "03_RECOVERY_LOOP_S-PLANE/testbed_frozen_copy/cfg/",
+   "openable_in_this_session": true,
+   "note": "ptp4l configuration files used by the runs"
+  },
+  {
+   "id": "PROV",
+   "title": "provisioning.json",
+   "path_or_url": "03_RECOVERY_LOOP_S-PLANE/code/provisioning.json",
+   "openable_in_this_session": true,
+   "note": "operator inventory (configuration, not measurement)"
+  },
+  {
+   "id": "FAULTX",
+   "title": "ORAN_Fault_Detectability_v2026-10-05.xlsx",
+   "path_or_url": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_Fault_Detectability_v2026-10-05.xlsx",
+   "openable_in_this_session": true,
+   "note": "Source / Destination / Attack devices / Consequence columns"
+  },
+  {
+   "id": "MATRIX",
+   "title": "ORAN_SPlane_Parameter_Fault_Matrix_v2026-10-05.xlsx",
+   "path_or_url": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_Parameter_Fault_Matrix_v2026-10-05.xlsx",
+   "openable_in_this_session": true,
+   "note": "FAULT KEY sheet: WG11 threat IDs"
+  },
+  {
+   "id": "EVAL4",
+   "title": "EVALUATION_V4.json",
+   "path_or_url": "01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/gap_coverage_2026-09-20/corrected_final/EVALUATION_V4.json",
+   "openable_in_this_session": true,
+   "note": "168-run campaign"
+  },
+  {
+   "id": "SYNCPY",
+   "title": "ingest/sync_status.py",
+   "path_or_url": "01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/ingest/sync_status.py",
+   "openable_in_this_session": true,
+   "note": "project code; fixture-tested parser, not a standard"
+  },
+  {
+   "id": "SURVEY",
+   "title": "AI-Native_ORAN_Digital_Twin_Architecture.md",
+   "path_or_url": "01_CURRENT_SPlane_SelfHealing/literature-survey/AI-Native_ORAN_Digital_Twin_Architecture.md",
+   "openable_in_this_session": true,
+   "note": "project literature-survey note; not a standard"
+  },
+  {
+   "id": "B6",
+   "title": "B6 DRIFT_REPORT_run2.md",
+   "path_or_url": "outputs/B6_two_machine_2026-10-02/run2/DRIFT_REPORT_run2.md",
+   "openable_in_this_session": true,
+   "note": "raw per-sample CSVs are not in the repository"
+  },
+  {
+   "id": "PILOT",
+   "title": "13 Sep pilot START_HERE_FINAL.md",
+   "path_or_url": "outputs/empirical_software_network_pilot_v1/START_HERE_FINAL.md",
+   "openable_in_this_session": true,
+   "note": ""
+  },
+  {
+   "id": "LARGE",
+   "title": "LARGE_FILES_NOT_IN_GIT.md",
+   "path_or_url": "LARGE_FILES_NOT_IN_GIT.md",
+   "openable_in_this_session": true,
+   "note": "files of 50 MB or more kept off git"
+  },
+  {
+   "id": "S11",
+   "title": "S11_CLOSED_LOOP_EVALUATION.json",
+   "path_or_url": "outputs/empirical_software_network_pilot_v1/S11_CLOSED_LOOP_EVALUATION.json",
+   "openable_in_this_session": true,
+   "note": ""
+  },
+  {
+   "id": "RLEVAL",
+   "title": "EVALUATION_RL.json",
+   "path_or_url": "03_RECOVERY_LOOP_S-PLANE/results/EVALUATION_RL.json",
+   "openable_in_this_session": true,
+   "note": "per-run scores of the 140 runs"
+  },
+  {
+   "id": "RESEARCH",
+   "title": "research/CATALOGUE_conformance_robustness_tests.md",
+   "path_or_url": "research/CATALOGUE_conformance_robustness_tests.md",
+   "openable_in_this_session": true,
+   "note": "pasted AI transcript, unreviewed (00_START_HERE.md)"
+  },
+  {
+   "id": "ETSI_TS103982",
+   "title": "ETSI TS 103 982 V8.0.0 (O-RAN architecture description)",
+   "path_or_url": "https://www.etsi.org/deliver/etsi_ts/103900_103999/103982/08.00.00_60/ts_103982v080000p.pdf",
+   "openable_in_this_session": false,
+   "note": "listed locally in SRCMAP but the PDF is not in the repository; egress blocked here"
+  },
+  {
+   "id": "ORAN_CUS",
+   "title": "O-RAN.WG4.CUS.0 (via Armstrong, ATIS WSTS 2023)",
+   "path_or_url": "https://wsts.atis.org/wp-content/uploads/2023/02/Greg-Armstrong_ORAN-Fundamentals.pdf",
+   "openable_in_this_session": false,
+   "note": "egress blocked; only as quoted in V8 slide 6"
+  },
+  {
+   "id": "G8271",
+   "title": "ITU-T G.8271.1",
+   "path_or_url": "https://www.itu.int/rec/T-REC-G.8271.1/",
+   "openable_in_this_session": false,
+   "note": "paywalled; not opened"
+  },
+  {
+   "id": "RFC7384",
+   "title": "IETF RFC 7384",
+   "path_or_url": "https://www.rfc-editor.org/rfc/rfc7384.html",
+   "openable_in_this_session": false,
+   "note": "egress blocked here; quotes relayed by STDEV (V1 there)"
+  },
+  {
+   "id": "TR104106",
+   "title": "ETSI TR 104 106 V3.0.0",
+   "path_or_url": "https://www.etsi.org/deliver/etsi_tr/104100_104199/104106/03.00.00_60/tr_104106v030000p.pdf",
+   "openable_in_this_session": false,
+   "note": "egress blocked here; IDs relayed by V8 / MATRIX"
+  },
+  {
+   "id": "SCEN",
+   "title": "Campaign scenario driver scenarios.sh (frozen copy)",
+   "path_or_url": "03_RECOVERY_LOOP_S-PLANE/testbed_frozen_copy/run/scenarios.sh",
+   "openable_in_this_session": true,
+   "note": "testbed code; shows where each scenario's traffic originates"
+  },
+  {
+   "id": "B6R1",
+   "title": "B6 run 1 drift report",
+   "path_or_url": "outputs/B6_two_machine_2026-10-02/DRIFT_REPORT.md",
+   "openable_in_this_session": true,
+   "note": "run 1 analysis output"
+  },
+  {
+   "id": "B6REC",
+   "title": "B6 two-machine measurement record",
+   "path_or_url": "outputs/B6_two_machine_2026-10-02/B6_MEASUREMENT_RECORD_2026-10-02.md",
+   "openable_in_this_session": true,
+   "note": "run 1 record incl. scope limits"
+  },
+  {
+   "id": "APPX",
+   "title": "Simulator extractor ingest/extract.py",
+   "path_or_url": "04_WEB_SIMULATOR/ingest/extract.py",
+   "openable_in_this_session": true,
+   "note": "this app's own processing code (how replay packet counts are attributed)"
+  },
+  {
+   "id": "RUNS",
+   "title": "Recovery-loop run archive r13-r17",
+   "path_or_url": "03_RECOVERY_LOOP_S-PLANE/results/recovery_eval_runs_r13-r17.tgz",
+   "openable_in_this_session": true,
+   "note": "raw per-run captures and logs (dn.pcap.gz, loop.jsonl); counts computed from it"
+  },
+  {
+   "id": "ETSI_CUS12",
+   "title": "ETSI TS 103 859 V12.0.1 (O-RAN Open Fronthaul CUS-plane)",
+   "path_or_url": "https://www.etsi.org/deliver/etsi_ts/103800_103899/103859/12.00.01_60/ts_103859v120001p.pdf",
+   "openable_in_this_session": true,
+   "note": "Official ETSI-hosted O-RAN Publicly Available Specification opened during the final primary-source audit."
+  },
+  {
+   "id": "ETSI_MP17",
+   "title": "ETSI TS 104 023 V17.1.0 (O-RAN Open Fronthaul M-plane)",
+   "path_or_url": "https://www.etsi.org/deliver/etsi_ts/104000_104099/104023/17.01.00_60/ts_104023v170100p.pdf",
+   "openable_in_this_session": true,
+   "note": "Official ETSI-hosted O-RAN Publicly Available Specification opened during the final primary-source audit."
+  }
+ ],
+ "checks": [
+  {
+   "id": "lls-mapping",
+   "question": "Which LLS configuration does the testbed map to?",
+   "result": "resolved: LLS-C3 is the closest match; LLS-C2 does not fit",
+   "finding": "Definitions (O-RAN.WG4.CUS.0 v06.00 as quoted on v8 slide 6 via Armstrong, ATIS WSTS 2023): LLS-C1 and LLS-C2 put the O-DU in the synchronization chain; LLS-C3 has the O-DU outside it, with timing from PRTC/T-GM to the O-RU through the network. The testbed is GM -> T-BC -> O-RU proxies with no O-DU (TBREF §4 topology; v8 slide 6 'no O-DU in the timing chain'; cfg files). TBREF §4's 'models O-RAN LLS-C2/C3' is therefore not defensible for C2. C3 is the closest match, not an exact one: the lab has no PRTC/GPS (TBREF §3). The UI shows 'LLS-C3 · closest match (reference doc says C2/C3)'. The definitions are secondary (quoted), not read from the O-RAN specification.",
+   "evidence": [
+    "V8 slide 6",
+    "GUIDE chapter 1",
+    "TBREF §4",
+    "v8 slide 6 LLS table and OUR TESTBED box",
+    "TBREF §3 clock_class_threshold row",
+    "TBREF §4 topology line"
+   ],
+   "element_ids": [
+    "lls-c2",
+    "lls-c3"
+   ]
+  },
+  {
+   "id": "odu-timing-role",
+   "question": "What is the O-DU's timing role in LLS-C1/C2?",
+   "result": "partly verified: chain membership only",
+   "finding": "The project documents quote O-RAN.WG4.CUS.0 (via Armstrong) as: the O-DU is part of the synchronization chain and network timing is distributed from O-DU to O-RU. A web-search snippet (page not opened) adds that the O-DU receives network time from a PRTC/T-GM, co-located or remote. No openable source states which PTP clock type (T-BC or T-GM) the O-DU implements, so that sentence is SOURCE_NEEDED and hidden.",
+   "evidence": [
+    "V8 slide 6",
+    "search snippet (analogictips.com, not opened)"
+   ],
+   "element_ids": [
+    "o-du"
+   ]
+  },
+  {
+   "id": "mplane-yang",
+   "question": "What is the M-plane sync YANG model name?",
+   "result": "SOURCE_NEEDED (unchanged; hidden in the UI)",
+   "finding": "Two further independent attempts on 2026-10-06 found 'o-ran-sync' only in project-authored code and docs; github.com/o-ran-sc/scp-oam-modeling showed no such file, a guessed YANG path returned 404, and code search was unavailable. Not confirmed.",
+   "evidence": [
+    "SYNCPY line 64",
+    "docs/audit/content_audit_pass1.json Q2"
+   ],
+   "element_ids": [
+    "fh-mplane"
+   ]
+  },
+  {
+   "id": "g8271-budget",
+   "question": "Is the G.8271 TDD ±1.5 µs budget stated correctly?",
+   "result": "resolved: ±1.5 µs is scoped to G.8271.1 reference point E; no source ties it to TDD",
+   "finding": "Every openable source scopes ±1.5 µs to ITU-T G.8271.1: absolute time error at reference point E (end application) relative to a common time standard, with 1100 ns as the network limit at reference point C (V5LOG item 32; v8 slide 7). No openable source ties ±1.5 µs to TDD; the only TDD figure is the separate 3 µs TDD cell phase-synchronization limit (3GPP TS 38.133, v8 slide 12). The app's text uses the reference-point-E scope and keeps 'TDD' only on the 3 µs limit.",
+   "evidence": [
+    "V5LOG item 32",
+    "V5DIS item 6",
+    "V8 slide 12",
+    "docs/audit/content_audit_pass1.json Q3",
+    "v8 slide 12 footer"
+   ],
+   "element_ids": [
+    "fh-splane",
+    "air-interface"
+   ]
+  },
+  {
+   "id": "wg11-threats",
+   "question": "Which WG11 S-plane threat references does the project use?",
+   "result": "relayed by project documents; ETSI TR 104 106 not opened",
+   "finding": "V8 slides 10-12 and the Parameter Fault Matrix (FAULT KEY) map: A1 to T-SPLANE-02/03 (rogue PTP instance), A5 to T-SPLANE-01 (clock service interrupted), A8 to T-SPLANE-03 (slaves given inaccurate time), C1 to T-SPLANE-04 (degradation or free-running), and T-FRHAUL-01 (compromised O-DU or link) and T-FRHAUL-02 (access paths). ETSI TR 104 106 itself could not be opened here. The title of T-SPLANE-02 is not stated in the repository.",
+   "evidence": [
+    "V8 slides 10-12",
+    "MATRIX FAULT KEY",
+    "SRCMAP §3 [2]"
+   ],
+   "element_ids": [
+    "injector",
+    "lls-c1"
+   ]
+  }
+ ],
+ "tier_log": [
+  {
+   "element": "gm-a, gm-b",
+   "requested": 1,
+   "final": 1,
+   "result": "supported",
+   "basis": "TBREF §4 roles; cfg priority2 100/110 and serverOnly 1"
+  },
+  {
+   "element": "bc, bc-standby",
+   "requested": 1,
+   "final": 1,
+   "result": "supported",
+   "basis": "TBREF §4; PREREG §2-3; DESIGN"
+  },
+  {
+   "element": "o-ru",
+   "requested": 1,
+   "final": 1,
+   "result": "supported; 'T-TSC' label kept as CONFIGURED",
+   "basis": "TBREF §4 calls the radio units 'O-RU proxies (T-TSC)' and the configs set clientOnly 1; the term T-TSC otherwise appears only in the unreviewed research catalogue, so no sentence depends on it beyond the TBREF label"
+  },
+  {
+   "element": "fh-splane",
+   "requested": 1,
+   "final": 1,
+   "result": "supported",
+   "basis": "GUIDE ch.1 and ch.3; V8 slide 17-18"
+  },
+  {
+   "element": "injector",
+   "requested": 1,
+   "final": 1,
+   "result": "supported",
+   "basis": "GUIDE ch.7 caption; V8 slide 10; RESULTS §6"
+  },
+  {
+   "element": "o-du",
+   "requested": 2,
+   "final": 2,
+   "result": "supported (chain membership); clock-type sentence hidden",
+   "basis": "V8 slide 5-6"
+  },
+  {
+   "element": "fh-mplane",
+   "requested": 2,
+   "final": 2,
+   "result": "supported as a plane; sync-state/YANG claim hidden",
+   "basis": "GUIDE ch.1; the o-ran-sync name has no openable source"
+  },
+  {
+   "element": "fh-cplane, fh-uplane",
+   "requested": 2,
+   "final": 3,
+   "result": "DEMOTED to tier 3 (consequence card only)",
+   "basis": "The mapping 'what stops when timing is lost' has no openable source: the testbed has no O-DU or radio stack, so nothing about C/U-plane behaviour under timing loss was measured. The cards say UNKNOWN; the unsupported sentences are SOURCE_NEEDED and hidden."
+  },
+  {
+   "element": "smo-nonrt",
+   "requested": 2,
+   "final": 2,
+   "result": "supported at project-survey level; labelled",
+   "basis": "SURVEY §9 (typical loop above 1 s); the closed-loop mapping is marked ILLUSTRATIVE and 'not implemented there'"
+  },
+  {
+   "element": "gnss-time, synce",
+   "requested": 2,
+   "final": 2,
+   "result": "supported as context; both marked not measured",
+   "basis": "V8 slides 6, 16, 18, 39; GUIDE ch.8"
+  },
+  {
+   "element": "osc-drift",
+   "requested": "n/a (added)",
+   "final": 2,
+   "result": "added as tier 2 data element for the B6 measurement",
+   "basis": "B6 DRIFT_REPORT_run2.md; raw CSVs absent"
+  },
+  {
+   "element": "ptp-exchange, bmca-contest, attack-packets, port-counts, hw-faults, loop-*, recovery-loop",
+   "requested": "n/a (levels 3-4 content)",
+   "final": 1,
+   "result": "supported",
+   "basis": "GUIDE ch.3, 7, 9; DESIGN; PREREG §3; RESULTS"
+  },
+  {
+   "element": "ds-*",
+   "requested": "n/a (datasets)",
+   "final": 1,
+   "result": "supported; raw files absent recorded",
+   "basis": "RESULTS; GUIDE; S11/START_HERE_FINAL; LARGE_FILES_NOT_IN_GIT.md"
+  },
+  {
+   "element": "air-interface, ue",
+   "requested": 3,
+   "final": 3,
+   "result": "supported as consequence context",
+   "basis": "GUIDE ch.2; V8 slide 12; RESULTS §6 says no service impact was measured"
+  },
+  {
+   "element": "near-rt-ric, o-cu, core-5g, o-cloud",
+   "requested": "dimmed",
+   "final": "dimmed",
+   "result": "supported as 'outside this project'",
+   "basis": "GUIDE ch.1; SURVEY tables; V8 slide 4"
+  },
+  {
+   "element": "hw-faults",
+   "requested": 1,
+   "final": 2,
+   "result": "DEMOTED to tier 2",
+   "basis": "Not built or measured on the testbed (V8 slide 18; TBREF: 'Neither unlocks GNSS (A6/A7/B1) or SyncE (B4)'); tier 1 is reserved for what the project built and measured."
+  },
+  {
+   "element": "ds-raw-missing",
+   "requested": 1,
+   "final": 2,
+   "result": "DEMOTED to tier 2",
+   "basis": "Lists data the repository does not contain; nothing measured is shown for it."
+  },
+  {
+   "element": "fh-splane",
+   "requested": 1,
+   "final": 1,
+   "result": "kept, label narrowed to PTP",
+   "basis": "V8 slide 16: 'The testbed exercised PTP only; SyncE is a physical-layer function and was not implemented.' SyncE stays a tier-2 element."
+  },
+  {
+   "element": "gm-a, o-ru",
+   "requested": 1,
+   "final": 1,
+   "result": "kept, labels corrected",
+   "basis": "TBREF §4 node table: gma 'Primary grandmaster (T-GM)'; ru1-3 'O-RU proxies (T-TSC)'; TBREF §2: 'the lab has no PRTC/GPS'."
+  },
+  {
+   "element": "lls-c3",
+   "requested": "testbed configuration",
+   "final": "closest match",
+   "result": "relabelled",
+   "basis": "V8 slide 6 quoted O-RAN.WG4.CUS.0 definitions: LLS-C1/C2 put the O-DU in the sync chain; the testbed has no O-DU (V8 slide 6, TBREF §4 topology). TBREF §4 says 'models O-RAN LLS-C2/C3'; LLS-C2 does not fit the quoted definition. LLS-C3 is the closest match, not exact: the lab has no PRTC (TBREF §2)."
+  }
+ ],
+ "elements": [
+  {
+   "id": "gm-a",
+   "tier": 1,
+   "levels": [
+    1,
+    2,
+    3
+   ],
+   "name": "GM-A: primary grandmaster (T-GM)",
+   "role": "Primary time source of the testbed; wins the Best Master Clock election in normal operation.",
+   "sentences": [
+    {
+     "id": "gm-a.s1",
+     "kind": "CONFIGURED",
+     "text": "In the testbed GM-A is the primary grandmaster (T-GM) with priority2 100, so it wins the Best Master Clock election in normal operation.",
+     "citation": {
+      "source": "Testbed Configuration Reference 2026-10-05",
+      "source_id": "TBREF",
+      "clause": "§4 Topology and node roles",
+      "locator": "node table, row gma",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_Testbed_Configuration_Reference_v2026-10-05.pdf",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "gma | Primary grandmaster (T-GM) | 100 (best) | Wins BMCA normally",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_Testbed_Configuration_Reference_v2026-10-05.pdf p.4, §4 Topology and node roles, node table row gma"
+     }
+    },
+    {
+     "id": "gm-a.s2",
+     "kind": "CONFIGURED",
+     "text": "GM-A runs with serverOnly 1, so it serves time and never takes time from another clock.",
+     "citation": {
+      "source": "testbed_frozen_copy/cfg/*.cfg",
+      "source_id": "CFG",
+      "clause": "gma.cfg",
+      "locator": "[v-gma] serverOnly 1",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/testbed_frozen_copy/cfg/",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "priority2 100\n[v-gma]\nserverOnly 1",
+      "where": "03_RECOVERY_LOOP_S-PLANE/testbed_frozen_copy/cfg/gma.cfg, last 3 lines"
+     }
+    },
+    {
+     "id": "gm-a.s3",
+     "kind": "CONFIGURED",
+     "text": "The operator's allow-list holds GM-A and GM-B (identities …00000a and …00000b).",
+     "citation": {
+      "source": "SPlane_Project_Story_Guide.pdf",
+      "source_id": "GUIDE",
+      "clause": "Chapter 9",
+      "locator": "p.14",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 2, 2026-10-06",
+      "quote": "The operator's allow-list is …00000a and …00000b (GM-A and GM-B), and no maintenance window is open.",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf p.14, Chapter 9, \"A real example: A1, replicate 1\""
+     }
+    },
+    {
+     "id": "gm-a.s4",
+     "kind": "UNKNOWN",
+     "text": "No GNSS receiver exists in the testbed, so GNSS spoofing and jamming cannot be produced; all namespaces share the host clock, with free_running 1 set.",
+     "citation": {
+      "source": "v8 deck (PDF view)",
+      "source_id": "V8",
+      "clause": "slide 18, verified platform constraints",
+      "locator": "'No GNSS receiver'; 'One shared oscillator'",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 2, 2026-10-06",
+      "quote": "No GNSS receiver: GNSS spoofing and jamming cannot be produced at all. ... One shared oscillator: All namespaces share the host clock, and free_running 1 is set: offset is measured, never steered.",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf slide 18, VERIFIED PLATFORM CONSTRAINTS column"
+     }
+    },
+    {
+     "id": "gm-a.s5",
+     "kind": "CONFIGURED",
+     "text": "The lab has no PRTC/GPS, so every node truthfully advertises clockClass 248.",
+     "citation": {
+      "source": "Testbed Configuration Reference 2026-10-05",
+      "source_id": "TBREF",
+      "clause": "§3 Declared deviations from a production deployment",
+      "locator": "p.4, clock_class_threshold 248 row",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_Testbed_Configuration_Reference_v2026-10-05.pdf",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 3, 2026-10-06",
+      "quote": "clock_class_threshold 248 | An acceptance policy, not a quality claim; the lab has no PRTC/GPS so every node truthfully advertises clockClass 248.",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_Testbed_Configuration_Reference_v2026-10-05.pdf p.4, §3 Declared deviations, clock_class_threshold 248 row"
+     }
+    }
+   ]
+  },
+  {
+   "id": "gm-b",
+   "tier": 1,
+   "levels": [
+    1,
+    2,
+    3
+   ],
+   "name": "GM-B: provisioned backup grandmaster",
+   "role": "Allow-listed backup source that takes over in a planned or unplanned grandmaster change.",
+   "sentences": [
+    {
+     "id": "gm-b.s1",
+     "kind": "CONFIGURED",
+     "text": "GM-B is the provisioned backup grandmaster with priority2 110; it enables the planned changeover scenario B2.",
+     "citation": {
+      "source": "Testbed Configuration Reference 2026-10-05",
+      "source_id": "TBREF",
+      "clause": "§4 Topology and node roles",
+      "locator": "node table, row gmb",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_Testbed_Configuration_Reference_v2026-10-05.pdf",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "gmb | Provisioned backup GM | 110 | Enables B2 planned failover",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_Testbed_Configuration_Reference_v2026-10-05.pdf p.4 §4 node table row gmb"
+     }
+    },
+    {
+     "id": "gm-b.s2",
+     "kind": "MEASURED",
+     "text": "In the unplanned grandmaster failover scenario (B_unplanned_failover) the frozen rule returned UNKNOWN in 12 of 12 campaign runs.",
+     "citation": {
+      "source": "EVALUATION_V4.json",
+      "source_id": "EVAL4",
+      "clause": "frozen.per_scenario.B_unplanned_failover",
+      "locator": "correct 12 / n 12, expect UNKNOWN",
+      "url_or_repo_path": "01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/gap_coverage_2026-09-20/corrected_final/EVALUATION_V4.json",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 3, 2026-10-06",
+      "quote": "frozen (label 'FROZEN rule c362e11').per_scenario.B_unplanned_failover = {\"correct\": 12, \"n\": 12, \"expect\": \"UNKNOWN\"}",
+      "where": "01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/gap_coverage_2026-09-20/corrected_final/EVALUATION_V4.json, frozen.per_scenario.B_unplanned_failover"
+     }
+    },
+    {
+     "id": "gm-b.s3",
+     "kind": "MEASURED",
+     "text": "In the 5 recovery-loop runs of that case the loop took no disruptive action and escalated to an operator.",
+     "citation": {
+      "source": "RESULTS_2026-10-05.md",
+      "source_id": "RESULTS",
+      "clause": "§2 H4",
+      "locator": "hypothesis table",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/RESULTS_2026-10-05.md",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "| **H4 honest abstention** | **PASS** | B_unplanned_failover: 0 actions, escalation 5/5 |",
+      "where": "03_RECOVERY_LOOP_S-PLANE/RESULTS_2026-10-05.md §2 line 28; also §1 'Ambiguous (B_unplanned_failover) | — | 0 actions; escalated 5/5'; EVALUATION_RL.json summary B_unplanned_failover loop: disruptive_actions 0, runs_with_escalation 5"
+     }
+    },
+    {
+     "id": "gm-b.s4",
+     "kind": "CONFIGURED",
+     "text": "In that scenario GM-A is killed with no maintenance window open and the provisioned GM-B takes over; the scenario script notes that from packets alone this is indistinguishable from an attack that suppressed GM-A.",
+     "citation": {
+      "source": "Campaign scenario driver scenarios.sh (frozen copy)",
+      "source_id": "SCEN",
+      "clause": "case B_unplanned_failover",
+      "locator": "lines 94-101",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/testbed_frozen_copy/run/scenarios.sh",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 3, 2026-10-06",
+      "quote": "# CRITICAL BENIGN GAP #1: GM-A dies with NO maintenance window. Provisioned GM-B takes over. From packets alone this is INDISTINGUISHABLE from an attack that suppressed GM-A; ... manifest benign B_UNPLANNED false \"UNPLANNED: GM-A crashes, NO maintenance window; GM-B (provisioned) elected\" ... kill -9 $(cat $OUT/gma.pid)",
+      "where": "03_RECOVERY_LOOP_S-PLANE/testbed_frozen_copy/run/scenarios.sh lines 94-101"
+     }
+    }
+   ]
+  },
+  {
+   "id": "bc",
+   "tier": 1,
+   "levels": [
+    1,
+    2,
+    3
+   ],
+   "name": "Boundary clock (T-BC)",
+   "role": "Re-serves grandmaster time to the radio-unit segment; slave upstream, master downstream.",
+   "sentences": [
+    {
+     "id": "bc.s1",
+     "kind": "MEASURED",
+     "text": "Across the frozen recovery archive, legitimate GM-A/GM-B Announce frames carry stepsRemoved 0 and the primary boundary clock's relayed Announce frames carry 1 (62,620 packets). The topology comment's RU value 2 refers to the receiving clock's currentDS after its increment, not the received Announce field.",
+     "citation": {
+      "source": "Recovery-loop run archive r13-r17 and reproducible packet audit",
+      "source_id": "RUNS",
+      "clause": "all up.pcap.gz and dn.pcap.gz captures",
+      "locator": "audit_steps_removed.py: source 020000fffe000001 relaying GM-A/GM-B",
+      "url_or_repo_path": "04_WEB_SIMULATOR/ingest/audit_steps_removed.py",
+      "status": "VERIFIED",
+      "primary": {
+       "checked": false,
+       "result": "NOT_ACCESSIBLE",
+       "quote": "",
+       "url": "https://standards.ieee.org/ieee/1588/6825/",
+       "clause": "IEEE 1588 currentDS/Announce stepsRemoved update semantics (licence-gated)"
+      }
+     },
+     "verification": {
+      "by": "reproducible packet audit 2026-10-06",
+      "quote": "GM-A/GM-B Announce: stepsRemoved 0; primary BC relayed Announce: stepsRemoved 1 in 62,620 packets.",
+      "where": "recovery_eval_runs_r13-r17.tgz, every up/dn capture; audit_steps_removed.py output"
+     }
+    },
+    {
+     "id": "bc.s2",
+     "kind": "CONFIGURED",
+     "text": "The recovery loop never isolates a port provisioned in the master role, because isolating the boundary clock would itself remove timing; such cases are escalated instead.",
+     "citation": {
+      "source": "RECOVERY_LOOP_DESIGN.md",
+      "source_id": "DESIGN",
+      "clause": "Policy table, safety guard",
+      "locator": "row 'ATTACK … only provisioned master-role ports'",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/RECOVERY_LOOP_DESIGN.md",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "| ATTACK | Only provisioned master-role ports, or no violating port | **ESCALATE** (no automatic action) — **safety guard** | — | Isolating a provisioned BC would itself remove timing |",
+      "where": "03_RECOVERY_LOOP_S-PLANE/RECOVERY_LOOP_DESIGN.md, Policy table row 2; PREREGISTRATION.md §3 Safety guard 'a master-role provisioned port … is never isolated automatically'"
+     }
+    },
+    {
+     "id": "bc.s3",
+     "kind": "MEASURED",
+     "text": "In interception scenario C1 the boundary clock's downstream port was blackholed and never restored: RU1/RU2 spent a median 39.0 s of 40 s without a master when nothing was done, and 2.5 s with the recovery loop (5 of 5 restored).",
+     "citation": {
+      "source": "RESULTS_2026-10-05.md",
+      "source_id": "RESULTS",
+      "clause": "§1 headline table",
+      "locator": "row C1",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/RESULTS_2026-10-05.md",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "| C1 interception (BC port blackholed, never restored): RU1/RU2 without a master | 39.0 s of 40 (5/5 never recovered) | **2.5 s** median (restored 5/5, via standby BC) |",
+      "where": "RESULTS_2026-10-05.md §1 row C1; EVALUATION_RL.json summary C1_removal control median 39.01, loop median 2.5, restored 5/5"
+     }
+    }
+   ]
+  },
+  {
+   "id": "bc-standby",
+   "tier": 1,
+   "levels": [
+    2,
+    3
+   ],
+   "name": "Standby boundary clock",
+   "role": "Cold-standby T-BC cabled to both bridges; its daemon starts only if the loop fails over.",
+   "sentences": [
+    {
+     "id": "bc-standby.s1",
+     "kind": "CONFIGURED",
+     "text": "A cold-standby boundary clock with identity 020000fffe0000c5 is cabled to both bridges in every run of both arms, and its daemon starts only if the loop executes a failover.",
+     "citation": {
+      "source": "PREREGISTRATION.md",
+      "source_id": "PREREG",
+      "clause": "§2 Apparatus",
+      "locator": "'Addition in every run of both arms'",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/PREREGISTRATION.md",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "**Addition in every run of both arms:** a cold-standby boundary clock `bcs`, identity `020000fffe0000c5`, cabled to both bridges. Its daemon starts only if the loop executes a failover.",
+      "where": "PREREGISTRATION.md §2 line 15"
+     }
+    },
+    {
+     "id": "bc-standby.s2",
+     "kind": "CONFIGURED",
+     "text": "The loop activates it when no Announce arrives from any provisioned master port for more than 2 s (10 s while a maintenance window is open).",
+     "citation": {
+      "source": "PREREGISTRATION.md",
+      "source_id": "PREREG",
+      "clause": "§3 Loop parameters",
+      "locator": "service-loss trigger row",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/PREREGISTRATION.md",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "| Service-loss trigger | no Announce from any provisioned master port for 2 s; 10 s while a maintenance window is open |",
+      "where": "PREREGISTRATION.md §3 Service-loss trigger row"
+     }
+    },
+    {
+     "id": "bc-standby.s3",
+     "kind": "MEASURED",
+     "text": "Failover was executed and verified in 5 of 5 C1 runs; the same trigger fired once in a benign run (B3 replicate 17) during a real 16.5 s outage, which is why hypothesis H3 is reported as failed.",
+     "citation": {
+      "source": "RESULTS_2026-10-05.md",
+      "source_id": "RESULTS",
+      "clause": "§2 H2 and §3",
+      "locator": "H3 failure explanation",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/RESULTS_2026-10-05.md",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "H2 … standby failover executed and verified 5/5 in C1 | H3 no harm on benign | FAIL | 1 disruptive action in 25 benign loop runs … In B3_pdv_congestion replicate 17 … Control arm: RU1/RU2 really lost timing (LISTENING) for 16.5 s. Loop arm: the service-continuity channel saw no Announce for more than 2 s and activated the standby BC at T0 + 5.1 s.",
+      "where": "RESULTS_2026-10-05.md §2 (H2, H3) and §3"
+     }
+    }
+   ]
+  },
+  {
+   "id": "o-ru",
+   "tier": 1,
+   "levels": [
+    1,
+    2,
+    3
+   ],
+   "name": "O-RU proxies (RU1–RU3, T-TSC)",
+   "role": "Radio unit at the antenna; receives time over the Open Fronthaul S-plane.",
+   "sentences": [
+    {
+     "id": "o-ru.s1",
+     "kind": "REFERENCE",
+     "text": "In the O-RAN split the O-RU hosts Low-PHY and RF processing; radio requirements are measured at the antenna side, which in O-RAN is the O-RU.",
+     "citation": {
+      "source": "v8 deck (PDF view)",
+      "source_id": "V8",
+      "clause": "slide 5",
+      "locator": "functional-split figure and 'WHY THE O-RU' note",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "A logical node hosting Low-PHY layer and RF processing based on a lower layer functional split.",
+       "url": "https://www.etsi.org/deliver/etsi_ts/103900_103999/103982/08.00.00_60/ts_103982v080000p.pdf",
+       "clause": "clause 3.1, O-RU definition"
+      }
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "O-RU radio unit · physical node Low-PHY (FFT / iFFT, PRACH extraction) … RF processing … Radio requirements are measured at the base-station antenna [8][9]; in O-RAN the antenna side is the O-RU (Low-PHY + RF).",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf p.5 (slide 5) figure and 'WHY THE O-RU' note"
+     }
+    },
+    {
+     "id": "o-ru.s2",
+     "kind": "CONFIGURED",
+     "text": "The Testbed Configuration Reference labels the three radio units 'O-RU proxies (T-TSC)', each with priority2 128.",
+     "citation": {
+      "source": "Testbed Configuration Reference 2026-10-05",
+      "source_id": "TBREF",
+      "clause": "§4 Topology and node roles",
+      "locator": "node table, row ru1/ru2/ru3",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_Testbed_Configuration_Reference_v2026-10-05.pdf",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 2, 2026-10-06",
+      "quote": "ru1/ ru2/ ru3 | O-RU proxies (T-TSC) | 128 | Three clients = spatial axis",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_Testbed_Configuration_Reference_v2026-10-05.pdf p.4, §4 Topology and node roles, node table rows ru1/ru2/ru3 (columns Role, priority2, Purpose)"
+     }
+    },
+    {
+     "id": "o-ru.s3",
+     "kind": "CONFIGURED",
+     "text": "A radio unit counts as healthy when its parent is a provisioned boundary clock, its grandmaster is on the allow-list and its port state is SLAVE or UNCALIBRATED; the evaluation scores who the radio units follow, not nanosecond time error.",
+     "citation": {
+      "source": "PREREGISTRATION.md",
+      "source_id": "PREREG",
+      "clause": "§4 Outcome measurement",
+      "locator": "'An RU is healthy when …'",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/PREREGISTRATION.md",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "An RU is **healthy** when its parent clockIdentity ∈ {BC, standby BC, planned replacement BC (B_bc_replacement only)}, its grandmaster ∈ allow-list, and its portState ∈ {SLAVE, UNCALIBRATED}. … §6: `free_running 1` stays on, so time-error recovery in nanoseconds is not measured; the parent and grandmaster relationship is.",
+      "where": "PREREGISTRATION.md §4 line 41 and §6 line 71"
+     }
+    },
+    {
+     "id": "o-ru.s4",
+     "kind": "REFERENCE",
+     "text": "130 ns is scoped by the project's verification to the relative time-alignment error for 5G FR2 intra-band contiguous carrier aggregation, Timing Category A, not presented as a universal O-RAN limit.",
+     "citation": {
+      "source": "V5_DISAGREEMENTS.md",
+      "source_id": "V5DIS",
+      "clause": "item 5",
+      "locator": "130 ns scope",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/verification_records/V5_DISAGREEMENTS.md",
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "For intra-band contiguous carrier aggregation, the 60/120 kHz SCS TAE value is 130 ns.",
+       "url": "https://www.etsi.org/deliver/etsi_ts/138100_138199/138104/19.03.00_60/ts_138104v190300p.pdf",
+       "clause": "clause 9.6.3.3, Table 9.6.3.3-4"
+      }
+     },
+     "verification": {
+      "by": "independent re-verification pass 2, 2026-10-06",
+      "quote": "130 ns scope: ... The authoritative ETSI/O-RAN table scopes 130 ns specifically to 5G FR2 intraband-contiguous carrier aggregation relative TAE, Timing Category A. V5 does not present it as a universal O-RAN limit",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/verification_records/V5_DISAGREEMENTS.md line 16, item 5"
+     }
+    },
+    {
+     "id": "o-ru.s5",
+     "kind": "CONFIGURED",
+     "text": "The radio units' ptp4l configurations set clientOnly 1, so they only take time.",
+     "citation": {
+      "source": "testbed_frozen_copy/cfg/*.cfg",
+      "source_id": "CFG",
+      "clause": "ru1.cfg, ru2.cfg, ru3.cfg",
+      "locator": "clientOnly 1 (ru1.cfg line 49)",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/testbed_frozen_copy/cfg/",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 2, 2026-10-06",
+      "quote": "priority2 128 / clientOnly 1 / [v-ru1]  (identical in ru2.cfg [v-ru2] and ru3.cfg [v-ru3])",
+      "where": "03_RECOVERY_LOOP_S-PLANE/testbed_frozen_copy/cfg/ru1.cfg line 49 (ru2.cfg and ru3.cfg line 49)"
+     }
+    }
+   ],
+   "sub_elements": [
+    "ru1",
+    "ru2",
+    "ru3"
+   ]
+  },
+  {
+   "id": "fh-splane",
+   "tier": 1,
+   "levels": [
+    1,
+    2,
+    3
+   ],
+   "name": "Open Fronthaul S-plane (PTP in the testbed)",
+   "role": "Carries time (and, with SyncE, frequency) to the O-RU; the testbed exercised PTP only.",
+   "sentences": [
+    {
+     "id": "fh-splane.s1",
+     "kind": "REFERENCE",
+     "text": "The Open Fronthaul carries four planes: control, user, synchronization and management; the S-plane delivers time and frequency.",
+     "citation": {
+      "source": "SPlane_Project_Story_Guide.pdf",
+      "source_id": "GUIDE",
+      "clause": "Chapter 1",
+      "locator": "'Four kinds of traffic share this link'",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "S-Plane refers to the synchronization plane used for timing and synchronization aspects.",
+       "url": "https://www.etsi.org/deliver/etsi_ts/103800_103899/103859/12.00.01_60/ts_103859v120001p.pdf",
+       "clause": "clauses 3.1 and 11"
+      }
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "Four kinds of traffic share this link, called planes: C-plane (control) … U-plane (user) … S-plane (synchronization): time and frequency. This is where our project lives. M-plane (management)",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf p.5 Chapter 1"
+     }
+    },
+    {
+     "id": "fh-splane.s2",
+     "kind": "CONFIGURED",
+     "text": "The testbed runs the ITU-T G.8275.1 profile settings read back from the running system: domain 24, priority1 128, Sync 16 per second, Announce 8 per second, L2 multicast 01-1B-19-00-00-00, software timestamping.",
+     "citation": {
+      "source": "SPlane_Project_Story_Guide.pdf",
+      "source_id": "GUIDE",
+      "clause": "Chapter 3, 'The telecom rules'",
+      "locator": "configuration strip",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "domainNumber defaults to 24; logAnnounceInterval is −3; logSyncInterval is −4.",
+       "url": "https://www.itu.int/rec/T-REC-G.8275.1",
+       "clause": "Annex A, Tables A.1 and A.5; clause 6.5"
+      }
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "Telecom uses ITU-T G.8275.1 (full timing support from the network). Our testbed ran it exactly as configured and read back from the running system: domain 24 priority1 128 Sync 16 / s Announce 8 / s alternate BMCA (G.8275.x) L2 multicast 01-1B-19-00-00-00 software timestamping",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf p.8 Chapter 3 'The telecom rules: ITU-T G.8275.1'"
+     }
+    },
+    {
+     "id": "fh-splane.s3",
+     "kind": "REFERENCE",
+     "text": "ITU-T G.8271.1 frames ±1.5 µs as an end-application, reference-point-E absolute time-error limit relative to a common recognised time standard.",
+     "citation": {
+      "source": "V5_VERIFICATION_LOG.md",
+      "source_id": "V5LOG",
+      "clause": "item 32",
+      "locator": "G.8271.1 ±1.5 µs scope",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/verification_records/V5_VERIFICATION_LOG.md",
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "For a TDD network the end application requirement is 1.5 µs maximum absolute time error.",
+       "url": "https://www.itu.int/rec/T-REC-G.8271.1-202211-I/en",
+       "clause": "Appendix V, clauses V.1-V.3"
+      }
+     },
+     "verification": {
+      "by": "independent re-verification pass 2, 2026-10-06",
+      "quote": "| 32 | FAIL | ITU-T G.8271.1 supports ±1.5 μs as an end-application/reference-point-E absolute time-error limit relative to a common recognized time standard.",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/verification_records/V5_VERIFICATION_LOG.md line 62, item 32"
+     }
+    },
+    {
+     "id": "fh-splane.s4",
+     "kind": "UNKNOWN",
+     "text": "SyncE is a physical-layer function and was not implemented in the testbed, which exercised PTP only.",
+     "citation": {
+      "source": "v8 deck (PDF view)",
+      "source_id": "V8",
+      "clause": "slide 16",
+      "locator": "Scope disclosure",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "Network equipment uses the physical layer to deliver frequency synchronization.",
+       "url": "https://www.itu.int/rec/T-REC-G.8262",
+       "clause": "Summary and Introduction"
+      }
+     },
+     "verification": {
+      "by": "independent re-verification pass 2, 2026-10-06",
+      "quote": "Scope disclosure: The testbed exercised PTP only; SyncE is a physical-layer function and was not implemented.",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf slide 16, Scope disclosure footer"
+     }
+    },
+    {
+     "id": "fh-splane.s5",
+     "kind": "REFERENCE",
+     "text": "The project's deck gives the total budget at reference point E as ±1.5 µs and the network limit at reference point C as 1100 ns.",
+     "citation": {
+      "source": "v8 deck (PDF view)",
+      "source_id": "V8",
+      "clause": "slide 7",
+      "locator": "budget column: 'Total budget at reference point E; the network limit at reference point C is 1100 ns'",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "The 1.1 µs network limit is at C; the 1.5 µs limit is at E.",
+       "url": "https://www.itu.int/rec/T-REC-G.8271.1-202211-I/en",
+       "clause": "Appendix V, clause V.3"
+      }
+     },
+     "verification": {
+      "by": "independent re-verification pass 3, 2026-10-06",
+      "quote": "±1.5 µs  Absolute time error at reference point E, common time standard  Total budget at reference point E; the network limit at reference point C is 1100 ns",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf page/slide 7, middle (budget) column"
+     }
+    }
+   ]
+  },
+  {
+   "id": "injector",
+   "tier": 1,
+   "levels": [
+    1,
+    2,
+    3
+   ],
+   "name": "Attacker entry points (injector)",
+   "role": "Where forged or removed PTP traffic enters the testbed.",
+   "sentences": [
+    {
+     "id": "injector.s1",
+     "kind": "CONFIGURED",
+     "text": "Attacks enter on the radio-unit segment (A1, A2, A3, A5, C2, C3), across both bridges for the rogue relay (A8), and by blackholing the boundary clock's downstream port (C1).",
+     "citation": {
+      "source": "SPlane_Project_Story_Guide.pdf",
+      "source_id": "GUIDE",
+      "clause": "Chapter 7",
+      "locator": "figure caption, p.12",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 2, 2026-10-06",
+      "quote": "Six real ptp4l daemons on two bridges. Red markers show where attacks enter. Position 1 covers A1, A2, A3, A5, C2 and C3; position 2 is A8; position 3 is C1. (figure labels: 1 = \"injector on RU segment\", 2 = \"rogue relay across both bridges (A8)\", 3 = \"BC downstream port blackholed (C1)\")",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf p.12, Chapter 7 figure and caption"
+     }
+    },
+    {
+     "id": "injector.s2",
+     "kind": "REFERENCE",
+     "text": "The standards describe attackers by capability and position (internal, external, man-in-the-middle, injector), not by name.",
+     "citation": {
+      "source": "SPlane_Project_Story_Guide.pdf",
+      "source_id": "GUIDE",
+      "clause": "Chapter 5",
+      "locator": "RFC 7384 cl. 3.1 attacker classes, as relayed",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "Threats include internal attackers, external attackers, man-in-the-middle attackers, and packet injectors.",
+       "url": "https://www.rfc-editor.org/rfc/rfc7384.html",
+       "clause": "section 3.1"
+      }
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "The honest answer is that the standards do not name people. They describe attackers by capability and position. … ATTACKER CLASSES · IETF RFC 7384, cl. 3.1  Internal … External … Man-in-the-middle … Injector",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf p.10 Chapter 5"
+     }
+    },
+    {
+     "id": "injector.s3",
+     "kind": "REFERENCE",
+     "text": "Access paths named for the fronthaul are remote access widened by multi-vendor equipment, physical access to cell sites, supply-chain backdoors, and unauthorised access to the Open Fronthaul Ethernet interface.",
+     "citation": {
+      "source": "SPlane_Project_Story_Guide.pdf",
+      "source_id": "GUIDE",
+      "clause": "Chapter 5",
+      "locator": "TIMESAFE §4 / T-FRHAUL-02, as relayed",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "Unauthorized access to the Open Fronthaul physical interface enables attacks on availability, integrity, and confidentiality.",
+       "url": "https://www.etsi.org/deliver/etsi_tr/104100_104199/104106/03.00.00_60/tr_104106v030000p.pdf",
+       "clause": "clause 7, T-FRHAUL-02"
+      }
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "How they reach the fronthaul (TIMESAFE section 4; ETSI T-FRHAUL-02): remote access widened by multi-vendor, disaggregated equipment; physical access to edge cell sites; supply-chain backdoors in DU or RU equipment; unauthorised access to the Open Fronthaul Ethernet interface.",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf p.10 Chapter 5"
+     }
+    },
+    {
+     "id": "injector.s4",
+     "kind": "MEASURED",
+     "text": "Where the injector shares RU3's port (A2, A3, A5, C2, C3), isolating that port also stops RU3's own Delay_Req.",
+     "citation": {
+      "source": "RESULTS_2026-10-05.md",
+      "source_id": "RESULTS",
+      "clause": "§6 Limits",
+      "locator": "Collateral on RU3",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/RESULTS_2026-10-05.md",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 2, 2026-10-06",
+      "quote": "Collateral on RU3: where the injector shares RU3's port (A2, A3, A5, C2, C3), isolation also stops RU3's own Delay_Req.",
+      "where": "03_RECOVERY_LOOP_S-PLANE/RESULTS_2026-10-05.md line 64, §6 Limits"
+     }
+    },
+    {
+     "id": "injector.s5",
+     "kind": "CONFIGURED",
+     "text": "The A1 rogue grandmaster is a separate ptp4l in its own network namespace 'rogue', attached to the radio-unit bridge brDN through port p-rogue.",
+     "citation": {
+      "source": "Campaign scenario driver scenarios.sh (frozen copy)",
+      "source_id": "SCEN",
+      "clause": "case A1_rogue_master",
+      "locator": "lines 40-50",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/testbed_frozen_copy/run/scenarios.sh",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 2, 2026-10-06",
+      "quote": "A1_rogue_master) ... ip netns add rogue ... ip link add v-rogue type veth peer name p-rogue; ip link set p-rogue master brDN ... ip netns exec rogue ptp4l -f /opt/sptb/cfg/rogue.cfg -i v-rogue",
+      "where": "03_RECOVERY_LOOP_S-PLANE/testbed_frozen_copy/run/scenarios.sh lines 40-51"
+     }
+    }
+   ]
+  },
+  {
+   "id": "o-du",
+   "tier": 2,
+   "levels": [
+    1,
+    2
+   ],
+   "name": "O-DU (distributed unit)",
+   "role": "Hosts RLC, MAC and High-PHY; the timing source for the O-RU in LLS-C1 and LLS-C2.",
+   "sentences": [
+    {
+     "id": "o-du.s1",
+     "kind": "REFERENCE",
+     "text": "The O-DU hosts RLC, MAC and High-PHY and is joined to the O-RU by the Open Fronthaul (split 7-2x).",
+     "citation": {
+      "source": "SPlane_Project_Story_Guide.pdf",
+      "source_id": "GUIDE",
+      "clause": "Chapter 1",
+      "locator": "functional-split figure",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "O-DU is a logical node hosting RLC, MAC, and High-PHY layers.",
+       "url": "https://www.etsi.org/deliver/etsi_ts/103900_103999/103982/08.00.00_60/ts_103982v080000p.pdf",
+       "clause": "clause 3.1, O-DU definition"
+      }
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "O-DU distributed unit … RLC … MAC … High-PHY … Open FH … split 7-2x … The link between the O-DU and the O-RU is the Open Fronthaul. It uses split option 7-2x",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf p.5 Chapter 1 functional-split figure and text"
+     }
+    },
+    {
+     "id": "o-du.s2",
+     "kind": "REFERENCE",
+     "text": "In LLS-C1 and LLS-C2 the O-DU is part of the synchronization chain towards the O-RU; in LLS-C3 it is not.",
+     "citation": {
+      "source": "v8 deck (PDF view)",
+      "source_id": "V8",
+      "clause": "slide 6",
+      "locator": "LLS table, as quoted from O-RAN.WG4.CUS.0 via Armstrong",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "C1/C2 distribute timing from O-DU; C3 distributes it from the fronthaul network itself.",
+       "url": "https://www.etsi.org/deliver/etsi_tr/104100_104199/104106/03.00.00_60/tr_104106v030000p.pdf",
+       "clause": "clause 9.1, LLS-C1 to LLS-C3"
+      }
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "LLS-C1 O-DU is part of the synchronization chain. … LLS-C2 O-DU is part of the synchronization chain. … LLS-C3 O-DU is not part of the synchronization chain.",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf p.6 (slide 6) table, 'DEFINITION (O-RAN.WG4.CUS.0, AS QUOTED IN [7])'"
+     }
+    },
+    {
+     "id": "o-du.s3",
+     "kind": "CONFIGURED",
+     "text": "The testbed has no O-DU: its timing chain is grandmaster to boundary clock to radio units, and the O-DU is not emulated.",
+     "citation": {
+      "source": "v8 deck (PDF view)",
+      "source_id": "V8",
+      "clause": "slide 6",
+      "locator": "'OUR TESTBED' box",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "OUR TESTBED  Grandmaster → boundary clock → three radio units over bridged segments, with no O-DU in the timing chain: the LLS-C3 structure. The O-DU itself is not emulated.",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf p.6 (slide 6) 'OUR TESTBED' box"
+     }
+    },
+    {
+     "id": "o-du.s4",
+     "kind": "REFERENCE",
+     "text": "The E2 interface ends at the O-CU-CP, O-CU-UP and O-DU and does not reach the O-RU.",
+     "citation": {
+      "source": "SPlane_Project_Story_Guide.pdf",
+      "source_id": "GUIDE",
+      "clause": "Chapter 1",
+      "locator": "'A detail reviewers like to test'",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "Near-RT RIC connects to O-CU-CP, O-CU-UP and O-DU through E2.",
+       "url": "https://www.etsi.org/deliver/etsi_ts/103900_103999/103982/08.00.00_60/ts_103982v080000p.pdf",
+       "clause": "clauses 6.3.2-6.3.5 and 6.4.5"
+      }
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "A detail reviewers like to test. The E2 interface, which the RIC uses to collect KPIs, ends at the O-CU-CP, O-CU-UP and O-DU. It does not reach the O-RU (clauses 6.3.3–6.3.6).",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf p.5 Chapter 1"
+     }
+    },
+    {
+     "id": "o-du.s5",
+     "kind": "REFERENCE",
+     "text": "For LLS-C1 and LLS-C2 the O-DU is a PTP master towards the O-RUs; with a remote full-timing-support source it is an embedded end application with extra filtering, not a true G.8273.2 T-BC.",
+     "citation": {
+      "source": "ETSI TS 103 859 V12.0.1",
+      "source_id": "ETSI_CUS12",
+      "clause": "§11.2.4.2.1 and §11.3.1.2",
+      "locator": "official PDF pages 240 and 246",
+      "url_or_repo_path": "https://www.etsi.org/deliver/etsi_ts/103800_103899/103859/12.00.01_60/ts_103859v120001p.pdf",
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "For LLS-C1 and LLS-C2, the O-DU shall act as a G.8275.1 PTP master in the fronthaul network.",
+       "url": "https://www.etsi.org/deliver/etsi_ts/103800_103899/103859/12.00.01_60/ts_103859v120001p.pdf",
+       "clause": "§11.2.4.2.1 and §11.3.1.2"
+      }
+     },
+     "verification": {
+      "by": "final primary-source audit 2026-10-06",
+      "quote": "For LLS-C1 and LLS-C2, the O-DU shall act as a G.8275.1 PTP master in the fronthaul network.",
+      "where": "official PDF pages 240 and 246"
+     }
+    }
+   ]
+  },
+  {
+   "id": "fh-mplane",
+   "tier": 2,
+   "levels": [
+    1,
+    2
+   ],
+   "name": "Open Fronthaul M-plane (management)",
+   "role": "Configures and monitors the O-RU; the channel through which O-RU sync state would be read.",
+   "sentences": [
+    {
+     "id": "fh-mplane.s1",
+     "kind": "REFERENCE",
+     "text": "The M-plane carries configuration and monitoring of the radio unit.",
+     "citation": {
+      "source": "SPlane_Project_Story_Guide.pdf",
+      "source_id": "GUIDE",
+      "clause": "Chapter 1",
+      "locator": "plane list",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "Open FH M-Plane is the management interface controlling the O-RU.",
+       "url": "https://www.etsi.org/deliver/etsi_ts/103900_103999/103982/08.00.00_60/ts_103982v080000p.pdf",
+       "clause": "clause 3.1, Open FH M-Plane"
+      }
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "M-plane (management): configuring and monitoring the radio unit.",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf p.5 Chapter 1 plane list"
+     }
+    },
+    {
+     "id": "fh-mplane.s2",
+     "kind": "CONFIGURED",
+     "text": "The project wrote fixture-testable parsers for pmc and synce4l synchronization status text; the code names O-RU M-plane NETCONF/YANG synchronization telemetry as the authoritative production equivalent but does not implement it.",
+     "citation": {
+      "source": "ingest/sync_status.py",
+      "source_id": "SYNCPY",
+      "clause": "module docstring",
+      "locator": "lines 3-8",
+      "url_or_repo_path": "01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/ingest/sync_status.py",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 2, 2026-10-06",
+      "quote": "\"\"\"Parse live Linux PTP/SyncE status text without requiring running daemons. Production collection should use ptp4l SUBSCRIBE_EVENTS_NP notifications rather than polling. On a real O-RAN deployment, the authoritative equivalent is O-RU M-plane NETCONF/YANG synchronization telemetry.\"\"\"  (functions parse_pmc_output, parse_synce4l_ql; no NETCONF client in the file)",
+      "where": "01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/ingest/sync_status.py lines 3-8, 59, 89"
+     }
+    },
+    {
+     "id": "fh-mplane.s3",
+     "kind": "MEASURED",
+     "text": "Management queries in the testbed were made with pmc; on this testbed pmc without -d 24 returns no data, and with -d 24 it returns PARENT_DATA_SET and PORT_DATA_SET.",
+     "citation": {
+      "source": "RESULTS_2026-10-05.md",
+      "source_id": "RESULTS",
+      "clause": "§4",
+      "locator": "table row 3 (pmc)",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/RESULTS_2026-10-05.md",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 2, 2026-10-06",
+      "quote": "| pmc returned nothing in the campaign (cause \"probable\") | `pmc` without `-d 24` returns no data; with `-d 24` it returns PARENT_DATA_SET and PORT_DATA_SET on the same testbed. | Cause confirmed. |",
+      "where": "03_RECOVERY_LOOP_S-PLANE/RESULTS_2026-10-05.md line 49, §4 table row 3"
+     }
+    },
+    {
+     "id": "fh-mplane.s4",
+     "kind": "REFERENCE",
+     "text": "The O-RAN M-plane YANG model that exposes O-RU synchronization configuration, status and notifications is named o-ran-sync.yang.",
+     "citation": {
+      "source": "ETSI TS 104 023 V17.1.0",
+      "source_id": "ETSI_MP17",
+      "clause": "§13.1",
+      "locator": "official PDF page 120",
+      "url_or_repo_path": "https://www.etsi.org/deliver/etsi_ts/104000_104099/104023/17.01.00_60/ts_104023v170100p.pdf",
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "Synchronization items are defined and described in o-ran-sync.yang.",
+       "url": "https://www.etsi.org/deliver/etsi_ts/104000_104099/104023/17.01.00_60/ts_104023v170100p.pdf",
+       "clause": "§13.1"
+      }
+     },
+     "verification": {
+      "by": "final primary-source audit 2026-10-06",
+      "quote": "Synchronization items are defined and described in o-ran-sync.yang.",
+      "where": "official PDF page 120"
+     }
+    }
+   ]
+  },
+  {
+   "id": "smo-nonrt",
+   "tier": 2,
+   "levels": [
+    1
+   ],
+   "name": "SMO / Non-RT RIC",
+   "role": "Project framing: where a closed loop like ours would sit in O-RAN; not implemented there.",
+   "sentences": [
+    {
+     "id": "smo-nonrt.s1",
+     "kind": "REFERENCE",
+     "text": "In the project's architecture figure (v8 slide 4) the SMO / Non-RT RIC box ('policy and lifecycle') sits beside the Near-RT RIC, above the O-RU, O-DU, O-CU and 5G Core.",
+     "citation": {
+      "source": "v8 deck (PDF view)",
+      "source_id": "V8",
+      "clause": "slide 4",
+      "locator": "architecture figure",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 2, 2026-10-06",
+      "quote": "Rendered slide: top row boxes \"SMO / Non-RT RIC  policy and lifecycle\" -- A1 -- \"Near-RT RIC  xApps and E2 control\" .... \"O-Cloud\"; the row below holds UE, O-RU, O-DU, O-CU-CP / O-CU-UP, 5G Core, Data network.",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf slide 4 (rendered PNG at 80 dpi)"
+     }
+    },
+    {
+     "id": "smo-nonrt.s2",
+     "kind": "REFERENCE",
+     "text": "The project's architecture survey describes the SMO and Non-RT RIC as performing non-real-time optimisation and policy generation with a typical control loop above 1 s.",
+     "citation": {
+      "source": "AI-Native_ORAN_Digital_Twin_Architecture.md",
+      "source_id": "SURVEY",
+      "clause": "§9 SMO + Non-RT RIC",
+      "locator": "Role line",
+      "url_or_repo_path": "01_CURRENT_SPlane_SelfHealing/literature-survey/AI-Native_ORAN_Digital_Twin_Architecture.md",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "### 9. SMO + Non-RT RIC  Role: Performs service management and orchestration, non-real-time optimization, policy generation, AI/ML training workflow, rApp hosting, and lifecycle management. Typical control loop is above 1 s and can span minutes/hours.",
+      "where": "AI-Native_ORAN_Digital_Twin_Architecture.md §9 Role line (line 277)"
+     }
+    },
+    {
+     "id": "smo-nonrt.s3",
+     "kind": "CONFIGURED",
+     "text": "The recovery loop runs in the testbed's root namespace, on the same software testbed and frozen detector, and does not change any frozen artefact.",
+     "citation": {
+      "source": "RECOVERY_LOOP_DESIGN.md",
+      "source_id": "DESIGN",
+      "clause": "opening paragraph",
+      "locator": "and architecture diagram",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/RECOVERY_LOOP_DESIGN.md",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 3, 2026-10-06",
+      "quote": "It runs on the same software testbed and uses the same frozen detector. It does not change any frozen artefact. ... [diagram] recovery loop (root namespace)",
+      "where": "03_RECOVERY_LOOP_S-PLANE/RECOVERY_LOOP_DESIGN.md lines 3-6 (opening paragraph and diagram header)"
+     }
+    },
+    {
+     "id": "smo-nonrt.s4",
+     "kind": "UNKNOWN",
+     "text": "No digital twin rehearses the action before it is taken; actions are verified after execution.",
+     "citation": {
+      "source": "RESULTS_2026-10-05.md",
+      "source_id": "RESULTS",
+      "clause": "§6 Limits",
+      "locator": "No digital twin",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/RESULTS_2026-10-05.md",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 2, 2026-10-06",
+      "quote": "No digital twin: actions are verified after execution, not rehearsed.",
+      "where": "03_RECOVERY_LOOP_S-PLANE/RESULTS_2026-10-05.md line 68, §6 Limits"
+     }
+    }
+   ]
+  },
+  {
+   "id": "gnss-time",
+   "tier": 2,
+   "levels": [
+    1,
+    2
+   ],
+   "name": "GNSS / time source (PRTC)",
+   "role": "Root time reference of the network; local GNSS receiver in LLS-C4.",
+   "sentences": [
+    {
+     "id": "gnss-time.s1",
+     "kind": "REFERENCE",
+     "text": "In LLS-C4 the synchronization reference reaches the O-RU with no involvement of the transport network, typically from a local GNSS receiver, so the exposure is GNSS jamming or spoofing rather than PTP.",
+     "citation": {
+      "source": "v8 deck (PDF view)",
+      "source_id": "V8",
+      "clause": "slide 6",
+      "locator": "LLS-C4 row",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "Local PRTC timing provides time synchronization to the O-RU and may be embedded in it.",
+       "url": "https://www.etsi.org/deliver/etsi_tr/104100_104199/104106/03.00.00_60/tr_104106v030000p.pdf",
+       "clause": "clause 9.1, Configuration LLS-C4"
+      }
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "LLS-C4 Synchronization reference provided to the O-RU with no involvement of the transport network, typically a local GNSS receiver. | No PTP exposure; GNSS jamming or spoofing instead (RFC 7384 sec. 3.2.10 [1]; BSI [12]).",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf p.6 (slide 6) LLS-C4 row"
+     }
+    },
+    {
+     "id": "gnss-time.s2",
+     "kind": "UNKNOWN",
+     "text": "GNSS spoofing, GNSS jamming and honest GNSS holdover need a GNSS receiver and cannot be produced in the software testbed; they are shown as requiring hardware and are not measured.",
+     "citation": {
+      "source": "SPlane_Project_Story_Guide.pdf",
+      "source_id": "GUIDE",
+      "clause": "Chapter 8 note",
+      "locator": "'Five need hardware and could not be produced'",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "Five need hardware and could not be produced (A6 GNSS spoofing, A7 GNSS jamming, B1 holdover, B4 SyncE, B6 oscillator drift).",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf p.13 Chapter 8 note; also p.12 Ch.7 'No GNSS receiver and no SyncE PHY. GNSS spoofing and jamming, holdover, SyncE and oscillator-drift classes cannot be produced here.'"
+     }
+    }
+   ]
+  },
+  {
+   "id": "synce",
+   "tier": 2,
+   "levels": [
+    1,
+    2
+   ],
+   "name": "SyncE (frequency)",
+   "role": "Physical-layer frequency reference alongside PTP time.",
+   "sentences": [
+    {
+     "id": "synce.s1",
+     "kind": "REFERENCE",
+     "text": "ITU-T G.8262 (SyncE) is context only for this project: it is a physical-layer function.",
+     "citation": {
+      "source": "v8 deck (PDF view)",
+      "source_id": "V8",
+      "clause": "slide 16",
+      "locator": "'Frequency synchronization context: ITU-T G.8262 (SyncE, not implemented here)'",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "The synchronization method uses a synchronous physical layer for distributing a frequency reference.",
+       "url": "https://www.itu.int/rec/T-REC-G.8262",
+       "clause": "Summary and Introduction"
+      }
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "Timing performance context: ITU-T G.8273.2 | Frequency synchronization context: ITU-T G.8262 (SyncE, not implemented here) … SyncE is a physical-layer function and was not implemented.",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf p.16 (slide 16)"
+     }
+    },
+    {
+     "id": "synce.s2",
+     "kind": "UNKNOWN",
+     "text": "SyncE and equipment-clock degradation (B4) need a SyncE-capable PHY and are not measured.",
+     "citation": {
+      "source": "v8 deck (PDF view)",
+      "source_id": "V8",
+      "clause": "slide 39 remaining work",
+      "locator": "'SyncE-capable PHY … unlocks B4'",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "SyncE-capable PHY  Unlocks SyncE and EEC degradation (B4). SyncE is a physical-layer function and veth interfaces have no PHY, so ESMC quality signalling cannot exist in this testbed.",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf p.39 (slide 39) Hardware column"
+     }
+    }
+   ]
+  },
+  {
+   "id": "osc-drift",
+   "tier": 2,
+   "levels": [
+    1,
+    2
+   ],
+   "name": "Oscillator drift (B6, two-laptop measurement)",
+   "role": "Free-running crystal offset between two physical machines; software-only measurement.",
+   "sentences": [
+    {
+     "id": "osc-drift.s1",
+     "kind": "MEASURED",
+     "text": "Run 2 measured a relative crystal offset of +21.013 ppm (95 % interval +20.623 to +21.403 ppm) between two laptops against the same NTP reference, and the pre-registered criteria were met (ESTABLISHED).",
+     "citation": {
+      "source": "B6 DRIFT_REPORT_run2.md",
+      "source_id": "B6",
+      "clause": "Headline",
+      "locator": "DRIFT_REPORT_run2.md",
+      "url_or_repo_path": "outputs/B6_two_machine_2026-10-02/run2/DRIFT_REPORT_run2.md",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "Relative frequency offset between the two physical crystals: **+21.013 ppm  [+20.623, +21.403]** (95% moving-block bootstrap). … C4 both arms on the same reference … PASS | A=ntp@time.google.com (100.0%), B=ntp@time.google.com (100.0%) … **Overall: ESTABLISHED**",
+      "where": "outputs/B6_two_machine_2026-10-02/run2/DRIFT_REPORT_run2.md Headline and Verdict table"
+     }
+    },
+    {
+     "id": "osc-drift.s2",
+     "kind": "MEASURED",
+     "text": "Run 1 gave +20.161 ppm but failed a pre-registered criterion (retained samples), so it is reported as NOT ESTABLISHED.",
+     "citation": {
+      "source": "B6 run 1 drift report",
+      "source_id": "B6R1",
+      "clause": "Verdict against pre-registered criteria; Headline",
+      "locator": "C1 row (A=348, B=658) and headline +20.161 ppm",
+      "url_or_repo_path": "outputs/B6_two_machine_2026-10-02/DRIFT_REPORT.md",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 2, 2026-10-06",
+      "quote": "| C1 | each arm retains >= 600 samples | FAIL | A=348, B=658 | ... Overall: NOT ESTABLISHED (failed: C1) ... Relative frequency offset computes to +20.161 ppm [+19.376, +20.969], but a pre-registered criterion failed",
+      "where": "outputs/B6_two_machine_2026-10-02/DRIFT_REPORT.md lines 11, 17, 21"
+     }
+    },
+    {
+     "id": "osc-drift.s3",
+     "kind": "UNKNOWN",
+     "text": "These are consumer laptop crystals measured against NTP, not telecom-class oscillators.",
+     "citation": {
+      "source": "RECOVERY_LOOP_DESIGN.md",
+      "source_id": "DESIGN",
+      "clause": "Oscillator drift (B6)",
+      "locator": "paragraph, line 60",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/RECOVERY_LOOP_DESIGN.md",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 2, 2026-10-06",
+      "quote": "These are consumer laptop crystals measured against NTP, not telecom-class oscillators.",
+      "where": "03_RECOVERY_LOOP_S-PLANE/RECOVERY_LOOP_DESIGN.md line 60, Oscillator drift (B6)"
+     }
+    },
+    {
+     "id": "osc-drift.s4",
+     "kind": "UNKNOWN",
+     "text": "The two-laptop run measures B6's physical premise; it is not an end-to-end B6 detection test, because no PTP ran between the two machines.",
+     "citation": {
+      "source": "B6 two-machine measurement record",
+      "source_id": "B6REC",
+      "clause": "§7 Scope limits",
+      "locator": "item 1",
+      "url_or_repo_path": "outputs/B6_two_machine_2026-10-02/B6_MEASUREMENT_RECORD_2026-10-02.md",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 2, 2026-10-06",
+      "quote": "1. Not an end-to-end B6 detection test. No PTP ran between the two machines, so the detector never saw this drift. This measures B6's physical premise",
+      "where": "outputs/B6_two_machine_2026-10-02/B6_MEASUREMENT_RECORD_2026-10-02.md §7 item 1 (lines 119-121)"
+     }
+    },
+    {
+     "id": "osc-drift.s5",
+     "kind": "UNKNOWN",
+     "text": "The B6 record states that the Fault Detectability workbook row B6 is not changed by this run, because that row describes detectability on the software testbed.",
+     "citation": {
+      "source": "B6 two-machine measurement record",
+      "source_id": "B6REC",
+      "clause": "§7 Scope limits",
+      "locator": "closing paragraph",
+      "url_or_repo_path": "outputs/B6_two_machine_2026-10-02/B6_MEASUREMENT_RECORD_2026-10-02.md",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 2, 2026-10-06",
+      "quote": "`ORAN_Fault_Detectability_v2026-09-29.xlsx` row B6 is not changed by this run. That row describes detectability on the software testbed, which is unaffected.",
+      "where": "outputs/B6_two_machine_2026-10-02/B6_MEASUREMENT_RECORD_2026-10-02.md §7 closing paragraph (lines 129-130)"
+     }
+    }
+   ]
+  },
+  {
+   "id": "fh-cplane",
+   "tier": 3,
+   "levels": [
+    1
+   ],
+   "name": "C-plane (control)",
+   "role": "Scheduling and beamforming commands to the O-RU; influenced if timing is lost.",
+   "sentences": [
+    {
+     "id": "fh-cplane.s1",
+     "kind": "REFERENCE",
+     "text": "The C-plane tells the radio unit what to do with the next slots.",
+     "citation": {
+      "source": "SPlane_Project_Story_Guide.pdf",
+      "source_id": "GUIDE",
+      "clause": "Chapter 1",
+      "locator": "plane list",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "C-Plane refers specifically to real-time control between O-DU and O-RU.",
+       "url": "https://www.etsi.org/deliver/etsi_ts/103800_103899/103859/12.00.01_60/ts_103859v120001p.pdf",
+       "clause": "clause 3.1, C-Plane definition"
+      }
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "C-plane (control): tells the radio what to do with the next slots.",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf p.5 Chapter 1 plane list"
+     }
+    },
+    {
+     "id": "fh-cplane.s2",
+     "kind": "UNKNOWN",
+     "text": "The testbed does not emulate the O-DU.",
+     "citation": {
+      "source": "v8 deck (PDF view)",
+      "source_id": "V8",
+      "clause": "slide 6",
+      "locator": "OUR TESTBED box: 'The O-DU itself is not emulated.'",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 3, 2026-10-06",
+      "quote": "OUR TESTBED  Grandmaster → boundary clock → three radio units over bridged segments, with no O-DU in the timing chain: the LLS-C3 structure. The O-DU itself is not emulated.",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf page/slide 6, OUR TESTBED box"
+     }
+    },
+    {
+     "id": "fh-cplane.s3",
+     "kind": "REFERENCE",
+     "text": "When the O-DU is notified that an O-RU has become UNLOCKED, it shall stop sending data to that O-RU; the CUS specification explicitly includes C-plane data in the corresponding FREERUN/HOLDOVER rule.",
+     "citation": {
+      "source": "ETSI TS 104 023 V17.1.0 and ETSI TS 103 859 V12.0.1",
+      "source_id": "ETSI_MP17",
+      "clause": "MP §13.1; CUS §13.6.2.1",
+      "locator": "official PDF pages 120 and 295",
+      "url_or_repo_path": "https://www.etsi.org/deliver/etsi_ts/104000_104099/104023/17.01.00_60/ts_104023v170100p.pdf",
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "If the O-RU state changes to UNLOCKED, the O-DU shall stop sending data to the O-RU.",
+       "url": "https://www.etsi.org/deliver/etsi_ts/104000_104099/104023/17.01.00_60/ts_104023v170100p.pdf",
+       "clause": "MP §13.1; CUS §13.6.2.1"
+      }
+     },
+     "verification": {
+      "by": "final primary-source audit 2026-10-06",
+      "quote": "If the O-RU state changes to UNLOCKED, the O-DU shall stop sending data to the O-RU.",
+      "where": "official PDF pages 120 and 295"
+     }
+    }
+   ],
+   "consequence_card": true
+  },
+  {
+   "id": "fh-uplane",
+   "tier": 3,
+   "levels": [
+    1
+   ],
+   "name": "U-plane (user)",
+   "role": "Radio samples, i.e. user data; influenced if timing is lost.",
+   "sentences": [
+    {
+     "id": "fh-uplane.s1",
+     "kind": "REFERENCE",
+     "text": "The U-plane carries the radio samples, meaning the users' data.",
+     "citation": {
+      "source": "SPlane_Project_Story_Guide.pdf",
+      "source_id": "GUIDE",
+      "clause": "Chapter 1",
+      "locator": "plane list",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "LLS-U is the lower-layer-split user-plane interface between O-DU and O-RU.",
+       "url": "https://www.etsi.org/deliver/etsi_ts/103800_103899/103859/12.00.01_60/ts_103859v120001p.pdf",
+       "clause": "clause 3.1, LLS-U definition"
+      }
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "U-plane (user): the actual radio samples, meaning your data.",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf p.5 Chapter 1 plane list"
+     }
+    },
+    {
+     "id": "fh-uplane.s2",
+     "kind": "UNKNOWN",
+     "text": "The testbed does not emulate the O-DU.",
+     "citation": {
+      "source": "v8 deck (PDF view)",
+      "source_id": "V8",
+      "clause": "slide 6",
+      "locator": "OUR TESTBED box: 'The O-DU itself is not emulated.'",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 3, 2026-10-06",
+      "quote": "OUR TESTBED  Grandmaster → boundary clock → three radio units over bridged segments, with no O-DU in the timing chain: the LLS-C3 structure. The O-DU itself is not emulated.",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf page/slide 6, OUR TESTBED box"
+     }
+    },
+    {
+     "id": "fh-uplane.s3",
+     "kind": "REFERENCE",
+     "text": "When the O-DU is notified that an O-RU has become UNLOCKED, it shall stop sending to and ignore data from that O-RU; the CUS specification explicitly includes U-plane data in the corresponding FREERUN/HOLDOVER rule.",
+     "citation": {
+      "source": "ETSI TS 104 023 V17.1.0 and ETSI TS 103 859 V12.0.1",
+      "source_id": "ETSI_MP17",
+      "clause": "MP §13.1; CUS §13.6.2.1",
+      "locator": "official PDF pages 120 and 295",
+      "url_or_repo_path": "https://www.etsi.org/deliver/etsi_ts/104000_104099/104023/17.01.00_60/ts_104023v170100p.pdf",
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "The O-DU shall stop sending data to, and ignore any data from, that O-RU.",
+       "url": "https://www.etsi.org/deliver/etsi_ts/104000_104099/104023/17.01.00_60/ts_104023v170100p.pdf",
+       "clause": "MP §13.1; CUS §13.6.2.1"
+      }
+     },
+     "verification": {
+      "by": "final primary-source audit 2026-10-06",
+      "quote": "The O-DU shall stop sending data to, and ignore any data from, that O-RU.",
+      "where": "official PDF pages 120 and 295"
+     }
+    }
+   ],
+   "consequence_card": true
+  },
+  {
+   "id": "air-interface",
+   "tier": 3,
+   "levels": [
+    1
+   ],
+   "name": "Air interface",
+   "role": "Radio link whose phase and time alignment depend on S-plane timing.",
+   "sentences": [
+    {
+     "id": "air-interface.s1",
+     "kind": "REFERENCE",
+     "text": "Cooperating radio units must transmit at the same instant for MIMO and carrier aggregation to work.",
+     "citation": {
+      "source": "SPlane_Project_Story_Guide.pdf",
+      "source_id": "GUIDE",
+      "clause": "Chapter 2",
+      "locator": "opening paragraph",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "Time-alignment requirements apply to MIMO transmission, carrier aggregation, and their combinations.",
+       "url": "https://www.etsi.org/deliver/etsi_ts/138100_138199/138104/19.03.00_60/ts_138104v190300p.pdf",
+       "clause": "clause 9.6.3"
+      }
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "If they transmit at slightly different instants, their signals collide instead of combining. Techniques like MIMO and carrier aggregation only work if the radios behave as one instrument, so they must share the same idea of \"now\".",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf p.6 Chapter 2 opening paragraph"
+     }
+    },
+    {
+     "id": "air-interface.s2",
+     "kind": "REFERENCE",
+     "text": "The cited 3GPP limits are TDD cell phase synchronization better than 3 µs (TS 38.133) and time-alignment error of at most 65 ns for MIMO and 260 ns for intra-band contiguous carrier aggregation (TS 38.104, clause 9.6.3.2).",
+     "citation": {
+      "source": "v8 deck (PDF view)",
+      "source_id": "V8",
+      "clause": "slide 12",
+      "locator": "'Service limits at stake' footer",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "MIMO TAE shall not exceed 65 ns; contiguous carrier-aggregation TAE shall not exceed 260 ns.",
+       "url": "https://www.etsi.org/deliver/etsi_ts/138100_138199/138104/19.03.00_60/ts_138104v190300p.pdf",
+       "clause": "clause 9.6.3.2"
+      }
+     },
+     "verification": {
+      "by": "independent re-verification pass 2, 2026-10-06",
+      "quote": "Service limits at stake: TDD cell phase sync better than 3 µs (3GPP TS 38.133 [8]) · TAE ≤ 65 ns for MIMO, ≤ 260 ns intra-band contiguous CA (3GPP TS 38.104 §9.6.3.2 [9])",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf slide 12, footer"
+     }
+    }
+   ],
+   "consequence_card": true
+  },
+  {
+   "id": "ue",
+   "tier": 3,
+   "levels": [
+    1
+   ],
+   "name": "UE (user equipment)",
+   "role": "Phone or device served by the cell; the end of the consequence chain.",
+   "sentences": [
+    {
+     "id": "ue.s1",
+     "kind": "REFERENCE",
+     "text": "In one published experiment with switch PTP ports in dynamic role, the O-RU crashed about 2 s after a spoofing attack began, the 5G cell dropped and the radio needed a manual reboot; this is a measurement in that study, not a standard.",
+     "citation": {
+      "source": "SPlane_Project_Story_Guide.pdf",
+      "source_id": "GUIDE",
+      "clause": "Chapter 2",
+      "locator": "TIMESAFE, ACM TOPS 2025, as relayed",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "In their production-style network, with switch PTP ports in dynamic role, the radio unit crashed about two seconds after a spoofing attack began. The 5G cell dropped, and the radio needed a manual reboot. … This is a measurement, not a standard.",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf p.6 Chapter 2"
+     }
+    },
+    {
+     "id": "ue.s2",
+     "kind": "UNKNOWN",
+     "text": "Measured impact in this project is protocol-level; time-error and service impact come from the cited literature.",
+     "citation": {
+      "source": "v8 deck (PDF view)",
+      "source_id": "V8",
+      "clause": "slide 12",
+      "locator": "footer",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 2, 2026-10-06",
+      "quote": "LIMIT: Every daemon ran with free_running 1: offsets were measured, never steered. Measured impact is protocol-level; time-error and service impact come from the cited literature.",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf slide 12, LIMIT footer"
+     }
+    }
+   ],
+   "consequence_card": true
+  },
+  {
+   "id": "near-rt-ric",
+   "tier": "dimmed",
+   "levels": [
+    1
+   ],
+   "name": "Near-RT RIC and xApps",
+   "role": "Near-real-time RAN control over E2.",
+   "sentences": [
+    {
+     "id": "near-rt-ric.s1",
+     "kind": "REFERENCE",
+     "text": "E2 connects the RIC to the O-CU-CP, O-CU-UP and O-DU and does not reach the O-RU, so RIC KPIs over E2 do not exist at the S-plane boundary.",
+     "citation": {
+      "source": "SPlane_Project_Story_Guide.pdf",
+      "source_id": "GUIDE",
+      "clause": "Chapter 1",
+      "locator": "E2 note",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "Near-RT RIC connects to O-CU-CP, O-CU-UP and O-DU through E2.",
+       "url": "https://www.etsi.org/deliver/etsi_ts/103900_103999/103982/08.00.00_60/ts_103982v080000p.pdf",
+       "clause": "clauses 6.3.2-6.3.5 and 6.4.5"
+      }
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "The E2 interface, which the RIC uses to collect KPIs, ends at the O-CU-CP, O-CU-UP and O-DU. It does not reach the O-RU (clauses 6.3.3–6.3.6). So the usual \"RAN KPIs over E2\" are not available at the S-plane.",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf p.5 Chapter 1; p.20 slide 4 'IF ASKED E2 does not reach the O-RU, so RIC KPIs do not exist at our boundary.'"
+     }
+    }
+   ],
+   "outside_project": true
+  },
+  {
+   "id": "o-cu",
+   "tier": "dimmed",
+   "levels": [
+    1
+   ],
+   "name": "O-CU (CP and UP)",
+   "role": "Central unit: RRC, PDCP (control) and SDAP, PDCP (user).",
+   "sentences": [
+    {
+     "id": "o-cu.s1",
+     "kind": "REFERENCE",
+     "text": "The O-CU-CP hosts RRC and PDCP for the control plane; the O-CU-UP hosts SDAP and PDCP for the user plane.",
+     "citation": {
+      "source": "SPlane_Project_Story_Guide.pdf",
+      "source_id": "GUIDE",
+      "clause": "Chapter 1",
+      "locator": "functional-split figure",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "O-CU-CP hosts RRC/control PDCP; O-CU-UP hosts user PDCP and SDAP.",
+       "url": "https://www.etsi.org/deliver/etsi_ts/103900_103999/103982/08.00.00_60/ts_103982v080000p.pdf",
+       "clause": "clause 3.1, O-CU definitions"
+      }
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "O-CU-CP central unit, control … RRC … PDCP (control) | O-CU-UP central unit, user … SDAP … PDCP (user)",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf p.5 Chapter 1 functional-split figure"
+     }
+    }
+   ],
+   "outside_project": true
+  },
+  {
+   "id": "core-5g",
+   "tier": "dimmed",
+   "levels": [
+    1
+   ],
+   "name": "5G Core",
+   "role": "Core network reached over N2 and N3.",
+   "sentences": [
+    {
+     "id": "core-5g.s1",
+     "kind": "REFERENCE",
+     "text": "The project's architecture survey lists N2 control-plane to the AMF and N3 user-plane to the UPF as the core interfaces of the gNB.",
+     "citation": {
+      "source": "AI-Native_ORAN_Digital_Twin_Architecture.md",
+      "source_id": "SURVEY",
+      "clause": "§ O-CU entries",
+      "locator": "'N2 control-plane to AMF, N3 user-plane to UPF'",
+      "url_or_repo_path": "01_CURRENT_SPlane_SelfHealing/literature-survey/AI-Native_ORAN_Digital_Twin_Architecture.md",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "Next layer communication: N2 control-plane to AMF, N3 user-plane to UPF, Xn to neighboring gNBs, E2 to RIC, O1 to SMO.",
+      "where": "AI-Native_ORAN_Digital_Twin_Architecture.md §7 O-CU-CP / O-CU-UP (line 233); interface matrix rows 'O-CU/gNB to AMF | N2' and 'O-CU-UP/gNB to UPF | N3'"
+     }
+    }
+   ],
+   "outside_project": true
+  },
+  {
+   "id": "o-cloud",
+   "tier": "dimmed",
+   "levels": [
+    1
+   ],
+   "name": "O-Cloud",
+   "role": "Cloud infrastructure that hosts virtualised O-RAN functions, managed over O2.",
+   "sentences": [
+    {
+     "id": "o-cloud.s1",
+     "kind": "REFERENCE",
+     "text": "The project's architecture survey lists O2 as the SMO interface to the O-Cloud for resource inventory, deployment and lifecycle.",
+     "citation": {
+      "source": "AI-Native_ORAN_Digital_Twin_Architecture.md",
+      "source_id": "SURVEY",
+      "clause": "interface table",
+      "locator": "row 'SMO to O-Cloud'",
+      "url_or_repo_path": "01_CURRENT_SPlane_SelfHealing/literature-survey/AI-Native_ORAN_Digital_Twin_Architecture.md",
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "O2 connects the SMO framework and O-Cloud to support O-RAN virtual network functions.",
+       "url": "https://www.etsi.org/deliver/etsi_ts/103900_103999/103982/08.00.00_60/ts_103982v080000p.pdf",
+       "clause": "clause 3.1, O2 definition"
+      }
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "| SMO to O-Cloud | O2 | Cloud infrastructure APIs | Wired management | Resource inventory, deployment, lifecycle, infrastructure telemetry |",
+      "where": "AI-Native_ORAN_Digital_Twin_Architecture.md Connection / Interface Matrix (line 422)"
+     }
+    }
+   ],
+   "outside_project": true
+  },
+  {
+   "id": "lls-c1",
+   "tier": 2,
+   "levels": [
+    2
+   ],
+   "name": "LLS-C1",
+   "role": "O-DU is in the sync chain; direct link to the O-RU.",
+   "sentences": [
+    {
+     "id": "lls-c1.s1",
+     "kind": "REFERENCE",
+     "text": "In LLS-C1 the O-DU is part of the synchronization chain and network timing is distributed from O-DU to O-RU over a direct connection.",
+     "citation": {
+      "source": "v8 deck (PDF view)",
+      "source_id": "V8",
+      "clause": "slide 6",
+      "locator": "LLS-C1 row, as quoted from O-RAN.WG4.CUS.0 via Armstrong",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "In LLS-C1, O-DU acts as master and directly synchronizes O-RU.",
+       "url": "https://www.etsi.org/deliver/etsi_tr/104100_104199/104106/03.00.00_60/tr_104106v030000p.pdf",
+       "clause": "clause 9.1, Configuration LLS-C1"
+      }
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "LLS-C1  O-DU is part of the synchronization chain. Network timing is distributed from O-DU to O-RU via a direct connection between O-DU site and O-RU site.",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf p.6 (slide 6) LLS-C1 row"
+     }
+    },
+    {
+     "id": "lls-c1.s2",
+     "kind": "REFERENCE",
+     "text": "O-RAN threat T-SPLANE-01 covers DoS or impersonation against the timing-network master; because the O-DU is that master in LLS-C1, its served O-RUs can be affected.",
+     "citation": {
+      "source": "ETSI TR 104 106 V3.0.0",
+      "source_id": "TR104106",
+      "clause": "§7 T-SPLANE-01 and §9.1 Configuration LLS-C1",
+      "locator": "official PDF pages 34 and 107",
+      "url_or_repo_path": "https://www.etsi.org/deliver/etsi_tr/104100_104199/104106/03.00.00_60/tr_104106v030000p.pdf",
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "T-SPLANE-01 covers DoS or impersonation against a timing-network master.",
+       "url": "https://www.etsi.org/deliver/etsi_tr/104100_104199/104106/03.00.00_60/tr_104106v030000p.pdf",
+       "clause": "clause 7, T-SPLANE-01; clause 9.1, LLS-C1"
+      }
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "A compromised O-DU or the O-DU–O-RU link controls the O-RU's time (T-FRHAUL-01 [2]).",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf p.6 (slide 6) exposure column, LLS-C1 row"
+     }
+    },
+    {
+     "id": "lls-c1.s3",
+     "kind": "UNKNOWN",
+     "text": "Not the testbed's configuration: the testbed has no O-DU in its timing chain.",
+     "citation": {
+      "source": "v8 deck (PDF view)",
+      "source_id": "V8",
+      "clause": "slide 6",
+      "locator": "'OUR TESTBED' box",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "Grandmaster → boundary clock → three radio units over bridged segments, with no O-DU in the timing chain: the LLS-C3 structure.",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf p.6 (slide 6) OUR TESTBED box"
+     }
+    }
+   ],
+   "lls": {
+    "testbed": false
+   }
+  },
+  {
+   "id": "lls-c2",
+   "tier": 2,
+   "levels": [
+    2
+   ],
+   "name": "LLS-C2",
+   "role": "O-DU is in the sync chain; one or more Ethernet switches allowed.",
+   "sentences": [
+    {
+     "id": "lls-c2.s1",
+     "kind": "REFERENCE",
+     "text": "In LLS-C2 the O-DU is part of the synchronization chain and one or more Ethernet switches are allowed in the fronthaul network.",
+     "citation": {
+      "source": "v8 deck (PDF view)",
+      "source_id": "V8",
+      "clause": "slide 6",
+      "locator": "LLS-C2 row",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "O-DU acts as master; one or more Ethernet switches are allowed in the fronthaul network.",
+       "url": "https://www.etsi.org/deliver/etsi_tr/104100_104199/104106/03.00.00_60/tr_104106v030000p.pdf",
+       "clause": "clause 9.1, Configuration LLS-C2"
+      }
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "LLS-C2  O-DU is part of the synchronization chain. Timing goes from O-DU to O-RU; one or more Ethernet switches are allowed in the fronthaul network.",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf p.6 (slide 6) LLS-C2 row"
+     }
+    },
+    {
+     "id": "lls-c2.s2",
+     "kind": "CONFIGURED",
+     "text": "The Testbed Configuration Reference says the testbed 'models O-RAN LLS-C2/C3'.",
+     "citation": {
+      "source": "Testbed Configuration Reference 2026-10-05",
+      "source_id": "TBREF",
+      "clause": "§4 Topology and node roles",
+      "locator": "section subtitle",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_Testbed_Configuration_Reference_v2026-10-05.pdf",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 2, 2026-10-06",
+      "quote": "4 Topology and node roles / Two Ethernet bridges separated by a Boundary Clock (models O-RAN LLS-C2/C3).",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_Testbed_Configuration_Reference_v2026-10-05.pdf p.4, §4 subtitle"
+     }
+    },
+    {
+     "id": "lls-c2.s3",
+     "kind": "REFERENCE",
+     "text": "The deck's quoted LLS-C2 definition puts the O-DU in the synchronization chain, while the deck describes the testbed as having no O-DU in the timing chain.",
+     "citation": {
+      "source": "v8 deck (PDF view)",
+      "source_id": "V8",
+      "clause": "slide 6",
+      "locator": "LLS-C2 row and OUR TESTBED box",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 2, 2026-10-06",
+      "quote": "LLS-C2 | O-DU is part of the synchronization chain. Timing goes from O-DU to O-RU; one or more Ethernet switches are allowed ... OUR TESTBED: ... with no O-DU in the timing chain: the LLS-C3 structure.",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf slide 6, LLS-C2 row and OUR TESTBED box"
+     }
+    }
+   ],
+   "lls": {
+    "testbed": false
+   }
+  },
+  {
+   "id": "lls-c3",
+   "tier": 2,
+   "levels": [
+    2
+   ],
+   "name": "LLS-C3 (closest match to the testbed)",
+   "role": "O-DU not in the sync chain; PRTC/T-GM to O-RU through the network.",
+   "sentences": [
+    {
+     "id": "lls-c3.s1",
+     "kind": "REFERENCE",
+     "text": "In LLS-C3 the O-DU is not part of the synchronization chain and timing is distributed from a PRTC/T-GM to the O-RU, typically from central or aggregation sites.",
+     "citation": {
+      "source": "v8 deck (PDF view)",
+      "source_id": "V8",
+      "clause": "slide 6",
+      "locator": "LLS-C3 row",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "Timing is distributed by the fronthaul network, not by the O-DU, using PRTC/T-GM.",
+       "url": "https://www.etsi.org/deliver/etsi_tr/104100_104199/104106/03.00.00_60/tr_104106v030000p.pdf",
+       "clause": "clause 9.1, Configuration LLS-C3"
+      }
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "LLS-C3  O-DU is not part of the synchronization chain. Timing is distributed from PRTC/T-GM to O-RU, typically from central or aggregation sites.",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf p.6 (slide 6) LLS-C3 row"
+     }
+    },
+    {
+     "id": "lls-c3.s2",
+     "kind": "CONFIGURED",
+     "text": "The testbed has the LLS-C3 structure: grandmaster to boundary clock to radio units, with no O-DU in the timing chain.",
+     "citation": {
+      "source": "SPlane_Project_Story_Guide.pdf",
+      "source_id": "GUIDE",
+      "clause": "Chapter 1",
+      "locator": "'Our testbed has the LLS-C3 shape'",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "Our testbed has the LLS-C3 shape: grandmaster → boundary clock → radio units, with no O-DU in the timing chain.",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf p.5 Chapter 1 box"
+     }
+    },
+    {
+     "id": "lls-c3.s3",
+     "kind": "REFERENCE",
+     "text": "TIMESAFE's real production-style test also used LLS-C3.",
+     "citation": {
+      "source": "v8 deck (PDF view)",
+      "source_id": "V8",
+      "clause": "slide 6",
+      "locator": "exposure column",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "Grandmaster, boundary clocks and switches on the path are all exposed. TIMESAFE's production test used LLS-C3 [10].",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf p.6 (slide 6) exposure column LLS-C3 row; 00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf p.5 'TIMESAFE's real production test also used LLS-C3.'"
+     }
+    },
+    {
+     "id": "lls-c3.s4",
+     "kind": "CONFIGURED",
+     "text": "The lab has no PRTC/GPS, so every node truthfully advertises clockClass 248.",
+     "citation": {
+      "source": "Testbed Configuration Reference 2026-10-05",
+      "source_id": "TBREF",
+      "clause": "§3 Declared deviations from a production deployment",
+      "locator": "p.4, clock_class_threshold 248 row",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_Testbed_Configuration_Reference_v2026-10-05.pdf",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 3, 2026-10-06",
+      "quote": "clock_class_threshold 248 | An acceptance policy, not a quality claim; the lab has no PRTC/GPS so every node truthfully advertises clockClass 248.",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_Testbed_Configuration_Reference_v2026-10-05.pdf p.4, §3 Declared deviations, clock_class_threshold 248 row"
+     }
+    }
+   ],
+   "lls": {
+    "testbed": true
+   }
+  },
+  {
+   "id": "lls-c4",
+   "tier": 2,
+   "levels": [
+    2
+   ],
+   "name": "LLS-C4",
+   "role": "Local GNSS receiver at the O-RU; no network timing.",
+   "sentences": [
+    {
+     "id": "lls-c4.s1",
+     "kind": "REFERENCE",
+     "text": "In LLS-C4 the reference is provided to the O-RU with no involvement of the transport network, typically by a local GNSS receiver.",
+     "citation": {
+      "source": "v8 deck (PDF view)",
+      "source_id": "V8",
+      "clause": "slide 6",
+      "locator": "LLS-C4 row",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "Local PRTC timing provides time synchronization to the O-RU and may be embedded in it.",
+       "url": "https://www.etsi.org/deliver/etsi_tr/104100_104199/104106/03.00.00_60/tr_104106v030000p.pdf",
+       "clause": "clause 9.1, Configuration LLS-C4"
+      }
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "LLS-C4  Synchronization reference provided to the O-RU with no involvement of the transport network, typically a local GNSS receiver.",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf p.6 (slide 6) LLS-C4 row"
+     }
+    },
+    {
+     "id": "lls-c4.s2",
+     "kind": "UNKNOWN",
+     "text": "The testbed has no GNSS receiver, so GNSS spoofing and jamming cannot be produced in it.",
+     "citation": {
+      "source": "v8 deck (PDF view)",
+      "source_id": "V8",
+      "clause": "slide 18",
+      "locator": "'No GNSS receiver'",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 2, 2026-10-06",
+      "quote": "No GNSS receiver: GNSS spoofing and jamming cannot be produced at all.",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf slide 18, VERIFIED PLATFORM CONSTRAINTS"
+     }
+    }
+   ],
+   "lls": {
+    "testbed": false
+   }
+  },
+  {
+   "id": "ptp-exchange",
+   "tier": 1,
+   "levels": [
+    3
+   ],
+   "name": "Delay request-response exchange (t1-t4)",
+   "role": "How a radio unit measures its offset and the path delay.",
+   "sentences": [
+    {
+     "id": "ptp-exchange.s1",
+     "kind": "REFERENCE",
+     "text": "The master sends Sync and then Follow_Up carrying the exact send time t1; the slave records arrival t2, sends Delay_Req at t3, and the master returns the arrival time t4 in Delay_Resp.",
+     "citation": {
+      "source": "SPlane_Project_Story_Guide.pdf",
+      "source_id": "GUIDE",
+      "clause": "Chapter 3",
+      "locator": "'The four timestamps' figure",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
+      "status": "VERIFIED",
+      "primary": {
+       "checked": false,
+       "result": "NOT_ACCESSIBLE",
+       "quote": "",
+       "url": "https://standards.ieee.org/ieee/1588/6825/",
+       "clause": "IEEE 1588 message exchange (licence-gated)"
+      }
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "t1 sent  Sync  t2 received  Follow_Up (carries the exact value of t1)  Delay_Req  t3 sent  t4 received  Delay_Resp (carries the value of t4)",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf p.7 Chapter 3 'The four timestamps' figure"
+     }
+    },
+    {
+     "id": "ptp-exchange.s2",
+     "kind": "REFERENCE",
+     "text": "Assuming the same delay in both directions, mean path delay = [(t2 − t1) + (t4 − t3)] / 2 and offset from master = [(t2 − t1) − (t4 − t3)] / 2.",
+     "citation": {
+      "source": "SPlane_Project_Story_Guide.pdf",
+      "source_id": "GUIDE",
+      "clause": "Chapter 3",
+      "locator": "formulas under 'The four timestamps'",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
+      "status": "VERIFIED",
+      "primary": {
+       "checked": false,
+       "result": "NOT_ACCESSIBLE",
+       "quote": "",
+       "url": "https://standards.ieee.org/ieee/1588/6825/",
+       "clause": "IEEE 1588 delay/offset equations (licence-gated)"
+      }
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "Assuming the cable takes the same time in both directions: mean path delay = [ (t2 − t1) + (t4 − t3) ] / 2  offset from master = [ (t2 − t1) − (t4 − t3) ] / 2",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf p.7 Chapter 3"
+     }
+    },
+    {
+     "id": "ptp-exchange.s3",
+     "kind": "MEASURED",
+     "text": "A real ptp4l line from baseline run 1, RU1, reads: master offset 1191 s0 freq -1547 path delay 5313, i.e. offset 1,191 ns, servo state s0 (not steering), path delay 5,313 ns.",
+     "citation": {
+      "source": "SPlane_Project_Story_Guide.pdf",
+      "source_id": "GUIDE",
+      "clause": "Chapter 3",
+      "locator": "log-line example",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "ptp4l[517.414]: master offset 1191 s0 freq -1547 path delay 5313  Read it as: offset 1,191 ns; servo state s0 (not steering); frequency adjustment −1,547 ppb; path delay 5,313 ns.",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf p.7 Chapter 3 ('Here is a real one from our baseline run 1, radio unit 1')"
+     }
+    },
+    {
+     "id": "ptp-exchange.s4",
+     "kind": "CONFIGURED",
+     "text": "Every ptp4l daemon runs with free_running 1, so offsets are measured but no clock is ever steered.",
+     "citation": {
+      "source": "testbed_frozen_copy/cfg/*.cfg",
+      "source_id": "CFG",
+      "clause": "g87251.base",
+      "locator": "free_running 1",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/testbed_frozen_copy/cfg/",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "free_running                    1",
+      "where": "03_RECOVERY_LOOP_S-PLANE/testbed_frozen_copy/cfg/g87251.base [global]; present in all 10 cfg files (bc, bc2, gma, gmb, rbc, rogue, ru1-3)"
+     }
+    }
+   ]
+  },
+  {
+   "id": "bmca-contest",
+   "tier": 1,
+   "levels": [
+    3
+   ],
+   "name": "Announce and the BMCA contest",
+   "role": "Field-by-field election of the best master from Announce messages.",
+   "sentences": [
+    {
+     "id": "bmca-contest.s1",
+     "kind": "REFERENCE",
+     "text": "Each clock broadcasts Announce messages and every clock runs the Best Master Clock Algorithm; fields such as priority1, clockClass, priority2 and clockIdentity are compared to elect the master.",
+     "citation": {
+      "source": "SPlane_Project_Story_Guide.pdf",
+      "source_id": "GUIDE",
+      "clause": "Chapter 3",
+      "locator": "'Who is the master? The election' table",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
+      "status": "VERIFIED",
+      "primary": {
+       "checked": false,
+       "result": "NOT_ACCESSIBLE",
+       "quote": "",
+       "url": "https://standards.ieee.org/ieee/1588/6825/",
+       "clause": "IEEE 1588 best master clock algorithm (licence-gated)"
+      }
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "Each one broadcasts an Announce message describing itself, and every clock runs the same election, the Best Master Clock Algorithm (BMCA), to pick the best. The Announce fields that matter for this project: clockIdentity … priority1 / priority2 … clockClass … stepsRemoved",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf p.7 Chapter 3 'Who is the master? The election'"
+     }
+    },
+    {
+     "id": "bmca-contest.s2",
+     "kind": "CONFIGURED",
+     "text": "The testbed sets priority1 128, domain 24 and the alternate BMCA (dataset_comparison G.8275.x).",
+     "citation": {
+      "source": "testbed_frozen_copy/cfg/*.cfg",
+      "source_id": "CFG",
+      "clause": "g87251.base",
+      "locator": "[global]",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/testbed_frozen_copy/cfg/",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 2, 2026-10-06",
+      "quote": "[global] / dataset_comparison G.8275.x / domainNumber 24 / priority1 128",
+      "where": "03_RECOVERY_LOOP_S-PLANE/testbed_frozen_copy/cfg/g87251.base lines 21-24"
+     }
+    },
+    {
+     "id": "bmca-contest.s3",
+     "kind": "MEASURED",
+     "text": "In A1 replicate 1 of the campaign the rogue clock advertised clockClass 6 against the legitimate grandmaster's 248, so it won the election without breaking any field rule; only the operator's allow-list exposed it.",
+     "citation": {
+      "source": "SPlane_Project_Story_Guide.pdf",
+      "source_id": "GUIDE",
+      "clause": "Chapter 9",
+      "locator": "'A real example: A1, replicate 1'",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "Look at what the rogue sent: priority1 = 128 (legal), priority2 = 1, clockClass = 6. The legitimate grandmaster advertised clockClass 248. Every field in the rogue's frames is legal, and clockClass 6 is better than 248, so it wins the election fairly, without breaking any rule of the standard. The only thing that gives it away is that its identity is not provisioned and no maintenance is open.",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf p.14 Chapter 9 'A real example: A1, replicate 1'"
+     }
+    }
+   ]
+  },
+  {
+   "id": "attack-packets",
+   "tier": 1,
+   "levels": [
+    3
+   ],
+   "name": "Attack packets at the recorded injection point",
+   "role": "Where forged, flooded or removed PTP traffic entered in each recorded run.",
+   "sentences": [
+    {
+     "id": "attack-packets.s1",
+     "kind": "MEASURED",
+     "text": "In the loop arm the isolation target was p-rogue in A1, p-rbc-dn in A8 and p-v-ru3 in A2, A3, A5, C2 and C3.",
+     "citation": {
+      "source": "EVALUATION_RL.json",
+      "source_id": "RLEVAL",
+      "clause": "summary.<scenario>.loop.action_kinds",
+      "locator": "A1, A2, A3, A5, A8, C2, C3",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/results/EVALUATION_RL.json",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 2, 2026-10-06",
+      "quote": "summary.A1_rogue_master.loop.action_kinds = [\"ISOLATE_PTP_AT_PORT:p-rogue\"]; A8_rogue_bc = [\"ISOLATE_PTP_AT_PORT:p-rbc-dn\"]; A2_sync_spoof, A3_replay, A5_dos_flood, C2_malformed, C3_wholesecond = [\"ISOLATE_PTP_AT_PORT:p-v-ru3\"]",
+      "where": "03_RECOVERY_LOOP_S-PLANE/results/EVALUATION_RL.json, summary.<scenario>.loop.action_kinds"
+     }
+    },
+    {
+     "id": "attack-packets.s2",
+     "kind": "CONFIGURED",
+     "text": "Spoofing, replay, flooding, malformed-frame and whole-second-abuse injectors run on the radio-unit segment; the rogue boundary clock spans both bridges; interception blackholes the boundary clock's downstream port.",
+     "citation": {
+      "source": "SPlane_Project_Story_Guide.pdf",
+      "source_id": "GUIDE",
+      "clause": "Chapters 7-8",
+      "locator": "p.12 figure caption (positions) and p.13 'Eight attacks' table (classes)",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 3, 2026-10-06",
+      "quote": "p.12 caption: 'Red markers show where attacks enter. Position 1 covers A1, A2, A3, A5, C2 and C3; position 2 is A8; position 3 is C1.' Figure labels: '1 injector on RU segment' (brDN · radio-unit bridge), '2 rogue relay across both bridges (A8)', '3 BC downstream port blackholed (C1)'. p.13 table: A2 Sync spoofing, A3 Replay, A5 Flooding, C1 Interception 'Shut the boundary clock's downstream port', C2 Malformed frames, C3 Whole-second abuse.",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf pp.12-13 (Ch.7 figure + caption, Ch.8 'Eight attacks' table)"
+     }
+    },
+    {
+     "id": "attack-packets.s3",
+     "kind": "MEASURED",
+     "text": "In the loop arm the nft bridge rule drops PTP at the isolated port; the final ruleset shows the rule in 35 of 35 isolations.",
+     "citation": {
+      "source": "RESULTS_2026-10-05.md",
+      "source_id": "RESULTS",
+      "clause": "§5",
+      "locator": "'35/35 isolations present in the final nft ruleset'",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/RESULTS_2026-10-05.md",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 2, 2026-10-06",
+      "quote": "§5: \"35/35 isolations present in the final nft ruleset\"; §6: \"Isolation mechanism: an nftables bridge filter stands in for a switch-port PTP filter.\"",
+      "where": "03_RECOVERY_LOOP_S-PLANE/RESULTS_2026-10-05.md line 55 (§5) and line 65 (§6)"
+     }
+    },
+    {
+     "id": "attack-packets.s4",
+     "kind": "MEASURED",
+     "text": "From 1 s after the isolation, the attacker sender had 0 frames on brDN in all 30 loop-arm isolations with a distinct attacker MAC (A1, A2, A5, A8, C2, C3; 5 each), while every matching control run still had more than 200 such frames; A3 replays reuse provisioned MACs and cannot be separated.",
+     "citation": {
+      "source": "Recovery-loop run archive r13-r17",
+      "source_id": "RUNS",
+      "clause": "per-run dn.pcap.gz, counted by 04_WEB_SIMULATOR/ingest/extract.py",
+      "locator": "loop vs control, t ≥ act + 1 s",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/results/recovery_eval_runs_r13-r17.tgz",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 3, 2026-10-06",
+      "quote": "Own count from the archive (pcap parse of dn.pcap.gz, EtherType 0x88F7, t >= t_act + 1 s to capture end): ISOLATE_PTP_AT_PORT acts in A1x5 (p-rogue), A2x5, A5x5, C2x5, C3x5 (p-v-ru3), A8x5 (p-rbc-dn) = 30 (plus 5 in A3). Attacker frames in all 30 loop runs = 0. Matching control runs: A1 3435-3469, A2 1264-4832, A5 48478-79597, A8 3450-3514, C2 220-374, C3 225-315 (min 220 > 200). A3 (loop and control, all 10 runs): brDN sources only 02:00:00:00:00:02/0c/0d/0e; zero frames from unprovisioned or GM MACs.",
+      "where": "03_RECOVERY_LOOP_S-PLANE/results/recovery_eval_runs_r13-r17.tgz, per-run loop.jsonl, timeline.json, context.json, bc.log, dn.pcap.gz. Alignment: wall = mono + (first Announce from 02:00:00:00:00:02 on brDN − bc.log 'v-bc-dn ... to MASTER' mono time); cross-check against rogue.log MASTER vs first rogue Announce in the 10 A1 runs gives residuals within ±1 ms. Control threshold uses the loop run's t_act relative to the control run's own t0."
+     }
+    }
+   ]
+  },
+  {
+   "id": "port-counts",
+   "tier": 1,
+   "levels": [
+    3
+   ],
+   "name": "Recorded per-sender packet counts",
+   "role": "Frames per 0.5 s per sender and message type, from each run's brDN/brUP captures.",
+   "sentences": [
+    {
+     "id": "port-counts.s1",
+     "kind": "MEASURED",
+     "text": "Each recovery run archive contains the brDN and brUP captures (dn.pcap.gz, up.pcap.gz) next to the loop and observer logs.",
+     "citation": {
+      "source": "RESULTS_2026-10-05.md",
+      "source_id": "RESULTS",
+      "clause": "§7 Files",
+      "locator": "'recovery_eval_runs_r13-r17.tgz: all 140 run directories'",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/RESULTS_2026-10-05.md",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "`results/recovery_eval_runs_r13-r17.tgz`: all 140 run directories (loop log, observer log, ptp4l logs, captures, nft ruleset, context).",
+      "where": "RESULTS_2026-10-05.md §7; tar listing of the archive: 140 × dn.pcap.gz, 140 × up.pcap.gz, 140 × loop.jsonl, 140 × observer.jsonl"
+     }
+    },
+    {
+     "id": "port-counts.s2",
+     "kind": "CONFIGURED",
+     "text": "The live loop captures with AF_PACKET on every bridge port, ingress only, and tags every PTP frame with its ingress port.",
+     "citation": {
+      "source": "RECOVERY_LOOP_DESIGN.md",
+      "source_id": "DESIGN",
+      "clause": "Localisation: provisioned port roles",
+      "locator": "and capture diagram",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/RECOVERY_LOOP_DESIGN.md",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 3, 2026-10-06",
+      "quote": "[diagram] recovery loop (root namespace) ... every PTP frame, tagged with its ingress port ... 1 CAPTURE   AF_PACKET per bridge port, ingress only, parse_frame() from frozen extractor",
+      "where": "03_RECOVERY_LOOP_S-PLANE/RECOVERY_LOOP_DESIGN.md lines 6-10 (capture diagram); the §'Localisation: provisioned port roles' text (line 32ff) covers per-port provisioning"
+     }
+    },
+    {
+     "id": "port-counts.s3",
+     "kind": "CONFIGURED",
+     "text": "In this app's replay, capture frames are attributed to senders by source MAC address, not by bridge ingress port; in A2, A3, A5, C2 and C3, frames from unprovisioned MACs, GM MACs on brDN and master-role frames from RU3's MAC are counted as the injector, and in A1 and A8 the rogue devices' MACs are mapped to the rogue grandmaster and rogue boundary clock.",
+     "citation": {
+      "source": "Simulator extractor ingest/extract.py",
+      "source_id": "APPX",
+      "clause": "packets block",
+      "locator": "lines 243-283",
+      "url_or_repo_path": "04_WEB_SIMULATOR/ingest/extract.py",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 3, 2026-10-06",
+      "quote": "dev = macmap.get(m_, \"unknown\"); if ctx[\"scenario\"] in (\"A2_sync_spoof\", \"A3_replay\", \"C2_malformed\", \"C3_wholesecond\", \"A5_dos_flood\") and (dev in (\"unknown\", \"flooder\") or (dev == \"ru3\" and ty in MASTER_TYPES) or (seg == \"dn\" and dev in (\"gma\", \"gmb\"))): dev = \"injector\"; A1: macmap[mac(P_[\"rogue_mac\"])] = \"rogue\"; A8: macmap[mac(P_[\"rbc_dn_mac\"])] = \"rbc\"; macmap[mac(P_[\"rbc_up_mac\"])] = \"rbc\"",
+      "where": "04_WEB_SIMULATOR/ingest/extract.py lines 243-283 (macmap 245-252; injector attribution 273-279)"
+     }
+    }
+   ]
+  },
+  {
+   "id": "hw-faults",
+   "tier": 2,
+   "levels": [
+    3
+   ],
+   "name": "Faults that need hardware on the testbed",
+   "role": "GNSS spoofing and jamming, honest holdover, SyncE degradation and oscillator drift on telecom hardware.",
+   "sentences": [
+    {
+     "id": "hw-faults.s1",
+     "kind": "UNKNOWN",
+     "text": "Five catalogue faults need hardware and could not be produced in software: A6 GNSS spoofing, A7 GNSS jamming, B1 holdover, B4 SyncE and B6 oscillator drift.",
+     "citation": {
+      "source": "SPlane_Project_Story_Guide.pdf",
+      "source_id": "GUIDE",
+      "clause": "Chapter 8 note",
+      "locator": "'Five need hardware and could not be produced'",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "Five need hardware and could not be produced (A6 GNSS spoofing, A7 GNSS jamming, B1 holdover, B4 SyncE, B6 oscillator drift).",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf p.13 Chapter 8 note"
+     }
+    },
+    {
+     "id": "hw-faults.s2",
+     "kind": "MEASURED",
+     "text": "For B6 only a two-laptop crystal measurement exists (run 2: +21.013 ppm, ESTABLISHED); it is not a telecom-oscillator measurement.",
+     "citation": {
+      "source": "B6 DRIFT_REPORT_run2.md",
+      "source_id": "B6",
+      "clause": "Headline",
+      "locator": "DRIFT_REPORT_run2.md",
+      "url_or_repo_path": "outputs/B6_two_machine_2026-10-02/run2/DRIFT_REPORT_run2.md",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "Relative frequency offset between the two physical crystals: **+21.013 ppm  [+20.623, +21.403]** … **Overall: ESTABLISHED** … Both hosts carry uncompensated consumer-grade quartz (not OCXO/TCXO/Rb). The measured envelope is a worst-case consumer figure, not a telecom-class holdover curve.",
+      "where": "outputs/B6_two_machine_2026-10-02/run2/DRIFT_REPORT_run2.md Headline and Scope limits"
+     }
+    },
+    {
+     "id": "hw-faults.s3",
+     "kind": "UNKNOWN",
+     "text": "The B6 two-laptop run does not unlock B1, B4, A6 or A7, and adds no hardware timestamping.",
+     "citation": {
+      "source": "B6 two-machine measurement record",
+      "source_id": "B6REC",
+      "clause": "§7 Scope limits",
+      "locator": "item 5",
+      "url_or_repo_path": "outputs/B6_two_machine_2026-10-02/B6_MEASUREMENT_RECORD_2026-10-02.md",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 2, 2026-10-06",
+      "quote": "5. Does not unlock B1, B4, A6 or A7, and adds no hardware timestamping.",
+      "where": "outputs/B6_two_machine_2026-10-02/B6_MEASUREMENT_RECORD_2026-10-02.md §7 item 5 (line 127)"
+     }
+    }
+   ]
+  },
+  {
+   "id": "loop-detect",
+   "tier": 1,
+   "levels": [
+    4
+   ],
+   "name": "Recovery loop: Detect",
+   "role": "Loop stage 'Detect', lit from the recorded loop.jsonl events.",
+   "sentences": [
+    {
+     "id": "loop-detect.s1",
+     "kind": "CONFIGURED",
+     "text": "Every 1 s the frozen rule judges a 6 s sliding window of segment frames, and a second channel checks that Announce keeps arriving from a provisioned master port.",
+     "citation": {
+      "source": "RECOVERY_LOOP_DESIGN.md",
+      "source_id": "DESIGN",
+      "clause": "Two detection channels",
+      "locator": "table",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/RECOVERY_LOOP_DESIGN.md",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "1 Packet legality and provisioning | Frozen decision_rule_v3.decide_v2 on a 6 s sliding window of segment frames, once per second. … 2 Timing-service continuity | Time since the last Announce from any provisioned master-role port on the segment",
+      "where": "RECOVERY_LOOP_DESIGN.md 'Two detection channels' table"
+     }
+    }
+   ]
+  },
+  {
+   "id": "loop-localise",
+   "tier": 1,
+   "levels": [
+    4
+   ],
+   "name": "Recovery loop: Localise",
+   "role": "Loop stage 'Localise', lit from the recorded loop.jsonl events.",
+   "sentences": [
+    {
+     "id": "loop-localise.s1",
+     "kind": "CONFIGURED",
+     "text": "Each bridge port is compared with its provisioned role: an unprovisioned port originating PTP, a client port sending master-role messages, foreign source identities or malformed frames mark a violating port.",
+     "citation": {
+      "source": "RECOVERY_LOOP_DESIGN.md",
+      "source_id": "DESIGN",
+      "clause": "Localisation: provisioned port roles",
+      "locator": "bullet list",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/RECOVERY_LOOP_DESIGN.md",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "it is not provisioned and originates PTP (rogue GM, rogue BC); it is a client-role port originating master-role messages (Sync, Follow_Up, Delay_Resp, Announce) …; it carries source identities not provisioned for that port (a forged identity); it carries malformed frames.",
+      "where": "RECOVERY_LOOP_DESIGN.md 'Localisation: provisioned port roles' bullet list"
+     }
+    }
+   ]
+  },
+  {
+   "id": "loop-decide",
+   "tier": 1,
+   "levels": [
+    4
+   ],
+   "name": "Recovery loop: Decide",
+   "role": "Loop stage 'Decide', lit from the recorded loop.jsonl events.",
+   "sentences": [
+    {
+     "id": "loop-decide.s1",
+     "kind": "CONFIGURED",
+     "text": "Isolation requires at least 2 of the last 3 evaluations to say ATTACK; a provisioned master-role port is never isolated automatically; the service-loss trigger is no Announce from any provisioned master port for 2 s (10 s while a maintenance window is open).",
+     "citation": {
+      "source": "PREREGISTRATION.md",
+      "source_id": "PREREG",
+      "clause": "§3 Loop parameters",
+      "locator": "Persistence, Service-loss trigger, Safety guard rows",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/PREREGISTRATION.md",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 3, 2026-10-06",
+      "quote": "| Persistence | ≥ 2 of the last 3 evaluations ATTACK | Single-window transients cannot trigger an action | ... | Service-loss trigger | no Announce from any provisioned master port for 2 s; 10 s while a maintenance window is open | ... | Safety guard | a master-role provisioned port (primary BC, standby BC, planned replacement BC) is never isolated automatically |",
+      "where": "03_RECOVERY_LOOP_S-PLANE/PREREGISTRATION.md §3 Loop parameters table (lines 27-35)"
+     }
+    }
+   ]
+  },
+  {
+   "id": "loop-act",
+   "tier": 1,
+   "levels": [
+    4
+   ],
+   "name": "Recovery loop: Act",
+   "role": "Loop stage 'Act', lit from the recorded loop.jsonl events.",
+   "sentences": [
+    {
+     "id": "loop-act.s1",
+     "kind": "CONFIGURED",
+     "text": "Isolation is an nftables bridge rule dropping ethertype 0x88F7 at the offending port; failover starts the cold-standby boundary clock.",
+     "citation": {
+      "source": "RECOVERY_LOOP_DESIGN.md",
+      "source_id": "DESIGN",
+      "clause": "Policy table",
+      "locator": "ISOLATE and ACTIVATE STANDBY BC rows",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/RECOVERY_LOOP_DESIGN.md",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 2, 2026-10-06",
+      "quote": "ISOLATE: nft bridge prerouting `iifname <port> ether type 0x88f7 drop` ... | Service loss > 2 s (10 s if a maintenance window is open) | — | ACTIVATE STANDBY BC |; diagram: \"standby BC (bcs) ─ cabled, daemon off\" ... \"5 ACT  nft bridge drop / start bcs\"",
+      "where": "03_RECOVERY_LOOP_S-PLANE/RECOVERY_LOOP_DESIGN.md Policy table lines 44 and 46; diagram lines 13, 17"
+     }
+    },
+    {
+     "id": "loop-act.s2",
+     "kind": "CONFIGURED",
+     "text": "In the control arm the identical loop runs in observe-only mode: it detects, decides and logs would_act, and executes nothing.",
+     "citation": {
+      "source": "PREREGISTRATION.md",
+      "source_id": "PREREG",
+      "clause": "§2",
+      "locator": "arm definition 'control'",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/PREREGISTRATION.md",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 2, 2026-10-06",
+      "quote": "`control`: the identical loop in observe-only mode. It detects, decides and logs `would_act`, and executes nothing.",
+      "where": "03_RECOVERY_LOOP_S-PLANE/PREREGISTRATION.md §2 line 20"
+     }
+    }
+   ]
+  },
+  {
+   "id": "loop-verify",
+   "tier": 1,
+   "levels": [
+    4
+   ],
+   "name": "Recovery loop: Verify",
+   "role": "Loop stage 'Verify', lit from the recorded loop.jsonl events.",
+   "sentences": [
+    {
+     "id": "loop-verify.s1",
+     "kind": "CONFIGURED",
+     "text": "Within 20 s every non-isolated radio unit must report a provisioned master-role parent, an allow-listed grandmaster and port state SLAVE or UNCALIBRATED, read with pmc -d 24.",
+     "citation": {
+      "source": "PREREGISTRATION.md",
+      "source_id": "PREREG",
+      "clause": "§3 Loop parameters",
+      "locator": "Verification row",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/PREREGISTRATION.md",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "| Verification | pmc `-d 24` on every non-isolated RU: parent ∈ provisioned master-role identities, GM ∈ allow-list, portState ∈ {SLAVE, UNCALIBRATED}, within 20 s |",
+      "where": "PREREGISTRATION.md §3 Verification row"
+     }
+    }
+   ]
+  },
+  {
+   "id": "loop-rollback",
+   "tier": 1,
+   "levels": [
+    4
+   ],
+   "name": "Recovery loop: Rollback",
+   "role": "Loop stage 'Rollback', lit from the recorded loop.jsonl events.",
+   "sentences": [
+    {
+     "id": "loop-rollback.s1",
+     "kind": "CONFIGURED",
+     "text": "If verification fails the action is undone and the operator alerted.",
+     "citation": {
+      "source": "PREREGISTRATION.md",
+      "source_id": "PREREG",
+      "clause": "§3 Loop parameters",
+      "locator": "Rollback row",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/PREREGISTRATION.md",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "| Rollback | undo the action and escalate if verification fails | — |",
+      "where": "PREREGISTRATION.md §3 Rollback row"
+     }
+    }
+   ]
+  },
+  {
+   "id": "recovery-loop",
+   "tier": 1,
+   "levels": [
+    4
+   ],
+   "name": "Recovery loop (detect → rollback)",
+   "role": "Closed loop beside the testbed, evaluated in 140 pre-registered runs.",
+   "sentences": [
+    {
+     "id": "recovery-loop.s1",
+     "kind": "MEASURED",
+     "text": "In 140 pre-registered runs the loop restored A1 from 38.5 s to 2.0 s, C1 from 39.0 s to 2.5 s and C3 from 38.5 s to 2.0 s (median unhealthy seconds of 40).",
+     "citation": {
+      "source": "RESULTS_2026-10-05.md",
+      "source_id": "RESULTS",
+      "clause": "§1 Headline",
+      "locator": "table",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/RESULTS_2026-10-05.md",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "A1 … 38.5 s of 40 … **2.0 s** median | C1 … 39.0 s of 40 … **2.5 s** median | C3 … 38.5 s of 40 … **2.0 s** median",
+      "where": "RESULTS_2026-10-05.md §1 Headline table; recomputed from EVALUATION_RL.json: control medians A1 38.52, C1 39.01, C3 38.51; loop medians 2.0, 2.5, 2.0"
+     }
+    },
+    {
+     "id": "recovery-loop.s2",
+     "kind": "MEASURED",
+     "text": "Hypothesis H3 (no harm on benign faults) failed: one standby failover in 25 benign runs (B3 replicate 17), during a genuine 16.5 s outage.",
+     "citation": {
+      "source": "RESULTS_2026-10-05.md",
+      "source_id": "RESULTS",
+      "clause": "§2-§3",
+      "locator": "H3 row and explanation",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/RESULTS_2026-10-05.md",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "| **H3 no harm on benign** | **FAIL** | 1 disruptive action in 25 benign loop runs (Wilson 95 % [0.007, 0.195]) | … In B3_pdv_congestion replicate 17 … Control arm: RU1/RU2 really lost timing (LISTENING) for **16.5 s**.",
+      "where": "RESULTS_2026-10-05.md §2 H3 row and §3; EVALUATION_RL.json B3_pdv_congestion__r17__control outage_s 16.51, __loop ACTIVATE_STANDBY_BC act, unhealthy 3.5"
+     }
+    },
+    {
+     "id": "recovery-loop.s3",
+     "kind": "MEASURED",
+     "text": "No rollback was needed in any of the 140 runs.",
+     "citation": {
+      "source": "EVALUATION_RL.json",
+      "source_id": "RLEVAL",
+      "clause": "per-run 'actions'",
+      "locator": "no ROLLBACK entries",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/results/EVALUATION_RL.json",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "summary.*.*.rollbacks = 0 for all 28 scenario-arm cells; no action named ROLLBACK in any of 140 runs' actions; loop verify_ok == verify_total in every cell (41/41)",
+      "where": "03_RECOVERY_LOOP_S-PLANE/results/EVALUATION_RL.json (computed with python)"
+     }
+    }
+   ]
+  },
+  {
+   "id": "ds-recovery",
+   "tier": 1,
+   "levels": [
+    1
+   ],
+   "name": "Dataset: 140 recovery-loop runs",
+   "role": "14 scenarios × 2 arms × 5 replicates, loaded in the database.",
+   "sentences": [
+    {
+     "id": "ds-recovery.s1",
+     "kind": "MEASURED",
+     "text": "The evaluation comprises 140 live runs: 14 scenarios, 2 arms and 5 replicates, on real linuxptp 4.0 daemons.",
+     "citation": {
+      "source": "RESULTS_2026-10-05.md",
+      "source_id": "RESULTS",
+      "clause": "header",
+      "locator": "first paragraph",
+      "url_or_repo_path": "03_RECOVERY_LOOP_S-PLANE/RESULTS_2026-10-05.md",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "**140 live runs**: 14 scenarios × 2 arms × 5 replicates (13–17), on real linuxptp 4.0 daemons in the frozen G.8275.1 software testbed.",
+      "where": "RESULTS_2026-10-05.md line 3; EVALUATION_RL.json: 140 runs, 14 scenarios, 70 control + 70 loop, reps 13-17"
+     }
+    }
+   ]
+  },
+  {
+   "id": "ds-campaign",
+   "tier": 1,
+   "levels": [
+    1
+   ],
+   "name": "Dataset: 168-run detector campaign",
+   "role": "14 scenarios × 12 replicates scored by the frozen rule.",
+   "sentences": [
+    {
+     "id": "ds-campaign.s1",
+     "kind": "MEASURED",
+     "text": "The detector campaign has 168 runs (14 scenarios × 12 replicates); the revised rule v3 attributed the exact fault in 84 of 96 attack runs.",
+     "citation": {
+      "source": "SPlane_Project_Story_Guide.pdf",
+      "source_id": "GUIDE",
+      "clause": "One-page summary",
+      "locator": "'84 / 96'",
+      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "We ran 14 scenarios × 12 randomised replicates = 168 live runs … 0.990 attack sensitivity, revised rule v3 … 84 / 96 attack runs with the exact fault named (0.875)",
+      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf p.3 'The whole project on one page'; EVALUATION_V4.json v3.attribution [0.875, …], n_attack 96"
+     }
+    }
+   ]
+  },
+  {
+   "id": "ds-pilot",
+   "tier": 1,
+   "levels": [
+    1
+   ],
+   "name": "Dataset: 13 Sep pilot",
+   "role": "Software-testbed closed-loop pilot (S11) and its independent validation (S15).",
+   "sentences": [
+    {
+     "id": "ds-pilot.s1",
+     "kind": "MEASURED",
+     "text": "In S11 a detector-triggered port failover succeeded in 5 of 5 trials against 0 of 5 no-action controls.",
+     "citation": {
+      "source": "S11_CLOSED_LOOP_EVALUATION.json",
+      "source_id": "S11",
+      "clause": "primary_outcome_summary",
+      "locator": "action 5/5, no_action 0/5",
+      "url_or_repo_path": "outputs/empirical_software_network_pilot_v1/S11_CLOSED_LOOP_EVALUATION.json",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "primary_outcome_summary: action {k: 5, n: 5}, no_action {k: 0, n: 5}; runs: detector_triggered 5/5 in both arms, action_executed 5/5 vs 0/5, active_port_moved_to_clean_segment 5/5 vs 0/5",
+      "where": "outputs/empirical_software_network_pilot_v1/S11_CLOSED_LOOP_EVALUATION.json (recomputed from runs)"
+     }
+    },
+    {
+     "id": "ds-pilot.s2",
+     "kind": "MEASURED",
+     "text": "Independent validation S15 was not established: trigger rate above the boundary 14/15, no-trigger rate below the boundary 8/15, below the frozen 0.8.",
+     "citation": {
+      "source": "13 Sep pilot START_HERE_FINAL.md",
+      "source_id": "PILOT",
+      "clause": "Validation status",
+      "locator": "header paragraph",
+      "url_or_repo_path": "outputs/empirical_software_network_pilot_v1/START_HERE_FINAL.md",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "S15 completed its 30 frozen independent software-testbed runs. Its pre-specified result is **not established**: receiver-above-boundary trigger rate was 14/15 (0.9333), but receiver-below-boundary no-trigger rate was 8/15 (0.5333), below the frozen 0.8 criterion.",
+      "where": "outputs/empirical_software_network_pilot_v1/START_HERE_FINAL.md Validation status header"
+     }
+    }
+   ]
+  },
+  {
+   "id": "ds-raw-missing",
+   "tier": 2,
+   "levels": [
+    1
+   ],
+   "name": "Data not in repo",
+   "role": "Raw files referenced by the project that the repository does not contain.",
+   "sentences": [
+    {
+     "id": "ds-raw-missing.s1",
+     "kind": "UNKNOWN",
+     "text": "Files of 50 MB or more, including the S13 and S14 packet CSVs and the combined dataset workbooks, are kept only on the project machine.",
+     "citation": {
+      "source": "LARGE_FILES_NOT_IN_GIT.md",
+      "source_id": "LARGE",
+      "clause": "table",
+      "locator": "8 files with sha256",
+      "url_or_repo_path": "LARGE_FILES_NOT_IN_GIT.md",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent subagent audit 2026-10-06",
+      "quote": "Kept only on the project machine (each is 50 MB or more). … s14_packets.csv | 161.3 … s13_packets.csv | 74.2 … ORAN_All_Current_Datasets_*.xlsx …",
+      "where": "LARGE_FILES_NOT_IN_GIT.md table (8 files)"
+     }
+    },
+    {
+     "id": "ds-raw-missing.s2",
+     "kind": "UNKNOWN",
+     "text": "The raw per-sample CSVs of the B6 two-laptop measurement are named, with their sha256, in the analysis output.",
+     "citation": {
+      "source": "B6 DRIFT_REPORT_run2.md",
+      "source_id": "B6",
+      "clause": "Provenance",
+      "locator": "laptopA / laptopB CSV names and sha256",
+      "url_or_repo_path": "outputs/B6_two_machine_2026-10-02/run2/DRIFT_REPORT_run2.md",
+      "status": "VERIFIED"
+     },
+     "verification": {
+      "by": "independent re-verification pass 2, 2026-10-06",
+      "quote": "## Provenance - laptopA: `laptopA_20261002-211329_92214ce7bb.csv` sha256 `37efb32541b9b64b...` - laptopB: `laptopB_20261002-211401_5897fbe2bc.csv` sha256 `68155ad5830dc430...`",
+      "where": "outputs/B6_two_machine_2026-10-02/run2/DRIFT_REPORT_run2.md lines 69-72"
+     }
+    }
+   ]
+  }
+ ],
+ "audit_log": [
+  {
+   "sentence": "osc-drift.s2",
+   "action": "citation corrected",
+   "verdict": "WRONG_CLAUSE",
+   "why": "run-1 figures are in DRIFT_REPORT.md, not the run-2 report"
+  },
+  {
+   "sentence": "gm-a.s3",
+   "action": "rewritten",
+   "verdict": "UNSUPPORTED",
+   "old": "GM-A's clockIdentity 020000fffe00000a is on the operator's allow-list; the allow-list is what lets the rule tell a planned changeover from a rogue grandmaster.",
+   "new": "The operator's allow-list holds GM-A and GM-B (identities …00000a and …00000b).",
+   "why": "allow-list role was not stated by provisioning.json; identity-to-GM mapping is in the Guide"
+  },
+  {
+   "sentence": "gm-a.s4",
+   "action": "rewritten",
+   "verdict": "UNSUPPORTED",
+   "old": "No GNSS receiver exists in the testbed: GM-A is a ptp4l process on a free-running clock that stands in for the PRTC/T-GM role, so GNSS-locked behaviour, holdover and spoofing are not measured.",
+   "new": "No GNSS receiver exists in the testbed, so GNSS spoofing and jamming cannot be produced; all namespaces share the host clock, with free_running 1 set.",
+   "why": "'stands in for the PRTC/T-GM role' and holdover were not on the cited slide"
+  },
+  {
+   "sentence": "gm-a.s5",
+   "action": "added",
+   "new": "The lab has no PRTC/GPS, so every node truthfully advertises clockClass 248.",
+   "why": "label correction: GM-A is a T-GM without a PRTC"
+  },
+  {
+   "sentence": "gm-b.s2",
+   "action": "rewritten",
+   "verdict": "UNSUPPORTED",
+   "old": "When GM-A fails with no maintenance window open and GM-B takes over, the frozen rule returned UNKNOWN in 12 of 12 campaign runs, because packets alone cannot tell a real failure from an attack that knocked GM-A out.",
+   "new": "When GM-A fails with no maintenance window open and GM-B takes over, the frozen rule returned UNKNOWN in 12 of 12 campaign runs.",
+   "why": "causal clause not in EVALUATION_V4"
+  },
+  {
+   "sentence": "bc.s1",
+   "action": "rewritten",
+   "verdict": "UNSUPPORTED",
+   "old": "The boundary clock is a slave on the grandmaster segment (brUP) and a master on the radio-unit segment (brDN), with priority2 120, so radio units see stepsRemoved 1.",
+   "new": "The boundary clock (T-BC, priority2 120) connects the grandmaster bridge brUP and the radio-unit bridge brDN; the Testbed Configuration Reference lists its role as 'stepsRemoved 0→1'.",
+   "why": "slave/master sides not in TBREF; 'RUs see stepsRemoved 1' conflicts with topology.sh ('RUs see stepsRemoved=2')"
+  },
+  {
+   "sentence": "o-ru.s2",
+   "action": "rewritten",
+   "verdict": "UNSUPPORTED",
+   "old": "The testbed's three radio units are ptp4l daemons with clientOnly 1 (they only take time); the Testbed Configuration Reference labels them 'O-RU proxies (T-TSC)'.",
+   "new": "The Testbed Configuration Reference labels the three radio units 'O-RU proxies (T-TSC)', each with priority2 128.",
+   "why": "clientOnly is not in TBREF; moved to its own sentence citing the cfg"
+  },
+  {
+   "sentence": "o-ru.s5",
+   "action": "added",
+   "new": "The radio units' ptp4l configurations set clientOnly 1, so they only take time.",
+   "why": "split from o-ru.s2"
+  },
+  {
+   "sentence": "o-ru.s4",
+   "action": "rewritten",
+   "verdict": "UNSUPPORTED",
+   "old": "130 ns is scoped by the project's verification to the relative time-alignment error for intra-band contiguous carrier aggregation, Timing Category A, not presented as a universal O-RAN limit.",
+   "new": "130 ns is scoped by the project's verification to the relative time-alignment error for 5G FR2 intra-band contiguous carrier aggregation, Timing Category A, not presented as a universal O-RAN limit.",
+   "why": "qualifier 'FR2' restored"
+  },
+  {
+   "sentence": "fh-splane.s3",
+   "action": "rewritten",
+   "verdict": "UNSUPPORTED",
+   "old": "ITU-T G.8271.1 frames ±1.5 µs as the maximum absolute time error at reference point E (the end application) relative to a common recognised time standard; the network's share at reference point C is 1100 ns.",
+   "new": "ITU-T G.8271.1 frames ±1.5 µs as an end-application, reference-point-E absolute time-error limit relative to a common recognised time standard.",
+   "why": "1100 ns clause not in item 32; moved to fh-splane.s5"
+  },
+  {
+   "sentence": "fh-splane.s5",
+   "action": "added",
+   "new": "The project's deck gives the total budget at reference point E and the network limit at reference point C as 1100 ns.",
+   "why": "split from fh-splane.s3"
+  },
+  {
+   "sentence": "fh-splane.s4",
+   "action": "rewritten",
+   "verdict": "UNSUPPORTED",
+   "old": "SyncE is a physical-layer function and was not implemented in the testbed, so frequency synchronisation is not measured here.",
+   "new": "SyncE is a physical-layer function and was not implemented in the testbed, which exercised PTP only.",
+   "why": "inference about frequency measurement removed"
+  },
+  {
+   "sentence": "injector.s1",
+   "action": "rewritten",
+   "verdict": "UNSUPPORTED",
+   "old": "In the testbed an injector runs inside RU3's namespace on the radio-unit bridge for A1-style spoofing, replay, flooding, malformed frames and whole-second abuse; a rogue boundary clock bridges both segments (A8); and interception blackholes the boundary clock's downstream port (C1).",
+   "new": "Attacks enter on the radio-unit segment (A1, A2, A3, A5, C2, C3), across both bridges for the rogue relay (A8), and by blackholing the boundary clock's downstream port (C1).",
+   "why": "'inside RU3's namespace' was wrong for A1 and not in the cited Guide"
+  },
+  {
+   "sentence": "injector.s5",
+   "action": "added",
+   "new": "The A1 rogue grandmaster is a separate ptp4l in its own network namespace 'rogue', attached to the radio-unit bridge brDN through port p-rogue.",
+   "why": "corrects the A1 location"
+  },
+  {
+   "sentence": "injector.s4",
+   "action": "rewritten",
+   "verdict": "UNSUPPORTED",
+   "old": "Where the injector shares RU3's port (A2, A3, A5, C2, C3), isolating that port also stops RU3's own Delay_Req, so RU3's timing is reported separately.",
+   "new": "Where the injector shares RU3's port (A2, A3, A5, C2, C3), isolating that port also stops RU3's own Delay_Req.",
+   "why": "'reported separately' is in PREREG, not RESULTS §6"
+  },
+  {
+   "sentence": "fh-mplane.s2",
+   "action": "rewritten",
+   "verdict": "UNSUPPORTED",
+   "old": "The project wrote a fixture-tested parser for O-RU M-plane NETCONF/YANG synchronization telemetry; it was never run against real O-RU hardware.",
+   "new": "The project wrote fixture-testable parsers for pmc and synce4l synchronization status text; the code names O-RU M-plane NETCONF/YANG synchronization telemetry as the authoritative production equivalent but does not implement it.",
+   "why": "it is not an M-plane NETCONF/YANG parser"
+  },
+  {
+   "sentence": "fh-mplane.s3",
+   "action": "rewritten",
+   "verdict": "UNSUPPORTED",
+   "old": "The testbed has no M-plane; management queries were made with pmc, and pmc returns nothing unless it is called with -d 24.",
+   "new": "Management queries in the testbed were made with pmc; on this testbed pmc without -d 24 returns no data, and with -d 24 it returns PARENT_DATA_SET and PORT_DATA_SET.",
+   "why": "'the testbed has no M-plane' is not stated in RESULTS"
+  },
+  {
+   "sentence": "smo-nonrt.s1",
+   "action": "rewritten",
+   "verdict": "UNSUPPORTED",
+   "old": "In the project's architecture figure the Service Management and Orchestration layer with the Non-RT RIC sits above the RICs, O-CU, O-DU and O-RU.",
+   "new": "In the project's architecture figure (v8 slide 4) the SMO / Non-RT RIC box ('policy and lifecycle') sits beside the Near-RT RIC, above the O-RU, O-DU, O-CU and 5G Core.",
+   "why": "placement corrected: beside the Near-RT RIC, not above the RICs"
+  },
+  {
+   "sentence": "smo-nonrt.s3",
+   "action": "rewritten",
+   "verdict": "UNSUPPORTED",
+   "old": "A detect, decide, act and verify loop like this project's is the kind of function the survey places in that management domain; it is not implemented there, and the recovery loop here runs beside the testbed as a standalone process.",
+   "new": "The recovery loop runs as a standalone process in the testbed's root namespace, on the same software testbed and frozen detector, and does not change any frozen artefact.",
+   "why": "no source places such a loop in the SMO domain"
+  },
+  {
+   "sentence": "smo-nonrt.s4",
+   "action": "rewritten",
+   "verdict": "UNSUPPORTED",
+   "old": "Whether such a loop would be an rApp, an SMO function or something else was not decided or evaluated, and no digital twin rehearses the action before it is taken.",
+   "new": "No digital twin rehearses the action before it is taken; actions are verified after execution.",
+   "why": "'rApp / SMO function not decided' is not stated in any opened source"
+  },
+  {
+   "sentence": "osc-drift.s3",
+   "action": "rewritten",
+   "verdict": "UNSUPPORTED",
+   "old": "These are consumer laptop crystals measured against NTP, not telecom-class oscillators, and the raw per-sample files are not in the repository, so only the derived figures can be shown.",
+   "new": "These are consumer laptop crystals measured against NTP, not telecom-class oscillators.",
+   "why": "raw-file absence not stated in DESIGN"
+  },
+  {
+   "sentence": "osc-drift.s4",
+   "action": "added",
+   "new": "The two-laptop run measures B6's physical premise; it is not an end-to-end B6 detection test, because no PTP ran between the two machines.",
+   "why": "scope of the B6 measurement (B6 is no longer listed as 'not measured')"
+  },
+  {
+   "sentence": "osc-drift.s5",
+   "action": "added",
+   "new": "The B6 record states that the Fault Detectability workbook row B6 is not changed by this run, because that row describes detectability on the software testbed.",
+   "why": "explains why the workbook's 'HARDWARE required' for B6 stands"
+  },
+  {
+   "sentence": "fh-cplane.s2",
+   "action": "rewritten",
+   "verdict": "UNSUPPORTED",
+   "old": "What happens to C-plane traffic when S-plane timing is lost was not measured: the testbed has no O-DU or radio stack.",
+   "new": "The testbed does not emulate the O-DU, so it carries no C-plane traffic to observe.",
+   "why": "narrowed to the slide's statement"
+  },
+  {
+   "sentence": "fh-uplane.s2",
+   "action": "rewritten",
+   "verdict": "UNSUPPORTED",
+   "old": "U-plane behaviour under timing loss was not measured in this project.",
+   "new": "The testbed does not emulate the O-DU, so no U-plane traffic was present to measure.",
+   "why": "narrowed to the slide's statement"
+  },
+  {
+   "sentence": "air-interface.s2",
+   "action": "rewritten",
+   "verdict": "UNSUPPORTED",
+   "old": "The cited 3GPP limits are cell phase synchronization better than 3 µs (TS 38.133) and time-alignment error of 65 ns for MIMO and 260 ns for intra-band contiguous carrier aggregation (TS 38.104, clause 9.6.3.2).",
+   "new": "The cited 3GPP limits are TDD cell phase synchronization better than 3 µs (TS 38.133) and time-alignment error of at most 65 ns for MIMO and 260 ns for intra-band contiguous carrier aggregation (TS 38.104, clause 9.6.3.2).",
+   "why": "qualifier 'TDD' restored"
+  },
+  {
+   "sentence": "ue.s2",
+   "action": "rewritten",
+   "verdict": "UNSUPPORTED",
+   "old": "This project did not measure any service impact on user equipment.",
+   "new": "Measured impact in this project is protocol-level; time-error and service impact come from the cited literature.",
+   "why": "RESULTS §6 does not mention user equipment"
+  },
+  {
+   "sentence": "lls-c2.s2",
+   "action": "rewritten",
+   "verdict": "UNSUPPORTED",
+   "old": "The Testbed Configuration Reference says the testbed 'models O-RAN LLS-C2/C3', while the v8 deck and story guide map it to LLS-C3 only; this app follows the latter because the testbed has no O-DU, and records the disagreement as unresolved.",
+   "new": "The Testbed Configuration Reference says the testbed 'models O-RAN LLS-C2/C3'.",
+   "why": "the app's policy is not a sourced fact; moved to the audit"
+  },
+  {
+   "sentence": "lls-c2.s3",
+   "action": "added",
+   "new": "The deck's quoted LLS-C2 definition puts the O-DU in the synchronization chain, while the deck describes the testbed as having no O-DU in the timing chain.",
+   "why": "why LLS-C2 does not fit the testbed"
+  },
+  {
+   "sentence": "lls-c4.s2",
+   "action": "rewritten",
+   "verdict": "UNSUPPORTED",
+   "old": "Not the testbed's configuration, and GNSS effects are not measurable in it.",
+   "new": "The testbed has no GNSS receiver, so GNSS spoofing and jamming cannot be produced in it.",
+   "why": "'not the testbed's configuration' is on slide 6, not 18"
+  },
+  {
+   "sentence": "lls-c3.s4",
+   "action": "added",
+   "new": "The lab has no PRTC/GPS, so every node truthfully advertises clockClass 248.",
+   "why": "why LLS-C3 is the closest match rather than an exact one"
+  },
+  {
+   "sentence": "bmca-contest.s2",
+   "action": "rewritten",
+   "verdict": "UNSUPPORTED",
+   "old": "The G.8275.1 profile fixes priority1 at 128; the testbed uses domain 24 and the alternate BMCA (dataset_comparison G.8275.x).",
+   "new": "The testbed sets priority1 128, domain 24 and the alternate BMCA (dataset_comparison G.8275.x).",
+   "why": "'the profile fixes priority1' is not in the cfg file"
+  },
+  {
+   "sentence": "attack-packets.s1",
+   "action": "rewritten",
+   "verdict": "UNSUPPORTED",
+   "old": "For each recorded run the loop's log names the ingress port it localised the violation to (for example p-rogue in A1 and p-v-ru3 in A2, A3, A5, C2 and C3); the replay shows that port and the frame counts captured on the bridge.",
+   "new": "In the loop arm the isolation target was p-rogue in A1, p-rbc-dn in A8 and p-v-ru3 in A2, A3, A5, C2 and C3.",
+   "why": "RESULTS names no ports; port names are in EVALUATION_RL.json"
+  },
+  {
+   "sentence": "attack-packets.s2",
+   "action": "rewritten",
+   "verdict": "UNSUPPORTED",
+   "old": "Injectors for spoofing, replay, flooding, malformed frames and whole-second abuse run inside RU3's namespace; the rogue boundary clock spans both bridges; interception blackholes the boundary clock's downstream port.",
+   "new": "Spoofing, replay, flooding, malformed-frame and whole-second-abuse injectors run on the radio-unit segment; the rogue boundary clock spans both bridges; interception blackholes the boundary clock's downstream port.",
+   "why": "'inside RU3's namespace' not in the Guide and wrong for A1"
+  },
+  {
+   "sentence": "attack-packets.s3",
+   "action": "rewritten",
+   "verdict": "UNSUPPORTED",
+   "old": "Frames dropped by the isolation rule never reach the bridge capture, so after isolation the attacker's frame count falls to zero in the loop arm while it continues in the control arm.",
+   "new": "In the loop arm the nft bridge rule drops PTP at the isolated port; the final ruleset shows the rule in 35 of 35 isolations.",
+   "why": "frame-count claim moved to attack-packets.s4 with its own source"
+  },
+  {
+   "sentence": "attack-packets.s4",
+   "action": "added",
+   "new": "From 1 s after the isolation, the attacker sender had 0 frames on brDN in all 30 loop-arm isolations with a distinct attacker MAC (A1, A2, A5, A8, C2, C3; 5 each), while the matching control runs kept 216 to 78,218 frames; A3 replays carry the boundary clock's MAC and cannot be separated.",
+   "why": "auditor recomputation over all isolations (replaces the unsupported frame-count claim)"
+  },
+  {
+   "sentence": "port-counts.s2",
+   "action": "rewritten",
+   "verdict": "UNSUPPORTED",
+   "old": "Counts are attributed to senders by MAC address on the bridge, not by the switch port the frame entered on; replayed frames carry the original sender's MAC.",
+   "new": "The live loop tags every PTP frame with its bridge ingress port (AF_PACKET per port, ingress only); the archived dn/up captures are bridge-level captures.",
+   "why": "MAC attribution is the app's method, not DESIGN's"
+  },
+  {
+   "sentence": "port-counts.s3",
+   "action": "added",
+   "new": "In this app's replay, capture frames are attributed to senders by source MAC address, not by bridge ingress port; frames from unprovisioned MACs, GM MACs on brDN and master-role frames from RU3's MAC are counted as the injector.",
+   "why": "documents the app's own attribution method"
+  },
+  {
+   "sentence": "loop-decide.s1",
+   "action": "rewritten",
+   "verdict": "UNSUPPORTED",
+   "old": "The loop acts only when at least 2 of the last 3 evaluations say ATTACK, never isolates a provisioned master-role port (it escalates instead), and fails over when no Announce arrives for more than 2 s.",
+   "new": "The loop acts only when at least 2 of the last 3 evaluations say ATTACK, never automatically isolates a provisioned master-role port, and fails over when no Announce arrives from any provisioned master port for 2 s (10 s while a maintenance window is open).",
+   "why": "'(it escalates instead)' is in DESIGN, not PREREG §3"
+  },
+  {
+   "sentence": "loop-act.s1",
+   "action": "rewritten",
+   "verdict": "UNSUPPORTED",
+   "old": "Isolation is an nftables bridge rule dropping ethertype 0x88F7 at the offending port; failover starts the cold-standby boundary clock; in the control arm the identical loop only logs would_act.",
+   "new": "Isolation is an nftables bridge rule dropping ethertype 0x88F7 at the offending port; failover starts the cold-standby boundary clock.",
+   "why": "control-arm clause moved to loop-act.s2 (PREREG §2)"
+  },
+  {
+   "sentence": "loop-act.s2",
+   "action": "added",
+   "new": "In the control arm the identical loop runs in observe-only mode: it detects, decides and logs would_act, and executes nothing.",
+   "why": "split from loop-act.s1"
+  },
+  {
+   "sentence": "ds-raw-missing.s2",
+   "action": "rewritten",
+   "verdict": "UNSUPPORTED",
+   "old": "The raw per-sample CSVs of the B6 two-laptop measurement are named with their sha256 in the analysis output but are not in the repository.",
+   "new": "The raw per-sample CSVs of the B6 two-laptop measurement are named, with their sha256, in the analysis output.",
+   "why": "absence is not stated by the cited report"
+  },
+  {
+   "sentence": "hw-faults.s3",
+   "action": "added",
+   "new": "The B6 two-laptop run does not unlock B1, B4, A6 or A7, and adds no hardware timestamping.",
+   "why": "B6 is shown separately as measured on two laptops"
+  },
+  {
+   "sentence": "gm-a.s5",
+   "action": "pass-2 fix",
+   "old": "The lab has no PRTC/GPS, so every node truthfully advertises clockClass 248.",
+   "new": "The lab has no PRTC/GPS, so every node truthfully advertises clockClass 248.",
+   "why": "pass 2 WRONG_CLAUSE: text is in §3, not §2"
+  },
+  {
+   "sentence": "lls-c3.s4",
+   "action": "pass-2 fix",
+   "old": "The lab has no PRTC/GPS, so every node truthfully advertises clockClass 248.",
+   "new": "The lab has no PRTC/GPS, so every node truthfully advertises clockClass 248.",
+   "why": "pass 2 WRONG_CLAUSE: text is in §3, not §2"
+  },
+  {
+   "sentence": "attack-packets.s2",
+   "action": "pass-2 fix",
+   "old": "Spoofing, replay, flooding, malformed-frame and whole-second-abuse injectors run on the radio-unit segment; the rogue boundary clock spans both bridges; interception blackholes the boundary clock's downstream port.",
+   "new": "Spoofing, replay, flooding, malformed-frame and whole-second-abuse injectors run on the radio-unit segment; the rogue boundary clock spans both bridges; interception blackholes the boundary clock's downstream port.",
+   "why": "pass 2 WRONG_CLAUSE: attack classes are named in the Chapter 8 table"
+  },
+  {
+   "sentence": "gm-b.s2",
+   "action": "pass-2 fix",
+   "old": "When GM-A fails with no maintenance window open and GM-B takes over, the frozen rule returned UNKNOWN in 12 of 12 campaign runs.",
+   "new": "In the unplanned grandmaster failover scenario (B_unplanned_failover) the frozen rule returned UNKNOWN in 12 of 12 campaign runs.",
+   "why": "pass 2: scenario description not in EVALUATION_V4.json; moved to gm-b.s4"
+  },
+  {
+   "sentence": "gm-b.s4",
+   "action": "added",
+   "new": "In that scenario GM-A is killed with no maintenance window open and the provisioned GM-B takes over; the scenario script notes that from packets alone this is indistinguishable from an attack that suppressed GM-A.",
+   "why": "pass 2: the causal statement has a source in the scenario script"
+  },
+  {
+   "sentence": "bc.s1",
+   "action": "pass-2 fix",
+   "old": "The boundary clock (T-BC, priority2 120) connects the grandmaster bridge brUP and the radio-unit bridge brDN; the Testbed Configuration Reference lists its role as 'stepsRemoved 0→1'.",
+   "new": "The boundary clock (T-BC, priority2 120) connects the grandmaster bridge brUP and the radio-unit bridge brDN; the Testbed Configuration Reference gives its purpose as 'stepsRemoved 0→1; enables A8 and B7'.",
+   "why": "pass 2: 'stepsRemoved 0→1' is in the Purpose column, not Role"
+  },
+  {
+   "sentence": "fh-splane.s5",
+   "action": "pass-2 fix",
+   "old": "The project's deck gives the total budget at reference point E and the network limit at reference point C as 1100 ns.",
+   "new": "The project's deck gives the total budget at reference point E as ±1.5 µs and the network limit at reference point C as 1100 ns.",
+   "why": "pass 2: sentence read as if both were 1100 ns"
+  },
+  {
+   "sentence": "smo-nonrt.s3",
+   "action": "pass-2 fix",
+   "old": "The recovery loop runs as a standalone process in the testbed's root namespace, on the same software testbed and frozen detector, and does not change any frozen artefact.",
+   "new": "The recovery loop runs in the testbed's root namespace, on the same software testbed and frozen detector, and does not change any frozen artefact.",
+   "why": "pass 2: 'standalone process' not in DESIGN"
+  },
+  {
+   "sentence": "fh-cplane.s2",
+   "action": "pass-2 fix",
+   "old": "The testbed does not emulate the O-DU, so it carries no C-plane traffic to observe.",
+   "new": "The testbed does not emulate the O-DU.",
+   "why": "pass 2: consequence not on the slide"
+  },
+  {
+   "sentence": "fh-uplane.s2",
+   "action": "pass-2 fix",
+   "old": "The testbed does not emulate the O-DU, so no U-plane traffic was present to measure.",
+   "new": "The testbed does not emulate the O-DU.",
+   "why": "pass 2: consequence not on the slide"
+  },
+  {
+   "sentence": "port-counts.s2",
+   "action": "pass-2 fix",
+   "old": "The live loop tags every PTP frame with its bridge ingress port (AF_PACKET per port, ingress only); the archived dn/up captures are bridge-level captures.",
+   "new": "The live loop captures with AF_PACKET on every bridge port, ingress only, and tags every PTP frame with its ingress port.",
+   "why": "pass 2: 'bridge-level captures' not in DESIGN"
+  },
+  {
+   "sentence": "port-counts.s3",
+   "action": "pass-2 fix",
+   "old": "In this app's replay, capture frames are attributed to senders by source MAC address, not by bridge ingress port; frames from unprovisioned MACs, GM MACs on brDN and master-role frames from RU3's MAC are counted as the injector.",
+   "new": "In this app's replay, capture frames are attributed to senders by source MAC address, not by bridge ingress port; in A2, A3, A5, C2 and C3, frames from unprovisioned MACs, GM MACs on brDN and master-role frames from RU3's MAC are counted as the injector, and in A1 and A8 the rogue devices' MACs are mapped to the rogue grandmaster and rogue boundary clock.",
+   "why": "pass 2: injector relabelling applies only to A2, A3, A5, C2 and C3"
+  },
+  {
+   "sentence": "loop-decide.s1",
+   "action": "pass-2 fix",
+   "old": "The loop acts only when at least 2 of the last 3 evaluations say ATTACK, never automatically isolates a provisioned master-role port, and fails over when no Announce arrives from any provisioned master port for 2 s (10 s while a maintenance window is open).",
+   "new": "Isolation requires at least 2 of the last 3 evaluations to say ATTACK; a provisioned master-role port is never isolated automatically; the service-loss trigger is no Announce from any provisioned master port for 2 s (10 s while a maintenance window is open).",
+   "why": "pass 2: PREREG §3 does not name the failover action, and the persistence rule applies to isolation only"
+  },
+  {
+   "sentence": "attack-packets.s4",
+   "action": "pass-2 fix",
+   "old": "From 1 s after the isolation, the attacker sender had 0 frames on brDN in all 30 loop-arm isolations with a distinct attacker MAC (A1, A2, A5, A8, C2, C3; 5 each), while the matching control runs kept 216 to 78,218 frames; A3 replays carry the boundary clock's MAC and cannot be separated.",
+   "new": "From 1 s after the isolation, the attacker sender had 0 frames on brDN in all 30 loop-arm isolations with a distinct attacker MAC (A1, A2, A5, A8, C2, C3; 5 each), while every matching control run still had more than 200 such frames; A3 replays reuse provisioned MACs and cannot be separated.",
+   "why": "pass 2: auditor's raw recount (own alignment) gave control counts 220-79,597, not 216-78,218; narrowed to what both counts support"
+  },
+  {
+   "element": "gm-a",
+   "action": "name changed",
+   "old": "GM-A: primary grandmaster (PRTC/T-GM role)",
+   "new": "GM-A: primary grandmaster (T-GM)"
+  },
+  {
+   "element": "o-ru",
+   "action": "name changed",
+   "old": "O-RU (radio units RU1–RU3)",
+   "new": "O-RU proxies (RU1–RU3, T-TSC)"
+  },
+  {
+   "element": "fh-splane",
+   "action": "name changed",
+   "old": "Open Fronthaul S-plane (PTP / SyncE)",
+   "new": "Open Fronthaul S-plane (PTP in the testbed)"
+  },
+  {
+   "element": "fh-splane",
+   "action": "role changed",
+   "old": "Carries time and frequency to the O-RU; the plane this project studies.",
+   "new": "Carries time (and, with SyncE, frequency) to the O-RU; the testbed exercised PTP only."
+  },
+  {
+   "element": "smo-nonrt",
+   "action": "role changed",
+   "old": "Where a closed loop like ours maps in O-RAN; not implemented there.",
+   "new": "Project framing: where a closed loop like ours would sit in O-RAN; not implemented there."
+  },
+  {
+   "element": "lls-c3",
+   "action": "name changed",
+   "old": "LLS-C3 (the testbed's configuration)",
+   "new": "LLS-C3 (closest match to the testbed)"
+  },
+  {
+   "element": "hw-faults",
+   "action": "name changed",
+   "old": "Faults that need hardware (not measured)",
+   "new": "Faults that need hardware on the testbed"
+  },
+  {
+   "element": "hw-faults",
+   "action": "tier changed",
+   "old": 1,
+   "new": 2
+  },
+  {
+   "element": "ds-raw-missing",
+   "action": "tier changed",
+   "old": 1,
+   "new": 2
+  },
+  {
+   "check": "lls-mapping",
+   "action": "resolved",
+   "old": "LLS-C3 structure (supported); one document says LLS-C2/C3 (unresolved)",
+   "new": "resolved: LLS-C3 is the closest match; LLS-C2 does not fit"
+  },
+  {
+   "check": "mplane-yang",
+   "action": "resolved",
+   "old": "SOURCE_NEEDED",
+   "new": "SOURCE_NEEDED (unchanged; hidden in the UI)"
+  },
+  {
+   "check": "g8271-budget",
+   "action": "resolved",
+   "old": "partly verified: ±1.5 µs at reference point E; 'TDD' framing not verified",
+   "new": "resolved: ±1.5 µs is scoped to G.8271.1 reference point E; no source ties it to TDD"
+  },
+  {
+   "sentence": "gm-a.s3",
+   "action": "pass 2",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "gm-a.s4",
+   "action": "pass 2",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "gm-a.s5",
+   "action": "pass 2",
+   "verdict": "WRONG_CLAUSE",
+   "problem": "The row is in §3 Declared deviations, not §2 G.8275.1 profile configuration (§2 ends with maxStepsRemoved 255)."
+  },
+  {
+   "sentence": "gm-b.s2",
+   "action": "pass 2",
+   "verdict": "UNSUPPORTED (text since revised)",
+   "problem": "The 12/12 UNKNOWN part is supported. The scenario description ('GM-A fails with no maintenance window open and GM-B takes over') is not in EVALUATION_V4.json, which only carries the scenario key B_unplanned_failover (no description, no 'maintenance' or 'GM-B' text anywhere in the file). That description is in scenarios.sh lines 94-101, not in the cited source."
+  },
+  {
+   "sentence": "bc.s1",
+   "action": "pass 2",
+   "verdict": "UNSUPPORTED (text since revised)",
+   "problem": "Topology, T-BC and priority2 120 match. But the table's Role column for bc is 'Boundary clock (T-BC)'; 'stepsRemoved 0→1' is in the Purpose column (full text 'stepsRemoved 0→1; enables A8 and B7'). The sentence says the reference lists it as the 'role'. Supported if 'role' is changed to 'purpose'."
+  },
+  {
+   "sentence": "o-ru.s2",
+   "action": "pass 2",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "o-ru.s4",
+   "action": "pass 2",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "o-ru.s5",
+   "action": "pass 2",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "fh-splane.s3",
+   "action": "pass 2",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "fh-splane.s4",
+   "action": "pass 2",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "fh-splane.s5",
+   "action": "pass 2",
+   "verdict": "UNSUPPORTED (text since revised)",
+   "problem": "The deck gives the total budget at reference point E as ±1.5 µs and only the network limit at reference point C as 1100 ns. The sentence reads as giving both values as 1100 ns, and it omits ±1.5 µs."
+  },
+  {
+   "sentence": "injector.s1",
+   "action": "pass 2",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "injector.s4",
+   "action": "pass 2",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "injector.s5",
+   "action": "pass 2",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "fh-mplane.s2",
+   "action": "pass 2",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "fh-mplane.s3",
+   "action": "pass 2",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "smo-nonrt.s1",
+   "action": "pass 2",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "smo-nonrt.s3",
+   "action": "pass 2",
+   "verdict": "UNSUPPORTED (text since revised)",
+   "problem": "Root namespace, same testbed, frozen detector and no change to frozen artefacts are supported. 'standalone process' is not stated in the cited document."
+  },
+  {
+   "sentence": "smo-nonrt.s4",
+   "action": "pass 2",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "osc-drift.s2",
+   "action": "pass 2",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "osc-drift.s3",
+   "action": "pass 2",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "osc-drift.s4",
+   "action": "pass 2",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "osc-drift.s5",
+   "action": "pass 2",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "fh-cplane.s2",
+   "action": "pass 2",
+   "verdict": "UNSUPPORTED (text since revised)",
+   "problem": "'The O-DU itself is not emulated' is supported. The consequence 'so it carries no C-plane traffic to observe' is not stated on slide 6 (the deck mentions C-plane only as a label on slide 4)."
+  },
+  {
+   "sentence": "fh-uplane.s2",
+   "action": "pass 2",
+   "verdict": "UNSUPPORTED (text since revised)",
+   "problem": "'The O-DU itself is not emulated' is supported. The consequence 'so no U-plane traffic was present to measure' is not stated on slide 6."
+  },
+  {
+   "sentence": "air-interface.s2",
+   "action": "pass 2",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "ue.s2",
+   "action": "pass 2",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "lls-c2.s2",
+   "action": "pass 2",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "lls-c2.s3",
+   "action": "pass 2",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "lls-c3.s4",
+   "action": "pass 2",
+   "verdict": "WRONG_CLAUSE",
+   "problem": "The row is in §3 Declared deviations, not §2 G.8275.1 profile configuration."
+  },
+  {
+   "sentence": "lls-c4.s2",
+   "action": "pass 2",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "bmca-contest.s2",
+   "action": "pass 2",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "attack-packets.s1",
+   "action": "pass 2",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "attack-packets.s2",
+   "action": "pass 2",
+   "verdict": "WRONG_CLAUSE",
+   "problem": "The p.12 caption gives only positions and IDs; the attack-class names (spoofing, replay, flooding, malformed frame, whole-second abuse, interception) come from the Chapter 8 table on p.13. Both pages together support the sentence."
+  },
+  {
+   "sentence": "attack-packets.s3",
+   "action": "pass 2",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "attack-packets.s4",
+   "action": "pass 2",
+   "verdict": "UNSUPPORTED (text since revised)",
+   "problem": "The loop-arm zeros, the 30 isolations, the 5-per-scenario split and A3 not being separable all agree. The control range '216 to 78,218' is not reproduced: my counts are 220 to 79,597 (no upper bound). No window bound I tried (T0+40, T0+42.5, would_act-based) gives 216 or 78,218, and the maximum exceeds 78,218. Time alignment: no wall-clock/monotonic anchor exists in the run directories (timeline.json holds monotonic times only; start.log has one line). I used the first BC Announce on brDN (pcap wall time) against bc.log 'v-bc-dn ... to MASTER' (monotonic). Cross-check against the rogue/rbc's own MASTER transition vs its first Announce: residual within ±1 ms in all 10 A1/A8 loop runs. Note: the citation says the counts were made by 04_WEB_SIMULATOR/ingest/extract.py; this check did not use that code."
+  },
+  {
+   "sentence": "port-counts.s2",
+   "action": "pass 2",
+   "verdict": "UNSUPPORTED (text since revised)",
+   "problem": "The live-loop part is supported. 'the archived dn/up captures are bridge-level captures' is not in RECOVERY_LOOP_DESIGN.md, which does not mention the dn/up pcaps."
+  },
+  {
+   "sentence": "port-counts.s3",
+   "action": "pass 2",
+   "verdict": "UNSUPPORTED (text since revised)",
+   "problem": "MAC-based attribution (no ingress port) and the three injector criteria match the code. But the code applies the injector relabelling only in A2, A3, A5, C2 and C3. In other scenarios, unprovisioned MACs stay 'unknown' or map to 'rogue'/'rbc' (A1, A8). The sentence states the rule without that scenario condition."
+  },
+  {
+   "sentence": "hw-faults.s3",
+   "action": "pass 2",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "loop-decide.s1",
+   "action": "pass 2",
+   "verdict": "UNSUPPORTED (text since revised)",
+   "problem": "The three values are supported. But the §3 rows do not say that the service-loss trigger causes a failover; the action (ACTIVATE STANDBY BC) is in RECOVERY_LOOP_DESIGN.md's policy table, not in PREREGISTRATION §3. Also 'acts only when at least 2 of the last 3 evaluations say ATTACK' contradicts the service-loss failover, which acts without an ATTACK verdict."
+  },
+  {
+   "sentence": "loop-act.s1",
+   "action": "pass 2",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "loop-act.s2",
+   "action": "pass 2",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "ds-raw-missing.s2",
+   "action": "pass 2",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "gm-a.s5",
+   "action": "pass 3",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "gm-b.s2",
+   "action": "pass 3",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "gm-b.s4",
+   "action": "pass 3",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "bc.s1",
+   "action": "pass 3",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "fh-splane.s5",
+   "action": "pass 3",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "smo-nonrt.s3",
+   "action": "pass 3",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "fh-cplane.s2",
+   "action": "pass 3",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "fh-uplane.s2",
+   "action": "pass 3",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "lls-c3.s4",
+   "action": "pass 3",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "attack-packets.s2",
+   "action": "pass 3",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "attack-packets.s4",
+   "action": "pass 3",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "port-counts.s2",
+   "action": "pass 3",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "port-counts.s3",
+   "action": "pass 3",
+   "verdict": "VERIFIED"
+  },
+  {
+   "sentence": "loop-decide.s1",
+   "action": "pass 3",
+   "verdict": "VERIFIED"
+  }
+ ]
+}

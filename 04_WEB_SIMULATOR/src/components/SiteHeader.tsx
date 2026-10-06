@@ -2,19 +2,17 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { UserMenu } from "./UserMenu";
 
+// No sign-in or progress UI (simulator brief); the auth routes remain in the code but are not linked.
 const NAV = [
-  { href: "/learn", label: "Learn" },
-  { href: "/replay", label: "Replay" },
-  { href: "/sandbox", label: "Sandbox" },
-  { href: "/dashboard", label: "Dashboard" },
-  { href: "/catalogue", label: "Fault catalogue" },
-  { href: "/live", label: "Live" },
+  { href: "/", label: "Simulator" },
+  { href: "/live", label: "Live", localOnly: true },
   { href: "/about", label: "About & limits" },
 ];
 
-export function SiteHeader() {
+/** showLive: the live page is only offered when the app is not deployed (it needs a localhost service). */
+export function SiteHeader({ showLive = false }: { showLive?: boolean }) {
+  const nav = NAV.filter((n) => !n.localOnly || showLive);
   const path = usePathname();
   const [open, setOpen] = useState(false);
   return (
@@ -28,10 +26,10 @@ export function SiteHeader() {
           <span className="hidden sm:inline">S-Plane Recovery Simulator</span>
           <span className="sm:hidden">S-Plane</span>
         </Link>
-        <nav aria-label="Main" className="ml-auto hidden xl:block">
+        <nav aria-label="Main" className="ml-auto hidden md:block">
           <ul className="flex items-center gap-1">
-            {NAV.map((n) => {
-              const active = path === n.href || path.startsWith(n.href + "/");
+            {nav.map((n) => {
+              const active = n.href === "/" ? path === "/" : path === n.href || path.startsWith(n.href + "/");
               return (
                 <li key={n.href}>
                   <Link
@@ -46,12 +44,9 @@ export function SiteHeader() {
             })}
           </ul>
         </nav>
-        <div className="ml-auto xl:ml-2">
-          <UserMenu />
-        </div>
         <button
           type="button"
-          className="rounded-md border border-line px-3 py-2 text-sm xl:hidden"
+          className="ml-auto rounded-md border border-line px-3 py-2 text-sm md:hidden"
           aria-expanded={open}
           aria-controls="mobile-nav"
           onClick={() => setOpen((o) => !o)}
@@ -60,9 +55,9 @@ export function SiteHeader() {
         </button>
       </div>
       {open && (
-        <nav id="mobile-nav" aria-label="Main" className="border-t border-line xl:hidden">
+        <nav id="mobile-nav" aria-label="Main" className="border-t border-line md:hidden">
           <ul className="mx-auto grid max-w-7xl grid-cols-2 gap-1 px-4 py-3 sm:grid-cols-4">
-            {NAV.map((n) => (
+            {nav.map((n) => (
               <li key={n.href}>
                 <Link href={n.href} onClick={() => setOpen(false)} className="block rounded-md px-3 py-2 text-sm font-medium hover:bg-surface-2">
                   {n.label}

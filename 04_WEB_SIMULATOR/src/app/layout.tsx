@@ -13,13 +13,13 @@ export const viewport: Viewport = { width: "device-width", initialScale: 1 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="dark" data-text="normal" suppressHydrationWarning>
       <body className="min-h-screen">
         <a href="#main" className="skip-link">
           Skip to content
         </a>
         <SessionProviders>
-          <SiteHeader />
+          <SiteHeader showLive={!process.env.VERCEL} />
           <main id="main" className="mx-auto w-full max-w-7xl px-4 pb-16 pt-6 sm:px-6">
             {children}
           </main>
@@ -28,7 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <p>
                 Samsung PRISM worklet · O-RAN Open Fronthaul S-plane timing security. Every measured value on this site comes
                 from the project&apos;s recorded run archives (140 recovery-loop runs, 168-run detection campaign); modelled
-                content is labelled <strong className="text-ink">MODEL</strong>.
+                content is labelled <strong className="text-ink">MODEL</strong> or ILLUSTRATIVE.
               </p>
               <p className="mt-2">
                 Testbed limits: software timestamping, <code>free_running 1</code> (clocks never steered), network namespaces

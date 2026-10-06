@@ -11,20 +11,26 @@ function collectErrors(page: Page) {
   return errors;
 }
 
-test("home loads with live hypothesis verdicts and headline numbers", async ({ page }) => {
+// Adjusted for the simulator brief: the home page is now the O-RAN diagram; the hypothesis verdicts and headline medians
+// moved into the Results overlay (asserted in the dashboard test below and in e2e/sim.spec.ts).
+test("home loads the O-RAN diagram; results overlay carries the hypothesis verdicts and headline numbers", async ({ page }) => {
   const errors = collectErrors(page);
   await page.goto("/", { waitUntil: "networkidle" });
-  await expect(page.getByRole("heading", { level: 1 })).toContainText("Timing security");
-  await expect(page.getByText("H3 FAIL")).toBeVisible();
-  for (const t of ["A1 · Rogue grandmaster", "C1 · Interception", "C3 · Whole-second"]) await expect(page.getByText(t)).toBeVisible();
-  await expect(page.getByLabel(/Rogue grandmaster: control 38.5 s, loop 2.0 s/)).toBeVisible();
+  await expect(page.getByTestId("sim-diagram")).toBeVisible();
+  await page.goto("/?results=1", { waitUntil: "networkidle" });
+  await expect(page.getByTestId("hyp-H3-verdict")).toHaveText("FAILED");
+  for (const t of ["A1 · Rogue grandmaster", "C1 · Interception", "C3 · Whole-second"]) await expect(page.getByTestId("results-overlay").getByText(t, { exact: false }).first()).toBeVisible();
+  await expect(page.getByLabel(/Rogue grandmaster: control 38.5 s, loop 2.0 s/).first()).toBeVisible();
   expect(errors).toEqual([]);
 });
 
-test("a lesson can be completed and progress is stored in the database", async ({ page }) => {
+// Adjusted for the simulator brief (no sign-in, no gamification): lessons no longer record XP or progress, so the
+// /api/progress and learning-path assertions were removed. /learn/<id> now opens the lesson in the simulator's panel.
+test("a lesson can be completed inside the simulator panel", async ({ page }) => {
   const errors = collectErrors(page);
   const lesson = LESSONS.find((l) => l.id === "oran-splane")!;
   await page.goto("/learn/oran-splane", { waitUntil: "networkidle" });
+  await expect(page).toHaveURL(/panel=lesson(%3A|:)oran-splane/);
   // step 1: four planes
   for (const k of ["C", "U", "S", "M"]) await page.getByTestId(`reveal-${k}`).click();
   await page.getByTestId("step-continue").click();
@@ -43,14 +49,7 @@ test("a lesson can be completed and progress is stored in the database", async (
   }
   await expect(page.getByTestId("quiz-score")).toHaveText("3/3 correct");
   await expect(page.getByTestId("lesson-complete")).toContainText("Lesson 1 complete");
-  const prog = await (await page.request.get("/api/progress")).json();
-  const p = prog.progress.find((x: { lessonId: string }) => x.lessonId === "oran-splane");
-  expect(p.completed).toBe(true);
-  expect(p.quizBest).toBe(3);
-  expect(prog.stats.isGuest).toBe(true);
-  expect(prog.stats.xp).toBe(3 * 10 + 3 * 5 + 20);
-  await page.goto("/learn", { waitUntil: "networkidle" });
-  await expect(page.getByTestId("path-completed")).toHaveText("1/7");
+  await expect(page.getByText(/XP/)).toHaveCount(0);
   expect(errors).toEqual([]);
 });
 

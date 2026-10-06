@@ -1,0 +1,149 @@
+{
+ "generated": "2026-10-06T03:17:29.164361Z",
+ "sentences": [
+  {
+   "id": "gm-a.s5",
+   "text": "The lab has no PRTC/GPS, so every node truthfully advertises clockClass 248.",
+   "verdict": "VERIFIED",
+   "quote": "clock_class_threshold 248 | An acceptance policy, not a quality claim; the lab has no PRTC/GPS so every node truthfully advertises clockClass 248.",
+   "where_found": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_Testbed_Configuration_Reference_v2026-10-05.pdf p.4, §3 Declared deviations, clock_class_threshold 248 row",
+   "correct_clause": null,
+   "correct_locator": null,
+   "problem": null
+  },
+  {
+   "id": "gm-b.s2",
+   "text": "In the unplanned grandmaster failover scenario (B_unplanned_failover) the frozen rule returned UNKNOWN in 12 of 12 campaign runs.",
+   "verdict": "VERIFIED",
+   "quote": "frozen (label 'FROZEN rule c362e11').per_scenario.B_unplanned_failover = {\"correct\": 12, \"n\": 12, \"expect\": \"UNKNOWN\"}",
+   "where_found": "01_CURRENT_SPlane_SelfHealing/oran_splane_selfhealing/gap_coverage_2026-09-20/corrected_final/EVALUATION_V4.json, frozen.per_scenario.B_unplanned_failover",
+   "correct_clause": null,
+   "correct_locator": null,
+   "problem": null
+  },
+  {
+   "id": "gm-b.s4",
+   "text": "In that scenario GM-A is killed with no maintenance window open and the provisioned GM-B takes over; the scenario script notes that from packets alone this is indistinguishable from an attack that suppressed GM-A.",
+   "verdict": "VERIFIED",
+   "quote": "# CRITICAL BENIGN GAP #1: GM-A dies with NO maintenance window. Provisioned GM-B takes over. From packets alone this is INDISTINGUISHABLE from an attack that suppressed GM-A; ... manifest benign B_UNPLANNED false \"UNPLANNED: GM-A crashes, NO maintenance window; GM-B (provisioned) elected\" ... kill -9 $(cat $OUT/gma.pid)",
+   "where_found": "03_RECOVERY_LOOP_S-PLANE/testbed_frozen_copy/run/scenarios.sh lines 94-101",
+   "correct_clause": null,
+   "correct_locator": null,
+   "problem": null
+  },
+  {
+   "id": "bc.s1",
+   "text": "The boundary clock (T-BC, priority2 120) connects the grandmaster bridge brUP and the radio-unit bridge brDN; the Testbed Configuration Reference gives its purpose as 'stepsRemoved 0→1; enables A8 and B7'.",
+   "verdict": "VERIFIED",
+   "quote": "[gma p2=100] [gmb p2=110] --- brUP --- [bc: v-bc-up | v-bc-dn] --- brDN --- [ru1] [ru2] [ru3] ... bc | Boundary clock (T-BC) | 120 | stepsRemoved 0→1; enables A8 and B7",
+   "where_found": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_Testbed_Configuration_Reference_v2026-10-05.pdf p.4, §4 Topology and node roles, topology line and node table row bc",
+   "correct_clause": null,
+   "correct_locator": null,
+   "problem": null
+  },
+  {
+   "id": "fh-splane.s5",
+   "text": "The project's deck gives the total budget at reference point E as ±1.5 µs and the network limit at reference point C as 1100 ns.",
+   "verdict": "VERIFIED",
+   "quote": "±1.5 µs  Absolute time error at reference point E, common time standard  Total budget at reference point E; the network limit at reference point C is 1100 ns",
+   "where_found": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf page/slide 7, middle (budget) column",
+   "correct_clause": null,
+   "correct_locator": null,
+   "problem": null
+  },
+  {
+   "id": "smo-nonrt.s3",
+   "text": "The recovery loop runs in the testbed's root namespace, on the same software testbed and frozen detector, and does not change any frozen artefact.",
+   "verdict": "VERIFIED",
+   "quote": "It runs on the same software testbed and uses the same frozen detector. It does not change any frozen artefact. ... [diagram] recovery loop (root namespace)",
+   "where_found": "03_RECOVERY_LOOP_S-PLANE/RECOVERY_LOOP_DESIGN.md lines 3-6 (opening paragraph and diagram header)",
+   "correct_clause": null,
+   "correct_locator": null,
+   "problem": null
+  },
+  {
+   "id": "fh-cplane.s2",
+   "text": "The testbed does not emulate the O-DU.",
+   "verdict": "VERIFIED",
+   "quote": "OUR TESTBED  Grandmaster → boundary clock → three radio units over bridged segments, with no O-DU in the timing chain: the LLS-C3 structure. The O-DU itself is not emulated.",
+   "where_found": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf page/slide 6, OUR TESTBED box",
+   "correct_clause": null,
+   "correct_locator": null,
+   "problem": null
+  },
+  {
+   "id": "fh-uplane.s2",
+   "text": "The testbed does not emulate the O-DU.",
+   "verdict": "VERIFIED",
+   "quote": "OUR TESTBED  Grandmaster → boundary clock → three radio units over bridged segments, with no O-DU in the timing chain: the LLS-C3 structure. The O-DU itself is not emulated.",
+   "where_found": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf page/slide 6, OUR TESTBED box",
+   "correct_clause": null,
+   "correct_locator": null,
+   "problem": null
+  },
+  {
+   "id": "lls-c3.s4",
+   "text": "The lab has no PRTC/GPS, so every node truthfully advertises clockClass 248.",
+   "verdict": "VERIFIED",
+   "quote": "clock_class_threshold 248 | An acceptance policy, not a quality claim; the lab has no PRTC/GPS so every node truthfully advertises clockClass 248.",
+   "where_found": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_Testbed_Configuration_Reference_v2026-10-05.pdf p.4, §3 Declared deviations, clock_class_threshold 248 row",
+   "correct_clause": null,
+   "correct_locator": null,
+   "problem": null
+  },
+  {
+   "id": "attack-packets.s2",
+   "text": "Spoofing, replay, flooding, malformed-frame and whole-second-abuse injectors run on the radio-unit segment; the rogue boundary clock spans both bridges; interception blackholes the boundary clock's downstream port.",
+   "verdict": "VERIFIED",
+   "quote": "p.12 caption: 'Red markers show where attacks enter. Position 1 covers A1, A2, A3, A5, C2 and C3; position 2 is A8; position 3 is C1.' Figure labels: '1 injector on RU segment' (brDN · radio-unit bridge), '2 rogue relay across both bridges (A8)', '3 BC downstream port blackholed (C1)'. p.13 table: A2 Sync spoofing, A3 Replay, A5 Flooding, C1 Interception 'Shut the boundary clock's downstream port', C2 Malformed frames, C3 Whole-second abuse.",
+   "where_found": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf pp.12-13 (Ch.7 figure + caption, Ch.8 'Eight attacks' table)",
+   "correct_clause": null,
+   "correct_locator": null,
+   "problem": null
+  },
+  {
+   "id": "attack-packets.s4",
+   "text": "From 1 s after the isolation, the attacker sender had 0 frames on brDN in all 30 loop-arm isolations with a distinct attacker MAC (A1, A2, A5, A8, C2, C3; 5 each), while every matching control run still had more than 200 such frames; A3 replays reuse provisioned MACs and cannot be separated.",
+   "verdict": "VERIFIED",
+   "quote": "Own count from the archive (pcap parse of dn.pcap.gz, EtherType 0x88F7, t >= t_act + 1 s to capture end): ISOLATE_PTP_AT_PORT acts in A1x5 (p-rogue), A2x5, A5x5, C2x5, C3x5 (p-v-ru3), A8x5 (p-rbc-dn) = 30 (plus 5 in A3). Attacker frames in all 30 loop runs = 0. Matching control runs: A1 3435-3469, A2 1264-4832, A5 48478-79597, A8 3450-3514, C2 220-374, C3 225-315 (min 220 > 200). A3 (loop and control, all 10 runs): brDN sources only 02:00:00:00:00:02/0c/0d/0e; zero frames from unprovisioned or GM MACs.",
+   "where_found": "03_RECOVERY_LOOP_S-PLANE/results/recovery_eval_runs_r13-r17.tgz, per-run loop.jsonl, timeline.json, context.json, bc.log, dn.pcap.gz. Alignment: wall = mono + (first Announce from 02:00:00:00:00:02 on brDN − bc.log 'v-bc-dn ... to MASTER' mono time); cross-check against rogue.log MASTER vs first rogue Announce in the 10 A1 runs gives residuals within ±1 ms. Control threshold uses the loop run's t_act relative to the control run's own t0.",
+   "correct_clause": null,
+   "correct_locator": null,
+   "problem": null
+  },
+  {
+   "id": "port-counts.s2",
+   "text": "The live loop captures with AF_PACKET on every bridge port, ingress only, and tags every PTP frame with its ingress port.",
+   "verdict": "VERIFIED",
+   "quote": "[diagram] recovery loop (root namespace) ... every PTP frame, tagged with its ingress port ... 1 CAPTURE   AF_PACKET per bridge port, ingress only, parse_frame() from frozen extractor",
+   "where_found": "03_RECOVERY_LOOP_S-PLANE/RECOVERY_LOOP_DESIGN.md lines 6-10 (capture diagram); the §'Localisation: provisioned port roles' text (line 32ff) covers per-port provisioning",
+   "correct_clause": null,
+   "correct_locator": null,
+   "problem": null
+  },
+  {
+   "id": "port-counts.s3",
+   "text": "In this app's replay, capture frames are attributed to senders by source MAC address, not by bridge ingress port; in A2, A3, A5, C2 and C3, frames from unprovisioned MACs, GM MACs on brDN and master-role frames from RU3's MAC are counted as the injector, and in A1 and A8 the rogue devices' MACs are mapped to the rogue grandmaster and rogue boundary clock.",
+   "verdict": "VERIFIED",
+   "quote": "dev = macmap.get(m_, \"unknown\"); if ctx[\"scenario\"] in (\"A2_sync_spoof\", \"A3_replay\", \"C2_malformed\", \"C3_wholesecond\", \"A5_dos_flood\") and (dev in (\"unknown\", \"flooder\") or (dev == \"ru3\" and ty in MASTER_TYPES) or (seg == \"dn\" and dev in (\"gma\", \"gmb\"))): dev = \"injector\"; A1: macmap[mac(P_[\"rogue_mac\"])] = \"rogue\"; A8: macmap[mac(P_[\"rbc_dn_mac\"])] = \"rbc\"; macmap[mac(P_[\"rbc_up_mac\"])] = \"rbc\"",
+   "where_found": "04_WEB_SIMULATOR/ingest/extract.py lines 243-283 (macmap 245-252; injector attribution 273-279)",
+   "correct_clause": null,
+   "correct_locator": null,
+   "problem": null
+  },
+  {
+   "id": "loop-decide.s1",
+   "text": "Isolation requires at least 2 of the last 3 evaluations to say ATTACK; a provisioned master-role port is never isolated automatically; the service-loss trigger is no Announce from any provisioned master port for 2 s (10 s while a maintenance window is open).",
+   "verdict": "VERIFIED",
+   "quote": "| Persistence | ≥ 2 of the last 3 evaluations ATTACK | Single-window transients cannot trigger an action | ... | Service-loss trigger | no Announce from any provisioned master port for 2 s; 10 s while a maintenance window is open | ... | Safety guard | a master-role provisioned port (primary BC, standby BC, planned replacement BC) is never isolated automatically |",
+   "where_found": "03_RECOVERY_LOOP_S-PLANE/PREREGISTRATION.md §3 Loop parameters table (lines 27-35)",
+   "correct_clause": null,
+   "correct_locator": null,
+   "problem": null
+  }
+ ],
+ "counts": {
+  "VERIFIED": 14,
+  "total": 14
+ }
+}
