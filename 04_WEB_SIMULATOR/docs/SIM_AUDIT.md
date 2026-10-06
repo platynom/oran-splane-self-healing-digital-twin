@@ -182,3 +182,17 @@ The checker is in `scripts/audit/`:
   - Lighthouse was not run;
   - browser back/forward has no e2e test;
   - the deep-link time resolution is 0.1 s.
+
+## Final verification: fresh clone of commit `1160cfd`
+
+The clone came from GitHub, with an empty DB volume, and was built with `docker compose up --build`. All checks below ran against that container.
+
+| Check | Result |
+|---|---|
+| Ingest | runs=140, samples=52080, events=12055, campaign=168 (1,451,909 frames), pilot 40, B6 2: "row counts match the source files" |
+| Home page | `http://localhost:3000/` returned 200 and rendered the diagram. The footer shows 107 VERIFIED. |
+| `npm ci`; typecheck; `eslint . --max-warnings 0` | clean |
+| Unit tests | **68 / 68** |
+| Playwright | **24 / 24** |
+| Fidelity | **787 values, 0 mismatches**. `.env` was created after `npm ci` with no exported env, which confirms the D14 fix. |
+| Independent raw-file check | **245 / 0** (random, seed 20261006) and **284 / 0** (stratified, seed 20261007) |
