@@ -1,6 +1,6 @@
 # 2D architecture simulator: handoff (branch `webapp-sim`, 2026-10-05)
 
-> **Superseded in part by the independent audit of 2026-10-06: see [`SIM_AUDIT.md`](SIM_AUDIT.md).** The content counts, tier table, LLS label, hardware strip and B6 statements below were updated after the audit; test counts in the verification table are those of the original build (the audit re-ran everything: unit 68/68, Playwright 24/24, fidelity 787/0).
+> **Superseded in part by the independent audit and final follow-up of 2026-10-06: see [`SIM_AUDIT.md`](SIM_AUDIT.md) and [`FINAL_COMPLETION.md`](FINAL_COMPLETION.md).** Final content status is 111 VERIFIED, 0 SOURCE_NEEDED, 31 primary CONFIRMED, 0 CONFLICTS and 4 NOT_ACCESSIBLE. The historical counts below are retained as an audit trail.
 
 Branch `webapp-sim` was created from `webapp`, and the backend and content work from `webapp-3d` was carried over.
 No other branch was modified.

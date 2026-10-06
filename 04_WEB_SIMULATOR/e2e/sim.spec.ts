@@ -24,6 +24,15 @@ test("home renders the O-RAN diagram with tiered elements", async ({ page }) => 
   expect(errors).toEqual([]);
 });
 
+test("confirmed primary citations are marked and the former M-plane hidden claim is visible", async ({ page }) => {
+  await page.goto("/?level=2&focus=fh-mplane", { waitUntil: "networkidle" });
+  const sentence = page.locator('[data-sentence="fh-mplane.s4"]');
+  await expect(sentence).toContainText("o-ran-sync.yang");
+  await expect(sentence.getByTestId("primary-confirmed")).toHaveText("PRIMARY ✓");
+  await expect(page.getByTestId("hidden-count")).toHaveCount(0);
+  await expect(sentence.getByTestId("cite-chip")).toHaveAttribute("title", /Primary CONFIRMED: §13\.1/);
+});
+
 test("dimmed elements are not clickable but show a tooltip", async ({ page }) => {
   await page.goto("/", { waitUntil: "networkidle" });
   for (const id of ["near-rt-ric", "o-cu", "core-5g", "o-cloud"]) await expect(page.getByTestId(`node-${id}`)).toHaveAttribute("data-clickable", "false");

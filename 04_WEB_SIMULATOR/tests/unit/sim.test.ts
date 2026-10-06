@@ -132,6 +132,28 @@ describe("architecture content: citation hiding", () => {
       expect(hiddenSentenceCount(el)).toBe(el.sentences.filter((x) => x.citation.status === "SOURCE_NEEDED").length);
     }
   });
+  it("records valid primary-source outcomes and resolves the four formerly hidden claims", () => {
+    const all = architecture.elements.flatMap((e) => e.sentences);
+    const primary = all.filter((x) => x.citation.primary);
+    expect(primary.filter((x) => x.citation.primary?.result === "CONFIRMED")).toHaveLength(31);
+    expect(primary.filter((x) => x.citation.primary?.result === "NOT_ACCESSIBLE")).toHaveLength(4);
+    expect(primary.filter((x) => x.citation.primary?.result === "CONFLICTS")).toHaveLength(0);
+    for (const x of primary.filter((s) => s.citation.primary?.result === "CONFIRMED")) {
+      expect(x.citation.primary?.checked, x.id).toBe(true);
+      expect(x.citation.primary?.quote?.length, x.id).toBeGreaterThan(0);
+    }
+    for (const id of ["o-du.s5", "fh-mplane.s4", "fh-cplane.s3", "fh-uplane.s3"]) {
+      const sentence = all.find((x) => x.id === id)!;
+      expect(sentence.citation.status).toBe("VERIFIED");
+      expect(sentence.citation.primary?.result).toBe("CONFIRMED");
+      expect(isRenderable(sentence)).toBe(true);
+    }
+    expect(contentStats().sourceNeeded).toBe(0);
+    expect(contentStats().hidden).toBe(0);
+    expect(contentStats().primaryConfirmed).toBe(31);
+    expect(contentStats().primaryConflicts).toBe(0);
+    expect(contentStats().primaryNotAccessible).toBe(4);
+  });
   it("dimmed elements are not clickable and are marked outside the project", () => {
     const dimmed = architecture.elements.filter((e) => e.tier === "dimmed");
     expect(dimmed.map((e) => e.id).sort()).toEqual(["core-5g", "near-rt-ric", "o-cloud", "o-cu"]);

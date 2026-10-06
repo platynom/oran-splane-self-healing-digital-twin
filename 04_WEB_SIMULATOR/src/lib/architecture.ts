@@ -10,7 +10,16 @@ import raw from "../../content/architecture.json";
 
 export type Kind = "MEASURED" | "CONFIGURED" | "ILLUSTRATIVE" | "UNKNOWN" | "REFERENCE";
 export type CitationStatus = "UNVERIFIED" | "SOURCE_NEEDED" | "VERIFIED";
+export type PrimaryResult = "CONFIRMED" | "CONFLICTS" | "NOT_ACCESSIBLE";
 export type Tier = 1 | 2 | 3 | "dimmed";
+
+export interface PrimaryVerification {
+  checked: boolean;
+  result: PrimaryResult;
+  quote: string;
+  url: string;
+  clause: string;
+}
 
 export interface Citation {
   source: string | null;
@@ -19,6 +28,7 @@ export interface Citation {
   locator: string | null;
   url_or_repo_path: string | null;
   status: CitationStatus;
+  primary?: PrimaryVerification;
 }
 export interface Verification {
   by: string;
@@ -73,7 +83,7 @@ export interface Architecture {
 export const architecture = raw as unknown as Architecture;
 
 export const REPO_BLOB = "https://github.com/platynom/oran-splane-self-healing-digital-twin/blob/full-project-2026-10-05/";
-export const APP_BLOB = "https://github.com/platynom/oran-splane-self-healing-digital-twin/blob/webapp-sim/";
+export const APP_BLOB = "https://github.com/platynom/oran-splane-self-healing-digital-twin/blob/webapp/";
 
 export function isRenderable(s: Sentence): boolean {
   const c = s.citation;
@@ -117,12 +127,16 @@ export function referenceUrl(c: Citation): string | null {
 export function contentStats(arch: Architecture = architecture) {
   const all = arch.elements.flatMap((e) => e.sentences);
   const by = (st: CitationStatus) => all.filter((s) => s.citation.status === st).length;
+  const byPrimary = (result: PrimaryResult) => all.filter((s) => s.citation.primary?.result === result).length;
   return {
     elements: arch.elements.length,
     sentences: all.length,
     unverified: by("UNVERIFIED"),
     sourceNeeded: by("SOURCE_NEEDED"),
     verified: by("VERIFIED"),
+    primaryConfirmed: byPrimary("CONFIRMED"),
+    primaryConflicts: byPrimary("CONFLICTS"),
+    primaryNotAccessible: byPrimary("NOT_ACCESSIBLE"),
     rendered: all.filter(isRenderable).length,
     hidden: all.filter((s) => !isRenderable(s)).length,
   };
@@ -144,6 +158,14 @@ export function validateArchitecture(arch: Architecture = architecture): string[
       if (s.citation.status === "UNVERIFIED" || s.citation.status === "VERIFIED") {
         for (const f of ["source", "source_id", "clause", "locator", "url_or_repo_path"] as const) if (!s.citation[f]) errs.push(`${s.id}: ${s.citation.status} citation lacks ${f}`);
         if (s.citation.source_id && !srcIds.has(s.citation.source_id)) errs.push(`${s.id}: unknown source ${s.citation.source_id}`);
+      }
+      const p = s.citation.primary;
+      if (p) {
+        if (!["CONFIRMED", "CONFLICTS", "NOT_ACCESSIBLE"].includes(p.result)) errs.push(`${s.id}: bad primary result ${p.result}`);
+        if (!p.url?.trim() || !p.clause?.trim()) errs.push(`${s.id}: primary citation lacks URL or clause`);
+        if ((p.result === "CONFIRMED" || p.result === "CONFLICTS") && (!p.checked || !p.quote?.trim()))
+          errs.push(`${s.id}: ${p.result} primary citation requires checked=true and a quote`);
+        if (p.result === "NOT_ACCESSIBLE" && p.checked) errs.push(`${s.id}: NOT_ACCESSIBLE primary citation cannot be checked`);
       }
       if (!["MEASURED", "CONFIGURED", "ILLUSTRATIVE", "UNKNOWN", "REFERENCE"].includes(s.kind)) errs.push(`${s.id}: bad kind ${s.kind}`);
     }

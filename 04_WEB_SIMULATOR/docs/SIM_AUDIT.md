@@ -1,5 +1,7 @@
 # Independent audit of `webapp-sim` (2026-10-06)
 
+> **Final follow-up (`webapp-sim-final`, 2026-10-06):** all 111 sentences are VERIFIED and renderable; none remains SOURCE_NEEDED. Primary-source checking records 31 CONFIRMED, 0 CONFLICTS and 4 NOT_ACCESSIBLE external-standard claims. The four previously hidden sentences were restored only after confirmation in official ETSI/O-RAN publications. The `stepsRemoved` ambiguity was resolved from 555,335 decoded Announce packets; see [`STEPS_REMOVED_FINDING.md`](STEPS_REMOVED_FINDING.md). This note supersedes the historical unresolved counts below while preserving the original audit trail.
+
 ## Scope and method
 
 - **Basis.** This audit judged only files, commands and the running app. It did not rely on the builder's reasoning.

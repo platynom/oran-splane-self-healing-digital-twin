@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "generated": "2026-10-05",
- "status_note": "Every sentence cites a source. VERIFIED: an independent auditor opened the cited source and quoted the supporting text (stored under 'verification'). UNVERIFIED: cited but not independently confirmed. SOURCE_NEEDED: hidden by the UI.",
+ "status_note": "Every sentence cites a source. VERIFIED means an auditor opened the cited source and stored a supporting quote. External-standard claims also carry citation.primary with CONFIRMED or NOT_ACCESSIBLE. No sentences remain hidden.",
  "kinds": {
   "MEASURED": "from recorded data",
   "CONFIGURED": "from the testbed configuration or provisioning",
@@ -240,6 +240,20 @@
    "path_or_url": "03_RECOVERY_LOOP_S-PLANE/results/recovery_eval_runs_r13-r17.tgz",
    "openable_in_this_session": true,
    "note": "raw per-run captures and logs (dn.pcap.gz, loop.jsonl); counts computed from it"
+  },
+  {
+   "id": "ETSI_CUS12",
+   "title": "ETSI TS 103 859 V12.0.1 (O-RAN Open Fronthaul CUS-plane)",
+   "path_or_url": "https://www.etsi.org/deliver/etsi_ts/103800_103899/103859/12.00.01_60/ts_103859v120001p.pdf",
+   "openable_in_this_session": true,
+   "note": "Official ETSI-hosted O-RAN Publicly Available Specification opened during the final primary-source audit."
+  },
+  {
+   "id": "ETSI_MP17",
+   "title": "ETSI TS 104 023 V17.1.0 (O-RAN Open Fronthaul M-plane)",
+   "path_or_url": "https://www.etsi.org/deliver/etsi_ts/104000_104099/104023/17.01.00_60/ts_104023v170100p.pdf",
+   "openable_in_this_session": true,
+   "note": "Official ETSI-hosted O-RAN Publicly Available Specification opened during the final primary-source audit."
   }
  ],
  "checks": [
@@ -664,20 +678,27 @@
    "sentences": [
     {
      "id": "bc.s1",
-     "kind": "CONFIGURED",
-     "text": "The boundary clock (T-BC, priority2 120) connects the grandmaster bridge brUP and the radio-unit bridge brDN; the Testbed Configuration Reference gives its purpose as 'stepsRemoved 0→1; enables A8 and B7'.",
+     "kind": "MEASURED",
+     "text": "Across the frozen recovery archive, legitimate GM-A/GM-B Announce frames carry stepsRemoved 0 and the primary boundary clock's relayed Announce frames carry 1 (62,620 packets). The topology comment's RU value 2 refers to the receiving clock's currentDS after its increment, not the received Announce field.",
      "citation": {
-      "source": "Testbed Configuration Reference 2026-10-05",
-      "source_id": "TBREF",
-      "clause": "§4 Topology and node roles",
-      "locator": "topology line and node table, row bc",
-      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_Testbed_Configuration_Reference_v2026-10-05.pdf",
-      "status": "VERIFIED"
+      "source": "Recovery-loop run archive r13-r17 and reproducible packet audit",
+      "source_id": "RUNS",
+      "clause": "all up.pcap.gz and dn.pcap.gz captures",
+      "locator": "audit_steps_removed.py: source 020000fffe000001 relaying GM-A/GM-B",
+      "url_or_repo_path": "04_WEB_SIMULATOR/ingest/audit_steps_removed.py",
+      "status": "VERIFIED",
+      "primary": {
+       "checked": false,
+       "result": "NOT_ACCESSIBLE",
+       "quote": "",
+       "url": "https://standards.ieee.org/ieee/1588/6825/",
+       "clause": "IEEE 1588 currentDS/Announce stepsRemoved update semantics (licence-gated)"
+      }
      },
      "verification": {
-      "by": "independent re-verification pass 3, 2026-10-06",
-      "quote": "[gma p2=100] [gmb p2=110] --- brUP --- [bc: v-bc-up | v-bc-dn] --- brDN --- [ru1] [ru2] [ru3] ... bc | Boundary clock (T-BC) | 120 | stepsRemoved 0→1; enables A8 and B7",
-      "where": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_Testbed_Configuration_Reference_v2026-10-05.pdf p.4, §4 Topology and node roles, topology line and node table row bc"
+      "by": "reproducible packet audit 2026-10-06",
+      "quote": "GM-A/GM-B Announce: stepsRemoved 0; primary BC relayed Announce: stepsRemoved 1 in 62,620 packets.",
+      "where": "recovery_eval_runs_r13-r17.tgz, every up/dn capture; audit_steps_removed.py output"
      }
     },
     {
@@ -805,7 +826,14 @@
       "clause": "slide 5",
       "locator": "functional-split figure and 'WHY THE O-RU' note",
       "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
-      "status": "VERIFIED"
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "A logical node hosting Low-PHY layer and RF processing based on a lower layer functional split.",
+       "url": "https://www.etsi.org/deliver/etsi_ts/103900_103999/103982/08.00.00_60/ts_103982v080000p.pdf",
+       "clause": "clause 3.1, O-RU definition"
+      }
      },
      "verification": {
       "by": "independent subagent audit 2026-10-06",
@@ -859,7 +887,14 @@
       "clause": "item 5",
       "locator": "130 ns scope",
       "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/verification_records/V5_DISAGREEMENTS.md",
-      "status": "VERIFIED"
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "For intra-band contiguous carrier aggregation, the 60/120 kHz SCS TAE value is 130 ns.",
+       "url": "https://www.etsi.org/deliver/etsi_ts/138100_138199/138104/19.03.00_60/ts_138104v190300p.pdf",
+       "clause": "clause 9.6.3.3, Table 9.6.3.3-4"
+      }
      },
      "verification": {
       "by": "independent re-verification pass 2, 2026-10-06",
@@ -913,7 +948,14 @@
       "clause": "Chapter 1",
       "locator": "'Four kinds of traffic share this link'",
       "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
-      "status": "VERIFIED"
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "S-Plane refers to the synchronization plane used for timing and synchronization aspects.",
+       "url": "https://www.etsi.org/deliver/etsi_ts/103800_103899/103859/12.00.01_60/ts_103859v120001p.pdf",
+       "clause": "clauses 3.1 and 11"
+      }
      },
      "verification": {
       "by": "independent subagent audit 2026-10-06",
@@ -931,7 +973,14 @@
       "clause": "Chapter 3, 'The telecom rules'",
       "locator": "configuration strip",
       "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
-      "status": "VERIFIED"
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "domainNumber defaults to 24; logAnnounceInterval is −3; logSyncInterval is −4.",
+       "url": "https://www.itu.int/rec/T-REC-G.8275.1",
+       "clause": "Annex A, Tables A.1 and A.5; clause 6.5"
+      }
      },
      "verification": {
       "by": "independent subagent audit 2026-10-06",
@@ -949,7 +998,14 @@
       "clause": "item 32",
       "locator": "G.8271.1 ±1.5 µs scope",
       "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/verification_records/V5_VERIFICATION_LOG.md",
-      "status": "VERIFIED"
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "For a TDD network the end application requirement is 1.5 µs maximum absolute time error.",
+       "url": "https://www.itu.int/rec/T-REC-G.8271.1-202211-I/en",
+       "clause": "Appendix V, clauses V.1-V.3"
+      }
      },
      "verification": {
       "by": "independent re-verification pass 2, 2026-10-06",
@@ -967,7 +1023,14 @@
       "clause": "slide 16",
       "locator": "Scope disclosure",
       "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
-      "status": "VERIFIED"
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "Network equipment uses the physical layer to deliver frequency synchronization.",
+       "url": "https://www.itu.int/rec/T-REC-G.8262",
+       "clause": "Summary and Introduction"
+      }
      },
      "verification": {
       "by": "independent re-verification pass 2, 2026-10-06",
@@ -985,7 +1048,14 @@
       "clause": "slide 7",
       "locator": "budget column: 'Total budget at reference point E; the network limit at reference point C is 1100 ns'",
       "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
-      "status": "VERIFIED"
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "The 1.1 µs network limit is at C; the 1.5 µs limit is at E.",
+       "url": "https://www.itu.int/rec/T-REC-G.8271.1-202211-I/en",
+       "clause": "Appendix V, clause V.3"
+      }
      },
      "verification": {
       "by": "independent re-verification pass 3, 2026-10-06",
@@ -1034,7 +1104,14 @@
       "clause": "Chapter 5",
       "locator": "RFC 7384 cl. 3.1 attacker classes, as relayed",
       "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
-      "status": "VERIFIED"
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "Threats include internal attackers, external attackers, man-in-the-middle attackers, and packet injectors.",
+       "url": "https://www.rfc-editor.org/rfc/rfc7384.html",
+       "clause": "section 3.1"
+      }
      },
      "verification": {
       "by": "independent subagent audit 2026-10-06",
@@ -1052,7 +1129,14 @@
       "clause": "Chapter 5",
       "locator": "TIMESAFE §4 / T-FRHAUL-02, as relayed",
       "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
-      "status": "VERIFIED"
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "Unauthorized access to the Open Fronthaul physical interface enables attacks on availability, integrity, and confidentiality.",
+       "url": "https://www.etsi.org/deliver/etsi_tr/104100_104199/104106/03.00.00_60/tr_104106v030000p.pdf",
+       "clause": "clause 7, T-FRHAUL-02"
+      }
      },
      "verification": {
       "by": "independent subagent audit 2026-10-06",
@@ -1118,7 +1202,14 @@
       "clause": "Chapter 1",
       "locator": "functional-split figure",
       "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
-      "status": "VERIFIED"
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "O-DU is a logical node hosting RLC, MAC, and High-PHY layers.",
+       "url": "https://www.etsi.org/deliver/etsi_ts/103900_103999/103982/08.00.00_60/ts_103982v080000p.pdf",
+       "clause": "clause 3.1, O-DU definition"
+      }
      },
      "verification": {
       "by": "independent subagent audit 2026-10-06",
@@ -1136,7 +1227,14 @@
       "clause": "slide 6",
       "locator": "LLS table, as quoted from O-RAN.WG4.CUS.0 via Armstrong",
       "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
-      "status": "VERIFIED"
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "C1/C2 distribute timing from O-DU; C3 distributes it from the fronthaul network itself.",
+       "url": "https://www.etsi.org/deliver/etsi_tr/104100_104199/104106/03.00.00_60/tr_104106v030000p.pdf",
+       "clause": "clause 9.1, LLS-C1 to LLS-C3"
+      }
      },
      "verification": {
       "by": "independent subagent audit 2026-10-06",
@@ -1172,7 +1270,14 @@
       "clause": "Chapter 1",
       "locator": "'A detail reviewers like to test'",
       "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
-      "status": "VERIFIED"
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "Near-RT RIC connects to O-CU-CP, O-CU-UP and O-DU through E2.",
+       "url": "https://www.etsi.org/deliver/etsi_ts/103900_103999/103982/08.00.00_60/ts_103982v080000p.pdf",
+       "clause": "clauses 6.3.2-6.3.5 and 6.4.5"
+      }
      },
      "verification": {
       "by": "independent subagent audit 2026-10-06",
@@ -1183,14 +1288,26 @@
     {
      "id": "o-du.s5",
      "kind": "REFERENCE",
-     "text": "In LLS-C1 and LLS-C2 the O-DU implements a specific PTP clock type (T-BC or T-GM) towards the O-RU.",
+     "text": "For LLS-C1 and LLS-C2 the O-DU is a PTP master towards the O-RUs; with a remote full-timing-support source it is an embedded end application with extra filtering, not a true G.8273.2 T-BC.",
      "citation": {
-      "source": null,
-      "source_id": null,
-      "clause": null,
-      "locator": "No openable source states the O-DU's PTP clock type; the project documents say only that the O-DU is in the synchronization chain.",
-      "url_or_repo_path": null,
-      "status": "SOURCE_NEEDED"
+      "source": "ETSI TS 103 859 V12.0.1",
+      "source_id": "ETSI_CUS12",
+      "clause": "§11.2.4.2.1 and §11.3.1.2",
+      "locator": "official PDF pages 240 and 246",
+      "url_or_repo_path": "https://www.etsi.org/deliver/etsi_ts/103800_103899/103859/12.00.01_60/ts_103859v120001p.pdf",
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "For LLS-C1 and LLS-C2, the O-DU shall act as a G.8275.1 PTP master in the fronthaul network.",
+       "url": "https://www.etsi.org/deliver/etsi_ts/103800_103899/103859/12.00.01_60/ts_103859v120001p.pdf",
+       "clause": "§11.2.4.2.1 and §11.3.1.2"
+      }
+     },
+     "verification": {
+      "by": "final primary-source audit 2026-10-06",
+      "quote": "For LLS-C1 and LLS-C2, the O-DU shall act as a G.8275.1 PTP master in the fronthaul network.",
+      "where": "official PDF pages 240 and 246"
      }
     }
    ]
@@ -1215,7 +1332,14 @@
       "clause": "Chapter 1",
       "locator": "plane list",
       "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
-      "status": "VERIFIED"
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "Open FH M-Plane is the management interface controlling the O-RU.",
+       "url": "https://www.etsi.org/deliver/etsi_ts/103900_103999/103982/08.00.00_60/ts_103982v080000p.pdf",
+       "clause": "clause 3.1, Open FH M-Plane"
+      }
      },
      "verification": {
       "by": "independent subagent audit 2026-10-06",
@@ -1262,14 +1386,26 @@
     {
      "id": "fh-mplane.s4",
      "kind": "REFERENCE",
-     "text": "The O-RAN M-plane YANG model that exposes O-RU synchronization state is named o-ran-sync.",
+     "text": "The O-RAN M-plane YANG model that exposes O-RU synchronization configuration, status and notifications is named o-ran-sync.yang.",
      "citation": {
-      "source": null,
-      "source_id": null,
-      "clause": null,
-      "locator": "Name appears only in a code comment (ingest/sync_status.py); not confirmed against the O-RAN WG4 M-plane specification or YANG file (egress blocked).",
-      "url_or_repo_path": null,
-      "status": "SOURCE_NEEDED"
+      "source": "ETSI TS 104 023 V17.1.0",
+      "source_id": "ETSI_MP17",
+      "clause": "§13.1",
+      "locator": "official PDF page 120",
+      "url_or_repo_path": "https://www.etsi.org/deliver/etsi_ts/104000_104099/104023/17.01.00_60/ts_104023v170100p.pdf",
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "Synchronization items are defined and described in o-ran-sync.yang.",
+       "url": "https://www.etsi.org/deliver/etsi_ts/104000_104099/104023/17.01.00_60/ts_104023v170100p.pdf",
+       "clause": "§13.1"
+      }
+     },
+     "verification": {
+      "by": "final primary-source audit 2026-10-06",
+      "quote": "Synchronization items are defined and described in o-ran-sync.yang.",
+      "where": "official PDF page 120"
      }
     }
    ]
@@ -1377,7 +1513,14 @@
       "clause": "slide 6",
       "locator": "LLS-C4 row",
       "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
-      "status": "VERIFIED"
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "Local PRTC timing provides time synchronization to the O-RU and may be embedded in it.",
+       "url": "https://www.etsi.org/deliver/etsi_tr/104100_104199/104106/03.00.00_60/tr_104106v030000p.pdf",
+       "clause": "clause 9.1, Configuration LLS-C4"
+      }
      },
      "verification": {
       "by": "independent subagent audit 2026-10-06",
@@ -1425,7 +1568,14 @@
       "clause": "slide 16",
       "locator": "'Frequency synchronization context: ITU-T G.8262 (SyncE, not implemented here)'",
       "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
-      "status": "VERIFIED"
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "The synchronization method uses a synchronous physical layer for distributing a frequency reference.",
+       "url": "https://www.itu.int/rec/T-REC-G.8262",
+       "clause": "Summary and Introduction"
+      }
      },
      "verification": {
       "by": "independent subagent audit 2026-10-06",
@@ -1574,7 +1724,14 @@
       "clause": "Chapter 1",
       "locator": "plane list",
       "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
-      "status": "VERIFIED"
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "C-Plane refers specifically to real-time control between O-DU and O-RU.",
+       "url": "https://www.etsi.org/deliver/etsi_ts/103800_103899/103859/12.00.01_60/ts_103859v120001p.pdf",
+       "clause": "clause 3.1, C-Plane definition"
+      }
      },
      "verification": {
       "by": "independent subagent audit 2026-10-06",
@@ -1603,14 +1760,26 @@
     {
      "id": "fh-cplane.s3",
      "kind": "REFERENCE",
-     "text": "C-plane processing stops or is misaligned when the O-RU loses synchronization.",
+     "text": "When the O-DU is notified that an O-RU has become UNLOCKED, it shall stop sending data to that O-RU; the CUS specification explicitly includes C-plane data in the corresponding FREERUN/HOLDOVER rule.",
      "citation": {
-      "source": null,
-      "source_id": null,
-      "clause": null,
-      "locator": "No openable source states this; demoted from tier 2 (see tier_log).",
-      "url_or_repo_path": null,
-      "status": "SOURCE_NEEDED"
+      "source": "ETSI TS 104 023 V17.1.0 and ETSI TS 103 859 V12.0.1",
+      "source_id": "ETSI_MP17",
+      "clause": "MP §13.1; CUS §13.6.2.1",
+      "locator": "official PDF pages 120 and 295",
+      "url_or_repo_path": "https://www.etsi.org/deliver/etsi_ts/104000_104099/104023/17.01.00_60/ts_104023v170100p.pdf",
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "If the O-RU state changes to UNLOCKED, the O-DU shall stop sending data to the O-RU.",
+       "url": "https://www.etsi.org/deliver/etsi_ts/104000_104099/104023/17.01.00_60/ts_104023v170100p.pdf",
+       "clause": "MP §13.1; CUS §13.6.2.1"
+      }
+     },
+     "verification": {
+      "by": "final primary-source audit 2026-10-06",
+      "quote": "If the O-RU state changes to UNLOCKED, the O-DU shall stop sending data to the O-RU.",
+      "where": "official PDF pages 120 and 295"
      }
     }
    ],
@@ -1635,7 +1804,14 @@
       "clause": "Chapter 1",
       "locator": "plane list",
       "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
-      "status": "VERIFIED"
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "LLS-U is the lower-layer-split user-plane interface between O-DU and O-RU.",
+       "url": "https://www.etsi.org/deliver/etsi_ts/103800_103899/103859/12.00.01_60/ts_103859v120001p.pdf",
+       "clause": "clause 3.1, LLS-U definition"
+      }
      },
      "verification": {
       "by": "independent subagent audit 2026-10-06",
@@ -1664,14 +1840,26 @@
     {
      "id": "fh-uplane.s3",
      "kind": "REFERENCE",
-     "text": "U-plane traffic stops when the O-RU loses synchronization.",
+     "text": "When the O-DU is notified that an O-RU has become UNLOCKED, it shall stop sending to and ignore data from that O-RU; the CUS specification explicitly includes U-plane data in the corresponding FREERUN/HOLDOVER rule.",
      "citation": {
-      "source": null,
-      "source_id": null,
-      "clause": null,
-      "locator": "No openable source states this; demoted from tier 2 (see tier_log).",
-      "url_or_repo_path": null,
-      "status": "SOURCE_NEEDED"
+      "source": "ETSI TS 104 023 V17.1.0 and ETSI TS 103 859 V12.0.1",
+      "source_id": "ETSI_MP17",
+      "clause": "MP §13.1; CUS §13.6.2.1",
+      "locator": "official PDF pages 120 and 295",
+      "url_or_repo_path": "https://www.etsi.org/deliver/etsi_ts/104000_104099/104023/17.01.00_60/ts_104023v170100p.pdf",
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "The O-DU shall stop sending data to, and ignore any data from, that O-RU.",
+       "url": "https://www.etsi.org/deliver/etsi_ts/104000_104099/104023/17.01.00_60/ts_104023v170100p.pdf",
+       "clause": "MP §13.1; CUS §13.6.2.1"
+      }
+     },
+     "verification": {
+      "by": "final primary-source audit 2026-10-06",
+      "quote": "The O-DU shall stop sending data to, and ignore any data from, that O-RU.",
+      "where": "official PDF pages 120 and 295"
      }
     }
    ],
@@ -1696,7 +1884,14 @@
       "clause": "Chapter 2",
       "locator": "opening paragraph",
       "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
-      "status": "VERIFIED"
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "Time-alignment requirements apply to MIMO transmission, carrier aggregation, and their combinations.",
+       "url": "https://www.etsi.org/deliver/etsi_ts/138100_138199/138104/19.03.00_60/ts_138104v190300p.pdf",
+       "clause": "clause 9.6.3"
+      }
      },
      "verification": {
       "by": "independent subagent audit 2026-10-06",
@@ -1714,7 +1909,14 @@
       "clause": "slide 12",
       "locator": "'Service limits at stake' footer",
       "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
-      "status": "VERIFIED"
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "MIMO TAE shall not exceed 65 ns; contiguous carrier-aggregation TAE shall not exceed 260 ns.",
+       "url": "https://www.etsi.org/deliver/etsi_ts/138100_138199/138104/19.03.00_60/ts_138104v190300p.pdf",
+       "clause": "clause 9.6.3.2"
+      }
      },
      "verification": {
       "by": "independent re-verification pass 2, 2026-10-06",
@@ -1792,7 +1994,14 @@
       "clause": "Chapter 1",
       "locator": "E2 note",
       "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
-      "status": "VERIFIED"
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "Near-RT RIC connects to O-CU-CP, O-CU-UP and O-DU through E2.",
+       "url": "https://www.etsi.org/deliver/etsi_ts/103900_103999/103982/08.00.00_60/ts_103982v080000p.pdf",
+       "clause": "clauses 6.3.2-6.3.5 and 6.4.5"
+      }
      },
      "verification": {
       "by": "independent subagent audit 2026-10-06",
@@ -1822,7 +2031,14 @@
       "clause": "Chapter 1",
       "locator": "functional-split figure",
       "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
-      "status": "VERIFIED"
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "O-CU-CP hosts RRC/control PDCP; O-CU-UP hosts user PDCP and SDAP.",
+       "url": "https://www.etsi.org/deliver/etsi_ts/103900_103999/103982/08.00.00_60/ts_103982v080000p.pdf",
+       "clause": "clause 3.1, O-CU definitions"
+      }
      },
      "verification": {
       "by": "independent subagent audit 2026-10-06",
@@ -1882,7 +2098,14 @@
       "clause": "interface table",
       "locator": "row 'SMO to O-Cloud'",
       "url_or_repo_path": "01_CURRENT_SPlane_SelfHealing/literature-survey/AI-Native_ORAN_Digital_Twin_Architecture.md",
-      "status": "VERIFIED"
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "O2 connects the SMO framework and O-Cloud to support O-RAN virtual network functions.",
+       "url": "https://www.etsi.org/deliver/etsi_ts/103900_103999/103982/08.00.00_60/ts_103982v080000p.pdf",
+       "clause": "clause 3.1, O2 definition"
+      }
      },
      "verification": {
       "by": "independent subagent audit 2026-10-06",
@@ -1912,7 +2135,14 @@
       "clause": "slide 6",
       "locator": "LLS-C1 row, as quoted from O-RAN.WG4.CUS.0 via Armstrong",
       "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
-      "status": "VERIFIED"
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "In LLS-C1, O-DU acts as master and directly synchronizes O-RU.",
+       "url": "https://www.etsi.org/deliver/etsi_tr/104100_104199/104106/03.00.00_60/tr_104106v030000p.pdf",
+       "clause": "clause 9.1, Configuration LLS-C1"
+      }
      },
      "verification": {
       "by": "independent subagent audit 2026-10-06",
@@ -1923,14 +2153,21 @@
     {
      "id": "lls-c1.s2",
      "kind": "REFERENCE",
-     "text": "A compromised O-DU or the O-DU–O-RU link controls the O-RU's time (T-FRHAUL-01).",
+     "text": "O-RAN threat T-SPLANE-01 covers DoS or impersonation against the timing-network master; because the O-DU is that master in LLS-C1, its served O-RUs can be affected.",
      "citation": {
-      "source": "v8 deck (PDF view)",
-      "source_id": "V8",
-      "clause": "slide 6",
-      "locator": "exposure column; relays ETSI TR 104 106",
-      "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
-      "status": "VERIFIED"
+      "source": "ETSI TR 104 106 V3.0.0",
+      "source_id": "TR104106",
+      "clause": "§7 T-SPLANE-01 and §9.1 Configuration LLS-C1",
+      "locator": "official PDF pages 34 and 107",
+      "url_or_repo_path": "https://www.etsi.org/deliver/etsi_tr/104100_104199/104106/03.00.00_60/tr_104106v030000p.pdf",
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "T-SPLANE-01 covers DoS or impersonation against a timing-network master.",
+       "url": "https://www.etsi.org/deliver/etsi_tr/104100_104199/104106/03.00.00_60/tr_104106v030000p.pdf",
+       "clause": "clause 7, T-SPLANE-01; clause 9.1, LLS-C1"
+      }
      },
      "verification": {
       "by": "independent subagent audit 2026-10-06",
@@ -1980,7 +2217,14 @@
       "clause": "slide 6",
       "locator": "LLS-C2 row",
       "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
-      "status": "VERIFIED"
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "O-DU acts as master; one or more Ethernet switches are allowed in the fronthaul network.",
+       "url": "https://www.etsi.org/deliver/etsi_tr/104100_104199/104106/03.00.00_60/tr_104106v030000p.pdf",
+       "clause": "clause 9.1, Configuration LLS-C2"
+      }
      },
      "verification": {
       "by": "independent subagent audit 2026-10-06",
@@ -2048,7 +2292,14 @@
       "clause": "slide 6",
       "locator": "LLS-C3 row",
       "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
-      "status": "VERIFIED"
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "Timing is distributed by the fronthaul network, not by the O-DU, using PRTC/T-GM.",
+       "url": "https://www.etsi.org/deliver/etsi_tr/104100_104199/104106/03.00.00_60/tr_104106v030000p.pdf",
+       "clause": "clause 9.1, Configuration LLS-C3"
+      }
      },
      "verification": {
       "by": "independent subagent audit 2026-10-06",
@@ -2134,7 +2385,14 @@
       "clause": "slide 6",
       "locator": "LLS-C4 row",
       "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/ORAN_SPlane_PRISM_Review_v8_view.pdf",
-      "status": "VERIFIED"
+      "status": "VERIFIED",
+      "primary": {
+       "checked": true,
+       "result": "CONFIRMED",
+       "quote": "Local PRTC timing provides time synchronization to the O-RU and may be embedded in it.",
+       "url": "https://www.etsi.org/deliver/etsi_tr/104100_104199/104106/03.00.00_60/tr_104106v030000p.pdf",
+       "clause": "clause 9.1, Configuration LLS-C4"
+      }
      },
      "verification": {
       "by": "independent subagent audit 2026-10-06",
@@ -2184,7 +2442,14 @@
       "clause": "Chapter 3",
       "locator": "'The four timestamps' figure",
       "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
-      "status": "VERIFIED"
+      "status": "VERIFIED",
+      "primary": {
+       "checked": false,
+       "result": "NOT_ACCESSIBLE",
+       "quote": "",
+       "url": "https://standards.ieee.org/ieee/1588/6825/",
+       "clause": "IEEE 1588 message exchange (licence-gated)"
+      }
      },
      "verification": {
       "by": "independent subagent audit 2026-10-06",
@@ -2202,7 +2467,14 @@
       "clause": "Chapter 3",
       "locator": "formulas under 'The four timestamps'",
       "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
-      "status": "VERIFIED"
+      "status": "VERIFIED",
+      "primary": {
+       "checked": false,
+       "result": "NOT_ACCESSIBLE",
+       "quote": "",
+       "url": "https://standards.ieee.org/ieee/1588/6825/",
+       "clause": "IEEE 1588 delay/offset equations (licence-gated)"
+      }
      },
      "verification": {
       "by": "independent subagent audit 2026-10-06",
@@ -2267,7 +2539,14 @@
       "clause": "Chapter 3",
       "locator": "'Who is the master? The election' table",
       "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
-      "status": "VERIFIED"
+      "status": "VERIFIED",
+      "primary": {
+       "checked": false,
+       "result": "NOT_ACCESSIBLE",
+       "quote": "",
+       "url": "https://standards.ieee.org/ieee/1588/6825/",
+       "clause": "IEEE 1588 best master clock algorithm (licence-gated)"
+      }
      },
      "verification": {
       "by": "independent subagent audit 2026-10-06",
