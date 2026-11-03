@@ -322,7 +322,7 @@
    "id": "wg11-threats",
    "question": "Which WG11 S-plane threat references does the project use?",
    "result": "relayed by project documents; ETSI TR 104 106 not opened",
-   "finding": "V8 slides 10-12 and the Parameter Fault Matrix (FAULT KEY) map: A1 to T-SPLANE-02/03 (rogue PTP instance), A5 to T-SPLANE-01 (clock service interrupted), A8 to T-SPLANE-03 (slaves given inaccurate time), C1 to T-SPLANE-04 (degradation or free-running), and T-FRHAUL-01 (compromised O-DU or link) and T-FRHAUL-02 (access paths). ETSI TR 104 106 itself could not be opened here. The title of T-SPLANE-02 is not stated in the repository.",
+   "finding": "The corrected mapping is: A1 to T-SPLANE-02/03 (rogue PTP instance), A5 to T-SPLANE-01 (clock service interrupted), A8 to T-SPLANE-03 (slaves given inaccurate time), and C1 to T-SPLANE-04 (degradation or free-running). LLS-C1 exposure follows from the O-DU acting as synchronization master and is supported by T-FRHAUL-02, T-SPLANE-01…04 and RFC 7384 §3.2; the former fronthaul-penetration citation is not a timing-source-control clause.",
    "evidence": [
     "V8 slides 10-12",
     "MATRIX FAULT KEY",
@@ -1122,12 +1122,12 @@
     {
      "id": "injector.s3",
      "kind": "REFERENCE",
-     "text": "Access paths named for the fronthaul are remote access widened by multi-vendor equipment, physical access to cell sites, supply-chain backdoors, and unauthorised access to the Open Fronthaul Ethernet interface.",
+     "text": "TIMESAFE §4 identifies three access factors: remote access widened by multi-vendor equipment, physical access to cell sites, and dependency or supply-chain risk. ETSI T-FRHAUL-02 separately identifies unauthorised access to the Open Fronthaul Ethernet L1 physical interface.",
      "citation": {
       "source": "SPlane_Project_Story_Guide.pdf",
       "source_id": "GUIDE",
       "clause": "Chapter 5",
-      "locator": "TIMESAFE §4 / T-FRHAUL-02, as relayed",
+      "locator": "TIMESAFE §4 (first three factors) / T-FRHAUL-02 (L1 physical-interface access)",
       "url_or_repo_path": "00_LATEST_PRESENTED_DECK_AND_DELIVERABLES/SPlane_Project_Story_Guide.pdf",
       "status": "VERIFIED",
       "primary": {

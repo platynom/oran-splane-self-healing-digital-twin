@@ -125,13 +125,13 @@ const PLANES: RevealItem[] = [
 ];
 
 const VERDICTS: RevealItem[] = [
-  { key: "ATTACK", label: "ATTACK", content: "Evidence is illegal under the standard, or unauthorised under the operator's provisioning. Loop: ISOLATE the offending ingress port once 2 of the last 3 evaluations say ATTACK, unless the port is a provisioned master-role port (safety guard → escalate). Basis: RFC 7384 §5.1.1, §5.10.1; acceptable-master table / master-only ports (Arnold & Frost, WSTS 2016)." },
+  { key: "ATTACK", label: "ATTACK", content: "Evidence is illegal under the standard, or unauthorised under the operator's provisioning. Loop: ISOLATE the offending ingress port once 2 of the last 3 evaluations say ATTACK, unless the port is a provisioned time-transmitter role (safety guard → escalate). Basis: RFC 7384 §5.1.1, §5.10.1; acceptable-master table / provisioned port roles (Arnold & Frost, WSTS 2016)." },
   { key: "BENIGN", label: "BENIGN", content: "Only provisioned clocks are involved, nothing is illegal, and the declared state agrees with what is observed. Loop: TOLERATE (no action)." },
   { key: "UNKNOWN", label: "UNKNOWN", content: "The packets genuinely cannot reveal intent, for example a grandmaster change between allow-listed clocks with no maintenance window. Loop: ESCALATE to an operator, no automatic action ('raise alarm', Arnold & Frost)." },
 ];
 
 const POLICY: RevealItem[] = [
-  { key: "p1", label: "ATTACK on ≥ 2 of the last 3 evaluations + a violating, non-master port", content: "ISOLATE: nft bridge prerouting `iifname <port> ether type 0x88f7 drop`. Verify every non-isolated RU within 20 s, else roll back and escalate. Basis: RFC 7384 §5.1.1, §5.10.1; G.8275.1 notSlave; master-only ports." },
+  { key: "p1", label: "ATTACK on ≥ 2 of the last 3 evaluations + a violating, non-master port", content: "ISOLATE: nft bridge prerouting `iifname <port> ether type 0x88f7 drop`. Verify every non-isolated RU within 20 s, else roll back and escalate. Basis: RFC 7384 §5.1.1, §5.10.1; G.8275.1 timeTransmitterOnly / notTimeTransmitter; provisioned port roles." },
   { key: "p2", label: "ATTACK, but only provisioned master-role ports (or none) violate", content: "ESCALATE (safety guard). Isolating a provisioned BC would itself remove timing. This is what keeps the B_bc_replacement false A8 harmless." },
   { key: "p3", label: "No Announce from any provisioned master port for > 2 s (10 s in a maintenance window)", content: "ACTIVATE STANDBY BC. Verified like isolation. Basis: RFC 7384 §5.9 (redundant masters / paths); IEEE 1588 security Prong C. Correct whether the loss is interception (C1) or a failed BC (B3 r17)." },
   { key: "p4", label: "UNKNOWN", content: "ESCALATE, no automatic action." },

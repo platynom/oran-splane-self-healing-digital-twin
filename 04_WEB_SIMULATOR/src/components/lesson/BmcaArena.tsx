@@ -6,7 +6,7 @@ import { ModelLabel } from "../ui";
 /**
  * Simplified IEEE 1588 default data-set comparison: fields compared in order, smaller wins, first
  * difference decides. G.8275.1 (which the testbed ran) uses the alternate BMCA with localPriority and
- * per-port notSlave; this widget is an illustration of the comparison idea, not of that profile's algorithm.
+ * per-port timeTransmitterOnly / notTimeTransmitter attributes; this widget illustrates the comparison idea, not that profile's algorithm.
  */
 export interface ClockDS {
   key: string;
